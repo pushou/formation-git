@@ -25,6 +25,11 @@ La formation est prévue pour un format de 2 jours.
 
 ## Aspects techniques
 
+Comme il contient de nombreux gros fichiers binaires, ce dépôt utilise
+l'extension git LFS (Large File Storage). Pour en effectuer un clone complet,
+incluant les fichiers binaires, vous devrez installer cette extension.
+Vous trouverez plus d'informations sur https://git-lfs.github.com/ .
+
 Le script `rendu_pdf.sh` permet d'automatiser le rendu PDF des TPs et des
 planches. Pour l'utiliser, vous devez avoir installé l'outil de conversion de
 document `pandoc`, une distribution LaTeX comportant l'outil `pdflatex`, et la
