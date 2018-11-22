@@ -16,7 +16,7 @@ effectuer la démonstration du ou des outils interactifs qui seront manipulés e
 TP, puis laisser les stagiaires suivre les TPs de façon autonome, à leur rythme,
 en appelant le formateur lorsqu'ils ont besoin d'aide.
 
-Ce format permet de bien s'adapter aux écarts de niveau des apprenants. En
+Cette organisation permet de s'adapter aux écarts de niveau des apprenants. En
 effet, le seul prérequis demandé est une bonne connaissance du shell Unix, mais
 dans un groupe typique on trouvera de tout, du débutant complet de la gestion de
 version à l'utilisateur amateur de git en passant par l'habitué de SVN.
