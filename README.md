@@ -30,6 +30,9 @@ l'extension git LFS (Large File Storage). Pour en effectuer un clone complet,
 incluant les fichiers binaires, vous devrez installer cette extension.
 Vous trouverez plus d'informations sur https://git-lfs.github.com/ .
 
+Des problèmes de compatibilité ont été signalés avec git LFS version 2.5.2,
+l'utilisation de git LFS >= 2.6.0 est donc recommandée.
+
 Le script `rendu_pdf.sh` permet d'automatiser le rendu PDF des TPs et des
 planches. Pour l'utiliser, vous devez avoir installé l'outil de conversion de
 document `pandoc`, une distribution LaTeX comportant l'outil `pdflatex`, et la
