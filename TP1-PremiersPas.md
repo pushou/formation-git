@@ -254,8 +254,8 @@ répondrons à ces questions dans les prochaines séquences.
 3. Créez un fichier et préparez git à le versionner.
 4. Déplacez ce fichier vers un autre emplacement de telle façon que `git status`
    ne parle que de deux fichiers (dont le "gitignore").
-5. Affichez le statut final du dépôt et reformulez avec des mots plus simples
-   les différentes informations que git vous présente (en ignorant la branche).
+5. Affichez l'état final du dépôt. En ignorant pour l'instant la partie "Sur
+   la branche master", comprenez-vous les autres messages affichés ?
 
 ## Antisèche
 
