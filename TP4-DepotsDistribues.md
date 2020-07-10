@@ -211,6 +211,17 @@ existe pour configurer une branche amont et pousser vers cette dernière : la
 commande `git push --set-upstream <remote> <branche>`, l'option `--set-upstream`
 pouvant s'abbrévier en `-u`.
 
+**Attention :** Lorsqu'on utilise des clones locaux d'un dépôt git, comme c'est
+le cas dans ce TP, on ne peut pas faire de `git push` vers la branche qui est
+actuellement active dans le dépôt cible. En cas de besoin, il faut donc aller
+dans le dossier du dépôt cible et faire un `git checkout` d'une autre branche.
+
+Vous ne rencontrerez heureusement que rarement ce problème dans la vie de tous
+les jours. Les clones locaux sont peu utilisés, et la seule raison pour laquelle
+cette formation y a recours est que cela vous permet de mieux visualiser ce qui
+se passe et vous évite de devoir apprendre la gestion du _remotes_ et celle des
+échanges réseau en même temps...
+
 
 ## Aller plus loin avec les _remotes_
 
