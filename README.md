@@ -37,7 +37,7 @@ LFS. L'utilisation de git LFS >= 2.6.0 est donc fortement recommandée.
 Le script `rendu_pdf.sh` permet d'automatiser le rendu PDF des TPs et des
 planches. Pour l'utiliser, vous devez avoir installé l'outil de conversion de
 document `pandoc`, une distribution LaTeX comportant l'outil `pdflatex`, et la
-suite bureautique LibreOffice (l'écriture a été effectuée avec la version 6.2).
+suite bureautique LibreOffice (l'écriture a été effectuée avec la version 7.0).
 
 Notez que l'outil de conversion de documents en ligne de commande de LibreOffice
 ne peut pas s'exécuter en même temps que l'application graphique. Il faut donc
