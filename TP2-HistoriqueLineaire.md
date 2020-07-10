@@ -191,11 +191,7 @@ tâche de fond :
     $ gitg &
 
 Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
-continuer de saisir des commandes. Il ne reste qu'un inconvénient à cette
-approche, c'est que les messages de statut de la sortie standard de `gitg`
-viendront occasionellement "polluer" votre terminal. Si cela vous ennuie, une
-alternative est d'ouvrir un nouvel onglet dans votre terminal et de lancer gitg
-dans cet onglet.
+continuer de saisir des commandes.
 
 ### Premières requêtes
 
