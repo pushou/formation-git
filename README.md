@@ -5,7 +5,7 @@
 Ce dépôt git contient le matériau complet d'une formation à l'outil de gestion
 de version git, composé des éléments suivants :
 
-- Des planches permettant d'introduire des sujets théoriques
+- Des planches permettant d'introduire les sujets théoriques
 - Des TPs permettant de manipuler l'outil, de façon guidée puis autonome
 - Une checklist pour la présentation des outils interactifs utilisés en TP
 - Un script permettant le rendu automatisé des supports stagiaires en PDF
