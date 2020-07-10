@@ -8,6 +8,8 @@ de version git, composé des éléments suivants :
 - Des planches permettant d'introduire les sujets théoriques
 - Des TPs permettant de manipuler l'outil, de façon guidée puis autonome
 - Une checklist pour la présentation des outils interactifs utilisés en TP
+- Des "quiz" pour jauger le niveau de compréhension de la salle et réviser les
+  notions acquises, sur le modèle de l'émission "Questions pour un champion"
 - Un script permettant le rendu automatisé des supports stagiaires en PDF
 - Une machine virtuelle au sein de laquelle les TPs seront effectués
 
@@ -49,6 +51,22 @@ assez standard, mais il faut surtout procéder à l'avance à une installation d
 la VM fournie sur tous les postes stagiaires. Notez que VirtualBox n'offre que
 des garanties faibles de compatibilité entre versions, la VM utilisée ici a été
 générée avec VirtualBox 6.0.
+
+## Impression des documents formateur
+
+En plus des planches et des énoncés de TP, ce dépôt contient deux documents à
+destination du formateur, dont l'impression utilise un format un peu particulier
+que je n'ai pas réussi à automatiser dans le script `rendu_pdf.sh`.
+
+Le fichier `Démos.odt` contient un aide-mémoire pour les démonstrations d'outils
+utilisés pendant les TP. Cet aide mémoire est au format A5 paysage,
+personnellement je l'imprime en A4 avec deux pages A5 par feuille, et
+éventuellement du recto verso.
+
+Le fichier `Quiz.odt` contient des supports de quiz au format A6, conçus pour
+une impression à 4 pages par feuille en recto verso. Dans cette configuration,
+l'une des faces vous dit à quel TP chaque quiz fait référence, et l'autre face
+vous donne les questions du quiz.
 
 ## Licence
 
