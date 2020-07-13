@@ -19,7 +19,7 @@ le mécanisme de fusion automatique et ses limites.
     $ git add --all
     $ git commit -m 'Commit initial'
 
-Gardons une étiquette sur ce premier commit, il servira plus tard :
+Gardons une étiquette sur ce premier commit, on s'en servira plus tard :
 
     $ git tag initial
 
@@ -40,8 +40,8 @@ nouvellement créée. On utilise pour cela `git checkout <nom de branche>` :
 
     $ git checkout univers-parallele
 
-Rappelons au passage que le nom de la branche active est également présent en
-haut de la sortie de `git status` :
+Une autre manière de vérifier le nom de la branche active est de regarder le
+début de la sortie de `git status` :
 
     $ git status
 
@@ -80,7 +80,7 @@ Pendant que nous y sommes, nous allons aussi créer un nouveau fichier.
 
     $ echo 'Nouveau fichier' > AutreContenu.txt
 
-Et pour terminer, sauvegardons nos changements dans un commit :
+Et pour terminer, sauvegardons nos changements dans un _commit_ :
 
     $ git add --all
     $ git commit -m 'Deuxième jeu de modifications'
@@ -324,11 +324,11 @@ Par exemple, si une branche de développement d'un logiciel ajoute une nouvelle
 utilisation d'une interface (_API_), tandis qu'une autre branche de
 développement du même logiciel supprime cette interface, les deux branches sont incompatibles, mais git acceptera de les fusionner quand même.
 
-Ce comportement vient du fait que git ne "comprend" pas la sémantique des
-langages de programmation utilisés. Il raisonne purement en termes de documents
-textuels. Pour lui, des modifications éloignées d'un même document, ou des
-modifications de deux documents distincts, sont toujours compatibles, alors que
-du point de vue des langages de programmation, ce n'est pas forcément le cas.
+Ce comportement vient du fait que git ne comprend pas la sémantique des langages
+de programmation utilisés. Il raisonne purement en termes de documents textuels.
+Pour lui, des modifications éloignées d'un même document, ou des modifications
+de deux documents distincts, sont toujours compatibles, alors que du point de
+vue des langages de programmation, ce n'est pas forcément le cas.
 
 De tels conflits sont particulièrement sournois, et il faut un outillage
 relativement sophistiqué pour les détecter automatiquement. En l'absence d'un
@@ -436,9 +436,9 @@ sein de la branche active, mais procède de manière très différente :
   les nouveautés de la branche `<nom>`.
 - `git rebase <nom>` détermine quels commits sont présents dans la branche
   active mais pas dans la branche `<nom>`, puis modifie l'historique en
-  rejouant ces commits un par un au-dessus de `<nom>`, avant de faire pointer la
-  branche active sur le résultat. `<nom>` devient ainsi un ancêtre de la branche
-  active.
+  appliquant les différences de ces commits un par un au-dessus de `<nom>`,
+  avant de faire pointer la branche active sur le résultat. `<nom>` devient
+  ainsi un ancêtre de la branche active.
 
 Ce mode de fonctionnement par modification d'historique a plusieurs
 conséquences importantes :
