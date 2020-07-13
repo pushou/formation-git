@@ -1,5 +1,24 @@
 # TP2 : Un historique linéaire
 
+## Un mot sur les "rattrapages"
+
+Vous aurez peut-être remarqué, dans les supports de formation, un mystérieux
+dossier appelé "Rattrapages".
+
+Ce dossier contient une copie de sauvegarde de l'état attendu du ou des dépôts
+git utilisés _à la fin_ de chaque TP.
+
+Cela vous permettra de vous replacer dans l'état attendu au début d'un
+nouveau TP, si par exemple...
+
+- Vous n'avez pas réussi à finir un TP à temps
+- Vous avez exécuté des commandes imprévues durant le TP
+- Vous avez manqué une partie de la formation
+
+Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l'effet
+d'une commande dépend fortement de l'état actuel du dépôt utilisé.
+
+
 ## Processus de création de version
 
 ### Un premier commit
