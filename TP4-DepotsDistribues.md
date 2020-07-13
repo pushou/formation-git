@@ -102,20 +102,28 @@ divergé par rapport à la branche distante :
 ### Le raccourci pull
 
 Il est très courant de vouloir se mettre à jour par rapport à une branche
-distante, et `git` fournit donc un raccourci pour accélérer cette opération.
+distante, et `git` fournit donc des raccourcis pour accélérer cette opération.
 
-Le raccourci `git pull` est équivalent à un `git fetch` suivi d'un `git merge`
-de la branche amont (_upstream_) associée à la branche active. Dans notre cas,
-il s'agit de `origin/univers-parallele`.
+Le raccourci `git pull <remote> <branche>` est équivalent à une séquence de deux
+commandes git:
 
-Effectuons un autre commit dans le dépôt parent pour tester cette commande.
+- `git fetch <remote> <branche>`, une variante de `git fetch` qui ne met à jour
+  qu'une seule branche distante, et peut donc être plus rapide à s'exécuter.
+- `git merge <remote>/<branche>`, vue au TP 3, qui intègre les changements de la
+  branche distante que l'on vient de récupérer dans la branche active.
+
+Cela divise par deux la quantité de texte que l'on doit saisir pour effectuer
+cette opération courante efficacement, ce qui est déjà appréciable. Et nous
+verrons dans un instant qu'il est possible de raccourcir encore...
+
+Mais d'abord, effectuons un commit dans le dépôt parent pour tester `git pull`.
 
     $ cd ../MesBranches
     $ echo "Demandez le programme !" >> ToutNouveau.txt
     $ git add ToutNouveau.txt
     $ git commit -m "Du contenu supplémentaire"
     $ cd ../MonClone
-    $ git pull
+    $ git pull origin univers-parallele
     $ cat ToutNouveau.txt
 
 `git pull` accepte en paramètre les mêmes options que `git merge`, il est donc
@@ -129,10 +137,35 @@ de travail propre.
 
 ### Notion de branche amont
 
-La branche amont est un concept git qui vise à associer une branche locale avec
-une branche distante afin d'activer des raccourcis de synchronization comme
-`git pull`. Une branche amont est configurée automatiquement dans un certain
-nombre de cas, par exemple quand on effectue un clone.
+Il est courant d'avoir dans son dépôt `git` local une branche qui a un
+"homologue distant" sur un serveur:
+
+- Pour soumettre un développement au projet, on va généralement mettre en ligne
+  une copie de la branche locale associée à ce développement, afin de pouvoir en
+  discuter avec les collaborateurs via une interface web de forge. Nous
+  étudierons ce processus plus en détail au TP 5.
+- A l'inverse, il peut être intéressant d'effectuer un suivi local d'une branche
+  existant sur un serveur distant, par exemple la branche qui représente la
+  version de développement officielle du projet (généralement appelée `master`
+  ou `develop`).
+
+Pour nous aider à maintenir ces versions locales et distantes d'une branche
+synchrones, git fournit la notion de branche amont (_upstream branch_). Ce
+concept nous permet d'expliquer à `git` qu'il existe un lien entre une branche
+locale et une branche distante sur une _remote_.
+
+Une fois ce lien effectué, on disposera de formes raccourcies des commandes de
+synchronisation. Par exemple, `git pull` sans argument supplémentaire
+récupérera la version actuelle de la branche amont associée au sein de la
+branche active et la fusionnera au sein de celle-ci.
+
+Alors, comment mémoriser ce lien entre branche locale et branche amont?
+
+Tout d'abord, on l'a vu tout à l'heure, git configure automatiquement un lien
+entre la branche active du dépôt qui a été cloné et sa copie locale lorsqu'on
+effectue un `git clone`. On peut le vérifier avec `git status`:
+
+    $ git status
 
 Un autre raccourci bien pratique pour créer une branche locale connectée à une
 branche distante est de demander un `checkout` d'une branche locale qui n'existe
@@ -154,8 +187,11 @@ branches locales avec le mode très verbeux de `git branch --list` :
     $ git branch --list -vv
 
 Dans les rares cas où il est nécessaire de configurer manuellement l'amont d'une
-branche locale, la commande `git branch` fournit des moyens de le faire.
-Consultez sa documentation pour plus de détails.
+branche locale, la commande `git branch` fournit des moyens de le faire. Sur les
+versions actuelles de `git`, on utilise la syntaxe
+`git branch --set-upstream-to <remote>/<branche>`. Mais des versions très
+anciennes de git utilisaient une syntaxe différente. Si c'est le cas de la
+vôtre, consultez `git help branch` pour plus de détails.
 
 ### Soumission de changements avec push
 
