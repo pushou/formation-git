@@ -114,14 +114,15 @@ l'exécuter avec un répertoire de travail propre, sinon elle échouera avec un
 message d'erreur.
 
 Cette commande change également de branche active. Si on lui passe une branche
-en paramètre, ladite branche devient la branche active. Si on lui passe quelque
-chose qui n'est pas une branche (une étiquette, un hash de commit...), il n'y a
-plus de branche active. On parle alors de "`HEAD` détachée".
+en paramètre, ladite branche devient la branche active, au sein de laquelle les
+nouveaux commits sont enregistrés. Si on passe à `checkout` quelque chose qui
+n'est pas une branche (une étiquette, un hash de commit...), alors il n'y aura
+plus de branche active. On parlera de "`HEAD` détachée".
 
 Comme nous l'avons vu au TP 4, cette commande peut aussi créer automatiquement
 une branche locale liée à une branche distante.
 
-`git checkout -b <nom>` est une abbréviation de
+Toujours dans les raccourcis, `git checkout -b <nom>` est une abbréviation de
 `git branch <nom> && git checkout <nom>` : on crée une branche et on bascule
 dessus.
 
@@ -225,3 +226,50 @@ Mais il n'en reste pas moins que réparer les dégâts d'un _rebase_ interactif
 incorrect demande une bonne maîtrise de git, et qu'il est en ce sens quelque peu
 regrettable que certains projets logiciels forcent l'usage de techniques de
 rebase interactif relativement avancées chez leurs contributeurs.
+
+
+## Git LFS (Large File Storage)
+
+Dans sa conception, git est surtout optimisé pour stocker des documents
+textuels. Son mécanisme de stockage est optimisé pour des fichiers texte bruts
+dont peu de lignes changent à chaque _commit_, et des outils comme `git diff`
+et `git merge` ne fonctionnent bien que dans ce contexte.
+
+Mais dans la vraie vie, on n'utilise pas que du texte brut. Un dépôt git peut
+tout aussi bien se retrouver lié à des fichiers binaires tels que des documents
+texte enrichis, des images, des archives compressées, ou même des images de
+machines virtuelles.
+
+Pour ce genre d'usage, git va assez mal se comporter : le calcul de différences
+ne va plus marcher comme il faut, toute fusion touchant au fichier binaire sera
+considérée comme un conflit... et en plus, au-delà d'un certain volume de
+données, le fonctionnement de l'outil va devenir très lent.
+
+Pour résoudre ce dernier problème, les équipes de la forge GitHub ont mis au
+point une extension de git appelée Git Large File Storage (généralement abbrévié
+en Git LFS), qui permet de décharger Git de la responsabilité de gérer certains
+types de fichiers binaires désignés par l'utilisateur.
+
+Avec git LFS, le dépôt git à proprement parler ne contient que des identifiant de
+ces fichiers, et leur gestion sera confiée à un service de stockage plus adapté
+aux fichiers binaires, ce qui évitera les problèmes de performance.
+
+Mais, du côté utilisateur, une extension de git se charge de télécharger
+automatiquement les fichiers depuis le service de stockage au gré des
+`checkout`, de les extraire dans le répertoire de travail, et de les mettre
+en ligne au gré des `push`. Ce qui rend le mécanisme presque invisible.
+
+Un avertissement toutefois : pour que git LFS fonctionne comme prévu, il faut...
+
+1. Utiliser une forge Git compatible avec le protocole LFS, telle que GitHub
+   ou les versions actuelles de GitLab
+2. Que chaque utilisateur du dépôt ait installé et activé l'extension git LFS
+   sur son ordinateur et au sein du dépôt cible.
+
+Sans ces précautions, il ne sera que trop facile de se retrouver avec un dépôt
+dans un état corrompu, où certains fichiers sont gérés par git LFS et d'autres
+non, ou bien où certains fichiers ne sont pas envoyés sur le dépôt distant lors
+d'un appel à _git push_.
+
+Vous trouverez plus d'information et des instructions d'installation à
+l'adresse https://git-lfs.github.com/ .
