@@ -26,12 +26,14 @@ d'une commande dépend fortement de l'état actuel du dépôt utilisé.
 Au cours du TP précédent, nous avons manipulé l'état de notre répertoire de
 travail. Il est maintenant temps d'en sauvegarder une première version.
 
+Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
+immédiatement nous plonger dans un éditeur de texte :
+
     $ cd ~/Bureau/MonDepot
     $ git commit
 
-Au moment où l'on exécute la commande `git commit` pour créer une version, git
-ouvre un éditeur de texte permettant de saisir une description des changements
-effectués. Je vous laisse le soin d'en saisir une selon votre inspiration.
+Le rôle de cet éditeur de texte est de saisir une description des changements
+effectués dans la nouvelle version qui va être sauvegardé.
 
 Le format est libre, mais une convention très répandue dans le monde git est de
 commencer par un résumé court (une ligne de moins de 80 caractères),
@@ -39,10 +41,10 @@ commencer par un résumé court (une ligne de moins de 80 caractères),
 précise. Cette convention est exploitée par de nombreux outils de visualisation,
 je vous conseille donc de la suivre.
 
-Notez que l'éditeur de texte ouvert par `git commit` contient un récapitulatif
-de l'état actuel du dépôt, similaire à celui qui est affiché par `git status`.
-Ce dernier ne sera pas présent dans la description finale. Il vous permet juste
-de vérifier rapidement les changements qui seront sauvegardés.
+Notez que le fichier texte ouvert par `git commit` contient déjà un
+récapitulatif de de l'état actuel du dépôt, similaire à celui qui est affiché
+par `git status`. Ce dernier ne sera pas présent dans la description finale. Il
+vous permet juste de vérifier rapidement les changements qui seront sauvegardés.
 
 La version sera créée lorsque vous quitterez l'éditeur de texte en sauvegardant
 la description. Mais si vous vous rendez compte que vous avez tapé `git commit`
@@ -80,8 +82,8 @@ Pour visualiser le premier type de changement, on peut utiliser `git diff` :
 Cette commande décrit les différences entre le répertoire de travail et l'index,
 selon un format similaire à celui de l'utilitaire "diff" des systèmes Unix.
 
-**Attention :** `git diff` ne tient pas compte des fichiers qui n'ont pas été
-mis sous gestion de version avec `git add`, et ne peut donc pas remplacer
+Mais **attention**, `git diff` ne tient pas compte des fichiers qui n'ont pas
+été mis sous gestion de version avec `git add`, et ne peut donc pas remplacer
 totalement l'utilisation de `git status`.
 
 Les habitués d'autres gestionnaires de version noteront que `git add` combine
@@ -214,8 +216,8 @@ continuer de saisir des commandes.
 
 ### Premières requêtes
 
-git est fondamentalement basé sur la notion de _différence_, et chaque commit y
-est définie par les changements qu'il opère vis-à-vis de ses parents.
+git est basé sur la notion de **différence**, et chaque version y est définie
+par les changements qu'elle opère vis-à-vis de la version précédente.
 
 Si cette vision "locale" des choses est parfois suffisante, il est souvent
 nécessaire de raisonner par rapport à des versions relativement éloignées dans
@@ -227,7 +229,7 @@ est également possible d'afficher la différence entre deux versions enregistr�
 du projet avec `git diff <commit1> <commit2>`.
 
 Vous aurez peut-être remarqué que nous avons déjà utilisé la première de ces
-deux commandes, avec l'identifiant `HEAD` qui désigne le dernier commit
+deux commandes, avec l'identifiant `HEAD` qui désigne le dernier _commit_
 enregistré. Pour des raisons de concision, nous parlerons désormais de "commit
 actif".
 
@@ -296,9 +298,10 @@ Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
 git nous permet aussi de remonter le temps, et de charger le contenu d'une
 version préalablement enregistrée dans le répertoire de travail.
 
-Pour que les choses se passent bien, il faut que ledit répertoire de travail
-soit _propre_, c'est à dire qu'il n'y ait pas de changements en attente. Pour
-savoir si c'est le cas, on utilise comme toujours `git status` :
+Pour que les choses se passent bien, il faut au préalable s'assurer que ledi
+répertoire de travail soit _propre_, c'est à dire qu'il n'y ait pas de
+changements non enregistrés dans celui-ci. Pour savoir si c'est le cas, on peut
+comme toujours utiliser `git status` :
 
     $ git status
 
@@ -318,11 +321,12 @@ parent de celui que nous venons de créer, avec la commande `git checkout` :
 A ce stade, git vous affichera un message pour vous avertir que vous n'êtes plus
 sur une branche, et que si vous créez des commits dans cet état, vous ne pourrez
 pas facilement les retrouver par le suite. En terminologie git, on désigne cet
-état par le qualificatif un peu morbide de `HEAD détachée`.
+état par le qualificatif morbide de `HEAD détachée`.
 
 Le reste du message vous explique comment vous pourriez préserver vos
 changements en créant une autre branche. Nous étudierons cela ultérieurement,
-vous pouvez pour l'instant ignorer cette partie.
+mais ici nous ne souhaitons pas créer de nouveaux commits donc vous pouvez
+ignorer cette suggestion.
 
 Si vous regardez les fichiers de votre dépôt, vous pouvez constater que leur
 contenu a changé pour reprendre la valeur qu'ils avaient dans la version
@@ -342,8 +346,15 @@ Quand vous avez fini d'explorer, il est facile de revenir sur la branche
 ### Annuler un jeu de commits
 
 Il est possible d'annuler l'effet d'un jeu de commits de façon non-destructive
-avec la commande `git revert`. Par exemple, pour annuler l'effet du dernier
-commit effectué, on peut utiliser la commande :
+avec la commande `git revert`.
+
+Cette commande modifie l'effet du répertoire de travail, il faut donc s'assurer
+d'abord que ledit répertoire de travail est propre :
+
+    $ git status
+
+Ensuite, pour annuler par exemple l'effet du dernier commit effectué, on
+exécutera la commande :
 
     $ git revert HEAD
 
@@ -367,7 +378,7 @@ que `git filter-branch` ou le "BFG Repo-Cleaner".
 
 Dans ce TP, nous avons vu comment git permet de...
 
-- Construire soigneusement des versions de son travail (_commits_)
+- Sauvegarder des versions de son travail (_commits_)
 - Comparer des versions de fichiers avec `git diff`
 - Visualiser l'historique du dépôt
 - Désigner les commits au sein de ce dernier de différentes façons
@@ -387,8 +398,8 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 ## Exercices
 
 1. Créez un nouveau dépôt git.
-2. Ajoutez quelques fichiers du contenu de votre choix, puis sauvegardez un
-   commit contenant ces fichiers.
+2. Ajoutez quelques fichiers du contenu de votre choix, puis enregistrez un
+   _commit_ contenant ces fichiers.
 3. Modifiez au moins deux des fichers que vous avez sauvegardés, puis créez un
    commit ne comprenant que les modifications d'un seul fichier.
 4. Affichez les modifications qui n'ont pas encore été sauvegardées.
@@ -397,7 +408,8 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 6. Affichez la différence entre les deux premiers commits que vous avez
    effectués au sein du dépôt.
 7. Vérifiez que le répertoire de travail est propre.
-8. Basculez sur le grand-parent du commit actuel, et attachez-y une étiquette.
+8. Basculez sur le grand-parent du commit actuel, et attachez-y une étiquette,
+   puis revenez sur votre commit de départ.
 
 ## Antisèche
 
@@ -535,8 +547,8 @@ Il y a des causes profondes à cela :
   en cas de manipulation accidentelle.
 
 `git commit --amend` est un premier exemple de commande qui modifie
-l'historique. git dispose d'un vocabulaire très riche de commandes de ce type,
-que nous aurons l'occasion d'explorer davantage au cours de la formation.
+l'historique. git dispose d'un vocabulaire riche de commandes de ce type, que
+nous aurons l'occasion d'explorer davantage au cours de la formation.
 
 ### Annuler des manipulations accidentelles
 
