@@ -66,7 +66,7 @@ git vous demandera parfois de saisir du texte avec un éditeur de texte. Cet
 Le choix d'un éditeur de texte relevant de la guerre de religion, nous dirons
 juste qu'il est recommandé d'utilise un éditeur en mode console pour cet usage,
 et qu'il est conseillé à ceux qui n'ont jamais utilisé ce type d'éditeur de
-faire appel à `nano` pour les besoins de cette formation :
+plutôt faire appel à `nano` pour les besoins de cette formation :
 
     $ git config --global core.editor nano
 
@@ -83,7 +83,7 @@ ce que l'on appelle un "dépôt". On utilise pour cela la commande `git init` :
     $ git init
 
 Comme le message de statut l'indique, cette opération crée un sous-dossier
-"`.git`", où git stockera ses versions de fichiers.
+caché "`.git`", où git stockera ses versions de fichiers.
 
 ### Statut et ajouts
 
@@ -108,9 +108,9 @@ Après cette opération, MonFichier.txt est suivi par git : lorsqu'on enregistre
 une version du dépôt (un _commit_), ce fichier y sera présent.
 
 En cas d'ajout non désiré, on peut bien sûr annuler cette opération. Avec une
-version moderne de git, il suffit d'utiliser `git reset <nom du fichier>`.
-Sur d'anciennes versions, il fallait utiliser pour cet usage la commande plus
-hideuse et spécifique `git rm --cached <fichier>`.
+version moderne de git, il suffit d'utiliser `git reset <fichier>`. Sur
+d'anciennes versions de git, il fallait utiliser pour cet usage la commande plus
+obscure et spécifique `git rm --cached <fichier>`.
 
 ### Ignorer des fichiers
 
@@ -118,12 +118,12 @@ Tout contenu ne devrait pas être mis sous gestion de version. Il existe deux
 raisons classiques d'en exclure des fichiers :
 
 - Ils contiennent des données que l'on ne souhaite pas partager avec autrui
-  (ex : mots de passe, configurations d'outils relevant du goût personnel)
+  (ex : mots de passe, configurations d'outils relevant du goût personnel...)
 - Ils peuvent être régénérés à partir des fichiers restants (ex : résultats
-  d'une compilation de code source, journaux d'exécution)
+  d'une compilation de code source, journaux d'exécution...)
 
 Supposons que nous ayons un tel fichier face à nous. Comment faire pour que
-`git status` cesse de nous inciter peu subtilement à le versionner ?
+`git status` cesse de nous inciter à le versionner ?
 
     $ echo 'DEBUG : Un matin, Gregor Samsa se réveilla' > Poubelle.log
     $ git status
@@ -153,50 +153,60 @@ suppression, en utilisant respectivement `git mv` et `git rm`.
     $ git mv MonFichier.txt MonSuperFichier.txt
     $ git status
 
-En effet, le gestionnaire de versions n'est pas en position de détecter ces
-opérations, et les interprétera d'une façon inattendue et indésirable :
+En effet, un gestionnaire de versions n'est pas en position de détecter ces
+opérations, et si on les effectue avec les outils habituels, elles seront
+interprétées par git d'une façon inattendue et indésirable :
 
     $ mv MonSuperFichier.txt MonIncroyableFichier.txt
     $ git status
 
-Comme vous le voyez, la commande "mv" standard a ainsi été interprétée comme la
-suppression d'un fichier sous gestion de version et la création d'un nouveau
-fichier non versionné. Ce n'est généralement pas ce qui était désiré.
+Ici, la commande "mv" standard a ainsi été interprétée comme la suppression d'un
+fichier sous gestion de version et la création d'un nouveau fichier non
+versionné. Ce n'est pas ce qui était désiré.
 
 Une commande pratique pour se tirer de ce genre de mauvais pas est
-`git add --all`, qui intègre à la gestion de version les ajouts de fichier et
-les suppressions. Ici, nous pouvons l'utiliser de la façon suivante :
+`git add --all`, qui intègre à la gestion de version tous les changements d'un
+répertoire passé en paramètre (ou du répertoire de travail par défaut). Ici,
+nous pouvons l'utiliser de la façon suivante :
 
     $ git add --all .
     $ git status
 
 Git refusera par défaut de supprimer un fichier ayant des changements non
-enregistrés dans une version, car cette opération peut entraîner des pertes de
-données. Si l'on sait ce qu'on fait, l'option `--force` (qui s'abbrévie en `-f`)
-peut être utilisée pour confirmer l'opération.
+enregistrés dans une version, car ces données seront alors perdues. Ainsi, la
+commande suivante échouera :
 
     $ git rm MonIncroyableFichier.txt
+
+Si l'on sait ce qu'on fait, l'option `--force`, qui s'abbrévie en `-f`, peut
+être utilisée pour confirmer l'opération.
+
     $ git rm -f MonIncroyableFichier.txt
 
 ### Gestion des dossiers
 
-Contrairement au système de fichiers de votre système d'exploitation, git ne
-gère qu'une arborescence de _fichiers_. L'existence de dossiers n'est prise en
-compte que dans la mesure où il y a des fichiers à l'intérieur :
+Contrairement à votre système d'exploitation, git ne gère qu'une arborescence de
+_fichiers_. L'existence de dossiers n'est prise en compte par git que dans la
+mesure où il y a des fichiers à l'intérieur :
 
     $ mkdir MonDossier
-    $ git status
     $ ls -l
+    $ git status
     $ echo 'Un semblant de contenu' > MonDossier/Contenu.txt
     $ git status
 
-Cependant, la plupart des commandes git fonctionnent avec des dossiers,
-moyennant parfois l'utilisation de l'option `--recursive` (qui s'abbrévie en
-`-r`) lorsqu'il est risqué d'effectuer une opération sur un dossier sans
-connaître son contenu :
+Cela ne signifie pas pour autant que git ne supporte pas les dossiers, on peut
+très bien passer un dossier en paramètre de `git add` par exemple...
 
     $ git add MonDossier/
     $ git status
+
+...mais certaines commandes n'accepteront un dossier en paramètre que si elles
+sont agrémentées d'une option `--recursive` (qui s'abbrévie en `-r`). C'est
+généralement le cas lorsqu'il est risqué d'effectuer une opération sur un
+dossier sans connaître son contenu. Par exemple, la commande de suppression
+suivante échouera.
+
     $ git rm MonDossier/
 
 Notez que puisque le contenu de ce dossier n'a pas encore été sauvegardé, vous
@@ -251,9 +261,10 @@ répondrons à ces questions dans les prochaines séquences.
 
 1. Créez un nouveau dépôt git.
 2. Configurez le dépôt pour ignorer les fichiers portant l'extension ".o".
-3. Créez un fichier et préparez git à le versionner.
-4. Déplacez ce fichier vers un autre emplacement de telle façon que `git status`
-   ne parle que de deux fichiers (dont le "gitignore").
+3. Créez un fichier et indiquez à git que vous souhaitez le versionner.
+4. Déplacez ce fichier vers un autre emplacement et informez-en git.
+    - La sortie de `git status` ne doit parler que de deux fichiers à la fin,
+      celui que vous venez de déplacer et celui qui a été créé à la question 2.
 5. Affichez l'état final du dépôt. En ignorant pour l'instant la partie "Sur
    la branche master", comprenez-vous les autres messages affichés ?
 
@@ -299,7 +310,7 @@ Supprimer un fichier sous gestion de version :
 
 Retirer un fichier de la gestion de version sans le supprimer :
 
-    $ git rm --cached <fichier>
+    $ git reset <fichier>
 
 Déplacer un fichier sous gestion de version :
 
