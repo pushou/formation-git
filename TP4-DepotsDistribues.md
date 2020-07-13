@@ -17,9 +17,9 @@ Parmi les éléments qui ne seront **pas** recopiés dans le clone, on peut
 mentionner le répertoire de travail, l'index, les connexions éventuelles du
 dépôt à d'autres dépôts distants, ou la configuration de git.
 
-Il y a cependant aussi une chose qui est présente dans le clone mais n'existait
-pas dans le dépôt d'origine, c'est une connexion vers ledit dépôt, la _remote_
-`origin`. Celle-ci permettra de synchroniser le clone avec son parent.
+Il y a aussi une chose qui est présente dans le clone mais n'existait pas dans
+le dépôt d'origine, c'est un pointeur vers ledit dépôt, la _remote_ `origin`.
+Celle-ci permettra de synchroniser le clone avec son parent.
 
 Pour mettre ces concepts en pratique, commençons par créer un clone du dépôt que
 nous avons manipulé lors du TP précédent :
@@ -179,7 +179,7 @@ distante du même nom, `origin/master`. Il crée alors une branche locale `maste
 à l'emplacement actuel de cette branche distante, et configure la branche
 distante `origin/master` comme amont de la brance locale `master`. On peut dès
 lors utiliser sur master des raccourcis comme `git pull`, ou certaines formes
-de `git push` qu'on verra plus loin.
+de `git push` qu'on verra dans un instant.
 
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
@@ -511,8 +511,4 @@ versions stables.
 
 La notion d'étiquette annotée, que nous avions brièvement décrite précédemment,
 permet dans ce contexte d'ajouter des notes de version qui décrivent les
-nouveautés de chaque version publiée par rapport à la précédente. Certaines
-interfaces git comme GitHub prennent cela en compte en traitant les étiquettes
-annotées de façon spéciales: elles sont appelées "Releases", leur description
-peut être mise en forme avec le langage Markdown, et il est possible d'y
-attacher des paquets sources ou pré-compilés.
+nouveautés de chaque version publiée par rapport à la précédente.
