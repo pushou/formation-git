@@ -319,8 +319,8 @@ utiliser votre clé publique pour s'assurer que ces commandes viennent bien de
 vous et non d'un imposteur qui essaie de se faire passer pour vous.
 
 Pour se passer totalement de mot de passe, votre clé privée doit être stockée de
-façon non chiffrée (pas de "passphrase"). Un tel stockage offre une sécurité
-suffisante à condition que votre ordinateur remplisse les prérequis suivants :
+façon non chiffrée (pas de "passphrase"). Un tel stockage offre un niveau de
+sécurité acceptable si vous respectez les prérequis suivants :
 
 * Votre dossier personnel ("home") est situé sur un stockage chiffré, et à
   l'abri du regard des autres utilisateurs si l'ordinateur est partagé.
@@ -383,9 +383,12 @@ Les moteurs de forge ci-dessus ont de nombreuses fonctionnalités en commun:
 
 Cependant, chaque moteur a aussi ses spécificités:
 
-- GitLab fournit en standard des fonctionnalités comme l'intégration continue
-  ou l'hébergement d'images Docker, là où GitHub se veut plus minimaliste et
-  délègue ce genre de fonction à des services tiers partie comme Travis CI
+- GitLab a toujours fourni en standard des fonctionnalités comme l'intégration
+  continue ou l'hébergement d'images Docker, là où chez GitHub ce type de
+  service a longtemps été délégué à des tierces partie comme Travis CI. Depuis
+  fin 2019, il existe une solution Github "en propre", mais comme on pourrait
+  s'y attendre elle est un peu moins mature que la concurrence au moment où sont
+  écrites ces lignes (mi-2020).
 - BitBucket propose une intégration poussée avec d'autres applications web du
   même éditeur (JIRA, Bamboo, Confluence, HipChat...)
 - Le vocabulaire utilisé et le détail des statistiques proposées varie d'une
