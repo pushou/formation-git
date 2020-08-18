@@ -262,7 +262,7 @@ en ligne au gré des `push`. Ce qui rend le mécanisme presque invisible.
 Un avertissement toutefois : pour que git LFS fonctionne comme prévu, il faut...
 
 1. Utiliser une forge Git compatible avec le protocole LFS, telle que GitHub
-   ou les versions actuelles de GitLab
+   ou GitLab
 2. Que chaque utilisateur du dépôt ait installé et activé l'extension git LFS
    sur son ordinateur et au sein du dépôt cible.
 
