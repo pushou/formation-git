@@ -179,17 +179,18 @@ les options `--ff-only` et `--no-ff` :
 
 Essayons cette seconde stratégie en revenant en arrière. Pour cela, nous allons
 utiliser une fonctionnalité de git qui garde une copie de sauvegarde de tous les
-états passés des branches, les _reflogs_, afin d'annuler le `merge` précédent :
+états passés des branches, les _reflogs_, afin d'annuler le `merge` précédent.
+
+Pour en savoir plus sur cette fonctionnalité relativement avancée et le mode de
+fonctionnement de la commande suivante, vous pourrez consulter la section
+"Informations complémentaires" de ce TP ultérieurement.
 
     $ git reset --hard @{1}
 
-Ceci étant fait, nous pouvons retenter notre fusion, en forçant cette fois la
-création d'un commit :
+Quoiqu'il en soit, la fusion en avance rapide ayant été annulée, nous pouvons
+maintenant retenter la fusion en forçant cette fois la création d'un commit :
 
     $ git merge --no-ff master
-
-Pour en savoir un peu plus sur les _reflogs_, rendez-vous dans la section
-"Informations complémentaires" du TP.
 
 
 ## Conflit de fusion
@@ -317,12 +318,15 @@ Pour cette raison, il est recommandé en gestion de version distribuée de
 ### Conflits silencieux
 
 Remarquons pour terminer cette section qu'il existe des conflits de fusion que
-git n'est pas capable de détecter par lui-même. En pareil cas, la fusion
-réussira en apparence, mais le dépôt se retrouvera dans un état incorrect.
+git n'est pas capable de détecter par lui-même. Dans ce cas, la fusion réussira
+en apparence, mais le dépôt se retrouvera dans un état incorrect.
 
 Par exemple, si une branche de développement d'un logiciel ajoute une nouvelle
 utilisation d'une interface (_API_), tandis qu'une autre branche de
-développement du même logiciel supprime cette interface, les deux branches sont incompatibles, mais git acceptera de les fusionner quand même.
+développement du même logiciel supprime cette interface, les deux branches sont
+incompatibles du point de vue du langage de programmation utilisé, mais git
+acceptera de les fusionner car elles sont compatibles selon sa définition à lui
+(pas d'éditions au même endroit du même fichier).
 
 Ce comportement vient du fait que git ne comprend pas la sémantique des langages
 de programmation utilisés. Il raisonne purement en termes de documents textuels.
@@ -514,7 +518,7 @@ essaie de permettre l'annulation de toute manipulation.
 
 A première vue, les opérations qui modifient des branches, ou d'autres
 références comme `HEAD`, sont des exceptions à cette règle. Mais en réalité, git
-permet bel et bien de revenir dessus, car il en conserve un historique des états
+permet bel et bien de revenir dessus, car il conserve un historique des états
 passés de ces références, appelé _"Reference logs"_ ou en abrégé _reflogs_.
 
 On peut afficher cet historique avec la commande `git reflog` :

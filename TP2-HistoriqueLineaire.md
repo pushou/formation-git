@@ -282,6 +282,10 @@ pour indiquer les points du développement d'un logiciel auxquels une version
 publique a été distribuée, et documenter les nouveautés de cette version :
 
     $ git tag --annotate v1.0 HEAD~
+
+Un moyen simple d'afficher la description d'une étiquette annotée est d'utiliser
+la commande `git show` :
+
     $ git show v1.0
 
 Vous pouvez aussi afficher la liste des étiquettes présentes dans le dépôt avec
@@ -354,7 +358,8 @@ d'abord que ledit répertoire de travail est propre :
     $ git status
 
 Ensuite, pour annuler par exemple l'effet du dernier commit effectué, on
-exécutera la commande :
+exécutera la commande suivante, qui à la manière de `git commit` demandera la
+saisie d'une description par le biais d'un éditeur de texte :
 
     $ git revert HEAD
 
@@ -479,6 +484,10 @@ Afficher la liste des étiquettes présentes dans le dépôt :
 Détruire une ou plusieurs étiquette(s) :
 
     $ git tag --delete <étiquettes>
+
+Afficher les propriétés d'un commit et de ses étiquettes éventuelles :
+
+    $ git show <commit>
 
 **Attention :** Les commandes suivantes modifient le répertoire de travail et
 doivent donc être exécutées dans un répertoire de travail propre.
@@ -612,6 +621,5 @@ sur un répertoire de travail propre.
 Une liste relativement complète d'outils graphiques pour visualiser et manipuler
 des dépôts git est disponible sur https://www.git-scm.com/downloads/guis .
 
-Lorsqu'il doit développer sous Windows ou macOS, l'auteur y utilise généralement
-SourceTree. Un collègue utilisateur de macOS lui a également recommandé Fork sur
-cette plate-forme.
+L'auteur travaille plutôt sous Linux, mais quand il lui arrive de développer
+sous macOS ou Windows, il aime bien le logiciel Fork ( https://git-fork.com/ ).

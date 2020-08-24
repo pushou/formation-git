@@ -25,11 +25,11 @@ de la recherche, français et étrangers, grâce à son adhésion à la fédéra
 d'identité EduGAIN dont la couverture internationale se rapproche de celle du
 service wifi eduroam.
 
-Si vous avez bien suivi vos mails d'avant la formation, vous devriez avoir d'ors
-et déjà configuré votre compte et savoir comment vous y connecter. Si toutefois
-ce n'était pas le cas, voici quelques rappels utiles.
+Si vous avez bien suivi les mails reçus avant la formation, vous devriez avoir
+d'ors et déjà configuré votre compte et savoir comment vous y connecter. Si
+toutefois ce n'était pas le cas, voici quelques rappels utiles.
 
-Pour vous connecter la forge avec vos identifiants professionnels:
+Pour vous connecter à la forge avec vos identifiants professionnels :
 
 1. Rendez-vous sur https://gitlab.in2p3.fr/users/sign_in .
 2. Cliquez sur le bouton "EduGAIN [Shibboleth]"
@@ -49,8 +49,9 @@ du serveur. Il existe plusieurs moyens de faire cela, mais malheureusement...
 - La configuration réseau du campus de Gif-sur-Yvette ne nous permet pas
   d'utiliser le protocole SSH, nous sommes donc forcés d'utiliser le HTTPS.
 - Comme le client git en ligne de commande n'est pas compatible avec le mode
-  d'authentification EduGAIN/Shibboleth, vous devez créer un mot de passe
-  spécial pour les besoins de l'échange réseau entre votre ordinateur et GitLab.
+  d'authentification EduGAIN/Shibboleth, vous allez devoir créer un mot de passe
+  spécial juste pour les besoins de l'échange réseau entre votre ordinateur et
+  GitLab via HTTPS.
 
 Pour configurer un tel mot de passe...
 

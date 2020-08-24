@@ -5,7 +5,7 @@
 ### Clonage de dépôt
 
 Le travail distribué avec git commence souvent par le clonage d'un dépôt
-existant. Un clone est une copie partielle d'un dépôt git, qui n'en reprend que
+existant. Un clone est une copie partielle d'un dépôt git, qui ne reprend que
 les éléments suivantes :
 
 - Les commits de l'historique du dépôt d'origine
@@ -15,7 +15,7 @@ les éléments suivantes :
 
 Parmi les éléments qui ne seront **pas** recopiés dans le clone, on peut
 mentionner le répertoire de travail, l'index, les connexions éventuelles du
-dépôt à d'autres dépôts distants, ou la configuration de git.
+dépôt cloné à d'autres dépôts distants, ou la configuration de git.
 
 Il y a aussi une chose qui est présente dans le clone mais n'existait pas dans
 le dépôt d'origine, c'est un pointeur vers ledit dépôt, la _remote_ `origin`.
@@ -71,23 +71,23 @@ parent pour créer un commit :
     $ git add ToutNouveau.txt
     $ git commit -m "Ajout d'un nouveau fichier"
 
-Si vous retournez dans le clone, vous constaterez que ce commit n'est pas
+Si vous retournez dans le clone, vous constaterez que ce changement n'est pas
 visible, ni dans la branche locale, ni dans la branche distante :
 
     $ cd ../MonClone
     $ cat ToutNouveau.txt
     $ git diff origin/univers-parallele
 
-C'est parfaitement normal : comme nous en avons discuté, git n'échange avec les
-dépôts distants que lorsqu'on lui demande explicitement de le faire. Pour
-récupérer les dernier changements du dépôt parent, il faut en faire la demande,
-par exemple avec `git fetch` :
+Comme nous en avons discuté, git n'échange avec les dépôts distants que
+lorsqu'on lui demande explicitement de le faire. Pour récupérer les derniers
+changements du dépôt parent, il faut en faire la demande explicitement, par
+exemple avec `git fetch` :
 
     $ git fetch origin
 
 Notez que git mentionne une activité au niveau de la branche
-`univers-parallele`. A ce stade, le changement n'est toujous pas présent dans
-la branche locale, mais il est visible dans la branche distante :
+`origin/univers-parallele`. A ce stade, le changement n'est toujous pas présent
+dans la branche locale, mais il est visible dans la branche distante :
 
     $ cat ToutNouveau.txt
     $ git diff origin/univers-parallele
@@ -154,7 +154,7 @@ synchrones, git fournit la notion de branche amont (_upstream branch_). Ce
 concept nous permet d'expliquer à `git` qu'il existe un lien entre une branche
 locale et une branche distante sur une _remote_.
 
-Une fois ce lien effectué, on disposera de formes raccourcies des commandes de
+Une fois ce lien enregistré, on disposera de formes raccourcies des commandes de
 synchronisation. Par exemple, `git pull` sans argument supplémentaire
 récupérera la version actuelle de la branche amont associée au sein de la
 branche active et la fusionnera au sein de celle-ci.
@@ -393,8 +393,8 @@ mater cette complexité.
 3. Créez une branche `test` au sein de `MonDepot` et ajoutez-y quelques commits.
 4. Récupérez la branche `test` dans le clone et basculez dessus.
 5. Ajoutez quelques commits sur `test` au sein du clone.
-6. Ajoutez le clone comme _remote_ de `MonDepot` et mettez à jour sa branche
-   `test` locale par rapport aux nouveaux commits du clone.
+6. Ajoutez le clone comme _remote_ de `MonDepot`, puis mettez à jour la branche
+   `test` de `MonDepot` par rapport aux nouveaux commits du clone.
 7. Basculez sur la branche `master` de `MonDepot` et créez-y quelques commits.
 8. Fusionnez les nouveautés de la branche `master` de `MonDepot` au sein de la
    branche `test` du clone.

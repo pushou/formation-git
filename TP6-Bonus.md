@@ -109,9 +109,9 @@ Passons donc au crible leurs différentes variantes.
 
 `git checkout <commit>` est une commande qui sert à se promener dans
 l'historique. Elle bascule `HEAD` sur un commit donné, et met à jour l'index et
-le répertoire pour qu'ils collent au contenu de ce commit. Il vaut donc mieux
-l'exécuter avec un répertoire de travail propre, sinon elle échouera avec un
-message d'erreur.
+le répertoire de travail pour qu'ils collent au contenu de ce commit. Il vaut
+donc mieux l'exécuter avec un répertoire de travail propre, sinon elle échouera
+avec un message d'erreur.
 
 Cette commande change également de branche active. Si on lui passe une branche
 en paramètre, ladite branche devient la branche active, au sein de laquelle les
@@ -126,12 +126,19 @@ Toujours dans les raccourcis, `git checkout -b <nom>` est une abbréviation de
 `git branch <nom> && git checkout <nom>` : on crée une branche et on bascule
 dessus.
 
-`git checkout [<commit>] -- <fichiers>` sert à récupérer et mettre dans le
-répertoire de travail des versions de fichier issues d'un certain commit (par
-défaut `HEAD`). La branche active, `HEAD` et l'index ne sont pas affectés par
-cette variante. Comme avec `git add`, l'option `--patch` peut être utilisée pour
-sélectionner des changements précis au sein du fichier et n'importer que ces
-derniers.
+`git checkout <fichiers>` modifie des fichiers du répertoire de travail pour
+qu'ils correspondent à leur version dans l'index. Vous pouvez le voir comme
+l'inverse de la commande `git add <fichiers>`, qui modifie l'index pour qu'il
+corresponde au contenu du répertoire de travail.
+
+`git checkout <commit> -- <fichiers>` sert à récupérer et mettre dans le
+répertoire de travail et l'index des versions de fichier issues d'un certain
+commit (par défaut `HEAD`).
+
+La branche active et le pointeur `HEAD` ne sont pas affectés par ces deux
+dernières formes de `git checkout`. Comme `git add`, `git checkout` supporte
+aussi une option `--patch` qui permet de récupérer des changements depuis la
+source choisie à une granularité plus fine que le fichier.
 
 Voilà pour `git checkout`, donc. Maintenant, passons à `git reset`.
 
@@ -155,15 +162,15 @@ d'aggressivité vis à vis de l'index et du répertoire de travail :
   donc plus de "changements prête à être commités" dans `git status` après
   exécution de cette commande.
 - `git reset --hard <commit>` propage également les versions de fichiers de
-  `HEAD` au sein du répertoire de travail. Cette opération peut donc perdre des
-  données présentes au sein de ce dernier de façon irréversible, et il faut
-  l'utiliser avec précaution. Mais c'est aussi l'un des moyens les plus simples
-  de "ramener une branche en arrière" après des commits incorrects.
+  `HEAD` au sein du répertoire de travail. **Cette opération peut donc perdre
+  des données présentes au sein de ce dernier de façon irréversible**, et il
+  faut   l'utiliser avec précaution._ Mais c'est aussi l'un des moyens les plus
+  simples de "ramener une branche en arrière" après des commits incorrects.
 
-`git reset [<commit>] -- <fichiers>` ramène les versions de fichiers présentes
-au sein de `<commit>` (ou `HEAD` par défaut) au sein de l'index. L'utilisation
-la plus courante de cette variante est d'annuler l'effet de `git add` en
-ramenant certains fichiers de l'index au point où ils étaient dans `HEAD`.
+`git reset [<commit>] -- <fichiers>` récupère la version des fichiers choisis du
+commit choisi (`HEAD` par défaut) et l'extrait dans l'index. L'utilisation la
+plus courante de cette variante est d'annuler l'effet de `git add` en ramenant
+certains fichiers de l'index au point où ils étaient dans `HEAD`.
 
 Il existe un parallèle important entre cette dernière commande et la variante de
 `git checkout` qui prend des noms de fichiers en paramètre. La seule différence
@@ -224,8 +231,8 @@ où se trouvait la branche avant l'exécution pour effectuer un `reset` dessus.
 
 Mais il n'en reste pas moins que réparer les dégâts d'un _rebase_ interactif
 incorrect demande une bonne maîtrise de git, et qu'il est en ce sens quelque peu
-regrettable que certains projets logiciels forcent l'usage de techniques de
-rebase interactif relativement avancées chez leurs contributeurs.
+regrettable que certains projets logiciels forcent l'usage de ces techniques
+relativement avancées chez leurs contributeurs.
 
 
 ## Git LFS (Large File Storage)
@@ -263,8 +270,8 @@ Un avertissement toutefois : pour que git LFS fonctionne comme prévu, il faut..
 
 1. Utiliser une forge Git compatible avec le protocole LFS, telle que GitHub
    ou GitLab
-2. Que chaque utilisateur du dépôt ait installé et activé l'extension git LFS
-   sur son ordinateur et au sein du dépôt cible.
+2. Que **chaque utilisateur du dépôt** ait installé et activé l'extension git
+   LFS, sur son ordinateur et au sein du dépôt cible.
 
 Sans ces précautions, il ne sera que trop facile de se retrouver avec un dépôt
 dans un état corrompu, où certains fichiers sont gérés par git LFS et d'autres
