@@ -82,7 +82,7 @@ obtenir de l'interface GitLab de la façon suivante :
 
 Une fois l'URL obtenue, créez un clone local du _fork_ de la façon suivante :
 
-    $ cd Bureau/
+    $ cd ~/Bureau/
     $ git clone <url de votre fork>
 
 ### Connexion au dépôt officiel
