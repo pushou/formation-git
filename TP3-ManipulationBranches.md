@@ -363,7 +363,7 @@ C'est ce que nous allons mettre en pratique dans la séquence suivante.
 1. Créez une copie du dépôt `MonDepot` utilisé au cours du TP2.
 2. Visitez le parent de son commit actif, et créez une branche qui en part.
 3. Basculez sur cette branche, et créez un commit ajoutant un nouveau fichier.
-4. Visualisez "master" et la branche que vous venez de créer au sein de `gitg`.
+4. Visualisez la branche master" et celle que vous venez de créer avec `gitg`.
 5. Fusionnez les changements de `master` au sein de la branche actuelle.
 6. Remplacez le contenu d'un fichier par deux textes différents au sein de
    `master` et de la nouvelle branche, en commitant ces changements.

@@ -259,7 +259,7 @@ répondrons à ces questions dans les prochaines séquences.
 
 ## Exercices
 
-1. Créez un nouveau dépôt git.
+1. Créez un dépôt git vide.
 2. Configurez le dépôt pour ignorer les fichiers portant l'extension ".o".
 3. Créez un fichier et indiquez à git que vous souhaitez le versionner.
 4. Déplacez ce fichier vers un autre emplacement et informez-en git.

@@ -391,13 +391,16 @@ mater cette complexité.
 2. Comparez le contenu du clone à celui de dépôt original avec `ls -al` et
    `gitg`. Comprenez-vous toutes les différences observées ?
 3. Créez une branche `test` au sein de `MonDepot` et ajoutez-y quelques commits.
-4. Récupérez la branche `test` dans le clone et basculez dessus.
+4. Récupérez la branche `test` dans le clone, créez-en une version locale et
+   basculez dessus.
 5. Ajoutez quelques commits sur `test` au sein du clone.
 6. Ajoutez le clone comme _remote_ de `MonDepot`, puis mettez à jour la branche
    `test` de `MonDepot` par rapport aux nouveaux commits du clone.
 7. Basculez sur la branche `master` de `MonDepot` et créez-y quelques commits.
-8. Fusionnez les nouveautés de la branche `master` de `MonDepot` au sein de la
-   branche `test` du clone.
+8. Propagez ces changements sur la branche `master` du clone, sans quitter le
+   dépôt `MonDepot`.
+9. Rendez-vous maintenant dans le clone, et fusionnez les nouveautés de la
+   branche `master` de `MonDepot` au sein de la branche `test` du clone.
 
 ## Antisèche
 

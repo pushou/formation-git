@@ -402,7 +402,7 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 
 ## Exercices
 
-1. Créez un nouveau dépôt git.
+1. Créez un dépôt git vide.
 2. Ajoutez quelques fichiers du contenu de votre choix, puis enregistrez un
    _commit_ contenant ces fichiers.
 3. Modifiez au moins deux des fichers que vous avez sauvegardés, puis créez un
