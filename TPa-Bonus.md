@@ -1,4 +1,4 @@
-# TP6 : Sujets bonus
+# Annexe A : Sujets bonus
 
 ## Introduction
 
@@ -133,14 +133,14 @@ corresponde au contenu du répertoire de travail.
 
 `git checkout <commit> -- <fichiers>` sert à récupérer et mettre dans le
 répertoire de travail et l'index des versions de fichier issues d'un certain
-commit (par défaut `HEAD`).
+commit.
 
 La branche active et le pointeur `HEAD` ne sont pas affectés par ces deux
 dernières formes de `git checkout`. Comme `git add`, `git checkout` supporte
 aussi une option `--patch` qui permet de récupérer des changements depuis la
 source choisie à une granularité plus fine que le fichier.
 
-Voilà pour `git checkout`, donc. Maintenant, passons à `git reset`.
+Voilà pour `git checkout`. Maintenant, passons à `git reset`.
 
 `git reset <commit>` est une commande qui sert à déplacer la branche active (et
 `HEAD`) sur un autre commit. Elle se distingue en cela de `checkout`, qui change
