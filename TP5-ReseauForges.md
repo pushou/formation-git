@@ -324,7 +324,7 @@ plus avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir
 2. Vérifiez que les URLs de vos deux `remotes` sont correctes : `origin` doit
    pointer sur votre fork, `upstream` doit pointer sur le dépôt officiel, et les
    deux `remotes` doivent utiliser une connexion HTTPS.
-3. Créez une nouvelle branche, et ajoutez-y un commit.
+3. Créez une nouvelle branche partant du `master`, et ajoutez-y un commit.
 4. Poussez cette branche sur votre _fork_.
 5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur votre _fork_
    aussi.
