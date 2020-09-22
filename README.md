@@ -10,6 +10,7 @@ de version git, composé des éléments suivants :
 - Une checklist pour la présentation des outils interactifs utilisés en TP
 - Des "quiz" pour jauger le niveau de compréhension de la salle et réviser les
   notions acquises, sur le modèle de l'émission "Questions pour un champion"
+- Un plan pour l'organisation temporelle de la formation sur deux jours
 - Un script permettant le rendu automatisé des supports stagiaires en PDF
 - Une machine virtuelle au sein de laquelle les TPs seront effectués
 
