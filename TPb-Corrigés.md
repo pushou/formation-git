@@ -344,3 +344,66 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
     $ cd ../TonDepot
     $ git fetch origin
     $ git merge origin/master
+
+
+## Exercices TP5
+
+Tout d'abord, rendons-nous dans notre clone du dépôt "ddhc" :
+
+    $ cd ~/Bureau/ddhc
+
+On peut vérifier la configuration des _remotes_ avec `git remote -v` :
+
+    $ git remote -v
+    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (fetch)
+    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (push)
+    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (fetch)
+    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (push)
+
+Ici, nous suivons la configuration habituelle : `origin` pointe sur le fork, et
+`upstream` sur le dépôt officiel.
+
+Pour créer une nouvelle branche partant de la branche `master`, on commence par
+basculer sur cette branche...
+
+    $ git checkout master
+
+...puis on crée la nouvelle branche et bascule dessus...
+
+    $ git checkout -b copyright
+
+...et on peut y enregistrer des changements de la façon habituelle :
+
+    $ echo -e "\n(C) 1789, Être Suprême Inc." >> README.md
+    $ git commit -am "Ajout d'une notice de copyright"
+
+On peut ensuite pousser la branche sur son _fork_ avec `git push`. La première
+fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut mémoriser
+cette association pour la suite avec `--set-upstream` :
+
+    $ git push --set-upstream origin copyright
+
+On peut ensuite répéter l'opération autant de fois qu'on le souhaite, sans
+nécessité de répéter le nom de la _remote_ à chaque fois dans `git push` :
+
+    $ echo "AAAAAAH" >> README.md
+    $ git commit -am "Panique à bord !"
+    $ echo "QQQQQQH" >> README.md
+    $ git commit -am "Panique à bord en QWERTY !"
+    $ git push
+
+Il est possible qu'entre-temps le `master` du dépôt officiel ait évolué.
+Vérifions ce point en mettant à jour notre `master` local :
+
+    $ git checkout master
+    $ git pull --ff-only
+
+Un dépôt distant fonctionne comme une copie de sauvegarde. Même si on supprimait
+malencontrueusement une branche locale...
+
+    $ git branch -D copyright
+
+...on pourrait toujours la récupérer à partir de la version sauvegardée sur le
+dépôt distant, via le raccourci habituel :
+
+    $ git checkout copyright

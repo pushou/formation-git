@@ -32,7 +32,7 @@ toutefois ce n'était pas le cas, voici quelques rappels utiles.
 Pour vous connecter à la forge avec vos identifiants professionnels :
 
 1. Rendez-vous sur https://gitlab.in2p3.fr/users/sign_in .
-2. Cliquez sur le bouton "EduGAIN [Shibboleth]"
+2. Cliquez sur le bouton "EduGAIN [Shibboleth]".
 3. Choisissez un organisme académique auprès duquel vous possédez un compte
    informatique (ex: CNRS, Université Paris-Saclay...).
 4. Identifiez-vous de la façon habituelle.
@@ -66,13 +66,18 @@ est désormais prêt à l'emploi.
 
 ### Fork et clonage
 
-Une copie de la Déclaration des Droits de l'Homme est disponible sur
-https://gitlab.in2p3.fr/grasland/ddhc/ .
+Une copie de la Déclaration des Droits de l'Homme et du Citoyen est disponible
+sur le dépôt git https://gitlab.in2p3.fr/grasland/ddhc/ .
 
 Pour commencez, créez-en un _fork_ sous votre contrôle, en utilisant le bouton
 "Fork" situé en haut à droite de l'interface de GitLab, à droite du nom "ddhc".
+Choisissez de créer le fork au sein de votre compte personnel dans l'invite qui
+s'affiche alors.
 
-Lorsque c'est fait, vous devriez être redirigé automatiquement sur votre fork.
+L'opération va prendre un petit moment (typiquement quelques secondes).
+Lorsqu'elle est terminée, vous devriez être redirigé automatiquement sur votre
+fork nouvellement créé.
+
 Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
 sur votre machine. Pour cela, vous avez besoin de son URL HTTPS, que vous pouvez
 obtenir de l'interface GitLab de la façon suivante :
@@ -92,7 +97,6 @@ _remote_ pointant vers le dépôt distant qui permet d'échanger facilement des
 commits avec ce dernier :
 
     $ cd ddhc/
-    $ git status
     $ git remote -v
 
 Mais pour appliquer la méthode de travail basée sur les _forks_ et les _merge
@@ -101,7 +105,8 @@ commits avec le dépôt officiel, celui à partir duquel vous avez créé votre 
 En effet, des nouveautés vont arriver sur ce dernier au fur et à mesure du TP,
 et vous devrez vous synchroniser avec ces dernières.
 
-Par convention, le dépôt officiel est généralement appelé _upstream_ :
+Par convention, la _remote_ associée au dépôt officiel est souvent appelée
+_upstream_ :
 
     $ git remote add upstream https://gitlab.in2p3.fr/grasland/ddhc.git
     $ git fetch upstream
@@ -157,14 +162,14 @@ pas mettre en avance rapide, cela relève d'un comportement pathologique :
   parfois nécessaire, mais très rare, et un mainteneur responsable vous
   informera lorsqu'il doit en venir à de tels extrêmes.
 - Soit, cas de loin le plus courant, vous avez vous-même créé une divergence,
-  typiquement en ajoutant des commits sur votre `master` local.
+  typiquement en ajoutant des commits sur votre branche `master` locale.
 
 Dans ce dernier cas, pour vous tirer d'affaire, vous pouvez...
 
 - Si vous le souhaitez, sauvegarder vos changements dans une nouvelle branche
   avec `git branch <nom>`
-- Forcer votre branche `master` à revenir au même point que le `master` officiel
-  avec la commande `git reset --hard upstream/master`
+- Puis forcer votre branche `master` à revenir au même point que le `master`
+  officiel avec la commande `git reset --hard upstream/master`
 
 ### Construire des changements dans une branche dédiée
 
@@ -234,7 +239,8 @@ Gardez cependant à l'esprit que cette règle de vie est à double tranchant. Si
 vous devez un jour baser votre travail sur le _fork_ de quelqu'un d'autre, il
 vous appartiendra de vivre avec les suppressions de branches et autres
 modifications d'historique effectuées par cette personne sur son _fork_. Evitez
-donc si possible de baser du travail sur le _fork_ d'autrui.
+donc si possible de baser du travail sur le _fork_ d'autrui, en privilégiant
+plutôt le travail à partir du dépôt officiel du projet.
 
 ### Soumission au dépôt officiel
 
@@ -256,7 +262,7 @@ _"Merge request"_.
 Comme son nom l'indique, une _merge request_ invite le(s) mainteneur(s) du dépôt
 officiel à intégrer des changements au projet en fusionnant les nouveautés de
 votre branche dans un historique officiel (généralement la branche `master`).
-Vous êtes invité à donner un titre court à votre branche, ainsi qu'une
+Vous êtes invité à donner un titre court à votre soumission, ainsi qu'une
 description qui peut être plus étoffée et aggrémentée de mise en page Markdown.
 Selon la forge que vous utilisez, d'autres fonctionnalités de gestion de projet
 peuvent vous être proposées lors de la création d'une _merge request_, nous vous
@@ -365,13 +371,19 @@ sécurité acceptable si vous respectez les prérequis suivants :
 * Vous n'exécutez que des logiciels de confiance, non susceptibles d'espionner
   votre clé privée et de la transmettre à des tiers malveillants.
 
+Dans le cas contraire, une alternative intéressante peut être l'utilisation d'un
+"agent SSH", programme en tâche de fond qui mémorise le mot de passe de la clé
+SSH quelques temps après sa saisie dans le but de réduire la fréquence à
+laquelle on doit le saisir.
+
 La procédure de configuration exacte dépend de la forge logicielle utilisée,
 mais les étapes suivantes sont généralement nécessaires:
 
 1. Vérifier que vous êtes autorisé à vous connecter à des serveurs SSH distants
    (certains administrateurs réseau configurent leurs pare-feux de façon si
    restrictive que c'est impossible, il faudra alors vous arranger avec eux).
-2. Générer une paire de clés (privée et publique) avec `ssh-keygen`.
+2. Générer une paire de clés (privée et publique) avec `ssh-keygen` si vous n'en
+   avez pas déjà une.
 3. Saisir votre clé publique dans l'interface de configuration de la forge.
 4. Configurer les _remotes_ git pour utiliser une URL SSH (celles-ci sont
    généralement de la forme `git@<serveur>:<utilisateur>/<dépôt>.git`).
