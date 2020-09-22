@@ -68,6 +68,13 @@ une impression à 4 pages par feuille en recto verso. Dans cette configuration,
 l'une des faces vous dit à quel TP chaque quiz fait référence, et l'autre face
 vous donne les questions du quiz.
 
+Par ailleurs, le fichier `Planning.ods`, qui décrit une organisation temporelle
+possible (mise en place en 2020, la pratique dira si elle restera) utilise un
+format A4 tout à fait standard, mais je n'ai pas envie que son rendu PDF se
+retrouve avec les documents accessibles au stagiaire. Quand j'aurai réglé le
+problème ci-dessus, je pense que je centraliserai le rendu des documents
+formateur dans un dossier à part de celui des rendus "stagiaires".
+
 ## Licence
 
 Ce matériau est mis à disposition selon les termes de la [Licence Creative
