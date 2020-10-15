@@ -19,7 +19,7 @@
   hôtes que j'ai croisés.
 - **Interface utilisateur :** Enlever tout ce qui n'a aucune chance de servir
   durant la formation pour éviter d'impressionner les gens qui n'ont pas
-  l'habitude de VBox et diminuer le risque de fausse manip.
+  l'habitude de VirtualBox et diminuer le risque de fausse manip.
 
 ## Configuration de l'OS
 
@@ -41,5 +41,16 @@ sur la formation que possible, notamment en désactivant les fonctionalités
 d'économiseur d'écran (redondantes avec le PC hôte) et en désactivant les
 notifications de mise à jour système.
 
+Ne pas oublier de faire un `zypper clean -a` après la mise à jour finale pour
+diminuer le poids de la VM sur le disque (et donc au téléchargement...).
+
 J'ai également ajouté des signets au navigateur web pour `gitlab.in2p3.fr` et
 les supports de la formation git.
+
+## Une fois la VM prête
+
+Ne pas oublier de refaire les TPs sur celle-ci pour vérifier qu'ils marchent
+toujours sur la nouvelle version de git, sans nouveaux warnings.
+
+Si un nouveau warning apparaît, amender le texte du TP pour le mentionner et
+dire quoi faire lorsqu'il survient.
