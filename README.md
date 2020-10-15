@@ -25,7 +25,9 @@ effet, le seul prérequis demandé est une bonne connaissance du shell Unix, mai
 dans un groupe typique on trouvera de tout, du débutant complet de la gestion de
 version à l'utilisateur amateur de git en passant par l'habitué de SVN.
 
-La formation est prévue pour un format de 2 jours.
+La formation est prévue pour un format de 2 jours. Il est probablement possible
+de la faire tenir sur un format 1.5 jours, mais je pense que 1 jour serait trop
+court (les branches + les remotes / forges le même jour, c'est trop).
 
 ## Aspects techniques
 
