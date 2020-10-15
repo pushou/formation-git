@@ -46,7 +46,7 @@ début de la sortie de `git status` :
     $ git status
 
 Il est courant de vouloir créer une nouvelle branche et basculer dessus
-immédiatement. Git fournit donc pour cela un raccourci, `git checkout -b <nom>`.
+immédiatement. fit fournit donc pour cela un raccourci, `git checkout -b <nom>`.
 
 Il est aussi possible de renommer une branche avec
 `git branch --move <ancien nom> <nouveau nom>`, ou de la supprimer avec
@@ -54,7 +54,7 @@ Il est aussi possible de renommer une branche avec
 
 ### Deux jeux de changements
 
-Nous pouvons maintenant "committer" quelques éditions de fichier :
+Nous pouvons maintenant "commettre" quelques éditions de fichier :
 
     $ echo 'Hi there!' > HelloWorld.txt
     $ echo 'Troisième partie' >> Contenu.txt
@@ -162,7 +162,7 @@ nous avons effectués précédemment.
 Par conséquent, `git merge` n'a pas besoin de créer un nouveau commit pour
 intégrer les nouveautés de `master` à `univers-parallele`. Il lui suffit de
 déplacer `univers-parallele` sur le dernier commit de la branche master. C'est
-ce que Git appelle une fusion en avance rapide (_fast-forward merge_).
+ce que git appelle une fusion en avance rapide (_fast-forward merge_).
 
 Parfois, ce comportement est désirable, par exemple quand on veut mettre à jour
 une branche locale par rapport à des changements survenus sur un dépôt distant.
@@ -197,7 +197,7 @@ maintenant retenter la fusion en forçant cette fois la création d'un commit :
 
 ### Nature du problème
 
-Nous l'avons vu, Git est capable de fusionner un grand nombre de changements
+Nous l'avons vu, git est capable de fusionner un grand nombre de changements
 de façon automatique :
 
 - Création d'un nouveau fichier
@@ -210,13 +210,13 @@ en train d'être fusionnés. On dit dans ce cas qu'il y a conflit.
 
 La bonne manière de fusionner de tels changements dépend de la nature exacte des
 changements et du type de fichier auquel on a affaire (code source, texte
-littéraire...). Git n'a pas accès à ce type d'information, par conséquent il ne
+littéraire...). git n'a pas accès à ce type d'information, par conséquent il ne
 peut pas résoudre le conflit de façon automatique. C'est donc à l'utilisateur
 qu'il reviendra de décider de la bonne marche à suivre.
 
 ### Mise en pratique
 
-Modifions un fichier dans nos deux branches :
+Ajoutons une ligne à un fichier dans nos deux branches :
 
     $ git checkout master
     $ echo 'Annexe' >> Contenu.txt
@@ -226,8 +226,8 @@ Modifions un fichier dans nos deux branches :
     $ git commit -am 'Ajoutons une bibliographie'
 
 Si nous essayons d'intégrer les changements de `master` à `univers-parallele`,
-`git merge` indiquera qu'il est incapable de mener à bien l'opération à cause
-d'un conflit dans "Contenu.txt" :
+`git merge` indiquera qu'il est incapable d'effectuer la fusion automatiquement
+à cause d'un conflit dans "Contenu.txt" :
 
     $ git merge master
 
@@ -236,9 +236,9 @@ de `git status` :
 
     $ git status
 
-Et si on affiche leur contenu, on observe que Git a ajouté des annotations à
+Et si on affiche leur contenu, on observe que git a ajouté des annotations à
 l'emplacement du conflit, indiquant les deux versions du fichier entre
-lesquelles il faut choisir.
+lesquelles il faut arbitrer.
 
     $ cat Contenu.txt
 
@@ -255,6 +255,7 @@ Une première approche consiste à annuler la fusion en cours. C'est la bonne
 chose à faire si on s'est trompé de branche lors de l'appel à `git merge` :
 
     $ git merge --abort
+    $ git status
 
 Une autre approche est d'examiner soigneusement les changements en conflit, et
 de décider au cas par cas si l'une des deux branches a "raison", ou si il faut
@@ -264,10 +265,10 @@ Ce processus manuel doit être effectué avec précaution. Il est en effet facil
 d'écarter accidentellement des changements utiles d'une des deux branches, ou
 bien de faire des erreurs lors de l'écriture du "juste milieu".
 
-Pour cette raison, il est fortement recommandé de prendre l'habitude d'utiliser
-un outil graphique de résolution de conflit, qui permet de visualiser l'ensemble
-du processus et contrôler en permanence ce qu'on est en train de faire. Dans
-cette formation, nous utiliserons pour cela l'application Meld.
+Pour cette raison, il est fortement recommandé d'utiliser un outil graphique de
+résolution de conflit, qui permet de visualiser l'ensemble du processus et
+contrôler en permanence ce qu'on est en train de faire. Dans cette formation,
+nous utiliserons pour cela l'application Meld.
 
     $ git merge master
     $ meld .
@@ -298,6 +299,10 @@ l'onglet de Meld correspondant. Meld proposera alors de sauvegarder la version
 proposée si ce n'est pas déjà fait, puis demandera si le conflit survenu au sein
 de ce fichier est maintenant résolu. Si oui, il le marquera comme tel dans Git.
 
+Attention à bien fermer l'onglet associé au fichier, et non pas l'application.
+Un bug de meld fait que les modifications ne seront pas enregistrées dans ce
+second cas...
+
 Quand on a fini de résoudre tous ses conflits de fichier, on peut vérifier que
 tout est prêt dans `git status`...
 
@@ -307,7 +312,9 @@ tout est prêt dans `git status`...
 
     $ git merge --continue
 
-(Notez que dans d'anciennes versions de git, il fallait utiliser `git commit`.)
+Notez qu'on peut aussi utiliser `git commit` pour cela, et dans d'anciennes
+versions de git c'était la seule commande disponible. L'utilisation de
+`git merge --continue` est juste proposée ici car elle clarifie l'intention.
 
 En règle générale, plus une paire de branches a divergé, plus il est difficile
 de les fusionner. En effet, ont doit alors "mettre d'accord" deux états du
@@ -319,7 +326,7 @@ Pour cette raison, il est recommandé en gestion de version distribuée de
 
 Remarquons pour terminer cette section qu'il existe des conflits de fusion que
 git n'est pas capable de détecter par lui-même. Dans ce cas, la fusion réussira
-en apparence, mais le dépôt se retrouvera dans un état incorrect.
+du point de vue de git, mais le dépôt se retrouvera dans un état incorrect.
 
 Par exemple, si une branche de développement d'un logiciel ajoute une nouvelle
 utilisation d'une interface (_API_), tandis qu'une autre branche de
@@ -432,7 +439,7 @@ crée un grand nombre de commits de fusion, ce qui à la longue rend l'historiqu
 du projet moins lisible. Cela conduit certains projets très soucieux de la
 clarté de ce dernier à rechercher des solutions alternatives.
 
-Pour ces projets, Git fournit `git rebase <nom>`. Cette commande vise le même
+Pour ces projets, git fournit `git rebase <nom>`. Cette commande vise le même
 objectif que `git merge <nom>`, à savoir intégrer les changements de `<nom>` au
 sein de la branche active, mais procède de manière très différente :
 
@@ -512,7 +519,7 @@ Nous avons précemment utilisé une syntaxe pour le moins curieuse pour annuler
 une fusion de branches : `git reset --hard @{1}`. Nous allons maintenant
 détailler comment cette commande fonctionne.
 
-Comme nous l'avons déjà vu, l'interface de Git est conçue pour éviter les
+Comme nous l'avons déjà vu, l'interface de git est conçue pour éviter les
 opérations destructives autant que faire se peut. Quoiqu'il arrive, l'outil
 essaie de permettre l'annulation de toute manipulation.
 
@@ -552,7 +559,7 @@ En somme, `git reset --hard <commit>` a un effet similaire à celui de
 de basculer sur une autre branche ou en mode `HEAD détachée`.
 
 Par conséquent, quand on exécute la commande `git reset --hard @{1}` juste après
-un `git merge` réussi, Git effectue les opérations suivantes :
+un `git merge` réussi, git effectue les opérations suivantes :
 
 - Déplacer la branche active au point où elle se trouvait précédemment, c'est à
   dire juste avant l'appel à `git merge`.

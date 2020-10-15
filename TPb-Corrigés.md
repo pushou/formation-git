@@ -76,7 +76,7 @@ Ajoutons-y un peu de contenu :
     $ echo "Mon deuxième fichier" > Fichier2.txt
     $ echo "Mon troisième fichier" > Fichier3.txt
 
-On indique à Git qu'on souhaite versionner des fichiers avec `git add`.
+On indique à git qu'on souhaite versionner des fichiers avec `git add`.
 Lorsqu'on souhaite demander à git de sauvegarder tous les fichiers du dépôt, un
 raccourci pratique est l'option `--all` :
 

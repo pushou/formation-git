@@ -254,7 +254,7 @@ données, le fonctionnement de l'outil va devenir très lent.
 
 Pour résoudre ce dernier problème, les équipes de la forge GitHub ont mis au
 point une extension de git appelée Git Large File Storage (généralement abbrévié
-en Git LFS), qui permet de décharger Git de la responsabilité de gérer certains
+en Git LFS), qui permet de décharger git de la responsabilité de gérer certains
 types de fichiers binaires désignés par l'utilisateur.
 
 Avec git LFS, le dépôt git à proprement parler ne contient que des identifiant de
@@ -268,7 +268,7 @@ en ligne au gré des `push`. Ce qui rend le mécanisme presque invisible.
 
 Un avertissement toutefois : pour que git LFS fonctionne comme prévu, il faut...
 
-1. Utiliser une forge Git compatible avec le protocole LFS, telle que GitHub
+1. Utiliser une forge git compatible avec le protocole LFS, telle que GitHub
    ou GitLab
 2. Que **chaque utilisateur du dépôt** ait installé et activé l'extension git
    LFS, sur son ordinateur et au sein du dépôt cible.

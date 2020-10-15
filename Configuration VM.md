@@ -54,3 +54,6 @@ toujours sur la nouvelle version de git, sans nouveaux warnings.
 
 Si un nouveau warning apparaît, amender le texte du TP pour le mentionner et
 dire quoi faire lorsqu'il survient.
+
+Et enfin, pour une "propreté" optimale de l'environnement de TP, ne pas oublier
+de vider l'historique bash après avoir configuré la VM.

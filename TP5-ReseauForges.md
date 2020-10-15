@@ -220,9 +220,11 @@ ligne sur votre _fork_ avec la commande `git push`.
 
 L'option `--set-upstream`, que nous avons évoquée précédemment, vous permettra
 de mémoriser l'association entre votre branche locale et la branche présente sur
-votre _fork_, et ainsi de pousser avec un simple `git push` par la suite.
+votre _fork_.
 
     $ git push --set-upstream origin changements
+
+Ainsi, vous pourrez par la suite vous contenter d'un simple `git push`.
 
 Nous l'avons évoqué précédemment, dès lors que vous avez mis des changements en
 ligne sur un serveur, il faut être prudent avec les modifications d'historique
@@ -364,7 +366,7 @@ vous et non d'un imposteur qui essaie de se faire passer pour vous.
 
 Pour se passer totalement de mot de passe, votre clé privée doit être stockée de
 façon non chiffrée (pas de "passphrase"). Un tel stockage offre un niveau de
-sécurité acceptable si vous respectez les prérequis suivants :
+sécurité acceptable lorsque vous respectez les prérequis suivants :
 
 * Votre dossier personnel ("home") est situé sur un stockage chiffré, et à
   l'abri du regard des autres utilisateurs si l'ordinateur est partagé.
@@ -376,20 +378,17 @@ Dans le cas contraire, une alternative intéressante peut être l'utilisation d'
 SSH quelques temps après sa saisie dans le but de réduire la fréquence à
 laquelle on doit le saisir.
 
-La procédure de configuration exacte dépend de la forge logicielle utilisée,
-mais les étapes suivantes sont généralement nécessaires:
+Une fois votre installation SSH locale configurée, il faut transmettre votre clé
+publique, qui vous identifie, à la forge logicielle que vous utilisez. La
+procédure de configuration exacte dépendra de la forge utilisée.
 
-1. Vérifier que vous êtes autorisé à vous connecter à des serveurs SSH distants
-   (certains administrateurs réseau configurent leurs pare-feux de façon si
-   restrictive que c'est impossible, il faudra alors vous arranger avec eux).
-2. Générer une paire de clés (privée et publique) avec `ssh-keygen` si vous n'en
-   avez pas déjà une.
-3. Saisir votre clé publique dans l'interface de configuration de la forge.
-4. Configurer les _remotes_ git pour utiliser une URL SSH (celles-ci sont
-   généralement de la forme `git@<serveur>:<utilisateur>/<dépôt>.git`).
+Après cela, vous pourrez effectuer vos clones ou configurer vos remotes avec les
+URL SSH à la place des URL HTTPS, et dire adieu à la saisie répétitive du mot de
+passe HTTPS !
 
-Nous n'avons pas pu utiliser d'authentification SSH dans cette formation car le
-pare-feu du campus de Gif-sur-Yvette bloque le trafic SSH sortant.
+Malheureusement, nous n'avons pas pu utiliser d'authentification SSH dans cette
+formation car le pare-feu du campus de Gif-sur-Yvette bloque le trafic SSH
+sortant...
 
 ### Petit tour d'horizon des forges logicielles
 
@@ -437,7 +436,7 @@ Cependant, chaque moteur a aussi ses spécificités:
 - GitLab a toujours fourni en standard des fonctionnalités comme l'intégration
   continue ou l'hébergement d'images Docker, là où chez GitHub ce type de
   service a longtemps été délégué à des tierces partie comme Travis CI. Depuis
-  fin 2019, il existe une solution Github "en propre", mais comme on pourrait
+  fin 2019, il existe une solution GitHub "en propre", mais comme on pourrait
   s'y attendre elle est un peu moins mature que la concurrence au moment où sont
   écrites ces lignes (mi-2020).
 - BitBucket propose une intégration poussée avec d'autres applications web du

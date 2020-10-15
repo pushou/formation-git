@@ -166,13 +166,13 @@ versionné. Ce n'est pas ce qui était désiré.
 
 Une commande pratique pour se tirer de ce genre de mauvais pas est
 `git add --all`, qui intègre à la gestion de version tous les changements d'un
-répertoire passé en paramètre (ou du répertoire de travail par défaut). Nous
-pouvons l'utiliser de la façon suivante :
+répertoire passé en paramètre (ou, si aucun répertoire n'est passé en paramètre,
+tous les changements du dépôt). Nous pouvons l'utiliser de la façon suivante :
 
     $ git add --all .
     $ git status
 
-Git refusera par défaut de supprimer un fichier ayant des changements non
+git refusera par défaut de supprimer un fichier ayant des changements non
 enregistrés dans une version, car ces données seraient alors perdues. Ainsi, la
 commande suivante échouera :
 

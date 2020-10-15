@@ -154,7 +154,7 @@ compris d'éventuelles suppressions.
 
 Sans paramètre supplémentaire, cette commande synchronise complètement l'index
 avec le répertoire de travail. Cela peut conduire à des ajouts involontaires,
-il est donc recommandé de cibler cette commande sur un dossier.
+il est donc plus prudent de cibler cette commande sur un dossier.
 
     $ rm MonDossier/Contenu.txt
     $ git add --all MonDossier/
@@ -213,6 +213,12 @@ tâche de fond :
 
 Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
 continuer de saisir des commandes.
+
+Votre terminal restera toutefois occasionnellement "pollué" par des messages de
+statut de gitg, logiciel dont la propreté de code ne semble pas idéale et qui
+est donc occasionnellement sujet à des erreurs non fatales... Si cela vous
+agace, vous pouvez aussi lancer gitg graphiquement (via le menu en bas à
+gauche) et le pointer manuellement vers votre dépôt.
 
 ### Premières requêtes
 
@@ -563,21 +569,21 @@ nous aurons l'occasion d'explorer davantage au cours de la formation.
 
 L'une des fonctions fondamentales d'un gestionnaire de version étant de pouvoir
 revenir en arrière en cas de problème, la plupart des opérations git peuvent
-être annulées. Voici une première série de commandes d'annulation :
+être annulées. Voici une première série de commandes pour annuler...
 
-- Ajout de modifications à l'index → `git reset [<fichiers>]`
+- L'ajout de modifications à l'index → `git reset [<fichiers>]`
     * D'anciennes versions de git distinguaient l'ajout de modifications à
       l'index de ajout de fichiers à la gestion de version. Avec elles, il faut
       utiliser `git rm --cached <fichiers>` dans le second cas.
-- Création d'un commit → `git reset --soft HEAD~`
-- Création d'un commit + ajouts préalables à l'index → `git reset HEAD~`
-- Création d'un commit + ajouts préalables à l'index + modifications préalables
-  du répertoire de travail (DANGER) → `git reset --hard HEAD~`
+- La création d'un commit → `git reset --soft HEAD~`
+- La création d'un commit + les ajouts préalables à l'index → `git reset HEAD~`
+- La création d'un commit + les ajouts préalables à l'index + les modifications
+  préalables du répertoire de travail (DANGER) → `git reset --hard HEAD~`
 
 Les pouvoirs d'annulation de git se limitent malheureusement aux données qui ont
 été versionnées. Les opérations sur le répertoire de travail sont en général
 irréversibles. C'est une des raisons pour lesquelles il vaut mieux créer
-fréquemment des commits simples que créer rarement des commits complexes.
+fréquemment des commits simples que de créer rarement des commits complexes.
 
 La seule chose qu'il est facile de faire dans le répertoire de travail, c'est de
 ramener des fichiers du répertoire de travail à l'état enregistré dans `HEAD`,

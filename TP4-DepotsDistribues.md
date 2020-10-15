@@ -64,7 +64,7 @@ On peut aussi afficher des informations plus détaillées sur une _remote_ avec
 ### Récupération de changements depuis le parent
 
 Maintenant que nous avons créé un clone, retournons donc un instant dans le
-parent pour créer un commit :
+dépôt parent pour créer un commit :
 
     $ cd ../MesBranches
     $ echo "Nouveau dans votre ville !" > ToutNouveau.txt
@@ -177,9 +177,7 @@ Quand on exécute cette commande, git commence par chercher une branche locale
 `master`, et constate qu'il n'en existe pas, mais qu'il existe une branche
 distante du même nom, `origin/master`. Il crée alors une branche locale `master`
 à l'emplacement actuel de cette branche distante, et configure la branche
-distante `origin/master` comme amont de la brance locale `master`. On peut dès
-lors utiliser sur master des raccourcis comme `git pull`, ou certaines formes
-de `git push` qu'on verra dans un instant.
+distante `origin/master` comme amont de la brance locale `master`.
 
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
@@ -190,8 +188,8 @@ Dans les rares cas où il est nécessaire de configurer manuellement l'amont d'u
 branche locale, la commande `git branch` fournit des moyens de le faire. Sur les
 versions actuelles de `git`, on utilise la syntaxe
 `git branch --set-upstream-to <remote>/<branche>`. Mais des versions très
-anciennes de git utilisaient une syntaxe différente. Si c'est le cas de la
-vôtre, consultez `git help branch` pour plus de détails.
+anciennes de git utilisaient une syntaxe différente. Si vous êtes amené un jour
+à utiliser ces versions, consultez `git help branch` pour plus de détails.
 
 ### Soumission de changements avec push
 
@@ -358,10 +356,10 @@ toutes les méthodes ont en commun :
 
 1. A tout instant, une seule personne ou machine doit être responsable d'écrire
    sur une branche, les autres ne pouvant que lire l'état de celle-ci.
-2. Si il existe la moindre chance que d'autres personnes lisent le contenu d'une
-   branche, la personne qui modifie celle-ci doit s'abstenir d'effectuer toute
-   modification d'historique qui pourrait créer des divergences avec ces
-   clients, comme par exemple pousser une branche après un `git rebase`.
+2. Si il est possible que d'autres personnes lisent le contenu d'une branche, la
+   personne qui modifie celle-ci doit s'abstenir d'effectuer toute modification
+   d'historique qui pourrait créer des divergences avec ces clients, comme par
+   exemple pousser une branche après un `git rebase`.
 
 La restriction de `git push` décrite ci-dessus permet d'aller dans le sens de ce
 second objectif, puisqu'elle évite à une divergence locale de se propager sur le
@@ -463,7 +461,7 @@ Afficher les branches amont associées aux branches locales du dépôt :
 
 ### Forcer la mise à jour d'une référence distante
 
-Certaines méthodes de travail couramment utilisées avec Git requièrent de
+Certaines méthodes de travail couramment utilisées avec git requièrent de
 modifier l'historique d'un dépôt distant. Par exemple, il existe des projets qui
 exigent que toute soumission de modifications soit basée sur la version de
 développement actuelle, ou que l'historique des modifications soit simplifié
@@ -490,7 +488,7 @@ détruire celle-ci. Cela évite une prolifération des branches inactives qui pe
 rendre l'historique d'un dépôt incompréhensible.
 
 On peut le faire en utilisant `git push --delete`, ou sur les anciennes versions
-de Git son prédécesseur moins lisible, le signe '`:`'.
+de git son prédécesseur moins lisible, le signe '`:`'.
 
     $ git push --delete mondepot mabranche
     $ git push mondepot :mabranche
