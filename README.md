@@ -53,7 +53,7 @@ La salle de formation doit comporter un vidéoprojecteur, équipement désormais
 assez standard, mais il faut surtout procéder à l'avance à une installation de
 la VM fournie sur tous les postes stagiaires. Notez que VirtualBox n'offre que
 des garanties faibles de compatibilité entre versions, la VM utilisée ici a été
-générée avec VirtualBox 6.0.
+générée avec VirtualBox 6.1.
 
 ## Impression des documents formateur
 
