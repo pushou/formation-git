@@ -34,8 +34,8 @@ pour répondre à toutes vos questions. N'hésitez surtout pas à le solliciter 
 Durant cette formation, nous allons travailler dans une machine virtuelle
 configurée de la façon suivante :
 
-- **Ressources matérielles :** 2 coeurs CPU, 2 Go RAM, 10 Go disque
-- **Système d'exploitation :** openSUSE Leap 15
+- **Ressources matérielles :** 2 coeurs CPU, 2 Go RAM, 5 Go disque
+- **Système d'exploitation :** openSUSE Leap 15.2
 - **Logiciels installés :**
     * _Editeurs de texte :_ nano vi emacs gedit
     * _Outils git :_ git gitg meld
