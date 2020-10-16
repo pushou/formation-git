@@ -43,8 +43,20 @@ configurée de la façon suivante :
 - **Mot de passe :** FormationGit
 
 Il est possible de copier-coller du texte entre le système hôte et la machine
-virtuelle. Si vous souhaitez aussi échanger des fichiers entre les deux,
-nous vous renvoyons à la section "Informations complémentaires" de ce TP.
+virtuelle. _Malheureusement, lors de l'installation de la formation du
+16/10/2020, il a été découvert que cette fonctionnalité jusqu'ici très fiable ne
+marchait plus bien quand le texte source est issu d'Adobe Reader ! En attendant
+que ce problème mystérieux soit mieux compris et/ou résolu, il est possible de
+le contourner de la façon suivante :_
+
+- _Garder le Bloc-Notes ouvert dans un coin._
+- _Copier le texte désiré depuis Adobe Reader._
+- _Coller le texte dans le Bloc-Notes._
+- _Re-copier le texte depuis le Bloc-Notes._
+- _Le texte peut maintenant être collé dans la machine virtuelle._
+
+Si vous souhaitez aussi échanger des fichiers entre Windowe et Linux, nous vous
+renvoyons à la section "Informations complémentaires" de ce TP.
 
 ### S'identifier auprès de git
 
