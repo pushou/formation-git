@@ -102,7 +102,7 @@ doit "échapper" avec `\` dans la chaîne recherchée :
 
 ## Guide complet de reset et checkout
 
-Parmi les commandes git d'usage courant, les plus difficile à maîtriser sont
+Parmi les commandes git d'usage courant, les plus difficiles à maîtriser sont
 sans doute `git reset` et `git checkout`. Cela tient au fait qu'elles font un
 grand nombre de choses différentes selon ce qu'on leur passe en paramètre.
 Passons donc au crible leurs différentes variantes.
