@@ -311,7 +311,7 @@ méthode de travail basée sur les _forks_ et les _merge requests_.
 Si ce n'est pas la seule manière d'utiliser git, cette méthode est une des plus
 populaires aujourd'hui, car elle sécurise le dépôt officiel, facilite les
 contributions extérieures, et évite certains problèmes liés à l'utilisation
-naïve d'un dépôt git partagé (par exemple un "_force-push_" malencontrueux sur
+naïve d'un dépôt git partagé (par exemple un "_force-push_" malencontreux sur
 une branche du dépôt principal qui sème le chaos dans le projet).
 
 Nous terminerons cette formation par une exploration "à la carte" de sujets

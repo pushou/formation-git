@@ -149,8 +149,9 @@ Outre le raccourci `git commit -m` que nous venons de voir, git possède d'autre
 moyens d'accélérer des opérations courantes.
 
 `git add --all [<fichiers>]`, que nous avons brièvement rencontrée précédemment,
-ajoute à l'index **tous** les changements d'un jeu de fichiers et de dossiers, y
-compris d'éventuelles suppressions.
+ajoute à l'index tous les changements d'un jeu de fichiers et de dossiers, y
+compris d'éventuelles suppressions, mais en excluant quand même les fichiers
+spécifiés dans le `.gitignore`.
 
 Sans paramètre supplémentaire, cette commande synchronise complètement l'index
 avec le répertoire de travail. Cela peut conduire à des ajouts involontaires,
@@ -308,7 +309,7 @@ Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
 git nous permet aussi de remonter le temps, et de charger le contenu d'une
 version préalablement enregistrée dans le répertoire de travail.
 
-Pour que les choses se passent bien, il faut au préalable s'assurer que ledi
+Pour que les choses se passent bien, il faut au préalable s'assurer que ledit
 répertoire de travail soit _propre_, c'est à dire qu'il n'y ait pas de
 changements non enregistrés dans celui-ci. Pour savoir si c'est le cas, on peut
 comme toujours utiliser `git status` :
@@ -370,8 +371,10 @@ saisie d'une description par le biais d'un éditeur de texte :
     $ git revert HEAD
 
 A plus grande échelle, il est aussi possible d'annuler l'effet de plusieurs
-commits avec la variante `git revert <commit1> <commit2>...`, ou celui
-d'une série de commits avec la variante `git revert <commit1>..<commitN>`.
+commits avec la variante `git revert <commit1> <commit2>`, ou celui
+d'une série de commits avec la variante `git revert <commit1>..<commitN>` (notez
+les deux points entre les deux identifiants de commit spécifiant le début et la
+fin du jeu de changement à annuler).
 
 Cette commande est sans risque, car elle fonctionne en créant un nouveau commit
 qui annule l'effet du commit choisi. L'ancien commit n'est donc pas perdu, il

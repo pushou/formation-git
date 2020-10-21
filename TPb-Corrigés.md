@@ -399,7 +399,7 @@ Vérifions ce point en mettant à jour notre `master` local :
     $ git pull --ff-only
 
 Un dépôt distant fonctionne comme une copie de sauvegarde. Même si on supprimait
-malencontrueusement une branche locale...
+malencontreusement une branche locale...
 
     $ git branch -D copyright
 

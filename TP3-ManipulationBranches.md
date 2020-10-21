@@ -115,7 +115,7 @@ l'on peut vérifier avec `git status`.
 
     $ git status
 
-Cette vérification étant faite, il n'y a plus qu'à lancez la fusion :
+Cette vérification étant faite, il n'y a plus qu'à lancer la fusion :
 
     $ git merge univers-parallele
 
@@ -515,7 +515,7 @@ la branche `master`.
 
 ### Reset et le reflog
 
-Nous avons précemment utilisé une syntaxe pour le moins curieuse pour annuler
+Nous avons précédemment utilisé une syntaxe pour le moins curieuse pour annuler
 une fusion de branches : `git reset --hard @{1}`. Nous allons maintenant
 détailler comment cette commande fonctionne.
 

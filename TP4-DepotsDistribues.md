@@ -284,7 +284,7 @@ Vous noterez dans la sortie de `git fetch` que le nouveau clone ne contient que
 la branche `univers-parallele`, et pas la branche `master`. En effet, un clone
 ne contient par défaut que la branche active du dépôt d'origine, et l'on n'a
 accès qu'aux branches "propres" du clone, pas aux _remotes_ auxquelles ce
-dernier est éventuellement connécté.
+dernier est éventuellement connecté.
 
 ### Pull et push face à la divergence
 
