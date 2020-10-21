@@ -159,7 +159,7 @@ d'aggressivité vis à vis de l'index et du répertoire de travail :
   on peut notamment s'en servir pour annuler un appel prématuré à `git commit`.
 - `git reset [--mixed] <commit>`, qui est le mode par défaut, met également à
   jour l'index pour qu'il corresponde au contenu du nouveau `HEAD`. Il n'y a
-  donc plus de "changements prête à être commités" dans `git status` après
+  donc plus de "changements prêts à être commités" dans `git status` après
   exécution de cette commande.
 - `git reset --hard <commit>` propage également les versions de fichiers de
   `HEAD` au sein du répertoire de travail. **Cette opération peut donc perdre
