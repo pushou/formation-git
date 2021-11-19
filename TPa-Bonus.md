@@ -116,13 +116,13 @@ avec un message d'erreur.
 Cette commande change également de branche active. Si on lui passe une branche
 en paramètre, ladite branche devient la branche active, au sein de laquelle les
 nouveaux commits sont enregistrés. Si on passe à `checkout` quelque chose qui
-n'est pas une branche (une étiquette, un hash de commit...), alors il n'y aura
+n'est pas une branche (une étiquette, un _hash_ de commit...), alors il n'y aura
 plus de branche active. On parlera de "`HEAD` détachée".
 
 Comme nous l'avons vu au TP 4, cette commande peut aussi créer automatiquement
 une branche locale liée à une branche distante.
 
-Toujours dans les raccourcis, `git checkout -b <nom>` est une abbréviation de
+Toujours dans les raccourcis, `git checkout -b <nom>` est une abréviation de
 `git branch <nom> && git checkout <nom>` : on crée une branche et on bascule
 dessus.
 
@@ -253,7 +253,7 @@ considérée comme un conflit... et en plus, au-delà d'un certain volume de
 données, le fonctionnement de l'outil va devenir très lent.
 
 Pour résoudre ce dernier problème, les équipes de la forge GitHub ont mis au
-point une extension de git appelée Git Large File Storage (généralement abbrévié
+point une extension de git appelée Git Large File Storage (généralement abrévié
 en Git LFS), qui permet de décharger git de la responsabilité de gérer certains
 types de fichiers binaires désignés par l'utilisateur.
 

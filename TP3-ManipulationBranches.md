@@ -29,7 +29,7 @@ On peut créer une branche avec la commande `git branch <nom de branche>` :
 
     $ git branch univers-parallele
 
-La commande `git branch --list` (qui s'abbrévie en `git branch`) permet
+La commande `git branch --list` (qui s'abrévie en `git branch`) permet
 d'afficher la liste des branches présentes au sein du dépôt, la branche active
 étant mise en surbrillance :
 
@@ -50,7 +50,7 @@ immédiatement. fit fournit donc pour cela un raccourci, `git checkout -b <nom>`
 
 Il est aussi possible de renommer une branche avec
 `git branch --move <ancien nom> <nouveau nom>`, ou de la supprimer avec
-`git branch --delete <nom>` (qui s'abbrévie en `git branch -d <nom>`).
+`git branch --delete <nom>` (qui s'abrévie en `git branch -d <nom>`).
 
 ### Deux jeux de changements
 
@@ -458,7 +458,7 @@ conséquences importantes :
   inversés dans Meld et les diffs, puisqu'on opère par-dessus la branche `<nom>`
   et non par-dessus la branche que l'on veut "rebaser".
 - Tous les commits de la branche locale sont remplacés. Leur contenu (_diff_)
-  change, et leur hash aussi. Si on a mal réglé un conflit de fusion, ces
+  change, et leur _hash_ aussi. Si on a mal réglé un conflit de fusion, ces
   changements atterrissent dans le commit modifié. Il peut donc être plus
   difficile de revenir en arrière qu'avec `git merge`, où tous les changements
   sont concentrées au sein du commit de fusion.

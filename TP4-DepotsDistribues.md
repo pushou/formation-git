@@ -243,7 +243,7 @@ Pour utiliser cette variante de `git push`, vous devez avoir défini une branche
 amont associée à la branche active. Si ce n'est pas déjà fait, un raccourci
 existe pour configurer une branche amont et pousser vers cette dernière : la
 commande `git push --set-upstream <remote> <branche>`, l'option `--set-upstream`
-pouvant s'abbrévier en `-u`.
+pouvant s'abrévier en `-u`.
 
 **Attention :** Lorsqu'on utilise des clones locaux d'un dépôt git, comme c'est
 le cas dans ce TP, on ne peut pas faire de `git push` vers la branche qui est
