@@ -112,7 +112,7 @@ _upstream_ :
     $ git fetch upstream
 
 Si vous ouvrez maintenant `gitg`, vous pourrez constater que vous pouvez
-maintenat visualiser vos commits et branches locales, celles de votre _fork_, et
+maintenant visualiser vos commits et branches locales, celles de votre _fork_, et
 celles du dépôt officiel. Tout est prêt !
 
 
@@ -240,7 +240,7 @@ d'édition d'historique.
 Gardez cependant à l'esprit que cette règle de vie est à double tranchant. Si
 vous devez un jour baser votre travail sur le _fork_ de quelqu'un d'autre, il
 vous appartiendra de vivre avec les suppressions de branches et autres
-modifications d'historique effectuées par cette personne sur son _fork_. Evitez
+modifications d'historique effectuées par cette personne sur son _fork_. Évitez
 donc si possible de baser du travail sur le _fork_ d'autrui, en privilégiant
 plutôt le travail à partir du dépôt officiel du projet.
 
@@ -265,7 +265,7 @@ Comme son nom l'indique, une _merge request_ invite le(s) mainteneur(s) du dép�
 officiel à intégrer des changements au projet en fusionnant les nouveautés de
 votre branche dans un historique officiel (généralement la branche `master`).
 Vous êtes invité à donner un titre court à votre soumission, ainsi qu'une
-description qui peut être plus étoffée et aggrémentée de mise en page Markdown.
+description qui peut être plus étoffée et agrémentée de mise en page Markdown.
 Selon la forge que vous utilisez, d'autres fonctionnalités de gestion de projet
 peuvent vous être proposées lors de la création d'une _merge request_, nous vous
 invitons à consulter la documentation de votre forge pour en savoir plus.
@@ -323,9 +323,9 @@ plus avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir
 ## Exercices
 
 1. Partez de votre clone du dépôt `ddhc`.
-2. Vérifiez que les URLs de vos deux `remotes` sont correctes : `origin` doit
+2. Vérifiez que les URLs de vos deux _remotes_ sont correctes : `origin` doit
    pointer sur votre fork, `upstream` doit pointer sur le dépôt officiel, et les
-   deux `remotes` doivent utiliser une connexion HTTPS.
+   deux _remotes_ doivent utiliser une connexion HTTPS.
 3. Créez une nouvelle branche partant du `master`, et ajoutez-y un commit.
 4. Poussez cette branche sur votre _fork_.
 5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur votre _fork_
@@ -382,7 +382,7 @@ Une fois votre installation SSH locale configurée, il faut transmettre votre cl
 publique, qui vous identifie, à la forge logicielle que vous utilisez. La
 procédure de configuration exacte dépendra de la forge utilisée.
 
-Après cela, vous pourrez effectuer vos clones ou configurer vos remotes avec les
+Après cela, vous pourrez effectuer vos clones ou configurer vos _remotes_ avec les
 URL SSH à la place des URL HTTPS, et dire adieu à la saisie répétitive du mot de
 passe HTTPS !
 

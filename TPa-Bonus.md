@@ -152,7 +152,7 @@ d'utiliser cette variant de `git reset`, afin de pouvoir facilement ramener
 votre branche au point précédent en cas de manipulation incorrecte.
 
 Cette commande possède trois variantes, correspondant à différents niveaux
-d'aggressivité vis à vis de l'index et du répertoire de travail :
+d’agressivité vis à vis de l'index et du répertoire de travail :
 
 - `git reset --soft <commit>` déplace uniquement la branche active, en laissant
   l'index et le répertoire de travail tels quels. Comme on l'a vu précédemment,
@@ -197,7 +197,7 @@ reformatage d'un document marquera du point de vue de git la personne qui a
 effectué l'opération comme l'auteur de la section reformatée...
 
 
-## Edition d'historique avec le rebase interactif
+## Édition d'historique avec le rebase interactif
 
 Pour terminer en beauté ce petit tour des fonctionnalités avancées de git,
 mentionnons un outil aussi dangereux que puissant, qui permet de modifier

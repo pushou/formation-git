@@ -150,7 +150,7 @@ Maintenant, que se passe-t-il si nous essayons d'intégrer les changements
 survenus au sein de la branche master à `univers-parallele` ?
 
 Pour le savoir, exécutez cette fusion en surveillant les changements dans la
-fenêtre de `gitg` (n'oubliez pas de rafraîchier la vue avec `Ctrl + R`) :
+fenêtre de `gitg` (n'oubliez pas de rafraîchir la vue avec `Ctrl + R`) :
 
     $ git checkout univers-parallele
     $ git merge master
@@ -387,7 +387,7 @@ Créer une branche :
 
     $ git checkout -b <nom>
 
-Enumérer les branches présentes au sein du dépôt :
+Énumérer les branches présentes au sein du dépôt :
 
     $ git branch --list
 
@@ -471,7 +471,7 @@ conséquences importantes :
 
 En résumé, si `git rebase` a ses amateurs, cette commande reste relativement
 complexe et ne devrait être employée que lorsque vous êtes sûr de ce que vous
-faites. Vous devriez aussi garder un oeil sur `gitg` au cours de son utilisation
+faites. Vous devriez aussi garder un œil sur `gitg` au cours de son utilisation
 pour vérifier que vous n'avez pas commis d'impair.
 
 Il est conseillé aux débutants de `git rebase` de créer une étiquette "de

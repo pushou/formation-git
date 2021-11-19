@@ -178,7 +178,7 @@ créer en lançant l'outil gitg dans le dépôt...
 
 ...ou en rafraîchissant son affichage avec Ctrl+R si il est déjà ouvert.
 N'oubliez pas de sélectionner l'option "Branches" dans le menu de droite pour
-pouvoir sisualiser les deux branches simultanément.
+pouvoir visualiser les deux branches simultanément.
 
 Notre branche a un peu de retard avec la branche master, nous pouvons rattraper
 ce retard en y fusionnant les nouveautés de la branche master avec `git merge` :
@@ -312,7 +312,7 @@ ferions sur n'importe quelle autre branche locale :
     $ git commit -am "Complétion d'un fichier"
 
 Pour récupérer ces changements dans le dépôt d'origine, nous allons devoir
-ajouter notre clone comme remote de ce dernier...
+ajouter notre clone comme _remote_ de ce dernier...
 
     $ cd ../MonDepot
     $ git remote add copieur ~/Bureau/TonDepot

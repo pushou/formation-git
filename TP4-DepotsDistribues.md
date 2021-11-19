@@ -35,7 +35,7 @@ mais que la structure des branches est un peu différente.
 
 Les branches du parent sont reflétées dans le clone sous forme de branches
 distantes (nom en `origin/<branche>`, couleur verte dans gitg). De plus, la
-branche active du parent a ausi été recréée sous forme de branche locale dans le
+branche active du parent a aussi été recréée sous forme de branche locale dans le
 clone, et c'est cette branche-là qui est actuellement active et extraite dans le
 répertoire de travail :
 
@@ -51,8 +51,8 @@ avec `git remote` sans arguments :
 
     $ git remote
 
-En mode verbeux, cette commande affiche aussi l'addresse du dépôt distant. Ici,
-cette addresse est un chemin d'accès sur le système de fichier local :
+En mode verbeux, cette commande affiche aussi l’adresse du dépôt distant. Ici,
+cette adresse est un chemin d'accès sur le système de fichier local :
 
     $ git remote -v
 
@@ -86,7 +86,7 @@ exemple avec `git fetch` :
     $ git fetch origin
 
 Notez que git mentionne une activité au niveau de la branche
-`origin/univers-parallele`. A ce stade, le changement n'est toujous pas présent
+`origin/univers-parallele`. A ce stade, le changement n'est toujours pas présent
 dans la branche locale, mais il est visible dans la branche distante :
 
     $ cat ToutNouveau.txt
@@ -177,7 +177,7 @@ Quand on exécute cette commande, git commence par chercher une branche locale
 `master`, et constate qu'il n'en existe pas, mais qu'il existe une branche
 distante du même nom, `origin/master`. Il crée alors une branche locale `master`
 à l'emplacement actuel de cette branche distante, et configure la branche
-distante `origin/master` comme amont de la brance locale `master`.
+distante `origin/master` comme amont de la branche locale `master`.
 
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
@@ -211,7 +211,7 @@ cette référence, ou de la mettre à jour si elle existe déjà :
 
     $ git push origin master
 
-En l'occurence, il ne se passe rien, puisque nous n'avons pas modifié la branche
+En l’occurrence, il ne se passe rien, puisque nous n'avons pas modifié la branche
 `master` depuis la dernière fois que nous nous sommes synchronisés avec le
 dépôt `origin`.
 
@@ -348,7 +348,7 @@ Et malheureusement, sur un projet distribué suffisamment gros, on ne peut pas
 empêcher que ce genre de chose arrive si tout le monde est autorisé à travailler
 librement sur toutes les branches.
 
-Des méthodes de travail ont donc été dévelopées pour éviter ce genre d'accident.
+Des méthodes de travail ont donc été développées pour éviter ce genre d'accident.
 Elles visent notamment à éviter les divergences d'historique entre versions
 locales et distantes d'une même branche. Nous présenterons une de ces méthodes
 en détail par la suite, mais mentionnons préalablement quelques principes que
@@ -416,7 +416,7 @@ Afficher des informations détaillées sur une _remote_ :
 
 Ajouter une _remote_ au dépôt :
 
-    $ git remote add <nom> <addresse>
+    $ git remote add <nom> <adresse>
 
 Récupérer les changements d'une _remote_ :
 
