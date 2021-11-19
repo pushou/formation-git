@@ -253,7 +253,7 @@ dans le dossier du dépôt cible et faire un `git checkout` d'une autre branche.
 Vous ne rencontrerez heureusement que rarement ce problème dans la vie de tous
 les jours. Les clones locaux sont peu utilisés, et la seule raison pour laquelle
 cette formation y a recours est que cela vous permet de mieux visualiser ce qui
-se passe et vous évite de devoir apprendre la gestion du _remotes_ et celle des
+se passe et vous évite de devoir apprendre la gestion des _remotes_ et celle des
 échanges réseau en même temps...
 
 

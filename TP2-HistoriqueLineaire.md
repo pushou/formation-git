@@ -80,7 +80,7 @@ Pour visualiser le premier type de changement, on peut utiliser `git diff` :
     $ git diff
 
 Cette commande décrit les différences entre le répertoire de travail et l’index,
-selon un format similaire à celui de l’utilitaire « diff » des systèmes Unix.
+selon un format similaire à celui de l’utilitaire `diff` des systèmes Unix.
 
 Mais **attention**, `git diff` ne tient pas compte des fichiers qui n’ont pas
 été mis sous gestion de version avec `git add`, et ne peut donc pas remplacer

@@ -100,7 +100,7 @@ doit "échapper" avec `\` dans la chaîne recherchée :
     $ git grep -E '(ce(ci|la)?|ça)'
 
 
-## Guide complet de reset et checkout
+## Guide complet de `reset` et `checkout`
 
 Parmi les commandes git d'usage courant, les plus difficiles à maîtriser sont
 sans doute `git reset` et `git checkout`. Cela tient au fait qu'elles font un
