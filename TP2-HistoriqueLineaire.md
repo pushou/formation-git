@@ -631,4 +631,5 @@ Une liste relativement complète d'outils graphiques pour visualiser et manipule
 des dépôts git est disponible sur https://www.git-scm.com/downloads/guis .
 
 L'auteur travaille plutôt sous Linux, mais quand il lui arrive de développer
-sous macOS ou Windows, il aime bien le logiciel Fork ( https://git-fork.com/ ).
+sous macOS ou Windows, il aime bien le logiciel Sourcetree (
+https://www.sourcetreeapp.com/ ).
