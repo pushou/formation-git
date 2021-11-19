@@ -347,7 +347,7 @@ Afficher un bref rappel de la syntaxe d’une commande git :
 
 ### Interface de configuration
 
-git peut être configuré selon trois périmètres :
+On peut configurer git selon trois périmètres :
 
 1. Ensemble des utilisateurs du système hôte (« system »)
 2. Compte utilisateur actif (« global »)

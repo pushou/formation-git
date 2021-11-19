@@ -1,33 +1,33 @@
-# TP2 : Un historique linéaire
+# TP2 : Un historique linéaire
 
-## Un mot sur les "rattrapages"
+## Un mot sur les « rattrapages »
 
 Vous aurez peut-être remarqué, dans les supports de formation, un mystérieux
-dossier appelé "Rattrapages".
+dossier appelé « Rattrapages ».
 
-Ce dossier contient une copie de sauvegarde de l'état attendu du ou des dépôts
+Ce dossier contient une copie de sauvegarde de l’état attendu du ou des dépôts
 git utilisés _à la fin_ de chaque TP.
 
-Cela vous permettra de vous replacer dans l'état attendu au début d'un
-nouveau TP, si par exemple...
+Cela vous permettra de vous replacer dans l’état attendu au début d’un
+nouveau TP, si par exemple…
 
-- Vous n'avez pas réussi à finir un TP à temps
+- Vous n’avez pas réussi à finir un TP à temps
 - Vous avez exécuté des commandes imprévues durant le TP
 - Vous avez manqué une partie de la formation
 
-Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l'effet
-d'une commande dépend fortement de l'état actuel du dépôt utilisé.
+Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l’effet
+d’une commande dépend fortement de l’état actuel du dépôt utilisé.
 
 
 ## Processus de création de version
 
 ### Un premier commit
 
-Au cours du TP précédent, nous avons manipulé l'état de notre répertoire de
-travail. Il est maintenant temps d'en sauvegarder une première version.
+Au cours du TP précédent, nous avons manipulé l’état de notre répertoire de
+travail. Il est maintenant temps d’en sauvegarder une première version.
 
 Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
-immédiatement nous plonger dans un éditeur de texte :
+immédiatement nous plonger dans un éditeur de texte :
 
     $ cd ~/Bureau/MonDepot
     $ git commit
@@ -37,35 +37,35 @@ effectués dans la nouvelle version qui va être sauvegardé.
 
 Le format est libre, mais une convention très répandue dans le monde git est de
 commencer par un résumé court (une ligne de moins de 80 caractères),
-éventuellement suivi d'une paire de sauts de lignes et une description plus
+éventuellement suivi d’une paire de sauts de lignes et une description plus
 précise. Cette convention est exploitée par de nombreux outils de visualisation,
 je vous conseille donc de la suivre.
 
 Notez que le fichier texte ouvert par `git commit` contient déjà un
-récapitulatif de de l'état actuel du dépôt, similaire à celui qui est affiché
+récapitulatif de l’état actuel du dépôt, similaire à celui qui est affiché
 par `git status`. Ce dernier ne sera pas présent dans la description finale. Il
 vous permet juste de vérifier rapidement les changements qui seront sauvegardés.
 
-La version sera créée lorsque vous quitterez l'éditeur de texte en sauvegardant
+La version sera créée lorsque vous quitterez l’éditeur de texte en sauvegardant
 la description. Mais si vous vous rendez compte que vous avez tapé `git commit`
-trop vite, pas de panique : il suffit de saisir une description vide (ou de
-quitter l'éditeur de texte sans sauvegarder vos modifications) pour annuler
-l'opération.
+trop vite, pas de panique : il suffit de saisir une description vide (ou de
+quitter l’éditeur de texte sans sauvegarder vos modifications) pour annuler
+l’opération.
 
 ### Nouveau contenu et différences
 
-Après avoir créé un commit, la sortie de `git status` change :
+Après avoir créé un commit, la sortie de `git status` change :
 
     $ git status
 
-La commande status décrit en effet toujours l'état de l'index et du répertoire
+La commande status décrit en effet toujours l’état de l’index et du répertoire
 de travail par rapport à la dernière version enregistrée (`HEAD`).
 
 Ici, si vous avez suivi fidèlement le TP1, tous les changements du répertoire de
-travail qui ne sont pas dans la liste "gitignore" ont été enregistrés dans le
-premier commit. `git status` devrait donc indiquer qu'il n'y a rien de nouveau.
+travail qui ne sont pas dans la liste « gitignore » ont été enregistrés dans le
+premier commit. `git status` devrait donc indiquer qu’il n’y a rien de nouveau.
 
-Effectuons maintenant quelques changements :
+Effectuons maintenant quelques changements :
 
     $ echo 'Un premier changement' > MonDossier/Contenu.txt
     $ echo 'Un nouveau fichier' > AutreContenu.txt
@@ -75,60 +75,60 @@ Comme la plupart des gestionnaires de version, git distingue soigneusement les
 changements apportés à des fichiers sous gestion de version des créations de
 nouveaux fichiers dans le répertoire de travail.
 
-Pour visualiser le premier type de changement, on peut utiliser `git diff` :
+Pour visualiser le premier type de changement, on peut utiliser `git diff` :
 
     $ git diff
 
-Cette commande décrit les différences entre le répertoire de travail et l'index,
-selon un format similaire à celui de l'utilitaire "diff" des systèmes Unix.
+Cette commande décrit les différences entre le répertoire de travail et l’index,
+selon un format similaire à celui de l’utilitaire « diff » des systèmes Unix.
 
-Mais **attention**, `git diff` ne tient pas compte des fichiers qui n'ont pas
+Mais **attention**, `git diff` ne tient pas compte des fichiers qui n’ont pas
 été mis sous gestion de version avec `git add`, et ne peut donc pas remplacer
-totalement l'utilisation de `git status`.
+totalement l’utilisation de `git status`.
 
-Les habitués d'autres gestionnaires de version noteront que `git add` combine
-deux fonctions qui sont en général distinctes dans d'autres outils :
+Les habitués d’autres gestionnaires de version noteront que `git add` combine
+deux fonctions qui sont en général distinctes dans d’autres outils :
 
 - Mettre des fichiers sous gestion de version
 - Ajouter des changements survenus dans un fichier à la prochaine version
 
-Dans le modèle de git, ces deux opérations sont unifiées par la notion d'index,
-qui rend d'un certain point de vue obsolète celle de fichier sous gestion de
+Dans le modèle de git, ces deux opérations sont unifiées par la notion d’index,
+qui rend d’un certain point de vue obsolète celle de fichier sous gestion de
 version. Cependant, cette seconde notion existe malheureusement toujours dans
-git, comme le piège ergonomique de `git diff` ci-dessus l'illustre.
+git, comme le piège ergonomique de `git diff` ci-dessus l’illustre.
 
 ### Aller plus loin avec git diff
 
-`git diff` décrit les changements du répertoire de travail par rapport à l'index
+`git diff` décrit les changements du répertoire de travail par rapport à l’index
 (la version en cours de création). Par conséquent, si on ajoute des changements
-à l'index, ils disparaissent de la sortie de `git diff` :
+à l’index, ils disparaissent de la sortie de `git diff` :
 
     $ git add MonDossier
     $ git diff
     $ echo 'Un second changement' >> MonDossier/Contenu.txt
     $ git diff
 
-Ce mode de fonctionnement aide à créer une nouvelle version progressivement :
+Ce mode de fonctionnement aide à créer une nouvelle version progressivement :
 
 - On fait un point sur les changements effectués depuis la dernière version
 - On décide de ce qui va faire partie de la prochaine version
-- On ajoute ces changements à l'index avec `git add`
-- On vérifie qu'on n'a rien oublié d'important avec `git diff`
+- On ajoute ces changements à l’index avec `git add`
+- On vérifie qu’on n’a rien oublié d’important avec `git diff`
 - On crée la nouvelle version avec `git commit`
 
 Mais parfois, on souhaite un autre comportement de la part de `git diff`. On
 peut ainsi lui demander la liste des changements effectués au sein du répertoire
-de travail depuis la dernière version enregistrée :
+de travail depuis la dernière version enregistrée :
 
     $ git diff HEAD
 
-Ou bien on peut lui demander les changements présents au sein de l'index, qui
-seront inclus dans la nouvelle version lorsqu'on appellera `git commit` :
+Ou bien on peut lui demander les changements présents au sein de l’index, qui
+seront inclus dans la nouvelle version lorsqu’on appellera `git commit` :
 
     $ git diff --cached
 
-Il est aussi possible, et souvent très utile, de n'afficher que les changements
-survenus au sein d'un certain fichier ou dossier avec `git diff <chemin>` :
+Il est aussi possible, et souvent très utile, de n’afficher que les changements
+survenus au sein d’un certain fichier ou dossier avec `git diff <chemin>` :
 
     $ git add AutreContenu.txt
     $ git commit -m 'Une deuxième version'
@@ -136,7 +136,7 @@ survenus au sein d'un certain fichier ou dossier avec `git diff <chemin>` :
     $ git diff
     $ git diff MonDossier/
 
-Plusieurs autres choses sont à noter dans cet exemple :
+Plusieurs autres choses sont à noter dans cet exemple :
 
 - La commande `git commit` possède une option `-m` pour spécifier directement la
   description, très pratique quand celle-ci est courte.
@@ -145,15 +145,15 @@ Plusieurs autres choses sont à noter dans cet exemple :
 
 ### Quelques raccourcis
 
-Outre le raccourci `git commit -m` que nous venons de voir, git possède d'autres
-moyens d'accélérer des opérations courantes.
+Outre le raccourci `git commit -m` que nous venons de voir, git possède d’autres
+moyens d’accélérer des opérations courantes.
 
 `git add --all [<fichiers>]`, que nous avons brièvement rencontrée précédemment,
-ajoute à l'index tous les changements d'un jeu de fichiers et de dossiers, y
-compris d'éventuelles suppressions, mais en excluant quand même les fichiers
+ajoute à l’index tous les changements d’un jeu de fichiers et de dossiers, y
+compris d’éventuelles suppressions, mais en excluant quand même les fichiers
 spécifiés dans le `.gitignore`.
 
-Sans paramètre supplémentaire, cette commande synchronise complètement l'index
+Sans paramètre supplémentaire, cette commande synchronise complètement l’index
 avec le répertoire de travail. Cela peut conduire à des ajouts involontaires,
 il est donc plus prudent de cibler cette commande sur un dossier.
 
@@ -163,62 +163,62 @@ il est donc plus prudent de cibler cette commande sur un dossier.
     $ git commit -m 'Nous sommes sur une bonne lancée !'
 
 `git commit -a` crée un commit avec tous les changements survenus dans les
-fichiers sous gestion de version. Ce faisant, elle ignore les fichiers qui n'ont
+fichiers sous gestion de version. Ce faisant, elle ignore les fichiers qui n’ont
 pas été mis préalablement sous gestion de version avec `git add`, imitant ainsi
-la logique d'autres gestionnaires de version comme SVN ou Mercurial.
+la logique d’autres gestionnaires de version comme SVN ou Mercurial.
 
 Si cette logique familière aidera dans leur apprentissage les habitués de ces
 gestionnaires, elle est globalement piégeuse, et entraîne souvent la création de
-commits incomplets. J'encourage donc les débutants de la gestion de version à
-considérer l'utilisation de `git commit -a` comme une mauvaise habitude qu'il
-est préférable d'éviter de prendre.
+commits incomplets. J’encourage donc les débutants de la gestion de version à
+considérer l’utilisation de `git commit -a` comme une mauvaise habitude qu’il
+est préférable d’éviter de prendre.
 
 
-## Exploration de l'historique
+## Exploration de l’historique
 
 ### Visualisation interactive
 
-Nous avons maintenant créé quelques commits, et il est possible d'afficher
-l'historique de ces derniers avec `git log` :
+Nous avons maintenant créé quelques commits, et il est possible d’afficher
+l’historique de ces derniers avec `git log` :
 
     $ git log
 
 Si un commit précis de la liste nous interpelle, nous pouvons ensuite demander
-à git d'afficher des informations détaillées sur ce dernier avec
-`git show <commit>`, où le commit peut être identifié par son hash.
+à git d’afficher des informations détaillées sur ce dernier avec
+`git show <commit>`, où le commit peut être identifié par son _hash_.
 
-Ces deux commandes sont extrêmement configurables : on peut demander à `git log`
-et `git show` d'afficher précisément l'information qu'on veut, dans le format
-qu'on veut. Mais force est de constater que malgré tous ces efforts, un
+Ces deux commandes sont extrêmement configurables : on peut demander à `git log`
+et `git show` d’afficher précisément l’information qu’on veut, dans le format
+qu’on veut. Mais force est de constater que malgré tous ces efforts, un
 affichage en ligne de commande devient rapidement difficile à lire dès lors que
-l'information affichée est un tant soit peu complexe. Un terminal textuel n'est
-pas vraiment fait pour ça!
+l’information affichée est un tant soit peu complexe. Un terminal textuel n’est
+pas vraiment fait pour ça !
 
-Pour cette raison, je vous recommande fortement d'utiliser une interface
+Pour cette raison, je vous recommande fortement d’utiliser une interface
 graphique pour visualiser votre historique. Au cours de cette formation, nous
-utiliserons pour cela le logiciel `gitg` :
+utiliserons pour cela le logiciel `gitg` :
 
     $ gitg
 
-Vous pouvez constater que `gitg` vous permet d'observer d'un coup d'oeil votre
+Vous pouvez constater que `gitg` vous permet d’observer d’un coup d’œil votre
 historique. En cliquant sur chaque commit, vous avez aussi accès à des
-informations plus détaillées : description détaillée, hash, détail des
-modifications effectuées...
+informations plus détaillées : description détaillée, _hash_, détail des
+modifications effectuées…
 
 Mais malheureusement, comme la plupart des applications graphiques, `gitg`
-empêche la saisie de commandes supplémentaires tant qu'elle est en exécution. La
-manière la plus simple de régler ce problème est de lancer l'application en
-tâche de fond :
+empêche la saisie de commandes supplémentaires tant qu’elle est en exécution. La
+manière la plus simple de régler ce problème est de lancer l’application en
+tâche de fond :
 
     $ gitg &
 
 Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
 continuer de saisir des commandes.
 
-Votre terminal restera toutefois occasionnellement "pollué" par des messages de
-statut de gitg, logiciel dont la propreté de code ne semble pas idéale et qui
-est donc occasionnellement sujet à des erreurs non fatales... Si cela vous
-agace, vous pouvez aussi lancer gitg graphiquement (via le menu en bas à
+Votre terminal restera toutefois occasionnellement « pollué » par des messages de
+statut de `gitg`, logiciel dont la propreté de code ne semble pas idéale et qui
+est donc occasionnellement sujet à des erreurs non fatales… Si cela vous
+agace, vous pouvez aussi lancer `gitg` graphiquement (via le menu en bas à
 gauche) et le pointer manuellement vers votre dépôt.
 
 ### Premières requêtes
@@ -255,7 +255,7 @@ répertoire de travail et le parent du commit actif...
 
 ### Nommer un commit
 
-Désigner des commits par des hashes absolus ou par des chemins relatifs à base
+Désigner des commits par des _hashes_ absolus ou par des chemins relatifs à base
 de HEAD est fastidieux, et le risque d'erreur est élevé. Lorsqu'on doit souvent
 faire référence à un commit, il est préférable de lui donner un nom plus
 lisible pour un être humain.
@@ -552,12 +552,12 @@ la description. Tout cela est possible avec l'option `--amend` :
     $ git commit --amend -m 'Une version avec plus de contenu'
 
 Les plus attentifs remarqueront peut-être dans la sortie de `git commit --amend`
-que cette opération modifie aussi le hash hexadécimal qui identifie le commit.
+que cette opération modifie aussi le _hash_ hexadécimal qui identifie le commit.
 Il y a des causes profondes à cela :
 
-- Le hash d'un commit est une fonction déterministe de son contenu. C'est ce qui
+- Le _hash_ d'un commit est une fonction déterministe de son contenu. C'est ce qui
   fait qu'il est improbable que deux commits indépendants sur le réseau
-  aient le même hash, permettant ainsi la gestion de version distribuée.
+  aient le même _hash_, permettant ainsi la gestion de version distribuée.
 - Un gestionnaire de version ne modifie jamais directement un commit. Quand on
   fait `git commit --amend`, git retire l'ancien commit de l'historique et le
   remplace par un nouveau commit avec nos modifications. L'ancien commit est en
