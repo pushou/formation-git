@@ -34,10 +34,10 @@ pour répondre à toutes vos questions. N'hésitez surtout pas à le solliciter 
 Durant cette formation, nous allons travailler dans une machine virtuelle
 configurée de la façon suivante :
 
-- **Ressources matérielles :** 2 coeurs CPU, 2 Go RAM, 6 Go disque
+- **Ressources matérielles :** 2 cœurs CPU, 2 Go RAM, 6 Go disque
 - **Système d'exploitation :** openSUSE Leap 15.2
 - **Logiciels installés :**
-    * _Editeurs de texte :_ nano vim emacs gedit
+    * _Éditeurs de texte :_ nano vim emacs gedit
     * _Outils git :_ git gitg meld
 - **Nom d'utilisateur :** formation-git
 - **Mot de passe :** FormationGit
@@ -55,7 +55,7 @@ le contourner de la façon suivante :_
 - _Re-copier le texte depuis le Bloc-Notes._
 - _Le texte peut maintenant être collé dans la machine virtuelle._
 
-Si vous souhaitez aussi échanger des fichiers entre Windowe et Linux, nous vous
+Si vous souhaitez aussi échanger des fichiers entre Windows et Linux, nous vous
 renvoyons à la section "Informations complémentaires" de ce TP.
 
 ### S'identifier auprès de git
@@ -73,10 +73,10 @@ vous laisser créer des versions, ce que vous pouvez faire comme ceci :
 ### Choisir un éditeur de texte
 
 git vous demandera parfois de saisir du texte avec un éditeur de texte. Cet
-éditeur est configurable, par défaut il s'agit de `vi`.
+éditeur est configurable, par défaut il s'agit de `vim`.
 
 Le choix d'un éditeur de texte relevant de la guerre de religion, nous dirons
-juste qu'il est recommandé d'utilise un éditeur en mode console pour cet usage,
+juste qu'il est recommandé d’utiliser un éditeur en mode console pour cet usage,
 et qu'il est conseillé à ceux qui n'ont jamais utilisé ce type d'éditeur de
 plutôt faire appel à `nano` pour les besoins de cette formation :
 
