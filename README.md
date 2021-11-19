@@ -27,12 +27,12 @@ version à l’utilisateur amateur de git en passant par l’habitué de SVN.
 
 La formation est prévue pour un format de 2 jours. Il est probablement possible
 de la faire tenir sur un format 1.5 jours, mais je pense que 1 jour serait trop
-court (les branches + les remotes / forges le même jour, c’est trop).
+court (les branches + les _remotes_ / forges le même jour, c’est trop).
 
 ## Aspects techniques
 
 Comme il contient de nombreux gros fichiers binaires, ce dépôt utilise
-l’extension git LFS (Large File Storage). Pour en effectuer un clone complet,
+l’extension git LFS (_Large File Storage_). Pour en effectuer un clone complet,
 incluant les fichiers binaires, vous devrez installer cette extension.
 Vous trouverez plus d’informations sur https://git-lfs.github.com/ .
 
@@ -89,4 +89,4 @@ que vous voulez, y compris monter votre propre version modifiée de la formation
 du moment que…
 
 1. Vous indiquez clairement que votre version est basée sur ce travail.
-2. Vos versions modifiées sont aussi distribuées sous licence CC BY-SA 4.0.
+2. Vos versions modifiées sont aussi distribuées sous licence CC-BY-SA 4.0.
