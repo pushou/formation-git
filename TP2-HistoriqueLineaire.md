@@ -224,51 +224,51 @@ gauche) et le pointer manuellement vers votre dépôt.
 ### Premières requêtes
 
 git est basé sur la notion de **différence**, et chaque version y est définie
-par les changements qu'elle opère vis-à-vis de la version précédente.
+par les changements qu’elle opère vis-à-vis de la version précédente.
 
-Si cette vision "locale" des choses est parfois suffisante, il est souvent
+Si cette vision « locale » des choses est parfois suffisante, il est souvent
 nécessaire de raisonner par rapport à des versions relativement éloignées dans
-le passé. Pour ce faire, plusieurs options s'offrent à nous.
+le passé. Pour ce faire, plusieurs options s’offrent à nous.
 
-Tout d'abord, il est possible d'afficher les changements survenus dans le
+Tout d’abord, il est possible d’afficher les changements survenus dans le
 répertoire de travail depuis une ancienne version avec `git diff <commit>`. Il
-est également possible d'afficher la différence entre deux versions enregistrées
+est également possible d’afficher la différence entre deux versions enregistrées
 du projet avec `git diff <commit1> <commit2>`.
 
 Vous aurez peut-être remarqué que nous avons déjà utilisé la première de ces
-deux commandes, avec l'identifiant `HEAD` qui désigne le dernier _commit_
-enregistré. Pour des raisons de concision, nous parlerons désormais de "commit
-actif".
+deux commandes, avec l’identifiant `HEAD` qui désigne le dernier _commit_
+enregistré. Pour des raisons de concision, nous parlerons désormais de « commit
+actif ».
 
-A tout identifiant de commit, nous pouvons ajouter le suffixe `~[N]` pour
+À tout identifiant de commit, nous pouvons ajouter le suffixe `~[N]` pour
 désigner le (N-ième) parent de ce commit. Ainsi, `HEAD~` est le parent du commit
 actif, et `HEAD~2` est le grand-parent de ce commit.
 
 Avec cette syntaxe, nous pouvons demander à git la différence entre le
-répertoire de travail et le parent du commit actif...
+répertoire de travail et le parent du commit actif…
 
     $ git diff HEAD~
 
-...ou bien les changements du commit actif par rapport à son parent :
+…ou bien les changements du commit actif par rapport à son parent :
 
     $ git diff HEAD~ HEAD
 
 ### Nommer un commit
 
 Désigner des commits par des _hashes_ absolus ou par des chemins relatifs à base
-de HEAD est fastidieux, et le risque d'erreur est élevé. Lorsqu'on doit souvent
+de HEAD est fastidieux, et le risque d’erreur est élevé. Lorsqu’on doit souvent
 faire référence à un commit, il est préférable de lui donner un nom plus
 lisible pour un être humain.
 
-En gestion de version, cela s'appelle une étiquette (_tag_), et on peut en créer
-une avec la commande `git tag <étiquette> [<commit>]` :
+En gestion de version, cela s’appelle une étiquette (_tag_), et on peut en créer
+une avec la commande `git tag <étiquette> [<commit>]` :
 
     $ git tag important
     $ git tag papa HEAD~
     $ git tag maman important~
     $ git tag ancetre HEAD~2
 
-Après l'exécution de ces commandes...
+Après l’exécution de ces commandes…
 
 - `important` pointe sur le commit actif (`HEAD`)
 - `papa` pointe sur le commit avant le commit actif (`HEAD~`)
@@ -284,54 +284,54 @@ Si vous créez de nouveaux commits par la suite, `important` pointera
 toujours vers le même commit.
 
 Si vous le souhaitez, vous pouvez ajouter une description à votre étiquette,
-avec l'option `--annotate` de `git tag`. Ces annotations sont souvent utilisées
-pour indiquer les points du développement d'un logiciel auxquels une version
-publique a été distribuée, et documenter les nouveautés de cette version :
+avec l’option `--annotate` de `git tag`. Ces annotations sont souvent utilisées
+pour indiquer les points du développement d’un logiciel auxquels une version
+publique a été distribuée, et documenter les nouveautés de cette version :
 
     $ git tag --annotate v1.0 HEAD~
 
-Un moyen simple d'afficher la description d'une étiquette annotée est d'utiliser
-la commande `git show` :
+Un moyen simple d’afficher la description d’une étiquette annotée est d’utiliser
+la commande `git show` :
 
     $ git show v1.0
 
 Vous pouvez aussi afficher la liste des étiquettes présentes dans le dépôt avec
-`git tag --list`, qui s'abbrévie en `git tag` :
+`git tag --list`, qui s’abrévie en `git tag` :
 
     $ git tag --list
 
-Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
+Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
 
     $ git tag --delete v1.0 important maman papa ancetre
 
 ### Revenir dans le passé
 
-git nous permet aussi de remonter le temps, et de charger le contenu d'une
+git nous permet aussi de remonter le temps, et de charger le contenu d’une
 version préalablement enregistrée dans le répertoire de travail.
 
-Pour que les choses se passent bien, il faut au préalable s'assurer que ledit
-répertoire de travail soit _propre_, c'est à dire qu'il n'y ait pas de
-changements non enregistrés dans celui-ci. Pour savoir si c'est le cas, on peut
-comme toujours utiliser `git status` :
+Pour que les choses se passent bien, il faut au préalable s’assurer que ledit
+répertoire de travail soit _propre_, c’est-à-dire qu’il n’y ait pas de
+changements non enregistrés dans celui-ci. Pour savoir si c’est le cas, on peut
+comme toujours utiliser `git status` :
 
     $ git status
 
-Si vous avez suivi le déroulement prévu du TP, ce n'est pas le cas, il y a des
-changements en attente. Il va falloir s'occuper de ces changements d'abord, par
-exemple en les sauvegardant sous forme d'un nouveau `commit`.
+Si vous avez suivi le déroulement prévu du TP, ce n’est pas le cas, il y a des
+changements en attente. Il va falloir s’occuper de ces changements d’abord, par
+exemple en les sauvegardant sous forme d’un nouveau `commit`.
 
     $ git add --all
     $ git commit -m 'La version ultime'
     $ git status
 
 Maintenant, nous sommes prêts. Revenons donc à un ancien commit, par exemple le
-parent de celui que nous venons de créer, avec la commande `git checkout` :
+parent de celui que nous venons de créer, avec la commande `git checkout` :
 
     $ git checkout HEAD~
 
-A ce stade, git vous affichera un message pour vous avertir que vous n'êtes plus
+À ce stade, git vous affichera un message pour vous avertir que vous n’êtes plus
 sur une branche, et que si vous créez des commits dans cet état, vous ne pourrez
-pas facilement les retrouver par le suite. En terminologie git, on désigne cet
+pas facilement les retrouver par la suite. En terminologie git, on désigne cet
 état par le qualificatif morbide de `HEAD détachée`.
 
 Le reste du message vous explique comment vous pourriez préserver vos
@@ -340,71 +340,71 @@ mais ici nous ne souhaitons pas créer de nouveaux commits donc vous pouvez
 ignorer cette suggestion.
 
 Si vous regardez les fichiers de votre dépôt, vous pouvez constater que leur
-contenu a changé pour reprendre la valeur qu'ils avaient dans la version
-précédente. Une vraie machine à voyager dans le temps !
+contenu a changé pour reprendre la valeur qu’ils avaient dans la version
+précédente. Une vraie machine à voyager dans le temps !
 
-N'hésitez pas à revenir en différents points de votre historique avec
+N’hésitez pas à revenir en différents points de votre historique avec
 `git checkout`, en utilisant `gitg` pour retrouver les identifiants de vos
-commits. Par défaut, `gitg` affiche l'historique relativement au commit actif,
-mais vous pouvez lui faire afficher l'ensemble des commits du dépôt en
-sélectionnant l'option "Tous les commits" dans le menu de gauche.
+commits. Par défaut, `gitg` affiche l’historique relativement au commit actif,
+mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
+sélectionnant l’option « Tous les commits » dans le menu de gauche.
 
-Quand vous avez fini d'explorer, il est facile de revenir sur la branche
-`master` :
+Quand vous avez fini d’explorer, il est facile de revenir sur la branche
+`master` :
 
     $ git checkout master
 
 ### Annuler un jeu de commits
 
-Il est possible d'annuler l'effet d'un jeu de commits de façon non-destructive
+Il est possible d’annuler l’effet d’un jeu de commits de façon non-destructive
 avec la commande `git revert`.
 
-Cette commande modifie l'effet du répertoire de travail, il faut donc s'assurer
-d'abord que ledit répertoire de travail est propre :
+Cette commande modifie l’effet du répertoire de travail, il faut donc s’assurer
+d’abord que ledit répertoire de travail est propre :
 
     $ git status
 
-Ensuite, pour annuler par exemple l'effet du dernier commit effectué, on
+Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on
 exécutera la commande suivante, qui à la manière de `git commit` demandera la
-saisie d'une description par le biais d'un éditeur de texte :
+saisie d’une description par le biais d’un éditeur de texte :
 
     $ git revert HEAD
 
-A plus grande échelle, il est aussi possible d'annuler l'effet de plusieurs
+À plus grande échelle, il est aussi possible d’annuler l’effet de plusieurs
 commits avec la variante `git revert <commit1> <commit2>`, ou celui
-d'une série de commits avec la variante `git revert <commit1>..<commitN>` (notez
+d’une série de commits avec la variante `git revert <commit1>..<commitN>` (notez
 les deux points entre les deux identifiants de commit spécifiant le début et la
 fin du jeu de changement à annuler).
 
 Cette commande est sans risque, car elle fonctionne en créant un nouveau commit
-qui annule l'effet du commit choisi. L'ancien commit n'est donc pas perdu, il
-reste présent dans l'historique, et on ne peut donc pas perdre accidentellement
+qui annule l’effet du commit choisi. L’ancien commit n’est donc pas perdu, il
+reste présent dans l’historique, et on ne peut donc pas perdre accidentellement
 des données en utilisant `revert`.
 
-Cependant, cela signifie aussi que `git revert` n'est pas l'outil approprié pour
-annuler un ajout incorrect au dépôt, comme par exemple l'ajout d'un secret
-cryptographique ou d'un gros fichier à la gestion de version. Dans ces cas-là,
+Cependant, cela signifie aussi que `git revert` n’est pas l’outil approprié pour
+annuler un ajout incorrect au dépôt, comme l’ajout d’un secret
+cryptographique ou d’un gros fichier à la gestion de version. Dans ces cas-là,
 il faudra avoir recours à des outils beaucoup plus invasifs et destructeurs tels
-que `git filter-branch` ou le "BFG Repo-Cleaner".
+que `git filter-branch` ou le « BFG Repo-Cleaner ».
 
 
 ## Conclusion
 
-Dans ce TP, nous avons vu comment git permet de...
+Dans ce TP, nous avons vu comment git permet de…
 
 - Sauvegarder des versions de son travail (_commits_)
 - Comparer des versions de fichiers avec `git diff`
-- Visualiser l'historique du dépôt
+- Visualiser l’historique du dépôt
 - Désigner les commits au sein de ce dernier de différentes façons
-- Accéder à d'anciennes versions de son travail
+- Accéder à d’anciennes versions de son travail
 
 Avec ces notions, nous pouvons utiliser git pour construire un historique de
-fichiers linéaire. C'est tout à fait suffisant pour travailler seul sur un
+fichiers linéaire. C’est tout à fait suffisant pour travailler seul sur un
 projet, et les anciens gestionnaires de version allaient rarement au-delà.
 
-Mais pour collaborer facilement avec d'autres personnes, il va falloir
-introduire un outil qui permet à git de représenter la notion d'évolution
-parallèle : la branche. Ce sera le sujet de la prochaine séquence.
+Mais pour collaborer facilement avec d’autres personnes, il va falloir
+introduire un outil qui permet à git de représenter la notion d’évolution
+parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 
 
 ----
@@ -414,9 +414,9 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 1. Créez un dépôt git vide.
 2. Ajoutez quelques fichiers du contenu de votre choix, puis enregistrez un
    _commit_ contenant ces fichiers.
-3. Modifiez au moins deux des fichers que vous avez sauvegardés, puis créez un
-   commit ne comprenant que les modifications d'un seul fichier.
-4. Affichez les modifications qui n'ont pas encore été sauvegardées.
+3. Modifiez au moins deux des fichiers que vous avez sauvegardés, puis créez un
+   commit ne comprenant que les modifications d’un seul fichier.
+4. Affichez les modifications qui n’ont pas encore été sauvegardées.
 5. Utilisez un raccourci git pour créer un commit contenant les modifications
    des autres fichiers sans avoir besoin de les nommer dans les commandes.
 6. Affichez la différence entre les deux premiers commits que vous avez
@@ -427,93 +427,93 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 
 ## Antisèche
 
-Dans toutes les commandes qui suit, l'indication `<chemins>` peut être remplacée
-par un ou plusieurs chemins d'accès vers des fichiers ou des dossiers.
+Dans toutes les commandes qui suit, l’indication `<chemins>` peut être remplacée
+par un ou plusieurs chemins d’accès vers des fichiers ou des dossiers.
 
-Ajouter des changements à l'index (pour les inclure dans le prochain commit) :
+Ajouter des changements à l’index (pour les inclure dans le prochain commit) :
 
     $ git add <chemins>
 
-...en prennant en compte les suppressions de fichier (rejetées par défaut) :
+...en prenant en compte les suppressions de fichier (rejetées par défaut) :
 
     $ git add --all <chemins>
 
-Créer un _commit_, une version sauvegardée du projet :
+Créer un _commit_, une version sauvegardée du projet :
 
     $ git commit
 
-Saisir la description du commit directement dans la commande :
+Saisir la description du commit directement dans la commande :
 
     $ git commit -m <description>
 
-Afficher les changements des **fichiers versionnés** par rapport à l'index :
+Afficher les changements des **fichiers versionnés** par rapport à l’index :
 
     $ git diff
 
-...par rapport au dernier commit enregistré (commit actif) :
+…par rapport au dernier commit enregistré (commit actif) :
 
     $ git diff HEAD
 
 `HEAD` désigne le dernier commit enregistré. Pour tout commit `com`, `com~`
-désigne le commit parent (celui qui le précède) dans l'historique, `com~2` le
+désigne le commit parent (celui qui le précède) dans l’historique, `com~2` le
 commit grand-parent (le parent du parent), et ainsi de suite.
 
-Afficher les changements dans l'index par rapport au commit actif :
+Afficher les changements dans l’index par rapport au commit actif :
 
     $ git diff --cached
 
-Afficher les changements survenus du commit A au commit B :
+Afficher les changements survenus du commit A au commit B :
 
     $ git diff A..B
 
-Restreindre l'affichage des changements à certain fichiers (ou dossiers) :
+Restreindre l’affichage des changements à certain fichiers (ou dossiers) :
 
     $ git diff <chemins>
 
-Afficher l'historique des commits en ligne de commande
+Afficher l’historique des commits en ligne de commande
 
     $ git log
 
-Lancer le visualiseur d'historique `gitg` sans bloquer le terminal
+Lancer le visualiseur d’historique `gitg` sans bloquer le terminal
 
     $ gitg &
 
-Donner un nom à un commit (par défaut le commit actif) avec une étiquette :
+Donner un nom à un commit (par défaut le commit actif) avec une étiquette :
 
     $ git tag <étiquette> [<commit>]
 
-...et compléter l'étiquette par une description :
+…et compléter l’étiquette par une description :
 
     $ git tag --annotate <étiquette> [<commit>]
 
-Afficher la liste des étiquettes présentes dans le dépôt :
+Afficher la liste des étiquettes présentes dans le dépôt :
 
     $ git tag --list
 
-Détruire une ou plusieurs étiquette(s) :
+Détruire une ou plusieurs étiquette·s :
 
     $ git tag --delete <étiquettes>
 
-Afficher les propriétés d'un commit et de ses étiquettes éventuelles :
+Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
 
     $ git show <commit>
 
 **Attention :** Les commandes suivantes modifient le répertoire de travail et
 doivent donc être exécutées dans un répertoire de travail propre.
 
-Charger le contenu d'un commit dans le répertoire de travail  :
+Charger le contenu d’un commit dans le répertoire de travail :
 
     $ git checkout <commit>
 
-Revenir sur la branche master :
+Revenir sur la branche master :
 
     $ git checkout master
 
-Créer un commit qui annule l'effet d'un ou plusieurs autres commits :
+Créer un commit qui annule l’effet d’un ou plusieurs autres commits :
 
     $ git revert <commits>
 
-Créer un commit qui annule l'effet de tous les commits entre A et B :
+Créer un commit qui annule l’effet de tous les commits entre A et B :
 
     $ git revert A..B
 
@@ -521,31 +521,31 @@ Créer un commit qui annule l'effet de tous les commits entre A et B :
 
 ## Informations complémentaires
 
-### Contrôler finement les ajouts à l'index
+### Contrôler finement les ajouts à l’index
 
-Parfois, il arrive que l'on se soit un peu laissé emporter et que l'on ait
+Parfois, il arrive que l’on se soit un peu laissé emporter et que l’on ait
 effectué de nombreuses modifications sur un fichier en oubliant de créer des
 versions intermédiaires.
 
 Dans de nombreux projets, créer un grand commit fourre-tout regroupant tous ces
 changements est mal vu, et il est préférable de décomposer ces modifications en
-plusieurs commits plus simples. Mais comment faire lorsqu'ils y a plusieurs
-changements qui n'ont rien à voir au sein d'un même fichier ?
+plusieurs commits plus simples. Mais comment faire lorsqu’il y a plusieurs
+changements qui n’ont rien à voir au sein d’un même fichier ?
 
-git fournit pour ce genre de cas l'outil `git add --patch <fichier>`. C'est une
-variante plus avancée de `git add`, qui permet d'ajouter sélectivement des
-modifications du fichier à l'index.
+git fournit pour ce genre de cas l’outil `git add --patch <fichier>`. C’est une
+variante plus avancée de `git add`, qui permet d’ajouter sélectivement des
+modifications du fichier à l’index.
 
 Une description complète de cet outil serait difficile à faire par écrit du fait
 de sa nature interactive, et sort un peu du cadre de cette formation courte.
-Mais si vous avez de l'avance sur le TP, nous vous invitons à solliciter le
+Mais si vous avez de l’avance sur le TP, nous vous invitons à solliciter le
 formateur pour une démonstration.
 
 ### Corriger son dernier commit
 
 Au lieu de créer un nouveau commit, on peut aussi vouloir modifier le commit
 précédent, par exemple pour ajouter des modifications oubliées ou pour changer
-la description. Tout cela est possible avec l'option `--amend` :
+la description. Tout cela est possible avec l’option `--amend` :
 
     $ echo 'Du nouveau!' > NouveauContenu.txt
     $ git add NouveauContenu.txt
@@ -553,83 +553,83 @@ la description. Tout cela est possible avec l'option `--amend` :
 
 Les plus attentifs remarqueront peut-être dans la sortie de `git commit --amend`
 que cette opération modifie aussi le _hash_ hexadécimal qui identifie le commit.
-Il y a des causes profondes à cela :
+Il y a des causes profondes à cela :
 
-- Le _hash_ d'un commit est une fonction déterministe de son contenu. C'est ce qui
-  fait qu'il est improbable que deux commits indépendants sur le réseau
+- Le _hash_ d’un commit est une fonction déterministe de son contenu. C’est ce qui
+  fait qu’il est improbable que deux commits indépendants sur le réseau
   aient le même _hash_, permettant ainsi la gestion de version distribuée.
 - Un gestionnaire de version ne modifie jamais directement un commit. Quand on
-  fait `git commit --amend`, git retire l'ancien commit de l'historique et le
-  remplace par un nouveau commit avec nos modifications. L'ancien commit est en
-  réalité toujours présent dans le dépôt, et il existe des moyens d'y remonter
+  fait `git commit --amend`, git retire l’ancien commit de l’historique et le
+  remplace par un nouveau commit avec nos modifications. L’ancien commit est en
+  réalité toujours présent dans le dépôt, et il existe des moyens d’y remonter
   en cas de manipulation accidentelle.
 
 `git commit --amend` est un premier exemple de commande qui modifie
-l'historique. git dispose d'un vocabulaire riche de commandes de ce type, que
-nous aurons l'occasion d'explorer davantage au cours de la formation.
+l’historique. git dispose d’un vocabulaire riche de commandes de ce type, que
+nous aurons l’occasion d’explorer davantage au cours de la formation.
 
 ### Annuler des manipulations accidentelles
 
-L'une des fonctions fondamentales d'un gestionnaire de version étant de pouvoir
+L’une des fonctions fondamentales d’un gestionnaire de version étant de pouvoir
 revenir en arrière en cas de problème, la plupart des opérations git peuvent
-être annulées. Voici une première série de commandes pour annuler...
+être annulées. Voici une première série de commandes pour annuler…
 
-- L'ajout de modifications à l'index → `git reset [<fichiers>]`
-    * D'anciennes versions de git distinguaient l'ajout de modifications à
-      l'index de ajout de fichiers à la gestion de version. Avec elles, il faut
+- L’ajout de modifications à l’index → `git reset [<fichiers>]`
+    * D’anciennes versions de git distinguaient l’ajout de modifications à
+      l’index de l’ajout de fichiers à la gestion de version. Avec elles, il faut
       utiliser `git rm --cached <fichiers>` dans le second cas.
-- La création d'un commit → `git reset --soft HEAD~`
-- La création d'un commit + les ajouts préalables à l'index → `git reset HEAD~`
-- La création d'un commit + les ajouts préalables à l'index + les modifications
+- La création d’un commit → `git reset --soft HEAD~`
+- La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
+- La création d’un commit + les ajouts préalables à l’index + les modifications
   préalables du répertoire de travail (DANGER) → `git reset --hard HEAD~`
 
-Les pouvoirs d'annulation de git se limitent malheureusement aux données qui ont
+Les pouvoirs d’annulation de git se limitent malheureusement aux données qui ont
 été versionnées. Les opérations sur le répertoire de travail sont en général
-irréversibles. C'est une des raisons pour lesquelles il vaut mieux créer
+irréversibles. C’est une des raisons pour lesquelles il vaut mieux créer
 fréquemment des commits simples que de créer rarement des commits complexes.
 
-La seule chose qu'il est facile de faire dans le répertoire de travail, c'est de
-ramener des fichiers du répertoire de travail à l'état enregistré dans `HEAD`,
+La seule chose qu’il est facile de faire dans le répertoire de travail, c’est de
+ramener des fichiers du répertoire de travail à l’état enregistré dans `HEAD`,
 avec la commande `git checkout -- <fichier>`. Comme toute opération sur le
 répertoire de travail, cette commande est irréversible, donc dangereuse, et doit
 être utilisée avec prudence pour éviter des pertes de données.
 
 ### Mettre des changements de côté
 
-Parfois, lorsqu'on souhaite se promener dans l'historique avec `git checkout`,
+Parfois, lorsqu’on souhaite se promener dans l’historique avec `git checkout`,
 devoir sauvegarder les modifications de son répertoire de travail est ennuyeux.
-On n'est pas encore prêt à créer un commit qui représente une version cohérente
-du projet, et on n'en voit pas la nécessité alors qu'on veut "juste" aller jeter
-un coup d'oeil à l'histoire du dépôt.
+On n’est pas encore prêt à créer un commit qui représente une version cohérente
+du projet, et on n’en voit pas la nécessité alors qu’on veut « juste » aller jeter
+un coup d’œil à l’histoire du dépôt.
 
 Pour ce genre de cas, git fournit un outil bien pratique appelé `git stash`. Cet
-outil prend toutes les modifications actuelle et les range dans un endroit à
-part du dépôt (en fait une branche jetable). Démonstration :
+outil prend toutes les modifications actuelles et les range dans un endroit à
+part du dépôt (en fait une branche jetable). Démonstration :
 
     $ echo 'Demandez le programme !' >> AutreContenu.txt
     $ git status
     $ git stash
     $ git status
 
-La liste des modifications sauvegardées prend la forme d'une pile, que l'on peut
-consulter avec la commande `git stash list` :
+La liste des modifications sauvegardées prend la forme d’une pile, que l’on peut
+consulter avec la commande `git stash list` :
 
     $ git stash list
 
-Lorsqu'on est prêt à reprendre le travail sur cette version du répertoire de
-travail, il suffit d'utiliser la commande `git stash pop` pour restaurer la
-dernière version sauvegardée du répertoire de travail :
+Lorsqu’on est prêt à reprendre le travail sur cette version du répertoire de
+travail, il suffit d’utiliser la commande `git stash pop` pour restaurer la
+dernière version sauvegardée du répertoire de travail :
 
     $ git stash pop
 
-Comme avec git checkout, il est préférable de n'effectuer cette opération que
+Comme avec git checkout, il est préférable de n’effectuer cette opération que
 sur un répertoire de travail propre.
 
 ### Autres outils graphiques
 
-Une liste relativement complète d'outils graphiques pour visualiser et manipuler
+Une liste relativement complète d’outils graphiques pour visualiser et manipuler
 des dépôts git est disponible sur https://www.git-scm.com/downloads/guis .
 
-L'auteur travaille plutôt sous Linux, mais quand il lui arrive de développer
+L’auteur travaille plutôt sous Linux, mais quand il lui arrive de développer
 sous macOS ou Windows, il aime bien le logiciel Sourcetree (
 https://www.sourcetreeapp.com/ ).
