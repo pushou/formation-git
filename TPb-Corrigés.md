@@ -360,7 +360,7 @@ On peut vérifier la configuration des _remotes_ avec `git remote -v` :
     upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (fetch)
     upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (push)
 
-Ici, nous suivons la configuration habituelle : `origin` pointe sur le fork, et
+Ici, nous suivons la configuration habituelle : `origin` pointe sur le _fork_, et
 `upstream` sur le dépôt officiel.
 
 Pour créer une nouvelle branche partant de la branche `master`, on commence par
