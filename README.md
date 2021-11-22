@@ -11,7 +11,7 @@ de version git, composé des éléments suivants :
 - Des « quiz » pour jauger le niveau de compréhension de la salle et réviser les
   notions acquises, sur le modèle de l’émission « Questions pour un champion »
 - Un plan pour l’organisation temporelle de la formation sur deux jours
-- Un script permettant le rendu automatisé des supports stagiaires en PDF
+- Un makefile permettant le rendu automatisé des supports stagiaires en PDF
 - Une machine virtuelle au sein de laquelle les TPs seront effectués
 
 Le mode d’organisation prévu est de commencer par présenter un jeu de planches,
@@ -39,15 +39,15 @@ Vous trouverez plus d’informations sur https://git-lfs.github.com/ .
 Des problèmes de compatibilité ont été signalés avec la version 2.5.2 de git
 LFS. L’utilisation de git LFS ≥ 2.6.0 est donc fortement recommandée.
 
-Le script `rendu_pdf.sh` permet d’automatiser le rendu PDF des TPs et des
-planches. Pour l’utiliser, vous devez avoir installé l’outil de conversion de
-document `pandoc`, une distribution LaTeX comportant l’outil `pdflatex`, et la
-suite bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0).
+Le makefile inclus permet d’automatiser le rendu PDF des TPs et des
+présentations. Pour l’utiliser, vous devez avoir installé l’outil de conversion
+de document `pandoc`, une distribution LaTeX comportant l’outil `pdflatex`, et
+la suite bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0).
 
-Notez que l’outil de conversion de documents en ligne de commande de LibreOffice
-ne peut pas s’exécuter en même temps que l’application graphique. Il faut donc
-fermer toutes les instances de celle-ci avant de pouvoir effectuer des rendus
-des présentations.
+Notez que LibreOffice n'accepte pas de s'exécuter en deux exemplaires
+simultanément. Il faut donc fermer toutes les instances de l'application
+graphique avant d'utiliser le makefile, et s'abstenir de lancer celui-ci en
+parallèle (option `-j`) pour le rendu des présentations.
 
 La salle de formation doit comporter un vidéoprojecteur, équipement désormais
 assez standard, mais il faut surtout procéder à l’avance à une installation de
@@ -59,7 +59,7 @@ générée avec VirtualBox 6.1.
 
 En plus des planches et des énoncés de TP, ce dépôt contient deux documents à
 destination du formateur, dont l’impression utilise un format un peu particulier
-que je n’ai pas réussi à automatiser dans le script `rendu_pdf.sh`.
+que je n’ai pas réussi à automatiser dans le makefile.
 
 Le fichier `Démos.odt` contient un aide-mémoire pour les démonstrations d’outils
 utilisés pendant les TP. Cet aide mémoire est au format A5 paysage,
