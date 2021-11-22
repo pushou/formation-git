@@ -121,7 +121,7 @@ Mais d’abord, effectuons un commit dans le dépôt parent pour tester `git pul
     $ cd ../MesBranches
     $ echo 'Demandez le programme !' >> ToutNouveau.txt
     $ git add ToutNouveau.txt
-    $ git commit -m "Du contenu supplémentaire"
+    $ git commit -m 'Du contenu supplémentaire'
     $ cd ../MonClone
     $ git pull origin univers-parallele
     $ cat ToutNouveau.txt
@@ -219,9 +219,9 @@ Il est courant de vouloir pousser la branche active. Un premier raccourci de
 `git push` consiste donc à ne préciser que la _remote_ cible. C’est alors la
 branche active qui sera soumise à cette _remote_.
 
-    $ echo 'Hallo!' > HelloWorld.txt
+    $ echo 'Hallo !' > HelloWorld.txt
     $ git add HelloWorld.txt
-    $ git commit -m "Traduction allemande"
+    $ git commit -m 'Traduction allemande'
     $ git push origin
 
 Si nous nous rendons maintenant sur le dépôt parent, les changements y ont été
@@ -488,7 +488,7 @@ détruire celle-ci. Cela évite une prolifération des branches inactives qui pe
 rendre l’historique d’un dépôt incompréhensible.
 
 On peut le faire en utilisant `git push --delete`, ou sur les anciennes versions
-de git son prédécesseur moins lisible, le signe '`:`'.
+de git son prédécesseur moins lisible, le signe « `:` ».
 
     $ git push --delete mondepot mabranche
     $ git push mondepot :mabranche

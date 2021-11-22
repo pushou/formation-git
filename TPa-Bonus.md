@@ -95,7 +95,7 @@ La manière la plus simple d'utiliser `git grep` est :
 
 Une option très utile est `-E`, qui active le support des expressions régulières
 Perl. Le prix à payer étant qu'il y a davantage de caractères spéciaux que l'on
-doit "échapper" avec `\` dans la chaîne recherchée :
+doit parfois "échapper" avec `\` dans la chaîne recherchée :
 
     $ git grep -E '(ce(ci|la)?|ça)'
 

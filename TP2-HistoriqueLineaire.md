@@ -547,7 +547,7 @@ Au lieu de créer un nouveau commit, on peut aussi vouloir modifier le commit
 précédent, par exemple pour ajouter des modifications oubliées ou pour changer
 la description. Tout cela est possible avec l’option `--amend` :
 
-    $ echo 'Du nouveau!' > NouveauContenu.txt
+    $ echo 'Du nouveau !' > NouveauContenu.txt
     $ git add NouveauContenu.txt
     $ git commit --amend -m 'Une version avec plus de contenu'
 

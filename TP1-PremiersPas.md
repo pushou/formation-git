@@ -95,7 +95,7 @@ ce que l’on appelle un « dépôt ». On utilise pour cela la commande `git 
     $ git init
 
 Comme le message de statut l’indique, cette opération crée un sous-dossier
-caché "`.git`", où git stockera ses versions de fichiers.
+caché « .git », où git stockera ses versions de fichiers.
 
 ### Statut et ajouts
 
@@ -330,7 +330,7 @@ Déplacer un fichier sous gestion de version :
 
 Ignorer les fichiers d’extension « .log » (à exécuter à la racine du dépôt) :
 
-    $ echo "*.log" >> .gitignore
+    $ echo '*.log' >> .gitignore
 
 Afficher le manuel d’une commande git (ou l’explication d’un concept git) :
 
@@ -393,7 +393,7 @@ Pour utiliser cette fonctionnalité :
 
 - Dans la machine virtuelle active, utiliser le menu VirtualBox
   « Périphériques > Dossiers Partagés > Réglage des dossiers partagés… »
-- Dans la boîte de dialogue qui s’ouvre, cliquez sur le bouton avec un "+" pour
+- Dans la boîte de dialogue qui s’ouvre, cliquez sur le bouton « + » pour
   ajouter un dossier partagé.
 - Utilisez le champ « Chemin » pour indiquer quel dossier vous souhaitez partager
   avec la machine virtuelle.

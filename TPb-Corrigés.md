@@ -22,11 +22,11 @@ la syntaxe `*.o` qui signifie "tout fichier ou dossier dont le nom se termine
 par .o". On peut, en utilisant cette syntaxe, dire à git d'ignorer les fichiers
 portant cette extension via le fichier spécial .gitignore :
 
-    $ echo "*.o" > .gitignore
+    $ echo '*.o' > .gitignore
 
 Maintenant, créons un fichier :
 
-    $ echo "Blabla" > Test.txt
+    $ echo 'Blabla' > Test.txt
 
 On peut indiquer à git qu'on souhaite versionner ce fichier avec la commande
 `git add`. Ce fichier sera alors inclus dans toutes les versions de
@@ -72,9 +72,9 @@ La procédure pour créer un dépôt git vide est la même que précédemment :
 
 Ajoutons-y un peu de contenu :
 
-    $ echo "Mon premier fichier" > Fichier1.txt
-    $ echo "Mon deuxième fichier" > Fichier2.txt
-    $ echo "Mon troisième fichier" > Fichier3.txt
+    $ echo 'Mon premier fichier' > Fichier1.txt
+    $ echo 'Mon deuxième fichier' > Fichier2.txt
+    $ echo 'Mon troisième fichier' > Fichier3.txt
 
 On indique à git qu'on souhaite versionner des fichiers avec `git add`.
 Lorsqu'on souhaite demander à git de sauvegarder tous les fichiers du dépôt, un
@@ -84,18 +84,18 @@ raccourci pratique est l'option `--all` :
 
 Ensuite, on peut créer un commit contenant tous ces fichiers avec `git commit` :
 
-    $ git commit -m "Mon premier commit"
+    $ git commit -m 'Mon premier commit'
 
 Maintenant, modifions deux fichiers...
 
-    $ echo "De plus" >> Fichier1.txt
-    $ echo "En plus" >> Fichier2.txt
+    $ echo 'De plus' >> Fichier1.txt
+    $ echo 'En plus' >> Fichier2.txt
 
 Si l'on souhaite créer un commit qui ne contient que les modifications d'un seul
 fichier, il suffit de n'appliquer `git add` qu'à celui-ci :
 
     $ git add Fichier1.txt
-    $ git commit -m "Mon deuxième commit"
+    $ git commit -m 'Mon deuxième commit'
 
 Du coup, il reste des modifications non sauvegardées à l'autre fichier :
 
@@ -110,7 +110,7 @@ Pour créer un commit comprenant toutes les modifications non sauvegardées, on 
 plusieurs possibilités. Nous avons déjà vu `git add --all`, quand tous les
 fichiers sont sous gestion de version on peut aussi utiliser `git commit -a` :
 
-    $ git commit -am "Mon troisième commit"
+    $ git commit -am 'Mon troisième commit'
 
 A ce stade, nous avons créé trois commits dans le dépôt. Le plus récemment créé
 peut être désigné par `HEAD`, son prédécesseur par `HEAD~`, et le commit
@@ -167,7 +167,7 @@ Et on peut basculer sur cette branche avec `git checkout` :
 Pour créer un commit ajoutant un nouveau fichier, on crée le fichier, puis on le
 l'ajoute à l'index avec `git add`, et on crée le commit avec `git commit` :
 
-    $ echo "Un fichier" > LeFichier.txt
+    $ echo 'Un fichier' > LeFichier.txt
     $ git add LeFichier.txt
     $ git commit -m "Ajout d'un fichier"
 
@@ -187,16 +187,16 @@ ce retard en y fusionnant les nouveautés de la branche master avec `git merge` 
 
 Maintenant, remplaçons le contenu d'un fichier au sein de la branche active...
 
-    $ echo "v1" > LeFichier.txt
+    $ echo 'v1' > LeFichier.txt
     $ git add LeFichier.txt
-    $ git commit -m "Première version"
+    $ git commit -m 'Première version'
 
 ...et au sein de la branche master, en basculant sur celle-ci :
 
     $ git checkout master
-    $ echo "v2" > LeFichier.txt
+    $ echo 'v2' > LeFichier.txt
     $ git add LeFichier.txt
-    $ git commit -m "Deuxième version"
+    $ git commit -m 'Deuxième version'
 
 Si l'on essaye de fusionner nouvelle-branche au sein de master avec `git merge`,
 il y aura conflit au niveau de ce fichier :
@@ -283,10 +283,10 @@ Pour créer une branche en vue d'y ajouter quelques commits, on peut utiliser le
 raccourci `git checkout -b` :
 
     $ git checkout -b test
-    $ echo "Le contenu" > AutreContenu.txt
-    $ git commit -am "Un commit de test"
-    $ echo "Plus de contenu" >> AutreContenu.txt
-    $ git commit -am "Un autre commit de test"
+    $ echo 'Le contenu' > AutreContenu.txt
+    $ git commit -am 'Un commit de test'
+    $ echo 'Plus de contenu' >> AutreContenu.txt
+    $ git commit -am 'Un autre commit de test'
 
 A ce stade, le clone du dépôt n'est pas au courant de l'existence de ces
 commits et de cette nouvelle branche, puisqu'en git les échanges entre dépôts
@@ -308,7 +308,7 @@ ferions sur n'importe quelle autre branche locale :
     $ echo "Renouvelons l'offre" > NouveauFichier.txt
     $ git add NouveauFichier.txt
     $ git commit -m "Ajout d'un fichier"
-    $ echo "Renouvelons la demande" >> NouveauFichier.txt
+    $ echo 'Renouvelons la demande' >> NouveauFichier.txt
     $ git commit -am "Complétion d'un fichier"
 
 Pour récupérer ces changements dans le dépôt d'origine, nous allons devoir
@@ -325,12 +325,12 @@ de notre branche test locale avec, par exemple, le raccourci `git pull` :
 Pour terminer, ajoutons quelques commits sur la branche `master` de `MonDepot` :
 
     $ git checkout master
-    $ echo "Je ne sais quoi inventer" > Incertitude.txt
+    $ echo 'Je ne sais quoi inventer' > Incertitude.txt
     $ git add --all
-    $ git commit -m "Méditation"
-    $ echo "Je ne sais quoi penser" >> Incertitude.txt
+    $ git commit -m 'Méditation'
+    $ echo 'Je ne sais quoi penser' >> Incertitude.txt
     $ git add Incertitude.txt
-    $ git commit -am "Moment philosophique"
+    $ git commit -am 'Moment philosophique'
 
 On peut propager ces changements sur la branche `master` de `TonDepot` avec un
 simple `git push` :
@@ -374,7 +374,7 @@ basculer sur cette branche...
 
 ...et on peut y enregistrer des changements de la façon habituelle :
 
-    $ echo -e "\n(C) 1789, Être Suprême Inc." >> README.md
+    $ echo -e '\n(C) 1789, Être Suprême Inc.' >> README.md
     $ git commit -am "Ajout d'une notice de copyright"
 
 On peut ensuite pousser la branche sur son _fork_ avec `git push`. La première
@@ -386,10 +386,10 @@ cette association pour la suite avec `--set-upstream` :
 On peut ensuite répéter l'opération autant de fois qu'on le souhaite, sans
 nécessité de répéter le nom de la _remote_ à chaque fois dans `git push` :
 
-    $ echo "AAAAAAH" >> README.md
-    $ git commit -am "Panique à bord !"
-    $ echo "QQQQQQH" >> README.md
-    $ git commit -am "Panique à bord en QWERTY !"
+    $ echo 'AAAAAAH' >> README.md
+    $ git commit -am 'Panique à bord !'
+    $ echo 'QQQQQQH' >> README.md
+    $ git commit -am 'Panique à bord en QWERTY !'
     $ git push
 
 Il est possible qu'entre-temps le `master` du dépôt officiel ait évolué.
