@@ -4,10 +4,10 @@
 
 - **2 cœurs CPU :** Supporté par la grande majorité des machines hôtes
   actuelles, et permet un GUI plus fluide dans la VM.
-- **2 Go de RAM :** 512 Mo suffirait pour une stricte utilisation d’un terminal
-  + gitg + meld, mais 2 Go permet un surf web plus confortable dans la VM tout
+- **4 Go de RAM :** 512 Mo suffirait pour une stricte utilisation d’un terminal
+  + gitg + meld, mais 4 Go permet un surf web confortable dans la VM tout
   en restant supporté par la grande majorité des machines hôtes actuelles (les
-  PCs avec moins de 4 Go de RAM sont rares aujourd’hui).
+  PCs avec moins de 8 Go de RAM deviennent rares).
 - **6 Go de disque :** Un système installé ne prend que 4.1 Go, donc en principe
   5 Go devrait suffire, mais en pratique l’installeur openSUSE ne supprime pas
   les paquets RPM avant la fin de l’installation et il faut donc plus de place
