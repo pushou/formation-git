@@ -14,7 +14,7 @@ pour explorer les subtilités de la gestion de version collaborative.
 
 ## Préparations au travail en réseau
 
-### Configuration du GitLab IN2P3
+### Accès web au GitLab IN2P3
 
 Nous allons utiliser pour cette partie de la formation la forge GitLab
 administrée par le centre de calcul de l’IN2P3, https://gitlab.in2p3.fr .
@@ -41,28 +41,78 @@ Si c’est la première fois que vous vous connectez, un compte vous sera créé
 automatiquement sur la plate-forme, et vous arriverez sur la page d’accueil de
 GitLab. La procédure sera la même pour vous reconnecter par la suite.
 
-Toutefois, il ne vous suffit pas de pouvoir vous connecter à l’interface web.
-Pour ce TP, vous aurez besoin d’échanger des _commits_ avec la forge, ce qui
-implique que votre client git local puisse s’authentifier en votre nom auprès
-du serveur. Il existe plusieurs moyens de faire cela, mais malheureusement…
+### Authentification SSH
 
-- La configuration réseau du campus de Gif-sur-Yvette ne nous permet pas
-  d’utiliser le protocole SSH, nous sommes donc forcés d’utiliser le HTTPS.
-- Comme le client git en ligne de commande n’est pas compatible avec le mode
-  d’authentification EduGAIN/Shibboleth, vous allez devoir créer un mot de passe
-  spécial juste pour les besoins de l’échange réseau entre votre ordinateur et
-  GitLab via HTTPS.
+Il ne suffit pas de pouvoir vous connecter à l’interface web pour pouvoir
+échanger des _commits_ avec la forge. Vous devez également fournir à votre
+utilitaire git local un moyen de confirmer votre identité auprès du serveur,
+lors de certaines opérations sensibles comme écrire des _commits_ dans un dépôt
+ou lire les _commits_ d'un dépôt privé. On parle de s'authentifier.
 
-Pour configurer un tel mot de passe…
+Il existe plusieurs moyens de faire cela. Dans ce TP nous utiliserons
+l'authentification SSH, qui est la plus utilisée. Mais vous pouvez consulter la
+section « Informations complémentaires » pour plus d'informations sur
+l'authentification HTTPS, qui est parfois utilisé comme alternative.
 
-- Cliquez dans le coin supérieur droit de l’interface GitLab
-- Choisissez l’option « Settings »
-- Choisissez la section « Password » dans le menu à gauche
-- Saisissez un mot de passe et confirmez-le, puis cliquez sur « Save passsword »
+Le protocole SSH est basé sur la cryptographie à clé publique, qui utilise une
+paire de clés cryptographiques :
 
-Cette action aura pour conséquence de vous déconnecter de GitLab. Vous pourrez
-vous y reconnecter de la façon décrite précédemment. Votre mot de passe HTTPS
-est désormais prêt à l’emploi.
+- La clé privée est une information réputée secrète, qui sert à vous identifier.
+- La clé publique doit être transmise aux services auprès desquels vous
+  souhaitez vous identifier au moyen de votre clé privée. Elle leur permet de
+  vérifier que vous possédez la clé privée, mais pas d'usurper votre identité
+  auprès d'autres services ayant connaissance de votre clé publique.
+
+La machine virtuelle que vous utilisez ne possède pas encore de clés SSH…
+
+    $  ls ~/.ssh
+    ls: impossible d'accéder à '/home/formation-git/.ssh': Aucun fichier ou dossier de ce type
+
+…mais vous pouvez facilement en générer une paire avec la commande suivante :
+
+    $ ssh-keygen -t ed25519 -C "formation-git"
+
+`ssh-keygen` va vous poser une série de questions :
+
+- L'endroit où vous souhaitez stocker vos clés. Je vous recommande d'utiliser
+  l'emplacement par défaut en appuyant simplement sur Entrée.
+- La phrase de passe que vous souhaitez utiliser pour protéger votre clé. Pour
+  simplifier la formation, je vous recommande de ne pas utiliser de phrase de
+  passe, en appuyant deux fois de suite sur Entrée.
+
+Ce second point mérite plus ample discussion. Sans phrase de passe, votre clé
+privée est stockée dans votre dossier personnel sans chiffrement supplémentaire,
+ce qui est problématique si vous vous retrouvez dans un des cas suivants :
+
+- Votre ordinateur est volé alors que votre disque dur n'était pas chiffré (rare
+  au CNRS, où le chiffrement des postes professionnels est obligatoire).
+- Vous partagez votre ordinateur avec d'autres utilisateurs qui ont accès à
+  votre dossier personnel et ne sont pas dignes de confiance.
+- Vous exécutez (accidentellement, s'entend) des logiciels malveillants qui
+  s'empressent d'envoyer une copie de votre clé privée à un tiers malveillant.
+
+Toutefois, les méthodes permettant de protéger votre clé SSH de ce type
+d'attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
+git sont un peu complexes et dépendent du système d'exploitation utilisé.
+
+Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
+pour une durée limitée, à l'issue de laquelle votre machine virtuelle et la clé
+SSH qu'elle contient seront détruites, nous accepterons donc le risque de
+travailler sans phrase de passe.
+
+Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
+plus qu'à afficher le contenu de votre clé publique, par exemple avec l'éditeur
+de texte `gedit`…
+
+    $ gedit ~/.ssh/id_ed25519.pub
+
+…puis à la copier-coller dans l'interface web de gestion de clé SSH de Gitlab,
+située sur https://gitlab.in2p3.fr/-/profile/keys . Je vous recommande de lui
+donner un titre explicite du style "Formation Git" et de fixer une date
+d'expiration située au lendemain de la date de fin de la formation.
+
+Et voilà, vous êtes prêt à échanger des _commits_ avec la forge
+gitlab.in2p3.fr !
 
 ### _Fork_ et clonage
 
@@ -79,11 +129,11 @@ Lorsqu’elle est terminée, vous devriez être redirigé automatiquement sur vo
 _fork_ nouvellement créé.
 
 Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
-sur votre machine. Pour cela, vous avez besoin de son URL HTTPS, que vous pouvez
+sur votre machine. Pour cela, vous avez besoin de son URL SSH, que vous pouvez
 obtenir de l’interface GitLab de la façon suivante :
 
 - Cliquez sur le bouton bleu « Clone ».
-- Copiez l’URL située dans la section « Clone with HTTPS ».
+- Copiez l’URL située dans la section « Clone with SSH ».
 
 Une fois l’URL obtenue, créez un clone local du _fork_ de la façon suivante :
 
@@ -110,6 +160,10 @@ _upstream_ :
 
     $ git remote add upstream https://gitlab.in2p3.fr/grasland/ddhc.git
     $ git fetch upstream
+
+Notez qu'on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
+de passe, puisqu'on ne fait que lire des _commits_ depuis un dépôt public, ce
+qui ne nécessite pas de s'identifier.
 
 Si vous ouvrez maintenant `gitg`, vous pourrez constater que vous pouvez
 maintenant visualiser vos commits et branches locales, celles de votre _fork_, et
@@ -324,8 +378,8 @@ plus avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir
 
 1. Partez de votre clone du dépôt `ddhc`.
 2. Vérifiez que les URLs de vos deux _remotes_ sont correctes : `origin` doit
-   pointer sur votre _fork_, `upstream` doit pointer sur le dépôt officiel, et les
-   deux _remotes_ doivent utiliser une connexion HTTPS.
+   pointer sur votre _fork_ et utiliser une connexion SSH, `upstream` doit
+   pointer sur le dépôt officiel, et utiliser une connexion HTTPS.
 3. Créez une nouvelle branche partant du `master`, et ajoutez-y un commit.
 4. Poussez cette branche sur votre _fork_.
 5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur votre _fork_
@@ -347,48 +401,41 @@ aux TPs précédents pour retrouver les commandes utilisées.
 
 ## Informations complémentaires
 
-### Authentification SSH
+### Authentification HTTPS
 
-Arrivé à la fin de ce TP, vous en avez probablement d’ors et déjà assez de taper
-votre mot de passe GitLab sans arrêt. Inutile, donc, de dire que vous ne vous
-imagineriez pas le faire tous les jours. Heureusement, des solutions existent.
+Vous pourriez être amené au cours de votre carrière à travailler dans un réseau
+informatique bloquant le trafic SSH sortant. Si cette politique réseau n'est pas
+négociable, cela empêche l'utilisation du protocole SSH auquel nous avons fait
+appel pendant ce TP.
 
-Une méthode à la fois élégante et sécurisée pour vous authentifier sans mot de
-passe sur un dépôt git est d’utiliser le protocole à clé publique de SSH. L’idée
-est de générer une paire clé privée / clé publique comme vous le feriez pour
-vous authentifier sur un serveur Unix distant en SSH, puis de configurer la clé
-publique associée dans votre forge logicielle.
+A la place, vous devrez utiliser le protocole HTTPS, basé sur un couple nom
+d'utilisateur + mot de passe. Ceci nécessite trois étapes préparatoires :
 
-Une fois ceci fait, git se chargera ensuite d’envoyer à votre forge des
-commandes signées numériquement avec votre clé privée, et la forge pourra
-utiliser votre clé publique pour s’assurer que ces commandes viennent bien de
-vous et non d’un imposteur qui essaie de se faire passer pour vous.
+- Cloner votre dépôt git depuis l'URL HTTPS fournie par la forge, ou dans le cas
+  d'un dépôt déjà cloné changer l'URL des _remotes_ associées à la forge avec
+  la commande `git remote set-url <remote> <URL>`.
+- Pour les forges utilisant un mécanisme d'authentification "SSO" comme
+  gitlab.in2p3.fr…
+  * Trouver votre nom d'utilisateur sur la forge (dans le cas de Gitlab, il
+    apparaît comme `@<nom>` quand on clique sur le menu en haut à droite).
+  * Configurer un mot de passe dédié aux échanges git. Sur l'instance Gitlab de
+    l'IN2P3, cela peut être fait à l'adresse suivante :
+    https://gitlab.in2p3.fr/-/profile/password/edit .
+        - Essayez de laisser le champ « Current password » vide, et si
+          ça ne fonctionne pas utilisez le lien « I forgot my
+          password » pour obtenir par mail un mot de passe utilisable.
 
-Pour se passer totalement de mot de passe, votre clé privée doit être stockée de
-façon non chiffrée (pas de « passphrase »). Un tel stockage offre un niveau de
-sécurité acceptable lorsque vous respectez les prérequis suivants :
+Une fois ceci fait, vous devrez saisir votre nom d'utilisateur et votre mot de
+passe à chaque fois que vous écrivez des données sur la forge (via `git push`),
+et également à chaque fois que vous lisez des données (via `git clone`,
+`git fetch` ou `git pull`) dans le cas d'un dépôt privé. Ce qui devient
+rapidement rébarbatif.
 
-* Votre dossier personnel (« home ») est situé sur un stockage chiffré, et à
-  l’abri du regard des autres utilisateurs si l’ordinateur est partagé.
-* Vous n’exécutez que des logiciels de confiance, non susceptibles d’espionner
-  votre clé privée et de la transmettre à des tiers malveillants.
-
-Dans le cas contraire, une alternative intéressante peut être l’utilisation d’un
-« agent SSH », programme en tâche de fond qui mémorise le mot de passe de la clé
-SSH quelque temps après sa saisie dans le but de réduire la fréquence à
-laquelle on doit le saisir.
-
-Une fois votre installation SSH locale configurée, il faut transmettre votre clé
-publique, qui vous identifie, à la forge logicielle que vous utilisez. La
-procédure de configuration exacte dépendra de la forge utilisée.
-
-Après cela, vous pourrez effectuer vos clones ou configurer vos _remotes_ avec les
-URL SSH à la place des URL HTTPS, et dire adieu à la saisie répétitive du mot de
-passe HTTPS !
-
-Malheureusement, nous n’avons pas pu utiliser d’authentification SSH dans cette
-formation, car le pare-feu du campus de Gif-sur-Yvette bloque le trafic SSH
-sortant…
+Pour une meilleure ergonomie, il est possible de conserver une copie du mot de
+passe en RAM pour la durée de votre session (sûr) ou de stocker votre mot de
+passe sur le disque dur (dangereux). Pour savoir comment, référez-vous à la page
+« gitcredentials » de l'aide de git via `git help gitcredentials`
+ou https://git-scm.com/docs/gitcredentials .
 
 ### Petit tour d’horizon des forges logicielles
 
