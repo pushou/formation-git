@@ -66,7 +66,8 @@ paire de clés cryptographiques :
 La machine virtuelle que vous utilisez ne possède pas encore de clés SSH…
 
     $  ls ~/.ssh
-    ls: impossible d'accéder à '/home/formation-git/.ssh': Aucun fichier ou dossier de ce type
+    ls: impossible d'accéder à '/home/formation-git/.ssh':
+     Aucun fichier ou dossier de ce type
 
 …mais vous pouvez facilement en générer une paire avec la commande suivante :
 
@@ -101,8 +102,7 @@ SSH qu'elle contient seront détruites, nous accepterons donc le risque de
 travailler sans phrase de passe.
 
 Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
-plus qu'à afficher le contenu de votre clé publique, par exemple avec l'éditeur
-de texte `gedit`…
+plus qu'à afficher votre clé publique, par exemple avec l'éditeur `gedit`…
 
     $ gedit ~/.ssh/id_ed25519.pub
 
