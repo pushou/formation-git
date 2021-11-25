@@ -8,14 +8,13 @@
   + gitg + meld, mais 4 Go permet un surf web confortable dans la VM tout
   en restant supporté par la grande majorité des machines hôtes actuelles (les
   PCs avec moins de 8 Go de RAM deviennent rares).
-- **6 Go de disque :** Un système installé ne prend que 4.1 Go, donc en principe
-  5 Go devrait suffire, mais en pratique l’installeur openSUSE ne supprime pas
-  les paquets RPM avant la fin de l’installation et il faut donc plus de place
-  au niveau de l’image disque VirtualBox.
+- **7 Go de disque :** Ne pas oublier, dans le budget disque, l'espace
+  nécessaire aux paquets RPM téléchargés pendant l'installation, ainsi que les
+  512Mo de la partition de démarrage UEFI.
 - **Presse-papier partagé :** Permet d’avoir un lecteur PDF sur l’hôte et de
   copier coller les lignes de commande du TP dans la VM.
-- **64 Mo de mémoire vidéo :** J’ai déjà eu des problèmes graphiques avec le
-  réglage par défaut de 16 Mo, et 64 Mo est empiriquement supporté par tous les
+- **128 Mo de mémoire vidéo :** J’ai déjà eu des problèmes graphiques avec le
+  réglage par défaut de 16 Mo, et 128 Mo est supporté par tous les
   hôtes que j’ai croisés.
 - **Interface utilisateur :** Enlever tout ce qui n’a aucune chance de servir
   durant la formation pour éviter d’impressionner les gens qui n’ont pas
@@ -57,3 +56,6 @@ dire quoi faire lorsqu’il survient.
 
 Et enfin, pour une « propreté » optimale de l’environnement de TP, ne pas oublier
 de vider l’historique bash après avoir configuré la VM.
+
+Committer/pousser la VM dans le dépôt et mettre à jour le README avec la version
+de VirtualBox utiliser.

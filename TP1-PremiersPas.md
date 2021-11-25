@@ -34,26 +34,18 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 Durant cette formation, nous allons travailler dans une machine virtuelle
 configurée de la façon suivante :
 
-- **Ressources matérielles :** 2 cœurs CPU, 2 Go RAM, 6 Go disque
-- **Système d’exploitation :** openSUSE Leap 15.2
+- **Ressources matérielles :** 2 cœurs CPU, 4 Go RAM, 7 Go disque
+- **Système d’exploitation :** openSUSE Leap 15.3
 - **Logiciels installés :**
     * _Éditeurs de texte :_ nano vim emacs gedit
     * _Outils git :_ git gitg meld
 - **Nom d’utilisateur :** formation-git
 - **Mot de passe :** FormationGit
 
-Il est possible de copier-coller du texte entre le système hôte et la machine
-virtuelle. _Malheureusement, lors de l’installation de la formation du
-16/10/2020, il a été découvert que cette fonctionnalité jusqu’ici très fiable ne
-marchait plus bien quand le texte source est issu d’Adobe Reader ! En attendant
-que ce problème mystérieux soit mieux compris et/ou résolu, il est possible de
-le contourner de la façon suivante :_
-
-- _Garder le Bloc-Notes ouvert dans un coin._
-- _Copier le texte désiré depuis Adobe Reader._
-- _Coller le texte dans le Bloc-Notes._
-- _Re-copier le texte depuis le Bloc-Notes._
-- _Le texte peut maintenant être collé dans la machine virtuelle._
+Les supports de la formation sont disponibles via un dossier "Supports" en
+lecture seule sur le bureau de la machine virtuelle. Il est recommandé d'ouvrir
+les énoncés de TP à l'intérieur de la machine virtuelle, car cela permet un
+copier-coller plus fiable que si on les ouvrait sous l'hôte Windows.
 
 Si vous souhaitez aussi échanger des fichiers entre Windows et Linux, nous vous
 renvoyons à la section « Informations complémentaires » de ce TP.
