@@ -261,12 +261,19 @@ Une autre approche est d’examiner soigneusement les changements en conflit, et
 de décider au cas par cas si l’une des deux branches a « raison », ou s’il faut
 avoir recours à une troisième approche. On parle de résoudre le conflit.
 
-Ce processus manuel doit être effectué avec précaution. Il est en effet facile
-d’écarter accidentellement des changements utiles d’une des deux branches, ou
-bien de faire des erreurs lors de l’écriture du « juste milieu ».
+Cela peut être fait manuellement, via la procédure suivante…
+
+- Ouvrir chaque fichier au sein duquel git a ajouté des annotations de conflit.
+- Rechercher ces dernières avec la fonction adéquate de son éditeur de texte.
+- Les remplacer par le contenu final désiré.
+- Confirmer qu'on a résolu le conflit en faisant un `git add` du fichier.
+
+…mais il faut être très prudent en écrivant le contenu final, il est très facile
+de faire des erreurs, typiquement en oubliant accidentellement un changement
+issu d'une des deux branches en conflit.
 
 Pour cette raison, il est fortement recommandé d’utiliser un outil graphique de
-résolution de conflit, qui permet de visualiser l’ensemble du processus et
+résolution de conflit, qui permet de mieux visualiser l’ensemble du processus et
 contrôler en permanence ce qu’on est en train de faire. Dans cette formation,
 nous utiliserons pour cela l’application Meld.
 
@@ -300,7 +307,7 @@ proposée si ce n’est pas déjà fait, puis demandera si le conflit survenu au
 de ce fichier est maintenant résolu. Si oui, il le marquera comme tel dans Git.
 
 Attention à bien fermer l’onglet associé au fichier, et non pas l’application.
-Un bug de meld fait que les modifications ne seront pas enregistrées dans ce
+Un bug de Meld fait que les modifications ne seront pas enregistrées dans ce
 second cas…
 
 Quand on a fini de résoudre tous ses conflits de fichier, on peut vérifier que
