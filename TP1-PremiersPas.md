@@ -390,8 +390,6 @@ Pour utiliser cette fonctionnalité :
 - Utilisez le champ « Chemin » pour indiquer quel dossier vous souhaitez partager
   avec la machine virtuelle.
 - Cochez les options « Montage automatique » et « Configuration permanente ».
-- Au sein de la machine virtuelle, donnez à votre utilisateur le droit d’accéder
-  au dossier avec la commande `sudo usermod -aG vboxsf formation-git`.
 - Redémarrez la machine virtuelle. Le dossier partagé est maintenant accessible
   via le panneau latéral de l’explorateur de fichiers de la VM.
 
