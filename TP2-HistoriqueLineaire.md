@@ -212,9 +212,12 @@ informations plus détaillées : description détaillée, _hash_, détail des
 modifications effectuées…
 
 Mais malheureusement, comme la plupart des applications graphiques, `gitg`
-empêche la saisie de commandes supplémentaires tant qu’elle est en exécution. La
-manière la plus simple de régler ce problème est de lancer l’application en
-tâche de fond :
+empêche la saisie de commandes supplémentaires tant qu’elle est en exécution. Si
+vous retournez dans votre terminal, vous pourrez constater qu’il n'acceptera
+plus de commandes tant que vous n’aurez pas fermé `gitg`.
+
+La manière la plus simple de régler ce problème est de lancer l’application en
+tâche de fond avec l'aide du signe `&` :
 
     $ gitg &
 
@@ -292,7 +295,9 @@ toujours vers le même commit.
 Si vous le souhaitez, vous pouvez ajouter une description à votre étiquette,
 avec l’option `--annotate` de `git tag`. Ces annotations sont souvent utilisées
 pour indiquer les points du développement d’un logiciel auxquels une version
-publique a été distribuée, et documenter les nouveautés de cette version :
+publique a été distribuée, et documenter les nouveautés de cette version. Le
+fonctionnement est basé sur un éditeur de texte, comme `git commit` sans
+`-m` :
 
     $ git tag --annotate v1.0 HEAD~
 
@@ -391,7 +396,8 @@ Cependant, cela signifie aussi que `git revert` n’est pas l’outil approprié
 annuler un ajout incorrect au dépôt, comme l’ajout d’un secret
 cryptographique ou d’un gros fichier à la gestion de version. Dans ces cas-là,
 il faudra avoir recours à des outils beaucoup plus invasifs et destructeurs tels
-que `git filter-branch` ou le « BFG Repo-Cleaner ».
+que `git filter-branch`, ou les logiciels tiers `filter-repo` et
+« BFG Repo-Cleaner ».
 
 
 ## Conclusion
@@ -636,6 +642,6 @@ sur un répertoire de travail propre.
 Une liste relativement complète d’outils graphiques pour visualiser et manipuler
 des dépôts git est disponible sur https://www.git-scm.com/downloads/guis .
 
-L’auteur travaille plutôt sous Linux, mais quand il lui arrive de développer
-sous macOS ou Windows, il aime bien le logiciel Sourcetree (
+L’auteur travaille essentiellement sous Linux, mais quand il lui arrive de
+développer sous macOS ou Windows, il aime bien le logiciel Sourcetree (
 https://www.sourcetreeapp.com/ ).
