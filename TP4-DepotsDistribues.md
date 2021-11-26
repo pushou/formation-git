@@ -10,7 +10,7 @@ les éléments suivants :
 
 - Les commits de l’historique du dépôt d’origine
 - Ses références locales (branches, étiquettes), représentées par des
-  références distantes au sein du clone
+  copies en lecture seule au sein du clone
 - Sa branche active, dont une version locale est créée au sein du clone
 
 Parmi les éléments qui ne seront **pas** recopiés dans le clone, on peut
@@ -33,11 +33,15 @@ Si vous lancez `gitg` dans les deux dépôts, et basculez l’affichage en mode
 celui de son parent en termes de commits (y compris au niveau des _hashes_),
 mais que la structure des branches est un peu différente.
 
-Les branches du parent sont reflétées dans le clone sous forme de branches
-distantes (nom en `origin/<branche>`, couleur verte dans gitg). De plus, la
-branche active du parent a aussi été recréée sous forme de branche locale dans le
-clone, et c’est cette branche-là qui est actuellement active et extraite dans le
-répertoire de travail :
+Les branches du parent sont reflétées dans le clone sous forme de « branches
+distantes ». Ce sont des copies locales en lecture seule (un peu comme des
+_tags_, vous pouvez faire un `checkout` dessus mais pas y ajouter des commits).
+Leur nom est en `origin/<branche>`, et elles sont affichées avec une couleur
+verte dans l'interface de `gitg`.
+
+De plus, la branche active du parent a aussi été recréée sous forme de branche
+locale dans le clone, et c’est cette branche-là qui est actuellement active et
+extraite dans le répertoire de travail :
 
     $ git status
 
@@ -85,7 +89,7 @@ exemple avec `git fetch` :
 
     $ git fetch origin
 
-Notez que git mentionne une activité au niveau de la branche
+Notez que git mentionne une activité au niveau de la copie locale
 `origin/univers-parallele`. À ce stade, le changement n’est toujours pas présent
 dans la branche locale, mais il est visible dans la branche distante :
 
