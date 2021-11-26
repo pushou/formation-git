@@ -225,6 +225,11 @@ Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 - Puis forcer votre branche `master` à revenir au même point que le `master`
   officiel avec la commande `git reset --hard upstream/master`
 
+Vous pouvez configurer l'utilisation implicite de `--ff-only` pour tous les
+`git pull` futurs au sein de ce dépôt avec la commande de configuration...
+
+    $ git config pull.ff only
+
 ### Construire des changements dans une branche dédiée
 
 Une fois que l’on a un `master` à jour, il est possible de construire des
