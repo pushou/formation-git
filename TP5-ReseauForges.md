@@ -229,7 +229,8 @@ Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 
 Une fois que l’on a un `master` à jour, il est possible de construire des
 changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
-part de master et de commencer à créer des _commits_ dessus :
+part de master et de commencer à créer des _commits_ dessus. En voici **un
+exemple**, à adapter selon le type d'édition que vous voulez effectuer :
 
     $ git checkout master
     $ git checkout -b changements
