@@ -74,6 +74,21 @@ plutôt faire appel à `nano` pour les besoins de cette formation :
 
     $ git config --global core.editor nano
 
+### Choisir un nom de branche par défaut
+
+Historiquement, lorsqu’on créait un dépôt git, la branche par défaut s’appelait
+`master`. Mais ces dernières années ont vu émerger au sein des pays anglo-saxons
+un mouvement politique fort pour réduire l'utilisation de la terminologie
+maître/esclave sous-jacente, qui est perçue comme ayant des connotations
+post-coloniales malheureuses.
+
+Par conséquent, les versions récentes de git vous encouragent à utiliser un nom
+de branche par défaut différent. Mais comme j’ai manqué de temps pour adapter
+les supports de la formation à ce changement majeur, je vais vous proposer de
+rester à l’ancien nom pour cette édition :
+
+    $ git config --global init.defaultBranch master
+
 
 ## Premiers pas avec la gestion de version
 
@@ -176,9 +191,10 @@ tous les changements du dépôt). Nous pouvons l’utiliser de la façon suivant
     $ git add --all .
     $ git status
 
-git refusera par défaut de supprimer un fichier ayant des changements non
-enregistrés dans une version, car ces données seraient alors perdues. Ainsi, la
-commande suivante échouera :
+Pour ce qui concerne `git rm`, un point à connaître est que git refusera par
+défaut de supprimer un fichier ayant des changements non enregistrés dans une
+version, car ces données seraient alors perdues. Ainsi, la commande suivante
+échouera :
 
     $ git rm MonIncroyableFichier.txt
 
@@ -194,7 +210,6 @@ _fichiers_. L’existence de dossiers n’est prise en compte par git que dans l
 mesure où il y a des fichiers à l’intérieur :
 
     $ mkdir MonDossier
-    $ ls -l
     $ git status
     $ echo 'Un semblant de contenu' > MonDossier/Contenu.txt
     $ git status
