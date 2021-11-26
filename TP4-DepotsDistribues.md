@@ -517,3 +517,8 @@ versions stables.
 La notion d’étiquette annotée, que nous avions brièvement décrite précédemment,
 permet dans ce contexte d’ajouter des notes de version qui décrivent les
 nouveautés de chaque version publiée par rapport à la précédente.
+
+Il existe également un raccourci `git push --tags` qui permet de pousser sur un
+dépôt distant l’ensemble des étiquettes locales. Ce raccourci est à utiliser
+avec prudence : toutes les étiquettes que vous créez n’ont pas forcément
+vocation à être publiées…
