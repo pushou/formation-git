@@ -52,6 +52,12 @@ trop vite, pas de panique : il suffit de saisir une description vide (ou de
 quitter l’éditeur de texte sans sauvegarder vos modifications) pour annuler
 l’opération.
 
+Pour rappel, pour quitter l’éditeur de texte `nano` en enregistrant vos
+changements, il faut utiliser le raccourci clavier Ctrl+X (indiqué en bas à
+gauche), confirmer que vous voulez enregistrer vos modifications avec O (ou Y si
+votre système d'exploitation est configuré en anglais), et confirmer que vous
+voulez enregistrer au même endroit en appuyant sur Entrée.
+
 ### Nouveau contenu et différences
 
 Après avoir créé un commit, la sortie de `git status` change :
