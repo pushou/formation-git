@@ -294,8 +294,13 @@ vue composée de trois volets :
 
 De part et d’autre de la version centrale, on a une visualisation des
 différences existant entre cette version et les deux versions parentes. Des
-petits boutons sont présents, permettant d’intégrer les changements de la
-version locale ou distante à la version proposée.
+petits boutons en forme de flèches sont présents, permettant d’intégrer les
+changements de la version locale ou distante à la version proposée.
+
+Une fonctionnalité trop bien cachée de Meld permet également d’intégrer les deux
+jeux de changement, l’un au-dessus de l’autre, en maintenant enfoncée la touche
+Ctrl avant d'appuyer sur les boutons en forme de flèche suscités (qui prennent
+alors la forme d'un signe `+`).
 
 Les différences en rouge provenant de gauche et de droite sont des conflits :
 des changements incompatibles sont présents dans la version locale et distante.
