@@ -12,7 +12,6 @@ de version git, composé des éléments suivants :
   notions acquises, sur le modèle de l’émission « Questions pour un champion »
 - Un plan pour l’organisation temporelle de la formation sur deux jours
 - Un makefile permettant le rendu automatisé des supports stagiaires en PDF
-- Une machine virtuelle au sein de laquelle les TPs seront effectués
 
 Le mode d’organisation prévu est de commencer par présenter un jeu de planches,
 effectuer la démonstration du ou des outils interactifs qui seront manipulés en
