@@ -14,7 +14,3 @@ l'image de la machine virtuelle utilisée pour les travaux pratique ne peut plus
 être stockée au sein de ce dépôt, même via LFS. Vous la retrouverez à l'addresse
 https://box.in2p3.fr/index.php/s/aKFtraYLxRgZTQY .
 
-Malheureusement, au 2018-11-22, un bug dans l'intégration de Git LFS à GitLab
-empêche le téléchargement direct de l'ensemble des supports via le lien en haut
-à droite de l'interface. Mais le téléchargement fichier par fichier fonctionne
-quand à lui correctement.
