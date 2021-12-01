@@ -30,14 +30,6 @@ court (les branches + les _remotes_ / forges le même jour, c’est trop).
 
 ## Aspects techniques
 
-Comme il contient de nombreux gros fichiers binaires, ce dépôt utilise
-l’extension git LFS (_Large File Storage_). Pour en effectuer un clone complet,
-incluant les fichiers binaires, vous devrez installer cette extension.
-Vous trouverez plus d’informations sur https://git-lfs.github.com/ .
-
-Des problèmes de compatibilité ont été signalés avec la version 2.5.2 de git
-LFS. L’utilisation de git LFS ≥ 2.6.0 est donc fortement recommandée.
-
 Le makefile inclus permet d’automatiser le rendu PDF des TPs et des
 présentations. Pour l’utiliser, vous devez avoir installé l’outil de conversion
 de document `pandoc`, une distribution LaTeX comportant l’outil `pdflatex`, et
