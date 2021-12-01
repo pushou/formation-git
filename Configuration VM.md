@@ -67,5 +67,5 @@ dire quoi faire lorsqu’il survient.
 Et enfin, pour une « propreté » optimale de l’environnement de TP, ne pas oublier
 de vider l’historique bash après avoir configuré la VM.
 
-Committer/pousser la VM dans le dépôt et mettre à jour le README avec la version
-de VirtualBox utiliser.
+Exporter la VM et mettre à jour le fichier VM-Formation-Git.ova de box.in2p3.fr.
+Vérifier que le lien dans le dossier des rendus continue à fonctionner.
