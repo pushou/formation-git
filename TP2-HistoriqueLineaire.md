@@ -30,7 +30,7 @@ Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
 immédiatement nous plonger dans un éditeur de texte :
 
     $ cd ~/Bureau/MonDepot
-    $ git commit
+    ? git commit
 
 Le rôle de cet éditeur de texte est de saisir une description des changements
 effectués dans la nouvelle version qui va être sauvegardé.
@@ -204,7 +204,7 @@ Pour cette raison, je vous recommande fortement d’utiliser une interface
 graphique pour visualiser votre historique. Au cours de cette formation, nous
 utiliserons pour cela le logiciel `gitg` :
 
-    $ gitg
+    ? gitg
 
 Vous pouvez constater que `gitg` vous permet d’observer d’un coup d’œil votre
 historique. En cliquant sur chaque commit, vous avez aussi accès à des
@@ -565,7 +565,7 @@ la description. Tout cela est possible avec l’option `--amend` :
 
 Les plus attentifs remarqueront peut-être dans la sortie de `git commit --amend`
 que cette opération modifie aussi le _hash_ hexadécimal qui identifie le commit.
-Il y a des causes profondes à cela :
+Il y a deux causes profondes à cela :
 
 - Le _hash_ d’un commit est une fonction déterministe de son contenu. C’est ce qui
   fait qu’il est improbable que deux commits indépendants sur le réseau

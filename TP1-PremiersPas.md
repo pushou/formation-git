@@ -30,8 +30,9 @@ TPs de cette formation :
   des salles informatiques où la formation peut être jouée, donc ces commandes
   sont rares et ne sont jamais nécessaires au bon fonctionnement du TP. Elles
   sont uniquement données pour votre information.
-- `?` désigne des commandes qui nécessitent des préparatifs ou doivent être
-  modifiées avant exécution. L’énoncé du TP indiquera ce qu’il faut en faire.
+- `?` désigne des commandes qui nécessitent des préparatifs, doivent être
+  modifiées avant exécution, ou plus généralement ont un comportement surprenant.
+  L’énoncé du TP indiquera ce qu’il faut faire.
 - `@` désigne des commandes qui vont échouer de façon attendue. La suite du TP
   vous expliquera pourquoi elles échouent et comment y remédier.
 
