@@ -54,7 +54,8 @@ Il est aussi possible de renommer une branche avec
 
 ### Deux jeux de changements
 
-Nous pouvons maintenant « commettre » quelques éditions de fichier :
+Nous pouvons maintenant « commettre » quelques éditions de fichier sur
+la branche que nous venons de créer :
 
     $ echo 'Hi there!' > HelloWorld.txt
     $ echo 'Troisième partie' >> Contenu.txt
@@ -70,11 +71,11 @@ branche `univers-parallele` ne se sont pas répercutés sur `master` :
 
     $ cat HelloWorld.txt
 
-Maintenant, modifiez le fichier « Contenu.txt » pour changer la première ligne
-« Première partie » en ce que vous voulez. **Laissez le reste du fichier tel quel
-pour les besoins de cette démonstration**.
+Maintenant, modifiez le fichier « Contenu.txt » pour changer la
+première ligne « Première partie » en ce que vous voulez. **Laissez le
+reste du fichier tel quel pour les besoins de cette démonstration**.
 
-    $ nano Contenu.txt
+    ? nano Contenu.txt
 
 Pendant que nous y sommes, nous allons aussi créer un nouveau fichier.
 
@@ -229,7 +230,7 @@ Si nous essayons d’intégrer les changements de `master` à `univers-parallele
 `git merge` indiquera qu’il est incapable d’effectuer la fusion automatiquement
 à cause d’un conflit dans « Contenu.txt » :
 
-    $ git merge master
+    @ git merge master
 
 Lorsqu’un conflit survient, les fichiers en conflit sont indiqués dans la sortie
 de `git status` :
@@ -277,7 +278,7 @@ résolution de conflit, qui permet de mieux visualiser l’ensemble du processus
 contrôler en permanence ce qu’on est en train de faire. Dans cette formation,
 nous utiliserons pour cela l’application Meld.
 
-    $ git merge master
+    @ git merge master
     $ meld .
 
 Appliqué à un dossier, Meld recherche l’ensemble des changements survenus dans
