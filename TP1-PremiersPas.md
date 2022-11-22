@@ -52,24 +52,8 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 
 ### Point de départ
 
-Durant cette formation, nous allons travailler dans une machine virtuelle
-configurée de la façon suivante :
-
-- **Ressources matérielles :** 2 cœurs CPU, 4 Go RAM, 7 Go disque
-- **Système d’exploitation :** openSUSE Leap 15.3
-- **Logiciels installés :**
-    * _Éditeurs de texte :_ nano vim emacs gedit
-    * _Outils git :_ git gitg meld
-- **Nom d’utilisateur :** formation-git
-- **Mot de passe :** FormationGit
-
-Les supports de la formation sont disponibles via un dossier « Supports » en
-lecture seule sur le bureau de la machine virtuelle. Il est recommandé d’ouvrir
-les énoncés de TP à l’intérieur de la machine virtuelle, car cela permet un
-copier-coller plus fiable que si on les ouvrait sous l’hôte Windows.
-
-Si vous souhaitez aussi échanger des fichiers entre Windows et Linux, nous vous
-renvoyons à la section « Informations complémentaires » de ce TP.
+TODO : Après avoir pris connaissance de l'environnement de la salle 203,
+indiquer où on trouve les supports de TP (système de fichiers partagé).
 
 ### S’identifier auprès de git
 
@@ -411,36 +395,3 @@ Bien entendu, la manipulation de réglages système nécessite de posséder des
 droits d’administrateur sur la machine.
 
 La configuration actuelle peut être affichée avec `git config --list`.
-
-### Que faire de ma VM après la formation ?
-
-Si vous souhaitez conserver votre travail après la formation, deux possibilités
-s’offriront à vous à ce moment-là.
-
-Les outils utilisés étant des logiciels libres, vous pourrez simplement emporter
-avec vous une copie de la machine virtuelle, générée en utilisant la commande
-« Fichier > Exporter un appareil virtuel… » de l’interface principale de
-VirtualBox. Le fichier résultant sera volumineux (quelques gigaoctets), mais
-directement utilisable sur toute machine où VirtualBox est installé.
-
-Vous pourrez également sauvegarder des fichiers au cas par cas en utilisant la
-fonctionnalité « Dossier Partagé » de VirtualBox. Cette dernière vous permet de
-traiter un dossier du système hôte (ici Windows) comme un disque dur au sein de
-la machine virtuelle, et ainsi de laisser cette dernière lire et écrire dans
-ledit dossier, ce que vous pourrez utiliser pour faire vos sauvegardes.
-
-Pour utiliser cette fonctionnalité :
-
-- Dans la machine virtuelle active, utiliser le menu VirtualBox
-  « Périphériques > Dossiers Partagés > Réglage des dossiers partagés… »
-- Dans la boîte de dialogue qui s’ouvre, cliquez sur le bouton « + » pour
-  ajouter un dossier partagé.
-- Utilisez le champ « Chemin » pour indiquer quel dossier vous souhaitez partager
-  avec la machine virtuelle.
-- Cochez les options « Montage automatique » et « Configuration permanente ».
-- Redémarrez la machine virtuelle. Le dossier partagé est maintenant accessible
-  via le panneau latéral de l’explorateur de fichiers de la VM.
-
-**Attention :** Windows peut avoir des difficultés avec l’organisation des
-fichiers de Linux. Il est donc fortement recommandé d’empaqueter ses dossiers
-dans une archive tar avant d’essayer de les transférer vers l’hôte par ce biais.
