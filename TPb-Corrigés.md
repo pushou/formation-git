@@ -124,8 +124,6 @@ l’historique avec la commande…
 Le répertoire de travail est-il bien propre ?
 
     $ git status
-    Sur la branche master
-    rien à valider, la copie de travail est propre
 
 Il l’est. On peut donc partir en voyage dans l’historique, par exemple pour
 visiter le grand-parent du commit actuel, `HEAD~2` :
@@ -201,10 +199,7 @@ Maintenant, remplaçons le contenu d’un fichier au sein de la branche active�
 Si l’on essaye de fusionner nouvelle-branche au sein de master avec `git merge`,
 il y aura conflit au niveau de ce fichier :
 
-    $ git merge nouvelle-branche
-    CONFLIT (ajout/ajout) : Conflit de fusion dans LeFichier.txt
-    Fusion automatique de LeFichier.txt
-    La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+    @ git merge nouvelle-branche
 
 On peut résoudre ce conflit de plusieurs façons, l’approche préconisée dans
 cette formation est l’utilisation d’un outil de visualisation tel que Meld :
@@ -234,22 +229,8 @@ répertoire de travail, avec la commande `ls -al`…
 
     $ cd ~/Bureau/MonDepot/
     $ ls -al
-    total 28
-    drwxr-xr-x 4 hadrien users 4096 19 nov.   2018 .
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
-    -rw-r--r-- 1 hadrien users   19 19 nov.   2018 AutreContenu.txt
-    drwxr-xr-x 8 hadrien users 4096 19 nov.   2018 .git
-    -rw-r--r-- 1 hadrien users    6 19 nov.   2018 .gitignore
-    drwxr-xr-x 2 hadrien users 4096 19 nov.   2018 MonDossier
-    -rw-r--r-- 1 hadrien users   44 19 nov.   2018 Poubelle.log
     $ cd ../TonDepot/
     $ ls -al
-    total 20
-    drwxr-xr-x 3 hadrien users 4096 18 sept. 16:44 .
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
-    -rw-r--r-- 1 hadrien users   19 18 sept. 16:44 AutreContenu.txt
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 .git
-    -rw-r--r-- 1 hadrien users    6 18 sept. 16:44 .gitignore
 
 …on observe les différences suivantes :
 
@@ -355,10 +336,6 @@ Tout d’abord, rendons-nous dans notre clone du dépôt « ddhc » :
 On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 
     $ git remote -v
-    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (fetch)
-    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (push)
-    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (fetch)
-    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (push)
 
 Ici, nous suivons la configuration habituelle : `origin` pointe sur le _fork_, et
 `upstream` sur le dépôt officiel.

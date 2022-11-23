@@ -58,7 +58,7 @@ sélectionné par défaut :
 Puis on désigne un commit dans le passé qui était correct, avec la commande
 `git bisect good [<commit>]`, qui fonctionne comme `git bisect bad` :
 
-    $ git bisect good <commit correct>
+    ? git bisect good <commit correct>
 
 À partir de là, git va commencer à chercher en quel point de l’historique les
 choses ont mal tourné, via une recherche par dichotomie. À chaque commit où
@@ -89,13 +89,16 @@ En contrepartie, cette commande nécessite un temps d’adaptation pour l’habi
 de GNU grep, car sa logique est un peu différente. Par exemple, le dialecte
 d’expression régulière par défaut n’est pas le même.
 
-La manière la plus simple d’utiliser `git grep` est :
+La manière la plus simple d’utiliser `git grep` est de rechercher un texte exact
+dans le dépôt :
 
     $ git grep 'Une recherche passionnante'
 
 Une option très utile est `-E`, qui active le support des expressions régulières
-Perl. Le prix à payer étant qu’il y a davantage de caractères spéciaux que l’on
-doit parfois « échapper » avec `\` dans la chaîne recherchée :
+Perl pour permettre de faire des recherches plus flexibles. Le prix à payer
+étant qu’il y a davantage de caractères spéciaux que l’on doit parfois
+« échapper » avec `\` dans la chaîne recherchée. Voici un exemple qui
+permet de trouver toutes les occurences de "ceci", "cela" et "ça" :
 
     $ git grep -E '(ce(ci|la)?|ça)'
 

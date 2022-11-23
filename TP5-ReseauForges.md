@@ -63,11 +63,9 @@ paire de clés cryptographiques :
   vérifier que vous possédez la clé privée, mais pas d'usurper votre identité
   auprès d'autres services ayant connaissance de votre clé publique.
 
-La machine virtuelle que vous utilisez ne possède pas encore de clés SSH…
+La machine que vous utilisez ne possède pas encore de clés SSH…
 
-    $  ls ~/.ssh
-    ls: impossible d'accéder à '/home/formation-git/.ssh':
-     Aucun fichier ou dossier de ce type
+    @ ls ~/.ssh
 
 …mais vous pouvez facilement en générer une paire avec la commande suivante :
 
@@ -238,10 +236,10 @@ part de master et de commencer à créer des _commits_ dessus. En voici **un
 exemple**, à adapter selon le type d'édition que vous voulez effectuer :
 
     $ git checkout master
-    $ git checkout -b changements
-    $ echo -e "\nCeci n'est pas un pied de page" >> README.md
+    ? git checkout -b changements
+    ? echo -e "\nCeci n'est pas un pied de page" >> README.md
     $ git add README.md
-    $ git commit -m "Ajout d'un pied de page rebelle"
+    ? git commit -m "Ajout d'un pied de page rebelle"
 
 Mais pendant que vous effectuez vos modifications, le dépôt officiel continue
 d’évoluer, et il est possible que des nouveautés arrivent sur la branche
@@ -255,7 +253,7 @@ pourrait ainsi ressembler à ceci :
 
     $ git checkout master
     $ git pull --ff-only
-    $ git checkout changements
+    ? git checkout changements
     $ git merge master
 
 En cas de conflit de fusion, il vous appartiendra de vous adapter aux nouveautés
@@ -282,7 +280,7 @@ L’option `--set-upstream`, que nous avons évoquée précédemment, vous perme
 de mémoriser l’association entre votre branche locale et la branche présente sur
 votre _fork_.
 
-    $ git push --set-upstream origin changements
+    ? git push --set-upstream origin changements
 
 Ainsi, vous pourrez par la suite vous contenter d’un simple `git push`.
 

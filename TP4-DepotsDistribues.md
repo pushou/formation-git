@@ -325,7 +325,7 @@ En revanche, `git push` a un comportement différent. Si on le met face à la m�
 situation de divergence, il rejettera notre requête :
 
     $ git reset --hard @{1}
-    $ git push autre
+    @ git push autre
 
 Pour qu’un `git push` soit accepté, il faut que la branche locale soit un
 successeur de la branche distante. La divergence n’est pas tolérée,
@@ -342,7 +342,7 @@ nous en convaincre, aggravons notre divergence par un petit conflit de fusion :
     $ echo '2' > Compteur.txt
     $ git add Compteur.txt
     $ git commit -m 'Conflit de fusion avec le compteur de "autre"'
-    $ git pull
+    @ git pull
 
 De tels conflits sont particulièrement désagréables à gérer, puisque l’on doit
 arbitrer entre différentes versions d’une même branche, qu’on ne peut plus
@@ -482,7 +482,7 @@ La solution, après vous être assuré que vous êtes bien dans un cas où c’e
 raisonnable, est de forcer `git push` à accepter la soumission, détruisant ce
 faisant la version distante précédente de la branche :
 
-    $ git push --force
+    ? git push --force
 
 ### Détruire une branche distante
 
@@ -491,11 +491,15 @@ qu’elle a été intégrée à la version officielle du projet, il est d’usag
 détruire celle-ci. Cela évite une prolifération des branches inactives qui peut
 rendre l’historique d’un dépôt incompréhensible.
 
-On peut le faire en utilisant `git push --delete`, ou sur les anciennes versions
-de git son prédécesseur moins lisible, le signe « `:` ».
+Sur les versions modernes de git, on peut le faire en utilisant
+`git push --delete`...
 
-    $ git push --delete mondepot mabranche
-    $ git push mondepot :mabranche
+    ? git push --delete mondepot mabranche
+
+...et sur les anciennes versions de git, on peut avoir besoin d’utiliser son
+prédécesseur moins lisible, le signe « `:` ».
+
+    ? git push mondepot :mabranche
 
 Bien entendu, comme avec `--force`, il est préférable de n’effectuer cette
 opération que lorsqu’on est sûr qu’aucun collaborateur n’est actuellement en
@@ -507,7 +511,7 @@ Dans ce TP, j’ai principalement parlé de branches. Cependant, il est possible
 pousser sur un dépôt distant tout type de référence git, concept qui inclut
 aussi les étiquettes (_tags_).
 
-    $ git push <depot> <etiquette>
+    ? git push <depot> <etiquette>
 
 Les étiquettes sont couramment utilisées pour représenter des versions
 publiées d’un projet. Par exemple, dans un projet logiciel, on utilise

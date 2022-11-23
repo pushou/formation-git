@@ -502,11 +502,11 @@ totale, en rejouant les commits en question par-dessus la branche actuelle.
 La syntaxe de `git cherry-pick` est similaire à celle de `git revert` : il est
 possible de sélectionner les commits à rejouer un par un comme ceci…
 
-    $ git cherry-pick <commit1> [<commit2> ...]
+    ? git cherry-pick <commit1> [<commit2> ...]
 
 …et il est aussi possible de sélectionner tous les commits entre deux points :
 
-    $ git cherry-pick <commit1>..<commitN>
+    ? git cherry-pick <commit1>..<commitN>
 
 Comme avec `git rebase`, les commits qui sont « importés » de cette façon sont
 des copies de ceux de la branche d’origine, avec quelques ajustements en cas de
