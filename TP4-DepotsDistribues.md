@@ -369,6 +369,14 @@ La restriction de `git push` décrite ci-dessus permet d’aller dans le sens de
 second objectif, puisqu’elle évite à une divergence locale de se propager sur le
 dépôt distant, qui est potentiellement partagé avec autrui.
 
+Si l’on souhaite imposer une discipline similaire à `git pull` afin d’éviter des
+fusions incorrectes, on peut le faire en utilisant systématiquement
+`git pull --ff-only`. Sur les versions actuelles de git, il est possible
+d’obtenir ce comportement sans devoir spécifier l’option `--ff-only` à
+répétition en utilisant l’option `pull.ff`:
+
+    $ git config --global pull.ff=only
+
 
 ## Conclusion
 
@@ -437,6 +445,10 @@ Récupérer et fusionner les changements de la branche amont :
 …sauf s’il y a eu divergence entre la branche locale et la branche distante :
 
     $ git pull --ff-only
+
+Configurer `git` pour appliquer le fonctionnement ci-dessus par défaut :
+
+    $ git config --global pull.ff=only
 
 Créer ou mettre à jour des références distantes :
 
