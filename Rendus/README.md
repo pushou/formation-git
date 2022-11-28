@@ -14,3 +14,8 @@ l'image de la machine virtuelle utilisée pour les travaux pratique ne peut plus
 être stockée au sein de ce dépôt, même via LFS. Vous la retrouverez à l'addresse
 https://box.in2p3.fr/index.php/s/aKFtraYLxRgZTQY .
 
+**Attention :** L'édition 2022 de la formation git ayant été effectuée
+directement sur des machines Linux physiques, la machine virtuelle ci-dessus
+n'est actuellement pas à jour par rapport à la dernière version du TP. Si vous
+souhaitez travailler avec la VM, je vous conseille d'utiliser
+[la version 2021 des supports](https://gitlab.in2p3.fr/grasland/formation-git/-/tree/2021/Rendus).
