@@ -51,7 +51,7 @@ diminuer le poids de la VM sur le disque (et donc au téléchargement…). Je
 conseille aussi un `rm ~/.bash_history` pour ne pas perturber les gens avec ma
 sorcellerie préparatoire.
 
-J’ai également ajouté des signets au navigateur web pour `gitlab.in2p3.fr`,
+J’ai également ajouté des signets au navigateur web pour `github.com`,
 les supports de la formation git, et le dépôt DDHC. Et puis j’enlève le lien
 pocket, je bascule sur la page d'accueil de Firefox, et j’enlève les liens
 sponsorisés de celle-ci.

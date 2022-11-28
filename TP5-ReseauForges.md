@@ -14,37 +14,10 @@ pour explorer les subtilités de la gestion de version collaborative.
 
 ## Préparations au travail en réseau
 
-### Accès web au GitLab IN2P3
-
-Nous allons utiliser pour cette partie de la formation la forge GitLab
-administrée par le centre de calcul de l’IN2P3, https://gitlab.in2p3.fr .
-
-Malgré son affiliation institutionnelle assez spécifique, cette forge est
-utilisable par une grande partie des personnels de l’enseignement supérieur et
-de la recherche, français et étrangers, grâce à son adhésion à la fédération
-d’identité EduGAIN dont la couverture internationale se rapproche de celle du
-service wifi eduroam.
-
-Si vous avez bien suivi les mails reçus avant la formation, vous devriez avoir
-d’ors et déjà configuré votre compte et savoir comment vous y connecter. Si
-toutefois ce n’était pas le cas, voici quelques rappels utiles.
-
-Pour vous connecter à la forge avec vos identifiants professionnels :
-
-1. Rendez-vous sur https://gitlab.in2p3.fr/users/sign_in .
-2. Cliquez sur le bouton « EduGAIN [Shibboleth] ».
-3. Choisissez un organisme académique auprès duquel vous possédez un compte
-   informatique (ex : CNRS, Université Paris-Saclay…).
-4. Identifiez-vous de la façon habituelle.
-
-Si c’est la première fois que vous vous connectez, un compte vous sera créé
-automatiquement sur la plate-forme, et vous arriverez sur la page d’accueil de
-GitLab. La procédure sera la même pour vous reconnecter par la suite.
-
 ### Authentification SSH
 
-Il ne suffit pas de pouvoir vous connecter à l’interface web pour pouvoir
-échanger des _commits_ avec la forge. Vous devez également fournir à votre
+Il ne suffit pas de pouvoir vous connecter à l’interface web d'une forge pour
+pouvoir échanger des _commits_ avec. Vous devez également fournir à votre
 utilitaire git local un moyen de confirmer votre identité auprès du serveur,
 lors de certaines opérations sensibles comme écrire des _commits_ dans un dépôt
 ou lire les _commits_ d'un dépôt privé. On parle de s'authentifier.
@@ -104,23 +77,22 @@ plus qu'à afficher votre clé publique, par exemple avec l'éditeur `gedit`…
 
     $ gedit ~/.ssh/id_ed25519.pub
 
-…puis à la copier-coller dans l'interface web de gestion de clé SSH de Gitlab,
-située sur https://gitlab.in2p3.fr/-/profile/keys . Je vous recommande de lui
-donner un titre explicite du style "Formation Git" et de fixer une date
-d'expiration située au lendemain de la date de fin de la formation.
+…puis à la copier-coller dans l'interface web de gestion de clé SSH de GitHub,
+située sur https://github.com/settings/ssh/new . Je vous recommande de lui
+donner un nom explicite du style "Formation Git" et de la supprimer après la
+formation.
 
-Et voilà, vous êtes prêt à échanger des _commits_ avec la forge
-gitlab.in2p3.fr !
+Et voilà, vous êtes prêt à échanger des _commits_ avec la forge GitHub !
 
 ### _Fork_ et clonage
 
 Une copie de la Déclaration des Droits de l’Homme et du Citoyen est disponible
-sur le dépôt git https://gitlab.in2p3.fr/grasland/ddhc/ .
+sur le dépôt git https://github.com/HadrienG2/ddhc .
 
 Pour commencez, créez-en un _fork_ sous votre contrôle, en utilisant le bouton
-« Fork » situé en haut à droite de l’interface de GitLab, à droite du nom « ddhc ».
-Choisissez de créer le _fork_ au sein de votre compte personnel dans l’invite qui
-s’affiche alors.
+« Fork » situé en haut à droite de l’interface de GitHub, entre le
+bouton « Watch » et le bouton bouton « Star ». Acceptez les
+paramètres proposés par défaut avec le bouton « Create fork ».
 
 L’opération va prendre un petit moment (typiquement quelques secondes).
 Lorsqu’elle est terminée, vous devriez être redirigé automatiquement sur votre
@@ -128,15 +100,17 @@ _fork_ nouvellement créé.
 
 Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
 sur votre machine. Pour cela, vous avez besoin de son URL SSH, que vous pouvez
-obtenir de l’interface GitLab de la façon suivante :
+obtenir de l’interface Github de la façon suivante :
 
 - Cliquez sur le bouton bleu « Clone ».
-- Copiez l’URL située dans la section « Clone with SSH ».
+- Cliquez sur l’onglet « SSH ».
+- Copiez l’URL qui s’affiche alors.
 
-Une fois l’URL obtenue, créez un clone local du _fork_ de la façon suivante :
+Une fois l’URL obtenue, créez un clone local du _fork_ en passant cette URL en
+paramètre de la commande `git clone` :
 
     $ cd ~/Bureau/
-    $ git clone <url de votre fork>
+    ? git clone <url de votre fork>
 
 ### Connexion au dépôt officiel
 
@@ -147,7 +121,7 @@ commits avec ce dernier :
     $ cd ddhc/
     $ git remote -v
 
-Mais pour appliquer la méthode de travail basée sur les _forks_ et les _merge
+Mais pour appliquer la méthode de travail basée sur les _forks_ et les _pull
 requests_ (appelée _GitHub flow_), il faut aussi être capable d’échanger des
 commits avec le dépôt officiel, celui à partir duquel vous avez créé votre _fork_.
 En effet, des nouveautés vont arriver sur ce dernier au fur et à mesure du TP,
@@ -156,7 +130,7 @@ et vous devrez vous synchroniser avec ces dernières.
 Par convention, la _remote_ associée au dépôt officiel est souvent appelée
 _upstream_ :
 
-    $ git remote add upstream https://gitlab.in2p3.fr/grasland/ddhc.git
+    $ git remote add upstream https://github.com/HadrienG2/ddhc.git
     $ git fetch upstream
 
 Notez qu'on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
@@ -306,40 +280,40 @@ plutôt le travail à partir du dépôt officiel du projet.
 
 Une fois que vous avez mis des changements en ligne sous la forme d’une branche
 sur votre _fork_, vous pouvez demander l’intégration de ces changements au dépôt
-officiel avec une fonctionnalité des forges git modernes, la _merge request_.
-Cette fonctionnalité est également appelée _pull request_ par GitHub et
-BitBucket, mais comme nous utilisons GitLab dans ce TP, nous nous en tiendrons à
-sa terminologie afin d’éviter toute confusion.
+officiel avec une fonctionnalité des forges git modernes, la _pull request_.
+Cette fonctionnalité est également appelée _merge request_ par Gitlab, mais
+comme nous utilisons GitHub dans ce TP, nous nous en tiendrons à sa terminologie
+afin d’éviter toute confusion.
 
 Cette possibilité vous sera généralement directement offerte par l’affichage
 d’une URL dans la console lorsque vous poussez la branche sur votre _fork_,
-ainsi que par un bandeau dans l’interface web de votre _fork_ sur GitLab pendant
+ainsi que par un bandeau dans l’interface web de votre _fork_ sur GitHub pendant
 quelque temps après le _push_. Mais si vous avez manqué ces raccourcis, vous
-pouvez créer « manuellement » une _merge request_ en allant dans l’interface web
-de votre _fork_, affichant la liste des branches, et cliquant sur le bouton
-« Merge request ».
+pouvez créer « manuellement » une _pull request_ en allant dans
+l’interface web de votre _fork_, affichant la liste des branches, et cliquant
+sur le bouton « Pull request ».
 
-Comme son nom l’indique, une _merge request_ invite le·s mainteneur·s du dépôt
+Comme son nom l’indique, une _pull request_ invite les mainteneurs du dépôt
 officiel à intégrer des changements au projet en fusionnant les nouveautés de
 votre branche dans un historique officiel (généralement la branche `master`).
 Vous êtes invité à donner un titre court à votre soumission, ainsi qu’une
 description qui peut être plus étoffée et agrémentée de mise en page Markdown.
 Selon la forge que vous utilisez, d’autres fonctionnalités de gestion de projet
-peuvent vous être proposées lors de la création d’une _merge request_, nous vous
+peuvent vous être proposées lors de la création d’une _pull request_, nous vous
 invitons à consulter la documentation de votre forge pour en savoir plus.
 
-Pour les mainteneurs, une _merge request_ se présente sous la forme du titre et
+Pour les mainteneurs, une _pull request_ se présente sous la forme du titre et
 de la description que vous avez donnée, d’une visualisation des changements
 proposés, et d’une interface permettant de discuter desdits changements (pour
 proposer des modifications avant intégration par exemple).
 
 Il est aussi possible pour le mainteneur de définir une batterie de tests
-automatisés que toute _merge request_ doit passer avant d’être acceptée par le
+automatisés que toute _pull request_ doit passer avant d’être acceptée par le
 projet. On parle alors d’intégration continue.
 
 Si des changements sont demandés par le mainteneur, vous pouvez ajouter ceux-ci
 à votre branche locale via de nouveaux commits et de les pousser sur votre
-_fork_ avec un simple `git push`. La _merge request_ associée sera alors mise à
+_fork_ avec un simple `git push`. La _pull request_ associée sera alors mise à
 jour automatiquement.
 
 
@@ -349,22 +323,22 @@ jour automatiquement.
 Déclaration des Droits de l’Homme.
 
 Peut-être avez-vous toujours rêvé de paraphraser Olympe de Gouges en réécrivant
-entièrement le texte au féminin (« Déclaration des Droits de la Femme et de la
-Citoyenne ») ? Peut-être souhaitez-vous y ajouter l’article manquant qui résoudra
-enfin le débat séculaire entre pain au chocolat et chocolatine ? Ou bien
-peut-être est-il temps d’amender l’article 15 qui autorise chaque citoyen à
-demander des comptes aux agents publics ?
+entièrement le texte au féminin (« Déclaration des Droits de la Femme et de
+la Citoyenne ») ? Peut-être souhaitez-vous y ajouter l’article
+manquant qui résoudra enfin le débat séculaire entre pain au chocolat et
+chocolatine ? Ou bien peut-être est-il temps d’amender l’article 15 qui
+autorise chaque citoyen à demander des comptes aux agents publics ?
 
 Modifiez le texte comme vous le souhaitez, en n’hésitant pas à créer des commits
 en cours de route pour vous permettre de revenir facilement en arrière. Puis,
 quand vous aurez fini, poussez votre branche finale sur votre _fork_, et
-soumettez une _merge request_ au dépôt officiel pour terminer ce TP.
+soumettez une _pull request_ au dépôt officiel pour terminer ce TP.
 
 
 ## Conclusion
 
 Dans ce dernier TP, nous avons vu comment utiliser git en réseau, avec une
-méthode de travail basée sur les _forks_ et les _merge requests_.
+méthode de travail basée sur les _forks_ et les _pull requests_.
 
 Si ce n’est pas la seule manière d’utiliser git, cette méthode est une des plus
 populaires aujourd’hui, car elle sécurise le dépôt officiel, facilite les
@@ -413,7 +387,7 @@ négociable, cela empêche l'utilisation du protocole SSH auquel nous avons fait
 appel pendant ce TP.
 
 A la place, vous devrez utiliser le protocole HTTPS, basé sur un couple nom
-d'utilisateur + mot de passe. Ceci nécessite trois étapes préparatoires :
+d'utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires :
 
 - Cloner votre dépôt git depuis l'URL HTTPS fournie par la forge, ou dans le cas
   d'un dépôt déjà cloné changer l'URL des _remotes_ associées à la forge avec
@@ -443,15 +417,16 @@ ou https://git-scm.com/docs/gitcredentials .
 
 ### Petit tour d’horizon des forges logicielles
 
-Dans ce TP, nous avons utilisé GitLab, mais il existe de nombreuses autres
+Dans ce TP, nous avons utilisé GitHub, mais il existe de nombreuses autres
 forges logicielles basées sur git.
 
 Les trois moteurs de forge les plus utilisés à l’heure actuelle sont GitHub,
 GitLab et BitBucket. Les éditeurs de ces applications web proposent des
 instances hébergées sur leurs propres serveurs, selon un modèle commercial
-« freemium » (niveau de service gratuit limité, pour avoir plus il faut souscrire
-à un abonnement). Il est également possible d’en héberger une instance sur un
-serveur que l’on contrôle, par exemple lorsque le secret professionnel l’exige.
+« freemium » (niveau de service gratuit limité, pour avoir plus il
+faut souscrire à un abonnement). Il est également possible d’en héberger une
+instance sur un serveur que l’on contrôle, par exemple lorsque le secret
+professionnel l’exige.
 
 Dans ce cadre d’auto-hébergement, GitLab est le moteur le plus populaire dans le
 secteur académique. On peut mentionner, par exemple, des instances ayant des
@@ -487,9 +462,9 @@ Cependant, chaque moteur a aussi ses spécificités :
 - GitLab a toujours fourni en standard des fonctionnalités comme l’intégration
   continue ou l’hébergement d’images Docker, là où chez GitHub ce type de
   service a longtemps été délégué à des tierces parties comme Travis CI. Depuis
-  fin 2019, il existe une solution GitHub « en propre », mais comme on pourrait
-  s’y attendre elle est un peu moins mature que la concurrence au moment où sont
-  écrites ces lignes (mi-2020).
+  fin 2019, il existe une solution GitHub « en propre », mais comme on
+  pourrait s’y attendre elle est un peu moins mature que la concurrence au
+  moment où sont écrites ces lignes (mi-2020).
 - BitBucket propose une intégration poussée avec d’autres applications web du
   même éditeur (JIRA, Bamboo, Confluence, HipChat…)
 - Le vocabulaire utilisé et le détail des statistiques proposées varie d’une
