@@ -53,8 +53,20 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 
 ### Point de départ
 
-TODO : Après avoir pris connaissance de l'environnement de la salle 203,
-indiquer où on trouve les supports de TP (système de fichiers partagé).
+Durant cette formation, vous allez travailler sur des postes de travail Linux
+équipés des logiciels `git`, `gitg`, `meld` et de quelques éditeurs de texte
+pour s'adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
+
+Ces postes sont aussi configurés pour partager les supports de TP avec le poste
+enseignant, via le partage de fichier « formation-git » accessible
+depuis votre dossier personnel (`~/formation-git`).
+
+Vous l’avez vu, les mots de passe sont dérivés en suivant une logique simple,
+donc tout le reste de la salle peut deviner votre mot de passe. Si vous
+souhaitez un peu de vie privée, n’hésitez donc pas à configurer un autre mot de
+passe un peu plus secret :
+
+    $ passwd
 
 ### S’identifier auprès de git
 
