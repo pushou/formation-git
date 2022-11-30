@@ -20,9 +20,9 @@ d’une commande dépend fortement de l’état actuel du dépôt utilisé.
 
 Donc si par exemple quelque chose s’est mal passé durant le TP1, vous pouvez
 repartir d’un dépôt dans l'état attendu pour faire le TP2 en utilisant le
-rattrapage appelé « Rattrapages ». Pour ce faire, supprimez ou
-sauvegardez les fichiers sur votre bureau, puis remplacez-le par le contenu du
-dossier `~/formation-git/TP2`.
+rattrapage appelé « TP2 ». Pour ce faire, supprimez ou sauvegardez les
+fichiers sur votre bureau, puis remplacez-le par le contenu du dossier
+`~/formation-git/TP2`.
 
 
 ## Processus de création de version
