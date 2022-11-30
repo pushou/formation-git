@@ -6,7 +6,7 @@ Vous aurez peut-être remarqué, dans les supports de formation, un mystérieux
 dossier appelé « Rattrapages ».
 
 Ce dossier contient une copie de sauvegarde de l’état attendu du ou des dépôts
-git utilisés _à la fin_ de chaque TP.
+git utilisés au début de chaque TP.
 
 Cela vous permettra de vous replacer dans l’état attendu au début d’un
 nouveau TP, si par exemple…
@@ -17,6 +17,12 @@ nouveau TP, si par exemple…
 
 Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l’effet
 d’une commande dépend fortement de l’état actuel du dépôt utilisé.
+
+Donc si par exemple quelque chose s’est mal passé durant le TP1, vous pouvez
+repartir d’un dépôt dans l'état attendu pour faire le TP2 en utilisant le
+rattrapage appelé « Rattrapages ». Pour ce faire, supprimez ou
+sauvegardez les fichiers sur votre bureau, puis remplacez-le par le contenu du
+dossier `~/formation-git/TP2`.
 
 
 ## Processus de création de version
