@@ -582,3 +582,82 @@ Combinées, ces deux opérations permettent d’annuler l’effet de `git merge`
 
 Si le sujet des reflogs vous intéresse, vous trouverez plus d’information
 dans les pages d’aide `git help reflog` et `git help revisions`.
+
+### `git revert` et les fusions
+
+Lorsqu’une fusion incorrecte vient d’être effectuée, il est préférable
+d’utiliser la combinaison de `git reset` et des _reflogs_ expliquée ci-dessus.
+Mais parfois, on ne découvre un problème avec une fusion que quelques temps
+après, alors qu’on a déjà effectué d’autres commits sur la branche.
+
+Dans ce cas, on peut être tenté d’utiliser `git revert`, mais par défaut git
+refusera, et ce pour d’excellentes raisons qui vont être expliquées maintenant.
+
+Le nœud du problème est que les commandes git qui combinent les changements de
+deux branches, comme `git merge` et `git rebase`, fonctionnent en analysant la
+forme de l’historique.
+
+Si, alors qu’on est sur une branche A, on demande à faire un `git merge B`,
+alors git va remonter l’historique de la branche A jusqu’à trouver soit un
+commit commun avec la branche B (ancêtre commun), soit un point où la branche B
+a été fusionnée dans A. A ce point-là de l’historique, l’algorithme considère
+que les deux branches étaient synchrones, et seules les modifications effectuées
+ultérieurement au sein des branches A et B sont considérées pour la fusion.
+
+Donc dans la situation schématisée ci-dessous...
+
+                 Src
+    --- ignoré ---o---o---o---o Branche B
+                   \
+    --- ignoré -----o---o Branche A (active)
+                   Mrg
+
+...seuls les commits `Mrg..A` de la branche A et `Src..B` de la branche B sont
+considérés lorsqu’on tente de fusionner B dans A. Où l’on appelle `Mrg` le
+dernier commit de fusion effectué au sein de la branche A et `Src` le commit de
+la branche B depuis lequel on a fusionné.
+
+Le fait que les commits de B avant `Mrg` ne soient pas considérés peut
+surprendre, mais c’est en fait préférable, car si ils étaient considérés, on
+serait amené à résoudre les mêmes conflits de fusion encore et encore.
+
+Supposons maintenant que l’on force git à annuler une fusion avec `git revert`,
+ce qu’on peut faire avec l’option `--merge`/`-m`, donc ici on utiliserait
+`git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante...
+
+                 Src
+    --- ignoré ---o---o---o---o Branche B
+                   \
+    --- ignoré -----o---o---o Branche A (active)
+                   Mrg     Rvt
+
+...où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit
+de fusion `Mrg` précédent. Et jusqu’ici tout va bien. Là où il va y avoir un
+problème, en revanche, c’est quand on va essayer par la suite de fusionner la
+nouvelle version de la branche B, après que les problèmes aient été résolus :
+
+                 Src
+    --- ignoré ---o---o---o---o Branche B
+                   \           \
+    --- ignoré -----o---o---o---o Branche A (active)
+                   Mrg     Rvt Mrg2
+
+A ce moment-là, pour créer le commit `Mrg2`, git va considérer les commits
+`Src..B` de la branche `B` et les commits `Mrg..Rvt` de la branche A, incluant
+donc le commit `Rvt` créé par `git revert`. Ce qui aura pour conséquences...
+
+1. Une probabilité assez importante de conflit de fusion, liée au fait que le
+   commit `Rvt` touche à un certain nombre de fichiers qui sont activement
+   modifiés par la branche B.
+2. Une fusion insatisfaisante, en apparence incomplète, puisque les changements
+   de la branche B avant `Src` qui avaient précédemment été intégrés par `Mrg`
+   mais supprimés ensuite par `Rvt` ne feront pas partie de `Mrg2`.
+
+Pour éviter ce problème, il faudrait commencer par annuler l’effet du commit
+`Rvt` avant d’effectuer la fusion `Mrg2`. Mais il est trop facile d’oublier de
+le faire ou de ne pas comprendre ce qui se passe, et de perdre accidentellement
+des changements de la branche B.
+
+Il est donc préférable de ne pas utiliser `git revert` sur des commits de fusion
+quand on peut s’en passer, et de prévenir les autres collègues qui pourraient
+être amenés à réessayer la fusion ultérieurement si on est amené à le faire.
