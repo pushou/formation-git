@@ -143,6 +143,8 @@ dernières formes de `git checkout`. Comme `git add`, `git checkout` supporte
 aussi une option `--patch` qui permet de récupérer des changements depuis la
 source choisie à une granularité plus fine que le fichier.
 
+---
+
 Voilà pour `git checkout`. Maintenant, passons à `git reset`.
 
 `git reset <commit>` est une commande qui sert à déplacer la branche active (et
@@ -169,6 +171,10 @@ d’agressivité vis-à-vis de l’index et du répertoire de travail :
   des données présentes au sein de ce dernier de façon irréversible**, et il
   faut l’utiliser avec précaution._ Mais c’est aussi l’un des moyens les plus
   simples de « ramener une branche en arrière » après des commits incorrects.
+    * On peut mentionner les variantes un peu plus sûres `--merge` et `--keep`
+      qui refusent d’écraser des changements non versionnés du répertoire de
+      travail, et diffèrent dans leur façon de traiter l’index. `--keep`
+      préserve les changements indexés, là où `--merge` les efface.
 
 `git reset [<commit>] -- <fichiers>` récupère la version des fichiers choisis du
 commit choisi (`HEAD` par défaut) et l’extrait dans l’index. L’utilisation la
@@ -180,6 +186,39 @@ Il existe un parallèle important entre cette dernière commande et la variante 
 entre les deux est qu’on opère sur l’index au lieu d’opérer sur le répertoire de
 travail. Ici aussi, l’option `--patch` permet de contrôler plus finement quels
 changements on effectue au sein de l’index.
+
+---
+
+De l’avis général, ces deux commandes font un peu trop de tâches différentes
+pour être facilement compréhensibles. Des commandes plus spécialisées ont donc
+été introduites récemment dans `git` pour faciliter des tâches courantes.
+
+Ces commandes sont encore considérées comme expérimentales, donc il est possible
+qu’à l’heure où vous lirez ces lignes, la description qui suit ne soit plus à
+jour, mais en voici les grandes lignes :
+
+- `git switch` est une forme simplifiée de `git checkout <commit>` qui permet
+  uniquement de basculer entre des branches. Par défaut, cette commande refuse
+  de basculer sur un commit ou un _tag_ isolé, ce qui nous placerait dans un
+  état de « `HEAD` détachée », mais on peut indiquer que c’est ce
+  qu’on veut avec l’option `--detach` qui s’abbrévie en `-d`.
+- `git restore` combine les fonctions des variantes de `git checkout` et
+  `git reset` qui prennent des fichiers en paramètre. Cette commande permet...
+    * Dans son mode par défaut, de remplacer des fichiers du répertoire de
+      travail par la version qui existe au sein de l’index. Si vous avez
+      effectué des changements incorrects au sein de votre répertoire de travail
+      depuis votre dernier `git add`, cela vous permet de revenir au point où
+      vous en étiez lors de votre `git add`.
+    * Avec l’option `--staged`, de récupérer au sein de l’index des versions de
+      fichiers issues de `HEAD`. C’est par exemple comme ça qu’on annulerait
+      l'effet de `git add` ou `git rm`.
+        - Si l’on souhaite aussi récupérer les versions de fichiers au sein du
+          répertoire de travail, donc annuler toutes les modifications d’un
+          fichier effectuées au sein du répertoire de travail depuis `HEAD`, on
+          peut utiliser `--staged --worktree`.
+    * En ajoutant l’option `--source <commit>`, on récupère plutôt au sein du
+      répertoire de travail (ou de l’index si `--staged` est spécifié) des
+      fichiers issues d’anciens commits.
 
 
 ## Savoir d’où vient une partie d’un fichier
