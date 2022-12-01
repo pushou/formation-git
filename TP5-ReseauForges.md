@@ -142,7 +142,7 @@ maintenant visualiser vos commits et branches locales, celles de votre _fork_, e
 celles du dépôt officiel. Tout est prêt !
 
 
-## Travail distribué avec le GitHub flow
+## Travail distribué avec le _GitHub flow_
 
 ### Introduction
 

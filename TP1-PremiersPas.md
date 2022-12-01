@@ -209,9 +209,9 @@ d’un mouvement de fichier dont git n’a pas été informé :
     $ mv MonSuperFichier.txt MonIncroyableFichier.txt
     $ git status
 
-Ici, la commande « mv » standard a ainsi été interprétée comme la
-suppression d’un fichier sous gestion de version et la création d’un nouveau
-fichier non versionné. Ce n’est pas ce qui était désiré !
+Ici, la commande `mv` standard a ainsi été interprétée comme la suppression d’un
+fichier sous gestion de version et la création d’un nouveau fichier non
+versionné. Ce n’est pas ce qui était désiré !
 
 Une commande pratique pour se tirer de ce genre de mauvais pas est
 `git add --all`, qui intègre à la gestion de version tous les changements d’un

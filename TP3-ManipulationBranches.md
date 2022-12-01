@@ -180,7 +180,7 @@ les options `--ff-only` et `--no-ff` :
 
 Essayons cette seconde stratégie en revenant en arrière. Pour cela, nous allons
 utiliser une fonctionnalité de git qui garde une copie de sauvegarde de tous les
-états passés des branches, les _reflogs_, afin d’annuler le `merge` précédent.
+états passés des branches, les _reflogs_, afin d’annuler la fusion précédente.
 
 Pour en savoir plus sur cette fonctionnalité relativement avancée et le mode de
 fonctionnement de la commande suivante, vous pourrez consulter la section
@@ -526,7 +526,7 @@ correctif de sécurité de `master` sur la branche associée à une version publ
 du logiciel, sans pour autant devoir y intégrer toutes les autres nouveautés de
 la branche `master`.
 
-### Reset et le reflog
+### Reset et le _reflog_
 
 Nous avons précédemment utilisé une syntaxe pour le moins curieuse pour annuler
 une fusion de branches : `git reset --hard @{1}`. Nous allons maintenant

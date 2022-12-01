@@ -239,7 +239,7 @@ reformatage d’un document marquera du point de vue de git la personne qui a
 effectué l’opération comme l’auteur de la section reformatée…
 
 
-## Édition d’historique avec le rebase interactif
+## Édition d’historique avec le _rebase_ interactif
 
 Pour terminer en beauté ce petit tour des fonctionnalités avancées de git,
 mentionnons un outil aussi dangereux que puissant, qui permet de modifier

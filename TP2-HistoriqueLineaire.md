@@ -599,7 +599,7 @@ revenir en arrière en cas de problème, la plupart des opérations git peuvent
 - La création d’un commit → `git reset --soft HEAD~`
 - La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
 - La création d’un commit + les ajouts préalables à l’index + les modifications
-  préalables du répertoire de travail (DANGER) → `git reset --hard HEAD~`
+  du répertoire de travail (DANGER) → `git reset --hard HEAD~`
 
 Les pouvoirs d’annulation de git se limitent malheureusement aux données qui ont
 été versionnées. Les opérations sur le répertoire de travail sont en général
