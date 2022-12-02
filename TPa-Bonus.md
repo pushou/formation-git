@@ -67,10 +67,19 @@ non, avec `git bisect good` ou `git bisect bad`. Et au bout d’un faible nombre
 d’itérations, git vous indiquera quel commit semble être à l’origine du problème
 que vous étudiez.
 
+Si pour une raison ou une autre (typiquement du code qui ne compile pas) vous ne
+pouvez pas dire si un commit est bon ou pas selon le critère que vous étudiez
+actuellement, vous pouvez utiliser `git bisect skip` pour exprimer cette
+incertitude.
+
 Il est aussi possible d’automatiser complètement `git bisect` en utilisant
 `git bisect run <commande>`, qui prend en argument un programme capable de
 vérifier si le commit actif est correct ou non. Consultez la documentation de
 `git bisect` pour plus d’informations sur cette fonctionnalité.
+
+Vous trouverez dans les supports de la formation deux scripts pour vous
+entraîner à utiliser `git bisect`. Consultez le README des supports pour plus
+d’informations sur leur utilisation.
 
 
 ## Chercher une information dans le dépôt
@@ -98,7 +107,7 @@ Une option très utile est `-E`, qui active le support des expressions réguliè
 Perl pour permettre de faire des recherches plus flexibles. Le prix à payer
 étant qu’il y a davantage de caractères spéciaux que l’on doit parfois
 « échapper » avec `\` dans la chaîne recherchée. Voici un exemple qui
-permet de trouver toutes les occurences de "ceci", "cela" et "ça" :
+permet de trouver toutes les occurrences de « ceci », « cela » et « ça » :
 
     $ git grep -E '(ce(ci|la)?|ça)'
 
@@ -152,7 +161,7 @@ Voilà pour `git checkout`. Maintenant, passons à `git reset`.
 `HEAD` mais ne déplace pas la branche active.
 
 Avec cette commande, il est possible de rendre des commits inaccessibles.
-Assurez-vous donc d’avoir bien compris comment utiliser les `reflogs` avant
+Assurez-vous donc d’avoir bien compris comment utiliser les _reflogs_ avant
 d’utiliser cette variante de `git reset`, afin de pouvoir facilement ramener
 votre branche au point précédent en cas de manipulation incorrecte.
 
@@ -203,7 +212,7 @@ jour, mais en voici les grandes lignes :
   état de « `HEAD` détachée », mais on peut indiquer que c’est ce
   qu’on veut avec l’option `--detach` qui s’abbrévie en `-d`.
 - `git restore` combine les fonctions des variantes de `git checkout` et
-  `git reset` qui prennent des fichiers en paramètre. Cette commande permet...
+  `git reset` qui prennent des fichiers en paramètre. Cette commande permet…
     * Dans son mode par défaut, de remplacer des fichiers du répertoire de
       travail par la version qui existe au sein de l’index. Si vous avez
       effectué des changements incorrects au sein de votre répertoire de travail
@@ -211,14 +220,14 @@ jour, mais en voici les grandes lignes :
       vous en étiez lors de votre `git add`.
     * Avec l’option `--staged`, de récupérer au sein de l’index des versions de
       fichiers issues de `HEAD`. C’est par exemple comme ça qu’on annulerait
-      l'effet de `git add` ou `git rm`.
+      l’effet de `git add` ou `git rm`.
         - Si l’on souhaite aussi récupérer les versions de fichiers au sein du
           répertoire de travail, donc annuler toutes les modifications d’un
           fichier effectuées au sein du répertoire de travail depuis `HEAD`, on
           peut utiliser `--staged --worktree`.
     * En ajoutant l’option `--source <commit>`, on récupère plutôt au sein du
       répertoire de travail (ou de l’index si `--staged` est spécifié) des
-      fichiers issues d’anciens commits.
+      fichiers issus d’anciens commits.
 
 
 ## Savoir d’où vient une partie d’un fichier
@@ -295,32 +304,32 @@ ne va plus marcher, ce qui signifie que…
 - Toute fusion de branches où les deux branches source ont touché au fichier
   binaire sera considérée comme un conflit, ce qui limite les possibilités de
   collaboration.
-- À chaque modification d'un fichier binaire, on en stockera une nouvelle copie
+- À chaque modification d’un fichier binaire, on en stockera une nouvelle copie
   complète, ce qui peut prendre beaucoup de place sur le disque et ralentir
   les échanges réseau.
 
-Pour limiter l'impact de ce second problème, les équipes de la forge GitHub ont
+Pour limiter l’impact de ce second problème, les équipes de la forge GitHub ont
 mis au point une extension de git appelée Git _Large File Storage_ (généralement
-abrévié en Git LFS), qui permet de s'assurer que git ne stocke plus l'ensemble
+abrévié en Git LFS), qui permet de s’assurer que git ne stocke plus l’ensemble
 des versions des fichiers binaires, mais seulement celles dont on a eu besoin à
-un moment donné. Lorsqu'une nouvelle version est requise, elle est téléchargée
+un moment donné. Lorsqu’une nouvelle version est requise, elle est téléchargée
 depuis le serveur.
 
-Les conséquences sont les suivantes :
+Les conséquences sont les suivantes :
 
 - Côté serveur, peu de changements, on stocke toujours toutes les versions du
-  fichier et il faut donc prévoir de l'espace de stockage en conséquence.
+  fichier et il faut donc prévoir de l’espace de stockage en conséquence.
 - Côté client, on ne possède plus une copie complètement indépendante du dépôt
-  git, le `checkout` d'anciens commits peut nécessiter une connexion internet.
+  git, le `checkout` d’anciens commits peut nécessiter une connexion internet.
 - Il faut que le serveur (la forge) soit compatible avec LFS, et que chaque
-  utilisateur du dépôt ait installé l'extension git LFS.
+  utilisateur du dépôt ait installé l’extension git LFS.
 
 Insistons un peu sur ce dernier point, car il est important. Si tous les
-utilisateurs du dépôt ne sont pas équipés de l'extension Git LFS, alors il est
+utilisateurs du dépôt ne sont pas équipés de l’extension Git LFS, alors il est
 très facile de se retrouver dans une situation où les gros fichiers sont
 remplacés par des simples identifiants textuels (utilisés par Git LFS en
-interne). Il est donc important que la décision d'utiliser Git LFS et les
-préréquis associés soient communiqués clairement à l'ensemble de l'équipe.
+interne). Il est donc important que la décision d’utiliser Git LFS et les
+préréquis associés soient communiqués clairement à l’ensemble de l’équipe.
 
 Vous trouverez plus d’information et des instructions d’installation à
 l’adresse https://git-lfs.github.com/ .

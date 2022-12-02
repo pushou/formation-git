@@ -55,7 +55,7 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 
 Durant cette formation, vous allez travailler sur des postes de travail Linux
 équipés des logiciels `git`, `gitg`, `meld` et de quelques éditeurs de texte
-pour s'adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
+pour s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
 
 Ces postes sont aussi configurés pour partager les supports de TP avec le poste
 enseignant, via le partage de fichier « formation-git » accessible

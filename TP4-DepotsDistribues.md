@@ -37,7 +37,7 @@ Les branches du parent sont reflétées dans le clone sous forme de « branches
 distantes ». Ce sont des copies locales en lecture seule (un peu comme des
 _tags_, vous pouvez faire un `checkout` dessus mais pas y ajouter des commits).
 Leur nom est en `origin/<branche>`, et elles sont affichées avec une couleur
-verte dans l'interface de `gitg`.
+verte dans l’interface de `gitg`.
 
 De plus, la branche active du parent a aussi été recréée sous forme de branche
 locale dans le clone, et c’est cette branche-là qui est actuellement active et
@@ -103,7 +103,7 @@ divergé par rapport à la branche distante :
     $ git merge --ff-only origin/univers-parallele
     $ cat ToutNouveau.txt
 
-### Le raccourci pull
+### Le raccourci `git pull`
 
 Il est très courant de vouloir se mettre à jour par rapport à une branche
 distante, et `git` fournit donc des raccourcis pour accélérer cette opération.
@@ -150,8 +150,8 @@ Il est courant d’avoir dans son dépôt `git` local une branche qui a un
   étudierons ce processus plus en détail au TP 5.
 - À l’inverse, il peut être intéressant d’effectuer un suivi local d’une branche
   existant sur un serveur distant, par exemple la branche qui représente la
-  version de développement officielle du projet (généralement appelée `master`
-  ou `develop`).
+  version de développement officielle du projet (généralement appelée `master`,
+  `main` ou `develop`).
 
 Pour nous aider à maintenir ces versions locales et distantes d’une branche
 synchrones, git fournit la notion de branche amont (_upstream branch_). Ce
@@ -195,7 +195,7 @@ versions actuelles de `git`, on utilise la syntaxe
 anciennes de git utilisaient une syntaxe différente. Si vous êtes amené un jour
 à utiliser ces versions, consultez `git help branch` pour plus de détails.
 
-### Soumission de changements avec push
+### Soumission de changements avec `git push`
 
 De la même façon qu’il est possible de se synchroniser avec les branches et
 commits d’un dépôt distant avec `git fetch` et `git pull`, il est possible de
@@ -290,7 +290,7 @@ ne contient par défaut que la branche active du dépôt d’origine, et l’on 
 accès qu’aux branches « propres » du clone, pas aux _remotes_ auxquelles ce
 dernier est éventuellement connecté.
 
-### Pull et push face à la divergence
+### `git pull` et `git push` face à la divergence
 
 Même si `git push` et `git pull` sans arguments procèdent d’une logique très
 similaire (mettre à jour la branche amont par rapport à la branche locale, ou la
@@ -329,7 +329,7 @@ situation de divergence, il rejettera notre requête :
 
 Pour qu’un `git push` soit accepté, il faut que la branche locale soit un
 successeur de la branche distante. La divergence n’est pas tolérée,
-contrairement au cas de git pull où elle est gérée par une fusion. Pour se
+contrairement au cas de `git pull` où elle est gérée par une fusion. Pour se
 sortir de ce genre de situation, il faudra d’abord effectuer une fusion ou un
 _rebase_ avant de pousser sa branche. Nous allons bientôt voir pourquoi.
 
@@ -496,6 +496,10 @@ faisant la version distante précédente de la branche :
 
     ? git push --force
 
+Notez que quand on utilise un dépôt distant sur une forge, l’administrateur de
+ce dépôt peut interdire cette opération dangereuse pour éviter des pertes de
+données. Dans ce cas, il vous faudra négocier ou trouver une autre solution.
+
 ### Détruire une branche distante
 
 Lorsqu’on a fini de travailler sur une branche distante, par exemple parce
@@ -504,11 +508,11 @@ détruire celle-ci. Cela évite une prolifération des branches inactives qui pe
 rendre l’historique d’un dépôt incompréhensible.
 
 Sur les versions modernes de git, on peut le faire en utilisant
-`git push --delete`...
+`git push --delete`…
 
     ? git push --delete mondepot mabranche
 
-...et sur les anciennes versions de git, on peut avoir besoin d’utiliser son
+…et sur les anciennes versions de git, on peut avoir besoin d’utiliser son
 prédécesseur moins lisible, le signe « `:` ».
 
     ? git push mondepot :mabranche

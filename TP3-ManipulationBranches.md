@@ -267,11 +267,11 @@ Cela peut être fait manuellement, via la procédure suivante…
 - Ouvrir chaque fichier au sein duquel git a ajouté des annotations de conflit.
 - Rechercher ces dernières avec la fonction adéquate de son éditeur de texte.
 - Les remplacer par le contenu final désiré.
-- Confirmer qu'on a résolu le conflit en faisant un `git add` du fichier.
+- Confirmer qu’on a résolu le conflit en faisant un `git add` du fichier.
 
 …mais il faut être très prudent en écrivant le contenu final, il est très facile
 de faire des erreurs, typiquement en oubliant accidentellement un changement
-issu d'une des deux branches en conflit.
+issu d’une des deux branches en conflit.
 
 Pour cette raison, il est fortement recommandé d’utiliser un outil graphique de
 résolution de conflit, qui permet de mieux visualiser l’ensemble du processus et
@@ -300,8 +300,8 @@ changements de la version locale ou distante à la version proposée.
 
 Une fonctionnalité trop bien cachée de Meld permet également d’intégrer les deux
 jeux de changement, l’un au-dessus de l’autre, en maintenant enfoncée la touche
-Ctrl avant d'appuyer sur les boutons en forme de flèche suscités (qui prennent
-alors la forme d'un signe `+`).
+Ctrl avant d’appuyer sur les boutons en forme de flèche suscités (qui prennent
+alors la forme d’un signe `+`).
 
 Les différences en rouge provenant de gauche et de droite sont des conflits :
 des changements incompatibles sont présents dans la version locale et distante.
@@ -492,7 +492,7 @@ sauvegarde » en haut de leur branche avant de lancer le `rebase`, pour pouvoir
 facilement vérifier (par exemple avec `git diff`) que tout se passe bien à
 chaque résolution de conflit ainsi qu’à la fin de l’exécution de `git rebase`.
 
-### Cherry-pick : Une fusion sélective
+### Cherry-pick : Une fusion sélective
 
 À la croisée des chemins entre `git merge` et `git rebase`, on trouve
 `git cherry-pick`. Cette commande permet d’importer sélectivement des
@@ -580,14 +580,14 @@ un `git merge` réussi, git effectue les opérations suivantes :
 
 Combinées, ces deux opérations permettent d’annuler l’effet de `git merge`.
 
-Si le sujet des reflogs vous intéresse, vous trouverez plus d’information
+Si le sujet des _reflogs_ vous intéresse, vous trouverez plus d’information
 dans les pages d’aide `git help reflog` et `git help revisions`.
 
 ### `git revert` et les fusions
 
 Lorsqu’une fusion incorrecte vient d’être effectuée, il est préférable
 d’utiliser la combinaison de `git reset` et des _reflogs_ expliquée ci-dessus.
-Mais parfois, on ne découvre un problème avec une fusion que quelques temps
+Mais parfois, on ne découvre un problème avec une fusion que quelque temps
 après, alors qu’on a déjà effectué d’autres commits sur la branche.
 
 Dans ce cas, on peut être tenté d’utiliser `git revert`, mais par défaut git
@@ -600,11 +600,11 @@ forme de l’historique.
 Si, alors qu’on est sur une branche A, on demande à faire un `git merge B`,
 alors git va remonter l’historique de la branche A jusqu’à trouver soit un
 commit commun avec la branche B (ancêtre commun), soit un point où la branche B
-a été fusionnée dans A. A ce point-là de l’historique, l’algorithme considère
+a été fusionnée dans A. À ce point-là de l’historique, l’algorithme considère
 que les deux branches étaient synchrones, et seules les modifications effectuées
 ultérieurement au sein des branches A et B sont considérées pour la fusion.
 
-Donc dans la situation schématisée ci-dessous...
+Donc dans la situation schématisée ci-dessous…
 
                  Src
     --- ignoré ---o---o---o---o Branche B
@@ -612,18 +612,18 @@ Donc dans la situation schématisée ci-dessous...
     --- ignoré -----o---o Branche A (active)
                    Mrg
 
-...seuls les commits `Mrg..A` de la branche A et `Src..B` de la branche B sont
+…seuls les commits `Mrg..A` de la branche A et `Src..B` de la branche B sont
 considérés lorsqu’on tente de fusionner B dans A. Où l’on appelle `Mrg` le
 dernier commit de fusion effectué au sein de la branche A et `Src` le commit de
 la branche B depuis lequel on a fusionné.
 
 Le fait que les commits de B avant `Mrg` ne soient pas considérés peut
-surprendre, mais c’est en fait préférable, car si ils étaient considérés, on
+surprendre, mais c’est en fait préférable, car s’ils étaient considérés, on
 serait amené à résoudre les mêmes conflits de fusion encore et encore.
 
 Supposons maintenant que l’on force git à annuler une fusion avec `git revert`,
 ce qu’on peut faire avec l’option `--merge`/`-m`, donc ici on utiliserait
-`git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante...
+`git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante…
 
                  Src
     --- ignoré ---o---o---o---o Branche B
@@ -631,10 +631,10 @@ ce qu’on peut faire avec l’option `--merge`/`-m`, donc ici on utiliserait
     --- ignoré -----o---o---o Branche A (active)
                    Mrg     Rvt
 
-...où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit
+…où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit
 de fusion `Mrg` précédent. Et jusqu’ici tout va bien. Là où il va y avoir un
 problème, en revanche, c’est quand on va essayer par la suite de fusionner la
-nouvelle version de la branche B, après que les problèmes aient été résolus :
+nouvelle version de la branche B, après que les problèmes aient été résolus :
 
                  Src
     --- ignoré ---o---o---o---o Branche B
@@ -642,9 +642,9 @@ nouvelle version de la branche B, après que les problèmes aient été résolus
     --- ignoré -----o---o---o---o Branche A (active)
                    Mrg     Rvt Mrg2
 
-A ce moment-là, pour créer le commit `Mrg2`, git va considérer les commits
+À ce moment-là, pour créer le commit `Mrg2`, git va considérer les commits
 `Src..B` de la branche `B` et les commits `Mrg..Rvt` de la branche A, incluant
-donc le commit `Rvt` créé par `git revert`. Ce qui aura pour conséquences...
+donc le commit `Rvt` créé par `git revert`. Ce qui aura pour conséquences…
 
 1. Une probabilité assez importante de conflit de fusion, liée au fait que le
    commit `Rvt` touche à un certain nombre de fichiers qui sont activement

@@ -16,16 +16,16 @@ pour explorer les subtilités de la gestion de version collaborative.
 
 ### Authentification SSH
 
-Il ne suffit pas de pouvoir vous connecter à l’interface web d'une forge pour
+Il ne suffit pas de pouvoir vous connecter à l’interface web d’une forge pour
 pouvoir échanger des _commits_ avec. Vous devez également fournir à votre
 utilitaire git local un moyen de confirmer votre identité auprès du serveur,
 lors de certaines opérations sensibles comme écrire des _commits_ dans un dépôt
-ou lire les _commits_ d'un dépôt privé. On parle de s'authentifier.
+ou lire les _commits_ d’un dépôt privé. On parle de s’authentifier.
 
 Il existe plusieurs moyens de faire cela. Dans ce TP nous utiliserons
-l'authentification SSH, qui est la plus utilisée. Mais vous pouvez consulter la
-section « Informations complémentaires » pour plus d'informations sur
-l'authentification HTTPS, qui est parfois utilisé comme alternative.
+l’authentification SSH, qui est la plus utilisée. Mais vous pouvez consulter la
+section « Informations complémentaires » pour plus d’informations sur
+l’authentification HTTPS, qui est parfois utilisée comme alternative.
 
 Le protocole SSH est basé sur la cryptographie à clé publique, qui utilise une
 paire de clés cryptographiques :
@@ -33,8 +33,8 @@ paire de clés cryptographiques :
 - La clé privée est une information réputée secrète, qui sert à vous identifier.
 - La clé publique doit être transmise aux services auprès desquels vous
   souhaitez vous identifier au moyen de votre clé privée. Elle leur permet de
-  vérifier que vous possédez la clé privée, mais pas d'usurper votre identité
-  auprès d'autres services ayant connaissance de votre clé publique.
+  vérifier que vous possédez la clé privée, mais pas d’usurper votre identité
+  auprès d’autres services ayant connaissance de votre clé publique.
 
 La machine que vous utilisez ne possède pas encore de clés SSH…
 
@@ -46,8 +46,8 @@ La machine que vous utilisez ne possède pas encore de clés SSH…
 
 `ssh-keygen` va vous poser une série de questions :
 
-- L'endroit où vous souhaitez stocker vos clés. Je vous recommande d'utiliser
-  l'emplacement par défaut en appuyant simplement sur Entrée.
+- L’endroit où vous souhaitez stocker vos clés. Je vous recommande d’utiliser
+  l’emplacement par défaut en appuyant simplement sur Entrée.
 - La phrase de passe que vous souhaitez utiliser pour protéger votre clé. Pour
   simplifier la formation, je vous recommande de ne pas utiliser de phrase de
   passe, en appuyant deux fois de suite sur Entrée.
@@ -56,30 +56,30 @@ Ce second point mérite plus ample discussion. Sans phrase de passe, votre clé
 privée est stockée dans votre dossier personnel sans chiffrement supplémentaire,
 ce qui est problématique si vous vous retrouvez dans un des cas suivants :
 
-- Votre ordinateur est volé alors que votre disque dur n'était pas chiffré (rare
+- Votre ordinateur est volé alors que votre disque dur n’était pas chiffré (rare
   au CNRS, où le chiffrement des postes professionnels est obligatoire).
-- Vous partagez votre ordinateur avec d'autres utilisateurs qui ont accès à
+- Vous partagez votre ordinateur avec d’autres utilisateurs qui ont accès à
   votre dossier personnel et ne sont pas dignes de confiance.
-- Vous exécutez (accidentellement, s'entend) des logiciels malveillants qui
-  s'empressent d'envoyer une copie de votre clé privée à un tiers malveillant.
+- Vous exécutez (accidentellement, s’entend) des logiciels malveillants qui
+  s’empressent d’envoyer une copie de votre clé privée à un tiers malveillant.
 
 Toutefois, les méthodes permettant de protéger votre clé SSH de ce type
-d'attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
-git sont un peu complexes et dépendent du système d'exploitation utilisé.
+d’attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
+git sont un peu complexes et dépendent du système d’exploitation utilisé.
 
 Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
-pour une durée limitée, à l'issue de laquelle votre machine virtuelle et la clé
-SSH qu'elle contient seront détruites, nous accepterons donc le risque de
+pour une durée limitée, à l’issue de laquelle votre machine virtuelle et la clé
+SSH qu’elle contient seront détruites, nous accepterons donc le risque de
 travailler sans phrase de passe.
 
 Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
-plus qu'à afficher votre clé publique, par exemple avec l'éditeur `gedit`…
+plus qu’à afficher votre clé publique, par exemple avec l’éditeur `gedit`…
 
     $ gedit ~/.ssh/id_ed25519.pub
 
-…puis à la copier-coller dans l'interface web de gestion de clé SSH de GitHub,
+…puis à la copier-coller dans l’interface web de gestion de clé SSH de GitHub,
 située sur https://github.com/settings/ssh/new . Je vous recommande de lui
-donner un nom explicite du style "Formation Git" et de la supprimer après la
+donner un nom explicite du style « Formation Git » et de la supprimer après la
 formation.
 
 Et voilà, vous êtes prêt à échanger des _commits_ avec la forge GitHub !
@@ -89,9 +89,9 @@ Et voilà, vous êtes prêt à échanger des _commits_ avec la forge GitHub !
 Une copie de la Déclaration des Droits de l’Homme et du Citoyen est disponible
 sur le dépôt git https://github.com/HadrienG2/ddhc .
 
-Pour commencez, créez-en un _fork_ sous votre contrôle, en utilisant le bouton
+Pour commencer, créez-en un _fork_ sous votre contrôle, en utilisant le bouton
 « Fork » situé en haut à droite de l’interface de GitHub, entre le
-bouton « Watch » et le bouton bouton « Star ». Acceptez les
+bouton « Watch » et le bouton « Star ». Acceptez les
 paramètres proposés par défaut avec le bouton « Create fork ».
 
 L’opération va prendre un petit moment (typiquement quelques secondes).
@@ -100,7 +100,7 @@ _fork_ nouvellement créé.
 
 Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
 sur votre machine. Pour cela, vous avez besoin de son URL SSH, que vous pouvez
-obtenir de l’interface Github de la façon suivante :
+obtenir de l’interface GitHub de la façon suivante :
 
 - Cliquez sur le bouton bleu « Clone ».
 - Cliquez sur l’onglet « SSH ».
@@ -133,9 +133,9 @@ _upstream_ :
     $ git remote add upstream https://github.com/HadrienG2/ddhc.git
     $ git fetch upstream
 
-Notez qu'on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
-de passe, puisqu'on ne fait que lire des _commits_ depuis un dépôt public, ce
-qui ne nécessite pas de s'identifier.
+Notez qu’on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
+de passe, puisqu’on ne fait que lire des _commits_ depuis un dépôt public, ce
+qui ne nécessite pas de s’identifier.
 
 Si vous ouvrez maintenant `gitg`, vous pourrez constater que vous pouvez
 maintenant visualiser vos commits et branches locales, celles de votre _fork_, et
@@ -197,8 +197,8 @@ Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 - Puis forcer votre branche `master` à revenir au même point que le `master`
   officiel avec la commande `git reset --hard upstream/master`
 
-Vous pouvez configurer l'utilisation implicite de `--ff-only` pour tous les
-`git pull` futurs au sein de ce dépôt avec la commande de configuration...
+Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
+`git pull` futurs au sein de ce dépôt avec la commande de configuration…
 
     $ git config pull.ff only
 
@@ -207,7 +207,7 @@ Vous pouvez configurer l'utilisation implicite de `--ff-only` pour tous les
 Une fois que l’on a un `master` à jour, il est possible de construire des
 changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
 part de master et de commencer à créer des _commits_ dessus. En voici **un
-exemple**, à adapter selon le type d'édition que vous voulez effectuer :
+exemple**, à adapter selon le type d’édition que vous voulez effectuer :
 
     $ git checkout master
     ? git checkout -b changements
@@ -281,7 +281,7 @@ plutôt le travail à partir du dépôt officiel du projet.
 Une fois que vous avez mis des changements en ligne sous la forme d’une branche
 sur votre _fork_, vous pouvez demander l’intégration de ces changements au dépôt
 officiel avec une fonctionnalité des forges git modernes, la _pull request_.
-Cette fonctionnalité est également appelée _merge request_ par Gitlab, mais
+Cette fonctionnalité est également appelée _merge request_ par GitLab, mais
 comme nous utilisons GitHub dans ce TP, nous nous en tiendrons à sa terminologie
 afin d’éviter toute confusion.
 
@@ -291,7 +291,7 @@ ainsi que par un bandeau dans l’interface web de votre _fork_ sur GitHub penda
 quelque temps après le _push_. Mais si vous avez manqué ces raccourcis, vous
 pouvez créer « manuellement » une _pull request_ en allant dans
 l’interface web de votre _fork_, affichant la liste des branches, et cliquant
-sur le bouton « Pull request ».
+sur le bouton « Pull Request ».
 
 Comme son nom l’indique, une _pull request_ invite les mainteneurs du dépôt
 officiel à intégrer des changements au projet en fusionnant les nouveautés de
@@ -382,37 +382,37 @@ aux TPs précédents pour retrouver les commandes utilisées.
 ### Authentification HTTPS
 
 Vous pourriez être amené au cours de votre carrière à travailler dans un réseau
-informatique bloquant le trafic SSH sortant. Si cette politique réseau n'est pas
-négociable, cela empêche l'utilisation du protocole SSH auquel nous avons fait
+informatique bloquant le trafic SSH sortant. Si cette politique réseau n’est pas
+négociable, cela empêche l’utilisation du protocole SSH auquel nous avons fait
 appel pendant ce TP.
 
-A la place, vous devrez utiliser le protocole HTTPS, basé sur un couple nom
-d'utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires :
+À la place, vous devrez utiliser le protocole HTTPS, basé sur un couple nom
+d’utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires :
 
-- Cloner votre dépôt git depuis l'URL HTTPS fournie par la forge, ou dans le cas
-  d'un dépôt déjà cloné changer l'URL des _remotes_ associées à la forge avec
+- Cloner votre dépôt git depuis l’URL HTTPS fournie par la forge, ou dans le cas
+  d’un dépôt déjà cloné changer l’URL des _remotes_ associées à la forge avec
   la commande `git remote set-url <remote> <URL>`.
-- Pour les forges utilisant un mécanisme d'authentification "SSO" comme
+- Pour les forges utilisant un mécanisme d’authentification « SSO » comme
   gitlab.in2p3.fr…
-  * Trouver votre nom d'utilisateur sur la forge (dans le cas de Gitlab, il
+  * Trouver votre nom d’utilisateur sur la forge (dans le cas de GitLab, il
     apparaît comme `@<nom>` quand on clique sur le menu en haut à droite).
-  * Configurer un mot de passe dédié aux échanges git. Sur l'instance Gitlab de
-    l'IN2P3, cela peut être fait à l'adresse suivante :
+  * Configurer un mot de passe dédié aux échanges git. Sur l’instance GitLab de
+    l’IN2P3, cela peut être fait à l’adresse suivante :
     https://gitlab.in2p3.fr/-/profile/password/edit .
         - Essayez de laisser le champ « Current password » vide, et si
           ça ne fonctionne pas utilisez le lien « I forgot my
           password » pour obtenir par mail un mot de passe utilisable.
 
-Une fois ceci fait, vous devrez saisir votre nom d'utilisateur et votre mot de
+Une fois ceci fait, vous devrez saisir votre nom d’utilisateur et votre mot de
 passe à chaque fois que vous écrivez des données sur la forge (via `git push`),
 et également à chaque fois que vous lisez des données (via `git clone`,
-`git fetch` ou `git pull`) dans le cas d'un dépôt privé. Ce qui devient
+`git fetch` ou `git pull`) dans le cas d’un dépôt privé. Ce qui devient
 rapidement rébarbatif.
 
 Pour une meilleure ergonomie, il est possible de conserver une copie du mot de
 passe en RAM pour la durée de votre session (sûr) ou de stocker votre mot de
 passe sur le disque dur (dangereux). Pour savoir comment, référez-vous à la page
-« gitcredentials » de l'aide de git via `git help gitcredentials`
+« gitcredentials » de l’aide de git via `git help gitcredentials`
 ou https://git-scm.com/docs/gitcredentials .
 
 ### Petit tour d’horizon des forges logicielles
@@ -469,4 +469,4 @@ Cependant, chaque moteur a aussi ses spécificités :
   même éditeur (JIRA, Bamboo, Confluence, HipChat…)
 - Le vocabulaire utilisé et le détail des statistiques proposées varie d’une
   forge à l’autre, et il n’est pas trivial de migrer l’ensemble d’un projet
-  (y compris les tickets, merge requests…) d’une forge à une autre.
+  (y compris les tickets, _merge requests_…) d’une forge à une autre.

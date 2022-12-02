@@ -19,8 +19,8 @@ Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l’
 d’une commande dépend fortement de l’état actuel du dépôt utilisé.
 
 Donc si par exemple quelque chose s’est mal passé durant le TP1, vous pouvez
-repartir d’un dépôt dans l'état attendu pour faire le TP2 en utilisant le
-rattrapage appelé « TP2 ». Pour ce faire, supprimez ou sauvegardez les
+repartir d’un dépôt dans l’état attendu pour faire le TP2 en utilisant le
+rattrapage appelé « TP2 ». Pour ce faire, supprimez ou sauvegardez-les
 fichiers sur votre bureau, puis remplacez-le par le contenu du dossier
 `~/formation-git/TP2`.
 
@@ -61,7 +61,7 @@ l’opération.
 Pour rappel, pour quitter l’éditeur de texte `nano` en enregistrant vos
 changements, il faut utiliser le raccourci clavier Ctrl+X (indiqué en bas à
 gauche), confirmer que vous voulez enregistrer vos modifications avec O (ou Y si
-votre système d'exploitation est configuré en anglais), et confirmer que vous
+votre système d’exploitation est configuré en anglais), et confirmer que vous
 voulez enregistrer au même endroit en appuyant sur Entrée.
 
 ### Nouveau contenu et différences
@@ -219,11 +219,11 @@ modifications effectuées…
 
 Mais malheureusement, comme la plupart des applications graphiques, `gitg`
 empêche la saisie de commandes supplémentaires tant qu’elle est en exécution. Si
-vous retournez dans votre terminal, vous pourrez constater qu’il n'acceptera
+vous retournez dans votre terminal, vous pourrez constater qu’il n’acceptera
 plus de commandes tant que vous n’aurez pas fermé `gitg`.
 
 La manière la plus simple de régler ce problème est de lancer l’application en
-tâche de fond avec l'aide du signe `&` :
+tâche de fond avec l’aide du signe `&` :
 
     $ gitg &
 
@@ -452,7 +452,7 @@ Ajouter des changements à l’index (pour les inclure dans le prochain commit)�
 
     $ git add <chemins>
 
-...en prenant en compte les suppressions de fichier (rejetées par défaut) :
+…en prenant en compte les suppressions de fichier (rejetées par défaut) :
 
     $ git add --all <chemins>
 
