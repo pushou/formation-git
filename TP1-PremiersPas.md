@@ -330,12 +330,12 @@ Afficher la configuration actuelle de git :
 
 Saisir les identifiants d’utilisateur qui seront insérés dans les commits :
 
-    $ git config --global user.name 'Francine Dupont'
-    $ git config --global user.email fdupont@serveur-imaginaire.fr
+    ? git config --global user.name 'Francine Dupont'
+    ? git config --global user.email fdupont@serveur-imaginaire.fr
 
 Définir l’éditeur de texte utilisé par git :
 
-    $ git config --global core.editor nano
+    ? git config --global core.editor nano
 
 Initialiser un dépôt git dans le répertoire courant :
 
@@ -347,7 +347,7 @@ Afficher l’état du dépôt git actif :
 
 Mettre un fichier (ou un dossier) sous gestion de version :
 
-    $ git add <fichier>
+    ? git add <fichier>
 
 Mettre tous les fichiers du répertoire courant sous gestion de version :
 
@@ -360,15 +360,15 @@ y compris les suppressions, les déplacements…
 
 Supprimer un fichier sous gestion de version :
 
-    $ git rm <fichier>
+    ? git rm <fichier>
 
 Retirer un fichier de la gestion de version sans le supprimer :
 
-    $ git reset <fichier>
+    ? git reset <fichier>
 
 Déplacer un fichier sous gestion de version :
 
-    $ git mv <source> <destination>
+    ? git mv <source> <destination>
 
 Ignorer les fichiers d’extension « .log » (à exécuter à la racine du dépôt) :
 
@@ -376,11 +376,11 @@ Ignorer les fichiers d’extension « .log » (à exécuter à la racine du d�
 
 Afficher le manuel d’une commande git (ou l’explication d’un concept git) :
 
-    $ git help <commande>
+    ? git help <commande>
 
 Afficher un bref rappel de la syntaxe d’une commande git :
 
-    $ git <commande> -h
+    ? git <commande> -h
 
 
 ---

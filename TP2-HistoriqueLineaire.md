@@ -304,7 +304,7 @@ publique a été distribuée, et documenter les nouveautés de cette version. Le
 fonctionnement est basé sur un éditeur de texte, comme `git commit` sans
 `-m` :
 
-    $ git tag --annotate v1.0 HEAD~
+    ? git tag --annotate v1.0 HEAD~
 
 Un moyen simple d’afficher la description d’une étiquette annotée est d’utiliser
 la commande `git show` :
@@ -384,7 +384,7 @@ Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on
 exécutera la commande suivante, qui à la manière de `git commit` demandera la
 saisie d’une description par le biais d’un éditeur de texte :
 
-    $ git revert HEAD
+    ? git revert HEAD
 
 À plus grande échelle, il est aussi possible d’annuler l’effet de plusieurs
 commits avec la variante `git revert <commit1> <commit2>`, ou celui
@@ -449,19 +449,19 @@ par un ou plusieurs chemins d’accès vers des fichiers ou des dossiers.
 
 Ajouter des changements à l’index (pour les inclure dans le prochain commit) :
 
-    $ git add <chemins>
+    ? git add <chemins>
 
 …en prenant en compte les suppressions de fichier (rejetées par défaut) :
 
-    $ git add --all <chemins>
+    ? git add --all <chemins>
 
 Créer un _commit_, une version sauvegardée du projet :
 
-    $ git commit
+    ? git commit
 
 Saisir la description du commit directement dans la commande :
 
-    $ git commit -m <description>
+    ? git commit -m <description>
 
 Afficher les changements des **fichiers versionnés** par rapport à l’index :
 
@@ -485,7 +485,7 @@ Afficher les changements survenus du commit A au commit B :
 
 Restreindre l’affichage des changements à certain fichiers (ou dossiers) :
 
-    $ git diff <chemins>
+    ? git diff <chemins>
 
 Afficher l’historique des commits en ligne de commande
 
@@ -497,11 +497,11 @@ Lancer le visualiseur d’historique `gitg` sans bloquer le terminal
 
 Donner un nom à un commit (par défaut le commit actif) avec une étiquette :
 
-    $ git tag <étiquette> [<commit>]
+    ? git tag <étiquette> [<commit>]
 
 …et compléter l’étiquette par une description :
 
-    $ git tag --annotate <étiquette> [<commit>]
+    ? git tag --annotate <étiquette> [<commit>]
 
 Afficher la liste des étiquettes présentes dans le dépôt :
 
@@ -509,18 +509,18 @@ Afficher la liste des étiquettes présentes dans le dépôt :
 
 Détruire une ou plusieurs étiquette·s :
 
-    $ git tag --delete <étiquettes>
+    ? git tag --delete <étiquettes>
 
 Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
 
-    $ git show <commit>
+    ? git show <commit>
 
 **Attention :** Les commandes suivantes modifient le répertoire de travail et
 doivent donc être exécutées dans un répertoire de travail propre.
 
 Charger le contenu d’un commit dans le répertoire de travail :
 
-    $ git checkout <commit>
+    ? git checkout <commit>
 
 Revenir sur la branche master :
 
@@ -528,7 +528,7 @@ Revenir sur la branche master :
 
 Créer un commit qui annule l’effet d’un ou plusieurs autres commits :
 
-    $ git revert <commits>
+    ? git revert <commits>
 
 Créer un commit qui annule l’effet de tous les commits entre A et B :
 

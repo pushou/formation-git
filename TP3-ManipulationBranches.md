@@ -52,6 +52,11 @@ Il est aussi possible de renommer une branche avec
 `git branch --move <ancien nom> <nouveau nom>`, ou de la supprimer avec
 `git branch --delete <nom>` (qui s’abrévie en `git branch -d <nom>`).
 
+Pour éviter des pertes de données, git ne vous laissera pas supprimer avec
+`--delete` une branche contenant de nouveaux changements qui n’ont pas été
+fusionnés au sein d’une autre branche. Si vous souhaitez bien perdre ces
+changements, utilisez `--delete --force`, qui s’abrévie en `-D`.
+
 ### Deux jeux de changements
 
 Nous pouvons maintenant « commettre » quelques éditions de fichier sur
@@ -118,7 +123,7 @@ l’on peut vérifier avec `git status`.
 
 Cette vérification étant faite, il n’y a plus qu’à lancer la fusion :
 
-    $ git merge univers-parallele
+    ? git merge univers-parallele
 
 Si vous avez suivi le TP comme prévu, la fusion va s’effectuer de façon
 complètement automatisée, et après avoir saisi un message de commit (ou accepté
@@ -191,7 +196,7 @@ fonctionnement de la commande suivante, vous pourrez consulter la section
 Quoi qu’il en soit, la fusion en avance rapide ayant été annulée, nous pouvons
 maintenant retenter la fusion en forçant cette fois la création d’un commit :
 
-    $ git merge --no-ff master
+    ? git merge --no-ff master
 
 
 ## Conflit de fusion
@@ -279,7 +284,7 @@ contrôler en permanence ce qu’on est en train de faire. Dans cette formation,
 nous utiliserons pour cela l’application Meld.
 
     @ git merge master
-    $ meld .
+    ? meld .
 
 Appliqué à un dossier, Meld recherche l’ensemble des changements survenus dans
 ce dossier qui concernent le commit de fusion, et indique en rouge les fichiers
@@ -394,11 +399,11 @@ C’est ce que nous allons mettre en pratique dans la séquence suivante.
 
 Créer une branche :
 
-    $ git branch <nom>
+    ? git branch <nom>
 
 …et basculer dessus dans la foulée :
 
-    $ git checkout -b <nom>
+    ? git checkout -b <nom>
 
 Énumérer les branches présentes au sein du dépôt :
 
@@ -406,23 +411,23 @@ Créer une branche :
 
 Basculer sur une autre branche :
 
-    $ git checkout <branche>
+    ? git checkout <branche>
 
 Supprimer une branche :
 
-    $ git branch --delete <branche>
+    ? git branch --delete <branche>
 
 Fusionner les nouveautés d’une branche au sein de la branche active :
 
-    $ git merge <branche>
+    ? git merge <branche>
 
 …uniquement si la fusion peut être effectuée en avance rapide :
 
-    $ git merge --ff-only <branche>
+    ? git merge --ff-only <branche>
 
 …ou bien en interdisant à git d’utiliser l’avance rapide :
 
-    $ git merge --no-ff <branche>
+    ? git merge --no-ff <branche>
 
 Annuler une fusion de branche qui vient d’être effectuée :
 
@@ -434,7 +439,7 @@ Annuler une fusion de branche qui est bloquée par un conflit :
 
 Ouvrir `meld` dans le dossier actif pour y régler un conflit :
 
-    $ meld .
+    ? meld .
 
 Continuer une fusion de branche après avoir résolu un conflit :
 

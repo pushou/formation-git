@@ -79,7 +79,7 @@ Si vous retournez dans le clone, vous constaterez que ce changement n’est pas
 visible, ni dans la branche locale, ni dans la branche distante :
 
     $ cd ../MonClone
-    $ cat ToutNouveau.txt
+    @ cat ToutNouveau.txt
     $ git diff origin/univers-parallele
 
 Comme nous en avons discuté, git n’échange avec les dépôts distants que
@@ -93,7 +93,7 @@ Notez que git mentionne une activité au niveau de la copie locale
 `origin/univers-parallele`. À ce stade, le changement n’est toujours pas présent
 dans la branche locale, mais il est visible dans la branche distante :
 
-    $ cat ToutNouveau.txt
+    @ cat ToutNouveau.txt
     $ git diff origin/univers-parallele
 
 Nous pouvons intégrer ce changement à notre branche locale par une fusion de
@@ -310,7 +310,7 @@ Mettons-le en évidence en créant une petite divergence d’historique :
     $ echo 'Prost !' > HelloWorld.txt
     $ git add HelloWorld.txt
     $ git commit -m 'Disons bonjour plus joyeusement'
-    $ git pull
+    ? git pull
 
 Nous venons de créer une divergence d’historique puisque la branche `master`
 de `MonAutreClone` contient désormais un nouveau commit (« Ajout d’un compteur »),
@@ -375,7 +375,7 @@ fusions incorrectes, on peut le faire en utilisant systématiquement
 d’obtenir ce comportement sans devoir spécifier l’option `--ff-only` à
 répétition en utilisant l’option `pull.ff`:
 
-    $ git config --global pull.ff=only
+    $ git config --global pull.ff only
 
 
 ## Conclusion
@@ -416,7 +416,7 @@ mater cette complexité.
 
 Créer un clone d’un dépôt (`<chemin>` peut être un chemin local ou une URL) :
 
-    $ git clone <chemin> [<nom>]
+    ? git clone <chemin> [<nom>]
 
 Afficher les dépôts distants (_remotes_) et les chemins associés :
 
@@ -424,15 +424,15 @@ Afficher les dépôts distants (_remotes_) et les chemins associés :
 
 Afficher des informations détaillées sur une _remote_ :
 
-    $ git remote show <remote>
+    ? git remote show <remote>
 
 Ajouter une _remote_ au dépôt :
 
-    $ git remote add <nom> <adresse>
+    ? git remote add <nom> <adresse>
 
 Récupérer les changements d’une _remote_ :
 
-    $ git fetch <remote>
+    ? git fetch <remote>
 
 Récupérer les changements de toutes les _remotes_ :
 
@@ -448,19 +448,19 @@ Récupérer et fusionner les changements de la branche amont :
 
 Configurer `git` pour appliquer le fonctionnement ci-dessus par défaut :
 
-    $ git config --global pull.ff=only
+    $ git config --global pull.ff only
 
 Créer ou mettre à jour des références distantes :
 
-    $ git push <remote> <branche1> [<branche2> ...]
+    ? git push <remote> <branche1> [<branche2> ...]
 
 Pousser une branche en marquant la branche distante comme branche amont :
 
-    $ git push --set-upstream <remote> <branche>
+    ? git push --set-upstream <remote> <branche>
 
 Mettre à jour l’homologue distant de la branche active sur une _remote_ :
 
-    $ git push <remote>
+    ? git push <remote>
 
 Mettre à jour la branche amont associée à la branche active :
 
