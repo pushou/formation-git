@@ -7,7 +7,7 @@
 Pour aborder la notion de branches dans un cadre plus simple, commençons par
 créer un deuxième dépôt, vierge de toutes les manipulations précédentes :
 
-    $ cd ~/Bureau
+    $ cd ~/Desktop
     $ mkdir MesBranches && cd MesBranches
     $ git init
 

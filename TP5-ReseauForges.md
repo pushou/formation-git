@@ -109,7 +109,7 @@ obtenir de l’interface GitHub de la façon suivante :
 Une fois l’URL obtenue, créez un clone local du _fork_ en passant cette URL en
 paramètre de la commande `git clone` :
 
-    $ cd ~/Bureau/
+    $ cd ~/Desktop/
     ? git clone <url de votre fork>
 
 ### Connexion au dépôt officiel

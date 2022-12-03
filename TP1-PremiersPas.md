@@ -122,7 +122,7 @@ N’importe quel dossier peut être mis sous gestion de version. Il devient alor
 ce que l’on appelle un « dépôt ». On utilise pour cela la commande
 `git init` :
 
-    $ cd ~/Bureau
+    $ cd ~/Desktop
     $ mkdir MonDepot && cd MonDepot
     $ git init
 

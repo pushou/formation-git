@@ -13,8 +13,8 @@ Pour créer un dépôt git, il suffit d’utiliser la commande `git init` au sei
 d’une arborescence de fichiers. On peut le faire au sein d’un dossier existant,
 ou bien créer un nouveau dossier pour le dépôt comme on l’a fait pendant le TP :
 
-    $ mkdir ~/Bureau/Exercice1
-    $ cd ~/Bureau/Exercice1
+    $ mkdir ~/Desktop/Exercice1
+    $ cd ~/Desktop/Exercice1
     $ git init
 
 Dans le monde du shell Unix, on désigne les fichiers portant l’extension « .o » par
@@ -66,8 +66,8 @@ pour l’instant, les informations suivantes :
 
 La procédure pour créer un dépôt git vide est la même que précédemment :
 
-    $ mkdir ~/Bureau/Exercice2
-    $ cd ~/Bureau/Exercice2
+    $ mkdir ~/Desktop/Exercice2
+    $ cd ~/Desktop/Exercice2
     $ git init
 
 Ajoutons-y un peu de contenu :
@@ -148,8 +148,8 @@ On peut revenir sur la branche master avec la commande `git checkout` :
 Un dépôt git est un dossier comme les autres, on peut en créer une copie avec
 une copie récursive :
 
-    $ cp -r ~/Bureau/MonDepot ~/Bureau/MonAutreDepot
-    $ cd ~/Bureau/MonAutreDepot
+    $ cp -r ~/Desktop/MonDepot ~/Desktop/MonAutreDepot
+    $ cd ~/Desktop/MonAutreDepot
 
 Le parent du commit actif est désigné par la syntaxe `HEAD~`, et on peut le
 visiter avec la commande `git checkout` :
@@ -227,12 +227,12 @@ résolution du conflit, vous pourrez terminer la fusion avec
 
 Pour cloner un dépôt, on utilise la commande `git clone` :
 
-    $ git clone ~/Bureau/MonDepot ~/Bureau/TonDepot
+    $ git clone ~/Desktop/MonDepot ~/Desktop/TonDepot
 
 Si l’on compare le contenu de l’original et du dépôt du point de vue du
 répertoire de travail, avec la commande `ls -al`…
 
-    $ cd ~/Bureau/MonDepot/
+    $ cd ~/Desktop/MonDepot/
     $ ls -al
     total 28
     drwxr-xr-x 4 hadrien users 4096 19 nov.   2018 .
@@ -315,7 +315,7 @@ Pour récupérer ces changements dans le dépôt d’origine, nous allons devoir
 ajouter notre clone comme _remote_ de ce dernier…
 
     $ cd ../MonDepot
-    $ git remote add copieur ~/Bureau/TonDepot
+    $ git remote add copieur ~/Desktop/TonDepot
 
 …puis récupérer les changements de sa branche `test` et les intégrer au sein
 de notre branche test locale avec, par exemple, le raccourci `git pull` :
@@ -350,7 +350,7 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 Tout d’abord, rendons-nous dans notre clone du dépôt « ddhc » :
 
-    $ cd ~/Bureau/ddhc
+    $ cd ~/Desktop/ddhc
 
 On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 

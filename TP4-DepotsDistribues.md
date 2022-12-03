@@ -24,7 +24,7 @@ Celle-ci permettra de synchroniser le clone avec son parent.
 Pour mettre ces concepts en pratique, commençons par créer un clone du dépôt que
 nous avons manipulé lors du TP précédent :
 
-    $ cd ~/Bureau
+    $ cd ~/Desktop
     $ git clone MesBranches MonClone
     $ cd MonClone
 

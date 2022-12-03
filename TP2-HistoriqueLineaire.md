@@ -35,7 +35,7 @@ travail. Il est maintenant temps d’en sauvegarder une première version.
 Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
 immédiatement nous plonger dans un éditeur de texte :
 
-    $ cd ~/Bureau/MonDepot
+    $ cd ~/Desktop/MonDepot
     ? git commit
 
 Le rôle de cet éditeur de texte est de saisir une description des changements
