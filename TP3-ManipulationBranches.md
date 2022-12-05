@@ -611,11 +611,7 @@ ultérieurement au sein des branches A et B sont considérées pour la fusion.
 
 Donc dans la situation schématisée ci-dessous…
 
-                 Src
-    --- ignoré ---o---o---o---o Branche B
-                   \
-    --- ignoré -----o---o Branche A (active)
-                   Mrg
+![](Images/RevertMergeBase.png)
 
 …seuls les commits `Mrg..A` de la branche A et `Src..B` de la branche B sont
 considérés lorsqu’on tente de fusionner B dans A. Où l’on appelle `Mrg` le
@@ -627,25 +623,17 @@ surprendre, mais c’est en fait préférable, car s’ils étaient considérés
 serait amené à résoudre les mêmes conflits de fusion encore et encore.
 
 Supposons maintenant que l’on force git à annuler une fusion avec `git revert`,
-ce qu’on peut faire avec l’option `--merge`/`-m`, donc ici on utiliserait
+ce qu’on peut faire avec l’option `--merge`/`-m`, ici on utiliserait
 `git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante…
 
-                 Src
-    --- ignoré ---o---o---o---o Branche B
-                   \
-    --- ignoré -----o---o---o Branche A (active)
-                   Mrg     Rvt
+![](Images/RevertMerge.png)
 
 …où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit
 de fusion `Mrg` précédent. Et jusqu’ici tout va bien. Là où il va y avoir un
 problème, en revanche, c’est quand on va essayer par la suite de fusionner la
 nouvelle version de la branche B, après que les problèmes aient été résolus :
 
-                 Src
-    --- ignoré ---o---o---o---o Branche B
-                   \           \
-    --- ignoré -----o---o---o---o Branche A (active)
-                   Mrg     Rvt Mrg2
+![](Images/RevertMergeRemerge.png)
 
 À ce moment-là, pour créer le commit `Mrg2`, git va considérer les commits
 `Src..B` de la branche `B` et les commits `Mrg..Rvt` de la branche A, incluant

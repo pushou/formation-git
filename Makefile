@@ -11,7 +11,7 @@ all: ${RENDUS_TPS} ${RENDUS_PRES}
 clean:
 	rm Rendus/*.pdf
 
-Rendus/TP%.pdf: TP%.md
+Rendus/TP%.pdf: TP%.md Images/*.png
 	pandoc -f markdown -t latex -o "$@" "$<"
 
 Rendus/Pres%.pdf: Pres%.odp
