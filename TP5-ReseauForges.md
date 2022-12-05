@@ -112,6 +112,11 @@ paramètre de la commande `git clone` :
     $ cd ~/Desktop/
     ? git clone <url de votre fork>
 
+Votre client git vous avertira alors qu'il ne connaît pas l'identité du serveur
+auquel vous vous connectez, ce qui est normal ici puisque c'est la première fois
+que votre compte utilisateur sur les machines d'enseignement se connecte à
+GitHub via SSH. Vous pouvez donc autoriser l'opération.
+
 ### Connexion au dépôt officiel
 
 Comme notre clone local dans le TP précédent, le clone du _fork_ possède une
