@@ -475,3 +475,29 @@ Cependant, chaque moteur a aussi ses spécificités :
 - Le vocabulaire utilisé et le détail des statistiques proposées varie d’une
   forge à l’autre, et il n’est pas trivial de migrer l’ensemble d’un projet
   (y compris les tickets, _merge requests_…) d’une forge à une autre.
+
+### Autres méthodes de travail
+
+Dans ce TP, nous nous sommes intéressés au _GitHub Flow_, une des méthodes de
+travail les plus utilisées avec git. Mais c’est loin d’être la seule. On peut
+mentionner comme autres méthodes classiques…
+
+- Le _GitLab flow_, une variante simplifiée où au lieu d’utiliser des _forks_,
+  on utilise des branches de développement au sein d’un dépôt commun.
+- Le _Git flow_, une variante plus sophistiquée où on maintient plusieurs
+  branches spéciales au sein du dépôt commun :
+    * On distingue `master`/`main`, qui représente les développements publiés,
+      de `develop`, qui contient des développements expérimentaux. Les
+      nouveaux développements sont fusionnés dans `develop`.
+    * Avant de sortir une nouvelle version, on crée une branche dédiée (_release
+      branch_) partant de `develop`, qui ne reçoit plus de nouvelles
+      fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est
+      satisfait de l’état de cette branche, on la fusionne dans `master` et crée
+      une étiquette pour la nouvelle version officielle.
+    * En cas de problème urgent dans `master`, on peut créer une branche
+      `hotfix` issue de `master`, dédiée à la résolution de ce problème et vouée
+      à être immédiatement fusionnée dans `master` à la fin.
+
+Voici un article très complet sur ce sujet qui part des principes fondamentaux
+pour expliquer comment différentes méthodes de travail en découlent :
+https://martinfowler.com/articles/branching-patterns.html .
