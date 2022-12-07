@@ -333,3 +333,194 @@ préréquis associés soient communiqués clairement à l’ensemble de l’équ
 
 Vous trouverez plus d’information et des instructions d’installation à
 l’adresse https://git-lfs.github.com/ .
+
+
+## _Submodules_ et alternatives
+
+Il est courant de se retrouver dans une situation où l’on a un dépôt git A qui
+dépend du contenu d’un autre dépôt git B. Dans ce chapitre, nous allons utiliser
+pour clarifier les choses l’exemple du développement logiciel d’une application
+qui dépend d’une bibliothèque externe pour fonctionner, mais le propos est
+généralisable à d’autres situations.
+
+Dans ce type de situation, le principal problème que l’on doit gérer est qu’en
+général, toutes les versions du dépôt A ne sont pas compatibles avec toutes les
+versions du dépôt B. Dans notre exemple…
+
+- Le dépôt B peut, à un certain point dans son historique, introduire une
+  nouvelle fonctionnalité que A va utiliser par la suite, ce qui va rendre les
+  nouvelles versions A incompatible avec les anciennes versions de B.
+- Le dépôt B peut modifier une de ses interfaces de telle façon que A ne peut
+  plus l’utiliser tel quel. A ce moment-là, A ne sera plus compatible avec les
+  nouvelles versions de B. Par la suite, le dépôt A pourra basculer sur la
+  nouvelle interface de B, ce qui rendra ses nouvelles versions compatibles avec
+  les nouvelles versions de B mais incompatibles avec les anciennes versions.
+
+Afin de bien gérer cette notion de compatibilité entre versions, on doit avoir
+un moyen de spécifier, à chaque version du dépôt A, une ou plusieurs versions du
+dépôt B avec lesquelles celui-ci est compatible. Il existe plusieurs manières
+classiques de le faire, chacune avec ses avantages et ses inconvénients :
+
+1. On peut fusionner les deux dépôts en un seul, et développer la bibliothèque B
+   au sein du dépôt A. Quand cette approche est appliquée à grande échelle, on
+   parle de _monorepo_.
+    * **Avantages :** Facile d’assurer que chaque version de A contient
+      une version compatible de B.
+    * **Inconvénients :** Le dépôt A peut facilement devenir énorme et
+      malpratique à gérer. Il est difficile de mettre plusieurs équipes d’accord
+      pour travailler dans un dépôt commun.
+2. Une variante de la technique ci-dessous est de fournir, au sein du dépôt A,
+   une copie d’une version compatible de la bibliothèque B. On parle alors de
+   _vendoring_.
+    * **Avantages :** Plus léger que l’approche précédente car on n’a pas
+      besoin de stocker toutes les versions de B au sein du dépôt A, il suffit
+      d’en changer de temps en temps.
+    * **Inconvénients :** Le dépôt tend quand même à grossir sur des
+      grosses applications. On doit mettre à jour la version incluse de B
+      régulièrement. Il faut que la licence de B nous autorise à redistribuer
+      des copies.
+3. Plutôt qu’une copie de B, on peut intégrer au processus de construction de
+   l’application A un mécanisme automatisé qui vérifie qu’une version compatible
+   de la bibliothèque B est présente sur le système, et éventuellement propose
+   d’installer une version compatible si ce n’est pas le cas. Il existe un grand
+   nombre de variantes de cette approche, du simple script shell qui fait un
+   `wget` d’une version compatible de la dépendance à des gestionnaires de
+   dépendances sophistiqués comme NPM, Spack ou Cargo.
+    * **Avantages :** Dépôt léger. Seule approche qui permet d’exprimer
+      clairement qu’on est compatible avec plusieurs versions différentes de B
+      et de gérer les installations de B effectuées par l’utilisateur.
+    * **Inconvénients :** Nécessite un savoir-faire spécifique à chaque
+      projet, car les outils ont un domaine d’application limité.
+4. Et enfin, on peut faire un compromis entre les approches 2 et 3 en intégrant
+   au dépôt A un pointeur vers une version compatible du dépôt B, que l’on peut
+   faire évoluer vers des versions plus récentes à notre guise. Git fournit en
+   standard un moyen de faire ça lorsque A et B sont tous les deux versionnés
+   avec git : les _submodules_.
+    * **Avantages :** Dépôt léger. Intégré à git et aux forges. Simplifie
+      la gestion de correctifs internes si besoin.
+    * **Inconvénients :** Exotique pour la plupart des utilisateurs de git
+      et peu ergonomique dans l’absolu. On retrouve la nécessité de maintenir à
+      jour la version de B sur laquelle on pointe. Ne fonctionne pas pour les
+      logiciels non versionnés avec git.
+
+On voit que de façon générale, l’utilisation d’un gestionnaire de dépendances
+dédié (approche 3) est préférable, mais que c’est aussi l’approche qui nécessite
+le plus de travail. Lorsqu’on n’a pas le temps ou pas la main d’oeuvre qualifiée
+pour une telle approche, mais ne peut pas se permettre d’utiliser une approche
+de _vendoring_, l’utilisation de _submodules_ peut parfois être un compromis
+intéressant.
+
+---
+
+Une bonne première approche des _submodules_, c’est de les voir comme un
+pointeur vers un commit précis d’un autre dépôt que l’on peut déplacer avec des
+commandes git. Pour fixer les idées, appelons dépôt parent le dépôt git qui
+contient un _submodule_ .
+
+On ajoute un _submodule_ avec la commande `git submodule add`, qui prend en
+paramètre l’URL d’un dépôt git. Celle-ci a un effet très proche de celui de
+`git clone`, à ceci près qu’elle configure git pour traiter le clone
+nouvellement créé comme un _submodule_ :
+
+- Elle ajoute trois lignes au fichier spécial `.gitmodules`, situé à la racine
+  du dépôt parent, qui indique quels dossiers sont des _submodules_ et à quel
+  dépôt distant (URL) ils se réfèrent.
+- Elle gère le dossier associé au _submodule_ de façon spéciale au niveau du
+  dépôt parent, d’abord en permettant le stockage d’un dossier vide (ce que git
+  n’autorise normalement pas) et ensuite en y associant une métadonnée indiquant
+  sur quel commit du _submodule_ on pointe.
+
+Si par la suite quelqu’un clone le dépôt parent sans précautions particulières,
+il aura un dossier vide à l’emplacement du _submodule_. Par défaut, `git clone`
+ne prend pas en charge les _submodules_. Pour que ce soit fait, il faut ensuite
+appeler la commande `git submodule init` pour que git traite le dossier comme un
+_submodule_, puis `git submodule update` pour que les commits du _submodule_
+soient téléchargés.
+
+Comme c’est rébarbatif et on a rarement besoin de dévier des paramètres par
+défaut de ces commandes (qui permettent notamment de n’initialiser qu’une partie
+des _submodules_ du dépôt), il existe deux niveaux de raccourcis :
+
+- `git submodule update --init --recursive` combine les fonctions de
+  `git submodule init` et `git submodule update`, et répète les opérations dans
+  les éventuels _submodules_ des _submodules_.
+- `git clone --recurse-submodules` fonctionne comme vous aimeriez probablement
+  que le `git clone` de base fonctionne, en initialisant et clonant
+  automatiquement les _submodules_, là encore de façon récursive.
+
+---
+
+Une fois que l’on a un projet avec des _submodules_ correctement configurés, la
+chose la plus simple que l’on puisse faire est de basculer sur une autre
+version du _submodule_. Pour cela, on peut se rendre dans le dossier
+représentant le _submodule_ et d’y utiliser des commandes git normales comme
+`git fetch` et `git merge origin/master`.
+
+Par le suite, au niveau du dépôt parent, le changement de version du _submodule_
+sera visible dans `git status` et on pourra enregistrer ce changement de version
+au niveau du dépôt parent en faisant un `git add` du dossier contenant le
+_submodule_ suivi d’un `git commit`.
+
+Comme c’est un peu rébarbatif de se rendre dans le dossier de son
+_submodule_ pour faire le travail, il existe un raccourci, la commande
+`git submodule update --remote`, qui par défaut gère le cas courant où on veut
+télécharger et faire un `git checkout` de la dernière version de la branche par
+défaut du _submodule_. Cette commande offre quelques autres possibilités,
+consultez `git help submodule update` pour plus de détails.
+
+Par défaut, les commandes git ne disent pas grand-chose sur les _submodules_,
+mais on peut les amener à en dire davantage :
+
+- `git diff --submodule` permet d’intégrer les modifications de _submodule_ à
+  `git diff`. Ce réglage optionnel peut être rendu permanent avec
+  `git config --global diff.submodule log`.
+- Avec `git log -p --submodule`, on peut avoir cette même information sur des
+  commits précédents.
+- Avec `git config --global status.submodulesummary 1`, on peut demander à ce
+  que `git status` affiche la liste des nouveaux commits dans chaque
+  _submodule_, information qui est sinon accessible via `git submodule summary`.
+
+---
+
+Par défaut, les commandes qui modifient le répertoire de travail, comme
+`git checkout` et `git pull`, n’affectent pas les _submodules_. Il y a deux
+manières de changer ça :
+
+1. On y pense à l’avance et on ajoute l’option `--recurse-submodules` à la
+   commande concernée avant de l’exécuter.
+2. On lance `git submodule update --init --recursive` après l’opération.
+
+Il est possible de configurer git pour qu’il travaille automatiquement en mode
+`--recurse-submodules` avec toutes les commandes qui le supportent à l’exception
+de `git clone`. Mais ce n’est pas forcément une bonne idée, car cette option
+peut avoir des conséquences parfois surprenantes.
+
+Ainsi, `git pull --recurse-submodule` va basculer l’ensemble des _submodules_
+sur la dernière version du dépôt cible, ce qui n’est pas forcément ce qu’on veut
+quand les _submodules_ sont utilisés pour indiquer avec quelle version du dépôt
+cible le dépôt parent est compatible.
+
+Par ailleurs, on peut parfois se retrouver dans une situation où un _submodule_
+a changé d’URL. Ce n’est pas quelque chose que `git submodule` gère très bien,
+même quand on utilise manuellement `update`, il faut avoir dans ce cas recours à
+la commande `git submodule sync --recursive`.
+
+---
+
+Comme vous pouvez le constater, `git submodule` n’est vraiment pas un outil très
+ergonomique. Il est trop facile de faire des erreurs ou ne pas comprendre ce qui
+se passe quand on l’utilise, et la plupart du temps, quand on aurait envie
+d’utiliser des _submodules_, il vaut mieux commencer par évaluer les
+alternatives possibles.
+
+Néanmoins, il existe une possibilité offerte par les _submodules_ qui est
+relativement difficile à répliquer avec d’autres techniques, c’est celle de
+pouvoir modifier localement une dépendance en ajoutant des commits sur le
+_submodule_ associés, avec la possibilité de mettre par la suite ces commits à
+jour avec des fusions et des _rebases_ des nouveautés du dépôt parent.
+
+Cette fonctionnalité étant encore plus obscure que les _submodules_ eux-mêmes et
+un peu longue à expliquer ici, je vous invite pour plus d’informations à
+consulter le chapitre « Submodules » du livre Pro Git, sur lequel
+cette introduction est basée :
+<https://git-scm.com/book/en/v2/Git-Tools-Submodules>.

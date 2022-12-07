@@ -78,7 +78,7 @@ plus qu’à afficher votre clé publique, par exemple avec l’éditeur `gedit`
     $ gedit ~/.ssh/id_ed25519.pub
 
 …puis à la copier-coller dans l’interface web de gestion de clé SSH de GitHub,
-située sur https://github.com/settings/ssh/new . Je vous recommande de lui
+située sur <https://github.com/settings/ssh/new>. Je vous recommande de lui
 donner un nom explicite du style « Formation Git » et de la supprimer après la
 formation.
 
@@ -87,7 +87,7 @@ Et voilà, vous êtes prêt à échanger des _commits_ avec la forge GitHub !
 ### _Fork_ et clonage
 
 Une copie de la Déclaration des Droits de l’Homme et du Citoyen est disponible
-sur le dépôt git https://github.com/HadrienG2/ddhc .
+sur le dépôt git <https://github.com/HadrienG2/ddhc>.
 
 Pour commencer, créez-en un _fork_ sous votre contrôle, en utilisant le bouton
 « Fork » situé en haut à droite de l’interface de GitHub, entre le
@@ -403,7 +403,7 @@ d’utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires�
     apparaît comme `@<nom>` quand on clique sur le menu en haut à droite).
   * Configurer un mot de passe dédié aux échanges git. Sur l’instance GitLab de
     l’IN2P3, cela peut être fait à l’adresse suivante :
-    https://gitlab.in2p3.fr/-/profile/password/edit .
+    <https://gitlab.in2p3.fr/-/profile/password/edit>.
         - Essayez de laisser le champ « Current password » vide, et si
           ça ne fonctionne pas utilisez le lien « I forgot my
           password » pour obtenir par mail un mot de passe utilisable.
@@ -418,7 +418,7 @@ Pour une meilleure ergonomie, il est possible de conserver une copie du mot de
 passe en RAM pour la durée de votre session (sûr) ou de stocker votre mot de
 passe sur le disque dur (dangereux). Pour savoir comment, référez-vous à la page
 « gitcredentials » de l’aide de git via `git help gitcredentials`
-ou https://git-scm.com/docs/gitcredentials .
+ou <https://git-scm.com/docs/gitcredentials>.
 
 ### Petit tour d’horizon des forges logicielles
 
@@ -500,4 +500,4 @@ mentionner comme autres méthodes classiques…
 
 Voici un article très complet sur ce sujet qui part des principes fondamentaux
 pour expliquer comment différentes méthodes de travail en découlent :
-https://martinfowler.com/articles/branching-patterns.html .
+<https://martinfowler.com/articles/branching-patterns.html>.
