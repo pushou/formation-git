@@ -35,9 +35,9 @@ présentations. Pour l’utiliser, vous devez avoir installé l’outil de conve
 de document `pandoc`, une distribution LaTeX comportant l’outil `pdflatex`, et
 la suite bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0).
 
-Notez que LibreOffice n'accepte pas de s'exécuter en deux exemplaires
-simultanément. Il faut donc fermer toutes les instances de l'application
-graphique avant d'utiliser le makefile, et s'abstenir de lancer celui-ci en
+Notez que LibreOffice n’accepte pas de s’exécuter en deux exemplaires
+simultanément. Il faut donc fermer toutes les instances de l’application
+graphique avant d’utiliser le makefile, et s’abstenir de lancer celui-ci en
 parallèle (option `-j`) pour le rendu des présentations.
 
 La salle de formation doit comporter un vidéoprojecteur, équipement désormais

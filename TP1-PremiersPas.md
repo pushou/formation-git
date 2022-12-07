@@ -60,7 +60,7 @@ pour s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
 Chaque poste comporte une étiquette avec un nom de machine commençant par
 « ld-ens » et se terminant par un numéro entre 1 et 20, du style
 « ld-ens17 ». De ce numéro, vous pouvez déduire le nom du compte
-utilisateur que vous allez utiliser, dans l'exemple ci-dessus ce serait
+utilisateur que vous allez utiliser, dans l’exemple ci-dessus ce serait
 « formation-git-17 ». Le mot de passe vous sera communiqué oralement.
 
 Ces postes sont aussi configurés pour partager les supports de TP avec le poste

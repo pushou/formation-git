@@ -112,10 +112,10 @@ paramètre de la commande `git clone` :
     $ cd ~/Desktop/
     ? git clone <url de votre fork>
 
-Votre client git vous avertira alors qu'il ne connaît pas l'identité du serveur
-auquel vous vous connectez, ce qui est normal ici puisque c'est la première fois
-que votre compte utilisateur sur les machines d'enseignement se connecte à
-GitHub via SSH. Vous pouvez donc autoriser l'opération.
+Votre client git vous avertira alors qu’il ne connaît pas l’identité du serveur
+auquel vous vous connectez, ce qui est normal ici puisque c’est la première fois
+que votre compte utilisateur sur les machines d’enseignement se connecte à
+GitHub via SSH. Vous pouvez donc autoriser l’opération.
 
 ### Connexion au dépôt officiel
 
@@ -484,7 +484,7 @@ mentionner comme autres méthodes classiques…
 
 - Le _GitLab flow_, une variante simplifiée où au lieu d’utiliser des _forks_,
   on utilise des branches de développement au sein d’un dépôt commun.
-- Le _Git flow_, une variante plus sophistiquée où on maintient plusieurs
+- Le _Git flow_, une variante plus sophistiquée où l’on maintient plusieurs
   branches spéciales au sein du dépôt commun :
     * On distingue `master`/`main`, qui représente les développements publiés,
       de `develop`, qui contient des développements expérimentaux. Les

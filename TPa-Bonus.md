@@ -332,7 +332,7 @@ interne). Il est donc important que la décision d’utiliser Git LFS et les
 préréquis associés soient communiqués clairement à l’ensemble de l’équipe.
 
 Vous trouverez plus d’information et des instructions d’installation à
-l’adresse https://git-lfs.github.com/ .
+l’adresse <https://git-lfs.github.com/>.
 
 
 ## _Submodules_ et alternatives
@@ -351,7 +351,7 @@ versions du dépôt B. Dans notre exemple…
   nouvelle fonctionnalité que A va utiliser par la suite, ce qui va rendre les
   nouvelles versions A incompatible avec les anciennes versions de B.
 - Le dépôt B peut modifier une de ses interfaces de telle façon que A ne peut
-  plus l’utiliser tel quel. A ce moment-là, A ne sera plus compatible avec les
+  plus l’utiliser tel quel. À ce moment-là, A ne sera plus compatible avec les
   nouvelles versions de B. Par la suite, le dépôt A pourra basculer sur la
   nouvelle interface de B, ce qui rendra ses nouvelles versions compatibles avec
   les nouvelles versions de B mais incompatibles avec les anciennes versions.
@@ -367,12 +367,12 @@ classiques de le faire, chacune avec ses avantages et ses inconvénients :
     * **Avantages :** Facile d’assurer que chaque version de A contient
       une version compatible de B.
     * **Inconvénients :** Le dépôt A peut facilement devenir énorme et
-      malpratique à gérer. Il est difficile de mettre plusieurs équipes d’accord
+      désagréable à gérer. Il est difficile de mettre plusieurs équipes d’accord
       pour travailler dans un dépôt commun.
 2. Une variante de la technique ci-dessous est de fournir, au sein du dépôt A,
    une copie d’une version compatible de la bibliothèque B. On parle alors de
    _vendoring_.
-    * **Avantages :** Plus léger que l’approche précédente car on n’a pas
+    * **Avantages :** Plus léger que l’approche précédente, car on n’a pas
       besoin de stocker toutes les versions de B au sein du dépôt A, il suffit
       d’en changer de temps en temps.
     * **Inconvénients :** Le dépôt tend quand même à grossir sur des
@@ -405,7 +405,7 @@ classiques de le faire, chacune avec ses avantages et ses inconvénients :
 
 On voit que de façon générale, l’utilisation d’un gestionnaire de dépendances
 dédié (approche 3) est préférable, mais que c’est aussi l’approche qui nécessite
-le plus de travail. Lorsqu’on n’a pas le temps ou pas la main d’oeuvre qualifiée
+le plus de travail. Lorsqu’on n’a pas le temps ou pas la main d’œuvre qualifiée
 pour une telle approche, mais ne peut pas se permettre d’utiliser une approche
 de _vendoring_, l’utilisation de _submodules_ peut parfois être un compromis
 intéressant.
@@ -415,7 +415,7 @@ intéressant.
 Une bonne première approche des _submodules_, c’est de les voir comme un
 pointeur vers un commit précis d’un autre dépôt que l’on peut déplacer avec des
 commandes git. Pour fixer les idées, appelons dépôt parent le dépôt git qui
-contient un _submodule_ .
+contient un _submodule_.
 
 On ajoute un _submodule_ avec la commande `git submodule add`, qui prend en
 paramètre l’URL d’un dépôt git. Celle-ci a un effet très proche de celui de
@@ -456,7 +456,7 @@ version du _submodule_. Pour cela, on peut se rendre dans le dossier
 représentant le _submodule_ et d’y utiliser des commandes git normales comme
 `git fetch` et `git merge origin/master`.
 
-Par le suite, au niveau du dépôt parent, le changement de version du _submodule_
+Par la suite, au niveau du dépôt parent, le changement de version du _submodule_
 sera visible dans `git status` et on pourra enregistrer ce changement de version
 au niveau du dépôt parent en faisant un `git add` du dossier contenant le
 _submodule_ suivi d’un `git commit`.
