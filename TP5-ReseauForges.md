@@ -172,35 +172,35 @@ changements du dépôt officiel avec `git fetch` :
 
 Cependant, dans le cadre de cette méthode de travail, nous n’avons généralement
 pas besoin de nous intéresser à l’ensemble des branches de ce dépôt. Il suffit
-de tenir notre branche `master` à jour, ce que l’on peut faire avec `git pull`
-après avoir configuré `upstream/master` comme branche amont :
+de tenir notre branche `main` à jour, ce que l’on peut faire avec `git pull`
+après avoir configuré `upstream/main` comme branche amont :
 
-    $ git checkout master
-    $ git branch --set-upstream-to=upstream/master
+    $ git checkout main
+    $ git branch --set-upstream-to=upstream/main
 
-Par la suite, vous pourrez mettre à jour votre master via :
+Par la suite, vous pourrez mettre à jour votre branche `main` locale via :
 
-    $ git checkout master
+    $ git checkout main
     $ git pull --ff-only
 
 Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
 erreur classique. Si l’on applique correctement le _GitHub flow_, la branche
-`master` du dépôt officiel devrait avancer de façon monotone, et votre branche
-`master` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
+`main` du dépôt officiel devrait avancer de façon monotone, et votre branche
+`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
 pas mettre en avance rapide, cela relève d’un comportement pathologique :
 
-- Soit les mainteneurs du dépôt officiel ont fait diverger `master`. C’est
+- Soit les mainteneurs du dépôt officiel ont fait diverger `main`. C’est
   parfois nécessaire, mais très rare, et un mainteneur responsable vous
   informera lorsqu’il doit en venir à de tels extrêmes.
 - Soit, cas de loin le plus courant, vous avez vous-même créé une divergence,
-  typiquement en ajoutant des commits sur votre branche `master` locale.
+  typiquement en ajoutant des commits sur votre branche `main` locale.
 
 Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 
 - Si vous le souhaitez, sauvegarder vos changements dans une nouvelle branche
   avec `git branch <nom>`
-- Puis forcer votre branche `master` à revenir au même point que le `master`
-  officiel avec la commande `git reset --hard upstream/master`
+- Puis forcer votre branche `main` à revenir au même point que le `main`
+  officiel avec la commande `git reset --hard upstream/main`
 
 Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
 `git pull` futurs au sein de ce dépôt avec la commande de configuration…
@@ -209,12 +209,12 @@ Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
 
 ### Construire des changements dans une branche dédiée
 
-Une fois que l’on a un `master` à jour, il est possible de construire des
+Une fois que l’on a un `main` à jour, il est possible de construire des
 changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
-part de master et de commencer à créer des _commits_ dessus. En voici **un
+part de `main` et de commencer à créer des _commits_ dessus. En voici **un
 exemple**, à adapter selon le type d’édition que vous voulez effectuer :
 
-    $ git checkout master
+    $ git checkout main
     ? git checkout -b changements
     ? echo -e "\nCeci n'est pas un pied de page" >> README.md
     $ git add README.md
@@ -222,21 +222,21 @@ exemple**, à adapter selon le type d’édition que vous voulez effectuer :
 
 Mais pendant que vous effectuez vos modifications, le dépôt officiel continue
 d’évoluer, et il est possible que des nouveautés arrivent sur la branche
-`master`. Les sorties des commandes `git fetch` et `git pull` vous en
+`main`. Les sorties des commandes `git fetch` et `git pull` vous en
 informeront.
 
 Si c’est le cas, vous pourrez intégrer ces nouveautés à votre branche de
 développement avec les outils que nous avons vus précédemment. Un cycle complet
-de mise à jour de `master` et d’intégrations de ses nouveautés à votre branche
+de mise à jour de `main` et d’intégrations de ses nouveautés à votre branche
 pourrait ainsi ressembler à ceci :
 
-    $ git checkout master
+    $ git checkout main
     $ git pull --ff-only
     ? git checkout changements
-    $ git merge master
+    $ git merge main
 
 En cas de conflit de fusion, il vous appartiendra de vous adapter aux nouveautés
-de la branche `master` officielle qui sont incompatibles avec vos changements.
+de la branche `main` officielle qui sont incompatibles avec vos changements.
 
 En règle général, plus une de vos branches a une durée de vie longue, plus il y
 a de chances que cela se produise. De plus, si vous utilisez `git rebase` plutôt
@@ -300,7 +300,7 @@ sur le bouton « Pull Request ».
 
 Comme son nom l’indique, une _pull request_ invite les mainteneurs du dépôt
 officiel à intégrer des changements au projet en fusionnant les nouveautés de
-votre branche dans un historique officiel (généralement la branche `master`).
+votre branche dans un historique officiel (généralement la branche `main`).
 Vous êtes invité à donner un titre court à votre soumission, ainsi qu’une
 description qui peut être plus étoffée et agrémentée de mise en page Markdown.
 Selon la forge que vous utilisez, d’autres fonctionnalités de gestion de projet
@@ -363,7 +363,7 @@ plus avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir
 2. Vérifiez que les URLs de vos deux _remotes_ sont correctes : `origin` doit
    pointer sur votre _fork_ et utiliser une connexion SSH, `upstream` doit
    pointer sur le dépôt officiel, et utiliser une connexion HTTPS.
-3. Créez une nouvelle branche partant du `master`, et ajoutez-y un commit.
+3. Créez une nouvelle branche partant du `main`, et ajoutez-y un commit.
 4. Poussez cette branche sur votre _fork_.
 5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur votre _fork_
    aussi.
@@ -492,11 +492,11 @@ mentionner comme autres méthodes classiques…
     * Avant de sortir une nouvelle version, on crée une branche dédiée (_release
       branch_) partant de `develop`, qui ne reçoit plus de nouvelles
       fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est
-      satisfait de l’état de cette branche, on la fusionne dans `master` et crée
+      satisfait de l’état de cette branche, on la fusionne dans `main` et crée
       une étiquette pour la nouvelle version officielle.
-    * En cas de problème urgent dans `master`, on peut créer une branche
-      `hotfix` issue de `master`, dédiée à la résolution de ce problème et vouée
-      à être immédiatement fusionnée dans `master` à la fin.
+    * En cas de problème urgent dans `main`, on peut créer une branche
+      `hotfix` issue de `main`, dédiée à la résolution de ce problème et vouée
+      à être immédiatement fusionnée dans `main` à la fin.
 
 Voici un article très complet sur ce sujet qui part des principes fondamentaux
 pour expliquer comment différentes méthodes de travail en découlent :

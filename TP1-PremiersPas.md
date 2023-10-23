@@ -107,16 +107,15 @@ poste de travail si vous le souhaitez :
 
 Historiquement, lorsqu’on créait un dépôt git, la branche par défaut s’appelait
 `master`. Mais ces dernières années ont vu émerger au sein des pays anglo-saxons
-un mouvement politique fort pour réduire l’utilisation de la terminologie
-maître/esclave sous-jacente, qui est perçue comme ayant des connotations
-post-coloniales malheureuses.
+un mouvement politique contre l’utilisation de la terminologie maître/esclave
+sous-jacente, qui est perçue comme ayant des connotations post-coloniales
+malheureuses.
 
-Par conséquent, les versions récentes de git vous encouragent à utiliser un nom
-de branche par défaut différent. Mais comme j’ai manqué de temps pour adapter
-les supports de la formation à ce changement, je vous propose de rester à
-l’ancien nom pour cette édition :
+A cause de ça, les versions récentes de git vous encouragent à utiliser un nom
+de branche par défaut différent. Nous allons ici suivre la convention de GitHub
+et appeler cette branche `main` :
 
-    $ git config --global init.defaultBranch master
+    $ git config --global init.defaultBranch main
 
 
 ## Premiers pas avec la gestion de version
@@ -305,7 +304,7 @@ Dans ce premier TP, nous avons vu comment…
 - Utiliser l’aide de git
 
 Mais des zones d’ombres demeurent. Comment créer des versions ? Et quelle est
-donc cette « branche master » dont `git status` ne cesse de parler ? Nous
+donc cette « branche `main` » dont `git status` ne cesse de parler ? Nous
 répondrons à ces questions dans les prochaines séquences.
 
 
@@ -320,7 +319,7 @@ répondrons à ces questions dans les prochaines séquences.
     - La sortie de `git status` ne doit parler que de deux fichiers à la fin,
       celui que vous venez de déplacer et celui qui a été créé à la question 2.
 5. Affichez l’état final du dépôt. En ignorant pour l’instant la partie « Sur
-   la branche master », comprenez-vous les autres messages affichés ?
+   la branche main », comprenez-vous les autres messages affichés ?
 
 ## Antisèche
 

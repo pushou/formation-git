@@ -366,9 +366,9 @@ mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
 sélectionnant l’option « Tous les commits » dans le menu de gauche.
 
 Quand vous avez fini d’explorer, il est facile de revenir sur la branche
-`master` :
+`main` :
 
-    $ git checkout master
+    $ git checkout main
 
 ### Annuler un jeu de commits
 
@@ -522,9 +522,9 @@ Charger le contenu d’un commit dans le répertoire de travail :
 
     ? git checkout <commit>
 
-Revenir sur la branche master :
+Revenir sur la branche `main` :
 
-    $ git checkout master
+    $ git checkout main
 
 Créer un commit qui annule l’effet d’un ou plusieurs autres commits :
 

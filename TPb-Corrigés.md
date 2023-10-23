@@ -42,7 +42,7 @@ utiliser la commande `git mv` :
 Si l’on regarde la sortie de `git status`…
 
     $ git status
-    Sur la branche master
+    Sur la branche main
 
     Aucun commit
 
@@ -124,7 +124,7 @@ l’historique avec la commande…
 Le répertoire de travail est-il bien propre ?
 
     $ git status
-    Sur la branche master
+    Sur la branche main
     rien à valider, la copie de travail est propre
 
 Il l’est. On peut donc partir en voyage dans l’historique, par exemple pour
@@ -138,9 +138,9 @@ revenir sur ce commit ultérieurement, il peut être judicieux d’y attacher un
 
     $ git tag papy
 
-On peut revenir sur la branche master avec la commande `git checkout` :
+On peut revenir sur la branche `main` avec la commande `git checkout` :
 
-    $ git checkout master
+    $ git checkout main
 
 
 ## Exercices TP3
@@ -171,7 +171,7 @@ l’ajoute à l’index avec `git add`, et on crée le commit avec `git commit`�
     $ git add LeFichier.txt
     $ git commit -m "Ajout d'un fichier"
 
-On peut ensuite visualiser la branche master et la branche que l’on vient de
+On peut ensuite visualiser la branche `main` et la branche que l’on vient de
 créer en lançant l’outil gitg dans le dépôt…
 
     $ gitg &
@@ -180,10 +180,10 @@ créer en lançant l’outil gitg dans le dépôt…
 N’oubliez pas de sélectionner l’option « Branches » dans le menu de droite pour
 pouvoir visualiser les deux branches simultanément.
 
-Notre branche a un peu de retard avec la branche master, nous pouvons rattraper
-ce retard en y fusionnant les nouveautés de la branche master avec `git merge` :
+Notre branche a un peu de retard avec la branche `main`, nous pouvons rattraper
+ce retard en y fusionnant les nouveautés de la branche `main` avec `git merge` :
 
-    $ git merge master
+    $ git merge main
 
 Maintenant, remplaçons le contenu d’un fichier au sein de la branche active…
 
@@ -191,14 +191,14 @@ Maintenant, remplaçons le contenu d’un fichier au sein de la branche active�
     $ git add LeFichier.txt
     $ git commit -m 'Première version'
 
-…et au sein de la branche master, en basculant sur celle-ci :
+…et au sein de la branche `main`, en basculant sur celle-ci :
 
-    $ git checkout master
+    $ git checkout main
     $ echo 'v2' > LeFichier.txt
     $ git add LeFichier.txt
     $ git commit -m 'Deuxième version'
 
-Si l’on essaye de fusionner nouvelle-branche au sein de master avec `git merge`,
+Si l’on essaye de fusionner nouvelle-branche au sein de `main` avec `git merge`,
 il y aura conflit au niveau de ce fichier :
 
     @ git merge nouvelle-branche
@@ -272,11 +272,11 @@ avec l’aide de l’utilitaire `gitg`…
 
 On constate que leur structure générale est similaire mais que le clone possède
 le dépôt original comme _remote_ (sous le nom par défaut `origin`), et visualise
-simultanément sa version locale de la branche `master` et une copie locale de
-celle du dépôt original, `origin/master`.
+simultanément sa version locale de la branche `main` et une copie locale de
+celle du dépôt original, `origin/main`.
 
 C’est le fait de pouvoir différentier les versions locales et distantes de
-branches, comme ici `master`, qui permet d’utiliser git de façon distribuée sans
+branches, comme ici `main`, qui permet d’utiliser git de façon distribuée sans
 connexion permanente à internet.
 
 Pour créer une branche en vue d’y ajouter quelques commits, on peut utiliser le
@@ -322,9 +322,9 @@ de notre branche test locale avec, par exemple, le raccourci `git pull` :
 
     $ git pull copieur test
 
-Pour terminer, ajoutons quelques commits sur la branche `master` de `MonDepot` :
+Pour terminer, ajoutons quelques commits sur la branche `main` de `MonDepot` :
 
-    $ git checkout master
+    $ git checkout main
     $ echo 'Je ne sais quoi inventer' > Incertitude.txt
     $ git add --all
     $ git commit -m 'Méditation'
@@ -332,10 +332,10 @@ Pour terminer, ajoutons quelques commits sur la branche `master` de `MonDepot` 
     $ git add Incertitude.txt
     $ git commit -am 'Moment philosophique'
 
-On peut propager ces changements sur la branche `master` de `TonDepot` avec un
+On peut propager ces changements sur la branche `main` de `TonDepot` avec un
 simple `git push` :
 
-    $ git push copieur master
+    $ git push copieur main
 
 Si l’on souhaite intégrer les changements correspondants à la branche `test` du
 clone, il faudra comme précédemment s’y rendre, récupérer les changements, et
@@ -343,7 +343,7 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
     $ cd ../TonDepot
     $ git fetch origin
-    $ git merge origin/master
+    $ git merge origin/main
 
 
 ## Exercices TP5
@@ -363,10 +363,10 @@ On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 Ici, nous suivons la configuration habituelle : `origin` pointe sur le _fork_, et
 `upstream` sur le dépôt officiel.
 
-Pour créer une nouvelle branche partant de la branche `master`, on commence par
+Pour créer une nouvelle branche partant de la branche `main`, on commence par
 basculer sur cette branche…
 
-    $ git checkout master
+    $ git checkout main
 
 …puis on crée la nouvelle branche et bascule dessus…
 
@@ -392,10 +392,10 @@ nécessité de répéter le nom de la _remote_ à chaque fois dans `git push` :
     $ git commit -am 'Panique à bord en QWERTY !'
     $ git push
 
-Il est possible qu’entre-temps le `master` du dépôt officiel ait évolué.
-Vérifions ce point en mettant à jour notre `master` local :
+Il est possible qu’entre-temps la branche `main` du dépôt officiel ait évolué.
+Vérifions ce point en mettant à jour notre branche `main` locale :
 
-    $ git checkout master
+    $ git checkout main
     $ git pull --ff-only
 
 Un dépôt distant fonctionne comme une copie de sauvegarde. Même si on supprimait

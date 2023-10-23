@@ -175,13 +175,13 @@ Un autre raccourci bien pratique pour créer une branche locale connectée à un
 branche distante est de demander un `checkout` d’une branche locale qui n’existe
 pas encore, mais dont un homologue distant existe :
 
-    $ git checkout master
+    $ git checkout main
 
 Quand on exécute cette commande, git commence par chercher une branche locale
-`master`, et constate qu’il n’en existe pas, mais qu’il existe une branche
-distante du même nom, `origin/master`. Il crée alors une branche locale `master`
+`main`, et constate qu’il n’en existe pas, mais qu’il existe une branche
+distante du même nom, `origin/main`. Il crée alors une branche locale `main`
 à l’emplacement actuel de cette branche distante, et configure la branche
-distante `origin/master` comme amont de la branche locale `master`.
+distante `origin/main` comme amont de la branche locale `main`.
 
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
@@ -213,10 +213,10 @@ La forme la plus explicite de `git push` prend en paramètre une _remote_ et une
 référence (étiquette ou branche), puis essaie de créer une version distante de
 cette référence, ou de la mettre à jour si elle existe déjà :
 
-    $ git push origin master
+    $ git push origin main
 
 En l’occurrence, il ne se passe rien, puisque nous n’avons pas modifié la branche
-`master` depuis la dernière fois que nous nous sommes synchronisés avec le
+`main` depuis la dernière fois que nous nous sommes synchronisés avec le
 dépôt `origin`.
 
 Il est courant de vouloir pousser la branche active. Un premier raccourci de
@@ -232,7 +232,7 @@ Si nous nous rendons maintenant sur le dépôt parent, les changements y ont ét
 propagés par `git push` :
 
     $ cd ../MesBranches
-    $ git log master
+    $ git log main
 
 Enfin, la forme la plus concise de `git push` ne précise même pas la _remote_
 cible. Celle-ci est alors déduite de la branche amont associée à la branche
@@ -285,7 +285,7 @@ de toutes les _remotes_ à la fois :
     $ git fetch --all
 
 Vous noterez dans la sortie de `git fetch` que le nouveau clone ne contient que
-la branche `univers-parallele`, et pas la branche `master`. En effet, un clone
+la branche `univers-parallele`, et pas la branche `main`. En effet, un clone
 ne contient par défaut que la branche active du dépôt d’origine, et l’on n’a
 accès qu’aux branches « propres » du clone, pas aux _remotes_ auxquelles ce
 dernier est éventuellement connecté.
@@ -301,7 +301,7 @@ branche locale par rapport à la branche amont, alors que `git push` le rejette.
 Mettons-le en évidence en créant une petite divergence d’historique :
 
     $ cd ../MonAutreClone
-    $ git checkout master
+    $ git checkout main
     $ echo '1' > Compteur.txt
     $ git add Compteur.txt
     $ git commit -m "Ajout d'un compteur"
@@ -312,13 +312,13 @@ Mettons-le en évidence en créant une petite divergence d’historique :
     $ git commit -m 'Disons bonjour plus joyeusement'
     ? git pull
 
-Nous venons de créer une divergence d’historique puisque la branche `master`
+Nous venons de créer une divergence d’historique puisque la branche `main`
 de `MonAutreClone` contient désormais un nouveau commit (« Ajout d’un compteur »),
-la branche `master` de `MonClone` aussi (« Disons bonjour plus joyeusement »),
+la branche `main` de `MonClone` aussi (« Disons bonjour plus joyeusement »),
 et aucune de ces deux branches n’est ancêtre de l’autre.
 
 Cependant, `git pull` ne s’en est pas formalisé, et a simplement fusionné les
-changements de la branche `master` distante dans notre branche `master` locale.
+changements de la branche `main` distante dans notre branche `main` locale.
 On peut observer l’apparition du commit de fusion correspondant dans `gitg`.
 
 En revanche, `git push` a un comportement différent. Si on le met face à la même
@@ -406,11 +406,11 @@ mater cette complexité.
 5. Ajoutez quelques commits sur `test` au sein du clone.
 6. Ajoutez le clone comme _remote_ de `MonDepot`, puis mettez à jour la branche
    `test` de `MonDepot` par rapport aux nouveaux commits du clone.
-7. Basculez sur la branche `master` de `MonDepot` et créez-y quelques commits.
-8. Propagez ces changements sur la branche `master` du clone, sans quitter le
+7. Basculez sur la branche `main` de `MonDepot` et créez-y quelques commits.
+8. Propagez ces changements sur la branche `main` du clone, sans quitter le
    dépôt `MonDepot`.
 9. Rendez-vous maintenant dans le clone, et fusionnez les nouveautés de la
-   branche `master` de `MonDepot` au sein de la branche `test` du clone.
+   branche `main` de `MonDepot` au sein de la branche `test` du clone.
 
 ## Antisèche
 
