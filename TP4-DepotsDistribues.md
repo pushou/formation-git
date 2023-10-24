@@ -249,6 +249,12 @@ existe pour configurer une branche amont et pousser vers cette dernière : la
 commande `git push --set-upstream <remote> <branche>`, l’option `--set-upstream`
 pouvant s’abrévier en `-u`.
 
+Si vous utilisez une version récente de git (>=2.37.0), vous pouvez aussi
+configurer `git push` pour effectuer automatiquement cette configuration dans la
+majorité des cas (pas d'ambiguité sur le dépôt cible) :
+
+    $ git config --global push.autoSetupRemote=true
+
 **Attention :** Lorsqu’on utilise des clones locaux d’un dépôt git, comme c’est
 le cas dans ce TP, on ne peut pas faire de `git push` vers la branche qui est
 actuellement active dans le dépôt cible. En cas de besoin, il faut donc aller
@@ -520,6 +526,25 @@ prédécesseur moins lisible, le signe « `:` ».
 Bien entendu, comme avec `--force`, il est préférable de n’effectuer cette
 opération que lorsqu’on est sûr qu’aucun collaborateur n’est actuellement en
 train de travailler par-dessus la branche qui est sur le point d’être supprimée.
+
+Un point important à retenir concernant les suppressions est que par défaut,
+`git fetch` ne détruit pas les copies locales des branches distantes qui
+n'existent plus sur le dépôt interrogé. Pour obtenir ce résultat, il faut
+utiliser l'option `--prune` :
+
+    $ git fetch --prune
+
+Cette logique vise à assurer que "fetch" soit une commande 100% sûre, qui ne
+peut pas détruire de données en local même quand les autres utilisateurs du
+dépôt distant ont fait des erreurs. Mais elle rend la notion de "branch
+distante" moins intuitive, puisqu'on doit plus souvent garder en tête que ce que
+git présente comme une branche distante est en réalité une copie locale d'une
+branche sur un dépôt distant, qui se désynchronise à la moindre suppression.
+
+On peut donc trouver plus ergonomique de rendre l'utilisation de `--prune`
+automatique avec le paramètre de configuration `fetch.prune` :
+
+    $ git config --global fetch.prune=true
 
 ### Branches, étiquettes, et références
 
