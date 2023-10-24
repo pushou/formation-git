@@ -102,9 +102,10 @@ Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
 sur votre machine. Pour cela, vous avez besoin de son URL SSH, que vous pouvez
 obtenir de l’interface GitHub de la façon suivante :
 
-- Cliquez sur le bouton bleu « Clone ».
-- Cliquez sur l’onglet « SSH ».
-- Copiez l’URL qui s’affiche alors.
+- Cliquez sur le bouton vert « Code » en haut à droite de la page
+  d'accueil du dépôt
+- Cliquez sur l’onglet « Local » puis le sous-onglet « SSH »
+- Copiez l’URL qui s’affiche alors
 
 Une fois l’URL obtenue, créez un clone local du _fork_ en passant cette URL en
 paramètre de la commande `git clone` :
