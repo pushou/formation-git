@@ -5,7 +5,10 @@
 # 
 # - Vérifier l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en
 #   comparant la sortie au fichier de référence .ref.
-# - Régénérer facilement l'archive de rattrapage de fin de TP1.
+# - Régénérer facilement l'archive de rattrapage de fin de TP1 (et autres TPs)
+#
+# Tout ça peut être fait via un simple "make" dans un environnement utilisateur
+# fraîchement initialisé.
 #
 set -euxo pipefail
 IFS=$'\n\t'

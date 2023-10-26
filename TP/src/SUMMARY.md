@@ -2,7 +2,7 @@
 
 [Introduction](./introduction.md)
 
-- [Premiers pas avec git (WIP)](./premiers-pas.md)
+- [Premiers pas avec git](./premiers-pas.md)
 - [Un historique linéaire (TODO)]()
 - [Manipulation de branches (TODO)]()
 - [Dépôts distribués (TODO)]()
