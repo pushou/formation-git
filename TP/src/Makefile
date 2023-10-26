@@ -1,3 +1,6 @@
+# Ce makefile peut être utilisé sur une session de stagiaire vierge pour
+# vérifier le bon fonctionnement de TP et régénérer les archives de rattrapage.
+
 # Input and output file names
 SCRIPTS:=$(wildcard *.sh)
 NEW_OUTPUT:=$(SCRIPTS:.sh=.out)
