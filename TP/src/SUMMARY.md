@@ -2,11 +2,11 @@
 
 [Introduction](./introduction.md)
 
-- [Premiers pas (TODO)]()
-- [Historique linéaire (TODO)]()
+- [Premiers pas avec git (TODO)]()
+- [Un historique linéaire (TODO)]()
 - [Manipulation de branches (TODO)]()
 - [Dépôts distribués (TODO)]()
 - [Réseau et forges (TODO)]()
 
-[Bonus (TODO)]()
-[Corrigés (TODO)]()
+[Sujets bonus (TODO)]()
+[Corrigés des exercices (TODO)]()
