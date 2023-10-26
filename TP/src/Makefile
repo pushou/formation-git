@@ -30,8 +30,10 @@ clean:
 		echo "=== Please review $< and run 'cp $< $<.ref' if it seems correct"; \
 	fi
 
-TP2.zip: premiers-pas.out
-	@rm -f TP2.zip
-	@(cd ~/Desktop && zip -qr TP2.zip *) && mv ~/Desktop/TP2.zip .
+%.zip:
+	@rm -f $@
+	@(cd ~/Desktop && zip -qr $@ *) && mv ~/Desktop/$@ .
 
-# TODO: Add dependency rules TP2.out: TP2.zip, etc
+TP2.zip: premiers-pas.out
+
+# TODO: Add dependency rules TP2.out: TP2.zip, TP3.zip: TP2.out etc
