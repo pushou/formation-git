@@ -3,7 +3,7 @@
 [Introduction](./introduction.md)
 
 - [Premiers pas avec git](./premiers-pas.md)
-- [Un historique linéaire (TODO)]()
+- [Un historique linéaire (WIP)](./historique-lineaire.md)
 - [Manipulation de branches (TODO)]()
 - [Dépôts distribués (TODO)]()
 - [Réseau et forges (TODO)]()

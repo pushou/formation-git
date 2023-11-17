@@ -59,7 +59,7 @@ git status
 ###### ANCHOR_END: status-touch
 
 ###### ANCHOR: add-only
-# Remplacez MonFichier.txt par le nom du fichier que vous voulez versionner
+# Remplacez MonFichier.txt par le fichier/dossier que vous voulez versionner
 ###### ANCHOR: status-add
 git add MonFichier.txt
 ###### ANCHOR_END: add-only
@@ -165,3 +165,44 @@ git help status
 git mv -h
 ###### ANCHOR_END: help-short-docs
 ###### ANCHOR_END: help-short
+
+
+function test_this_manually() {
+###### ANCHOR: add-workdir
+git add .
+###### ANCHOR_END: add-workdir
+
+###### ANCHOR: cheatsheet-rm
+# Remplacez MonFichier.txt par le nom du fichier que vous voulez supprimer
+#
+# Ajoutez -r pour supprimer un dossier et son contenu, et ajoutez -f si vous
+# êtes sûr de vouloir supprimer des changements qui n'ont pas été versionnés et
+# seront donc définitivement perdus.
+git rm MonFichier.txt
+###### ANCHOR_END: cheatsheet-rm
+
+###### ANCHOR: cheatsheet-mv
+# Remplacez Source.txt et Destination.txt pas les noms du fichier source et le
+# nom final désiré, respectivement.
+git mv Source.txt Destination.txt
+###### ANCHOR_END: cheatsheet-mv
+}
+unset -f test_this_manually
+
+
+###### ANCHOR: cheatsheet-help
+# Remplacez "status" par la commande git qui vous intéresse
+git help status
+###### ANCHOR_END: cheatsheet-help
+
+
+function test_this_manually() {
+###### ANCHOR: appendix-config
+# Ces commandes ne sont pas valides, elles donnent juste des exemples de syntaxe.
+# L'utilisation de "git config --system" nécessite des privilèges administrateur.
+git config --system reglage 'Valeur pour tout le système'
+git config --global reglage 'Valeur spécifique à un utilisateur'
+git config reglage 'Valeur spécifique à un dépôt git'
+###### ANCHOR_END: appendix-config
+}
+unset -f test_this_manually

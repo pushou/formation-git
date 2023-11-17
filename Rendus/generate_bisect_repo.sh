@@ -44,7 +44,7 @@ for (( commit=0 ; commit < num_commits ; ++commit )); do
     # Write it in a text file that changes on every commit, commit it
     echo "$goodness commit #$commit" > Contenu.txt
     git add Contenu.txt
-    git commit -am "Commit #$commit"
+    git commit -m "Commit #$commit"
 
     # Tag first and last commit for easy bisection
     if [[ $commit -eq 0 ]]; then

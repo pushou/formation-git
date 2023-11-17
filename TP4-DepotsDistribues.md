@@ -223,7 +223,7 @@ Il est courant de vouloir pousser la branche active. Un premier raccourci de
 `git push` consiste donc à ne préciser que la _remote_ cible. C’est alors la
 branche active qui sera soumise à cette _remote_.
 
-    $ echo 'Hallo !' > HelloWorld.txt
+    $ echo 'Hallo !' >HelloWorld.txt
     $ git add HelloWorld.txt
     $ git commit -m 'Traduction allemande'
     $ git push origin
@@ -239,8 +239,9 @@ cible. Celle-ci est alors déduite de la branche amont associée à la branche
 active.
 
     $ cd ../MonClone
-    $ echo 'Konnichi-wa !' > HelloWorld.txt
-    $ git commit -am 'Traduction japonaise'
+    $ echo 'Konnichi-wa !' >HelloWorld.txt
+    $ git add --all
+    $ git commit -m 'Traduction japonaise'
     $ git push
 
 Pour utiliser cette variante de `git push`, vous devez avoir défini une branche

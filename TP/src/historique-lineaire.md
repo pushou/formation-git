@@ -1,3 +1,5 @@
+# Un historique linéaire
+
 # TP2 : Un historique linéaire
 
 ## Un mot sur les « rattrapages »
@@ -34,8 +36,9 @@ travail. Il est maintenant temps d’en sauvegarder une première version.
 Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
 immédiatement nous plonger dans un éditeur de texte :
 
-    $ cd ~/Desktop/MonDepot
-    ? git commit
+```bash
+{{#include historique-lineaire.sh:first-interactive-commit}}
+```
 
 Le rôle de cet éditeur de texte est de saisir une description des changements
 effectués dans la nouvelle version qui va être sauvegardé.
@@ -67,7 +70,9 @@ voulez enregistrer au même endroit en appuyant sur Entrée.
 
 Après avoir créé un commit, la sortie de `git status` change :
 
-    $ git status
+```bash
+{{#include historique-lineaire.sh:status-after-commit}}
+```
 
 La commande status décrit en effet toujours l’état de l’index et du répertoire
 de travail par rapport à la dernière version enregistrée (`HEAD`).
@@ -78,9 +83,9 @@ premier commit. `git status` devrait donc indiquer qu’il n’y a rien de nouve
 
 Effectuons maintenant quelques changements :
 
-    $ echo 'Un premier changement' > MonDossier/Contenu.txt
-    $ echo 'Un nouveau fichier' > AutreContenu.txt
-    $ git status
+```bash
+{{#include historique-lineaire.sh:change-then-status}}
+```
 
 Comme la plupart des gestionnaires de version, git distingue soigneusement les
 changements apportés à des fichiers sous gestion de version des créations de
@@ -88,25 +93,45 @@ nouveaux fichiers dans le répertoire de travail.
 
 Pour visualiser le premier type de changement, on peut utiliser `git diff` :
 
-    $ git diff
+```bash
+{{#include historique-lineaire.sh:diff-after-change}}
+```
 
 Cette commande décrit les différences entre le répertoire de travail et l’index,
 selon un format similaire à celui de l’utilitaire `diff` des systèmes Unix.
 
-Mais **attention**, `git diff` ne tient pas compte des fichiers qui n’ont pas
-été mis sous gestion de version avec `git add`, et ne peut donc pas remplacer
-totalement l’utilisation de `git status`.
+<div class="warning">
 
-Les habitués d’autres gestionnaires de version noteront que `git add` combine
-deux fonctions qui sont en général distinctes dans d’autres outils :
+  Malheureusement, la commande `git diff` a un comportement piégeux hérité
+  d'autres gestionnaires de versions historiques: elle ne tient compte que des
+  fichiers qui ont précédemment été mis sous gestion de version avec `git add`.
+  Un fichier nouvellement créé dans le répertoire de travail ne sera pas
+  mentionné par la sortie de `git diff`.
+
+  Ce comportement idiot fait qu'en pratique, si on prend la mauvaise habitude de
+  n'interroger que `git diff` et jamais `git status` pour savoir où on en est,
+  il est facile d'oublier les nouveaux fichiers du répertoire de travail lors de
+  la création d'un commit et de créer des _commits_ qui n'ont aucun sens (ex:
+  code incomplet qui ne compile pas).
+
+  Il est donc important de prendre l'habitude de toujours vérifier la sortie de
+  `git status` avant de créer un _commit_ et de ne pas se baser que sur celle de
+  `git diff` qui donne une vision incomplète des changements du répertoire de
+  travail.
+
+</div>
+
+Puisqu'on en est à parler d’autres gestionnaires de version, les habitués de ces
+autres gestionnaires noteront que `git add` combine deux fonctions qui sont en
+général distinctes dans d’autres outils :
 
 - Mettre des fichiers sous gestion de version
 - Ajouter des changements survenus dans un fichier à la prochaine version
 
 Dans le modèle de git, ces deux opérations sont unifiées par la notion d’index,
-qui rend d’un certain point de vue obsolète celle de fichier sous gestion de
-version. Cependant, cette seconde notion existe malheureusement toujours dans
-git, comme le piège ergonomique de `git diff` ci-dessus l’illustre.
+qui rend à peu près obsolète celle de fichier sous gestion de version.
+Cependant, cette seconde notion existe hélas toujours dans git, comme le piège
+ergonomique de `git diff` discuté ci-dessus l’illustre.
 
 ### Aller plus loin avec git diff
 
@@ -114,10 +139,9 @@ git, comme le piège ergonomique de `git diff` ci-dessus l’illustre.
 (la version en cours de création). Par conséquent, si on ajoute des changements
 à l’index, ils disparaissent de la sortie de `git diff` :
 
-    $ git add MonDossier
-    $ git diff
-    $ echo 'Un second changement' >> MonDossier/Contenu.txt
-    $ git diff
+```bash
+{{#include historique-lineaire.sh:changes-and-diffs}}
+```
 
 Ce mode de fonctionnement aide à créer une nouvelle version progressivement :
 
@@ -131,21 +155,23 @@ Mais parfois, on souhaite un autre comportement de la part de `git diff`. On
 peut ainsi lui demander la liste des changements effectués au sein du répertoire
 de travail depuis la dernière version enregistrée :
 
-    $ git diff HEAD
+```bash
+{{#include historique-lineaire.sh:workdir-vs-head}}
+```
 
 Ou bien on peut lui demander les changements présents au sein de l’index, qui
 seront inclus dans la nouvelle version lorsqu’on appellera `git commit` :
 
-    $ git diff --cached
+```bash
+{{#include historique-lineaire.sh:index-vs-head}}
+```
 
 Il est aussi possible, et souvent très utile, de n’afficher que les changements
 survenus au sein d’un certain fichier ou dossier avec `git diff <chemin>` :
 
-    $ git add AutreContenu.txt
-    $ git commit -m 'Une deuxième version'
-    $ echo 'Un ajout de contenu' >> AutreContenu.txt
-    $ git diff
-    $ git diff MonDossier/
+```bash
+{{#include historique-lineaire.sh:diff-target-only}}
+```
 
 Plusieurs autres choses sont à noter dans cet exemple :
 
@@ -165,24 +191,37 @@ compris d’éventuelles suppressions, mais en excluant quand même les fichiers
 spécifiés dans le `.gitignore`.
 
 Sans paramètre supplémentaire, cette commande synchronise complètement l’index
-avec le répertoire de travail. Cela peut conduire à des ajouts involontaires,
-il est donc plus prudent de cibler cette commande sur un dossier.
+avec le répertoire de travail. Cela peut conduire à des ajouts involontaires, il
+est donc plus prudent de cibler cette commande sur un dossier comme dans
+l'exemple suivant :
 
-    $ rm MonDossier/Contenu.txt
-    $ git add --all MonDossier/
-    $ git status
-    $ git commit -m 'Nous sommes sur une bonne lancée !'
+```bash
+{{#include historique-lineaire.sh:add-all-directory}}
+```
 
-`git commit -a` crée un commit avec tous les changements survenus dans les
-fichiers sous gestion de version. Ce faisant, elle ignore les fichiers qui n’ont
-pas été mis préalablement sous gestion de version avec `git add`, imitant ainsi
-la logique d’autres gestionnaires de version comme SVN ou Mercurial.
+`git commit -a` crée un commit comprenant tous les changements survenus dans les
+fichiers _sous gestion de version_ depuis le dernier commit.
 
-Si cette logique familière aidera dans leur apprentissage les habitués de ces
-gestionnaires, elle est globalement piégeuse, et entraîne souvent la création de
-commits incomplets. J’encourage donc les débutants de la gestion de version à
-considérer l’utilisation de `git commit -a` comme une mauvaise habitude qu’il
-est préférable d’éviter de prendre.
+
+<div class="warning">
+
+  Comme `git diff`, `git commit -a` ignore complètement les fichiers qui n’ont
+  pas été mis préalablement sous gestion de version avec `git add`, imitant
+  ainsi la logique d’autres gestionnaires de version comme SVN ou Mercurial.
+
+  Cette logique déjà très douteuse dans le cadre de `git diff` est encore plus
+  piégeuse dans le cadre de `git commit -a`, et il est très courant quand on
+  utilise cette commande de créer des commits qui n'ont aucun sens, par exemple
+  du code qui ne compile pas parce qu'il manque des nouveaux fichiers sources
+  mentionnés par les modifications qui ont été commitées dans les autres
+  fichiers préexistants.
+  
+  Par conséquent, à moins d'être déjà habitué à un gestionnaire de version où ce
+  comportement est normal, je vous encourage fortement à considérer
+  l’utilisation de `git commit -a` comme une mauvaise habitude qu’il est
+  préférable d’éviter de prendre.
+
+</div>
 
 
 ## Exploration de l’historique
@@ -192,7 +231,9 @@ est préférable d’éviter de prendre.
 Nous avons maintenant créé quelques commits, et il est possible d’afficher
 l’historique de ces derniers avec `git log` :
 
-    $ git log
+```bash
+{{#include historique-lineaire.sh:git-log}}
+```
 
 Si un commit précis de la liste nous interpelle, nous pouvons ensuite demander
 à git d’afficher des informations détaillées sur ce dernier avec
@@ -209,7 +250,9 @@ Pour cette raison, je vous recommande fortement d’utiliser une interface
 graphique pour visualiser votre historique. Au cours de cette formation, nous
 utiliserons pour cela le logiciel `gitg` :
 
-    ? gitg
+```bash
+{{#include historique-lineaire.sh:gitg-foreground}}
+```
 
 Vous pouvez constater que `gitg` vous permet d’observer d’un coup d’œil votre
 historique. En cliquant sur chaque commit, vous avez aussi accès à des
@@ -224,7 +267,9 @@ plus de commandes tant que vous n’aurez pas fermé `gitg`.
 La manière la plus simple de régler ce problème est de lancer l’application en
 tâche de fond avec l’aide du signe `&` :
 
-    $ gitg &
+```bash
+{{#include historique-lineaire.sh:gitg-background}}
+```
 
 Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
 continuer de saisir des commandes.
@@ -237,8 +282,8 @@ gauche) et le pointer manuellement vers votre dépôt.
 
 ### Premières requêtes
 
-git est basé sur la notion de **différence**, et chaque version y est définie
-par les changements qu’elle opère vis-à-vis de la version précédente.
+git est basé sur la notion de différence, et chaque version y est définie par
+les changements qu’elle opère vis-à-vis de la version précédente.
 
 Si cette vision « locale » des choses est parfois suffisante, il est souvent
 nécessaire de raisonner par rapport à des versions relativement éloignées dans
@@ -261,11 +306,15 @@ actif, et `HEAD~2` est le grand-parent de ce commit.
 Avec cette syntaxe, nous pouvons demander à git la différence entre le
 répertoire de travail et le parent du commit actif…
 
-    $ git diff HEAD~
+```bash
+{{#include historique-lineaire.sh:diff-workdir-vs-head-parent}}
+```
 
 …ou bien les changements du commit actif par rapport à son parent :
 
-    $ git diff HEAD~ HEAD
+```bash
+{{#include historique-lineaire.sh:diff-head-vs-head-parent}}
+```
 
 ### Nommer un commit
 
@@ -277,10 +326,9 @@ lisible pour un être humain.
 En gestion de version, cela s’appelle une étiquette (_tag_), et on peut en créer
 une avec la commande `git tag <étiquette> [<commit>]` :
 
-    $ git tag important
-    $ git tag papa HEAD~
-    $ git tag maman important~
-    $ git tag ancetre HEAD~2
+```bash
+{{#include historique-lineaire.sh:tag-basic}}
+```
 
 Après l’exécution de ces commandes…
 
@@ -300,25 +348,34 @@ toujours vers le même commit.
 Si vous le souhaitez, vous pouvez ajouter une description à votre étiquette,
 avec l’option `--annotate` de `git tag`. Ces annotations sont souvent utilisées
 pour indiquer les points du développement d’un logiciel auxquels une version
-publique a été distribuée, et documenter les nouveautés de cette version. Le
-fonctionnement est basé sur un éditeur de texte, comme `git commit` sans
-`-m` :
+publique a été distribuée, et documenter les nouveautés de cette version.
 
-    ? git tag --annotate v1.0 HEAD~
+Par défaut, `git tag --annotate` utilise un éditeur de texte comme `git commit`
+sans `-m`. L'option -m peut aussi être utilisée avec cette commande :
+
+```bash
+{{#include historique-lineaire.sh:tag-annotate-interactive}}
+```
 
 Un moyen simple d’afficher la description d’une étiquette annotée est d’utiliser
 la commande `git show` :
 
-    $ git show v1.0
+```bash
+{{#include historique-lineaire.sh:show-annotated-tag}}
+```
 
 Vous pouvez aussi afficher la liste des étiquettes présentes dans le dépôt avec
 `git tag --list`, qui s’abrévie en `git tag` :
 
-    $ git tag --list
+```bash
+{{#include historique-lineaire.sh:tag-list}}
+```
 
 Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
 
-    $ git tag --delete v1.0 important maman papa ancetre
+```bash
+{{#include historique-lineaire.sh:tag-delete}}
+```
 
 ### Revenir dans le passé
 
@@ -330,20 +387,24 @@ répertoire de travail soit _propre_, c’est-à-dire qu’il n’y ait pas de
 changements non enregistrés dans celui-ci. Pour savoir si c’est le cas, on peut
 comme toujours utiliser `git status` :
 
-    $ git status
+```bash
+{{#include historique-lineaire.sh:status-before-checkout}}
+```
 
 Si vous avez suivi le déroulement prévu du TP, ce n’est pas le cas, il y a des
 changements en attente. Il va falloir s’occuper de ces changements d’abord, par
 exemple en les sauvegardant sous forme d’un nouveau `commit`.
 
-    $ git add --all
-    $ git commit -m 'La version ultime'
-    $ git status
+```bash
+{{#include historique-lineaire.sh:commit-before-checkout}}
+```
 
 Maintenant, nous sommes prêts. Revenons donc à un ancien commit, par exemple le
 parent de celui que nous venons de créer, avec la commande `git checkout` :
 
-    $ git checkout HEAD~
+```bash
+{{#include historique-lineaire.sh:checkout-head-parent}}
+```
 
 À ce stade, git vous affichera un message pour vous avertir que vous n’êtes plus
 sur une branche, et que si vous créez des commits dans cet état, vous ne pourrez
@@ -368,23 +429,31 @@ sélectionnant l’option « Tous les commits » dans le menu de gauche.
 Quand vous avez fini d’explorer, il est facile de revenir sur la branche
 `main` :
 
-    $ git checkout main
+```bash
+{{#include historique-lineaire.sh:checkout-back-main}}
+```
 
 ### Annuler un jeu de commits
 
 Il est possible d’annuler l’effet d’un jeu de commits de façon non-destructive
-avec la commande `git revert`.
+(il est possible de revenir à l'état avant annulation par la suite) avec la
+commande `git revert`.
 
 Cette commande modifie l’effet du répertoire de travail, il faut donc s’assurer
 d’abord que ledit répertoire de travail est propre :
 
-    $ git status
+```bash
+{{#include historique-lineaire.sh:status-before-revert}}
+```
 
-Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on
-exécutera la commande suivante, qui à la manière de `git commit` demandera la
-saisie d’une description par le biais d’un éditeur de texte :
+Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on utilise
+la commande `git revert`, qui crée un commit annulant l'effet des commits de
+l'historique spécifiés (et fonctionne comme `git commit` en ouvrant un éditeur
+de texte par défaut pour saisir la description du commit) :
 
-    ? git revert HEAD
+```bash
+{{#include historique-lineaire.sh:revert-head}}
+```
 
 À plus grande échelle, il est aussi possible d’annuler l’effet de plusieurs
 commits avec la variante `git revert <commit1> <commit2>`, ou celui
@@ -392,17 +461,16 @@ d’une série de commits avec la variante `git revert <commit1>..<commitN>` (no
 les deux points entre les deux identifiants de commit spécifiant le début et la
 fin du jeu de changement à annuler).
 
-Cette commande est sans risque, car elle fonctionne en créant un nouveau commit
-qui annule l’effet du commit choisi. L’ancien commit n’est donc pas perdu, il
-reste présent dans l’historique, et on ne peut donc pas perdre accidentellement
-des données en utilisant `revert`.
+Puisque `git revert` fonctionne en créant un nouveau commit, c'est une commande
+sans risque : l'ancien commit n’est pas perdu, il reste facilement accessible au
+sein de l’historique. On ne peut donc pas perdre accidentellement des données en
+utilisant `revert`.
 
-Cependant, cela signifie aussi que `git revert` n’est pas l’outil approprié pour
-annuler un ajout incorrect au dépôt, comme l’ajout d’un secret
-cryptographique ou d’un gros fichier à la gestion de version. Dans ces cas-là,
-il faudra avoir recours à des outils beaucoup plus invasifs et destructeurs tels
-que `git filter-branch`, ou les logiciels tiers `filter-repo` et
-« BFG Repo-Cleaner ».
+Mais cela signifie aussi que `git revert` n’est pas l’outil approprié pour
+annuler un ajout incorrect au dépôt, comme l’ajout d’un secret cryptographique
+ou d’un gros fichier à la gestion de version. Dans ces cas-là, il faudra avoir
+recours à des outils beaucoup plus invasifs et destructeurs tels que `git
+filter-branch`, ou les logiciels tiers `filter-repo` et « BFG Repo-Cleaner ».
 
 
 ## Conclusion
@@ -435,7 +503,8 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
    commit ne comprenant que les modifications d’un seul fichier.
 4. Affichez les modifications qui n’ont pas encore été sauvegardées.
 5. Utilisez un raccourci git pour créer un commit contenant les modifications
-   des autres fichiers sans avoir besoin de les nommer dans les commandes.
+   des autres fichiers sans avoir besoin de les nommer dans les commandes que
+   vous utilisez.
 6. Affichez la différence entre les deux premiers commits que vous avez
    effectués au sein du dépôt.
 7. Vérifiez que le répertoire de travail est propre.
@@ -447,13 +516,17 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 Dans toutes les commandes qui suit, l’indication `<chemins>` peut être remplacée
 par un ou plusieurs chemins d’accès vers des fichiers ou des dossiers.
 
-Ajouter des changements à l’index (pour les inclure dans le prochain commit) :
+Ajouter des changements à l’index pour les inclure dans le prochain commit :
 
-    ? git add <chemins>
+```bash
+{{#include historique-lineaire.sh:cheatsheet-add}}
+```
 
 …en prenant en compte les suppressions de fichier (rejetées par défaut) :
 
-    ? git add --all <chemins>
+```bash
+{{#include historique-lineaire.sh:cheatsheet-add-all}}
+```
 
 Créer un _commit_, une version sauvegardée du projet :
 
@@ -639,14 +712,18 @@ dernière version sauvegardée du répertoire de travail :
 
     $ git stash pop
 
-Comme avec git checkout, il est préférable de n’effectuer cette opération que
-sur un répertoire de travail propre.
+Comme avec git checkout, il est préférable de n’effectuer cette dernière
+opération qu'au sein d'un répertoire de travail propre.
 
 ### Autres outils graphiques
 
 Une liste relativement complète d’outils graphiques pour visualiser et manipuler
-des dépôts git est disponible sur https://www.git-scm.com/downloads/guis .
+des dépôts git est disponible sur [le site officiel de
+git](https://www.git-scm.com/downloads/guis).
 
-L’auteur travaille essentiellement sous Linux, mais quand il lui arrive de
-développer sous macOS ou Windows, il aime bien le logiciel Sourcetree (
-https://www.sourcetreeapp.com/ ).
+L’auteur de cette formation travaille essentiellement sous Linux, mais quand il
+lui arrive de développer sous macOS ou Windows, il aime bien le logiciel
+[Sourcetree](https://www.sourcetreeapp.com/). D'autres développeurs lui ont
+aussi dit beaucoup de bien de [GitKraken](https://www.gitkraken.com/), par
+contre dans ce dernier cas il faut être prêt à sortir le chéquier car les
+limitations de la version gratuite sont très restrictives.

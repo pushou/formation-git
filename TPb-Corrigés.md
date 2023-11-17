@@ -107,8 +107,9 @@ modifications non sauvegardées avec `git diff` :
     $ git diff
 
 Pour créer un commit comprenant toutes les modifications non sauvegardées, on a
-plusieurs possibilités. Nous avons déjà vu `git add --all`, quand tous les
-fichiers sont sous gestion de version on peut aussi utiliser `git commit -a` :
+plusieurs possibilités. Nous avons déjà vu `git add --all`, ici nous sommes
+aussi dans le cas particulier où tous les fichiers sont sous gestion de version
+et on peut utiliser `git commit -a` en toute sécurité :
 
     $ git commit -am 'Mon troisième commit'
 
@@ -284,9 +285,11 @@ raccourci `git checkout -b` :
 
     $ git checkout -b test
     $ echo 'Le contenu' > AutreContenu.txt
-    $ git commit -am 'Un commit de test'
+    $ git add AutreContenu.txt
+    $ git commit -m 'Un commit de test'
     $ echo 'Plus de contenu' >> AutreContenu.txt
-    $ git commit -am 'Un autre commit de test'
+    $ git add AutreContenu.txt
+    $ git commit -m 'Un autre commit de test'
 
 À ce stade, le clone du dépôt n’est pas au courant de l’existence de ces
 commits et de cette nouvelle branche, puisqu’en git les échanges entre dépôts
@@ -309,7 +312,8 @@ ferions sur n’importe quelle autre branche locale :
     $ git add NouveauFichier.txt
     $ git commit -m "Ajout d'un fichier"
     $ echo 'Renouvelons la demande' >> NouveauFichier.txt
-    $ git commit -am "Complétion d'un fichier"
+    $ git add NouveauFichier.txt
+    $ git commit -m "Complétion d'un fichier"
 
 Pour récupérer ces changements dans le dépôt d’origine, nous allons devoir
 ajouter notre clone comme _remote_ de ce dernier…
@@ -326,11 +330,11 @@ Pour terminer, ajoutons quelques commits sur la branche `main` de `MonDepot` :
 
     $ git checkout main
     $ echo 'Je ne sais quoi inventer' > Incertitude.txt
-    $ git add --all
+    $ git add Incertitude.txt
     $ git commit -m 'Méditation'
     $ echo 'Je ne sais quoi penser' >> Incertitude.txt
     $ git add Incertitude.txt
-    $ git commit -am 'Moment philosophique'
+    $ git commit -m 'Moment philosophique'
 
 On peut propager ces changements sur la branche `main` de `TonDepot` avec un
 simple `git push` :
@@ -375,7 +379,8 @@ basculer sur cette branche…
 …et on peut y enregistrer des changements de la façon habituelle :
 
     $ echo -e '\n(C) 1789, Être Suprême Inc.' >> README.md
-    $ git commit -am "Ajout d'une notice de copyright"
+    $ git add README.md
+    $ git commit -m "Ajout d'une notice de copyright"
 
 On peut ensuite pousser la branche sur son _fork_ avec `git push`. La première
 fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut mémoriser
@@ -387,9 +392,11 @@ On peut ensuite répéter l’opération autant de fois qu’on le souhaite, san
 nécessité de répéter le nom de la _remote_ à chaque fois dans `git push` :
 
     $ echo 'AAAAAAH' >> README.md
-    $ git commit -am 'Panique à bord !'
+    $ git add README.md
+    $ git commit -m 'Panique à bord !'
     $ echo 'QQQQQQH' >> README.md
-    $ git commit -am 'Panique à bord en QWERTY !'
+    $ git add README.md
+    $ git commit -m 'Panique à bord en QWERTY !'
     $ git push
 
 Il est possible qu’entre-temps la branche `main` du dépôt officiel ait évolué.

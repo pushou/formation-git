@@ -42,20 +42,26 @@ Durant cette formation, vous allez travailler sur des postes de travail Linux
 équipés des logiciels `git`, `gitg`, `meld` et de quelques éditeurs de texte
 pour s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
 
-Chaque poste comporte une étiquette avec un nom de machine commençant par
-« ld-ens » et se terminant par un numéro entre 1 et 20, du style
-« ld-ens17 ». De ce numéro, vous pouvez déduire le nom du compte
-utilisateur que vous allez utiliser, dans l’exemple ci-dessus ce serait
-« formation-git-17 ». Le mot de passe vous sera communiqué oralement.
+La plupart des postes ont une étiquette collée dessus avec un nom de machine
+commençant par « ld-ens » et se terminant par un numéro entre 1 et 20, du style
+« ld-ens17 ». Pour les postes dont l'étiquette s'est décollée, vous pouvez
+utiliser les étiquettes des postes voisins pour déduire leur numéro, la
+numérotation suivant une logique très simple.
+
+Du numéro de poste, vous pouvez déduire le nom du compte utilisateur que vous
+allez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
+de passe vous sera communiqué oralement.
 
 Ces postes sont aussi configurés pour partager les supports de TP avec le poste
 enseignant, vous trouverez un raccourci vers ceux-ci sur votre bureau.
 
 <div class="warning">
-    Vous l’avez vu, les mots de passe sont dérivés en suivant une logique
-    simple, donc tout le reste de la salle peut deviner votre mot de passe. Pour
-    plus de confidentialité, n’hésitez pas à configurer un mot de passe plus
-    secret avec la commande <code>passwd</code>.
+
+  Vous l’avez vu, les mots de passe sont dérivés en suivant une logique
+  simple, donc tout le reste de la salle peut deviner votre mot de passe. Pour
+  plus de confidentialité, n’hésitez pas à configurer un mot de passe plus
+  secret avec la commande `passwd`.
+
 </div>
 
 ### S’identifier auprès de git
@@ -411,7 +417,7 @@ Annuler un `git add` accidentel :
 Mettre tous les fichiers du répertoire courant sous gestion de version :
 
 ```bash
-git add .
+{{#include premiers-pas.sh:add-workdir}}
 ```
 
 Intégrer à la gestion de version tous les changements du répertoire courant,
@@ -424,20 +430,13 @@ y compris les suppressions, les déplacements…
 Supprimer un fichier sous gestion de version :
 
 ```bash
-# Remplacez MonFichier.txt par le nom du fichier que vous voulez supprimer
-#
-# Ajoutez -r pour supprimer un dossier et son contenu, et ajoutez -f si vous
-# êtes sûr de vouloir supprimer des changements qui n'ont pas été versionnés et
-# seront donc définitivement perdus.
-git rm MonFichier.txt
+{{#include premiers-pas.sh:cheatsheet-rm}}
 ```
 
 Déplacer un fichier sous gestion de version :
 
 ```bash
-# Remplacez Source.txt et Destination.txt pas les noms du fichier source et le
-# nom final désiré, respectivement.
-git mv Source.txt Destination.txt
+{{#include premiers-pas.sh:cheatsheet-mv}}
 ```
 
 Ignorer les fichiers d’extension « .log » :
@@ -449,8 +448,7 @@ Ignorer les fichiers d’extension « .log » :
 Afficher le manuel d’une commande git ou l’explication d’un concept git :
 
 ```bash
-# Remplacez "status" par la commande git qui vous intéresse
-git help status
+{{#include premiers-pas.sh:cheatsheet-help}}
 ```
 
 Afficher un bref rappel de la syntaxe d’une commande git :
@@ -481,11 +479,7 @@ pouvez manipuler cette dernière avec l’utilitaire `git config`, dont voici
 quelques utilisations fictives :
 
 ```bash
-# Ces commandes ne sont pas valides, elles donnent juste des exemples de syntaxe.
-# L'utilisation de "git config --system" nécessite des privilèges administrateur.
-git config --system reglage 'Valeur pour tout le système'
-git config --global reglage 'Valeur spécifique à un utilisateur'
-git config reglage 'Valeur spécifique à un dépôt git'
+{{#include premiers-pas.sh:appendix-config}}
 ```
 
 Pour rappel, la configuration s'appliquant au dépôt actuel (qui est donc la

@@ -16,7 +16,7 @@ le mécanisme de fusion automatique et ses limites.
 
     $ echo 'Bonjour !' > HelloWorld.txt
     $ printf 'Première partie\n\n\n\nDeuxième partie\n' > Contenu.txt
-    $ git add --all
+    $ git add HelloWorld.txt Contenu.txt
     $ git commit -m 'Commit initial'
 
 Gardons une étiquette sur ce premier commit, on s’en servira plus tard :
@@ -64,7 +64,7 @@ la branche que nous venons de créer :
 
     $ echo 'Hi there!' > HelloWorld.txt
     $ echo 'Troisième partie' >> Contenu.txt
-    $ git add --all
+    $ git add HelloWorld.txt Contenu.txt
     $ git commit -m 'Premier jeu de modifications'
 
 Revenons ensuite sur la branche `main` :
@@ -226,10 +226,12 @@ Ajoutons une ligne à un fichier dans nos deux branches :
 
     $ git checkout main
     $ echo 'Annexe' >> Contenu.txt
-    $ git commit -am 'Ajoutons une annexe'
+    $ git add Contenu.txt
+    $ git commit -m 'Ajoutons une annexe'
     $ git checkout univers-parallele
     $ echo 'Bibliographie' >> Contenu.txt
-    $ git commit -am 'Ajoutons une bibliographie'
+    $ git add Contenu.txt
+    $ git commit -m 'Ajoutons une bibliographie'
 
 Si nous essayons d’intégrer les changements de `main` à `univers-parallele`,
 `git merge` indiquera qu’il est incapable d’effectuer la fusion automatiquement
