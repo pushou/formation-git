@@ -530,19 +530,27 @@ Ajouter des changements à l’index pour les inclure dans le prochain commit :
 
 Créer un _commit_, une version sauvegardée du projet :
 
-    ? git commit
+```bash
+{{#include historique-lineaire.sh:cheatsheet-commit}}
+```
 
 Saisir la description du commit directement dans la commande :
 
-    ? git commit -m <description>
+```bash
+{{#include historique-lineaire.sh:cheatsheet-commit-message}}
+```
 
 Afficher les changements des **fichiers versionnés** par rapport à l’index :
 
-    $ git diff
+```bash
+{{#include historique-lineaire.sh:diff-after-change}}
+```
 
 …par rapport au dernier commit enregistré (commit actif) :
 
-    $ git diff HEAD
+```bash
+{{#include historique-lineaire.sh:workdir-vs-head}}
+```
 
 `HEAD` désigne le dernier commit enregistré. Pour tout commit `com`, `com~`
 désigne le commit parent (celui qui le précède) dans l’historique, `com~2` le
@@ -550,23 +558,33 @@ commit grand-parent (le parent du parent), et ainsi de suite.
 
 Afficher les changements dans l’index par rapport au commit actif :
 
-    $ git diff --cached
+```bash
+{{#include historique-lineaire.sh:index-vs-head}}
+```
 
-Afficher les changements survenus du commit A au commit B :
+Afficher les différences du commit A au commit B :
 
-    $ git diff A..B
+```bash
+{{#include historique-lineaire.sh:cheatsheet-diff-commits}}
+```
 
-Restreindre l’affichage des changements à certain fichiers (ou dossiers) :
+Restreindre l’affichage des changements à certain fichiers ou dossiers :
 
-    ? git diff <chemins>
+```bash
+{{#include historique-lineaire.sh:diff-folder}}
+```
 
-Afficher l’historique des commits en ligne de commande
+Afficher l’historique des commits en ligne de commande :
 
-    $ git log
+```bash
+{{#include historique-lineaire.sh:git-log}}
+```
 
-Lancer le visualiseur d’historique `gitg` sans bloquer le terminal
+Lancer le visualiseur d’historique `gitg` sans bloquer le terminal :
 
-    $ gitg &
+```bash
+{{#include historique-lineaire.sh:gitg-background}}
+```
 
 Donner un nom à un commit (par défaut le commit actif) avec une étiquette :
 
@@ -671,7 +689,9 @@ revenir en arrière en cas de problème, la plupart des opérations git peuvent
 - La création d’un commit → `git reset --soft HEAD~`
 - La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
 - La création d’un commit + les ajouts préalables à l’index + les modifications
-  du répertoire de travail (DANGER) → `git reset --hard HEAD~`
+  du répertoire de travail → `git reset --hard HEAD~`
+    * Soyez prudents avec cette commande : si votre répertoire de travail n'est
+      pas propre, ses changements seront perdus de façon irréversible.
 
 Les pouvoirs d’annulation de git se limitent malheureusement aux données qui ont
 été versionnées. Les opérations sur le répertoire de travail sont en général

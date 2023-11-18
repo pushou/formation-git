@@ -16,12 +16,16 @@ IFS=$'\n\t'
 function test_this_manually() {
 ###### ANCHOR: first-interactive-commit
 cd ~/Desktop/MonDepot
+###### ANCHOR: cheatsheet-commit
 git commit
+###### ANCHOR_END: cheatsheet-commit
 ###### ANCHOR_END: first-interactive-commit
 }
 unset -f test_this_manually
 cd ~/Desktop/MonDepot
+###### ANCHOR: cheatsheet-commit-message
 git commit -m "Mon premier commit"
+###### ANCHOR_END: cheatsheet-commit-message
 
 
 ###### ANCHOR: status-after-commit
@@ -59,7 +63,9 @@ git add AutreContenu.txt
 git commit -m 'Une deuxième version'
 echo 'Un ajout de contenu' >> AutreContenu.txt
 git diff
+####### ANCHOR: diff-folder
 git diff MonDossier/
+####### ANCHOR_END: diff-folder
 ####### ANCHOR_END: diff-target-only
 
 
@@ -162,7 +168,9 @@ git add FichiersEtDossiers
 git add --all FichiersEtDossiers
 ###### ANCHOR_END: cheatsheet-add-all
 
-
+###### ANCHOR: cheatsheet-diff-commits
+git diff A B
+###### ANCHOR_END: cheatsheet-diff-commits
 
 
 
