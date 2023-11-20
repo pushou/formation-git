@@ -1,5 +1,3 @@
-# Un historique linéaire
-
 # TP2 : Un historique linéaire
 
 ## Un mot sur les « rattrapages »
@@ -87,9 +85,9 @@ Effectuons maintenant quelques changements :
 {{#include historique-lineaire.sh:change-then-status}}
 ```
 
-Comme la plupart des gestionnaires de version, git distingue soigneusement les
-changements apportés à des fichiers sous gestion de version des créations de
-nouveaux fichiers dans le répertoire de travail.
+Comme la plupart des gestionnaires de version, git distingue les changements
+apportés à des fichiers sous gestion de version des créations de nouveaux
+fichiers dans le répertoire de travail.
 
 Pour visualiser le premier type de changement, on peut utiliser `git diff` :
 
@@ -103,16 +101,16 @@ selon un format similaire à celui de l’utilitaire `diff` des systèmes Unix.
 <div class="warning">
 
   Malheureusement, la commande `git diff` a un comportement piégeux hérité
-  d'autres gestionnaires de versions historiques: elle ne tient compte que des
+  d'autres gestionnaires de versions historiques : elle ne tient compte que des
   fichiers qui ont précédemment été mis sous gestion de version avec `git add`.
   Un fichier nouvellement créé dans le répertoire de travail ne sera pas
   mentionné par la sortie de `git diff`.
 
-  Ce comportement idiot fait qu'en pratique, si on prend la mauvaise habitude de
-  n'interroger que `git diff` et jamais `git status` pour savoir où on en est,
-  il est facile d'oublier les nouveaux fichiers du répertoire de travail lors de
-  la création d'un commit et de créer des _commits_ qui n'ont aucun sens (ex:
-  code incomplet qui ne compile pas).
+  Ceci fait qu'en pratique, si on prend la mauvaise habitude de n'interroger que
+  `git diff` et jamais `git status` pour savoir où on en est, il est facile
+  d'oublier les nouveaux fichiers du répertoire de travail lors de la création
+  d'un commit et de créer des _commits_ qui n'ont aucun sens (ex: code incomplet
+  qui ne compile pas).
 
   Il est donc important de prendre l'habitude de toujours vérifier la sortie de
   `git status` avant de créer un _commit_ et de ne pas se baser que sur celle de
@@ -129,9 +127,9 @@ général distinctes dans d’autres outils :
 - Ajouter des changements survenus dans un fichier à la prochaine version
 
 Dans le modèle de git, ces deux opérations sont unifiées par la notion d’index,
-qui rend à peu près obsolète celle de fichier sous gestion de version.
-Cependant, cette seconde notion existe hélas toujours dans git, comme le piège
-ergonomique de `git diff` discuté ci-dessus l’illustre.
+qui rend redondante celle de fichier sous gestion de version. Hélas, cette
+seconde notion existe hélas toujours dans git, comme le piège ergonomique de
+`git diff` discuté ci-dessus l’illustre.
 
 ### Aller plus loin avec git diff
 
@@ -209,12 +207,12 @@ fichiers _sous gestion de version_ depuis le dernier commit.
   pas été mis préalablement sous gestion de version avec `git add`, imitant
   ainsi la logique d’autres gestionnaires de version comme SVN ou Mercurial.
 
-  Cette logique déjà très douteuse dans le cadre de `git diff` est encore plus
-  piégeuse dans le cadre de `git commit -a`, et il est très courant quand on
-  utilise cette commande de créer des commits qui n'ont aucun sens, par exemple
-  du code qui ne compile pas parce qu'il manque des nouveaux fichiers sources
-  mentionnés par les modifications qui ont été commitées dans les autres
-  fichiers préexistants.
+  Cette logique déjà douteuse dans le cadre de `git diff` est encore plus
+  piégeuse dans le cadre de `git commit -a`, et il est courant quand on utilise
+  cette commande de créer des commits qui n'ont aucun sens, par exemple du code
+  qui ne compile pas parce qu'il manque des nouveaux fichiers sources mentionnés
+  par les modifications qui ont été commitées dans d'autres fichiers
+  préexistants.
   
   Par conséquent, à moins d'être déjà habitué à un gestionnaire de version où ce
   comportement est normal, je vous encourage fortement à considérer
@@ -301,7 +299,7 @@ actif ».
 
 À tout identifiant de commit, nous pouvons ajouter le suffixe `~[N]` pour
 désigner le (N-ième) parent de ce commit. Ainsi, `HEAD~` est le parent du commit
-actif, et `HEAD~2` est le grand-parent de ce commit.
+actif, et `HEAD~2` est son grand-parent.
 
 Avec cette syntaxe, nous pouvons demander à git la différence entre le
 répertoire de travail et le parent du commit actif…
@@ -350,22 +348,23 @@ avec l’option `--annotate` de `git tag`. Ces annotations sont souvent utilisé
 pour indiquer les points du développement d’un logiciel auxquels une version
 publique a été distribuée, et documenter les nouveautés de cette version.
 
-Par défaut, `git tag --annotate` utilise un éditeur de texte comme `git commit`
-sans `-m`. L'option -m peut aussi être utilisée avec cette commande :
+Par défaut, `git tag --annotate` ouvre un éditeur de texte comme `git commit`.
+Et comme avec `git commit`, on peut utiliser l'option `-m` pour saisir
+l'annotation dans la ligne de commande :
 
 ```bash
 {{#include historique-lineaire.sh:tag-annotate-interactive}}
 ```
 
-Un moyen simple d’afficher la description d’une étiquette annotée est d’utiliser
-la commande `git show` :
+On peut afficher la description d’une étiquette annotée avec la commande `git
+show` :
 
 ```bash
 {{#include historique-lineaire.sh:show-annotated-tag}}
 ```
 
-Vous pouvez aussi afficher la liste des étiquettes présentes dans le dépôt avec
-`git tag --list`, qui s’abrévie en `git tag` :
+La liste des étiquettes présentes dans le dépôt peut être affichée avec `git tag
+--list`, ou tout simplement `git tag` :
 
 ```bash
 {{#include historique-lineaire.sh:tag-list}}
@@ -406,19 +405,23 @@ parent de celui que nous venons de créer, avec la commande `git checkout` :
 {{#include historique-lineaire.sh:checkout-head-parent}}
 ```
 
-À ce stade, git vous affichera un message pour vous avertir que vous n’êtes plus
-sur une branche, et que si vous créez des commits dans cet état, vous ne pourrez
-pas facilement les retrouver par la suite. En terminologie git, on désigne cet
-état par le qualificatif morbide de `HEAD détachée`.
+<div class="warning">
+  
+  git affiche alors un message pour vous avertir que vous n’êtes plus sur une
+  branche, et que si vous créez des commits quand le dépôt est dans cet état,
+  vous ne pourrez pas facilement les retrouver par la suite. En terminologie
+  git, on désigne cet état par le nom morbide de `HEAD détachée`.
 
-Le reste du message vous explique comment vous pourriez préserver vos
-changements en créant une autre branche. Nous étudierons cela ultérieurement,
-mais ici nous ne souhaitons pas créer de nouveaux commits donc vous pouvez
-ignorer cette suggestion.
+  Le reste du message vous explique comment vous pourriez préserver vos
+  changements en créant une autre branche. Nous reviendrons sur tout ça quand
+  nous aurons abordé les branches, mais ici nous ne souhaitons pas créer de
+  nouveaux commits donc vous pouvez ignorer cette suggestion.
 
-Si vous regardez les fichiers de votre dépôt, vous pouvez constater que leur
-contenu a changé pour reprendre la valeur qu’ils avaient dans la version
-précédente. Une vraie machine à voyager dans le temps !
+</div>
+
+Quoiqu'il en soit, si vous regardez les fichiers de votre dépôt, vous pouvez
+constater que leur contenu a changé pour reprendre la valeur qu’ils avaient dans
+la version précédente. Une vraie machine à voyager dans le temps !
 
 N’hésitez pas à revenir en différents points de votre historique avec
 `git checkout`, en utilisant `gitg` pour retrouver les identifiants de vos
@@ -426,8 +429,8 @@ commits. Par défaut, `gitg` affiche l’historique relativement au commit actif
 mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
 sélectionnant l’option « Tous les commits » dans le menu de gauche.
 
-Quand vous avez fini d’explorer, il est facile de revenir sur la branche
-`main` :
+Quand vous avez fini d’explorer, il est facile de revenir à la fin de de
+l'historique principal en rebasculant sur la branche `main` :
 
 ```bash
 {{#include historique-lineaire.sh:checkout-back-main}}
@@ -447,9 +450,13 @@ d’abord que ledit répertoire de travail est propre :
 ```
 
 Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on utilise
-la commande `git revert`, qui crée un commit annulant l'effet des commits de
-l'historique spécifiés (et fonctionne comme `git commit` en ouvrant un éditeur
-de texte par défaut pour saisir la description du commit) :
+la commande `git revert`, qui crée un commit annulant l'effet d'anciens commits
+de l'historique.
+
+Comme `git commit`, `git revert` ouvre un éditeur de texte pour saisir la
+description du commit. Mais contrairement à `git commit`, **on ne peut pas
+utiliser `-m` ici** pour saisir cette description directement dans la ligne de
+commande.
 
 ```bash
 {{#include historique-lineaire.sh:revert-head}}
@@ -461,17 +468,34 @@ d’une série de commits avec la variante `git revert <commit1>..<commitN>` (no
 les deux points entre les deux identifiants de commit spécifiant le début et la
 fin du jeu de changement à annuler).
 
+Dans ce cas, `git revert` peut créer plusieurs commits d'annulation, et c'est la
+raison pour laquelle l'option `-m` ne peut pas être supportée par `git revert` :
+elle n'a de sens que pour des commandes qui ne créent qu'un seul commit.
+
 Puisque `git revert` fonctionne en créant un nouveau commit, c'est une commande
 sans risque : l'ancien commit n’est pas perdu, il reste facilement accessible au
 sein de l’historique. On ne peut donc pas perdre accidentellement des données en
 utilisant `revert`.
 
-Mais cela signifie aussi que `git revert` n’est pas l’outil approprié pour
-annuler un ajout incorrect au dépôt, comme l’ajout d’un secret cryptographique
-ou d’un gros fichier à la gestion de version. Dans ces cas-là, il faudra avoir
-recours à des outils beaucoup plus invasifs et destructeurs tels que `git
-filter-branch`, ou les logiciels tiers `filter-repo` et « BFG Repo-Cleaner ».
+<div class="warning">
 
+  Le prix à payer pour cette sécurité est que `git revert` n’est pas l’outil
+  approprié pour éliminer du dépôt un fichier qui n'aurait jamais dû s'y
+  trouver, comme un secret cryptographique ou un profil de performances
+  d'exécution de plusieurs gigaoctets. Avec `git revert`, ces fichiers
+  resteraient dans l'historique, ce qui n'est pas désirable. Pour les éliminer
+  vraiment du dépôt, il faudra faire appel à des outils beaucoup plus
+  destructeurs tels que `git filter-branch`, ou le logiciel tiers `filter-repo`.
+
+  Ces outils pouvant causer beaucoup de dommages si ils sont mal maniés, je vous
+  recommande donc de ne pas y avoir recours quand vous débutez avec git, et de
+  privilégier chaque fois que c'est possible des méthodes d'édition d'historique
+  moins dangereuses car plus compréhensibles et d'impact plus localisé, telles
+  que`git reset --hard HEAD~N` qui enlève "juste" les N derniers commits de
+  l'historique de la branche active. Nous reviendrons sur ces possibilités après
+  avoir abordé la question des branches.
+
+</div>
 
 ## Conclusion
 
@@ -562,7 +586,7 @@ Afficher les changements dans l’index par rapport au commit actif :
 {{#include historique-lineaire.sh:index-vs-head}}
 ```
 
-Afficher les différences du commit A au commit B :
+Afficher les différences quand on passe du commit A au commit B :
 
 ```bash
 {{#include historique-lineaire.sh:cheatsheet-diff-commits}}
@@ -586,44 +610,73 @@ Lancer le visualiseur d’historique `gitg` sans bloquer le terminal :
 {{#include historique-lineaire.sh:gitg-background}}
 ```
 
-Donner un nom à un commit (par défaut le commit actif) avec une étiquette :
+Créer une étiquette pointant sur le commit actif :
 
-    ? git tag <étiquette> [<commit>]
+```bash
+{{#include historique-lineaire.sh:cheatsheet-tag}}
+```
 
-…et compléter l’étiquette par une description :
+Créer une étiquette pointant sur un commit autre que le commit actif :
 
-    ? git tag --annotate <étiquette> [<commit>]
+```bash
+{{#include historique-lineaire.sh:cheatsheet-tag-with-commit}}
+```
+
+Créer une étiquette "annotée" comprenant une description :
+
+```bash
+{{#include historique-lineaire.sh:cheatsheet-tag-annotate}}
+```
 
 Afficher la liste des étiquettes présentes dans le dépôt :
 
-    $ git tag --list
+```bash
+{{#include historique-lineaire.sh:tag-list}}
+```
 
 Détruire une ou plusieurs étiquette·s :
 
-    ? git tag --delete <étiquettes>
+```bash
+{{#include historique-lineaire.sh:cheatsheet-tag-delete}}
+```
 
 Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
 
-    ? git show <commit>
+```bash
+{{#include historique-lineaire.sh:cheatsheet-show}}
+```
 
-**Attention :** Les commandes suivantes modifient le répertoire de travail et
-doivent donc être exécutées dans un répertoire de travail propre.
+<div class="warning">
 
-Charger le contenu d’un commit dans le répertoire de travail :
+  Les commandes suivantes modifient le répertoire de travail et doivent donc
+  être exécutées dans un répertoire de travail propre, sans modifications non
+  enregistrées.
 
-    ? git checkout <commit>
+  Charger le contenu d’un commit historique dans le répertoire de travail :
+  
+  ```bash
+  {{#include historique-lineaire.sh:cheatsheet-checkout}}
+  ```
+  
+  Revenir sur la branche `main`, la fin de l'historique principal du dépôt :
+  
+  ```bash
+  {{#include historique-lineaire.sh:checkout-back-main}}
+  ```
+  
+  Créer un commit qui annule l’effet d’un ou plusieurs commits précédents :
 
-Revenir sur la branche `main` :
+  ```bash
+  {{#include historique-lineaire.sh:cheatsheet-revert}}
+  ```
+  
+  Créer un commit qui annule l’effet de tous les commits entre A et B :
+  
+  ```bash
+  {{#include historique-lineaire.sh:cheatsheet-revert-range}}
+  ```
 
-    $ git checkout main
-
-Créer un commit qui annule l’effet d’un ou plusieurs autres commits :
-
-    ? git revert <commits>
-
-Créer un commit qui annule l’effet de tous les commits entre A et B :
-
-    $ git revert A..B
+</div>
 
 ---
 
@@ -655,13 +708,13 @@ Au lieu de créer un nouveau commit, on peut aussi vouloir modifier le commit
 précédent, par exemple pour ajouter des modifications oubliées ou pour changer
 la description. Tout cela est possible avec l’option `--amend` :
 
-    $ echo 'Du nouveau !' > NouveauContenu.txt
-    $ git add NouveauContenu.txt
-    $ git commit --amend -m 'Une version avec plus de contenu'
+```bash
+{{#include historique-lineaire.sh:commit-amend}}
+```
 
 Les plus attentifs remarqueront peut-être dans la sortie de `git commit --amend`
 que cette opération modifie aussi le _hash_ hexadécimal qui identifie le commit.
-Il y a deux causes profondes à cela :
+Il y a deux raisons à cela :
 
 - Le _hash_ d’un commit est une fonction déterministe de son contenu. C’est ce qui
   fait qu’il est improbable que deux commits indépendants sur le réseau
@@ -675,6 +728,15 @@ Il y a deux causes profondes à cela :
 `git commit --amend` est un premier exemple de commande qui modifie
 l’historique. git dispose d’un vocabulaire riche de commandes de ce type, que
 nous aurons l’occasion d’explorer davantage au cours de la formation.
+
+<div class="warning">
+
+  Un point de vigilance que je dois évoquer dès maintenant, mais ne pourrai
+  détailler que plus tard dans la formation, est qu'il vaut mieux éviter
+  d'utiliser ces commandes d'édition d'historique sur des commits ou branches
+  qui ont été publiés sur un serveur partagé.
+
+</div>
 
 ### Annuler des manipulations accidentelles
 
@@ -709,31 +771,37 @@ répertoire de travail, cette commande est irréversible, donc dangereuse, et do
 Parfois, lorsqu’on souhaite se promener dans l’historique avec `git checkout`,
 devoir sauvegarder les modifications de son répertoire de travail est ennuyeux.
 On n’est pas encore prêt à créer un commit qui représente une version cohérente
-du projet, et on n’en voit pas la nécessité alors qu’on veut « juste » aller jeter
-un coup d’œil à l’histoire du dépôt.
+du projet, et on n’en voit pas la nécessité alors qu’on veut juste, disons,
+aller jeter un coup d’œil à l’histoire du dépôt.
 
 Pour ce genre de cas, git fournit un outil bien pratique appelé `git stash`. Cet
-outil prend toutes les modifications actuelles et les range dans un endroit à
-part du dépôt (en fait une branche jetable). Démonstration :
+outil prend toutes les modifications non enregistrées du répertoire de travail
+et les met de côté dans un endroit à part du dépôt (en fait une branche
+temporaire de l'historique).
 
-    $ echo 'Demandez le programme !' >> AutreContenu.txt
-    $ git status
-    $ git stash
-    $ git status
+En voici une petite démonstration :
+
+```bash
+{{#include historique-lineaire.sh:stash}}
+```
 
 La liste des modifications sauvegardées prend la forme d’une pile, que l’on peut
 consulter avec la commande `git stash list` :
 
-    $ git stash list
+```bash
+{{#include historique-lineaire.sh:stash-list}}
+```
 
 Lorsqu’on est prêt à reprendre le travail sur cette version du répertoire de
 travail, il suffit d’utiliser la commande `git stash pop` pour restaurer la
 dernière version sauvegardée du répertoire de travail :
 
-    $ git stash pop
+```bash
+{{#include historique-lineaire.sh:stash-pop}}
+```
 
-Comme avec git checkout, il est préférable de n’effectuer cette dernière
-opération qu'au sein d'un répertoire de travail propre.
+Cette opération modifie le répertoire de travail comme git checkout, et il est
+donc recommandé de ne l'effectuer qu'au sein d'un répertoire de travail propre.
 
 ### Autres outils graphiques
 

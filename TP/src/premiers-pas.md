@@ -50,7 +50,7 @@ numérotation suivant une logique très simple.
 
 Du numéro de poste, vous pouvez déduire le nom du compte utilisateur que vous
 allez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
-de passe vous sera communiqué oralement.
+de passe sera communiqué oralement.
 
 Ces postes sont aussi configurés pour partager les supports de TP avec le poste
 enseignant, vous trouverez un raccourci vers ceux-ci sur votre bureau.
@@ -86,11 +86,11 @@ git vous demandera parfois de saisir du texte avec un éditeur de texte. Cet
 Le choix d’un éditeur de texte relevant de la guerre de religion, nous dirons
 juste qu’il est recommandé d’utiliser un éditeur en mode console pour cet usage,
 et qu’il est conseillé à ceux qui n’ont jamais utilisé ce type d’éditeur de
-plutôt faire appel à `nano` pour les besoins de cette formation.
+plutôt utiliser `nano` pour cette formation.
 
 Voici comment on configure `nano` comme éditeur par défaut, vous pouvez modifier
-cette commande pour désigner un des autres éditeurs de texte installés sur le
-poste de travail si vous le souhaitez :
+cette commande pour utiliser un des autres éditeurs de texte disponibles si vous
+le souhaitez :
 
 ```bash
 {{#include premiers-pas.sh:config-editor}}

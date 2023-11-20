@@ -149,9 +149,16 @@ git checkout main
 git status
 ###### ANCHOR_END: status-before-revert
 
+
+function test_this_manually() {
 ###### ANCHOR: revert-head
 git revert HEAD
 ###### ANCHOR_END: revert-head
+}
+unset -f test_this_manually
+git diff HEAD HEAD~ | patch -p1
+git add --all
+git commit -m "Revert latest commit"
 
 
 function test_this_manually() {
@@ -172,7 +179,90 @@ git add --all FichiersEtDossiers
 git diff A B
 ###### ANCHOR_END: cheatsheet-diff-commits
 
+###### ANCHOR: cheatsheet-tag
+# Remplacez "MonEtiquette" par le nom de votre choix
+git tag MonEtiquette
+###### ANCHOR_END: cheatsheet-tag
 
+###### ANCHOR: cheatsheet-tag-with-commit
+# Remplacez "MonEtiquette" par le nom de votre choix et "CommitCible" par le
+# commit de votre choix, par exemple "HEAD~" pour le parent du commit actif.
+git tag MonEtiquette CommitCible
+###### ANCHOR_END: cheatsheet-tag-with-commit
 
+###### ANCHOR: cheatsheet-tag-annotate
+# Remplacez "MonEtiquette" par le nom de votre choix et "CommitCible" par le
+# commit de votre choix (ou enlevez ce paramètre pour cibler le commit actif).
+# 
+# Cette commande ouvre un éditeur de texte pour vous permettre de saisir la
+# description, utilisez "-m" pour la saisir directement dans la commande.
+git tag --annotate MonEtiquette CommitCible
+###### ANCHOR_END: cheatsheet-tag-annotate
+
+###### ANCHOR: cheatsheet-tag-delete
+# Vous pouvez spécifier autant de noms d'étiquettes que vous voulez en paramètre
+# de cette commande, elles seront toutes supprimées d'un coup.
+git tag --delete Etiquette1 Etiquette2 Etiquette3
+###### ANCHOR_END: cheatsheet-tag-delete
+
+###### ANCHOR: cheatsheet-show
+# Remplacez "CommitCible" par un identifiant du commit dont vous voulez afficher
+# les propriétés : un nom d'étiquette, de branche, HEAD~N, un hash de commit...
+git show CommitCible
+###### ANCHOR_END: cheatsheet-show
+
+###### ANCHOR: cheatsheet-checkout
+# Remplacez "CommitCible" par un identifiant du commit
+git checkout CommitCible
+###### ANCHOR_END: cheatsheet-checkout
+
+###### ANCHOR: cheatsheet-revert
+# Vous pouvez spécifier autant de commits que vous voulez en paramètre de
+# cette commande, les annulations seront effectuées dans l'ordre indiqué.
+#
+# Pour éviter des conflits, il faut généralement lister les commits à annuler
+# du plus récent au plus ancien, mais voir aussi la commande suivante.
+#
+# Contrairement aux autres commandes qui créent des commits, 
+git revert Commit3 Commit2 Commit1
+###### ANCHOR_END: cheatsheet-revert
+
+###### ANCHOR: cheatsheet-revert-range
+# Attention, si le commit A n'est pas un ancêtre de B, ou plus généralement
+# si vous passez en paramètre de git revert un commit qui n'est pas un parent
+# du commit actif, le comportement sera un peu contre-intuitif.
+#
+# L'explication précise dépasse hélas le cadre de ce chapitre.
+git revert A..B
+###### ANCHOR_END: cheatsheet-revert-range
 }
 unset -f test_this_manually
+
+
+git tag before-commit-amend
+###### ANCHOR: commit-amend
+echo 'Du nouveau !' > NouveauContenu.txt
+git add NouveauContenu.txt
+git commit --amend -m 'Une version avec plus de contenu'
+###### ANCHOR_END: commit-amend
+git reset --hard before-commit-amend
+git tag -d before-commit-amend
+
+
+###### ANCHOR: stash
+echo 'Demandez le programme !' >> AutreContenu.txt
+# Avant : Changements visibles au sein du répertoire de travail
+git status
+git stash
+# Après : Changements mis de côté, le répertoire de travail est propre
+git status
+###### ANCHOR_END: stash
+
+###### ANCHOR: stash-list
+git stash list
+###### ANCHOR_END: stash-list
+
+###### ANCHOR: stash-pop
+git stash pop
+###### ANCHOR_END: stash-pop
+git checkout HEAD AutreContenu.txt
