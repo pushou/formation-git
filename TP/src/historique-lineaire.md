@@ -751,7 +751,7 @@ revenir en arrière en cas de problème, la plupart des opérations git peuvent
 - La création d’un commit → `git reset --soft HEAD~`
 - La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
 - La création d’un commit + les ajouts préalables à l’index + les modifications
-  du répertoire de travail → `git reset --hard HEAD~`
+  préalables du répertoire de travail → `git reset --hard HEAD~`
     * Soyez prudents avec cette commande : si votre répertoire de travail n'est
       pas propre, ses changements seront perdus de façon irréversible.
 
@@ -762,9 +762,10 @@ fréquemment des commits simples que de créer rarement des commits complexes.
 
 La seule chose qu’il est facile de faire dans le répertoire de travail, c’est de
 ramener des fichiers du répertoire de travail à l’état enregistré dans `HEAD`,
-avec la commande `git checkout -- <fichier>`. Comme toute opération sur le
-répertoire de travail, cette commande est irréversible, donc dangereuse, et doit
-être utilisée avec prudence pour éviter des pertes de données.
+on utilisera pour ça la commande `git checkout HEAD -- <liste de fichiers>`.
+Comme toute opération sur le répertoire de travail, cette commande est
+irréversible, donc dangereuse, et doit être utilisée avec prudence pour éviter
+des pertes de données.
 
 ### Mettre des changements de côté
 
