@@ -39,4 +39,8 @@ clean:
 
 TP2.zip: premiers-pas.out
 
-# TODO: Add dependency rules TP2.out: TP2.zip, TP3.zip: TP2.out etc
+historique-lineaire.out: TP2.zip
+
+TP3.zip: historique-lineaire.out
+
+# TODO: Add dependency rules TP3.out: TP3.zip, TP4.zip: TP3.out etc
