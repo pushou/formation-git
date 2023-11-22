@@ -105,8 +105,12 @@ sous-jacente, qui est perçue comme ayant des connotations post-coloniales
 malheureuses.
 
 A cause de ça, les versions récentes de git vous encouragent à utiliser un nom
-de branche par défaut différent. Nous allons ici suivre la convention de GitHub
-et appeler cette branche `main` :
+de branche par défaut différent. Mais pour compliquer les choses, les salles de
+TP où cette formation est jouée n'ont pas toutes basculé sur ces nouvelles
+versions de git, et les anciennes versions de git ignorent ce réglage...
+
+Le plus simple, à ce stade, reste donc de rester sur la terminologie
+traditionnelle et appeler notre branche principale `master` :
 
 ```bash
 {{#include premiers-pas.sh:config-default-branch}}
@@ -348,7 +352,7 @@ Dans ce premier TP, nous avons vu comment…
 - Utiliser l’aide de git
 
 Mais des zones d’ombres demeurent. Comment créer des versions ? Et quelle est
-donc cette « branche `main` » dont `git status` ne cesse de parler ? Nous
+donc cette « branche `master` » dont `git status` ne cesse de parler ? Nous
 répondrons à ces questions dans les prochaines séquences.
 
 
@@ -361,7 +365,7 @@ répondrons à ces questions dans les prochaines séquences.
     - La sortie de `git status` ne doit parler que de deux fichiers à la fin,
       celui que vous venez de déplacer et celui qui a été créé à la question 2.
 5. Affichez l’état final du dépôt. En ignorant pour l’instant la partie « Sur
-   la branche main », comprenez-vous les autres messages affichés ?
+   la branche master », comprenez-vous les autres messages affichés ?
 
 
 ## Antisèche

@@ -140,9 +140,9 @@ git status
 git checkout HEAD~
 ###### ANCHOR_END: checkout-head-parent
 
-###### ANCHOR: checkout-back-main
-git checkout main
-###### ANCHOR_END: checkout-back-main
+###### ANCHOR: checkout-back-master
+git checkout master
+###### ANCHOR_END: checkout-back-master
 
 
 ###### ANCHOR: status-before-revert

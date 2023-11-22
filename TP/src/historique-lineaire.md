@@ -430,10 +430,10 @@ mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
 sélectionnant l’option « Tous les commits » dans le menu de gauche.
 
 Quand vous avez fini d’explorer, il est facile de revenir à la fin de de
-l'historique principal en rebasculant sur la branche `main` :
+l'historique principal en rebasculant sur la branche `master` :
 
 ```bash
-{{#include historique-lineaire.sh:checkout-back-main}}
+{{#include historique-lineaire.sh:checkout-back-master}}
 ```
 
 ### Annuler un jeu de commits
@@ -658,10 +658,10 @@ Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
   {{#include historique-lineaire.sh:cheatsheet-checkout}}
   ```
   
-  Revenir sur la branche `main`, la fin de l'historique principal du dépôt :
+  Revenir sur la branche `master`, la fin de l'historique principal du dépôt :
   
   ```bash
-  {{#include historique-lineaire.sh:checkout-back-main}}
+  {{#include historique-lineaire.sh:checkout-back-master}}
   ```
   
   Créer un commit qui annule l’effet d’un ou plusieurs commits précédents :

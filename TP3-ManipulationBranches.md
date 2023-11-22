@@ -67,12 +67,12 @@ la branche que nous venons de créer :
     $ git add HelloWorld.txt Contenu.txt
     $ git commit -m 'Premier jeu de modifications'
 
-Revenons ensuite sur la branche `main` :
+Revenons ensuite sur la branche `master` :
 
-    $ git checkout main
+    $ git checkout master
 
 Vous pouvez constater que les changements que nous avons effectués au sein de la
-branche `univers-parallele` ne se sont pas répercutés sur `main` :
+branche `univers-parallele` ne se sont pas répercutés sur `master` :
 
     $ cat HelloWorld.txt
 
@@ -94,14 +94,14 @@ Et pour terminer, sauvegardons nos changements dans un _commit_ :
 ### Visualiser les changements
 
 Nos branches ont maintenant _divergé_. Cela signifie que depuis le commit
-initial, certains changements sont survenus dans la branche `main`, et
+initial, certains changements sont survenus dans la branche `master`, et
 d’autres changements sont survenus dans la branche `univers-parallele`.
 
 Il est possible d’afficher ces différents changements avec `git diff` :
 
-    $ git diff initial main
+    $ git diff initial master
     $ git diff initial univers-parallele
-    $ git diff main univers-parallele
+    $ git diff master univers-parallele
 
 Un autre moyen de visualiser la situation est d’utiliser `gitg` en sélectionnant
 le mode « Tous les commits » dans le menu sur la gauche.
@@ -112,7 +112,7 @@ le mode « Tous les commits » dans le menu sur la gauche.
 ### Fusionner des changements
 
 Nous souhaitons maintenant intégrer les changements survenus au sein de la
-branche `univers-parallele` à la branche `main`. Pour cela, nous pouvons
+branche `univers-parallele` à la branche `master`. Pour cela, nous pouvons
 utiliser la commande `git merge`, qui crée un commit contenant ces changements.
 
 Avant d’effectuer une fusion, il est _très fortement_ recommandé de n’avoir
@@ -128,46 +128,46 @@ Cette vérification étant faite, il n’y a plus qu’à lancer la fusion :
 Si vous avez suivi le TP comme prévu, la fusion va s’effectuer de façon
 complètement automatisée, et après avoir saisi un message de commit (ou accepté
 le message par défaut) vous allez obtenir un commit ajoutant les changements
-de `univers-parallèle` à ceux déjà présents dans `main` :
+de `univers-parallèle` à ceux déjà présents dans `master` :
 
 - « HelloWorld.txt » a été modifié comme au sein de `univers-parallele`
 - « Contenu.txt » comprend la modification de la première ligne effectuée dans
-  `main` et l’ajout effectué dans `univers-parallele`.
-- « AutreContenu.txt », qui a été ajouté dans `main`, est toujours présent.
+  `master` et l’ajout effectué dans `univers-parallele`.
+- « AutreContenu.txt », qui a été ajouté dans `master`, est toujours présent.
 
 Vous pouvez étudier les différences de ce nouveau commit avec l’ancienne version
-de `main`, le commit initial, et `univers-parallele` :
+de `master`, le commit initial, et `univers-parallele` :
 
-    $ git diff main~
+    $ git diff master~
     $ git diff initial
     $ git diff univers-parallele
 
 Au sein de `gitg`, vous constaterez également qu’un nouveau commit est apparu
-sur la branche `main`, et que ce commit possède deux commit parents : l’ancienne
-« tête » de la branche `main`, et la branche `univers-parallele`. On parle de
+sur la branche `master`, et que ce commit possède deux commit parents : l’ancienne
+« tête » de la branche `master`, et la branche `univers-parallele`. On parle de
 commit de fusion (_merge commit_).
 
-Notez que `main~` désigne le premier parent de `main`, c’est-à-dire la
+Notez que `master~` désigne le premier parent de `master`, c’est-à-dire la
 lignée « historique » de la branche.
 
 ### Fusion en avance rapide
 
 Maintenant, que se passe-t-il si nous essayons d’intégrer les changements
-survenus au sein de la branche `main` à `univers-parallele` ?
+survenus au sein de la branche `master` à `univers-parallele` ?
 
 Pour le savoir, exécutez cette fusion en surveillant les changements dans la
 fenêtre de `gitg` (n’oubliez pas de rafraîchir la vue avec `Ctrl + R`) :
 
     $ git checkout univers-parallele
-    $ git merge main
+    $ git merge master
 
 À ce stade, `univers-parallele` n’a plus de nouveaux commits par rapport à
-`main`. Toutes ses nouveautés ont été intégrées à `main` dans la fusion que nous
+`master`. Toutes ses nouveautés ont été intégrées à `master` dans la fusion que nous
 avons effectuée précédemment.
 
 Par conséquent, `git merge` n’a pas besoin de créer un nouveau commit pour
-intégrer les nouveautés de `main` à `univers-parallele`. Il lui suffit de
-déplacer `univers-parallele` sur le dernier commit de la branche `main`. C’est
+intégrer les nouveautés de `master` à `univers-parallele`. Il lui suffit de
+déplacer `univers-parallele` sur le dernier commit de la branche `master`. C’est
 ce que git appelle une fusion en avance rapide (_fast-forward merge_).
 
 Parfois, ce comportement est désirable, par exemple quand on veut mettre à jour
@@ -196,7 +196,7 @@ fonctionnement de la commande suivante, vous pourrez consulter la section
 Quoi qu’il en soit, la fusion en avance rapide ayant été annulée, nous pouvons
 maintenant retenter la fusion en forçant cette fois la création d’un commit :
 
-    ? git merge --no-ff main
+    ? git merge --no-ff master
 
 
 ## Conflit de fusion
@@ -224,7 +224,7 @@ qu’il reviendra de décider de la bonne marche à suivre.
 
 Ajoutons une ligne à un fichier dans nos deux branches :
 
-    $ git checkout main
+    $ git checkout master
     $ echo 'Annexe' >> Contenu.txt
     $ git add Contenu.txt
     $ git commit -m 'Ajoutons une annexe'
@@ -233,11 +233,11 @@ Ajoutons une ligne à un fichier dans nos deux branches :
     $ git add Contenu.txt
     $ git commit -m 'Ajoutons une bibliographie'
 
-Si nous essayons d’intégrer les changements de `main` à `univers-parallele`,
+Si nous essayons d’intégrer les changements de `master` à `univers-parallele`,
 `git merge` indiquera qu’il est incapable d’effectuer la fusion automatiquement
 à cause d’un conflit dans « Contenu.txt » :
 
-    @ git merge main
+    @ git merge master
 
 Lorsqu’un conflit survient, les fichiers en conflit sont indiqués dans la sortie
 de `git status` :
@@ -285,7 +285,7 @@ résolution de conflit, qui permet de mieux visualiser l’ensemble du processus
 contrôler en permanence ce qu’on est en train de faire. Dans cette formation,
 nous utiliserons pour cela l’application Meld.
 
-    @ git merge main
+    @ git merge master
     ? meld .
 
 Appliqué à un dossier, Meld recherche l’ensemble des changements survenus dans
@@ -390,11 +390,11 @@ C’est ce que nous allons mettre en pratique dans la séquence suivante.
 1. Créez une copie du dépôt `MonDepot` utilisé au cours du TP2.
 2. Visitez le parent de son commit actif, et créez une branche qui en part.
 3. Basculez sur cette branche, et créez un commit ajoutant un nouveau fichier.
-4. Visualisez la branche `main` et celle que vous venez de créer avec `gitg`.
-5. Fusionnez les changements de `main` au sein de la branche actuelle.
+4. Visualisez la branche `master` et celle que vous venez de créer avec `gitg`.
+5. Fusionnez les changements de `master` au sein de la branche actuelle.
 6. Remplacez le contenu d’un fichier par deux textes différents au sein de
-   `main` et de la nouvelle branche, en commitant ces changements.
-7. Fusionnez les changements de la nouvelle branche au sein de `main`, et
+   `master` et de la nouvelle branche, en commitant ces changements.
+7. Fusionnez les changements de la nouvelle branche au sein de `master`, et
    résolvez le conflit de fusion qui s’ensuit.
 
 ## Antisèche
@@ -529,9 +529,9 @@ totale mais importe des changements sélectivement, commit par commit. Cela évi
 de synchroniser complètement deux branches.
 
 Par exemple, dans un contexte de développement logiciel, on peut rejouer un
-correctif de sécurité de `main` sur la branche associée à une version publiée
+correctif de sécurité de `master` sur la branche associée à une version publiée
 du logiciel, sans pour autant devoir y intégrer toutes les autres nouveautés de
-la branche `main`.
+la branche `master`.
 
 ### Reset et le _reflog_
 
@@ -550,14 +550,14 @@ passés de ces références, appelé « Reference logs » ou en abrégé _refl
 
 On peut afficher cet historique avec la commande `git reflog` :
 
-    $ git reflog main
+    $ git reflog master
     $ git reflog --all
 
 On peut désigner le commit où se trouvait une référence il y a N modifications
 (commits, _resets_, etc.) avec la syntaxe `[<ref>]@{<N>}`. Si l’on ne spécifie
 pas de `<ref>`, c’est la branche active qui est considérée par défaut. Ainsi…
 
-- `main@{1}` désigne le commit sur lequel pointait la branche `main` avant
+- `master@{1}` désigne le commit sur lequel pointait la branche `master` avant
   la dernière opération effectuée sur cette branche.
 - `HEAD@{1}` désigne le commit actif précédent.
 - `@{1}` désigne le commit sur lequel pointait la branche active auparavant.

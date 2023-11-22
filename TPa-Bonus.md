@@ -454,7 +454,7 @@ Une fois que l’on a un projet avec des _submodules_ correctement configurés, 
 chose la plus simple que l’on puisse faire est de basculer sur une autre
 version du _submodule_. Pour cela, on peut se rendre dans le dossier
 représentant le _submodule_ et d’y utiliser des commandes git normales comme
-`git fetch` et `git merge origin/main`.
+`git fetch` et `git merge origin/master`.
 
 Par la suite, au niveau du dépôt parent, le changement de version du _submodule_
 sera visible dans `git status` et on pourra enregistrer ce changement de version
