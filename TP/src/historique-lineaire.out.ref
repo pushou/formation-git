@@ -1,0 +1,282 @@
++ IFS='
+	'
++ unset -f test_this_manually
++ cd /home/users/formation-git-1/Desktop/MonDepot
++ git commit -m 'Mon premier commit'
+[master (root-commit) 0f44534] Mon premier commit
+ 2 files changed, 2 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 MonDossier/Contenu.txt
++ git status
+On branch master
+nothing to commit, working tree clean
++ echo 'Un premier changement'
++ echo 'Un nouveau fichier'
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   MonDossier/Contenu.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	AutreContenu.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git diff
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 65773c6..2ad2cd9 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1 @@
+-Un semblant de contenu
++Un premier changement
++ git add MonDossier
++ git diff
++ echo 'Un second changement'
++ git diff
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 2ad2cd9..1d59528 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1,2 @@
+ Un premier changement
++Un second changement
++ git diff HEAD
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 65773c6..1d59528 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1,2 @@
+-Un semblant de contenu
++Un premier changement
++Un second changement
++ git diff --cached
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 65773c6..2ad2cd9 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1 @@
+-Un semblant de contenu
++Un premier changement
++ git add AutreContenu.txt
++ git commit -m 'Une deuxième version'
+[master d600f1e] Une deuxième version
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 AutreContenu.txt
++ echo 'Un ajout de contenu'
++ git diff
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+index ee1a412..965d82d 100644
+--- a/AutreContenu.txt
++++ b/AutreContenu.txt
+@@ -1 +1,2 @@
+ Un nouveau fichier
++Un ajout de contenu
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 2ad2cd9..1d59528 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1,2 @@
+ Un premier changement
++Un second changement
++ git diff MonDossier/
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 2ad2cd9..1d59528 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1,2 @@
+ Un premier changement
++Un second changement
++ rm MonDossier/Contenu.txt
++ git add --all MonDossier/
++ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    MonDossier/Contenu.txt
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AutreContenu.txt
+
++ git commit -m 'Nous sommes sur une bonne lancée !'
+[master 0db5583] Nous sommes sur une bonne lancée !
+ 1 file changed, 1 deletion(-)
+ delete mode 100644 MonDossier/Contenu.txt
++ git log
+commit 0db55839ebecd947dabc4850d9427d9cc6e97218
+Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
+Date:   Wed Nov 22 14:55:52 2023 +0100
+
+    Nous sommes sur une bonne lancée !
+
+commit d600f1efab0ca3f21f5c7e7a2284c60526d9cc79
+Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
+Date:   Wed Nov 22 14:55:50 2023 +0100
+
+    Une deuxième version
+
+commit 0f44534fb90740626c0029886c6b886552220a95
+Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
+Date:   Wed Nov 22 14:55:46 2023 +0100
+
+    Mon premier commit
++ unset -f test_this_manually
++ git diff HEAD~
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+index ee1a412..965d82d 100644
+--- a/AutreContenu.txt
++++ b/AutreContenu.txt
+@@ -1 +1,2 @@
+ Un nouveau fichier
++Un ajout de contenu
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+deleted file mode 100644
+index 2ad2cd9..0000000
+--- a/MonDossier/Contenu.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Un premier changement
++ git diff HEAD~ HEAD
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+deleted file mode 100644
+index 2ad2cd9..0000000
+--- a/MonDossier/Contenu.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Un premier changement
++ git tag important
++ git tag papa HEAD~
++ git tag maman important~
++ git tag ancetre HEAD~2
++ git tag --annotate -m 'Ma super v1' v1.0 HEAD~
++ git show v1.0
+tag v1.0
+Tagger: Francine Dupont <fdupont@serveur-imaginaire.fr>
+Date:   Wed Nov 22 14:55:54 2023 +0100
+
+Ma super v1
+
+commit d600f1efab0ca3f21f5c7e7a2284c60526d9cc79
+Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
+Date:   Wed Nov 22 14:55:50 2023 +0100
+
+    Une deuxième version
+
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+new file mode 100644
+index 0000000..ee1a412
+--- /dev/null
++++ b/AutreContenu.txt
+@@ -0,0 +1 @@
++Un nouveau fichier
+diff --git a/MonDossier/Contenu.txt b/MonDossier/Contenu.txt
+index 65773c6..2ad2cd9 100644
+--- a/MonDossier/Contenu.txt
++++ b/MonDossier/Contenu.txt
+@@ -1 +1 @@
+-Un semblant de contenu
++Un premier changement
++ git tag --list
+ancetre
+important
+maman
+papa
+v1.0
++ git tag --delete v1.0 important maman papa ancetre
+Deleted tag 'v1.0' (was cd08c93)
+Deleted tag 'important' (was 0db5583)
+Deleted tag 'maman' (was d600f1e)
+Deleted tag 'papa' (was d600f1e)
+Deleted tag 'ancetre' (was 0f44534)
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AutreContenu.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git add --all
++ git commit -m 'La version ultime'
+[master 23665b7] La version ultime
+ 1 file changed, 1 insertion(+)
++ git status
+On branch master
+nothing to commit, working tree clean
++ git checkout HEAD~
+Note: switching to 'HEAD~'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 0db5583 Nous sommes sur une bonne lancée !
++ git checkout master
+Previous HEAD position was 0db5583 Nous sommes sur une bonne lancée !
+Switched to branch 'master'
++ git status
+On branch master
+nothing to commit, working tree clean
++ unset -f test_this_manually
++ git diff HEAD HEAD~
++ patch -p1
+patching file AutreContenu.txt
++ git add --all
++ git commit -m 'Revert latest commit'
+[master ea9cbb1] Revert latest commit
+ 1 file changed, 1 deletion(-)
++ unset -f test_this_manually
++ git tag before-commit-amend
++ echo 'Du nouveau !'
++ git add NouveauContenu.txt
++ git commit --amend -m 'Une version avec plus de contenu'
+[master 486892a] Une version avec plus de contenu
+ Date: Wed Nov 22 14:56:02 2023 +0100
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ create mode 100644 NouveauContenu.txt
++ git reset --hard before-commit-amend
+HEAD is now at ea9cbb1 Revert latest commit
++ git tag -d before-commit-amend
+Deleted tag 'before-commit-amend' (was ea9cbb1)
++ echo 'Demandez le programme !'
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AutreContenu.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git stash
+Saved working directory and index state WIP on master: ea9cbb1 Revert latest commit
++ git status
+On branch master
+nothing to commit, working tree clean
++ git stash list
+stash@{0}: WIP on master: ea9cbb1 Revert latest commit
++ git stash pop
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   AutreContenu.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+Dropped refs/stash@{0} (0d17c95eed513b840bbd9a18003c931190371b19)
++ git checkout HEAD AutreContenu.txt
+Updated 1 path from 967871a
