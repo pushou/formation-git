@@ -124,7 +124,7 @@ git merge --no-ff master
 ###### ANCHOR_END: merge-master-wo-ff
 }
 unset -f test_this_manually
-git merge -m "Une autre fusion sans histoires" univers-parallele
+git merge --no-ff -m "Une autre fusion sans histoires" master
 
 
 ###### ANCHOR: conflicting-commits

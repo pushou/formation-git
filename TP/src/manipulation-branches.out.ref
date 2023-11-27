@@ -1,0 +1,279 @@
++ IFS='
+	'
++ mkdir -p /root/Desktop/MesBranches
++ cd /root/Desktop/MesBranches
++ git init
+Initialized empty Git repository in /root/Desktop/MesBranches/.git/
++ echo 'Bonjour !'
++ printf 'Première partie\n\n\n\nDeuxième partie\n'
++ git add HelloWorld.txt Contenu.txt
++ git commit -m 'Commit initial'
+[master (root-commit) 4ede10e] Commit initial
+ 2 files changed, 6 insertions(+)
+ create mode 100644 Contenu.txt
+ create mode 100644 HelloWorld.txt
++ git tag initial
++ git branch univers-parallele
++ git branch --list
+* master
+  univers-parallele
++ git checkout univers-parallele
+Switched to branch 'univers-parallele'
++ git status
+On branch univers-parallele
+nothing to commit, working tree clean
++ echo 'Hi there!'
++ echo 'Troisième partie'
++ git add HelloWorld.txt Contenu.txt
++ git commit -m 'Premier jeu de modifications'
+[univers-parallele b4c0b84] Premier jeu de modifications
+ 2 files changed, 2 insertions(+), 1 deletion(-)
++ git checkout master
+Switched to branch 'master'
++ cat HelloWorld.txt
+Bonjour !
++ echo 'Partie 1 : Le commencement'
++ tail --lines=+2 Contenu.txt
++ mv Contenu.txt.new Contenu.txt
++ echo 'Nouveau fichier'
++ git add --all
++ git commit -m 'Deuxième jeu de modifications'
+[master 4930524] Deuxième jeu de modifications
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 AutreContenu.txt
++ git diff initial master
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+new file mode 100644
+index 0000000..45f4caf
+--- /dev/null
++++ b/AutreContenu.txt
+@@ -0,0 +1 @@
++Nouveau fichier
+diff --git a/Contenu.txt b/Contenu.txt
+index 9aa694d..361d088 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -1,4 +1,4 @@
+-Première partie
++Partie 1 : Le commencement
+ 
+ 
+ 
++ git diff initial univers-parallele
+diff --git a/Contenu.txt b/Contenu.txt
+index 9aa694d..2e19ca9 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -3,3 +3,4 @@ Première partie
+ 
+ 
+ Deuxième partie
++Troisième partie
+diff --git a/HelloWorld.txt b/HelloWorld.txt
+index 6625d5f..137d409 100644
+--- a/HelloWorld.txt
++++ b/HelloWorld.txt
+@@ -1 +1 @@
+-Bonjour !
++Hi there!
++ git diff master univers-parallele
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+deleted file mode 100644
+index 45f4caf..0000000
+--- a/AutreContenu.txt
++++ /dev/null
+@@ -1 +0,0 @@
+-Nouveau fichier
+diff --git a/Contenu.txt b/Contenu.txt
+index 361d088..2e19ca9 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -1,5 +1,6 @@
+-Partie 1 : Le commencement
++Première partie
+ 
+ 
+ 
+ Deuxième partie
++Troisième partie
+diff --git a/HelloWorld.txt b/HelloWorld.txt
+index 6625d5f..137d409 100644
+--- a/HelloWorld.txt
++++ b/HelloWorld.txt
+@@ -1 +1 @@
+-Bonjour !
++Hi there!
++ git status
+On branch master
+nothing to commit, working tree clean
++ unset -f test_this_manually
++ git merge -m 'Une fusion sans histoires' univers-parallele
+Auto-merging Contenu.txt
+Merge made by the 'recursive' strategy.
+ Contenu.txt    | 1 +
+ HelloWorld.txt | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
++ git diff master~
+diff --git a/Contenu.txt b/Contenu.txt
+index 361d088..f9d5a9b 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -3,3 +3,4 @@ Partie 1 : Le commencement
+ 
+ 
+ Deuxième partie
++Troisième partie
+diff --git a/HelloWorld.txt b/HelloWorld.txt
+index 6625d5f..137d409 100644
+--- a/HelloWorld.txt
++++ b/HelloWorld.txt
+@@ -1 +1 @@
+-Bonjour !
++Hi there!
++ git diff initial
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+new file mode 100644
+index 0000000..45f4caf
+--- /dev/null
++++ b/AutreContenu.txt
+@@ -0,0 +1 @@
++Nouveau fichier
+diff --git a/Contenu.txt b/Contenu.txt
+index 9aa694d..f9d5a9b 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -1,5 +1,6 @@
+-Première partie
++Partie 1 : Le commencement
+ 
+ 
+ 
+ Deuxième partie
++Troisième partie
+diff --git a/HelloWorld.txt b/HelloWorld.txt
+index 6625d5f..137d409 100644
+--- a/HelloWorld.txt
++++ b/HelloWorld.txt
+@@ -1 +1 @@
+-Bonjour !
++Hi there!
++ git diff univers-parallele
+diff --git a/AutreContenu.txt b/AutreContenu.txt
+new file mode 100644
+index 0000000..45f4caf
+--- /dev/null
++++ b/AutreContenu.txt
+@@ -0,0 +1 @@
++Nouveau fichier
+diff --git a/Contenu.txt b/Contenu.txt
+index 2e19ca9..f9d5a9b 100644
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@ -1,4 +1,4 @@
+-Première partie
++Partie 1 : Le commencement
+ 
+ 
+ 
++ git checkout univers-parallele
+Switched to branch 'univers-parallele'
++ git merge master
+Updating b4c0b84..99581ae
+Fast-forward
+ AutreContenu.txt | 1 +
+ Contenu.txt      | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 AutreContenu.txt
++ git reset --hard '@{1}'
+HEAD is now at b4c0b84 Premier jeu de modifications
++ unset -f test_this_manually
++ git merge -m 'Une autre fusion sans histoires' univers-parallele
+Already up to date.
++ git checkout master
+Switched to branch 'master'
++ echo Annexe
++ git add Contenu.txt
++ git commit -m 'Ajoutons une annexe'
+[master cc9c0f6] Ajoutons une annexe
+ 1 file changed, 1 insertion(+)
++ git checkout univers-parallele
+Switched to branch 'univers-parallele'
++ echo Bibliographie
++ git add Contenu.txt
++ git commit -m 'Ajoutons une bibliographie'
+[univers-parallele 027b79e] Ajoutons une bibliographie
+ 1 file changed, 1 insertion(+)
++ set +e
++ git merge master
+Auto-merging Contenu.txt
+CONFLICT (content): Merge conflict in Contenu.txt
+Automatic merge failed; fix conflicts and then commit the result.
++ set -e
++ git status
+On branch univers-parallele
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+  (use "git merge --abort" to abort the merge)
+
+Changes to be committed:
+	new file:   AutreContenu.txt
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+	both modified:   Contenu.txt
+
++ cat Contenu.txt
+Partie 1 : Le commencement
+
+
+
+Deuxième partie
+Troisième partie
+<<<<<<< HEAD
+Bibliographie
+=======
+Annexe
+>>>>>>> master
++ git diff
+diff --cc Contenu.txt
+index 1df00b4,c507d9d..0000000
+--- a/Contenu.txt
++++ b/Contenu.txt
+@@@ -4,4 -4,4 +4,8 @@@ Partie 1 : Le commencemen
+  
+  Deuxième partie
+  Troisième partie
+++<<<<<<< HEAD
+ +Bibliographie
+++=======
++ Annexe
+++>>>>>>> master
++ git merge --abort
++ git status
+On branch univers-parallele
+nothing to commit, working tree clean
++ head --lines=-1 Contenu.txt
++ unset -f test_this_manually
++ set +e
++ git merge master
+Auto-merging Contenu.txt
+CONFLICT (content): Merge conflict in Contenu.txt
+Automatic merge failed; fix conflicts and then commit the result.
++ set -e
++ echo Annexe
++ echo Bibliographie
++ mv Contenu.txt.new Contenu.txt
++ git add Contenu.txt
++ git status
+On branch univers-parallele
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+
+Changes to be committed:
+	new file:   AutreContenu.txt
+	modified:   Contenu.txt
+
++ unset -f test_this_manually
++ git commit -m 'Un merge qui se termine après quelques conflits'
+[univers-parallele 0a5965d] Un merge qui se termine après quelques conflits
++ unset -f test_this_manually
