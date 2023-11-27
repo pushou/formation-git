@@ -185,9 +185,13 @@ git add Contenu.txt
 git status
 ###### ANCHOR_END: status-after-meld
 
+function test_this_manually() {
 ###### ANCHOR: merge-continue
 git merge --continue
 ###### ANCHOR_END: merge-continue
+}
+unset -f test_this_manually
+git commit -m "Un merge qui se termine après quelques conflits"
 
 
 function test_this_manually() {
