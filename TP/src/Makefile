@@ -24,12 +24,12 @@ clean:
 	@DIFF=$(diff -Nu $<.ref $< | tee $@) && \
 	if [ -e $<.ref ]; then \
 		if [ ! -z "${DIFF}" ]; then \
-			echo "=== Found difference between $< and reference $<.ref" && \
+			echo "=== Please inspect difference between $< and reference $<.ref:" && \
 			diff -Nu --color $<.ref $< && \
 			echo "=== Difference was saved to $@"; \
 		fi; \
 	else \
-		echo "=== No reference found for $<" && \
+		echo "=== No reference found for $<. That's odd, commit hashes shouldn't match." && \
 		echo "=== Please review $< and run 'cp $< $<.ref' if it seems correct"; \
 	fi
 
