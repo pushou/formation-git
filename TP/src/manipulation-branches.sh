@@ -165,7 +165,6 @@ git merge --abort
 git status
 ###### ANCHOR_END: abort-merge
 
-head --lines=-1 Contenu.txt > Contenu.txt.new
 function test_this_manually() {
 ###### ANCHOR: conflict-vs-meld
 git merge master
@@ -175,7 +174,10 @@ meld .
 ###### ANCHOR_END: conflict-vs-meld
 }
 unset -f test_this_manually
+#
+# In scripted mode, we do what one would do using meld, but automatically ;)
 set +e; git merge master; set -e
+head --lines=-5 Contenu.txt > Contenu.txt.new
 echo 'Annexe' >> Contenu.txt.new
 echo 'Bibliographie' >> Contenu.txt.new
 mv Contenu.txt.new Contenu.txt
