@@ -40,9 +40,8 @@ git config --list
 
 
 ###### ANCHOR: init
-cd ~/Desktop
-mkdir MonDepot
-cd MonDepot
+mkdir -p ~/Desktop/MonDepot
+cd ~/Desktop/MonDepot
 ###### ANCHOR: init-only
 git init
 ###### ANCHOR_END: init-only

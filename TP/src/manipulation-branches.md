@@ -1,4 +1,4 @@
-# TP3 : Manipulation de branches
+# Manipulation de branches
 
 ## Des évolutions parallèles
 
@@ -7,43 +7,52 @@
 Pour aborder la notion de branches dans un cadre plus simple, commençons par
 créer un deuxième dépôt, vierge de toutes les manipulations précédentes :
 
-    $ cd ~/Desktop
-    $ mkdir MesBranches && cd MesBranches
-    $ git init
+```bash
+{{#include manipulation-branches.sh:init}}
+```
 
 Nous allons créer dans ce dépôt deux fichiers, qui nous permettront d’apprécier
 le mécanisme de fusion automatique et ses limites.
 
-    $ echo 'Bonjour !' > HelloWorld.txt
-    $ printf 'Première partie\n\n\n\nDeuxième partie\n' > Contenu.txt
-    $ git add HelloWorld.txt Contenu.txt
-    $ git commit -m 'Commit initial'
+```bash
+{{#include manipulation-branches.sh:initial-commit}}
+```
 
 Gardons une étiquette sur ce premier commit, on s’en servira plus tard :
 
-    $ git tag initial
+```bash
+{{#include manipulation-branches.sh:initial-tag}}
+```
 
 ### Créer et détruire une branche
 
 On peut créer une branche avec la commande `git branch <nom de branche>` :
 
-    $ git branch univers-parallele
+```bash
+{{#include manipulation-branches.sh:parallel-branch}}
+```
 
 La commande `git branch --list` (qui s’abrévie en `git branch`) permet
 d’afficher la liste des branches présentes au sein du dépôt, la branche active
 étant mise en surbrillance :
 
-    $ git branch --list
+```bash
+{{#include manipulation-branches.sh:branch-list}}
+```
 
 Nous pouvons constater que git ne bascule pas automatiquement sur la branche
 nouvellement créée. On utilise pour cela `git checkout <nom de branche>` :
 
-    $ git checkout univers-parallele
+```bash
+{{#include manipulation-branches.sh:parallel-checkout}}
+```
 
 Une autre manière de vérifier le nom de la branche active est de regarder le
 début de la sortie de `git status` :
 
-    $ git status
+```bash
+{{#include manipulation-branches.sh:status-after-parallel-checkout}}
+```
 
 Il est courant de vouloir créer une nouvelle branche et basculer dessus
 immédiatement. git fournit donc pour cela un raccourci, `git checkout -b <nom>`.
@@ -62,34 +71,40 @@ changements, utilisez `--delete --force`, qui s’abrévie en `-D`.
 Nous pouvons maintenant « commettre » quelques éditions de fichier sur
 la branche que nous venons de créer :
 
-    $ echo 'Hi there!' > HelloWorld.txt
-    $ echo 'Troisième partie' >> Contenu.txt
-    $ git add HelloWorld.txt Contenu.txt
-    $ git commit -m 'Premier jeu de modifications'
+```bash
+{{#include manipulation-branches.sh:first-parallel-commit}}
+```
 
 Revenons ensuite sur la branche `master` :
 
-    $ git checkout master
+```bash
+{{#include manipulation-branches.sh:checkout-after-parallel-commit}}
+```
 
 Vous pouvez constater que les changements que nous avons effectués au sein de la
 branche `univers-parallele` ne se sont pas répercutés sur `master` :
 
-    $ cat HelloWorld.txt
+```bash
+{{#include manipulation-branches.sh:cat-after-checkout}}
+```
 
-Maintenant, modifiez le fichier « Contenu.txt » pour changer la
-première ligne « Première partie » en ce que vous voulez. **Laissez le
-reste du fichier tel quel pour les besoins de cette démonstration**.
+Maintenant, nous allons modifier la première ligne du fichier « Contenu.txt »…
 
-    ? nano Contenu.txt
+```bash
+{{#include manipulation-branches.sh:edit-first-line}}
+```
 
-Pendant que nous y sommes, nous allons aussi créer un nouveau fichier.
+…et créer un nouveau fichier…
 
-    $ echo 'Nouveau fichier' > AutreContenu.txt
+```bash
+{{#include manipulation-branches.sh:add-new-file}}
+```
 
-Et pour terminer, sauvegardons nos changements dans un _commit_ :
+…puis sauvegarder nos changements dans un _commit_ :
 
-    $ git add --all
-    $ git commit -m 'Deuxième jeu de modifications'
+```bash
+{{#include manipulation-branches.sh:first-master-commit}}
+```
 
 ### Visualiser les changements
 
@@ -99,9 +114,9 @@ d’autres changements sont survenus dans la branche `univers-parallele`.
 
 Il est possible d’afficher ces différents changements avec `git diff` :
 
-    $ git diff initial master
-    $ git diff initial univers-parallele
-    $ git diff master univers-parallele
+```bash
+{{#include manipulation-branches.sh:diff-initial-master-parallel}}
+```
 
 Un autre moyen de visualiser la situation est d’utiliser `gitg` en sélectionnant
 le mode « Tous les commits » dans le menu sur la gauche.
@@ -119,11 +134,15 @@ Avant d’effectuer une fusion, il est _très fortement_ recommandé de n’avoi
 aucun changement en instance dans le répertoire de travail et l’index, ce que
 l’on peut vérifier avec `git status`.
 
-    $ git status
+```bash
+{{#include manipulation-branches.sh:status-before-merge}}
+```
 
 Cette vérification étant faite, il n’y a plus qu’à lancer la fusion :
 
-    ? git merge univers-parallele
+```bash
+{{#include manipulation-branches.sh:merge-parallel}}
+```
 
 Si vous avez suivi le TP comme prévu, la fusion va s’effectuer de façon
 complètement automatisée, et après avoir saisi un message de commit (ou accepté
@@ -138,9 +157,9 @@ de `univers-parallèle` à ceux déjà présents dans `master` :
 Vous pouvez étudier les différences de ce nouveau commit avec l’ancienne version
 de `master`, le commit initial, et `univers-parallele` :
 
-    $ git diff master~
-    $ git diff initial
-    $ git diff univers-parallele
+```bash
+{{#include manipulation-branches.sh:diff-after-merge}}
+```
 
 Au sein de `gitg`, vous constaterez également qu’un nouveau commit est apparu
 sur la branche `master`, et que ce commit possède deux commit parents : l’ancienne
@@ -148,7 +167,8 @@ sur la branche `master`, et que ce commit possède deux commit parents : l’an
 commit de fusion (_merge commit_).
 
 Notez que `master~` désigne le premier parent de `master`, c’est-à-dire la
-lignée « historique » de la branche.
+lignée « historique » de la branche, pas l'autre branche depuis laquelle on a
+fusionné des changements.
 
 ### Fusion en avance rapide
 
@@ -158,8 +178,9 @@ survenus au sein de la branche `master` à `univers-parallele` ?
 Pour le savoir, exécutez cette fusion en surveillant les changements dans la
 fenêtre de `gitg` (n’oubliez pas de rafraîchir la vue avec `Ctrl + R`) :
 
-    $ git checkout univers-parallele
-    $ git merge master
+```bash
+{{#include manipulation-branches.sh:fast-forward-merge}}
+```
 
 À ce stade, `univers-parallele` n’a plus de nouveaux commits par rapport à
 `master`. Toutes ses nouveautés ont été intégrées à `master` dans la fusion que nous
@@ -191,12 +212,16 @@ Pour en savoir plus sur cette fonctionnalité relativement avancée et le mode d
 fonctionnement de la commande suivante, vous pourrez consulter la section
 « Informations complémentaires » de ce TP ultérieurement.
 
-    $ git reset --hard @{1}
+```bash
+{{#include manipulation-branches.sh:cancel-merge-using-reflog}}
+```
 
 Quoi qu’il en soit, la fusion en avance rapide ayant été annulée, nous pouvons
 maintenant retenter la fusion en forçant cette fois la création d’un commit :
 
-    ? git merge --no-ff master
+```bash
+{{#include manipulation-branches.sh:merge-master-wo-ff}}
+```
 
 
 ## Conflit de fusion
@@ -224,36 +249,39 @@ qu’il reviendra de décider de la bonne marche à suivre.
 
 Ajoutons une ligne à un fichier dans nos deux branches :
 
-    $ git checkout master
-    $ echo 'Annexe' >> Contenu.txt
-    $ git add Contenu.txt
-    $ git commit -m 'Ajoutons une annexe'
-    $ git checkout univers-parallele
-    $ echo 'Bibliographie' >> Contenu.txt
-    $ git add Contenu.txt
-    $ git commit -m 'Ajoutons une bibliographie'
+```bash
+{{#include manipulation-branches.sh:conflicting-commits}}
+```
 
 Si nous essayons d’intégrer les changements de `master` à `univers-parallele`,
 `git merge` indiquera qu’il est incapable d’effectuer la fusion automatiquement
 à cause d’un conflit dans « Contenu.txt » :
 
-    @ git merge master
+```bash
+{{#include manipulation-branches.sh:conflicting-merge}}
+```
 
 Lorsqu’un conflit survient, les fichiers en conflit sont indiqués dans la sortie
 de `git status` :
 
-    $ git status
+```bash
+{{#include manipulation-branches.sh:conflicting-status}}
+```
 
 Et si on affiche leur contenu, on observe que git a ajouté des annotations à
 l’emplacement du conflit, indiquant les deux versions du fichier entre
 lesquelles il faut arbitrer.
 
-    $ cat Contenu.txt
+```bash
+{{#include manipulation-branches.sh:conflicting-file}}
+```
 
 Cette information est également présente, sous une forme un peu différente, dans
 la sortie de `git diff` :
 
-    $ git diff
+```bash
+{{#include manipulation-branches.sh:conflicting-diff}}
+```
 
 ### Résoudre un conflit
 
@@ -262,8 +290,9 @@ On peut répondre à un conflit de fusion de différentes manières.
 Une première approche consiste à annuler la fusion en cours. C’est la bonne
 chose à faire si on s’est trompé de branche lors de l’appel à `git merge` :
 
-    $ git merge --abort
-    $ git status
+```bash
+{{#include manipulation-branches.sh:abort-merge}}
+```
 
 Une autre approche est d’examiner soigneusement les changements en conflit, et
 de décider au cas par cas si l’une des deux branches a « raison », ou s’il faut
@@ -285,8 +314,9 @@ résolution de conflit, qui permet de mieux visualiser l’ensemble du processus
 contrôler en permanence ce qu’on est en train de faire. Dans cette formation,
 nous utiliserons pour cela l’application Meld.
 
-    @ git merge master
-    ? meld .
+```bash
+{{#include manipulation-branches.sh:conflict-vs-meld}}
+```
 
 Appliqué à un dossier, Meld recherche l’ensemble des changements survenus dans
 ce dossier qui concernent le commit de fusion, et indique en rouge les fichiers
@@ -326,11 +356,15 @@ second cas…
 Quand on a fini de résoudre tous ses conflits de fichier, on peut vérifier que
 tout est prêt dans `git status`…
 
-    $ git status
+```bash
+{{#include manipulation-branches.sh:status-after-meld}}
+```
 
 …puis terminer l’opération de fusion avec :
 
-    $ git merge --continue
+```bash
+{{#include manipulation-branches.sh:merge-continue}}
+```
 
 Notez qu’on peut aussi utiliser `git commit` pour cela, et dans d’anciennes
 versions de git c’était la seule commande disponible. L’utilisation de
@@ -401,51 +435,75 @@ C’est ce que nous allons mettre en pratique dans la séquence suivante.
 
 Créer une branche :
 
-    ? git branch <nom>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-create-branch}}
+```
 
 …et basculer dessus dans la foulée :
 
-    ? git checkout -b <nom>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-checkout-new-branch}}
+```
 
 Énumérer les branches présentes au sein du dépôt :
 
-    $ git branch --list
+```bash
+{{#include manipulation-branches.sh:branch-list}}
+```
 
 Basculer sur une autre branche :
 
-    ? git checkout <branche>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-checkout-existing-branch}}
+```
 
 Supprimer une branche :
 
-    ? git branch --delete <branche>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-delete-branch}}
+```
 
 Fusionner les nouveautés d’une branche au sein de la branche active :
 
-    ? git merge <branche>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-merge-normal}}
+```
 
 …uniquement si la fusion peut être effectuée en avance rapide :
 
-    ? git merge --ff-only <branche>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-merge-ff-only}}
+```
 
-…ou bien en interdisant à git d’utiliser l’avance rapide :
+…ou au contraire en interdisant à git d’utiliser l’avance rapide :
 
-    ? git merge --no-ff <branche>
+```bash
+{{#include manipulation-branches.sh:cheatsheet-merge-no-ff}}
+```
 
 Annuler une fusion de branche qui vient d’être effectuée :
 
-    $ git reset --hard @{1}
+```bash
+{{#include manipulation-branches.sh:cancel-merge-using-reflog}}
+```
 
 Annuler une fusion de branche qui est bloquée par un conflit :
 
-    $ git merge --abort
+```bash
+{{#include manipulation-branches.sh:abort-merge-only}}
+```
 
 Ouvrir `meld` dans le dossier actif pour y régler un conflit :
 
-    ? meld .
+```bash
+{{#include manipulation-branches.sh:use-meld}}
+```
 
 Continuer une fusion de branche après avoir résolu un conflit :
 
-    $ git merge --continue
+```bash
+{{#include manipulation-branches.sh:cheatsheet-merge-continue}}
+```
 
 
 ---
@@ -509,11 +567,15 @@ totale, en rejouant les commits en question par-dessus la branche actuelle.
 La syntaxe de `git cherry-pick` est similaire à celle de `git revert` : il est
 possible de sélectionner les commits à rejouer un par un comme ceci…
 
-    ? git cherry-pick <commit1> [<commit2> ...]
+```bash
+{{#include manipulation-branches.sh:cherry-pick-basic}}
+```
 
 …et il est aussi possible de sélectionner tous les commits entre deux points :
 
-    ? git cherry-pick <commit1>..<commitN>
+```bash
+{{#include manipulation-branches.sh:cherry-pick-range}}
+```
 
 Comme avec `git rebase`, les commits qui sont « importés » de cette façon sont
 des copies de ceux de la branche d’origine, avec quelques ajustements en cas de
@@ -548,10 +610,12 @@ références comme `HEAD`, sont des exceptions à cette règle. Mais en réalit�
 permet bel et bien de revenir dessus, car il conserve un historique des états
 passés de ces références, appelé « Reference logs » ou en abrégé _reflogs_.
 
-On peut afficher cet historique avec la commande `git reflog` :
+On peut afficher cet historique avec la commande `git reflog`, dont voici
+quelques exemples :
 
-    $ git reflog master
-    $ git reflog --all
+```bash
+{{#include manipulation-branches.sh:show-reflog}}
+```
 
 On peut désigner le commit où se trouvait une référence il y a N modifications
 (commits, _resets_, etc.) avec la syntaxe `[<ref>]@{<N>}`. Si l’on ne spécifie
@@ -567,8 +631,10 @@ de modifier le commit sur lequel pointe la branche active, ainsi que le contenu
 de l’index et du répertoire de travail, selon la logique suivante :
 
 - `git reset --soft <commit>` modifie uniquement le commit sur lequel pointe la
-  branche active, l’index et le répertoire de travail restant inchangés. C’est
-  donc, comme on l’a vu dans le TP2, l’inverse de `git commit`.
+  branche active, l’index et le répertoire de travail restant inchangés.
+    * Appliquée à `HEAD~`, c’est donc, comme on l’a vu dans le TP2, l’inverse de
+      `git commit` : on fait revenir la branche active d'un commit en arrière,
+      mais l'index reste rempli de changements prêts à être commités.
 - `git reset <commit>` déplace la branche active et synchronise l’index avec
   le nouveau commit actif, mais ne modifie pas le répertoire de travail.
 - `git reset --hard <commit>` déplace la branche active et synchronise le
@@ -613,7 +679,7 @@ ultérieurement au sein des branches A et B sont considérées pour la fusion.
 
 Donc dans la situation schématisée ci-dessous…
 
-![](Images/RevertMergeBase.png)
+![](images/RevertMergeBase.png)
 
 …seuls les commits `Mrg..A` de la branche A et `Src..B` de la branche B sont
 considérés lorsqu’on tente de fusionner B dans A. Où l’on appelle `Mrg` le
@@ -628,14 +694,14 @@ Supposons maintenant que l’on force git à annuler une fusion avec `git revert
 ce qu’on peut faire avec l’option `--merge`/`-m`, ici on utiliserait
 `git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante…
 
-![](Images/RevertMerge.png)
+![](images/RevertMerge.png)
 
 …où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit
 de fusion `Mrg` précédent. Et jusqu’ici tout va bien. Là où il va y avoir un
 problème, en revanche, c’est quand on va essayer par la suite de fusionner la
 nouvelle version de la branche B, après que les problèmes aient été résolus :
 
-![](Images/RevertMergeRemerge.png)
+![](images/RevertMergeRemerge.png)
 
 À ce moment-là, pour créer le commit `Mrg2`, git va considérer les commits
 `Src..B` de la branche `B` et les commits `Mrg..Rvt` de la branche A, incluant

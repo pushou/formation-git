@@ -43,4 +43,8 @@ historique-lineaire.out: TP2.zip
 
 TP3.zip: historique-lineaire.out
 
-# TODO: Add dependency rules TP3.out: TP3.zip, TP4.zip: TP3.out etc
+manipulation-branches.out: TP3.zip
+
+TP4.zip: manipulation-branches.out
+
+# TODO: Add dependency rules TP4.out: TP4.zip, TP5.zip: TP4.out etc
