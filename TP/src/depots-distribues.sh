@@ -90,4 +90,94 @@ cat ToutNouveau.txt
 ###### ANCHOR_END: first-pull
 
 
+###### ANCHOR: status-after-pull
+git status
+###### ANCHOR_END: status-after-pull
+
+###### ANCHOR: checkout-nonexistent-master
+git checkout master
+###### ANCHOR_END: checkout-nonexistent-master
+
+###### ANCHOR: very-verbose-branch
+git branch --list -vv
+###### ANCHOR_END: very-verbose-branch
+
+
+###### ANCHOR: push-remote-branch
+git push origin master
+###### ANCHOR_END: push-remote-branch
+
+###### ANCHOR: push-remote
+echo 'Hallo !' > HelloWorld.txt
+git add HelloWorld.txt
+git commit -m 'Traduction allemande'
+git push origin
+###### ANCHOR_END: push-remote
+
+###### ANCHOR: log-after-first-pushes
+cd ../MesBranches
+git log master
+###### ANCHOR_END: log-after-first-pushes
+
+###### ANCHOR: push-shorthand
+cd ../MonClone
+echo 'Konnichi-wa !' > HelloWorld.txt
+git add --all
+git commit -m 'Traduction japonaise'
+git push
+###### ANCHOR_END: push-shorthand
+
+###### ANCHOR: push-auto-setup-remote
+git config --global push.autoSetupRemote true
+###### ANCHOR_END: push-auto-setup-remote
+
+
+###### ANCHOR: new-clone-and-add-remote
+git clone ../MesBranches ../MonAutreClone
+git remote add autre ../MonAutreClone
+git remote -v
+###### ANCHOR_END: new-clone-and-add-remote
+
+###### ANCHOR: fetch-all
+git fetch --all
+###### ANCHOR_END: fetch-all
+
+
+###### ANCHOR: divergence-before-pull
+# Création d'un commit sur la branche master de MonAutreClone...
+cd ../MonAutreClone
+git checkout master
+echo '1' > Compteur.txt
+git add Compteur.txt
+git commit -m "Ajout d'un compteur"
+
+# ...que l'on pousse sur la branche master de MesBranches
+git push
+
+# Création d'un autre commit sur la branche master de MonClone
+cd ../MonClone
+echo 'Prost !' > HelloWorld.txt
+git add HelloWorld.txt
+git commit -m 'Disons bonjour plus joyeusement'
+###### ANCHOR_END: divergence-before-pull
+
+function test_this_manually() {
+###### ANCHOR: pull-merges-divergence
+# Cette commande vous invitera à saisir une description pour le commit de fusion
+git pull
+###### ANCHOR_END: pull-merges-divergence
+}
+unset -f test_this_manually
+git fetch --all
+git merge -m "Une fusion inattendue" origin/master
+
+set +e
+###### ANCHOR: push-rejects-divergence
+git reset --hard @{1}
+# Cette commande échouera, on ne peut pas pousser une branche divergente
+git push autre
+###### ANCHOR_END: push-rejects-divergence
+set -e
+
+
 # WIP

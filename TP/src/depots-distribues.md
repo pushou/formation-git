@@ -197,16 +197,20 @@ Alors, comment mémoriser ce lien entre branche locale et branche amont ?
 
 Tout d’abord, a évoqué en début de TP que lorsqu'on fait un `git clone`, git
 configure automatiquement un lien entre la branche active du dépôt qui a été
-cloné et la branche locale associée dans le dépôt cloné. On peut le vérifier
-avec `git status`:
+cloné et la branche locale associée dans le dépôt cloné. C'est indiqué dans la
+première ligne de `git status` :
 
-    $ git status
+```bash
+{{#include depots-distribues.sh:status-after-pull}}
+```
 
 Un autre raccourci bien pratique pour créer une branche locale connectée à une
 branche distante est de demander un `checkout` d’une branche locale qui n’existe
 pas encore, mais dont un homologue distant existe :
 
-    $ git checkout master
+```bash
+{{#include depots-distribues.sh:checkout-nonexistent-master}}
+```
 
 Quand on exécute cette commande, git commence par chercher une branche locale
 `master`, et constate qu’il n’en existe pas, mais qu’il existe une branche
@@ -217,7 +221,9 @@ distante `origin/master` comme amont de la branche locale `master`.
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
 
-    $ git branch --list -vv
+```bash
+{{#include depots-distribues.sh:very-verbose-branch}}
+```
 
 Dans les rares cas où il est nécessaire de configurer manuellement l’amont d’une
 branche locale, la commande `git branch` fournit des moyens de le faire. Sur les
@@ -244,7 +250,9 @@ La forme la plus explicite de `git push` prend en paramètre une _remote_ et une
 référence (étiquette ou branche), puis essaie de créer une version distante de
 cette référence, ou de la mettre à jour si elle existe déjà :
 
-    $ git push origin master
+```bash
+{{#include depots-distribues.sh:push-remote-branch}}
+```
 
 En l’occurrence, il ne se passe rien, puisque nous n’avons pas modifié la branche
 `master` depuis la dernière fois que nous nous sommes synchronisés avec le
@@ -254,26 +262,24 @@ Il est courant de vouloir pousser la branche active. Un premier raccourci de
 `git push` consiste donc à ne préciser que la _remote_ cible. C’est alors la
 branche active qui sera soumise à cette _remote_.
 
-    $ echo 'Hallo !' >HelloWorld.txt
-    $ git add HelloWorld.txt
-    $ git commit -m 'Traduction allemande'
-    $ git push origin
+```bash
+{{#include depots-distribues.sh:push-remote}}
+```
 
-Si nous nous rendons maintenant sur le dépôt parent, les changements y ont été
-propagés par `git push` :
+Dans le dépôt parent, on peut voir que les nouveaux commits ont été propagés par
+`git push` :
 
-    $ cd ../MesBranches
-    $ git log master
+```bash
+{{#include depots-distribues.sh:log-after-first-pushes}}
+```
 
 Enfin, la forme la plus concise de `git push` ne précise même pas la _remote_
 cible. Celle-ci est alors déduite de la branche amont associée à la branche
 active.
 
-    $ cd ../MonClone
-    $ echo 'Konnichi-wa !' >HelloWorld.txt
-    $ git add --all
-    $ git commit -m 'Traduction japonaise'
-    $ git push
+```bash
+{{#include depots-distribues.sh:push-shorthand}}
+```
 
 Pour utiliser cette variante de `git push`, vous devez avoir défini une branche
 amont associée à la branche active. Si ce n’est pas déjà fait, un raccourci
@@ -285,18 +291,24 @@ Si vous utilisez une version récente de git (>=2.37.0), vous pouvez aussi
 configurer `git push` pour effectuer automatiquement cette configuration dans la
 majorité des cas (pas d'ambiguité sur le dépôt cible) :
 
-    $ git config --global push.autoSetupRemote=true
+```bash
+{{#include depots-distribues.sh:push-auto-setup-remote}}
+```
 
-**Attention :** Lorsqu’on utilise des clones locaux d’un dépôt git, comme c’est
-le cas dans ce TP, on ne peut pas faire de `git push` vers la branche qui est
-actuellement active dans le dépôt cible. En cas de besoin, il faut donc aller
-dans le dossier du dépôt cible et faire un `git checkout` d’une autre branche.
+<div class="warning">
 
-Vous ne rencontrerez heureusement que rarement ce problème dans la vie de tous
-les jours. Les clones locaux sont peu utilisés, et la seule raison pour laquelle
-cette formation y a recours est que cela vous permet de mieux visualiser ce qui
-se passe et vous évite de devoir apprendre la gestion des _remotes_ et celle des
-échanges réseau en même temps…
+  Lorsqu’on utilise des clones locaux d’un dépôt git, comme c’est le cas dans ce
+  TP, on ne peut pas faire de `git push` vers la branche qui est actuellement
+  active dans le dépôt cible. En cas de besoin, il faut donc aller dans le
+  dossier du dépôt cible et faire un `git checkout` d’une autre branche.
+
+  Vous ne rencontrerez heureusement que rarement ce problème dans la vie de tous
+  les jours. Les clones locaux sont peu utilisés, et la seule raison pour
+  laquelle cette formation y a recours est que cela vous permet de mieux
+  visualiser ce qui se passe et vous évite de devoir apprendre la gestion des
+  _remotes_ et celle des échanges réseau en même temps…
+
+</div>
 
 
 ## Aller plus loin avec les _remotes_
@@ -310,9 +322,9 @@ que nous étudierons dans la suite de cette formation.
 Créons donc un deuxième clone de notre dépôt parent, et ajoutons une remote qui
 pointe vers celui-ci avec `git remote add` :
 
-    $ git clone ../MesBranches ../MonAutreClone
-    $ git remote add autre ../MonAutreClone
-    $ git remote -v
+```bash
+{{#include depots-distribues.sh:new-clone-and-add-remote}}
+```
 
 Notons qu’ajouter une _remote_ ne déclenche pas d’échanges immédiats. Il faut
 utiliser `git fetch` pour récupérer le contenu actuel de la nouvelle _remote_.
@@ -320,13 +332,20 @@ Introduisons à l’occasion une variante de `git fetch` bien pratique quand on
 travaille avec plusieurs dépôts distants qui permet de récupérer les nouveautés
 de toutes les _remotes_ à la fois :
 
-    $ git fetch --all
+```bash
+{{#include depots-distribues.sh:fetch-all}}
+```
 
-Vous noterez dans la sortie de `git fetch` que le nouveau clone ne contient que
-la branche `univers-parallele`, et pas la branche `master`. En effet, un clone
-ne contient par défaut que la branche active du dépôt d’origine, et l’on n’a
-accès qu’aux branches « propres » du clone, pas aux _remotes_ auxquelles ce
-dernier est éventuellement connecté.
+Vous noterez dans la sortie de `git fetch` qu'il n'y a qu'une branche distante
+`autre/univers-parallele`, et pas de branche `autre/master`. Cela s'explique de
+la façon suivante :
+
+- `git clone` ne crée qu'une seule branche locale, correspondant à la branche
+  active du dépôt qui a été cloné. Les autres branches du dépôt source ne sont
+  représentées que par des branches distantes en lecture seule.
+- `git fetch` ne prend en compte que les branches locales du dépôt auquel on est
+  connecté, pas ses branches distantes. Dit autrement, les _remotes_ de nos
+  _remotes_ ne sont pas prises en compte par `git fetch`.
 
 ### `git pull` et `git push` face à la divergence
 
@@ -338,44 +357,43 @@ branche locale par rapport à la branche amont, alors que `git push` le rejette.
 
 Mettons-le en évidence en créant une petite divergence d’historique :
 
-    $ cd ../MonAutreClone
-    $ git checkout master
-    $ echo '1' > Compteur.txt
-    $ git add Compteur.txt
-    $ git commit -m "Ajout d'un compteur"
-    $ git push
-    $ cd ../MonClone
-    $ echo 'Prost !' > HelloWorld.txt
-    $ git add HelloWorld.txt
-    $ git commit -m 'Disons bonjour plus joyeusement'
-    ? git pull
+```bash
+{{#include depots-distribues.sh:divergence-before-pull}}
+```
 
-Nous venons de créer une divergence d’historique puisque la branche `master`
-de `MonAutreClone` contient désormais un nouveau commit (« Ajout d’un compteur »),
-la branche `master` de `MonClone` aussi (« Disons bonjour plus joyeusement »),
-et aucune de ces deux branches n’est ancêtre de l’autre.
+Après ces commandes, `MonAutreClone` et `MesBranches` contiennent un commit sur
+leur branche `master` qui n'est pas présent au sein de la branche `master` de
+`MonClone`, et `MonClone` contient un commit sur sa branche `master` qui n'est
+pas présent au sein de la branche `master` des deux autres dépôts. On est donc
+bien dans un scénario classique de divergence d'historique.
 
-Cependant, `git pull` ne s’en est pas formalisé, et a simplement fusionné les
-changements de la branche `master` distante dans notre branche `master` locale.
+Puisque la commande `git pull` est basée sur `git merge`, elle ne va pas se
+formaliser de cet état de fait, et simplement fusionner les deux historiques en
+créant un commit de fusion :
+
+```bash
+{{#include depots-distribues.sh:pull-merges-divergence}}
+```
+
 On peut observer l’apparition du commit de fusion correspondant dans `gitg`.
 
-En revanche, `git push` a un comportement différent. Si on le met face à la même
-situation de divergence, il rejettera notre requête :
+En revanche, `git push` a un comportement différent. Dans la même situation de
+divergence, l'opération sera rejetée :
 
-    $ git reset --hard @{1}
-    @ git push autre
+```bash
+{{#include depots-distribues.sh:push-rejects-divergence}}
+```
 
-Pour qu’un `git push` soit accepté, il faut que la branche locale soit un
-successeur de la branche distante. La divergence n’est pas tolérée,
-contrairement au cas de `git pull` où elle est gérée par une fusion. Pour se
-sortir de ce genre de situation, il faudra d’abord effectuer une fusion ou un
-_rebase_ avant de pousser sa branche. Nous allons bientôt voir pourquoi.
+Pour qu’un `git push` soit accepté, il faut que le commit qui termine la branche
+locale ait pour parent celui qui termine la branche distante. Contrairement au
+cas de `git pull`, il n'y a pas de fusion implicite : si on veut une fusion, il
+faut la faire nous même avant de pousser.
 
-### Importance des méthodes de travail
+### Importance des méthodes de travail (_workflows_)
 
 Les ennuis liés à la divergence ne s’arrêtent pas là. Même avec `git pull` et sa
 fusion implicite, nous pouvons avoir des soucis si la fusion se passe mal. Pour
-nous en convaincre, aggravons notre divergence par un petit conflit de fusion :
+nous en convaincre, aggravons notre divergence par un conflit de fusion :
 
     $ echo '2' > Compteur.txt
     $ git add Compteur.txt
