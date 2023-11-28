@@ -51,4 +51,4 @@ depots-distribues.out: TP4.zip
 
 TP5.zip: depots-distribues.out
 
-# TODO: Add dependency rules TP4.out: TP4.zip, TP5.zip: TP4.out etc
+# TODO: Add dependency rules TP5.out: TP5.zip, other.out: TP5.zip, etc
