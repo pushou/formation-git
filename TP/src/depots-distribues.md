@@ -1,17 +1,20 @@
-# TP4 : Dépôts distribués
+# Dépôts distribués
 
 ## Premiers pas avec les dépôts distants
 
 ### Clonage de dépôt
 
 Le travail distribué avec git commence souvent par le clonage d’un dépôt
-existant. Un clone est une copie partielle d’un dépôt git, qui ne reprend que
-les éléments suivants :
+existant. Comme son nom de l'indique pas, un clone n'est pas une copie parfaite
+d’un dépôt git comme on pourrait en créer avec un copier-coller. Il ne reprend
+que les éléments suivants du dépôt source :
 
-- Les commits de l’historique du dépôt d’origine
-- Ses références locales (branches, étiquettes), représentées par des
-  copies en lecture seule au sein du clone
-- Sa branche active, dont une version locale est créée au sein du clone
+- Les commits et étiquettes du dépôt d’origine
+- Ses branches, qui ne sont pas reprises en l'état mais remplacées par des
+  copies en lecture seule avec un nom un peu différent, à l'exception de…
+- …sa branche active, dont une version locale est créée au sein du clone. Un
+  lien est aussi créé entre cette branche locale et son homologue distant pour
+  faciliter les échanges de commits.
 
 Parmi les éléments qui ne seront **pas** recopiés dans le clone, on peut
 mentionner le répertoire de travail, l’index, les connexions éventuelles du
@@ -19,14 +22,15 @@ dépôt cloné à d’autres dépôts distants, ou la configuration de git.
 
 Il y a aussi une chose qui est présente dans le clone mais n’existait pas dans
 le dépôt d’origine, c’est un pointeur vers ledit dépôt, la _remote_ `origin`.
-Celle-ci permettra de synchroniser le clone avec son parent.
+Celle-ci permettra de synchroniser facilement le clone avec son parent par la
+suite.
 
 Pour mettre ces concepts en pratique, commençons par créer un clone du dépôt que
 nous avons manipulé lors du TP précédent :
 
-    $ cd ~/Desktop
-    $ git clone MesBranches MonClone
-    $ cd MonClone
+```bash
+{{#include depots-distribues.sh:clone}}
+```
 
 Si vous lancez `gitg` dans les deux dépôts, et basculez l’affichage en mode
 « Tous les commits », vous constaterez que l’historique du clone est identique à
@@ -43,7 +47,9 @@ De plus, la branche active du parent a aussi été recréée sous forme de branc
 locale dans le clone, et c’est cette branche-là qui est actuellement active et
 extraite dans le répertoire de travail :
 
-    $ git status
+```bash
+{{#include depots-distribues.sh:status-after-clone}}
+```
 
 Notez aussi dans la sortie de `git status` qu’un lien a été créé entre cette
 branche locale et la branche distante. Cela permettra par la suite de
@@ -53,55 +59,79 @@ synchroniser facilement ces deux branches avec les commandes `git push` et
 Vous pouvez afficher la liste des dépôts distants associés au dépôt local actuel
 avec `git remote` sans arguments :
 
-    $ git remote
+```bash
+{{#include depots-distribues.sh:remote}}
+```
 
 En mode verbeux, cette commande affiche aussi l’adresse du dépôt distant. Ici,
 cette adresse est un chemin d’accès sur le système de fichier local :
 
-    $ git remote -v
+```bash
+{{#include depots-distribues.sh:remote-verbose}}
+```
 
 On peut aussi afficher des informations plus détaillées sur une _remote_ avec
 `git remote show` :
 
-    $ git remote show origin
+```bash
+{{#include depots-distribues.sh:remote-show}}
+```
 
 ### Récupération de changements depuis le parent
 
 Maintenant que nous avons créé un clone, retournons donc un instant dans le
-dépôt parent pour créer un commit :
+dépôt parent pour créer un commit qui ajoute un nouveau fichier :
 
-    $ cd ../MesBranches
-    $ echo 'Nouveau dans votre ville !' > ToutNouveau.txt
-    $ git add ToutNouveau.txt
-    $ git commit -m "Ajout d'un nouveau fichier"
+```bash
+{{#include depots-distribues.sh:first-remote-commit}}
+```
 
 Si vous retournez dans le clone, vous constaterez que ce changement n’est pas
-visible, ni dans la branche locale, ni dans la branche distante :
+visible au niveau du clone : le fichier n'est pas visible dans le répertoire de
+travail…
 
-    $ cd ../MonClone
-    @ cat ToutNouveau.txt
-    $ git diff origin/univers-parallele
+```bash
+{{#include depots-distribues.sh:no-file-change-in-clone}}
+```
+
+…et il n'y a pas de différence entre la branche locale du clone et la branche
+distante associée (qui, pour rappel, n'est qu'une copie en lecture seule de la
+branche du dépôt cloné) :
+
+```bash
+{{#include depots-distribues.sh:no-branch-change-in-clone}}
+```
 
 Comme nous en avons discuté, git n’échange avec les dépôts distants que
 lorsqu’on lui demande explicitement de le faire. Pour récupérer les derniers
 changements du dépôt parent, il faut en faire la demande explicitement, par
 exemple avec `git fetch` :
 
-    $ git fetch origin
+```bash
+{{#include depots-distribues.sh:first-fetch}}
+```
 
 Notez que git mentionne une activité au niveau de la copie locale
 `origin/univers-parallele`. À ce stade, le changement n’est toujours pas présent
-dans la branche locale, mais il est visible dans la branche distante :
+dans le répertoire de travail et la branche locale…
 
-    @ cat ToutNouveau.txt
-    $ git diff origin/univers-parallele
+```bash
+{{#include depots-distribues.sh:file-still-missing}}
+```
 
-Nous pouvons intégrer ce changement à notre branche locale par une fusion de
-branche, qui s’effectuera en avance rapide puisque notre branche locale n’a pas
-divergé par rapport à la branche distante :
+…mais il est maintenant visible dans la branche distante :
 
-    $ git merge --ff-only origin/univers-parallele
-    $ cat ToutNouveau.txt
+```bash
+{{#include depots-distribues.sh:branch-changed-in-clone}}
+```
+
+Nous pouvons intégrer le changement à notre branche locale par une fusion. Elle
+s’effectuera en avance rapide car notre branche locale n’a pas divergé par
+rapport à la branche distante :
+
+```bash
+{{#include depots-distribues.sh:fast-forward-parallel-merge}}
+```
 
 ### Le raccourci `git pull`
 
@@ -109,12 +139,12 @@ Il est très courant de vouloir se mettre à jour par rapport à une branche
 distante, et `git` fournit donc des raccourcis pour accélérer cette opération.
 
 Le raccourci `git pull <remote> <branche>` est équivalent à une séquence de deux
-commandes git :
+commandes :
 
 - `git fetch <remote> <branche>`, une variante de `git fetch` qui ne met à jour
   qu’une seule branche distante, et peut donc être plus rapide à s’exécuter.
 - `git merge <remote>/<branche>`, vue au TP 3, qui intègre les changements de la
-  branche distante que l’on vient de récupérer dans la branche active.
+  branche distante que l’on vient de récupérer à la branche active.
 
 Cela divise par deux la quantité de texte que l’on doit saisir pour effectuer
 cette opération courante efficacement, ce qui est déjà appréciable. Et nous
@@ -122,32 +152,32 @@ verrons dans un instant qu’il est possible de raccourcir encore…
 
 Mais d’abord, effectuons un commit dans le dépôt parent pour tester `git pull`.
 
-    $ cd ../MesBranches
-    $ echo 'Demandez le programme !' >> ToutNouveau.txt
-    $ git add ToutNouveau.txt
-    $ git commit -m 'Du contenu supplémentaire'
-    $ cd ../MonClone
-    $ git pull origin univers-parallele
-    $ cat ToutNouveau.txt
+```bash
+{{#include depots-distribues.sh:first-pull}}
+```
 
 `git pull` accepte en paramètre les mêmes options que `git merge`, il est donc
 notamment possible de lui indiquer qu’on ne souhaite fusionner que s’il n’y a
 pas eu de divergence (`git pull --ff-only`), ou au contraire qu’on souhaite
 créer un commit de fusion même si git pourrait s’en passer (`git pull --no-ff`).
 
-Comme `git pull` fait (notamment) appel à `git merge`, cette commande modifie le
-répertoire de travail. Il est donc recommandé de l’utiliser avec un répertoire
-de travail propre.
+<div class="warning">
+
+  Comme `git pull` fait (notamment) appel à `git merge`, cette commande modifie
+  le répertoire de travail. Il est donc recommandé de vérifier que le répertoire
+  de travail est propre avec `git status` avant de l’utiliser.
+
+</div>
 
 ### Notion de branche amont
 
 Il est courant d’avoir dans son dépôt `git` local une branche qui a un
-« homologue distant » sur un serveur :
+« homologue distant » :
 
-- Pour soumettre un développement au projet, on va généralement mettre en ligne
-  une copie de la branche locale associée à ce développement, afin de pouvoir en
-  discuter avec les collaborateurs via une interface web de forge. Nous
-  étudierons ce processus plus en détail au TP 5.
+- Pour soumettre un développement au projet, on va commencer par mettre en ligne
+  une copie de la branche locale associée à ce développement, ce qui permettra
+  par la suite d'en discuter avec les collègues. Nous étudierons ce processus
+  plus en détail au TP 5.
 - À l’inverse, il peut être intéressant d’effectuer un suivi local d’une branche
   existant sur un serveur distant, par exemple la branche qui représente la
   version de développement officielle du projet (généralement appelée `master`,
@@ -165,9 +195,10 @@ branche active et la fusionnera au sein de celle-ci.
 
 Alors, comment mémoriser ce lien entre branche locale et branche amont ?
 
-Tout d’abord, on l’a vu tout à l’heure, git configure automatiquement un lien
-entre la branche active du dépôt qui a été cloné et sa copie locale lorsqu’on
-effectue un `git clone`. On peut le vérifier avec `git status`:
+Tout d’abord, a évoqué en début de TP que lorsqu'on fait un `git clone`, git
+configure automatiquement un lien entre la branche active du dépôt qui a été
+cloné et la branche locale associée dans le dépôt cloné. On peut le vérifier
+avec `git status`:
 
     $ git status
 
