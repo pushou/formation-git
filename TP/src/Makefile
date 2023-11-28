@@ -47,4 +47,8 @@ manipulation-branches.out: TP3.zip
 
 TP4.zip: manipulation-branches.out
 
+depots-distribues.out: TP4.zip
+
+TP5.zip: depots-distribues.out
+
 # TODO: Add dependency rules TP4.out: TP4.zip, TP5.zip: TP4.out etc
