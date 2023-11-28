@@ -201,8 +201,8 @@ les options `--ff-only` et `--no-ff` :
 
 - Avec `--ff-only`, git tente une fusion en avance rapide. Si elle échoue, il
   s’arrête en affichant une erreur au lieu de créer un commit de fusion.
-- Avec `--no-ff`, git crée un commit de fusion même s’il aurait pu effectuer
-  une fusion en avance rapide.
+- Avec `--no-ff`, git crée systématiquement un commit de fusion, même s’il
+  aurait été possible de faire une fusion en avance rapide.
 
 Essayons cette seconde stratégie en revenant en arrière. Pour cela, nous allons
 utiliser une fonctionnalité de git qui garde une copie de sauvegarde de tous les
@@ -347,11 +347,18 @@ Il faut alors proposer une solution au conflit en éditant la vue centrale.
 Quand on a fini, on peut fermer le fichier en cliquant sur la « croix » de
 l’onglet de Meld correspondant. Meld proposera alors de sauvegarder la version
 proposée si ce n’est pas déjà fait, puis demandera si le conflit survenu au sein
-de ce fichier est maintenant résolu. Si oui, il le marquera comme tel dans Git.
+de ce fichier est maintenant résolu. Si oui, il le marquera comme tel avec un
+`git add`.
 
-Attention à bien fermer l’onglet associé au fichier, et non pas l’application.
-Un bug de Meld fait que les modifications ne seront pas enregistrées dans ce
-second cas…
+<div class="warning">
+
+  Attention à bien fermer d'abord l’onglet associé au fichier et valider les
+  différentes boîtes de dialogue avant de fermer complètement l’application.
+  D'anciennes versions de Meld qu'on trouve encore dans la nature présentent un
+  bug qui fait que des modifications ne seront pas enregistrées dans le second
+  cas…
+
+</div>
 
 Quand on a fini de résoudre tous ses conflits de fichier, on peut vérifier que
 tout est prêt dans `git status`…
@@ -367,14 +374,18 @@ tout est prêt dans `git status`…
 ```
 
 Notez qu’on peut aussi utiliser `git commit` pour cela, et dans d’anciennes
-versions de git c’était la seule commande disponible. L’utilisation de
-`git merge --continue` est juste proposée ici parce qu’elle clarifie l’intention.
+versions de git c’était la seule commande disponible. L’utilisation de `git
+merge --continue` est juste proposée ici parce qu’elle clarifie l’intention.
 
-En règle générale, plus une paire de branches a divergé, plus il est difficile
-de les fusionner. En effet, on doit alors « mettre d’accord » deux états du
-dépôt très différents, ce qui requiert une gymnastique intellectuelle difficile.
-Pour cette raison, il est recommandé en gestion de version distribuée de
- _fusionner les branches qui divergent aussi fréquemment que possible_.
+<div class="warning">
+
+  En règle générale, plus une paire de branches a divergé, plus il est difficile
+  de les fusionner. En effet, on doit alors « mettre d’accord » deux états du
+  dépôt très différents, ce qui requiert une gymnastique intellectuelle plus 
+  difficile. Pour cette raison, il est recommandé de fusionner les branches qui
+  divergent aussi fréquemment que possible.
+
+</div>
 
 ### Conflits silencieux
 
@@ -389,16 +400,17 @@ incompatibles du point de vue du langage de programmation utilisé, mais git
 acceptera de les fusionner parce qu’elles sont compatibles selon sa définition à lui
 (pas d’éditions au même endroit du même fichier).
 
-Ce comportement vient du fait que git ne comprend pas la sémantique des langages
-de programmation utilisés. Il raisonne purement en termes de documents textuels.
-Pour lui, des modifications éloignées d’un même document, ou des modifications
+Ce comportement vient du fait que git ne "comprend" pas vraiment la sémantique
+des langages de programmation utilisés. Il applique juste des heuristiques
+génériques qui sont plus ou moins valables pour tous les documents textuels.
+Pour git, des modifications éloignées d’un même document, ou des modifications
 de deux documents distincts, sont toujours compatibles, alors que du point de
 vue des langages de programmation, ce n’est pas forcément le cas.
 
-De tels conflits sont particulièrement sournois, et il faut un outillage
-relativement sophistiqué pour les détecter automatiquement. En l’absence d’un
-tel outillage, la vigilance humaine est primordiale lorsqu’on effectue plusieurs
-fusions à la suite sans période de test intermédiaire.
+De tels conflits sont particulièrement sournois, et il faut des tests
+automatisés avec une bonne couverture pour les détecter automatiquement. En
+l’absence d’un tel outillage, la vigilance humaine est primordiale lorsqu’on
+effectue plusieurs fusions à la suite sans période de test intermédiaire.
 
 
 ## Conclusion
@@ -542,7 +554,9 @@ conséquences importantes :
   sont concentrées au sein du commit de fusion.
 - Les branches qui se basaient sur les anciennes versions des commits existent
   toujours, et continuent de pointer dessus. On peut donc accidentellement créer
-  des divergences d’historique là où il n’en existait pas auparavant.
+  des divergences d’historique là où il n’en existait pas auparavant. Comme on
+  le verra ultérieurement, ce problème est particulièrement présent quand on
+  échange avec d'autres personnes en réseau.
 - On doit régler les conflits de fusion commit par commit, et sur des branches
   longues il arrive fréquemment qu’en réglant un conflit au début de la chaîne,
   on en crée de nombreux autres dans la suite du `rebase`.
@@ -552,10 +566,14 @@ complexe et ne devrait être employée que lorsque vous êtes sûr de ce que vou
 faites. Vous devriez aussi garder un œil sur `gitg` au cours de son utilisation
 pour vérifier que vous n’avez pas commis d’impair.
 
-Il est conseillé aux débutants de `git rebase` de créer une étiquette « de
-sauvegarde » en haut de leur branche avant de lancer le `rebase`, pour pouvoir
-facilement vérifier (par exemple avec `git diff`) que tout se passe bien à
-chaque résolution de conflit ainsi qu’à la fin de l’exécution de `git rebase`.
+<div class="warning">
+
+  Il est conseillé aux débutants de `git rebase` de créer une étiquette « de
+  sauvegarde » en haut de leur branche avant de lancer le `rebase`, pour pouvoir
+  facilement vérifier (par exemple avec `git diff`) que tout se passe bien à
+  chaque résolution de conflit ainsi qu’à la fin de l’exécution de `git rebase`.
+
+</div>
 
 ### Cherry-pick : Une fusion sélective
 
@@ -606,9 +624,9 @@ opérations destructives autant que faire se peut. Quoi qu’il arrive, l’outi
 essaie de permettre l’annulation de toute manipulation.
 
 À première vue, les opérations qui modifient des branches, ou d’autres
-références comme `HEAD`, sont des exceptions à cette règle. Mais en réalité, git
-permet bel et bien de revenir dessus, car il conserve un historique des états
-passés de ces références, appelé « Reference logs » ou en abrégé _reflogs_.
+références comme `HEAD`, sont des exceptions. Mais en réalité, git permet bel et
+bien de revenir dessus, car il conserve un historique des états passés de ces
+références, appelé « Reference logs » ou en abrégé _reflogs_.
 
 On peut afficher cet historique avec la commande `git reflog`, dont voici
 quelques exemples :
