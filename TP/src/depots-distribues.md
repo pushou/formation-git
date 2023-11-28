@@ -297,10 +297,10 @@ majorité des cas (pas d'ambiguité sur le dépôt cible) :
 
 <div class="warning">
 
-  Lorsqu’on utilise des clones locaux d’un dépôt git, comme c’est le cas dans ce
-  TP, on ne peut pas faire de `git push` vers la branche qui est actuellement
-  active dans le dépôt cible. En cas de besoin, il faut donc aller dans le
-  dossier du dépôt cible et faire un `git checkout` d’une autre branche.
+  Lorsqu’on utilise des clones locaux d’un dépôt git normal, comme c’est le cas
+  dans ce TP, on ne peut pas faire de `git push` vers la branche qui est
+  actuellement active dans le dépôt cible. En cas de besoin, il faut donc aller
+  dans le dossier du dépôt cible et faire un `git checkout` d’une autre branche.
 
   Vous ne rencontrerez heureusement que rarement ce problème dans la vie de tous
   les jours. Les clones locaux sont peu utilisés, et la seule raison pour
@@ -395,14 +395,13 @@ Les ennuis liés à la divergence ne s’arrêtent pas là. Même avec `git pull
 fusion implicite, nous pouvons avoir des soucis si la fusion se passe mal. Pour
 nous en convaincre, aggravons notre divergence par un conflit de fusion :
 
-    $ echo '2' > Compteur.txt
-    $ git add Compteur.txt
-    $ git commit -m 'Conflit de fusion avec le compteur de "autre"'
-    @ git pull
+```bash
+{{#include depots-distribues.sh:pull-conflict}}
+```
 
-De tels conflits sont particulièrement désagréables à gérer, puisque l’on doit
-arbitrer entre différentes versions d’une même branche, qu’on ne peut plus
-synchroniser tant que le conflit n’est pas résolu.
+De tels conflits sont désagréables à gérer, puisque l’on doit arbitrer entre
+différentes versions d’une même branche, qu’on ne peut plus synchroniser tant
+que le conflit n’est pas résolu.
 
 Et malheureusement, sur un projet distribué suffisamment gros, on ne peut pas
 empêcher que ce genre de chose arrive si tout le monde est autorisé à travailler
@@ -431,7 +430,9 @@ fusions incorrectes, on peut le faire en utilisant systématiquement
 d’obtenir ce comportement sans devoir spécifier l’option `--ff-only` à
 répétition en utilisant l’option `pull.ff`:
 
-    $ git config --global pull.ff only
+```bash
+{{#include depots-distribues.sh:config-pull-ff-only}}
+```
 
 
 ## Conclusion
@@ -470,61 +471,95 @@ mater cette complexité.
 
 ## Antisèche
 
-Créer un clone d’un dépôt (`<chemin>` peut être un chemin local ou une URL) :
+Créer un clone d’un dépôt :
 
-    ? git clone <chemin> [<nom>]
+```bash
+{{#include depots-distribues.sh:cheatsheet-clone}}
+```
 
 Afficher les dépôts distants (_remotes_) et les chemins associés :
 
-    $ git remote -v
+```bash
+{{#include depots-distribues.sh:remote-verbose}}
+```
 
 Afficher des informations détaillées sur une _remote_ :
 
-    ? git remote show <remote>
+```bash
+{{#include depots-distribues.sh:cheatsheet-remote-show}}
+```
 
 Ajouter une _remote_ au dépôt :
 
-    ? git remote add <nom> <adresse>
+```bash
+{{#include depots-distribues.sh:cheatsheet-remote-add}}
+```
 
 Récupérer les changements d’une _remote_ :
 
-    ? git fetch <remote>
+```bash
+{{#include depots-distribues.sh:cheatsheet-fetch-remote}}
+```
 
 Récupérer les changements de toutes les _remotes_ :
 
-    $ git fetch --all
+```bash
+{{#include depots-distribues.sh:fetch-all}}
+```
 
-Récupérer et fusionner les changements de la branche amont :
+Mettre à jour une branche distante puis la fusionner dans la branche active :
 
-    $ git pull
+```bash
+{{#include depots-distribues.sh:cheatsheet-explicit-pull}}
+```
+
+Récupérer et fusionner les changements de l'amont de la branche active :
+
+```bash
+{{#include depots-distribues.sh:implicit-pull}}
+```
 
 …sauf s’il y a eu divergence entre la branche locale et la branche distante :
 
-    $ git pull --ff-only
+```bash
+{{#include depots-distribues.sh:cheatsheet-implicit-pull-ff-only}}
+```
 
 Configurer `git` pour appliquer le fonctionnement ci-dessus par défaut :
 
-    $ git config --global pull.ff only
+```bash
+{{#include depots-distribues.sh:config-pull-ff-only}}
+```
 
-Créer ou mettre à jour des références distantes :
+Créer ou mettre à jour des branches et/ou étiquettes sur une _remote_ :
 
-    ? git push <remote> <branche1> [<branche2> ...]
+```bash
+{{#include depots-distribues.sh:cheatsheet-explicit-push}}
+```
 
 Pousser une branche en marquant la branche distante comme branche amont :
 
-    ? git push --set-upstream <remote> <branche>
+```bash
+{{#include depots-distribues.sh:cheatsheet-push-set-upstream}}
+```
 
-Mettre à jour l’homologue distant de la branche active sur une _remote_ :
+Créer ou mettre à jour l’homologue distant de la branche active sur une _remote_ :
 
-    ? git push <remote>
+```bash
+{{#include depots-distribues.sh:cheatsheet-push-by-remote}}
+```
 
 Mettre à jour la branche amont associée à la branche active :
 
-    $ git push
+```bash
+{{#include depots-distribues.sh:push-shorthand-only}}
+```
 
 Afficher les branches amont associées aux branches locales du dépôt :
 
-    $ git branch --list -vv
+```bash
+{{#include depots-distribues.sh:very-verbose-branch}}
+```
 
 
 ---
@@ -541,16 +576,19 @@ pour en faciliter le passage en revue.
 
 Toutes ces modifications impliquent l’utilisation de `rebase`, et donc la
 création d’un historique local qui diverge de la version distante d’une branche.
-Si vous tentez d’appliquer ces méthodes, vous constaterez donc rapidement que
-`git push` rejette vos soumissions, en raison du risque de perturber des
-collaborateurs qui auraient construit du travail par-dessus les versions
-distantes de vos branches.
+Si vous tentez d’appliquer ces méthodes, vous constaterez donc que `git push`
+rejette vos soumissions, en raison du risque de perdre des commits de
+l'historique et/ou de perturber des collègues qui auraient construit du travail
+par-dessus les versions distantes de vos branches que vous avez poussées
+précédemment.
 
-La solution, après vous être assuré que vous êtes bien dans un cas où c’est
-raisonnable, est de forcer `git push` à accepter la soumission, détruisant ce
-faisant la version distante précédente de la branche :
+Il est possible, dans les cas comme celui décrit ci-dessus, de passer outre et
+forcer `git push` à accepter la soumission, détruisant ce faisant la version
+distante précédente de la branche :
 
-    ? git push --force
+```bash
+{{#include depots-distribues.sh:force-push}}
+```
 
 Notez que quand on utilise un dépôt distant sur une forge, l’administrateur de
 ce dépôt peut interdire cette opération dangereuse pour éviter des pertes de
@@ -566,43 +604,57 @@ rendre l’historique d’un dépôt incompréhensible.
 Sur les versions modernes de git, on peut le faire en utilisant
 `git push --delete`…
 
-    ? git push --delete mondepot mabranche
+```bash
+{{#include depots-distribues.sh:push-delete}}
+```
 
-…et sur les anciennes versions de git, on peut avoir besoin d’utiliser son
-prédécesseur moins lisible, le signe « `:` ».
+…et sur les anciennes versions de git, il fallait utiliser son prédécesseur plus
+mystérieux (relevant d'une logique inutilement obscure), le signe « `:` ».
 
-    ? git push mondepot :mabranche
+```bash
+{{#include depots-distribues.sh:push-delete-legacy}}
+```
 
 Bien entendu, comme avec `--force`, il est préférable de n’effectuer cette
 opération que lorsqu’on est sûr qu’aucun collaborateur n’est actuellement en
 train de travailler par-dessus la branche qui est sur le point d’être supprimée.
 
-Un point important à retenir concernant les suppressions est que par défaut,
-`git fetch` ne détruit pas les copies locales des branches distantes qui
-n'existent plus sur le dépôt interrogé. Pour obtenir ce résultat, il faut
-utiliser l'option `--prune` :
+<div class="warning">
 
-    $ git fetch --prune
+  Un point important à retenir concernant les suppressions est que par défaut,
+  `git fetch` ne détruit pas les étiquettes et copies locales des branches
+  distantes qui n'existent plus sur le dépôt interrogé. Pour obtenir ce
+  résultat, il faut utiliser l'option `--prune` :
+  
+  ```bash
+  {{#include depots-distribues.sh:fetch-prune}}
+  ```
+  
+  Cette logique vise à assurer que "fetch" soit une commande 100% sûre, qui ne
+  peut pas détruire de données en local même quand les autres utilisateurs du
+  dépôt distant ont fait des erreurs. Mais elle rend la notion de "branch
+  distante" moins intuitive, puisqu'on doit plus souvent garder en tête que ce
+  que git présente comme une branche distante est en réalité une copie locale
+  d'une branche sur un dépôt distant, qui est sujette à se désynchroniser à la
+  moindre suppression.
+  
+  On peut donc trouver plus ergonomique de rendre l'utilisation de `--prune`
+  automatique avec le paramètre de configuration `fetch.prune` :
+  
+  ```bash
+  {{#include depots-distribues.sh:config-fetch-prune}}
+  ```
 
-Cette logique vise à assurer que "fetch" soit une commande 100% sûre, qui ne
-peut pas détruire de données en local même quand les autres utilisateurs du
-dépôt distant ont fait des erreurs. Mais elle rend la notion de "branch
-distante" moins intuitive, puisqu'on doit plus souvent garder en tête que ce que
-git présente comme une branche distante est en réalité une copie locale d'une
-branche sur un dépôt distant, qui se désynchronise à la moindre suppression.
-
-On peut donc trouver plus ergonomique de rendre l'utilisation de `--prune`
-automatique avec le paramètre de configuration `fetch.prune` :
-
-    $ git config --global fetch.prune=true
+</div>
 
 ### Branches, étiquettes, et références
 
 Dans ce TP, j’ai principalement parlé de branches. Cependant, il est possible de
-pousser sur un dépôt distant tout type de référence git, concept qui inclut
-aussi les étiquettes (_tags_).
+pousser des étiquettes (_tags_) en utilisant exactement la même syntaxe.
 
-    ? git push <depot> <etiquette>
+```bash
+{{#include depots-distribues.sh:push-tag}}
+```
 
 Les étiquettes sont couramment utilisées pour représenter des versions
 publiées d’un projet. Par exemple, dans un projet logiciel, on utilise

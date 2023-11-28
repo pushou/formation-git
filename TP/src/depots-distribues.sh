@@ -124,7 +124,9 @@ cd ../MonClone
 echo 'Konnichi-wa !' > HelloWorld.txt
 git add --all
 git commit -m 'Traduction japonaise'
+###### ANCHOR: push-shorthand-only
 git push
+###### ANCHOR_END: push-shorthand-only
 ###### ANCHOR_END: push-shorthand
 
 ###### ANCHOR: push-auto-setup-remote
@@ -164,7 +166,9 @@ git commit -m 'Disons bonjour plus joyeusement'
 function test_this_manually() {
 ###### ANCHOR: pull-merges-divergence
 # Cette commande vous invitera à saisir une description pour le commit de fusion
+###### ANCHOR: implicit-pull
 git pull
+###### ANCHOR_END: implicit-pull
 ###### ANCHOR_END: pull-merges-divergence
 }
 unset -f test_this_manually
@@ -180,4 +184,104 @@ git push autre
 set -e
 
 
-# WIP
+set +e
+###### ANCHOR: pull-conflict
+echo '2' > Compteur.txt
+git add Compteur.txt
+git commit -m 'Un autre commit qui modifie Compteur.txt'
+# Conflit de fusion car Compteur.txt est modifié des deux côtés de la divergence
+git pull
+###### ANCHOR_END: pull-conflict
+set -e
+
+###### ANCHOR: config-pull-ff-only
+git config --global pull.ff only
+###### ANCHOR_END: config-pull-ff-only
+
+
+
+function test_this_manually() {
+###### ANCHOR: cheatsheet-clone
+# Remplacez CheminDistant par le chemin sur disque ou l'URL du dépôt à cloner.
+# DossierDestination est optionnel et permet de nommer le dossier qui sera créé
+# pour contenir le clone, par défaut il aura le même nom que le dépôt source.
+git clone CheminDistant DossierDestination
+###### ANCHOR_END: cheatsheet-clone
+
+###### ANCHOR: cheatsheet-remote-show
+# Remplacez NomRemote par le nom de la remote sur laquelle vous voulez afficher
+# des informations détaillées.
+git remote show NomRemote
+###### ANCHOR_END: cheatsheet-remote-show
+
+###### ANCHOR: cheatsheet-remote-add
+# Remplacez NomRemote par le nom que vous voulez donner à la nouvelle remote et
+# CheminDistant par le chemin sur disque ou l'URL du dépôt à ajouter en remote.
+git remote add NomRemote CheminDistant
+###### ANCHOR_END: cheatsheet-remote-add
+
+###### ANCHOR: cheatsheet-fetch-remote
+# Remplacez NomRemote par le nom de la remote dont vous voulez télécharger les
+# commits et mettre à jour les branches locales
+git fetch NomRemote
+###### ANCHOR_END: cheatsheet-fetch-remote
+
+###### ANCHOR: cheatsheet-explicit-pull
+# Remplacez NomRemote par le nom d'une remote et NomBranche par le nom local 
+# d'une branche sur cette remote (ex: master, pas NomRemote/master).
+git pull NomRemote NomBranche
+###### ANCHOR_END: cheatsheet-explicit-pull
+
+###### ANCHOR: cheatsheet-implicit-pull-ff-only
+git pull --ff-only
+###### ANCHOR_END: cheatsheet-implicit-pull-ff-only
+
+###### ANCHOR: cheatsheet-explicit-push
+# Remplacez NomRemote par le nom d'une remote et ListeDeNoms par une liste de
+# noms de branches et étiquettes séparés par des espaces.
+git push NomRemote ListeDeNoms
+###### ANCHOR_END: cheatsheet-explicit-push
+
+###### ANCHOR: cheatsheet-push-set-upstream
+# Remplacez NomRemote par le nom d'une remote et NomBranche par le nom d'une
+# branche dont vous voulez créer ou mettre à jour une copie sur cette remote.
+git push --set-upstream NomRemote NomBranche
+###### ANCHOR_END: cheatsheet-push-set-upstream
+
+###### ANCHOR: cheatsheet-push-by-remote
+# Remplacez NomRemote par le nom d'une remote
+git push NomRemote
+###### ANCHOR_END: cheatsheet-push-by-remote
+
+
+###### ANCHOR: force-push
+git push --force
+###### ANCHOR_END: force-push
+
+
+###### ANCHOR: push-delete
+# Remplacez NomRemote par le nom d'une remote et NomBranche par le nom d'une
+# branche ou étiquette que vous voulez détruire sur cette remote.
+git push --delete NomRemote NomBranche
+###### ANCHOR_END: push-delete
+
+###### ANCHOR: push-delete-legacy
+git push --delete NomRemote :NomBranche
+###### ANCHOR_END: push-delete-legacy
+
+###### ANCHOR: fetch-prune
+git fetch --prune
+###### ANCHOR_END: fetch-prune
+
+###### ANCHOR: config-fetch-prune
+git config --global fetch.prune true
+###### ANCHOR_END: config-fetch-prune
+
+
+###### ANCHOR: push-tag
+# Remplacez NomRemote par le nom d'une remote et NomEtiquette par le nom d'une
+# étiquette que vous voulez mettre en ligne sur cette remote.
+git push NomRemote NomEtiquette
+###### ANCHOR_END: push-tag
+}
+unset -f test_this_manually
