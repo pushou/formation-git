@@ -166,8 +166,9 @@ Comme notre clone local dans le TP précédent, le clone du _fork_ possède une
 _remote_ pointant vers le dépôt distant qui permet d’échanger facilement des
 commits avec ce dernier :
 
-    $ cd ddhc/
-    $ git remote -v
+```bash
+{{#include reseau-forges.sh:goto-repo-and-show-remote}}
+```
 
 Mais pour appliquer la méthode de travail basée sur les _forks_ et les _pull
 requests_ (appelée _GitHub flow_), il faut aussi être capable d’échanger des
@@ -178,8 +179,9 @@ et vous devrez vous synchroniser avec ces dernières.
 Par convention, la _remote_ associée au dépôt officiel est souvent appelée
 _upstream_ :
 
-    $ git remote add upstream https://github.com/HadrienG2/ddhc.git
-    $ git fetch upstream
+```bash
+{{#include reseau-forges.sh:add-upstream-remote}}
+```
 
 Notez qu’on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
 de passe, puisqu’on ne fait que lire des _commits_ depuis un dépôt public, ce

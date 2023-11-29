@@ -37,3 +37,16 @@ git clone URLDuFork
 unset -f test_this_manually
 git clone https://github.com/francine-dupont/ddhc.git
 
+
+###### ANCHOR: goto-repo-and-show-remote
+cd ddhc/
+git remote -v
+###### ANCHOR_END: goto-repo-and-show-remote
+
+###### ANCHOR: add-upstream-remote
+git remote add upstream https://github.com/HadrienG2/ddhc.git
+git fetch upstream
+###### ANCHOR_END: add-upstream-remote
+
+
+# WIP: Désactiver la commande push, ne peut pas marcher faute de credentials
