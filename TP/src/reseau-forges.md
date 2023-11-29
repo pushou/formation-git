@@ -1,4 +1,4 @@
-# TP5 : Réseau et forges
+# Réseau et forges
 
 ## Introduction
 
@@ -7,9 +7,9 @@ refaire le monde en vous livrant à un petit exercice d’édition collaborative
 autour de la Déclaration des Droits de l’Homme et du Citoyen de 1789.
 
 Pourquoi ce texte, me direz-vous ? Parce que c’est un texte court, très connu,
-dont le copyright a expiré depuis longtemps, et dont la nature politique se
-prête naturellement à des polémiques bon enfant. En un mot, un candidat idéal
-pour explorer les subtilités de la gestion de version collaborative.
+dans le domaine public, et dont la nature politique se prête naturellement à des
+polémiques bon enfant. En un mot, un candidat idéal pour explorer les subtilités
+de la gestion de version collaborative.
 
 
 ## Préparations au travail en réseau
@@ -17,70 +17,105 @@ pour explorer les subtilités de la gestion de version collaborative.
 ### Authentification SSH
 
 Il ne suffit pas de pouvoir vous connecter à l’interface web d’une forge pour
-pouvoir échanger des _commits_ avec. Vous devez également fournir à votre
-utilitaire git local un moyen de confirmer votre identité auprès du serveur,
-lors de certaines opérations sensibles comme écrire des _commits_ dans un dépôt
-ou lire les _commits_ d’un dépôt privé. On parle de s’authentifier.
+pouvoir échanger librement des _commits_ avec. Vous devez également fournir à
+votre utilitaire git local un moyen de confirmer votre identité auprès du
+serveur, lors de certaines opérations sensibles comme écrire des _commits_ dans
+un dépôt ou lire les _commits_ d’un dépôt privé. On parle d’authentification.
 
 Il existe plusieurs moyens de faire cela. Dans ce TP nous utiliserons
 l’authentification SSH, qui est la plus utilisée. Mais vous pouvez consulter la
 section « Informations complémentaires » pour plus d’informations sur
 l’authentification HTTPS, qui est parfois utilisée comme alternative.
 
-Le protocole SSH est basé sur la cryptographie à clé publique, qui utilise une
-paire de clés cryptographiques :
+SSH est basé sur le chiffrement à clé publique, qui utilise deux clés de
+chiffrement :
 
-- La clé privée est une information réputée secrète, qui sert à vous identifier.
-- La clé publique doit être transmise aux services auprès desquels vous
-  souhaitez vous identifier au moyen de votre clé privée. Elle leur permet de
+- La **clé privée** est une information secrète qui sert à vous authentifier.
+  Elle ne doit être transmise à personne, car toute personne qui la possède peut
+  se faire passer pour vous.
+- La **clé publique** doit être transmise aux services auprès desquels vous
+  souhaitez vous authentifier au moyen de votre clé privée. Elle permet de
   vérifier que vous possédez la clé privée, mais pas d’usurper votre identité
-  auprès d’autres services ayant connaissance de votre clé publique.
+  auprès d’autres services connaissant la clé publique.
 
-La machine que vous utilisez ne possède pas encore de clés SSH…
+Votre compte utilisateur sur les machines de TP ne possède pas encore de clés
+SSH, mais vous pouvez facilement générer une paire clé privée + clé publique
+avec la commande suivante :
 
-    @ ls ~/.ssh
-
-…mais vous pouvez facilement en générer une paire avec la commande suivante :
-
-    $ ssh-keygen -t ed25519 -C "formation-git"
+```bash
+{{#include reseau-forges.sh:ssh-keygen}}
+```
 
 `ssh-keygen` va vous poser une série de questions :
 
 - L’endroit où vous souhaitez stocker vos clés. Je vous recommande d’utiliser
-  l’emplacement par défaut en appuyant simplement sur Entrée.
+  l’emplacement par défaut en appuyant sur Entrée sans rien saisir, cela vous
+  évitera de devoir préciser l'emplacement de la clé à tous les utilitaires
+  basés sur SSH plus tard.
 - La phrase de passe que vous souhaitez utiliser pour protéger votre clé. Pour
   simplifier la formation, je vous recommande de ne pas utiliser de phrase de
   passe, en appuyant deux fois de suite sur Entrée.
 
-Ce second point mérite plus ample discussion. Sans phrase de passe, votre clé
-privée est stockée dans votre dossier personnel sans chiffrement supplémentaire,
-ce qui est problématique si vous vous retrouvez dans un des cas suivants :
 
-- Votre ordinateur est volé alors que votre disque dur n’était pas chiffré (rare
-  au CNRS, où le chiffrement des postes professionnels est obligatoire).
-- Vous partagez votre ordinateur avec d’autres utilisateurs qui ont accès à
-  votre dossier personnel et ne sont pas dignes de confiance.
-- Vous exécutez (accidentellement, s’entend) des logiciels malveillants qui
-  s’empressent d’envoyer une copie de votre clé privée à un tiers malveillant.
+<div class="warning">
 
-Toutefois, les méthodes permettant de protéger votre clé SSH de ce type
-d’attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
-git sont un peu complexes et dépendent du système d’exploitation utilisé.
+  Ce second point mérite plus ample discussion. Sans phrase de passe, votre clé
+  privée est stockée dans votre dossier personnel sans chiffrement supplémentaire,
+  ce qui est problématique si vous vous retrouvez dans un des cas suivants :
+  
+  - Votre ordinateur est volé alors que votre disque dur n’était pas chiffré (rare
+    au CNRS, où le chiffrement des postes professionnels est obligatoire).
+  - Vous partagez votre ordinateur avec d’autres utilisateurs qui ont accès à
+    votre dossier personnel, peuvent y changer les permissions de fichiers pour
+    rendre votre clé lisible (donc ont probablement des privilèges administrateur)
+    et ne sont pas dignes de confiance.
+  - Vous exécutez accidentellement des logiciels malveillants qui s’empressent
+    d’envoyer une copie de votre clé privée à un tiers malveillant.
+  
+  Toutefois, les méthodes permettant de protéger votre clé SSH de ce type
+  d’attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
+  git sont un peu complexes et dépendent du système d’exploitation utilisé.
+  
+  Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
+  pour une durée limitée, à l’issue de laquelle votre compte utilisateur et sa clé
+  SSH seront détruits, nous accepterons donc le risque de travailler sans phrase
+  de passe.
 
-Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
-pour une durée limitée, à l’issue de laquelle votre machine virtuelle et la clé
-SSH qu’elle contient seront détruites, nous accepterons donc le risque de
-travailler sans phrase de passe.
+</div>
 
 Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
-plus qu’à afficher votre clé publique, par exemple avec l’éditeur `gedit`…
+plus qu’à afficher votre clé publique, par exemple avec `cat`…
 
-    $ gedit ~/.ssh/id_ed25519.pub
+```bash
+{{#include reseau-forges.sh:show-pubkey}}
+```
 
-…puis à la copier-coller dans l’interface web de gestion de clé SSH de GitHub,
-située sur <https://github.com/settings/ssh/new>. Je vous recommande de lui
-donner un nom explicite du style « Formation Git » et de la supprimer après la
-formation.
+…puis à la copier (avec un clic droit ou Ctrl+Shift+C) et la coller dans
+l’interface web de gestion de clé SSH de votre compte GitHub, afin que GitHub
+reconnaisse cette clé SSH comme vous identifiant.
+
+Vous pouvez accéder à l'interface pour ajouter une clé SSH en vous rendant sur
+l'URL <https://github.com/settings/ssh/new> après vous être connecté à votre
+compte GitHub avec le bouton « Sign In » en haut à droite. Ou bien en cliquant
+sur votre avatar en haut à droite de l'interface web de GitHub, puis sur « 
+Settings » dans le menu qui s'affiche, « SSH and GPG keys » dans la barre
+latérale de la nouvelle page qui s'ouvre, et enfin le bouton « New SSH key »
+vert en haut à droite.
+
+Dans tous les cas, vous vous retrouverez face au formulaire « Add new SSH Key » :
+
+![Formulaire "Add new SSH Key" de GitHub](images/github-add-new-ssh-key.png)
+
+Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
+
+- **Title :** Un nom de votre choix qui vous permettra de distinguer cette clé
+  SSH de vos autres clés SSH. Je vous conseille d'utiliser un nom qui clarifie
+  qu'elle est temporaire et liée à cette formation, par exemple « Formation Git ».
+- **Key type :** La façon dont vous allez utiliser la clé SSH que vous êtes en
+  train d'ajouter à votre compte GitHub. Pour vous connecter à GitHub en SSH
+  avec git, prenez le choix par défaut « Authentication Key ».
+- **Key :** Collez ici le contenu de la clé publique que vous avez générée
+  précédemment.
 
 Et voilà, vous êtes prêt à échanger des _commits_ avec la forge GitHub !
 
@@ -99,19 +134,26 @@ Lorsqu’elle est terminée, vous devriez être redirigé automatiquement sur vo
 _fork_ nouvellement créé.
 
 Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
-sur votre machine. Pour cela, vous avez besoin de son URL SSH, que vous pouvez
-obtenir de l’interface GitHub de la façon suivante :
+sur votre machine. Pour cela, vous aurez besoin de son URL SSH, que vous pouvez
+obtenir comme suit.
 
-- Cliquez sur le bouton vert « Code » en haut à droite de la page
-  d'accueil du dépôt
-- Cliquez sur l’onglet « Local » puis le sous-onglet « SSH »
-- Copiez l’URL qui s’affiche alors
+D'abord, cliquez sur le bouton vert « Code », en haut à droite de la page
+d'accueil du dépôt, en-dessous des boutons « Watch », « Fork »
+et « Star » :
 
-Une fois l’URL obtenue, créez un clone local du _fork_ en passant cette URL en
-paramètre de la commande `git clone` :
+![Bouton "Code" donnant accès aux URLs de clonage](images/github-code-button.png)
 
-    $ cd ~/Desktop/
-    ? git clone <url de votre fork>
+Ensuite, allez sur l’onglet « Local » puis sur le sous-onglet « SSH » :
+
+![Onglet local et bouton "SSH"](images/github-code-to-ssh.png)
+
+L'URL qui s'affiche alors est celle que vous devrez transmettre à git pour
+cloner le dépôt en ayant une authentification SSH pour vos opérations
+ultérieures :
+
+```bash
+{{#include reseau-forges.sh:clone-from-github}}
+```
 
 Votre client git vous avertira alors qu’il ne connaît pas l’identité du serveur
 auquel vous vous connectez, ce qui est normal ici puisque c’est la première fois
