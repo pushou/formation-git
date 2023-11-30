@@ -6,7 +6,7 @@ SCRIPTS:=$(wildcard *.sh)
 NEW_OUTPUT:=$(SCRIPTS:.sh=.out)
 REF_OUTPUT:=$(NEW_OUTPUT:.out=.out.ref)
 OUTPUT_DIFF:=$(NEW_OUTPUT:.out=.out.diff)
-ARCHIVES:=TP2.zip TP3.zip TP4.zip TP5.zip
+ARCHIVES:=TP2.zip TP3.zip TP4.zip
 
 .PHONY: all clean
 
@@ -49,6 +49,6 @@ TP4.zip: manipulation-branches.out
 
 depots-distribues.out: TP4.zip
 
-TP5.zip: depots-distribues.out
+reseau-forges.out: TP4.zip
 
-# TODO: Add dependency rules TP5.out: TP5.zip, other.out: TP5.zip, etc
+# TODO: Add more dependencies on TP4.zip
