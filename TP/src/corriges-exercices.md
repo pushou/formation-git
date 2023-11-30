@@ -296,34 +296,50 @@ résolution du conflit, vous pourrez terminer la fusion avec
 
 Pour cloner un dépôt, on utilise la commande `git clone` :
 
-    $ git clone ~/Desktop/MonDepot ~/Desktop/TonDepot
+```bash
+{{#include depots-distribues-corrige.sh:clone-repo}}
+```
 
 Si l’on compare le contenu de l’original et du dépôt du point de vue du
-répertoire de travail, avec la commande `ls -al`…
+répertoire de travail, en lançant la commande `ls -al` d'abord sur le dépôt
+original…
 
-    $ cd ~/Desktop/MonDepot/
-    $ ls -al
-    total 28
-    drwxr-xr-x 4 hadrien users 4096 19 nov.   2018 .
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
-    -rw-r--r-- 1 hadrien users   19 19 nov.   2018 AutreContenu.txt
-    drwxr-xr-x 8 hadrien users 4096 19 nov.   2018 .git
-    -rw-r--r-- 1 hadrien users    6 19 nov.   2018 .gitignore
-    drwxr-xr-x 2 hadrien users 4096 19 nov.   2018 MonDossier
-    -rw-r--r-- 1 hadrien users   44 19 nov.   2018 Poubelle.log
-    $ cd ../TonDepot/
-    $ ls -al
-    total 20
-    drwxr-xr-x 3 hadrien users 4096 18 sept. 16:44 .
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
-    -rw-r--r-- 1 hadrien users   19 18 sept. 16:44 AutreContenu.txt
-    drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 .git
-    -rw-r--r-- 1 hadrien users    6 18 sept. 16:44 .gitignore
+```bash
+{{#include depots-distribues-corrige.sh:ls-origin}}
+```
 
-…on observe les différences suivantes :
+…avec la sortie suivante…
 
-- Le dossier MonDossier n’est pas présent dans le clone.
-- Le fichier Poubelle.log n’est pas présent dans le clone.
+> ```text
+> total 28
+> drwxr-xr-x 4 hadrien users 4096 19 nov.   2018 .
+> drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
+> -rw-r--r-- 1 hadrien users   19 19 nov.   2018 AutreContenu.txt
+> drwxr-xr-x 8 hadrien users 4096 19 nov.   2018 .git
+> -rw-r--r-- 1 hadrien users    6 19 nov.   2018 .gitignore
+> drwxr-xr-x 2 hadrien users 4096 19 nov.   2018 MonDossier
+> -rw-r--r-- 1 hadrien users   44 19 nov.   2018 Poubelle.log
+> ```
+
+…puis sur le clone…
+
+```bash
+{{#include depots-distribues-corrige.sh:ls-clone}}
+```
+
+…avec la sortie suivante…
+
+> ```text
+> total 20
+> drwxr-xr-x 3 hadrien users 4096 18 sept. 16:44 .
+> drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 ..
+> -rw-r--r-- 1 hadrien users   19 18 sept. 16:44 AutreContenu.txt
+> drwxr-xr-x 8 hadrien users 4096 18 sept. 16:44 .git
+> -rw-r--r-- 1 hadrien users    6 18 sept. 16:44 .gitignore
+> ```
+
+…on observe que le dossier MonDossier et le fichier Poubelle.log ne sont pas
+présents dans le clone.
 
 Ces différences s’expliquent par le fait que le répertoire de travail d’un clone
 n’est pas une copie à l’identique de celui du dépôt d’origine, mais représente
@@ -333,11 +349,11 @@ Ce _commit_ ne contenait pas le dossier MonDossier puisqu’il s’agit d’un d
 vide, non géré par git, ni le fichier Poubelle.log puisqu’il est ignoré par git.
 
 Si maintenant l’on compare les dépôts du point de vue de l’arbre de _commits_
-avec l’aide de l’utilitaire `gitg`…
+avec `gitg`…
 
-    $ gitg &
-    $ cd ../MonDepot
-    $ gitg &
+```bash
+{{#include depots-distribues-corrige.sh:visualize-and-switch-to-origin}}
+```
 
 On constate que leur structure générale est similaire mais que le clone possède
 le dépôt original comme _remote_ (sous le nom par défaut `origin`), et visualise
@@ -348,74 +364,71 @@ C’est le fait de pouvoir différentier les versions locales et distantes de
 branches, comme ici `master`, qui permet d’utiliser git de façon distribuée sans
 connexion permanente à internet.
 
-Pour créer une branche en vue d’y ajouter quelques commits, on peut utiliser le
-raccourci `git checkout -b` :
+Pour créer une branche en vue d’y ajouter quelques commits, on peut par exemple
+utiliser le raccourci `git checkout -b` :
 
-    $ git checkout -b test
-    $ echo 'Le contenu' > AutreContenu.txt
-    $ git add AutreContenu.txt
-    $ git commit -m 'Un commit de test'
-    $ echo 'Plus de contenu' >> AutreContenu.txt
-    $ git add AutreContenu.txt
-    $ git commit -m 'Un autre commit de test'
+```bash
+{{#include depots-distribues-corrige.sh:create-and-fill-branch}}
+```
 
 À ce stade, le clone du dépôt n’est pas au courant de l’existence de ces
 commits et de cette nouvelle branche, puisqu’en git les échanges entre dépôts
 sont déclenchés manuellement. On peut remédier à cela avec `git fetch` :
 
-    $ cd ../TonDepot
-    $ git fetch origin
+```bash
+{{#include depots-distribues-corrige.sh:goto-clone-and-fetch}}
+```
 
-Maintenant, le clone `TonDepot` est au courant de l’existence de la branche
+Maintenant, le clone `Exercice4` est au courant de l’existence de la branche
 `test` du dépôt `MonDepot`, qu’il représente comme la branche distante
 `origin/test`. Nous pouvons en créer une version locale et basculer dessus avec
 un raccourci basé sur `git checkout` :
 
-    $ git checkout test
+```bash
+{{#include depots-distribues-corrige.sh:remote-branch-checkout-shortcut}}
+```
 
 Ensuite, nous pouvons rajouter des commits à cette branche locale, comme nous le
 ferions sur n’importe quelle autre branche locale :
 
-    $ echo "Renouvelons l'offre" > NouveauFichier.txt
-    $ git add NouveauFichier.txt
-    $ git commit -m "Ajout d'un fichier"
-    $ echo 'Renouvelons la demande' >> NouveauFichier.txt
-    $ git add NouveauFichier.txt
-    $ git commit -m "Complétion d'un fichier"
+```bash
+{{#include depots-distribues-corrige.sh:add-more-commits-to-branch}}
+```
 
-Pour récupérer ces changements dans le dépôt d’origine, nous allons devoir
-ajouter notre clone comme _remote_ de ce dernier…
+Pour récupérer ces changements dans le dépôt d’origine, une façon de faire est
+d'ajouter notre clone comme _remote_ de ce dernier…
 
-    $ cd ../MonDepot
-    $ git remote add copieur ~/Desktop/TonDepot
+```bash
+{{#include depots-distribues-corrige.sh:goto-origin-and-make-clone-remote}}
+```
 
 …puis récupérer les changements de sa branche `test` et les intégrer au sein
 de notre branche test locale avec, par exemple, le raccourci `git pull` :
 
-    $ git pull copieur test
+```bash
+{{#include depots-distribues-corrige.sh:pull-branch-from-clone}}
+```
 
 Pour terminer, ajoutons quelques commits sur la branche `master` de `MonDepot` :
 
-    $ git checkout master
-    $ echo 'Je ne sais quoi inventer' > Incertitude.txt
-    $ git add Incertitude.txt
-    $ git commit -m 'Méditation'
-    $ echo 'Je ne sais quoi penser' >> Incertitude.txt
-    $ git add Incertitude.txt
-    $ git commit -m 'Moment philosophique'
+```bash
+{{#include depots-distribues-corrige.sh:checkout-master-and-add-commits}}
+```
 
-On peut propager ces changements sur la branche `master` de `TonDepot` avec un
+On peut propager ces changements sur le `master` de `Exercice4` avec un
 simple `git push` :
 
-    $ git push copieur master
+```bash
+{{#include depots-distribues-corrige.sh:push-branch-to-clone}}
+```
 
 Si l’on souhaite intégrer les changements correspondants à la branche `test` du
 clone, il faudra comme précédemment s’y rendre, récupérer les changements, et
 les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
-    $ cd ../TonDepot
-    $ git fetch origin
-    $ git merge origin/master
+```bash
+{{#include depots-distribues-corrige.sh:merge-origin-master-to-clone-test}}
+```
 
 
 ## Exercices TP5

@@ -50,7 +50,8 @@ TP4.zip: manipulation-branches.out
 manipulation-branches-corrige.out: TP4.zip
 
 depots-distribues.out: manipulation-branches-corrige.out
+depots-distribues-corrige.out: depots-distribues.out
 
-reseau-forges.out: manipulation-branches-corrige.out
+reseau-forges.out: depots-distribues-corrige.out
 
 # TODO: Keep dependencies up to date
