@@ -27,13 +27,13 @@ cat ~/.ssh/id_ed25519.pub
 
 function test_this_manually() {
 ###### ANCHOR: clone-from-github
-cd ~/Desktop/
+cd ~/Desktop
 # Remplacez URLDuFork par l'URL de votre fork
 git clone URLDuFork
 ###### ANCHOR_END: clone-from-github
 }
 unset -f test_this_manually
-cd ~
+cd ~/Desktop
 git clone https://github.com/francine-dupont/ddhc.git
 
 
