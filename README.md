@@ -2,8 +2,8 @@
 
 ## Présentation
 
-Ce dépôt git contient le matériau complet d’une formation à l’outil de gestion
-de version git, composé des éléments suivants :
+Ce dépôt git contient tous les supports d’une formation à l’outil de gestion de
+version git, soit les éléments suivants :
 
 - Des planches permettant d’introduire les sujets théoriques
 - Des TPs permettant de manipuler l’outil, de façon guidée puis autonome

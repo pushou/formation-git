@@ -196,68 +196,87 @@ On peut revenir sur la branche `master` avec la commande `git checkout` :
 Un dépôt git est un dossier comme les autres, on peut en créer une copie avec
 une copie récursive :
 
-    $ cp -r ~/Desktop/MonDepot ~/Desktop/MonAutreDepot
-    $ cd ~/Desktop/MonAutreDepot
+```bash
+{{#include manipulation-branches-corrige.sh:copy-repo}}
+```
 
 Le parent du commit actif est désigné par la syntaxe `HEAD~`, et on peut le
 visiter avec la commande `git checkout` :
 
-    $ git checkout HEAD~
+```bash
+{{#include manipulation-branches-corrige.sh:checkout-parent}}
+```
 
 Ensuite, on peut créer une branche qui en part avec `git branch` :
 
-    $ git branch nouvelle-branche
+```bash
+{{#include manipulation-branches-corrige.sh:create-branch}}
+```
 
 Et on peut basculer sur cette branche avec `git checkout` :
 
-    $ git checkout nouvelle-branche
+```bash
+{{#include manipulation-branches-corrige.sh:switch-to-branch}}
+```
 
 Pour créer un commit ajoutant un nouveau fichier, on crée le fichier, puis on le
 l’ajoute à l’index avec `git add`, et on crée le commit avec `git commit` :
 
-    $ echo 'Un fichier' > LeFichier.txt
-    $ git add LeFichier.txt
-    $ git commit -m "Ajout d'un fichier"
+```bash
+{{#include manipulation-branches-corrige.sh:first-commit}}
+```
 
 On peut ensuite visualiser la branche `master` et la branche que l’on vient de
 créer en lançant l’outil gitg dans le dépôt…
 
-    $ gitg &
+```bash
+{{#include manipulation-branches-corrige.sh:visualize-with-gitg}}
+```
 
-…ou en rafraîchissant son affichage avec Ctrl+R s’il est déjà ouvert.
-N’oubliez pas de sélectionner l’option « Branches » dans le menu de droite pour
-pouvoir visualiser les deux branches simultanément.
+…ou en rafraîchissant son affichage avec Ctrl+R s’il est déjà ouvert. N’oubliez
+pas de sélectionner l’option « Branches » ou l'option « All commits » dans le
+menu de droite pour pouvoir visualiser les deux branches simultanément.
 
 Notre branche a un peu de retard avec la branche `master`, nous pouvons rattraper
 ce retard en y fusionnant les nouveautés de la branche `master` avec `git merge` :
 
-    $ git merge master
+```bash
+{{#include manipulation-branches-corrige.sh:auto-merge-master}}
+```
 
 Maintenant, remplaçons le contenu d’un fichier au sein de la branche active…
 
-    $ echo 'v1' > LeFichier.txt
-    $ git add LeFichier.txt
-    $ git commit -m 'Première version'
+```bash
+{{#include manipulation-branches-corrige.sh:edit-on-secondary-branch}}
+```
 
 …et au sein de la branche `master`, en basculant sur celle-ci :
 
-    $ git checkout master
-    $ echo 'v2' > LeFichier.txt
-    $ git add LeFichier.txt
-    $ git commit -m 'Deuxième version'
+```bash
+{{#include manipulation-branches-corrige.sh:conflicting-edit-on-master-branch}}
+```
 
 Si l’on essaye de fusionner nouvelle-branche au sein de `master` avec `git merge`,
 il y aura conflit au niveau de ce fichier :
 
-    @ git merge nouvelle-branche
-    CONFLIT (ajout/ajout) : Conflit de fusion dans LeFichier.txt
-    Fusion automatique de LeFichier.txt
-    La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+```bash
+{{#include manipulation-branches-corrige.sh:conflicting-secondary-merge}}
+```
+
+…comme indiqué par le message d'erreur suivant :
+
+> ```text
+> CONFLIT (ajout/ajout) : Conflit de fusion dans LeFichier.txt
+> Fusion automatique de LeFichier.txt
+> La fusion automatique a échoué ; réglez les conflits et validez le résultat.
+> ```
 
 On peut résoudre ce conflit de plusieurs façons, l’approche préconisée dans
 cette formation est l’utilisation d’un outil de visualisation tel que Meld :
 
-    ? meld .
+```bash
+{{#include manipulation-branches-corrige.sh:resolve-conflict-with-meld}}
+```
 
 Au sein de l’interface de Meld, double-cliquez sur le fichier conflictuel, qui
 apparaît en rouge dans l’interface, puis résolvez le conflit en choisissant la
@@ -268,7 +287,9 @@ Après avoir quitté Meld en sauvegardant vos changements et en validant la
 résolution du conflit, vous pourrez terminer la fusion avec
 `git merge --continue` ou `git commit` :
 
-    $ git merge --continue
+```bash
+{{#include manipulation-branches-corrige.sh:commit-conflict-resolution}}
+```
 
 
 ## Exercices TP4

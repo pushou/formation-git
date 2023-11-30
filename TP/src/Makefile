@@ -47,9 +47,10 @@ historique-lineaire-corrige.out: TP3.zip
 
 manipulation-branches.out: historique-lineaire-corrige.out
 TP4.zip: manipulation-branches.out
+manipulation-branches-corrige.out: TP4.zip
 
-depots-distribues.out: TP4.zip
+depots-distribues.out: manipulation-branches-corrige.out
 
-reseau-forges.out: TP4.zip
+reseau-forges.out: manipulation-branches-corrige.out
 
 # TODO: Keep dependencies up to date

@@ -72,3 +72,6 @@ git tag papy
 ###### ANCHOR: back-to-master
 git checkout master
 ###### ANCHOR_END: back-to-master
+
+cd ~
+rm -rf ~/Desktop/Exercice2

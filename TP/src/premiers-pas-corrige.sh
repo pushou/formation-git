@@ -36,3 +36,6 @@ git mv Test.txt AutreTest.txt
 ###### ANCHOR: final-git-status
 git status
 ###### ANCHOR_END: final-git-status
+
+cd ~
+rm -rf ~/Desktop/Exercice1
