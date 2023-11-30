@@ -27,8 +27,8 @@ clean:
 %.out.diff: %.out
 	@if [ -e $<.ref ]; then \
 		echo "=== Please inspect difference between $< and reference $<.ref:" && \
-		diff -Nu --color $<.ref $< && \
-		diff -Nu $<.ref $< > $@ && \
+		diff -Nu --color $<.ref $<; \
+		diff -Nu $<.ref $< > $@; \
 		echo "=== Difference was saved to $@"; \
 	else \
 		echo "=== No reference found for $<." && \
