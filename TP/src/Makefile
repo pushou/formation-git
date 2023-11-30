@@ -25,7 +25,7 @@ clean:
 
 # Comparaison de la sortie à la référence
 %.out.diff: %.out
-	if [ -e $<.ref ]; then \
+	@if [ -e $<.ref ]; then \
 		echo "=== Please inspect difference between $< and reference $<.ref:" && \
 		diff -Nu --color $<.ref $< && \
 		diff -Nu $<.ref $< > $@ && \
