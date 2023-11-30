@@ -35,7 +35,7 @@ git commit -m "Ajout d'une notice de copyright"
 
 function test_this_manually() {
 ###### ANCHOR: push-and-set-upstream
-git push --set-upstream origin
+git push --set-upstream origin copyright
 ###### ANCHOR_END: push-and-set-upstream
 }
 unset -f test_this_manually

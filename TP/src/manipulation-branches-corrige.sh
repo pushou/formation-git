@@ -80,7 +80,7 @@ git merge --continue
 ###### ANCHOR_END: commit-conflict-resolution
 }
 unset -f test_this_manually
-git merge --continue -m 'Coupage de poire en deux'
+git commit -m 'Coupage de poire en deux'
 
 cd ~
 rm -rf ~/Desktop/Exercice3

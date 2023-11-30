@@ -69,7 +69,7 @@ git remote add copieur ~/Desktop/Exercice4
 ###### ANCHOR_END: goto-origin-and-make-clone-remote
 
 ###### ANCHOR: pull-branch-from-clone
-git pull copieur
+git pull copieur test
 ###### ANCHOR_END: pull-branch-from-clone
 
 ###### ANCHOR: checkout-master-and-add-commits
@@ -83,7 +83,7 @@ git commit -m 'Moment philosophique'
 ###### ANCHOR_END: checkout-master-and-add-commits
 
 ###### ANCHOR: push-branch-to-clone
-git push copieur
+git push copieur test
 ###### ANCHOR_END: push-branch-to-clone
 
 ###### ANCHOR: merge-origin-master-to-clone-test

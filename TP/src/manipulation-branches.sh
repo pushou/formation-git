@@ -193,7 +193,7 @@ git merge --continue
 ###### ANCHOR_END: merge-continue
 }
 unset -f test_this_manually
-git merge --continue -m "Un merge qui se termine après quelques conflits"
+git commit -m 'Un merge qui se termine après quelques conflits'
 
 
 function test_this_manually() {

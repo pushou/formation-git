@@ -33,6 +33,7 @@ git clone URLDuFork
 ###### ANCHOR_END: clone-from-github
 }
 unset -f test_this_manually
+cd ~
 git clone https://github.com/francine-dupont/ddhc.git
 
 
