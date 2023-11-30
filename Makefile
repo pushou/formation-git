@@ -6,13 +6,14 @@ RENDUS_PRES:=$(SRCS_PRES:Pres%.odp=Rendus/Pres%.pdf)
 .PHONY: all clean
 
 all: ${RENDUS_TPS} ${RENDUS_PRES}
-	@printf "\n*** Une fois les énoncés de TPs finalisés, pensez à lancer make \
-	dans TP/src sur une session utilisateur vierge mais possédant un ~/Desktop \
-	de la plate-forme de TP, afin de vérifier que tout marche et régénérer les \
-	archives TPx.zip pour les rattrapages.\n\
-	\n\
-	Vous pourrez ensuite faire le ménage avec un petit \
-	'rm -rf ~/.gitconfig ~/Desktop/*'. ***\n\n"
+	@printf "\n*** Une fois les énoncés de TPs finalisés, pensez à vérifier le \
+	bon fonctionnement des commandes sur la plate-forme de TP.\n\
+	*** Pour ça, lancez make dans TP/src sur une session utilisateur vierge mais \
+	possédant un ~/Desktop.\n\
+	*** Cela vérifiera que tout fonctionne et régénérera les archives TPx.zip \
+	pour les rattrapages.\n\
+	*** Vous pourrez ensuite faire le ménage avec un petit \
+	'rm -rf ~/.gitconfig ~/Desktop/*'.\n\n"
 
 clean:
 	rm Rendus/*.pdf
