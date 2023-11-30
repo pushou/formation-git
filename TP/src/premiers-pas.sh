@@ -40,7 +40,7 @@ git config --list
 
 
 ###### ANCHOR: init
-mkdir -p ~/Desktop/MonDepot
+mkdir ~/Desktop/MonDepot
 cd ~/Desktop/MonDepot
 ###### ANCHOR: init-only
 git init

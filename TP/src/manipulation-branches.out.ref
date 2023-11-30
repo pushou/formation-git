@@ -1,6 +1,6 @@
 + IFS='
 	'
-+ mkdir -p /root/Desktop/MesBranches
++ mkdir /root/Desktop/MesBranches
 + cd /root/Desktop/MesBranches
 + git init
 Initialized empty Git repository in /root/Desktop/MesBranches/.git/

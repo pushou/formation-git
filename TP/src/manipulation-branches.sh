@@ -15,7 +15,7 @@ IFS=$'\n\t'
 
 
 ###### ANCHOR: init
-mkdir -p ~/Desktop/MesBranches
+mkdir ~/Desktop/MesBranches
 cd ~/Desktop/MesBranches
 git init
 ###### ANCHOR_END: init

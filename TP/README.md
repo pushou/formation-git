@@ -4,8 +4,9 @@ Les supports de travaux pratiques prennent la forme d'un site statique dont le
 source est en Markdown et le rendu HTML est effectué par
 [mdBook](https://rust-lang.github.io/mdBook/).
 
-Les commandes shell ne sont pas directement écrites dans le fichier Markdown
-mais extraites dans des scripts shell à part, ce qui permet...
+A l'exception de l'annexe "Sujets bonus" qui est plus une documentation de
+référence qu'un TP, les commandes shell ne sont pas directement écrites dans le
+fichier Markdown mais extraites dans des scripts shell à part, ce qui permet...
 
 - De lancer des correcteurs orthographiques, grammaticaux et typographiques sur
   le texte markdown du TP en ayant moins de suggestions bizarres au niveau des

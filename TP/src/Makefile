@@ -39,17 +39,17 @@ clean:
 	@(cd ~/Desktop && zip -qr $@ *) && mv ~/Desktop/$@ .
 
 TP2.zip: premiers-pas.out
+premiers-pas-corrige.out: TP2.zip
 
-historique-lineaire.out: TP2.zip
-
+historique-lineaire.out: premiers-pas-corrige.out
 TP3.zip: historique-lineaire.out
+historique-lineaire-corrige.out: TP3.zip
 
-manipulation-branches.out: TP3.zip
-
+manipulation-branches.out: historique-lineaire-corrige.out
 TP4.zip: manipulation-branches.out
 
 depots-distribues.out: TP4.zip
 
 reseau-forges.out: TP4.zip
 
-# TODO: Add more dependencies on TP4.zip
+# TODO: Keep dependencies up to date

@@ -1,11 +1,9 @@
 #!/bin/bash
 #
 # Ce script contient l'ensemble des commandes exécutées par les utilisateurs
-# durant le TP5, ce qui permet de rejouer facilement ces commandes pour...
-# 
-# - Vérifier l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en
-#   comparant la sortie au fichier de référence .ref.
-# - Régénérer facilement l'archive de rattrapage de fin de TP5 (et autres TPs)
+# durant le TP5, ce qui permet de rejouer facilement ces commandes pour vérifier
+# l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en comparant la
+# sortie à un fichier de référence .ref généré précédemment.
 #
 # Tout ça peut être fait via un simple "make" dans un environnement utilisateur
 # fraîchement initialisé.

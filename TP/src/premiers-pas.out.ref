@@ -21,7 +21,7 @@ branch.main.remote=origin
 branch.main.merge=refs/heads/main
 branch.tp-mdbook.remote=origin
 branch.tp-mdbook.merge=refs/heads/tp-mdbook
-+ mkdir -p /root/Desktop/MonDepot
++ mkdir /root/Desktop/MonDepot
 + cd /root/Desktop/MonDepot
 + git init
 Initialized empty Git repository in /root/Desktop/MonDepot/.git/

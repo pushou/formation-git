@@ -1,10 +1,11 @@
-# Annexe B : Corrigés des exercices
+# Corrigés des exercices
 
 ## Introduction
 
 Au fil des divers TPs, des exercices vous ont été proposés pour tester votre
 compréhension des concepts abordés. Dans cette annexe, nous allons discuter une
-solution possible à chacun de ces exercices.
+solution possible à chacun de ces exercices. Notez que la plupart des exercices
+ont plusieurs solutions valides.
 
 
 ## Exercices TP1
@@ -13,48 +14,64 @@ Pour créer un dépôt git, il suffit d’utiliser la commande `git init` au sei
 d’une arborescence de fichiers. On peut le faire au sein d’un dossier existant,
 ou bien créer un nouveau dossier pour le dépôt comme on l’a fait pendant le TP :
 
-    $ mkdir ~/Desktop/Exercice1
-    $ cd ~/Desktop/Exercice1
-    $ git init
+```bash
+{{#include premiers-pas-corrige.sh:create-repo}}
+```
 
 Dans le monde du shell Unix, on désigne les fichiers portant l’extension « .o » par
 la syntaxe `*.o` qui signifie « tout fichier ou dossier dont le nom se termine
 par .o ». On peut, en utilisant cette syntaxe, dire à git d’ignorer les fichiers
 portant cette extension via le fichier spécial « .gitignore » :
 
-    $ echo '*.o' > .gitignore
+```bash
+{{#include premiers-pas-corrige.sh:ignore-objects}}
+```
 
 Maintenant, créons un fichier :
 
-    $ echo 'Blabla' > Test.txt
+```bash
+{{#include premiers-pas-corrige.sh:create-file}}
+```
 
 On peut indiquer à git qu’on souhaite versionner ce fichier avec la commande
 `git add`. Ce fichier sera alors inclus dans toutes les versions de
-l’arborescence enregistrées ultérieurement. Nous verrons comment au TP2.
+l’arborescence enregistrées ultérieurement. Nous verrons comment on enregistre
+des versions de l'arborescence au TP2.
 
-    $ git add Test.txt
+```bash
+{{#include premiers-pas-corrige.sh:add-changes-for-commit}}
+```
 
-Pour déplacer un fichier en tenant git informé de cette opération, on peut
-utiliser la commande `git mv` :
+Pour déplacer un fichier en informant git de l'opération, on peut utiliser la
+commande `git mv` :
 
-    $ git mv Test.txt AutreTest.txt
+```bash
+{{#include premiers-pas-corrige.sh:git-mv-example}}
+```
 
 Si l’on regarde la sortie de `git status`…
 
-    $ git status
-    Sur la branche master
+```bash
+{{#include premiers-pas-corrige.sh:final-git-status}}
+```
 
-    Aucun commit
+…on obtient la sortie suivante dans le terminal :
 
-    Modifications qui seront validées :
-      (utilisez "git rm --cached <fichier>..." pour désindexer)
-            nouveau fichier : AutreTest.txt
+> ```text
+> Sur la branche master
+> 
+> Aucun commit
+> 
+> Modifications qui seront validées :
+>   (utilisez "git rm --cached <fichier>..." pour désindexer)
+>         nouveau fichier : AutreTest.txt
+> 
+> Fichiers non suivis:
+>   (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
+>         .gitignore
+> ```
 
-    Fichiers non suivis:
-      (utilisez "git add <fichier>..." pour inclure dans ce qui sera validé)
-            .gitignore
-
-…on y trouve, outre l’information de branche actuelle qu’on choisit d’ignorer
+On y trouve, outre l’information de branche actuelle qu’on choisit d’ignorer
 pour l’instant, les informations suivantes :
 
 - Aucune version n’a été enregistrée pour l’instant.
@@ -66,52 +83,65 @@ pour l’instant, les informations suivantes :
 
 La procédure pour créer un dépôt git vide est la même que précédemment :
 
-    $ mkdir ~/Desktop/Exercice2
-    $ cd ~/Desktop/Exercice2
-    $ git init
+```bash
+{{#include historique-lineaire-corrige.sh:create-repo}}
+```
 
 Ajoutons-y un peu de contenu :
 
-    $ echo 'Mon premier fichier' > Fichier1.txt
-    $ echo 'Mon deuxième fichier' > Fichier2.txt
-    $ echo 'Mon troisième fichier' > Fichier3.txt
+```bash
+{{#include historique-lineaire-corrige.sh:create-files}}
+```
 
 On indique à git qu’on souhaite versionner des fichiers avec `git add`.
 Lorsqu’on souhaite demander à git de sauvegarder tous les fichiers du dépôt, un
 raccourci pratique est l’option `--all` :
 
-    $ git add --all
+```bash
+{{#include historique-lineaire-corrige.sh:add-all-files}}
+```
 
 Ensuite, on peut créer un commit contenant tous ces fichiers avec `git commit` :
 
-    $ git commit -m 'Mon premier commit'
+```bash
+{{#include historique-lineaire-corrige.sh:create-first-commit}}
+```
 
 Maintenant, modifions deux fichiers…
 
-    $ echo 'De plus' >> Fichier1.txt
-    $ echo 'En plus' >> Fichier2.txt
+```bash
+{{#include historique-lineaire-corrige.sh:edit-two-files}}
+```
 
 Si l’on souhaite créer un commit qui ne contient que les modifications d’un seul
 fichier, il suffit de n’appliquer `git add` qu’à celui-ci :
 
-    $ git add Fichier1.txt
-    $ git commit -m 'Mon deuxième commit'
+```bash
+{{#include historique-lineaire-corrige.sh:commit-only-one-file}}
+```
 
-Du coup, il reste des modifications non sauvegardées à l’autre fichier :
+Du coup, il reste des modifications non sauvegardées à l’autre fichier, comme on
+peut le voir dans la sortie de `git status` :
 
-    $ git status
+```bash
+{{#include historique-lineaire-corrige.sh:status-after-partial-commit}}
+```
 
 Comme ce fichier est sous gestion de version, on peut visualiser ses
 modifications non sauvegardées avec `git diff` :
 
-    $ git diff
+```bash
+{{#include historique-lineaire-corrige.sh:diff-after-partial-commit}}
+```
 
 Pour créer un commit comprenant toutes les modifications non sauvegardées, on a
 plusieurs possibilités. Nous avons déjà vu `git add --all`, ici nous sommes
 aussi dans le cas particulier où tous les fichiers sont sous gestion de version
 et on peut utiliser `git commit -a` en toute sécurité :
 
-    $ git commit -am 'Mon troisième commit'
+```bash
+{{#include historique-lineaire-corrige.sh:commit-the-rest}}
+```
 
 À ce stade, nous avons créé trois commits dans le dépôt. Le plus récemment créé
 peut être désigné par `HEAD`, son prédécesseur par `HEAD~`, et le commit
@@ -120,28 +150,45 @@ précédent, qui est le premier commit de l’historique, par `HEAD~2`.
 Nous pouvons donc afficher la différence entre les deux premiers commits de
 l’historique avec la commande…
 
-    $ git diff HEAD~2 HEAD~
+```bash
+{{#include historique-lineaire-corrige.sh:diff-grandparent-to-parent}}
+```
 
-Le répertoire de travail est-il bien propre ?
+Le répertoire de travail est-il bien propre ? Demandons à `git status` :
 
-    $ git status
-    Sur la branche master
-    rien à valider, la copie de travail est propre
+```bash
+{{#include historique-lineaire-corrige.sh:status-before-checkout}}
+```
 
-Il l’est. On peut donc partir en voyage dans l’historique, par exemple pour
-visiter le grand-parent du commit actuel, `HEAD~2` :
+On obtient en réponse la sortie suivante :
 
-    $ git checkout HEAD~2
+> ```text
+> Sur la branche master
+> rien à valider, la copie de travail est propre
+> ```
+
+Le répertoire de travail (traduit en copie de travail dans cette version de git)
+est donc propre, et on peut donc partir en voyage dans les versions historiques
+de l'arborescence, par exemple en visitant le grand-parent du commit actuel,
+`HEAD~2` :
+
+```bash
+{{#include historique-lineaire-corrige.sh:checkout-grandparent}}
+```
 
 Si, durant notre visite, on se rend compte qu’on pourrait avoir besoin de
 revenir sur ce commit ultérieurement, il peut être judicieux d’y attacher une
 étiquette avec la commande `git tag` :
 
-    $ git tag papy
+```bash
+{{#include historique-lineaire-corrige.sh:tag-grandparent}}
+```
 
 On peut revenir sur la branche `master` avec la commande `git checkout` :
 
-    $ git checkout master
+```bash
+{{#include historique-lineaire-corrige.sh:back-to-master}}
+```
 
 
 ## Exercices TP3

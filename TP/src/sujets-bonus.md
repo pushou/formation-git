@@ -1,4 +1,4 @@
-# Annexe A : Sujets bonus
+# Sujets bonus
 
 ## Introduction
 
@@ -36,7 +36,7 @@ conduira aussi parfois les outils construits autour de git à échouer à
 identifier un déplacement de fichier lorsque cela leur serait utile.
 
 
-## Identifier l’origine d’un problème
+## Trouver l’origine d’un problème avec `git bisect`
 
 L’outil `git bisect` permet de localiser rapidement l’origine d’un problème dans
 l’historique du dépôt en utilisant une recherche par dichotomie. Il est d’autant
@@ -47,18 +47,24 @@ commits (peu de changements par commit, et des commits auto-suffisants) ont bien
 Pour utiliser cet outil, il faut procéder de la façon suivante. D’abord, on
 active la recherche par dichotomie :
 
-    $ git bisect start
+```bash
+git bisect start
+```
 
 Ensuite, on désigne un commit incorrect avec `git bisect bad [<commit>]`. Si on
 ne spécifie pas quel commit est mauvais, c’est le commit courant qui sera
 sélectionné par défaut :
 
-    $ git bisect bad
+```bash
+git bisect bad
+```
 
 Puis on désigne un commit dans le passé qui était correct, avec la commande
 `git bisect good [<commit>]`, qui fonctionne comme `git bisect bad` :
 
-    ? git bisect good <commit correct>
+```bash
+git bisect good <commit correct>
+```
 
 À partir de là, git va commencer à chercher en quel point de l’historique les
 choses ont mal tourné, via une recherche par dichotomie. À chaque commit où
@@ -82,7 +88,7 @@ entraîner à utiliser `git bisect`. Consultez le README des supports pour plus
 d’informations sur leur utilisation.
 
 
-## Chercher une information dans le dépôt
+## Chercher du texte dans le dépôt avec `git grep`
 
 Vous êtes sans doute familier avec la commande `grep`, qui permet de rechercher
 un texte au sein d’une hiérarchie de fichiers. git fournit une alternative à
@@ -101,7 +107,9 @@ d’expression régulière par défaut n’est pas le même.
 La manière la plus simple d’utiliser `git grep` est de rechercher un texte exact
 dans le dépôt :
 
-    $ git grep 'Une recherche passionnante'
+```bash
+git grep 'Une recherche passionnante'
+```
 
 Une option très utile est `-E`, qui active le support des expressions régulières
 Perl pour permettre de faire des recherches plus flexibles. Le prix à payer
@@ -109,10 +117,14 @@ Perl pour permettre de faire des recherches plus flexibles. Le prix à payer
 « échapper » avec `\` dans la chaîne recherchée. Voici un exemple qui
 permet de trouver toutes les occurrences de « ceci », « cela » et « ça » :
 
-    $ git grep -E '(ce(ci|la)?|ça)'
+```bash
+git grep -E 'ce(ci|la)?|ça'
+```
 
 
-## Guide complet de `reset` et `checkout`
+## Guide complet de `git checkout` et `git reset`
+
+### `git checkout`
 
 Parmi les commandes git d’usage courant, les plus difficiles à maîtriser sont
 sans doute `git reset` et `git checkout`. Cela tient au fait qu’elles font un
@@ -152,7 +164,7 @@ dernières formes de `git checkout`. Comme `git add`, `git checkout` supporte
 aussi une option `--patch` qui permet de récupérer des changements depuis la
 source choisie à une granularité plus fine que le fichier.
 
----
+### `git reset`
 
 Voilà pour `git checkout`. Maintenant, passons à `git reset`.
 
@@ -196,7 +208,7 @@ entre les deux est qu’on opère sur l’index au lieu d’opérer sur le répe
 travail. Ici aussi, l’option `--patch` permet de contrôler plus finement quels
 changements on effectue au sein de l’index.
 
----
+### Alternatives
 
 De l’avis général, ces deux commandes font un peu trop de tâches différentes
 pour être facilement compréhensibles. Des commandes plus spécialisées ont donc
@@ -230,7 +242,7 @@ jour, mais en voici les grandes lignes :
       fichiers issus d’anciens commits.
 
 
-## Savoir d’où vient une partie d’un fichier
+## Savoir d’où vient une ligne d’un fichier avec `git blame`
 
 Parfois, il arrive que l’on souhaite savoir qui est l’auteur d’une partie du
 texte présent au sein du dépôt. Comme c’est rarement pour faire des éloges à
@@ -248,7 +260,7 @@ reformatage d’un document marquera du point de vue de git la personne qui a
 effectué l’opération comme l’auteur de la section reformatée…
 
 
-## Édition d’historique avec le _rebase_ interactif
+## Éditer l’historique avec `git rebase --interactive`
 
 Pour terminer en beauté ce petit tour des fonctionnalités avancées de git,
 mentionnons un outil aussi dangereux que puissant, qui permet de modifier
@@ -337,6 +349,8 @@ l’adresse <https://git-lfs.github.com/>.
 
 ## _Submodules_ et alternatives
 
+### Le problème des relations entre dépôts
+
 Il est courant de se retrouver dans une situation où l’on a un dépôt git A qui
 dépend du contenu d’un autre dépôt git B. Dans ce chapitre, nous allons utiliser
 pour clarifier les choses l’exemple du développement logiciel d’une application
@@ -364,8 +378,8 @@ classiques de le faire, chacune avec ses avantages et ses inconvénients :
 1. On peut fusionner les deux dépôts en un seul, et développer la bibliothèque B
    au sein du dépôt A. Quand cette approche est appliquée à grande échelle, on
    parle de _monorepo_.
-    * **Avantages :** Facile d’assurer que chaque version de A contient
-      une version compatible de B.
+    * **Avantages :** Facile d’assurer que chaque version de A a une version
+      compatible de B.
     * **Inconvénients :** Le dépôt A peut facilement devenir énorme et
       désagréable à gérer. Il est difficile de mettre plusieurs équipes d’accord
       pour travailler dans un dépôt commun.
@@ -410,7 +424,7 @@ pour une telle approche, mais ne peut pas se permettre d’utiliser une approche
 de _vendoring_, l’utilisation de _submodules_ peut parfois être un compromis
 intéressant.
 
----
+### Mise en place des _submodules_
 
 Une bonne première approche des _submodules_, c’est de les voir comme un
 pointeur vers un commit précis d’un autre dépôt que l’on peut déplacer avec des
@@ -448,7 +462,7 @@ des _submodules_ du dépôt), il existe deux niveaux de raccourcis :
   que le `git clone` de base fonctionne, en initialisant et clonant
   automatiquement les _submodules_, là encore de façon récursive.
 
----
+### Interaction directe avec les _submodules_
 
 Une fois que l’on a un projet avec des _submodules_ correctement configurés, la
 chose la plus simple que l’on puisse faire est de basculer sur une autre
@@ -480,7 +494,7 @@ mais on peut les amener à en dire davantage :
   que `git status` affiche la liste des nouveaux commits dans chaque
   _submodule_, information qui est sinon accessible via `git submodule summary`.
 
----
+### Interaction des _submodules_ avec les autres commandes git
 
 Par défaut, les commandes qui modifient le répertoire de travail, comme
 `git checkout` et `git pull`, n’affectent pas les _submodules_. Il y a deux
@@ -505,7 +519,7 @@ a changé d’URL. Ce n’est pas quelque chose que `git submodule` gère très 
 même quand on utilise manuellement `update`, il faut avoir dans ce cas recours à
 la commande `git submodule sync --recursive`.
 
----
+### Conclusions
 
 Comme vous pouvez le constater, `git submodule` n’est vraiment pas un outil très
 ergonomique. Il est trop facile de faire des erreurs ou ne pas comprendre ce qui
@@ -524,3 +538,4 @@ un peu longue à expliquer ici, je vous invite pour plus d’informations à
 consulter le chapitre « Submodules » du livre Pro Git, sur lequel
 cette introduction est basée :
 <https://git-scm.com/book/en/v2/Git-Tools-Submodules>.
+
