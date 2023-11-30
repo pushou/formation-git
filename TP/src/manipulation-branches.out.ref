@@ -8,7 +8,7 @@ Initialized empty Git repository in /root/Desktop/MesBranches/.git/
 + printf 'Première partie\n\n\n\nDeuxième partie\n'
 + git add HelloWorld.txt Contenu.txt
 + git commit -m 'Commit initial'
-[master (root-commit) 4ede10e] Commit initial
+[master (root-commit) 537a8ef] Commit initial
  2 files changed, 6 insertions(+)
  create mode 100644 Contenu.txt
  create mode 100644 HelloWorld.txt
@@ -26,7 +26,7 @@ nothing to commit, working tree clean
 + echo 'Troisième partie'
 + git add HelloWorld.txt Contenu.txt
 + git commit -m 'Premier jeu de modifications'
-[univers-parallele b4c0b84] Premier jeu de modifications
+[univers-parallele 801c596] Premier jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
 + git checkout master
 Switched to branch 'master'
@@ -38,7 +38,7 @@ Bonjour !
 + echo 'Nouveau fichier'
 + git add --all
 + git commit -m 'Deuxième jeu de modifications'
-[master 4930524] Deuxième jeu de modifications
+[master 094479f] Deuxième jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + git diff initial master
@@ -178,30 +178,34 @@ index 2e19ca9..f9d5a9b 100644
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
 + git merge master
-Updating b4c0b84..99581ae
+Updating 801c596..12bbec9
 Fast-forward
  AutreContenu.txt | 1 +
  Contenu.txt      | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + git reset --hard '@{1}'
-HEAD is now at b4c0b84 Premier jeu de modifications
+HEAD is now at 801c596 Premier jeu de modifications
 + unset -f test_this_manually
-+ git merge -m 'Une autre fusion sans histoires' univers-parallele
-Already up to date.
++ git merge --no-ff -m 'Une autre fusion sans histoires' master
+Merge made by the 'recursive' strategy.
+ AutreContenu.txt | 1 +
+ Contenu.txt      | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+ create mode 100644 AutreContenu.txt
 + git checkout master
 Switched to branch 'master'
 + echo Annexe
 + git add Contenu.txt
 + git commit -m 'Ajoutons une annexe'
-[master cc9c0f6] Ajoutons une annexe
+[master 44658c9] Ajoutons une annexe
  1 file changed, 1 insertion(+)
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
 + echo Bibliographie
 + git add Contenu.txt
 + git commit -m 'Ajoutons une bibliographie'
-[univers-parallele 027b79e] Ajoutons une bibliographie
+[univers-parallele 73fbe6a] Ajoutons une bibliographie
  1 file changed, 1 insertion(+)
 + set +e
 + git merge master
@@ -215,13 +219,11 @@ You have unmerged paths.
   (fix conflicts and run "git commit")
   (use "git merge --abort" to abort the merge)
 
-Changes to be committed:
-	new file:   AutreContenu.txt
-
 Unmerged paths:
   (use "git add <file>..." to mark resolution)
 	both modified:   Contenu.txt
 
+no changes added to commit (use "git add" and/or "git commit -a")
 + cat Contenu.txt
 Partie 1 : Le commencement
 
@@ -236,7 +238,7 @@ Annexe
 >>>>>>> master
 + git diff
 diff --cc Contenu.txt
-index 1df00b4,c507d9d..0000000
+index 225099e,c507d9d..0000000
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@@ -4,4 -4,4 +4,8 @@@ Partie 1 : Le commencemen
@@ -252,7 +254,6 @@ index 1df00b4,c507d9d..0000000
 + git status
 On branch univers-parallele
 nothing to commit, working tree clean
-+ head --lines=-1 Contenu.txt
 + unset -f test_this_manually
 + set +e
 + git merge master
@@ -260,6 +261,7 @@ Auto-merging Contenu.txt
 CONFLICT (content): Merge conflict in Contenu.txt
 Automatic merge failed; fix conflicts and then commit the result.
 + set -e
++ head --lines=-5 Contenu.txt
 + echo Annexe
 + echo Bibliographie
 + mv Contenu.txt.new Contenu.txt
@@ -270,10 +272,9 @@ All conflicts fixed but you are still merging.
   (use "git commit" to conclude merge)
 
 Changes to be committed:
-	new file:   AutreContenu.txt
 	modified:   Contenu.txt
 
 + unset -f test_this_manually
 + git commit -m 'Un merge qui se termine après quelques conflits'
-[univers-parallele 0a5965d] Un merge qui se termine après quelques conflits
+[univers-parallele 01748f5] Un merge qui se termine après quelques conflits
 + unset -f test_this_manually

@@ -3,8 +3,9 @@
 + unset -f test_this_manually
 + ssh-keygen -q -t ed25519 -f /root/.ssh/id_ed25519 -N '' -C formation-git
 + cat /root/.ssh/id_ed25519.pub
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNtxAFHtl3J/K8x440VfxmSj49F8tq79w9PJx+nHdi1 formation-git
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPDZ32zhxqe3gk4M1wif/DBkhLnHJZKQUZF+ngaFYLEt formation-git
 + unset -f test_this_manually
++ cd /root/Desktop
 + git clone https://github.com/francine-dupont/ddhc.git
 Cloning into 'ddhc'...
 + cd ddhc/
@@ -38,7 +39,7 @@ Switched to a new branch 'changements'
 + echo -e '\nCeci n'\''est pas un pied de page'
 + git add README.md
 + git commit -m 'Ajout d'\''un pied de page rebelle'
-[changements 16b0440] Ajout d'un pied de page rebelle
+[changements 7363439] Ajout d'un pied de page rebelle
  1 file changed, 2 insertions(+)
 + git checkout master
 Switched to branch 'master'
