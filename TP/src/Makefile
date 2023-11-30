@@ -29,7 +29,7 @@ clean:
 			echo "=== Difference was saved to $@"; \
 		fi; \
 	else \
-		echo "=== No reference found for $<. That's odd, commit hashes shouldn't match." && \
+		echo "=== No reference found for $<." && \
 		echo "=== Please review $< and run 'cp $< $<.ref' if it seems correct"; \
 	fi
 
