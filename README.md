@@ -17,7 +17,8 @@ Le mode d’organisation prévu est de commencer par présenter un jeu de planch
 effectuer la démonstration du ou des outils interactifs qui seront manipulés en
 TP, puis laisser les stagiaires suivre les TPs de façon autonome, à leur rythme,
 en appelant le formateur lorsqu’ils ont besoin d’aide. Puis, quand les
-stagiaires ont terminé, on passe aux planches suivantes, et ainsi de suite.
+stagiaires ont tous terminé ou le budget temps est écoulé, on passe aux planches
+suivantes, et ainsi de suite.
 
 Cette organisation permet de s’adapter aux écarts de niveau des apprenants. En
 effet, le seul prérequis demandé est une bonne connaissance du shell Unix, mais
