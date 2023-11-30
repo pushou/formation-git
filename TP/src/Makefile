@@ -25,13 +25,11 @@ clean:
 
 # Comparaison de la sortie à la référence
 %.out.diff: %.out
-	@DIFF=$(diff -Nu $<.ref $< | tee $@) && \
+	@export DIFF=$(diff -Nu $<.ref $< | tee $@) && \
 	if [ -e $<.ref ]; then \
-		if [ ! -z "${DIFF}" ]; then \
-			echo "=== Please inspect difference between $< and reference $<.ref:" && \
-			diff -Nu --color $<.ref $< && \
-			echo "=== Difference was saved to $@"; \
-		fi; \
+		echo "=== Please inspect difference between $< and reference $<.ref:" && \
+		diff -Nu --color $<.ref $< && \
+		echo "=== Difference was saved to $@"; \
 	else \
 		echo "=== No reference found for $<." && \
 		echo "=== Please review $< and run 'cp $< $<.ref' if it seems correct"; \
