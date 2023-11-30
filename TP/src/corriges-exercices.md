@@ -435,63 +435,96 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 Tout d’abord, rendons-nous dans notre clone du dépôt « ddhc » :
 
-    $ cd ~/Desktop/ddhc
+```bash
+{{#include reseau-forges-corrige.sh:goto-repo}}
+```
 
 On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 
-    $ git remote -v
-    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (fetch)
-    origin  https://gitlab.in2p3.fr/francine.dupont/ddhc.git (push)
-    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (fetch)
-    upstream        https://gitlab.in2p3.fr/grasland/ddhc.git (push)
+```bash
+{{#include reseau-forges-corrige.sh:show-remote-details}}
+```
 
-Ici, nous suivons la configuration habituelle : `origin` pointe sur le _fork_, et
-`upstream` sur le dépôt officiel.
+…d'où vous attendez une sortie de ce genre…
+
+> ```text
+> origin  git@github.com:francine.dupont/ddhc.git (fetch)
+> origin  git@github.com:francine.dupont/ddhc.git (push)
+> upstream        https://github.com/HadrienG2/ddhc.git (fetch)
+> upstream        https://github.com/HadrienG2/ddhc.git (push)
+> ```
+
+…avec `origin` qui pointe sur votre fork en connexion SSH, et `upstream` qui
+pointe sur le dépôt officiel en connexion HTTPS.
 
 Pour créer une nouvelle branche partant de la branche `master`, on commence par
-basculer sur cette branche…
+basculer sur la branche `master`…
 
-    $ git checkout master
+```bash
+{{#include reseau-forges-corrige.sh:checkout-master}}
+```
 
 …puis on crée la nouvelle branche et bascule dessus…
 
-    $ git checkout -b copyright
+```bash
+{{#include reseau-forges-corrige.sh:create-and-checkout-branch}}
+```
 
 …et on peut y enregistrer des changements de la façon habituelle :
 
-    $ echo -e '\n(C) 1789, Être Suprême Inc.' >> README.md
-    $ git add README.md
-    $ git commit -m "Ajout d'une notice de copyright"
+```bash
+{{#include reseau-forges-corrige.sh:commit-something}}
+```
 
 On peut ensuite pousser la branche sur son _fork_ avec `git push`. La première
 fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut mémoriser
-cette association pour la suite avec `--set-upstream` :
+cette association avec `--set-upstream` :
 
-    $ git push --set-upstream origin copyright
+```bash
+{{#include reseau-forges-corrige.sh:push-and-set-upstream}}
+```
 
-On peut ensuite répéter l’opération autant de fois qu’on le souhaite, sans
-nécessité de répéter le nom de la _remote_ à chaque fois dans `git push` :
+Cette configuration fait que par la suite, si on a d'autres changements à
+pousser sur notre _fork_…
 
-    $ echo 'AAAAAAH' >> README.md
-    $ git add README.md
-    $ git commit -m 'Panique à bord !'
-    $ echo 'QQQQQQH' >> README.md
-    $ git add README.md
-    $ git commit -m 'Panique à bord en QWERTY !'
-    $ git push
+```bash
+{{#include reseau-forges-corrige.sh:commit-more-things}}
+```
 
-Il est possible qu’entre-temps la branche `master` du dépôt officiel ait évolué.
-Vérifions ce point en mettant à jour notre branche `master` locale :
+…on pourra utiliser la forme raccourcie de `git push` pour les mettre en ligne :
 
-    $ git checkout master
-    $ git pull --ff-only
+```bash
+{{#include reseau-forges-corrige.sh:push-shortcut}}
+```
 
-Un dépôt distant fonctionne comme une copie de sauvegarde. Même si on supprimait
-malencontreusement une branche locale…
+Il est possible que la branche `master` du dépôt officiel évolue en parallèle de
+notre travail. On peut vérifier ce point en mettant à jour notre branche
+`master` locale :
 
-    $ git branch -D copyright
+```bash
+{{#include reseau-forges-corrige.sh:update-master}}
+```
+
+Si la sortie de `git pull` signale des changements, alors il faudra mettre à
+jour nos branches de développement avec des outils comme `git merge` ou `git
+rebase`.
+
+Pour conclure, mentionnons qu'un dépôt git distant sur lequel on pousse
+régulièrement nos commits est une copie de sauvegarde minimale de notre travail.
+Même si on supprimait malencontreusement une branche locale…
+
+```bash
+{{#include reseau-forges-corrige.sh:delete-local-branch}}
+```
 
 …on pourrait toujours la récupérer à partir de la version sauvegardée sur le
-dépôt distant, via le raccourci habituel :
+dépôt distant, via le raccourci désormais habituel :
 
-    $ git checkout copyright
+```bash
+{{#include reseau-forges-corrige.sh:recover-from-remote}}
+```
+
+De même, on pourrait remédier à une suppression accidentelle de branche distante
+en repoussant simplement la version locale de la branche. C'est le bon côté de
+la gestion de version distribuée : on a toujours au moins deux copies (plus ou
+moins à jour certes) de notre travail.

@@ -13,4 +13,4 @@
 ---
 
 [Sujets bonus](sujets-bonus.md)
-[Corrigés des exercices (WIP)](corriges-exercices.md)
+[Corrigés des exercices](corriges-exercices.md)
