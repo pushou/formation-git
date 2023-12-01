@@ -274,9 +274,9 @@ continuer de saisir des commandes.
 
 Votre terminal restera toutefois occasionnellement « pollué » par des messages de
 statut de `gitg`, logiciel dont la propreté de code ne semble pas idéale et qui
-est donc occasionnellement sujet à des erreurs non fatales… Si cela vous
-agace, vous pouvez aussi lancer `gitg` graphiquement (via le menu en bas à
-gauche) et le pointer manuellement vers votre dépôt.
+est donc occasionnellement sujet à des erreurs non fatales… Si cela vous agace,
+vous pouvez aussi lancer `gitg` graphiquement et le pointer manuellement vers
+votre dépôt.
 
 ### Premières requêtes
 
