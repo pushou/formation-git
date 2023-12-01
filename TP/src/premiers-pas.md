@@ -325,7 +325,7 @@ accessible depuis la ligne de commande, soit via la traditionnelle interface
 aussi accès à quelques documentations généralistes qui ne sont pas facilement
 accessibles par le biais de `man`, comme `git help everyday`.
 
-En principe, git help donne également accès à des formats de documentation
+En principe, `git help` donne également accès à des formats de documentation
 alternatifs, tels que des pages HTML. Mais ces derniers ne sont malheureusement
 que rarement inclus dans les distributions de git. Si vous souhaitez consulter
 la documentation au format HTML, il est donc plus sûr de le faire en ligne à

@@ -341,7 +341,7 @@ utilisateurs du dépôt ne sont pas équipés de l’extension Git LFS, alors il
 très facile de se retrouver dans une situation où les gros fichiers sont
 remplacés par des simples identifiants textuels (utilisés par Git LFS en
 interne). Il est donc important que la décision d’utiliser Git LFS et les
-préréquis associés soient communiqués clairement à l’ensemble de l’équipe.
+prérequis associés soient communiqués clairement à l’ensemble de l’équipe.
 
 Vous trouverez plus d’information et des instructions d’installation à
 l’adresse <https://git-lfs.github.com/>.

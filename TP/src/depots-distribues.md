@@ -289,7 +289,7 @@ pouvant s’abrévier en `-u`.
 
 Si vous utilisez une version récente de git (>=2.37.0), vous pouvez aussi
 configurer `git push` pour effectuer automatiquement cette configuration dans la
-majorité des cas (pas d'ambiguité sur le dépôt cible) :
+majorité des cas (pas d’ambiguïté sur le dépôt cible) :
 
 ```bash
 {{#include depots-distribues.sh:push-auto-setup-remote}}
@@ -630,9 +630,9 @@ train de travailler par-dessus la branche qui est sur le point d’être supprim
   {{#include depots-distribues.sh:fetch-prune}}
   ```
   
-  Cette logique vise à assurer que "fetch" soit une commande 100% sûre, qui ne
-  peut pas détruire de données en local même quand les autres utilisateurs du
-  dépôt distant ont fait des erreurs. Mais elle rend la notion de "branch
+  Cette logique vise à assurer que `git fetch` soit une commande 100% sûre, qui
+  ne peut pas détruire de données en local même quand les autres utilisateurs du
+  dépôt distant ont fait des erreurs. Mais elle rend la notion de "branche
   distante" moins intuitive, puisqu'on doit plus souvent garder en tête que ce
   que git présente comme une branche distante est en réalité une copie locale
   d'une branche sur un dépôt distant, qui est sujette à se désynchroniser à la

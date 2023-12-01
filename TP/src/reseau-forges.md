@@ -89,7 +89,7 @@ plus qu’à afficher votre clé publique, par exemple avec `cat`…
 {{#include reseau-forges.sh:show-pubkey}}
 ```
 
-…puis à la copier (avec un clic droit ou Ctrl+Shift+C) et la coller dans
+…puis à la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
 l’interface web de gestion de clé SSH de votre compte GitHub, afin que GitHub
 reconnaisse cette clé SSH comme vous identifiant.
 
@@ -379,7 +379,7 @@ vous voulez soumettre au dépôt officiel pour initier le processus de soumissio
 branches](images/github-new-pull-request-button.png)
 
 Après avoir fait tout ça, vous vous retrouverez sur la même interface de
-création de _pull_ request que vous auriez eu si vous aviez utilisé un des
+création de _pull request_ que vous auriez eu si vous aviez utilisé un des
 raccourcis initialement :
 
 ![Interface de création d'une pull
@@ -403,7 +403,7 @@ De haut en bas, cette interface contient…
   saisie et crée la _pull request_, avec sur le côté droit une option un peu
   trop bien cachée (flèche descendante) pour créer la _pull request_ en mode
   brouillon. Cela signifie que vous informez les mainteneurs que vous aurez
-  bientôt des changements à intégrer et leur permettez d'y jeter un oeil, mais
+  bientôt des changements à intégrer et leur permettez d'y jeter un œil, mais
   ne souhaitez pas qu'ils soient intégrés tout de suite car vous n'avez pas fini
   le travail.
 - En dessous de tout ça, pour information, une visualisation des changements
