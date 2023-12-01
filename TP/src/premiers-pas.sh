@@ -197,11 +197,15 @@ git help status
 
 function test_this_manually() {
 ###### ANCHOR: appendix-config
-# Ces commandes ne sont pas valides, elles donnent juste des exemples de syntaxe.
-# L'utilisation de "git config --system" nécessite des privilèges administrateur.
-git config --system reglage 'Valeur pour tout le système'
-git config --global reglage 'Valeur spécifique à un utilisateur'
-git config reglage 'Valeur spécifique à un dépôt git'
+# Dans les commandes suivantes, remplacez ReglageAChanger par le réglage git
+# dont vous voulez modifier la valeur, et la chaîne de caractère qui suit par la
+# valeur que vous voulez donner à ce réglage.
+# 
+# Rappelez-vous également que l'utilisation de "git config --system" nécessite
+# des privilèges administrateur.
+git config --system ReglageAChanger 'Valeur pour tout le système'
+git config --global ReglageAChanger 'Valeur spécifique à un utilisateur'
+git config ReglageAChanger 'Valeur spécifique à un dépôt git'
 ###### ANCHOR_END: appendix-config
 }
 unset -f test_this_manually
