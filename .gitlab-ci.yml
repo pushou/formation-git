@@ -1,0 +1,38 @@
+default:
+  image: debian
+
+variables:
+  MDBOOK_VERSION: "0.4.35"
+
+stages:
+  - render
+  - deploy
+
+Rendu TP:
+  stage: render
+  interruptible: true
+  script:
+    - |
+      export DEBIAN_FRONTEND=noninteractive
+      apt-get update
+      apt-get install -y bash ca-certificates curl gzip make tar
+    - mkdir bin
+    - curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz --directory=bin
+    - (export PATH=$(pwd)/bin:$PATH && cd TP && mdbook build -d ../public)
+  artifacts:
+    paths:
+      - public
+
+pages:
+  stage: deploy
+  interruptible: false
+  script:
+    - echo "Pages will be served at ${CI_PAGES_URL}"
+  artifacts:
+    paths:
+      - public
+  needs:
+    - job: Rendu TP
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH

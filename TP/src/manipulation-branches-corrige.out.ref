@@ -1,0 +1,64 @@
++ IFS='
+	'
++ cp -r /root/Desktop/MonDepot /root/Desktop/Exercice3
++ cd /root/Desktop/Exercice3
++ git checkout HEAD~
+Note: switching to 'HEAD~'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at be3a31f La version ultime
++ git branch nouvelle-branche
++ git checkout nouvelle-branche
+Switched to branch 'nouvelle-branche'
++ echo 'Un fichier'
++ git add LeFichier.txt
++ git commit -m 'Ajout d'\''un fichier'
+[nouvelle-branche 06e4eaf] Ajout d'un fichier
+ 1 file changed, 1 insertion(+)
+ create mode 100644 LeFichier.txt
++ unset -f test_this_manually
++ git merge -m 'Fusion du master dans le dev' master
+Merge made by the 'recursive' strategy.
+ AutreContenu.txt | 1 -
+ 1 file changed, 1 deletion(-)
++ echo v1
++ git add LeFichier.txt
++ git commit -m 'Première version'
+[nouvelle-branche b0512f5] Première version
+ 1 file changed, 1 insertion(+), 1 deletion(-)
++ git checkout master
+Switched to branch 'master'
++ echo v2
++ git add LeFichier.txt
++ git commit -m 'Deuxième version'
+[master eeb9421] Deuxième version
+ 1 file changed, 1 insertion(+)
+ create mode 100644 LeFichier.txt
++ set +e
++ git merge nouvelle-branche
+CONFLICT (add/add): Merge conflict in LeFichier.txt
+Auto-merging LeFichier.txt
+Automatic merge failed; fix conflicts and then commit the result.
++ set -e
++ unset -f test_this_manually
++ echo v1.5
++ git add LeFichier.txt
++ unset -f test_this_manually
++ git commit -m 'Coupage de poire en deux'
+[master 90b7840] Coupage de poire en deux
++ cd /root
++ rm -rf /root/Desktop/Exercice3

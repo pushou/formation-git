@@ -1,0 +1,38 @@
++ IFS='
+	'
++ cd /root/Desktop/ddhc
++ git remote -v
+origin	https://github.com/francine-dupont/ddhc.git (fetch)
+origin	https://github.com/francine-dupont/ddhc.git (push)
+upstream	https://github.com/HadrienG2/ddhc.git (fetch)
+upstream	https://github.com/HadrienG2/ddhc.git (push)
++ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'upstream/master'.
++ git checkout -b copyright
+Switched to a new branch 'copyright'
++ echo -e '\n(C) 1789, Être Suprême Inc.'
++ git add README.md
++ git commit -m 'Ajout d'\''une notice de copyright'
+[copyright 497480b] Ajout d'une notice de copyright
+ 1 file changed, 2 insertions(+)
++ unset -f test_this_manually
++ echo AAAAAAH
++ git add README.md
++ git commit -m 'Panique à bord !'
+[copyright 452da6b] Panique à bord !
+ 1 file changed, 1 insertion(+)
++ echo QQQQQQH
++ git add README.md
++ git commit -m 'Panique à bord en QWERTY !'
+[copyright d48d2e3] Panique à bord en QWERTY !
+ 1 file changed, 1 insertion(+)
++ unset -f test_this_manually
++ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'upstream/master'.
++ git pull --ff-only
+Already up to date.
++ git branch -D copyright
+Deleted branch copyright (was d48d2e3).
++ unset -f test_this_manually

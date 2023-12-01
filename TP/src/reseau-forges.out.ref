@@ -1,0 +1,53 @@
++ IFS='
+	'
++ unset -f test_this_manually
++ ssh-keygen -q -t ed25519 -f /root/.ssh/id_ed25519 -N '' -C formation-git
++ cat /root/.ssh/id_ed25519.pub
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPDZ32zhxqe3gk4M1wif/DBkhLnHJZKQUZF+ngaFYLEt formation-git
++ unset -f test_this_manually
++ cd /root/Desktop
++ git clone https://github.com/francine-dupont/ddhc.git
+Cloning into 'ddhc'...
++ cd ddhc/
++ git remote -v
+origin	https://github.com/francine-dupont/ddhc.git (fetch)
+origin	https://github.com/francine-dupont/ddhc.git (push)
++ git remote add upstream https://github.com/HadrienG2/ddhc.git
++ git fetch upstream
+From https://github.com/HadrienG2/ddhc
+ * [new branch]      master     -> upstream/master
++ git checkout master
+Already on 'master'
+Your branch is up to date with 'origin/master'.
++ git branch --set-upstream-to=upstream/master
+Branch 'master' set up to track remote branch 'master' from 'upstream'.
++ git checkout master
+Already on 'master'
+Your branch is behind 'upstream/master' by 150 commits, and can be fast-forwarded.
+  (use "git pull" to update your local branch)
++ git pull --ff-only
+Updating 2b30285..d9f23eb
+Fast-forward
+ README.md | 22 +++++++++++++++-------
+ 1 file changed, 15 insertions(+), 7 deletions(-)
++ git config pull.ff only
++ git checkout master
+Already on 'master'
+Your branch is up to date with 'upstream/master'.
++ git checkout -b changements
+Switched to a new branch 'changements'
++ echo -e '\nCeci n'\''est pas un pied de page'
++ git add README.md
++ git commit -m 'Ajout d'\''un pied de page rebelle'
+[changements 7363439] Ajout d'un pied de page rebelle
+ 1 file changed, 2 insertions(+)
++ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'upstream/master'.
++ git pull --ff-only
+Already up to date.
++ git checkout changements
+Switched to branch 'changements'
++ git merge master
+Already up to date.
++ unset -f test_this_manually

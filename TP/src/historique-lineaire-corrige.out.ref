@@ -1,0 +1,77 @@
++ IFS='
+	'
++ mkdir /root/Desktop/Exercice2
++ cd /root/Desktop/Exercice2
++ git init
+Initialized empty Git repository in /root/Desktop/Exercice2/.git/
++ echo 'Mon premier fichier'
++ echo 'Mon deuxième fichier'
++ echo 'Mon troisième fichier'
++ git add --all
++ git commit -m 'Mon premier commit'
+[master (root-commit) 3a44ea7] Mon premier commit
+ 3 files changed, 3 insertions(+)
+ create mode 100644 Fichier1.txt
+ create mode 100644 Fichier2.txt
+ create mode 100644 Fichier3.txt
++ echo 'De plus'
++ echo 'En plus'
++ git add Fichier1.txt
++ git commit -m 'Mon deuxième commit'
+[master aa5995e] Mon deuxième commit
+ 1 file changed, 1 insertion(+)
++ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   Fichier2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git diff
+diff --git a/Fichier2.txt b/Fichier2.txt
+index 00ffdf4..b85347c 100644
+--- a/Fichier2.txt
++++ b/Fichier2.txt
+@@ -1 +1,2 @@
+ Mon deuxième fichier
++En plus
++ git commit -am 'Mon troisième commit'
+[master d21efe1] Mon troisième commit
+ 1 file changed, 1 insertion(+)
++ git diff HEAD~2 HEAD~
+diff --git a/Fichier1.txt b/Fichier1.txt
+index d383624..7f945c9 100644
+--- a/Fichier1.txt
++++ b/Fichier1.txt
+@@ -1 +1,2 @@
+ Mon premier fichier
++De plus
++ git status
+On branch master
+nothing to commit, working tree clean
++ git checkout HEAD~2
+Note: switching to 'HEAD~2'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 3a44ea7 Mon premier commit
++ git tag papy
++ git checkout master
+Previous HEAD position was 3a44ea7 Mon premier commit
+Switched to branch 'master'
++ cd /root
++ rm -rf /root/Desktop/Exercice2
