@@ -31,10 +31,10 @@ court (les branches + les _remotes_ / forges le même jour, c’est trop).
 
 ## Aspects techniques
 
-Le makefile inclus permet d’automatiser le rendu PDF des TPs et des
-présentations. Pour l’utiliser, vous devez avoir installé l’outil de conversion
-de document `pandoc`, une distribution LaTeX comportant l’outil `pdflatex`, et
-la suite bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0).
+Le makefile inclus permet d’automatiser le rendu PDF des présentations et le
+rendu HTML des TPs. Pour l’utiliser, vous devez avoir installé la suite
+bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0) et le
+générateur de sites statiques [mdBook](https://rust-lang.github.io/mdBook/).
 
 Notez que LibreOffice n’accepte pas de s’exécuter en deux exemplaires
 simultanément. Il faut donc fermer toutes les instances de l’application
@@ -42,10 +42,10 @@ graphique avant d’utiliser le makefile, et s’abstenir de lancer celui-ci en
 parallèle (option `-j`) pour le rendu des présentations.
 
 La salle de formation doit comporter un vidéoprojecteur, équipement désormais
-assez standard, mais il faut surtout procéder à l’avance à une installation de
-la VM fournie sur tous les postes stagiaires. Notez que VirtualBox n’offre que
-des garanties faibles de compatibilité entre versions, la VM utilisée ici a été
-générée avec VirtualBox 6.1.
+assez standard, mais il faut surtout procéder à l’avance l'installation d'un
+environnement de TP les postes stagiaires. Si vous utilisez la VM de l'édition
+2021, notez que VirtualBox n’offre que des garanties faibles de compatibilité
+entre versions, la VM de 2021 a été générée avec VirtualBox 6.1.
 
 ## Impression des documents formateur
 
