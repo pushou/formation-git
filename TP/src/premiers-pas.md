@@ -13,7 +13,7 @@ Afin de s’adapter au rythme de progression de chacun, les TPs sont pensés pou
   permettent d’approfondir certains aspects de l’outil.
 
 Les commandes à exécuter dans un terminal sont représentées par du texte en
-police à chasse fixe, avec un bouton pour copier le texte qui s'affiche au
+police à chasse fixe, avec un bouton pour copier le texte qui s’affiche au
 survol, comme ci-dessous :
 
 ```bash
@@ -39,17 +39,17 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 ### Point de départ
 
 Durant cette formation, vous allez travailler sur des postes de travail Linux
-équipés des logiciels `git`, `gitg`, `meld` et de quelques éditeurs de texte
-pour s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
+équipés des logiciels git, `gitg`, Meld et de quelques éditeurs de texte pour
+s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`).
 
 La plupart des postes ont une étiquette collée dessus avec un nom de machine
 commençant par « ld-ens » et se terminant par un numéro entre 1 et 20, du style
-« ld-ens17 ». Pour les postes dont l'étiquette s'est décollée, vous pouvez
+« ld-ens17 ». Pour les postes dont l’étiquette s’est décollée, vous pouvez
 utiliser les étiquettes des postes voisins pour déduire leur numéro, la
 numérotation suivant une logique très simple.
 
 Du numéro de poste, vous pouvez déduire le nom du compte utilisateur que vous
-allez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
+allez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
 de passe sera communiqué oralement.
 
 Ces postes sont aussi configurés pour partager les supports de TP avec le poste
@@ -71,7 +71,7 @@ versions de fichiers entre eux. Il est alors utile de savoir qui a contribué
 quoi, et comment contacter cette personne.
 
 git vous demandera donc de lui donner votre nom et votre adresse e-mail avant de
-vous laisser sauvegarder des versions. Voici un exemple d'utilisation des
+vous laisser sauvegarder des versions. Voici un exemple d’utilisation des
 commandes associées :
 
 ```bash
@@ -104,10 +104,10 @@ un mouvement politique contre l’utilisation de la terminologie maître/esclave
 sous-jacente, qui est perçue comme ayant des connotations post-coloniales
 malheureuses.
 
-A cause de ça, les versions récentes de git vous encouragent à utiliser un nom
+À cause de ça, les versions récentes de git vous encouragent à utiliser un nom
 de branche par défaut différent. Mais pour compliquer les choses, les salles de
-TP où cette formation est jouée n'ont pas toutes basculé sur ces nouvelles
-versions de git, et les anciennes versions de git ignorent ce réglage...
+TP où cette formation est jouée n’ont pas toutes basculé sur ces nouvelles
+versions de git, et les anciennes versions de git ignorent ce réglage…
 
 Le plus simple, à ce stade, reste donc de rester sur la terminologie
 traditionnelle et appeler notre branche principale `master` :
@@ -120,7 +120,7 @@ traditionnelle et appeler notre branche principale `master` :
 
 git peut être configuré à plusieurs niveaux (dépôt, compte utilisateur, système
 entier), donc il est utile de pouvoir vérifier quelle est la configuration
-finale effective au sein d'un dépôt donné. On l'affiche comme ceci :
+finale effective au sein d’un dépôt donné. On l’affiche comme ceci :
 
 ```bash
 {{#include premiers-pas.sh:config-list}}
@@ -132,16 +132,15 @@ finale effective au sein d'un dépôt donné. On l'affiche comme ceci :
 ### Créer un dépôt
 
 N’importe quel dossier peut être mis sous gestion de version. Il devient alors
-ce que l’on appelle un « dépôt git ». On utilise pour cela la commande
-`git init` :
+ce que l’on appelle un dépôt git. On utilise pour cela la commande `git init` :
 
 ```bash
 {{#include premiers-pas.sh:init}}
 ```
 
 Comme le message de statut l’indique, cette opération crée un sous-dossier caché
-« .git », où git stockera l'ensemble de l'état interne du dépôt et en
-particulier les versions de fichiers.
+`.git`, où git stockera l’ensemble de l’état interne du dépôt et en particulier
+les versions de fichiers.
 
 ### Statut et ajouts
 
@@ -166,11 +165,11 @@ faut indiquer quels fichiers on souhaite versionner avec `git add` :
 {{#include premiers-pas.sh:status-add}}
 ```
 
-Après cette opération, MonFichier.txt est suivi par git : lorsqu’on enregistrera
-une version du dépôt (un _commit_), ce fichier y sera présent.
+Après cette opération, `MonFichier.txt` est suivi par git : lorsqu’on
+enregistrera une version du dépôt (un _commit_), ce fichier y sera présent.
 
 En cas de `git add` non désiré, on peut bien sûr annuler cette opération.
-Supposons, par exemple, qu'on ait accidentellement ajouté un journal d'exécution 
+Supposons, par exemple, qu’on ait accidentellement ajouté un journal d’exécution
 sans intérêt à la gestion de version :
 
 ```bash
@@ -185,13 +184,13 @@ qui prend un fichier en argument pour annuler cette opération :
 ```
 
 Sur d’anciennes versions de git que vous pourriez rencontrer si vous êtes amené
-à utiliser des distributions Linux très "matures" comme CentOS 7, il fallait
+à utiliser des distributions Linux très « matures » comme CentOS 7, il fallait
 faire appel à la commande plus obscure et spécifique `git rm --cached
 <fichier>`.
 
 ### Ignorer des fichiers
 
-Tout contenu ne devrait pas être mis sous gestion de version. Il existe trois 
+Tout contenu ne devrait pas être mis sous gestion de version. Il existe trois
 raisons classiques d’en exclure des fichiers :
 
 - Ils contiennent des données que l’on ne souhaite pas partager avec autrui
@@ -199,7 +198,7 @@ raisons classiques d’en exclure des fichiers :
 - Ils peuvent être régénérés à partir des fichiers restants (ex : résultats
   d’une compilation de code source, journaux d’exécution…) et représentent donc
   une information redondante
-- Ils sont trop lourds pour qu'on puisse se permettre d'en conserver chaque
+- Ils sont trop lourds pour qu’on puisse se permettre d’en conserver chaque
   version historique
 
 Un problème que nous allons alors vouloir résoudre est que `git` détecte ces
@@ -486,7 +485,7 @@ quelques utilisations fictives :
 {{#include premiers-pas.sh:appendix-config}}
 ```
 
-Pour rappel, la configuration s'appliquant au dépôt actuel (qui est donc la
-configuration système amendée d'abord par la configuration utilisateur puis par
+Pour rappel, la configuration s’appliquant au dépôt actuel (qui est donc la
+configuration système amendée d’abord par la configuration utilisateur puis par
 la configuration spécifique au dépôt actif) peut être affichée avec `git config
 --list`.

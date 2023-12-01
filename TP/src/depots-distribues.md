@@ -5,13 +5,13 @@
 ### Clonage de dépôt
 
 Le travail distribué avec git commence souvent par le clonage d’un dépôt
-existant. Comme son nom de l'indique pas, un clone n'est pas une copie parfaite
+existant. Comme son nom ne l’indique pas, un clone n’est pas une copie parfaite
 d’un dépôt git comme on pourrait en créer avec un copier-coller. Il ne reprend
 que les éléments suivants du dépôt source :
 
 - Les commits et étiquettes du dépôt d’origine
-- Ses branches, qui ne sont pas reprises en l'état mais remplacées par des
-  copies en lecture seule avec un nom un peu différent, à l'exception de…
+- Ses branches, qui ne sont pas reprises en l’état mais remplacées par des
+  copies en lecture seule avec un nom un peu différent, à l’exception de…
 - …sa branche active, dont une version locale est créée au sein du clone. Un
   lien est aussi créé entre cette branche locale et son homologue distant pour
   faciliter les échanges de commits.
@@ -87,15 +87,15 @@ dépôt parent pour créer un commit qui ajoute un nouveau fichier :
 ```
 
 Si vous retournez dans le clone, vous constaterez que ce changement n’est pas
-visible au niveau du clone : le fichier n'est pas visible dans le répertoire de
+visible au niveau du clone : le fichier n’est pas visible dans le répertoire de
 travail…
 
 ```bash
 {{#include depots-distribues.sh:no-file-change-in-clone}}
 ```
 
-…et il n'y a pas de différence entre la branche locale du clone et la branche
-distante associée (qui, pour rappel, n'est qu'une copie en lecture seule de la
+…et il n’y a pas de différence entre la branche locale du clone et la branche
+distante associée (qui, pour rappel, n’est qu’une copie en lecture seule de la
 branche du dépôt cloné) :
 
 ```bash
@@ -126,7 +126,7 @@ dans le répertoire de travail et la branche locale…
 ```
 
 Nous pouvons intégrer le changement à notre branche locale par une fusion. Elle
-s’effectuera en avance rapide car notre branche locale n’a pas divergé par
+s’effectuera en avance rapide, car notre branche locale n’a pas divergé par
 rapport à la branche distante :
 
 ```bash
@@ -176,7 +176,7 @@ Il est courant d’avoir dans son dépôt `git` local une branche qui a un
 
 - Pour soumettre un développement au projet, on va commencer par mettre en ligne
   une copie de la branche locale associée à ce développement, ce qui permettra
-  par la suite d'en discuter avec les collègues. Nous étudierons ce processus
+  par la suite d’en discuter avec les collègues. Nous étudierons ce processus
   plus en détail au TP 5.
 - À l’inverse, il peut être intéressant d’effectuer un suivi local d’une branche
   existant sur un serveur distant, par exemple la branche qui représente la
@@ -195,9 +195,9 @@ branche active et la fusionnera au sein de celle-ci.
 
 Alors, comment mémoriser ce lien entre branche locale et branche amont ?
 
-Tout d’abord, a évoqué en début de TP que lorsqu'on fait un `git clone`, git
+Tout d’abord, a évoqué en début de TP que lorsqu’on fait un `git clone`, git
 configure automatiquement un lien entre la branche active du dépôt qui a été
-cloné et la branche locale associée dans le dépôt cloné. C'est indiqué dans la
+cloné et la branche locale associée dans le dépôt cloné. C’est indiqué dans la
 première ligne de `git status` :
 
 ```bash
@@ -319,8 +319,8 @@ Rien n’interdit de travailler avec plusieurs _remotes_ à la fois, et cela
 s’avérera très utile pour certaines pratiques de gestion de version distribuée
 que nous étudierons dans la suite de cette formation.
 
-Créons donc un deuxième clone de notre dépôt parent, et ajoutons une remote qui
-pointe vers celui-ci avec `git remote add` :
+Créons donc un deuxième clone de notre dépôt parent, et ajoutons une _remote_
+qui pointe vers celui-ci avec `git remote add` :
 
 ```bash
 {{#include depots-distribues.sh:new-clone-and-add-remote}}
@@ -336,11 +336,11 @@ de toutes les _remotes_ à la fois :
 {{#include depots-distribues.sh:fetch-all}}
 ```
 
-Vous noterez dans la sortie de `git fetch` qu'il n'y a qu'une branche distante
-`autre/univers-parallele`, et pas de branche `autre/master`. Cela s'explique de
+Vous noterez dans la sortie de `git fetch` qu’il n’y a qu’une branche distante
+`autre/univers-parallele`, et pas de branche `autre/master`. Cela s’explique de
 la façon suivante :
 
-- `git clone` ne crée qu'une seule branche locale, correspondant à la branche
+- `git clone` ne crée qu’une seule branche locale, correspondant à la branche
   active du dépôt qui a été cloné. Les autres branches du dépôt source ne sont
   représentées que par des branches distantes en lecture seule.
 - `git fetch` ne prend en compte que les branches locales du dépôt auquel on est
@@ -362,10 +362,10 @@ Mettons-le en évidence en créant une petite divergence d’historique :
 ```
 
 Après ces commandes, `MonAutreClone` et `MesBranches` contiennent un commit sur
-leur branche `master` qui n'est pas présent au sein de la branche `master` de
-`MonClone`, et `MonClone` contient un commit sur sa branche `master` qui n'est
+leur branche `master` qui n’est pas présent au sein de la branche `master` de
+`MonClone`, et `MonClone` contient un commit sur sa branche `master` qui n’est
 pas présent au sein de la branche `master` des deux autres dépôts. On est donc
-bien dans un scénario classique de divergence d'historique.
+bien dans un scénario classique de divergence d’historique.
 
 Puisque la commande `git pull` est basée sur `git merge`, elle ne va pas se
 formaliser de cet état de fait, et simplement fusionner les deux historiques en
@@ -378,7 +378,7 @@ créant un commit de fusion :
 On peut observer l’apparition du commit de fusion correspondant dans `gitg`.
 
 En revanche, `git push` a un comportement différent. Dans la même situation de
-divergence, l'opération sera rejetée :
+divergence, l’opération sera rejetée :
 
 ```bash
 {{#include depots-distribues.sh:push-rejects-divergence}}
@@ -386,8 +386,8 @@ divergence, l'opération sera rejetée :
 
 Pour qu’un `git push` soit accepté, il faut que le commit qui termine la branche
 locale ait pour parent celui qui termine la branche distante. Contrairement au
-cas de `git pull`, il n'y a pas de fusion implicite : si on veut une fusion, il
-faut la faire nous même avant de pousser.
+cas de `git pull`, il n’y a pas de fusion implicite : si on veut une fusion, il
+faut la faire nous-mêmes avant de pousser.
 
 ### Importance des méthodes de travail (_workflows_)
 
@@ -513,7 +513,7 @@ Mettre à jour une branche distante puis la fusionner dans la branche active :
 {{#include depots-distribues.sh:cheatsheet-explicit-pull}}
 ```
 
-Récupérer et fusionner les changements de l'amont de la branche active :
+Récupérer et fusionner les changements de l’amont de la branche active :
 
 ```bash
 {{#include depots-distribues.sh:implicit-pull}}
@@ -578,7 +578,7 @@ Toutes ces modifications impliquent l’utilisation de `rebase`, et donc la
 création d’un historique local qui diverge de la version distante d’une branche.
 Si vous tentez d’appliquer ces méthodes, vous constaterez donc que `git push`
 rejette vos soumissions, en raison du risque de perdre des commits de
-l'historique et/ou de perturber des collègues qui auraient construit du travail
+l’historique et/ou de perturber des collègues qui auraient construit du travail
 par-dessus les versions distantes de vos branches que vous avez poussées
 précédemment.
 
@@ -609,7 +609,7 @@ Sur les versions modernes de git, on peut le faire en utilisant
 ```
 
 …et sur les anciennes versions de git, il fallait utiliser son prédécesseur plus
-mystérieux (relevant d'une logique inutilement obscure), le signe « `:` ».
+mystérieux (relevant d’une logique inutilement obscure), le signe « : ».
 
 ```bash
 {{#include depots-distribues.sh:push-delete-legacy}}
@@ -623,22 +623,22 @@ train de travailler par-dessus la branche qui est sur le point d’être supprim
 
   Un point important à retenir concernant les suppressions est que par défaut,
   `git fetch` ne détruit pas les étiquettes et copies locales des branches
-  distantes qui n'existent plus sur le dépôt interrogé. Pour obtenir ce
-  résultat, il faut utiliser l'option `--prune` :
+  distantes qui n’existent plus sur le dépôt interrogé. Pour obtenir ce
+  résultat, il faut utiliser l’option `--prune` :
   
   ```bash
   {{#include depots-distribues.sh:fetch-prune}}
   ```
   
-  Cette logique vise à assurer que `git fetch` soit une commande 100% sûre, qui
+  Cette logique vise à assurer que `git fetch` soit une commande 100 % sûre, qui
   ne peut pas détruire de données en local même quand les autres utilisateurs du
-  dépôt distant ont fait des erreurs. Mais elle rend la notion de "branche
-  distante" moins intuitive, puisqu'on doit plus souvent garder en tête que ce
+  dépôt distant ont fait des erreurs. Mais elle rend la notion de « branche
+  distante » moins intuitive, puisqu’on doit plus souvent garder en tête que ce
   que git présente comme une branche distante est en réalité une copie locale
-  d'une branche sur un dépôt distant, qui est sujette à se désynchroniser à la
+  d’une branche sur un dépôt distant, qui est sujette à se désynchroniser à la
   moindre suppression.
   
-  On peut donc trouver plus ergonomique de rendre l'utilisation de `--prune`
+  On peut donc trouver plus ergonomique de rendre l’utilisation de `--prune`
   automatique avec le paramètre de configuration `fetch.prune` :
   
   ```bash

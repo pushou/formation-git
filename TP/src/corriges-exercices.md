@@ -21,7 +21,7 @@ ou bien créer un nouveau dossier pour le dépôt comme on l’a fait pendant le
 Dans le monde du shell Unix, on désigne les fichiers portant l’extension « .o » par
 la syntaxe `*.o` qui signifie « tout fichier ou dossier dont le nom se termine
 par .o ». On peut, en utilisant cette syntaxe, dire à git d’ignorer les fichiers
-portant cette extension via le fichier spécial « .gitignore » :
+portant cette extension via le fichier spécial `.gitignore` :
 
 ```bash
 {{#include premiers-pas-corrige.sh:ignore-objects}}
@@ -36,13 +36,13 @@ Maintenant, créons un fichier :
 On peut indiquer à git qu’on souhaite versionner ce fichier avec la commande
 `git add`. Ce fichier sera alors inclus dans toutes les versions de
 l’arborescence enregistrées ultérieurement. Nous verrons comment on enregistre
-des versions de l'arborescence au TP2.
+des versions de l’arborescence au TP2.
 
 ```bash
 {{#include premiers-pas-corrige.sh:add-changes-for-commit}}
 ```
 
-Pour déplacer un fichier en informant git de l'opération, on peut utiliser la
+Pour déplacer un fichier en informant git de l’opération, on peut utiliser la
 commande `git mv` :
 
 ```bash
@@ -76,7 +76,7 @@ pour l’instant, les informations suivantes :
 
 - Aucune version n’a été enregistrée pour l’instant.
 - Si l’on enregistrait notre première version maintenant, le fichier
-  « AutreTest.txt » en ferait partie, mais pas le fichier « .gitignore ».
+  `AutreTest.txt` en ferait partie, mais pas le fichier `.gitignore`.
 
 
 ## Exercices TP2
@@ -137,7 +137,7 @@ modifications non sauvegardées avec `git diff` :
 Pour créer un commit comprenant toutes les modifications non sauvegardées, on a
 plusieurs possibilités. Nous avons déjà vu `git add --all`, ici nous sommes
 aussi dans le cas particulier où tous les fichiers sont sous gestion de version
-et on peut utiliser `git commit -a` en toute sécurité :
+et on peut utiliser `git commit -a` en toute sécurité :
 
 ```bash
 {{#include historique-lineaire-corrige.sh:commit-the-rest}}
@@ -169,7 +169,7 @@ On obtient en réponse la sortie suivante :
 
 Le répertoire de travail (traduit en copie de travail dans cette version de git)
 est donc propre, et on peut donc partir en voyage dans les versions historiques
-de l'arborescence, par exemple en visitant le grand-parent du commit actuel,
+de l’arborescence, par exemple en visitant le grand-parent du commit actuel,
 `HEAD~2` :
 
 ```bash
@@ -227,14 +227,14 @@ l’ajoute à l’index avec `git add`, et on crée le commit avec `git commit`�
 ```
 
 On peut ensuite visualiser la branche `master` et la branche que l’on vient de
-créer en lançant l’outil gitg dans le dépôt…
+créer en lançant `gitg` dans le dépôt…
 
 ```bash
 {{#include manipulation-branches-corrige.sh:visualize-with-gitg}}
 ```
 
 …ou en rafraîchissant son affichage avec Ctrl+R s’il est déjà ouvert. N’oubliez
-pas de sélectionner l’option « Branches » ou l'option « All commits » dans le
+pas de sélectionner l’option « Branches » ou l’option « All commits » dans le
 menu de droite pour pouvoir visualiser les deux branches simultanément.
 
 Notre branche a un peu de retard avec la branche `master`, nous pouvons rattraper
@@ -263,7 +263,7 @@ il y aura conflit au niveau de ce fichier :
 {{#include manipulation-branches-corrige.sh:conflicting-secondary-merge}}
 ```
 
-…comme indiqué par le message d'erreur suivant :
+…comme indiqué par le message d’erreur suivant :
 
 > ```text
 > CONFLIT (ajout/ajout) : Conflit de fusion dans LeFichier.txt
@@ -301,7 +301,7 @@ Pour cloner un dépôt, on utilise la commande `git clone` :
 ```
 
 Si l’on compare le contenu de l’original et du dépôt du point de vue du
-répertoire de travail, en lançant la commande `ls -al` d'abord sur le dépôt
+répertoire de travail, en lançant la commande `ls -al` d’abord sur le dépôt
 original…
 
 ```bash
@@ -338,15 +338,16 @@ original…
 > -rw-r--r-- 1 hadrien users    6 18 sept. 16:44 .gitignore
 > ```
 
-…on observe que le dossier MonDossier et le fichier Poubelle.log ne sont pas
+…on observe que le dossier `MonDossier` et le fichier `Poubelle.log` ne sont pas
 présents dans le clone.
 
 Ces différences s’expliquent par le fait que le répertoire de travail d’un clone
 n’est pas une copie à l’identique de celui du dépôt d’origine, mais représente
 plutôt une copie du dernier _commit_ enregistré dans le dépôt d’origine.
 
-Ce _commit_ ne contenait pas le dossier MonDossier puisqu’il s’agit d’un dossier
-vide, non géré par git, ni le fichier Poubelle.log puisqu’il est ignoré par git.
+Ce _commit_ ne contenait pas le dossier `MonDossier` puisqu’il s’agit d’un
+dossier vide, non géré par git, ni le fichier `Poubelle.log` puisqu’il est
+ignoré par git.
 
 Si maintenant l’on compare les dépôts du point de vue de l’arbre de _commits_
 avec `gitg`…
@@ -371,9 +372,9 @@ utiliser le raccourci `git checkout -b` :
 {{#include depots-distribues-corrige.sh:create-and-fill-branch}}
 ```
 
-À ce stade, le clone du dépôt n’est pas au courant de l’existence de ces
-commits et de cette nouvelle branche, puisqu’en git les échanges entre dépôts
-sont déclenchés manuellement. On peut remédier à cela avec `git fetch` :
+À ce stade, le clone du dépôt n’est pas au courant de l’existence de ces commits
+et de cette nouvelle branche, puisqu’avec git les échanges entre dépôts sont
+déclenchés manuellement. On peut remédier à cela avec `git fetch` :
 
 ```bash
 {{#include depots-distribues-corrige.sh:goto-clone-and-fetch}}
@@ -396,7 +397,7 @@ ferions sur n’importe quelle autre branche locale :
 ```
 
 Pour récupérer ces changements dans le dépôt d’origine, une façon de faire est
-d'ajouter notre clone comme _remote_ de ce dernier…
+d’ajouter notre clone comme _remote_ de ce dernier…
 
 ```bash
 {{#include depots-distribues-corrige.sh:goto-origin-and-make-clone-remote}}
@@ -433,7 +434,7 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 ## Exercices TP5
 
-Tout d’abord, rendons-nous dans notre clone du dépôt « ddhc » :
+Tout d’abord, rendons-nous dans notre clone du dépôt `ddhc` :
 
 ```bash
 {{#include reseau-forges-corrige.sh:goto-repo}}
@@ -445,7 +446,7 @@ On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 {{#include reseau-forges-corrige.sh:show-remote-details}}
 ```
 
-…d'où vous attendez une sortie de ce genre…
+…d’où vous attendez une sortie de ce genre…
 
 > ```text
 > origin  git@github.com:francine.dupont/ddhc.git (fetch)
@@ -484,7 +485,7 @@ cette association avec `--set-upstream` :
 {{#include reseau-forges-corrige.sh:push-and-set-upstream}}
 ```
 
-Cette configuration fait que par la suite, si on a d'autres changements à
+Cette configuration fait que par la suite, si on a d’autres changements à
 pousser sur notre _fork_…
 
 ```bash
@@ -509,7 +510,7 @@ Si la sortie de `git pull` signale des changements, alors il faudra mettre à
 jour nos branches de développement avec des outils comme `git merge` ou `git
 rebase`.
 
-Pour conclure, mentionnons qu'un dépôt git distant sur lequel on pousse
+Pour conclure, mentionnons qu’un dépôt git distant sur lequel on pousse
 régulièrement nos commits est une copie de sauvegarde minimale de notre travail.
 Même si on supprimait malencontreusement une branche locale…
 
@@ -525,6 +526,6 @@ dépôt distant, via le raccourci désormais habituel :
 ```
 
 De même, on pourrait remédier à une suppression accidentelle de branche distante
-en repoussant simplement la version locale de la branche. C'est le bon côté de
+en repoussant simplement la version locale de la branche. C’est le bon côté de
 la gestion de version distribuée : on a toujours au moins deux copies (plus ou
 moins à jour certes) de notre travail.

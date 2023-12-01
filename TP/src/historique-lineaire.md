@@ -3,7 +3,7 @@
 ## Un mot sur les « rattrapages »
 
 Vous aurez peut-être remarqué, dans les supports de formation, un mystérieux
-dossier appelé « Rattrapages ».
+dossier appelé `Rattrapages`.
 
 Ce dossier contient une copie de sauvegarde de l’état attendu du ou des dépôts
 git utilisés au début de chaque TP.
@@ -20,8 +20,8 @@ d’une commande dépend fortement de l’état actuel du dépôt utilisé.
 
 Donc si par exemple quelque chose s’est mal passé durant le TP1, vous pouvez
 repartir d’un dépôt dans l’état attendu pour faire le TP2 en utilisant le
-rattrapage appelé « TP2 ». Pour ce faire, remplacez les dépôts git sur
-votre bureau par le contenu de l'archive « TP2.zip ».
+rattrapage appelé `TP2.zip`. Pour ce faire, remplacez simplement les dépôts git
+sur votre bureau par le contenu de l’archive `TP2.zip`.
 
 
 ## Processus de création de version
@@ -76,7 +76,7 @@ La commande status décrit en effet toujours l’état de l’index et du réper
 de travail par rapport à la dernière version enregistrée (`HEAD`).
 
 Ici, si vous avez suivi fidèlement le TP1, tous les changements du répertoire de
-travail qui ne sont pas dans la liste « gitignore » ont été enregistrés dans le
+travail qui ne sont pas dans la liste `.gitignore` ont été enregistrés dans le
 premier commit. `git status` devrait donc indiquer qu’il n’y a rien de nouveau.
 
 Effectuons maintenant quelques changements :
@@ -101,27 +101,27 @@ selon un format similaire à celui de l’utilitaire `diff` des systèmes Unix.
 <div class="warning">
 
   Malheureusement, la commande `git diff` a un comportement piégeux hérité
-  d'autres gestionnaires de versions historiques : elle ne tient compte que des
+  d’autres gestionnaires de versions historiques : elle ne tient compte que des
   fichiers qui ont précédemment été mis sous gestion de version avec `git add`.
   Un fichier nouvellement créé dans le répertoire de travail ne sera pas
   mentionné par la sortie de `git diff`.
 
-  Ceci fait qu'en pratique, si on prend la mauvaise habitude de n'interroger que
+  Ceci fait qu’en pratique, si on prend la mauvaise habitude de n’interroger que
   `git diff` et jamais `git status` pour savoir où on en est, il est facile
-  d'oublier les nouveaux fichiers du répertoire de travail lors de la création
-  d'un commit et de créer des _commits_ qui n'ont aucun sens (ex: code incomplet
+  d’oublier les nouveaux fichiers du répertoire de travail lors de la création
+  d’un commit et de créer des _commits_ qui n’ont aucun sens (ex : code incomplet
   qui ne compile pas).
 
-  Il est donc important de prendre l'habitude de toujours vérifier la sortie de
+  Il est donc important de prendre l’habitude de toujours vérifier la sortie de
   `git status` avant de créer un _commit_ et de ne pas se baser que sur celle de
   `git diff` qui donne une vision incomplète des changements du répertoire de
   travail.
 
 </div>
 
-Puisqu'on en est à parler d’autres gestionnaires de version, les habitués de ces
+Puisqu’on en est à parler d’autres gestionnaires de version, les habitués de ces
 autres gestionnaires noteront que `git add` combine deux fonctions qui sont en
-général distinctes dans d’autres outils :
+général distinctes dans d’autres outils :
 
 - Mettre des fichiers sous gestion de version
 - Ajouter des changements survenus dans un fichier à la prochaine version
@@ -131,7 +131,7 @@ qui rend redondante celle de fichier sous gestion de version. Hélas, cette
 seconde notion existe hélas toujours dans git, comme le piège ergonomique de
 `git diff` discuté ci-dessus l’illustre.
 
-### Aller plus loin avec git diff
+### Aller plus loin avec `git diff`
 
 `git diff` décrit les changements du répertoire de travail par rapport à l’index
 (la version en cours de création). Par conséquent, si on ajoute des changements
@@ -191,7 +191,7 @@ spécifiés dans le `.gitignore`.
 Sans paramètre supplémentaire, cette commande synchronise complètement l’index
 avec le répertoire de travail. Cela peut conduire à des ajouts involontaires, il
 est donc plus prudent de cibler cette commande sur un dossier comme dans
-l'exemple suivant :
+l’exemple suivant :
 
 ```bash
 {{#include historique-lineaire.sh:add-all-directory}}
@@ -209,12 +209,12 @@ fichiers _sous gestion de version_ depuis le dernier commit.
 
   Cette logique déjà douteuse dans le cadre de `git diff` est encore plus
   piégeuse dans le cadre de `git commit -a`, et il est courant quand on utilise
-  cette commande de créer des commits qui n'ont aucun sens, par exemple du code
-  qui ne compile pas parce qu'il manque des nouveaux fichiers sources mentionnés
-  par les modifications qui ont été commitées dans d'autres fichiers
+  cette commande de créer des commits qui n’ont aucun sens, par exemple du code
+  qui ne compile pas parce qu’il manque des nouveaux fichiers sources mentionnés
+  par les modifications qui ont été commitées dans d’autres fichiers
   préexistants.
   
-  Par conséquent, à moins d'être déjà habitué à un gestionnaire de version où ce
+  Par conséquent, à moins d’être déjà habitué à un gestionnaire de version où ce
   comportement est normal, je vous encourage fortement à considérer
   l’utilisation de `git commit -a` comme une mauvaise habitude qu’il est
   préférable d’éviter de prendre.
@@ -349,15 +349,15 @@ pour indiquer les points du développement d’un logiciel auxquels une version
 publique a été distribuée, et documenter les nouveautés de cette version.
 
 Par défaut, `git tag --annotate` ouvre un éditeur de texte comme `git commit`.
-Et comme avec `git commit`, on peut utiliser l'option `-m` pour saisir
-l'annotation dans la ligne de commande :
+Et comme avec `git commit`, on peut utiliser l’option `-m` pour saisir
+l’annotation dans la ligne de commande :
 
 ```bash
 {{#include historique-lineaire.sh:tag-annotate-interactive}}
 ```
 
 On peut afficher la description d’une étiquette annotée avec la commande `git
-show` :
+show` :
 
 ```bash
 {{#include historique-lineaire.sh:show-annotated-tag}}
@@ -419,7 +419,7 @@ parent de celui que nous venons de créer, avec la commande `git checkout` :
 
 </div>
 
-Quoiqu'il en soit, si vous regardez les fichiers de votre dépôt, vous pouvez
+Quoi qu’il en soit, si vous regardez les fichiers de votre dépôt, vous pouvez
 constater que leur contenu a changé pour reprendre la valeur qu’ils avaient dans
 la version précédente. Une vraie machine à voyager dans le temps !
 
@@ -429,8 +429,8 @@ commits. Par défaut, `gitg` affiche l’historique relativement au commit actif
 mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
 sélectionnant l’option « Tous les commits » dans le menu de gauche.
 
-Quand vous avez fini d’explorer, il est facile de revenir à la fin de de
-l'historique principal en rebasculant sur la branche `master` :
+Quand vous avez fini d’explorer, il est facile de revenir à la fin de
+l’historique principal en rebasculant sur la branche `master` :
 
 ```bash
 {{#include historique-lineaire.sh:checkout-back-master}}
@@ -439,7 +439,7 @@ l'historique principal en rebasculant sur la branche `master` :
 ### Annuler un jeu de commits
 
 Il est possible d’annuler l’effet d’un jeu de commits de façon non-destructive
-(il est possible de revenir à l'état avant annulation par la suite) avec la
+(il est possible de revenir à l’état avant annulation par la suite) avec la
 commande `git revert`.
 
 Cette commande modifie l’effet du répertoire de travail, il faut donc s’assurer
@@ -450,8 +450,8 @@ d’abord que ledit répertoire de travail est propre :
 ```
 
 Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on utilise
-la commande `git revert`, qui crée un commit annulant l'effet d'anciens commits
-de l'historique.
+la commande `git revert`, qui crée un commit annulant l’effet d’anciens commits
+de l’historique.
 
 Comme `git commit`, `git revert` ouvre un éditeur de texte pour saisir la
 description du commit. Mais contrairement à `git commit`, **on ne peut pas
@@ -468,31 +468,31 @@ d’une série de commits avec la variante `git revert <commit1>..<commitN>` (no
 les deux points entre les deux identifiants de commit spécifiant le début et la
 fin du jeu de changement à annuler).
 
-Dans ce cas, `git revert` peut créer plusieurs commits d'annulation, et c'est la
-raison pour laquelle l'option `-m` ne peut pas être supportée par `git revert` :
-elle n'a de sens que pour des commandes qui ne créent qu'un seul commit.
+Dans ce cas, `git revert` peut créer plusieurs commits d’annulation, et c’est la
+raison pour laquelle l’option `-m` ne peut pas être supportée par `git revert` :
+elle n’a de sens que pour des commandes qui ne créent qu’un seul commit.
 
-Puisque `git revert` fonctionne en créant un nouveau commit, c'est une commande
-sans risque : l'ancien commit n’est pas perdu, il reste facilement accessible au
+Puisque `git revert` fonctionne en créant un nouveau commit, c’est une commande
+sans risque : l’ancien commit n’est pas perdu, il reste facilement accessible au
 sein de l’historique. On ne peut donc pas perdre accidentellement des données en
 utilisant `revert`.
 
 <div class="warning">
 
   Le prix à payer pour cette sécurité est que `git revert` n’est pas l’outil
-  approprié pour éliminer du dépôt un fichier qui n'aurait jamais dû s'y
+  approprié pour éliminer du dépôt un fichier qui n’aurait jamais dû s’y
   trouver, comme un secret cryptographique ou un profil de performances
-  d'exécution de plusieurs gigaoctets. Avec `git revert`, ces fichiers
-  resteraient dans l'historique, ce qui n'est pas désirable. Pour les éliminer
+  d’exécution de plusieurs gigaoctets. Avec `git revert`, ces fichiers
+  resteraient dans l’historique, ce qui n’est pas désirable. Pour les éliminer
   vraiment du dépôt, il faudra faire appel à des outils beaucoup plus
   destructeurs tels que `git filter-branch`, ou le logiciel tiers `filter-repo`.
 
-  Ces outils pouvant causer beaucoup de dommages si ils sont mal maniés, je vous
+  Ces outils pouvant causer beaucoup de dommages s’ils sont mal maniés, je vous
   recommande donc de ne pas y avoir recours quand vous débutez avec git, et de
-  privilégier chaque fois que c'est possible des méthodes d'édition d'historique
-  moins dangereuses car plus compréhensibles et d'impact plus localisé, telles
-  que`git reset --hard HEAD~N` qui enlève "juste" les N derniers commits de
-  l'historique de la branche active. Nous reviendrons sur ces possibilités après
+  privilégier chaque fois que c’est possible des méthodes d’édition d’historique
+  moins dangereuses car plus compréhensibles et d’impact plus localisé, telles
+  que `git reset --hard HEAD~N` qui enlève « juste » les N derniers commits de
+  l’historique de la branche active. Nous reviendrons sur ces possibilités après
   avoir abordé la question des branches.
 
 </div>
@@ -536,9 +536,6 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
    puis revenez sur votre commit de départ.
 
 ## Antisèche
-
-Dans toutes les commandes qui suit, l’indication `<chemins>` peut être remplacée
-par un ou plusieurs chemins d’accès vers des fichiers ou des dossiers.
 
 Ajouter des changements à l’index pour les inclure dans le prochain commit :
 
@@ -622,7 +619,7 @@ Créer une étiquette pointant sur un commit autre que le commit actif :
 {{#include historique-lineaire.sh:cheatsheet-tag-with-commit}}
 ```
 
-Créer une étiquette "annotée" comprenant une description :
+Créer une étiquette annotée comprenant une description :
 
 ```bash
 {{#include historique-lineaire.sh:cheatsheet-tag-annotate}}
@@ -658,7 +655,7 @@ Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
   {{#include historique-lineaire.sh:cheatsheet-checkout}}
   ```
   
-  Revenir sur la branche `master`, la fin de l'historique principal du dépôt :
+  Revenir sur la branche `master`, la fin de l’historique principal du dépôt :
   
   ```bash
   {{#include historique-lineaire.sh:checkout-back-master}}
@@ -732,8 +729,8 @@ nous aurons l’occasion d’explorer davantage au cours de la formation.
 <div class="warning">
 
   Un point de vigilance que je dois évoquer dès maintenant, mais ne pourrai
-  détailler que plus tard dans la formation, est qu'il vaut mieux éviter
-  d'utiliser ces commandes d'édition d'historique sur des commits ou branches
+  détailler que plus tard dans la formation, est qu’il vaut mieux éviter
+  d’utiliser ces commandes d’édition d’historique sur des commits ou branches
   qui ont été publiés sur un serveur partagé.
 
 </div>
@@ -752,7 +749,7 @@ revenir en arrière en cas de problème, la plupart des opérations git peuvent
 - La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
 - La création d’un commit + les ajouts préalables à l’index + les modifications
   préalables du répertoire de travail → `git reset --hard HEAD~`
-    * Soyez prudents avec cette commande : si votre répertoire de travail n'est
+    * Soyez prudents avec cette commande : si votre répertoire de travail n’est
       pas propre, ses changements seront perdus de façon irréversible.
 
 Les pouvoirs d’annulation de git se limitent malheureusement aux données qui ont
@@ -778,7 +775,7 @@ aller jeter un coup d’œil à l’histoire du dépôt.
 Pour ce genre de cas, git fournit un outil bien pratique appelé `git stash`. Cet
 outil prend toutes les modifications non enregistrées du répertoire de travail
 et les met de côté dans un endroit à part du dépôt (en fait une branche
-temporaire de l'historique).
+temporaire de l’historique).
 
 En voici une petite démonstration :
 
@@ -802,7 +799,7 @@ dernière version sauvegardée du répertoire de travail :
 ```
 
 Cette opération modifie le répertoire de travail comme git checkout, et il est
-donc recommandé de ne l'effectuer qu'au sein d'un répertoire de travail propre.
+donc recommandé de ne l’effectuer qu’au sein d’un répertoire de travail propre.
 
 ### Autres outils graphiques
 
@@ -812,7 +809,7 @@ git](https://www.git-scm.com/downloads/guis).
 
 L’auteur de cette formation travaille essentiellement sous Linux, mais quand il
 lui arrive de développer sous macOS ou Windows, il aime bien le logiciel
-[Sourcetree](https://www.sourcetreeapp.com/). D'autres développeurs lui ont
+[Sourcetree](https://www.sourcetreeapp.com/). D’autres développeurs lui ont
 aussi dit beaucoup de bien de [GitKraken](https://www.gitkraken.com/), par
-contre dans ce dernier cas il faut être prêt à sortir le chéquier car les
+contre dans ce dernier cas il faut être prêt à sortir le chéquier, car les
 limitations de la version gratuite sont très restrictives.

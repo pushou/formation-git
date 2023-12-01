@@ -12,7 +12,7 @@ ARCHIVES:=TP2.zip TP3.zip TP4.zip
 .PHONY: all clean
 
 all: $(NEW_OUTPUT) $(OUTPUT_DIFF) $(ARCHIVES)
-	@printf "\n*** Remember to run 'hunspell <file>' and 'grammalecte-cli -roff typo_tiret_début_ligne esp_début_ligne -owe -iff xyz.md' from time to time ***\n\n"
+	@printf "\n*** Remember to run 'hunspell <file>' and 'grammalecte-cli -on idrule liga -roff typo_tiret_début_ligne esp_début_ligne majuscule_début_paragraphe -owe -iff xyz.md' from time to time ***\n\n"
 
 clean:
 	@rm -f $(NEW_OUTPUT) $(OUTPUT_DIFF) $(ARCHIVES)

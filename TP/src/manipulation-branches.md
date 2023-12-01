@@ -88,7 +88,7 @@ branche `univers-parallele` ne se sont pas répercutés sur `master` :
 {{#include manipulation-branches.sh:cat-after-checkout}}
 ```
 
-Maintenant, nous allons modifier la première ligne du fichier « Contenu.txt »…
+Maintenant, nous allons modifier la première ligne du fichier `Contenu.txt`…
 
 ```bash
 {{#include manipulation-branches.sh:edit-first-line}}
@@ -149,10 +149,10 @@ complètement automatisée, et après avoir saisi un message de commit (ou accep
 le message par défaut) vous allez obtenir un commit ajoutant les changements
 de `univers-parallèle` à ceux déjà présents dans `master` :
 
-- « HelloWorld.txt » a été modifié comme au sein de `univers-parallele`
-- « Contenu.txt » comprend la modification de la première ligne effectuée dans
+- `HelloWorld.txt` a été modifié comme au sein de `univers-parallele`
+- `Contenu.txt` comprend la modification de la première ligne effectuée dans
   `master` et l’ajout effectué dans `univers-parallele`.
-- « AutreContenu.txt », qui a été ajouté dans `master`, est toujours présent.
+- `AutreContenu.txt`, qui a été ajouté dans `master`, est toujours présent.
 
 Vous pouvez étudier les différences de ce nouveau commit avec l’ancienne version
 de `master`, le commit initial, et `univers-parallele` :
@@ -167,7 +167,7 @@ sur la branche `master`, et que ce commit possède deux commit parents : l’an
 commit de fusion (_merge commit_).
 
 Notez que `master~` désigne le premier parent de `master`, c’est-à-dire la
-lignée « historique » de la branche, pas l'autre branche depuis laquelle on a
+lignée « historique » de la branche, pas l’autre branche depuis laquelle on a
 fusionné des changements.
 
 ### Fusion en avance rapide
@@ -255,7 +255,7 @@ Ajoutons une ligne à un fichier dans nos deux branches :
 
 Si nous essayons d’intégrer les changements de `master` à `univers-parallele`,
 `git merge` indiquera qu’il est incapable d’effectuer la fusion automatiquement
-à cause d’un conflit dans « Contenu.txt » :
+à cause d’un conflit dans `Contenu.txt` :
 
 ```bash
 {{#include manipulation-branches.sh:conflicting-merge}}
@@ -344,7 +344,7 @@ Les différences en rouge provenant de gauche et de droite sont des conflits :
 des changements incompatibles sont présents dans la version locale et distante.
 Il faut alors proposer une solution au conflit en éditant la vue centrale.
 
-Quand on a fini, on peut fermer le fichier en cliquant sur la « croix » de
+Quand on a fini, on peut fermer le fichier en cliquant sur l’icône « croix » de
 l’onglet de Meld correspondant. Meld proposera alors de sauvegarder la version
 proposée si ce n’est pas déjà fait, puis demandera si le conflit survenu au sein
 de ce fichier est maintenant résolu. Si oui, il le marquera comme tel avec un
@@ -352,9 +352,9 @@ de ce fichier est maintenant résolu. Si oui, il le marquera comme tel avec un
 
 <div class="warning">
 
-  Attention à bien fermer d'abord l’onglet associé au fichier et valider les
+  Attention à bien fermer d’abord l’onglet associé au fichier et valider les
   différentes boîtes de dialogue avant de fermer complètement l’application.
-  D'anciennes versions de Meld qu'on trouve encore dans la nature présentent un
+  D’anciennes versions de Meld qu’on trouve encore dans la nature présentent un
   bug qui fait que des modifications ne seront pas enregistrées dans le second
   cas…
 
@@ -381,7 +381,7 @@ merge --continue` est juste proposée ici parce qu’elle clarifie l’intention
 
   En règle générale, plus une paire de branches a divergé, plus il est difficile
   de les fusionner. En effet, on doit alors « mettre d’accord » deux états du
-  dépôt très différents, ce qui requiert une gymnastique intellectuelle plus 
+  dépôt très différents, ce qui requiert une gymnastique intellectuelle plus
   difficile. Pour cette raison, il est recommandé de fusionner les branches qui
   divergent aussi fréquemment que possible.
 
@@ -400,7 +400,7 @@ incompatibles du point de vue du langage de programmation utilisé, mais git
 acceptera de les fusionner parce qu’elles sont compatibles selon sa définition à lui
 (pas d’éditions au même endroit du même fichier).
 
-Ce comportement vient du fait que git ne "comprend" pas vraiment la sémantique
+Ce comportement vient du fait que git ne « comprend » pas vraiment la sémantique
 des langages de programmation utilisés. Il applique juste des heuristiques
 génériques qui sont plus ou moins valables pour tous les documents textuels.
 Pour git, des modifications éloignées d’un même document, ou des modifications
@@ -522,7 +522,7 @@ Continuer une fusion de branche après avoir résolu un conflit :
 
 ## Informations complémentaires
 
-### Rebase : Une alternative à la fusion
+### `git rebase` : Une alternative à la fusion
 
 Un inconvénient de la commande `git merge` est que son utilisation intensive
 crée un grand nombre de commits de fusion, ce qui à la longue rend l’historique
@@ -556,7 +556,7 @@ conséquences importantes :
   toujours, et continuent de pointer dessus. On peut donc accidentellement créer
   des divergences d’historique là où il n’en existait pas auparavant. Comme on
   le verra ultérieurement, ce problème est particulièrement présent quand on
-  échange avec d'autres personnes en réseau.
+  échange avec d’autres personnes en réseau.
 - On doit régler les conflits de fusion commit par commit, et sur des branches
   longues il arrive fréquemment qu’en réglant un conflit au début de la chaîne,
   on en crée de nombreux autres dans la suite du `rebase`.
@@ -575,7 +575,7 @@ pour vérifier que vous n’avez pas commis d’impair.
 
 </div>
 
-### Cherry-pick : Une fusion sélective
+### `git cherry-pick` : Une fusion sélective
 
 À la croisée des chemins entre `git merge` et `git rebase`, on trouve
 `git cherry-pick`. Cette commande permet d’importer sélectivement des
@@ -613,7 +613,7 @@ correctif de sécurité de `master` sur la branche associée à une version publ
 du logiciel, sans pour autant devoir y intégrer toutes les autres nouveautés de
 la branche `master`.
 
-### Reset et le _reflog_
+### `git reset` et le _reflog_
 
 Nous avons précédemment utilisé une syntaxe pour le moins curieuse pour annuler
 une fusion de branches : `git reset --hard @{1}`. Nous allons maintenant
@@ -651,8 +651,8 @@ de l’index et du répertoire de travail, selon la logique suivante :
 - `git reset --soft <commit>` modifie uniquement le commit sur lequel pointe la
   branche active, l’index et le répertoire de travail restant inchangés.
     * Appliquée à `HEAD~`, c’est donc, comme on l’a vu dans le TP2, l’inverse de
-      `git commit` : on fait revenir la branche active d'un commit en arrière,
-      mais l'index reste rempli de changements prêts à être commités.
+      `git commit` : on fait revenir la branche active d’un commit en arrière,
+      mais l’index reste rempli de changements prêts à être commités.
 - `git reset <commit>` déplace la branche active et synchronise l’index avec
   le nouveau commit actif, mais ne modifie pas le répertoire de travail.
 - `git reset --hard <commit>` déplace la branche active et synchronise le
@@ -697,7 +697,7 @@ ultérieurement au sein des branches A et B sont considérées pour la fusion.
 
 Donc dans la situation schématisée ci-dessous…
 
-![Configuration initiale : deux branches A et B. A l'époque où la branche B
+![Configuration initiale : deux branches A et B. À l’époque où la branche B
 était située sur le commit Src, elle a été fusionnée au sein de la branche A via
 le commit Mrg. Les deux branches ont reçu de nouveaux commits depuis que cette
 fusion a eu lieu.](images/RevertMergeBase.png)
@@ -715,7 +715,7 @@ Supposons maintenant que l’on force git à annuler une fusion avec `git revert
 ce qu’on peut faire avec l’option `--merge`/`-m`, ici on utiliserait
 `git revert -m 1 Mrg`. On va alors se retrouver dans la situation suivante…
 
-![Un commit Rvt a été ajouté à la branche A, il annule l'effet du commit
+![Un commit Rvt a été ajouté à la branche A, il annule l’effet du commit
 Mrg](images/RevertMerge.png)
 
 …où le nouveau commit `Rvt` de la branche A annule l’effet du commit du commit

@@ -50,7 +50,7 @@ avec la commande suivante :
 
 - L’endroit où vous souhaitez stocker vos clés. Je vous recommande d’utiliser
   l’emplacement par défaut en appuyant sur Entrée sans rien saisir, cela vous
-  évitera de devoir préciser l'emplacement de la clé à tous les utilitaires
+  évitera de devoir préciser l’emplacement de la clé à tous les utilitaires
   basés sur SSH plus tard.
 - La phrase de passe que vous souhaitez utiliser pour protéger votre clé. Pour
   simplifier la formation, je vous recommande de ne pas utiliser de phrase de
@@ -77,7 +77,7 @@ avec la commande suivante :
   
   Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
   pour une durée limitée, à l’issue de laquelle votre compte utilisateur et sa clé
-  SSH seront détruits, je vous propose d'accepter le risque de travailler sans
+  SSH seront détruits, je vous propose d’accepter le risque de travailler sans
   phrase de passe.
 
 </div>
@@ -93,25 +93,25 @@ plus qu’à afficher votre clé publique, par exemple avec `cat`…
 l’interface web de gestion de clé SSH de votre compte GitHub, afin que GitHub
 reconnaisse cette clé SSH comme vous identifiant.
 
-Vous pouvez accéder à l'interface pour ajouter une clé SSH en vous rendant sur
-l'URL <https://github.com/settings/ssh/new> après vous être connecté à votre
+Vous pouvez accéder à l’interface pour ajouter une clé SSH en vous rendant sur
+l’URL <https://github.com/settings/ssh/new> après vous être connecté à votre
 compte GitHub avec le bouton « Sign In » en haut à droite. Ou si vous souhaitez
 le faire sans lien direct, vous pouvez en cliquant sur votre avatar en haut à
-droite de l'interface web de GitHub, puis sur « Settings » dans le menu qui
-s'affiche, « SSH and GPG keys » dans la barre latérale à gauche de la nouvelle
-page qui s'ouvre, et enfin le bouton « New SSH key » vert en haut à droite.
+droite de l’interface web de GitHub, puis sur « Settings » dans le menu qui
+s’affiche, « SSH and GPG keys » dans la barre latérale à gauche de la nouvelle
+page qui s’ouvre, et enfin le bouton « New SSH key » vert en haut à droite.
 
 Dans tous les cas, vous vous retrouverez face au formulaire « Add new SSH Key » :
 
-![Formulaire "Add new SSH Key" de GitHub](images/github-add-new-ssh-key.png)
+![Formulaire « Add new SSH Key » de GitHub](images/github-add-new-ssh-key.png)
 
 Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
 
 - **Title :** Un nom de votre choix qui vous permettra de distinguer cette clé
-  SSH de vos autres clés SSH. Je vous conseille d'utiliser un nom qui clarifie
-  qu'elle est temporaire et liée à cette formation, par exemple « Formation Git ».
+  SSH de vos autres clés SSH. Je vous conseille d’utiliser un nom qui clarifie
+  qu’elle est temporaire et liée à cette formation, par exemple « Formation Git ».
 - **Key type :** La façon dont vous allez utiliser la clé SSH que vous êtes en
-  train d'ajouter à votre compte GitHub. Pour vous connecter à GitHub en SSH
+  train d’ajouter à votre compte GitHub. Pour vous connecter à GitHub en SSH
   avec git, prenez le choix par défaut « Authentication Key ».
 - **Key :** Collez ici le contenu de la clé publique que vous avez générée
   précédemment, i.e. la sortie de `cat ~/.ssh/id_ed25519.pub`.
@@ -124,9 +124,9 @@ Une copie de la Déclaration des Droits de l’Homme et du Citoyen est disponibl
 sur le dépôt git <https://github.com/HadrienG2/ddhc>.
 
 Pour commencer, créez-en un _fork_ sous votre contrôle. Vous utiliserez pour ça
-le bouton « Fork » situé en haut à droite de l’interface de GitHub, entre le
-bouton « Watch » et le bouton « Star ». Acceptez les paramètres proposés par
-défaut avec le bouton « Create fork ».
+le bouton « Fork » situé en haut à droite de l’interface de GitHub, entre le
+bouton « Watch » et le bouton « Star ». Acceptez les paramètres proposés par
+défaut avec le bouton « Create fork ».
 
 L’opération va prendre un petit moment (typiquement quelques secondes).
 Lorsqu’elle est terminée, vous devriez être redirigé automatiquement sur votre
@@ -136,17 +136,17 @@ Pour travailler dessus localement, vous allez ensuite devoir copier son contenu
 sur votre machine. Pour cela, vous aurez besoin de son URL SSH, que vous pouvez
 obtenir comme suit.
 
-D'abord, cliquez sur le bouton vert « Code », en haut à droite de la page
-d'accueil du dépôt, en-dessous des boutons « Watch », « Fork »
+D’abord, cliquez sur le bouton vert « Code », en haut à droite de la page
+d’accueil du dépôt, en dessous des boutons « Watch », « Fork »
 et « Star » :
 
-![Bouton "Code" donnant accès aux URLs de clonage](images/github-code-button.png)
+![Bouton « Code » donnant accès aux URLs de clonage](images/github-code-button.png)
 
 Ensuite, allez sur l’onglet « Local » puis sur le sous-onglet « SSH » :
 
-![Onglet local et bouton "SSH"](images/github-code-to-ssh.png)
+![Onglet local et bouton « SSH »](images/github-code-to-ssh.png)
 
-L'URL qui s'affiche alors est celle que vous devrez transmettre à git pour
+L’URL qui s’affiche alors est celle que vous devrez transmettre à git pour
 cloner le dépôt en ayant une authentification SSH pour vos opérations
 ultérieures :
 
@@ -216,14 +216,14 @@ Cependant, dans le cadre de cette méthode de travail, nous n’avons générale
 pas besoin de nous intéresser à l’ensemble des branches de ce dépôt. Il suffit
 de tenir notre branche `master` à jour, ce que l’on peut faire facilement avec
 `git pull` après avoir configuré `upstream/master` comme branche amont comme
-suit :
+suit :
 
 ```bash
 {{#include reseau-forges.sh:set-upstream-master}}
 ```
 
-Une fois cette préparation effectuée, vous n'aurez pas besoin de la répéter et 
-pourrez juste mettre à jour votre branche `master` locale via :
+Une fois cette préparation effectuée, vous n’aurez pas besoin de la répéter et
+pourrez juste mettre à jour votre branche `master` locale via :
 
 ```bash
 {{#include reseau-forges.sh:pull-master}}
@@ -236,16 +236,16 @@ erreur classique. Si l’on applique correctement le _GitHub flow_, la branche
 pas mettre en avance rapide, cela relève d’une situation pathologique :
 
 - Soit les mainteneurs du dépôt officiel ont fait diverger `master` en éditant
-  son historique. Il n'est que très rarement nécessaire d'en arriver là, et un
+  son historique. Il n’est que très rarement nécessaire d’en arriver là, et un
   mainteneur responsable devrait informer les autres membres du projet chaque
   fois qu’il doit en venir à de tels extrêmes.
-- Soit, et c'est de loin le cas le plus courant, vous avez vous-même créé une
+- Soit, et c’est de loin le cas le plus courant, vous avez vous-même créé une
   divergence, typiquement en ajoutant des commits sur votre branche `master`
   locale plutôt que sur une branche de développement dédiée.
 
 Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 
-- Si vous le souhaitez, vous pouvez d'abord sauvegarder vos changements dans une
+- Si vous le souhaitez, vous pouvez d’abord sauvegarder vos changements dans une
   nouvelle branche avec `git branch <nom>`.
 - Ensuite, forcez votre branche `master` à en revenir au même point que le
   `master` officiel avec la commande `git reset --hard upstream/master`.
@@ -326,8 +326,8 @@ d’une simple commande `git push` sans arguments supplémentaires.
 
 Nous l’avons évoqué précédemment, dès lors que vous avez mis des changements en
 ligne sur un serveur, il faut être prudent avec les modifications d’historique
-et les `git push --force` associés pour ne pas « couper l’herbe sous le pied » aux gens
-qui travaillent par-dessus vos branches.
+et les `git push --force` associés pour ne pas couper l’herbe sous le pied aux
+gens qui travaillent par-dessus vos branches.
 
 Mais l’un des avantages qu’il y a à utiliser un _fork_, c’est que ce dépôt
 n’appartient qu’à vous. Personne d’autre n’est donc censé baser son travail
@@ -366,7 +366,7 @@ quelque temps après le _push_. Mais si vous avez ignoré tous ces raccourcis,
 vous pouvez toujours créer « manuellement » une _pull request_ de la façon suivante.
 
 Allez sur l’interface web de votre _fork_ et affichez la liste des branches avec
-le lien « N branches » en haut à gauche, un peu en-dessous du nom du dépôt :
+le lien « N branches » en haut à gauche, un peu en dessous du nom du dépôt :
 
 ![Lien donnant accès à la liste des
 branches](images/github-branch-list-button.png)
@@ -375,36 +375,36 @@ Ensuite, cliquez sur le bouton « New Pull Request » associé à la branche q
 vous voulez soumettre au dépôt officiel pour initier le processus de soumission
 :
 
-![Bouton "New pull request" dans la liste des
+![Bouton « New pull request » dans la liste des
 branches](images/github-new-pull-request-button.png)
 
 Après avoir fait tout ça, vous vous retrouverez sur la même interface de
 création de _pull request_ que vous auriez eu si vous aviez utilisé un des
 raccourcis initialement :
 
-![Interface de création d'une pull
+![Interface de création d’une pull
 request](images/github-create-pull-request.png)
 
 De haut en bas, cette interface contient…
 
-- En haut, une section à laquelle vous n'aurez presque jamais besoin de toucher
-  qui vous permet de spécifier quelle branche de votre _fork_ (ou d'un autre
+- En haut, une section à laquelle vous n’aurez presque jamais besoin de toucher
+  qui vous permet de spécifier quelle branche de votre _fork_ (ou d’un autre
   dépôt) vous voulez fusionner dans quelle branche du dépôt officiel.
-- Ensuite, un formulaire pour donner un nom à votre _pull request_ ainsi qu'une
+- Ensuite, un formulaire pour donner un nom à votre _pull request_ ainsi qu’une
   description plus détaillée si besoin. Cette description peut être formatée
   avec [le dialecte local de
   Markdown](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 - En bas de ce formulaire, une case à cocher « Allow edits by maintainers » qui
-  permet aux mainteneurs du dépôt d'ajouter des changements à votre branche (ça
-  permet de fluidifier un peu le processus de passage en revue d'une
+  permet aux mainteneurs du dépôt d’ajouter des changements à votre branche (ça
+  permet de fluidifier un peu le processus de passage en revue d’une
   contribution en faisant directement les modifications mineures plutôt que de
   vous demander de les faire vous-même).
 - Près de cette case à cocher, un bouton « Create pull request » qui termine la
   saisie et crée la _pull request_, avec sur le côté droit une option un peu
   trop bien cachée (flèche descendante) pour créer la _pull request_ en mode
   brouillon. Cela signifie que vous informez les mainteneurs que vous aurez
-  bientôt des changements à intégrer et leur permettez d'y jeter un œil, mais
-  ne souhaitez pas qu'ils soient intégrés tout de suite car vous n'avez pas fini
+  bientôt des changements à intégrer et leur permettez d’y jeter un œil, mais
+  ne souhaitez pas qu’ils soient intégrés tout de suite, car vous n’avez pas fini
   le travail.
 - En dessous de tout ça, pour information, une visualisation des changements
   apportés par votre branche : liste des commits et différences par rapport à la
@@ -464,8 +464,8 @@ contributions extérieures, et évite certains problèmes liés à l’utilisati
 naïve d’un dépôt git partagé (par exemple un _force-push_ malencontreux sur
 une branche du dépôt principal qui sème le chaos dans le projet).
 
-Nous terminerons cette formation par une exploration « à la carte » de sujets
-plus avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir.
+Nous terminerons cette formation par une exploration à la carte de sujets plus
+avancés, ou de tout point déjà abordé que vous souhaiteriez approfondir.
 
 
 ----
@@ -512,7 +512,7 @@ d’utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires�
   la commande `git remote set-url <remote> <URL>`.
 - Pour les forges utilisant un mécanisme d’authentification « SSO » comme
   gitlab.in2p3.fr…
-  * D'abord, trouvez votre nom d’utilisateur sur la forge. Dans le cas de
+  * D’abord, trouvez votre nom d’utilisateur sur la forge. Dans le cas de
     GitLab, il apparaît comme `@<nom>` quand on clique sur le menu en haut à
     droite.
   * Ensuite, configurez un mot de passe dédié aux échanges git HTTPS. Sur
@@ -535,16 +535,15 @@ ou <https://git-scm.com/docs/gitcredentials>.
 
 ### Petit tour d’horizon des forges logicielles
 
-Dans ce TP, nous avons utilisé GitHub, mais il existe beaucoup d'autres forges
+Dans ce TP, nous avons utilisé GitHub, mais il existe beaucoup d’autres forges
 basées sur git.
 
 Les trois moteurs de forge les plus utilisés à l’heure actuelle sont GitHub,
 GitLab et BitBucket. Les éditeurs de ces applications web proposent des
 instances hébergées sur leurs propres serveurs, selon un modèle commercial
-« freemium » (niveau de service gratuit limité, pour avoir plus il
-faut souscrire à un abonnement). Il est également possible d’en héberger une
-instance sur un serveur que l’on contrôle, par exemple lorsque le secret
-professionnel l’exige.
+_freemium_ (niveau de service gratuit limité, pour avoir plus il faut souscrire
+à un abonnement). Il est également possible d’en héberger une instance sur un
+serveur que l’on contrôle, par exemple lorsque le secret professionnel l’exige.
 
 Dans ce cadre d’auto-hébergement, GitLab est le moteur le plus populaire dans le
 secteur académique. On trouve par exemple des instances ayant des milliers
