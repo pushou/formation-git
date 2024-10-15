@@ -1,5 +1,5 @@
 default:
-  image: "${CI_REGISTRY_IMAGE}:latest"
+  image: "${CI_REGISTRY_IMAGE}"
 
 stages:
   - docker
@@ -14,7 +14,20 @@ Image docker:
   interruptible: false
   script:
     - mkdir -p /kaniko/.docker
-    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - |
+      auth_config() {
+        REGISTRY_URL="$1"
+        REGISTRY_USER="$2"
+        REGISTRY_PWD="$3"
+        AUTH_STR=$( printf "%s:%s" "${REGISTRY_USER}" "${REGISTRY_PWD}" \
+                    | base64 \
+                    | tr -d '\n' )
+        printf '"%s": { "auth": "%s" }' "${REGISTRY_URL}" "${AUTH_STR}"
+      }
+      REGISTRY_CONFIG="$(auth_config ${CI_REGISTRY} ${CI_REGISTRY_USER} ${CI_REGISTRY_PASSWORD})"
+      printf '{ "auths": { %s } }' \
+             "${REGISTRY_CONFIG}" \
+             >/kaniko/.docker/config.json
     - |
       /kaniko/executor \
         --cache \
@@ -24,10 +37,12 @@ Image docker:
         --use-new-run \
         --context "${CI_PROJECT_DIR}" \
         --dockerfile "${CI_PROJECT_DIR}/Dockerfile" \
-        --destination "${CI_REGISTRY_IMAGE}:latest"
+        --destination "${CI_REGISTRY_IMAGE}"
   # HACK: IN2P3 gitlab seems to have caching issues and report image uploads as
   #       completed when they are actually not yet world-visible. Hack it away.
   after_script: sleep 30
+  rules:
+   - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
 
 Rendu supports:
   stage: render
