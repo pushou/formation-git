@@ -1,26 +1,43 @@
 default:
-  image: debian
-
-variables:
-  MDBOOK_VERSION: "0.4.40"
+  image: "${CI_REGISTRY_IMAGE}"
 
 stages:
+  - docker
   - render
   - deploy
 
-Rendu TP:
+Image docker:
+  stage: docker
+  image:
+      name: gcr.io/kaniko-project/executor:debug
+      entrypoint: [""]
+  interruptible: false
+  script:
+    - mkdir -p /kaniko/.docker
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
+    - |
+      /kaniko/executor \
+        --cache \
+        --cache-ttl 48h \
+        --cleanup \
+        --push-retry 1 \
+        --use-new-run \
+        --context "${CI_PROJECT_DIR}" \
+        --dockerfile "${CI_PROJECT_DIR}/Dockerfile" \
+        --destination "${CI_REGISTRY_IMAGE}"
+  # HACK: IN2P3 gitlab seems to have caching issues and report image uploads as
+  #       completed when they are actually not yet world-visible. Hack it away.
+  after_script: sleep 30
+
+Rendu supports:
   stage: render
   interruptible: true
   script:
-    - |
-      export DEBIAN_FRONTEND=noninteractive
-      apt-get update
-      apt-get install -y bash ca-certificates curl gzip make tar
-    - mkdir bin
-    - curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" | tar -xz --directory=bin
-    - (export PATH=$(pwd)/bin:$PATH && cd TP && mdbook build -d ../public)
+    - make
+    - mv TP/book public
   artifacts:
     paths:
+      - Rendus
       - public
 
 pages:
@@ -32,7 +49,7 @@ pages:
     paths:
       - public
   needs:
-    - job: Rendu TP
+    - job: Rendu supports
       artifacts: true
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH

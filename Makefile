@@ -23,4 +23,4 @@ TP/book: ${SRCS_TPS}
 	cd TP && rm -rf book && mdbook build
 
 Rendus/Pres%.pdf: Pres%.odp
-	loimpress --convert-to pdf --outdir Rendus $<
+	loffice --convert-to pdf --outdir Rendus $<
