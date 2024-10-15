@@ -14,20 +14,7 @@ Image docker:
   interruptible: false
   script:
     - mkdir -p /kaniko/.docker
-    - |
-      auth_config() {
-        REGISTRY_URL="$1"
-        REGISTRY_USER="$2"
-        REGISTRY_PWD="$3"
-        AUTH_STR=$( printf "%s:%s" "${REGISTRY_USER}" "${REGISTRY_PWD}" \
-                    | base64 \
-                    | tr -d '\n' )
-        printf '"%s": { "auth": "%s" }' "${REGISTRY_URL}" "${AUTH_STR}"
-      }
-      REGISTRY_CONFIG="$(auth_config ${CI_REGISTRY} ${CI_REGISTRY_USER} ${CI_REGISTRY_PASSWORD})"
-      printf '{ "auths": { %s } }' \
-             "${REGISTRY_CONFIG}" \
-             >/kaniko/.docker/config.json
+    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
     - |
       /kaniko/executor \
         --cache \
