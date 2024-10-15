@@ -1,5 +1,5 @@
 default:
-  image: "${CI_REGISTRY_IMAGE}"
+  image: "${CI_REGISTRY_IMAGE}:latest"
 
 stages:
   - docker
@@ -24,7 +24,7 @@ Image docker:
         --use-new-run \
         --context "${CI_PROJECT_DIR}" \
         --dockerfile "${CI_PROJECT_DIR}/Dockerfile" \
-        --destination "${CI_REGISTRY_IMAGE}"
+        --destination "${CI_REGISTRY_IMAGE}:latest"
   # HACK: IN2P3 gitlab seems to have caching issues and report image uploads as
   #       completed when they are actually not yet world-visible. Hack it away.
   after_script: sleep 30
