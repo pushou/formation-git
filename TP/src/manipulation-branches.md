@@ -1,4 +1,4 @@
-# Manipulation de branches
+# <a href="Pres3-Branches.pdf" target="blank">Manipulation de branches</a>
 
 ## Des évolutions parallèles
 

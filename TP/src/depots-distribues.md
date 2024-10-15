@@ -1,4 +1,4 @@
-# Dépôts distribués
+# <a href="Pres4-Distribution.pdf" target="blank">Dépôts distribués</a>
 
 ## Premiers pas avec les dépôts distants
 

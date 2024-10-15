@@ -52,7 +52,6 @@ Rendu supports:
     - mv TP/book public
   artifacts:
     paths:
-      - Rendus
       - public
 
 pages:

@@ -1,4 +1,4 @@
-# TP2 : Un historique linéaire
+# <a href="Pres2-Versions.pdf" target="blank">Un historique linéaire</a>
 
 ## Un mot sur les « rattrapages »
 

@@ -1,6 +1,10 @@
-# TP1 : Premiers pas avec git
+# <a href="Pres1-Introduction.pdf" target="blank">Premiers pas avec git</a>
 
 ## Mode d’emploi des TPs
+
+Tout d'abord, notez que le titre de chaque TP est un lien vers les supports
+de la présentation correspondante, ce qui vous permet de la réviser à tête
+reposée...
 
 Afin de s’adapter au rythme de progression de chacun, les TPs sont pensés pour
 être suivis de façon autonome. Ils sont construits de la façon suivante :

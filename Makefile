@@ -1,7 +1,7 @@
-SRCS_TPS:=TP/book.toml $(wildcard TP/src/*) $(wildcard TP/src/images/*)
-RENDUS_TPS:=TP/book
 SRCS_PRES:=$(wildcard *.odp)
-RENDUS_PRES:=$(SRCS_PRES:Pres%.odp=Rendus/Pres%.pdf)
+RENDUS_PRES:=$(SRCS_PRES:Pres%.odp=TP/src/Pres%.pdf)
+SRCS_TPS:=TP/book.toml $(wildcard TP/src/*) $(wildcard TP/src/images/*) ${RENDUS_PRES}
+RENDUS_TPS:=TP/book
 
 .PHONY: all clean
 
@@ -16,11 +16,11 @@ all: ${RENDUS_TPS} ${RENDUS_PRES}
 	'rm -rf ~/.gitconfig ~/Desktop/*'.\n\n"
 
 clean:
-	rm Rendus/*.pdf
+	rm TP/src/*.pdf
 	rm -rf TP/book
 
 TP/book: ${SRCS_TPS}
 	cd TP && rm -rf book && mdbook build
 
-Rendus/Pres%.pdf: Pres%.odp
-	loffice --convert-to pdf --outdir Rendus $<
+TP/src/Pres%.pdf: Pres%.odp
+	loffice --convert-to pdf --outdir TP/src $<

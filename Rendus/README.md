@@ -3,7 +3,6 @@
 Ce dossier contient des documents prêts à l'emploi pour les participants à la
 formation git. On y trouve les éléments suivants :
 
-- Les planches théoriques présentées au début de chaque séquence
 - Les dépôts git utilisés pour les démonstrations d'outils interactifs
 - Des sauvegardes de l'état attendu à la fin de chaque TP, pouvant être
   utilisées pour revenir en terrain connu en cas de retard ou de problème
@@ -17,6 +16,7 @@ formation git. On y trouve les éléments suivants :
   * `bisect_runner.sh` est un exemple de script permettant d'utiliser `git
     bisect run` dans le dépôt ci-dessus.
 
-Les énoncés de travaux pratique, qui étaient précédemment dans ce dossier, sont
-désormais mis en ligne sous forme de site statique. Vous les trouverez à
-l'adresse <https://grasland.pages.in2p3.fr/formation-git/>.
+Les énoncés de travaux pratique et les supports des présentations, qui étaient
+précédemment déposés dans ce dossier, sont désormais mis en ligne sous forme de
+site statique. Vous les trouverez à l'adresse
+<https://grasland.pages.in2p3.fr/formation-git/>.
