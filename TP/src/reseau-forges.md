@@ -53,34 +53,39 @@ avec la commande suivante :
   évitera de devoir préciser l’emplacement de la clé à tous les utilitaires
   basés sur SSH plus tard.
 - La phrase de passe que vous souhaitez utiliser pour protéger votre clé. Pour
-  simplifier la formation, je vous recommande de ne pas utiliser de phrase de
-  passe, en appuyant deux fois de suite sur Entrée.
+  simplifier la formation, je vous propose de ne pas utiliser de phrase de
+  passe, ce que vous pouvez faire en appuyant deux fois de suite sur Entrée.
 
-<div class="warning">
+<details><summary>Cliquez ici pour plus d’infos sur les implications de ce choix
+en termes de sécurité</summary>
 
-  Ce second choix mérite plus ample discussion. Sans phrase de passe, votre clé
-  privée est stockée dans votre dossier personnel sans chiffrement supplémentaire,
-  ce qui est problématique si vous vous retrouvez dans un des cas suivants :
+  <div class="warning">Sans phrase de passe, votre clé privée est stockée dans
+  votre dossier personnel sans chiffrement supplémentaire, ce qui est
+  problématique si vous vous retrouvez dans un des cas suivants :
   
-  - Votre ordinateur est volé alors que votre disque dur n’était pas chiffré (rare
-    au CNRS, où le chiffrement des postes professionnels est obligatoire).
+  - Votre ordinateur est volé alors que votre disque dur n’était pas chiffré.
+    C'est peu probable au CNRS, où le chiffrement des postes professionnels est
+    obligatoire.
   - Vous partagez votre ordinateur avec d’autres utilisateurs qui ont accès à
-    votre dossier personnel, peuvent y changer les permissions de fichiers pour
-    rendre votre clé privée SSH lisible (donc ont probablement des privilèges
-    administrateur) et ne sont malgré tout pas dignes de confiance.
+    votre dossier personnel et peuvent y changer les permissions de fichiers
+    pour rendre votre clé privée SSH lisible (donc ont probablement des
+    privilèges administrateur), mais ne sont malgré tout pas dignes de
+    confiance.
   - Vous exécutez accidentellement des logiciels malveillants qui s’empressent
-    d’envoyer une copie de votre clé privée à un tiers malveillant.
+    d’envoyer une copie de votre clé privée à un tiers malveillant. Ce risque 
+    n'est pas très élevé sur un client Linux, même si il n'est pas nul.
   
-  Toutefois, les méthodes permettant de protéger votre clé SSH de ce type
-  d’attaque sans se retrouver à saisir une phrase de passe à chaque utilisation de
-  git sont un peu complexes et dépendent du système d’exploitation utilisé.
+  On le voit, les menaces existent, mais ne sont pas très probables. A
+  l'inverse, les méthodes permettant de protéger votre clé SSH de ce type
+  d’attaque sans se retrouver à saisir une phrase de passe à chaque utilisation
+  de git sont un peu complexes et dépendent du système d’exploitation utilisé.
   
-  Pour simplifier cette formation, qui est effectuée dans un cadre contraint et
-  pour une durée limitée, à l’issue de laquelle votre compte utilisateur et sa clé
-  SSH seront détruits, je vous propose d’accepter le risque de travailler sans
-  phrase de passe.
+  Dans le cadre cette formation, qui est effectuée dans un cadre contraint et
+  pour une durée limitée, à l’issue de laquelle votre compte utilisateur et sa
+  clé SSH seront détruits, il me semble donc raisonnable d’accepter le risque de
+  travailler sans phrase de passe.</div>
 
-</div>
+</details>
 
 Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
 plus qu’à afficher votre clé publique, par exemple avec `cat`…
