@@ -3,7 +3,7 @@
 + unset -f test_this_manually
 + cd /root/Desktop/MonDepot
 + git commit -m 'Mon premier commit'
-[master (root-commit) 25af720] Mon premier commit
+[master (root-commit) c794409] Mon premier commit
  2 files changed, 2 insertions(+)
  create mode 100644 .gitignore
  create mode 100644 MonDossier/Contenu.txt
@@ -62,7 +62,7 @@ index 65773c6..2ad2cd9 100644
 +Un premier changement
 + git add AutreContenu.txt
 + git commit -m 'Une deuxième version'
-[master cd0cad6] Une deuxième version
+[master 885830b] Une deuxième version
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + echo 'Un ajout de contenu'
@@ -103,25 +103,25 @@ Changes not staged for commit:
 	modified:   AutreContenu.txt
 
 + git commit -m 'Nous sommes sur une bonne lancée !'
-[master 5d220af] Nous sommes sur une bonne lancée !
+[master ab30db0] Nous sommes sur une bonne lancée !
  1 file changed, 1 deletion(-)
  delete mode 100644 MonDossier/Contenu.txt
 + git log
-commit 5d220af6bed45b3cd3be0ae88f684958e6f8f72d
+commit ab30db01171e04d1cdf8e3dd7fe6a667a21a4a26
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Wed Oct 16 13:18:36 2024 +0000
+Date:   Wed Oct 16 14:48:25 2024 +0000
 
     Nous sommes sur une bonne lancée !
 
-commit cd0cad6d7d5b2c897333cdcd23b223b753e8e670
+commit 885830b2729d05df4b4580ef62cfd6e8b3086fea
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Wed Oct 16 13:18:36 2024 +0000
+Date:   Wed Oct 16 14:48:25 2024 +0000
 
     Une deuxième version
 
-commit 25af72072a17a38f7b130e83b530f2121f6833d7
+commit c794409e87c043caea227acac774bb2910195b1f
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Wed Oct 16 13:18:36 2024 +0000
+Date:   Wed Oct 16 14:48:25 2024 +0000
 
     Mon premier commit
 + unset -f test_this_manually
@@ -156,13 +156,13 @@ index 2ad2cd9..0000000
 + git show v1.0
 tag v1.0
 Tagger: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Wed Oct 16 13:18:36 2024 +0000
+Date:   Wed Oct 16 14:48:25 2024 +0000
 
 Ma super v1
 
-commit cd0cad6d7d5b2c897333cdcd23b223b753e8e670
+commit 885830b2729d05df4b4580ef62cfd6e8b3086fea
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Wed Oct 16 13:18:36 2024 +0000
+Date:   Wed Oct 16 14:48:25 2024 +0000
 
     Une deuxième version
 
@@ -187,11 +187,11 @@ maman
 papa
 v1.0
 + git tag --delete v1.0 important maman papa ancetre
-Deleted tag 'v1.0' (was 0549a49)
-Deleted tag 'important' (was 5d220af)
-Deleted tag 'maman' (was cd0cad6)
-Deleted tag 'papa' (was cd0cad6)
-Deleted tag 'ancetre' (was 25af720)
+Deleted tag 'v1.0' (was 55c6321)
+Deleted tag 'important' (was ab30db0)
+Deleted tag 'maman' (was 885830b)
+Deleted tag 'papa' (was 885830b)
+Deleted tag 'ancetre' (was c794409)
 + git status
 On branch master
 Changes not staged for commit:
@@ -202,7 +202,7 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 + git add --all
 + git commit -m 'La version ultime'
-[master e8a6301] La version ultime
+[master 3c15121] La version ultime
  1 file changed, 1 insertion(+)
 + git status
 On branch master
@@ -225,9 +225,9 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at 5d220af Nous sommes sur une bonne lancée !
+HEAD is now at ab30db0 Nous sommes sur une bonne lancée !
 + git checkout master
-Previous HEAD position was 5d220af Nous sommes sur une bonne lancée !
+Previous HEAD position was ab30db0 Nous sommes sur une bonne lancée !
 Switched to branch 'master'
 + git status
 On branch master
@@ -238,21 +238,21 @@ nothing to commit, working tree clean
 patching file AutreContenu.txt
 + git add --all
 + git commit -m 'Revert latest commit'
-[master 4783cd8] Revert latest commit
+[master 0b99edf] Revert latest commit
  1 file changed, 1 deletion(-)
 + unset -f test_this_manually
 + git tag before-commit-amend
 + echo 'Du nouveau !'
 + git add NouveauContenu.txt
 + git commit --amend -m 'Une version avec plus de contenu'
-[master 53f586d] Une version avec plus de contenu
- Date: Wed Oct 16 13:18:36 2024 +0000
+[master 8e012f9] Une version avec plus de contenu
+ Date: Wed Oct 16 14:48:25 2024 +0000
  2 files changed, 1 insertion(+), 1 deletion(-)
  create mode 100644 NouveauContenu.txt
 + git reset --hard before-commit-amend
-HEAD is now at 4783cd8 Revert latest commit
+HEAD is now at 0b99edf Revert latest commit
 + git tag -d before-commit-amend
-Deleted tag 'before-commit-amend' (was 4783cd8)
+Deleted tag 'before-commit-amend' (was 0b99edf)
 + echo 'Demandez le programme !'
 + git status
 On branch master
@@ -263,12 +263,12 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 + git stash
-Saved working directory and index state WIP on master: 4783cd8 Revert latest commit
+Saved working directory and index state WIP on master: 0b99edf Revert latest commit
 + git status
 On branch master
 nothing to commit, working tree clean
 + git stash list
-stash@{0}: WIP on master: 4783cd8 Revert latest commit
+stash@{0}: WIP on master: 0b99edf Revert latest commit
 + git stash pop
 On branch master
 Changes not staged for commit:
@@ -277,6 +277,6 @@ Changes not staged for commit:
 	modified:   AutreContenu.txt
 
 no changes added to commit (use "git add" and/or "git commit -a")
-Dropped refs/stash@{0} (6bc2ab1bb61a972fc18ca213efb1f9f73bf0530e)
+Dropped refs/stash@{0} (bf4e0a593cb4208087349a93774ec9296750bba0)
 + git checkout HEAD AutreContenu.txt
 Updated 1 path from 967871a
