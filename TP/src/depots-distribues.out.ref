@@ -31,7 +31,7 @@ origin	/root/Desktop/MesBranches (push)
 + echo 'Nouveau dans votre ville !'
 + git add ToutNouveau.txt
 + git commit -m 'Ajout d'\''un nouveau fichier'
-[univers-parallele b523b9b] Ajout d'un nouveau fichier
+[univers-parallele a1f6b9c] Ajout d'un nouveau fichier
  1 file changed, 1 insertion(+)
  create mode 100644 ToutNouveau.txt
 + set +e
@@ -42,7 +42,7 @@ cat: ToutNouveau.txt: No such file or directory
 + git diff origin/univers-parallele
 + git fetch origin
 From /root/Desktop/MesBranches
-   8dc9c08..b523b9b  univers-parallele -> origin/univers-parallele
+   b778150..a1f6b9c  univers-parallele -> origin/univers-parallele
 + set +e
 + cat ToutNouveau.txt
 cat: ToutNouveau.txt: No such file or directory
@@ -56,7 +56,7 @@ index c7d23e0..0000000
 @@ -1 +0,0 @@
 -Nouveau dans votre ville !
 + git merge --ff-only origin/univers-parallele
-Updating 8dc9c08..b523b9b
+Updating b778150..a1f6b9c
 Fast-forward
  ToutNouveau.txt | 1 +
  1 file changed, 1 insertion(+)
@@ -67,14 +67,14 @@ Nouveau dans votre ville !
 + echo 'Demandez le programme !'
 + git add ToutNouveau.txt
 + git commit -m 'Du contenu supplémentaire'
-[univers-parallele cc81010] Du contenu supplémentaire
+[univers-parallele d6be53d] Du contenu supplémentaire
  1 file changed, 1 insertion(+)
 + cd ../MonClone
 + git pull origin univers-parallele
 From /root/Desktop/MesBranches
  * branch            univers-parallele -> FETCH_HEAD
-   b523b9b..cc81010  univers-parallele -> origin/univers-parallele
-Updating b523b9b..cc81010
+   a1f6b9c..d6be53d  univers-parallele -> origin/univers-parallele
+Updating a1f6b9c..d6be53d
 Fast-forward
  ToutNouveau.txt | 1 +
  1 file changed, 1 insertion(+)
@@ -90,65 +90,65 @@ nothing to commit, working tree clean
 Switched to a new branch 'master'
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 + git branch --list -vv
-* master            b78d237 [origin/master] Ajoutons une annexe
-  univers-parallele cc81010 [origin/univers-parallele] Du contenu supplémentaire
+* master            fb538d8 [origin/master] Ajoutons une annexe
+  univers-parallele d6be53d [origin/univers-parallele] Du contenu supplémentaire
 + git push origin master
 Everything up-to-date
 + echo 'Hallo !'
 + git add HelloWorld.txt
 + git commit -m 'Traduction allemande'
-[master 74f4599] Traduction allemande
+[master 380be4b] Traduction allemande
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push origin
 To /root/Desktop/MesBranches
-   b78d237..74f4599  master -> master
+   fb538d8..380be4b  master -> master
 + cd ../MesBranches
 + git log master
-commit 74f4599ca976af57d0a2af1288f08b3ae1f714c2
+commit 380be4bf74662ff50855fd0231fdb11a3273a36b
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:13:17 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Traduction allemande
 
-commit b78d23743eb468c475e7567ba0e0ad4c82e5dcfe
+commit fb538d816e9846c3fdcde73ce89f1088e3fb963c
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:12:47 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Ajoutons une annexe
 
-commit cf718193a844919c6c471bee46508dc5a2ea2c3d
-Merge: 7c6c929 59f9625
+commit 7270c1d6cb9a35182dbdadf01c89eb273774bc7e
+Merge: b977fad 47f977e
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:12:47 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Une fusion sans histoires
 
-commit 7c6c929d57f9c34976eee4c11a1ec5b39cd47f53
+commit b977fad02cd8d7ca6f93aac9ae5f327cd288f040
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:12:47 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Deuxième jeu de modifications
 
-commit 59f9625f820d8955ca6d3b5f3dbdc12aa1dcafd9
+commit 47f977e16ae5ca29c06a99b36c5813ae649b701f
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:12:47 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Premier jeu de modifications
 
-commit b4d829b250754ae9111780716720a7bf7e643515
+commit df169e0af6372674469104e0320ff0b2a875eb9f
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
-Date:   Tue Nov 28 16:12:47 2023 +0000
+Date:   Wed Oct 16 13:18:36 2024 +0000
 
     Commit initial
 + cd ../MonClone
 + echo 'Konnichi-wa !'
 + git add --all
 + git commit -m 'Traduction japonaise'
-[master c4eb0f4] Traduction japonaise
+[master cb46f88] Traduction japonaise
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push
 To /root/Desktop/MesBranches
-   74f4599..c4eb0f4  master -> master
+   380be4b..cb46f88  master -> master
 + git config --global push.autoSetupRemote true
 + git clone ../MesBranches ../MonAutreClone
 Cloning into '../MonAutreClone'...
@@ -171,23 +171,23 @@ Branch 'master' set up to track remote branch 'master' from 'origin'.
 + echo 1
 + git add Compteur.txt
 + git commit -m 'Ajout d'\''un compteur'
-[master dbf763c] Ajout d'un compteur
+[master 1c018ee] Ajout d'un compteur
  1 file changed, 1 insertion(+)
  create mode 100644 Compteur.txt
 + git push
 To /root/Desktop/MonClone/../MesBranches
-   c4eb0f4..dbf763c  master -> master
+   cb46f88..1c018ee  master -> master
 + cd ../MonClone
 + echo 'Prost !'
 + git add HelloWorld.txt
 + git commit -m 'Disons bonjour plus joyeusement'
-[master 71d05cb] Disons bonjour plus joyeusement
+[master 5957f26] Disons bonjour plus joyeusement
  1 file changed, 1 insertion(+), 1 deletion(-)
 + unset -f test_this_manually
 + git fetch --all
 Fetching origin
 From /root/Desktop/MesBranches
-   c4eb0f4..dbf763c  master     -> origin/master
+   cb46f88..1c018ee  master     -> origin/master
 Fetching autre
 From ../MonAutreClone
  * [new branch]      master     -> autre/master
@@ -198,7 +198,7 @@ Merge made by the 'recursive' strategy.
  create mode 100644 Compteur.txt
 + set +e
 + git reset --hard '@{1}'
-HEAD is now at 71d05cb Disons bonjour plus joyeusement
+HEAD is now at 5957f26 Disons bonjour plus joyeusement
 + git push autre
 To ../MonAutreClone
  ! [rejected]        master -> master (non-fast-forward)
@@ -212,7 +212,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 + echo 2
 + git add Compteur.txt
 + git commit -m 'Un autre commit qui modifie Compteur.txt'
-[master 064ef29] Un autre commit qui modifie Compteur.txt
+[master 54c10d7] Un autre commit qui modifie Compteur.txt
  1 file changed, 1 insertion(+)
  create mode 100644 Compteur.txt
 + git pull

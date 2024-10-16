@@ -12,6 +12,21 @@ set -euxo pipefail
 IFS=$'\n\t'
 
 
+function test_this_manually() {
+###### ANCHOR: restore-from-zip
+cd ~/Desktop \
+&& rm -rf TP4.zip ArchivesTPs/TP3 \
+&& mkdir -p ArchivesTPs/TP3 \
+&& if [[ -e MonDepot ]]; then mv MonDepot ArchivesTPs/TP3; fi \
+&& if [[ -e MesBranches ]]; then mv MesBranches ArchivesTPs/TP3; fi \
+&& wget https://grasland.pages.in2p3.fr/formation-git/TP4.zip \
+&& unzip TP4.zip \
+&& rm TP4.zip
+###### ANCHOR_END: restore-from-zip
+}
+unset -f test_this_manually
+
+
 ###### ANCHOR: clone
 cd ~/Desktop
 git clone MesBranches MonClone
@@ -225,7 +240,7 @@ git fetch NomRemote
 ###### ANCHOR_END: cheatsheet-fetch-remote
 
 ###### ANCHOR: cheatsheet-explicit-pull
-# Remplacez NomRemote par le nom d'une remote et NomBranche par le nom local 
+# Remplacez NomRemote par le nom d'une remote et NomBranche par le nom local
 # d'une branche sur cette remote (ex: master, pas NomRemote/master).
 git pull NomRemote NomBranche
 ###### ANCHOR_END: cheatsheet-explicit-pull

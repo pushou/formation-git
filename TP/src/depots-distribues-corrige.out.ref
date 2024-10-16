@@ -6,21 +6,21 @@ done.
 + cd /root/Desktop/MonDepot/
 + ls -al
 total 12
-drwxr-xr-x 1 root root 104 Nov 30 17:13 .
-drwxr-xr-x 1 root root  98 Nov 30 17:13 ..
-drwxr-xr-x 1 root root 162 Nov 30 17:13 .git
--rw-r--r-- 1 root root   6 Nov 30 17:13 .gitignore
--rw-r--r-- 1 root root  19 Nov 30 17:13 AutreContenu.txt
-drwxr-xr-x 1 root root   0 Nov 30 17:13 MonDossier
--rw-r--r-- 1 root root  48 Nov 30 17:13 Poubelle.log
+drwxr-xr-x 1 root root 104 Oct 16 13:18 .
+drwxr-xr-x 1 root root  98 Oct 16 13:18 ..
+drwxr-xr-x 1 root root 162 Oct 16 13:18 .git
+-rw-r--r-- 1 root root   6 Oct 16 13:18 .gitignore
+-rw-r--r-- 1 root root  19 Oct 16 13:18 AutreContenu.txt
+drwxr-xr-x 1 root root   0 Oct 16 13:18 MonDossier
+-rw-r--r-- 1 root root  48 Oct 16 13:18 Poubelle.log
 + cd ../Exercice4/
 + ls -al
 total 8
-drwxr-xr-x 1 root root  60 Nov 30 17:13 .
-drwxr-xr-x 1 root root  98 Nov 30 17:13 ..
-drwxr-xr-x 1 root root 138 Nov 30 17:13 .git
--rw-r--r-- 1 root root   6 Nov 30 17:13 .gitignore
--rw-r--r-- 1 root root  19 Nov 30 17:13 AutreContenu.txt
+drwxr-xr-x 1 root root  60 Oct 16 13:18 .
+drwxr-xr-x 1 root root  98 Oct 16 13:18 ..
+drwxr-xr-x 1 root root 138 Oct 16 13:18 .git
+-rw-r--r-- 1 root root   6 Oct 16 13:18 .gitignore
+-rw-r--r-- 1 root root  19 Oct 16 13:18 AutreContenu.txt
 + unset -f test_this_manually
 + cd ../MonDepot
 + git checkout -b test
@@ -28,12 +28,12 @@ Switched to a new branch 'test'
 + echo 'Le contenu'
 + git add AutreContenu.txt
 + git commit -m 'Un commit de test'
-[test c161e52] Un commit de test
+[test 5f61591] Un commit de test
  1 file changed, 1 insertion(+), 1 deletion(-)
 + echo 'Plus de contenu'
 + git add AutreContenu.txt
 + git commit -m 'Un autre commit de test'
-[test 025f2c9] Un autre commit de test
+[test 5c13293] Un autre commit de test
  1 file changed, 1 insertion(+)
 + cd ../Exercice4
 + git fetch origin
@@ -45,13 +45,13 @@ Branch 'test' set up to track remote branch 'test' from 'origin'.
 + echo 'Renouvelons l'\''offre'
 + git add NouveauFichier.txt
 + git commit -m 'Ajout d'\''un fichier'
-[test d99c5b9] Ajout d'un fichier
+[test c77cf92] Ajout d'un fichier
  1 file changed, 1 insertion(+)
  create mode 100644 NouveauFichier.txt
 + echo 'Renouvelons la demande'
 + git add NouveauFichier.txt
 + git commit -m 'Complétion d'\''un fichier'
-[test bbf172c] Complétion d'un fichier
+[test 59eb4b2] Complétion d'un fichier
  1 file changed, 1 insertion(+)
 + cd ../MonDepot
 + git remote add copieur /root/Desktop/Exercice4
@@ -59,7 +59,7 @@ Branch 'test' set up to track remote branch 'test' from 'origin'.
 From /root/Desktop/Exercice4
  * branch            test       -> FETCH_HEAD
  * [new branch]      test       -> copieur/test
-Updating 025f2c9..bbf172c
+Updating 5c13293..59eb4b2
 Fast-forward
  NouveauFichier.txt | 2 ++
  1 file changed, 2 insertions(+)
@@ -69,21 +69,21 @@ Switched to branch 'master'
 + echo 'Je ne sais quoi inventer'
 + git add Incertitude.txt
 + git commit -m $'M\303\251ditation'
-[master a96c14d] Méditation
+[master 834aa1b] Méditation
  1 file changed, 1 insertion(+)
  create mode 100644 Incertitude.txt
 + echo 'Je ne sais quoi penser'
 + git add Incertitude.txt
 + git commit -m 'Moment philosophique'
-[master 3176c43] Moment philosophique
+[master 187b4fe] Moment philosophique
  1 file changed, 1 insertion(+)
 + git push copieur test
 Everything up-to-date
 + cd ../Exercice4
 + git fetch origin
 From /root/Desktop/MonDepot
-   025f2c9..bbf172c  test       -> origin/test
-   c372e7a..3176c43  master     -> origin/master
+   5c13293..59eb4b2  test       -> origin/test
+   4783cd8..187b4fe  master     -> origin/master
 + git merge origin/master
 Merge made by the 'recursive' strategy.
  Incertitude.txt | 2 ++

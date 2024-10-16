@@ -2,7 +2,7 @@
 #
 # Ce script contient l'ensemble des commandes exécutées par les utilisateurs
 # durant le TP2, ce qui permet de rejouer facilement ces commandes pour...
-# 
+#
 # - Vérifier l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en
 #   comparant la sortie au fichier de référence .ref.
 # - Régénérer facilement l'archive de rattrapage de fin de TP2 (et autres TPs)
@@ -15,6 +15,16 @@ IFS=$'\n\t'
 
 
 function test_this_manually() {
+###### ANCHOR: restore-from-zip
+cd ~/Desktop \
+&& rm -rf TP2.zip ArchivesTPs/TP1 \
+&& mkdir -p ArchivesTPs/TP1 \
+&& if [[ -e MonDepot ]]; then mv MonDepot ArchivesTPs/TP1; fi \
+&& wget https://grasland.pages.in2p3.fr/formation-git/TP2.zip \
+&& unzip TP2.zip \
+&& rm TP2.zip
+###### ANCHOR_END: restore-from-zip
+
 ###### ANCHOR: first-interactive-commit
 cd ~/Desktop/MonDepot
 ###### ANCHOR: cheatsheet-commit
@@ -194,7 +204,7 @@ git tag MonEtiquette CommitCible
 ###### ANCHOR: cheatsheet-tag-annotate
 # Remplacez "MonEtiquette" par le nom de votre choix et "CommitCible" par le
 # commit de votre choix (ou enlevez ce paramètre pour cibler le commit actif).
-# 
+#
 # Cette commande ouvre un éditeur de texte pour vous permettre de saisir la
 # description, utilisez "-m" pour la saisir directement dans la commande.
 git tag --annotate MonEtiquette CommitCible
@@ -224,7 +234,7 @@ git checkout CommitCible
 # Pour éviter des conflits, il faut généralement lister les commits à annuler
 # du plus récent au plus ancien, mais voir aussi la commande suivante.
 #
-# Contrairement aux autres commandes qui créent des commits, 
+# Contrairement aux autres commandes qui créent des commits,
 git revert Commit3 Commit2 Commit1
 ###### ANCHOR_END: cheatsheet-revert
 

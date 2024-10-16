@@ -9,7 +9,7 @@ Initialized empty Git repository in /root/Desktop/Exercice2/.git/
 + echo 'Mon troisième fichier'
 + git add --all
 + git commit -m 'Mon premier commit'
-[master (root-commit) 3a44ea7] Mon premier commit
+[master (root-commit) f92fdac] Mon premier commit
  3 files changed, 3 insertions(+)
  create mode 100644 Fichier1.txt
  create mode 100644 Fichier2.txt
@@ -18,7 +18,7 @@ Initialized empty Git repository in /root/Desktop/Exercice2/.git/
 + echo 'En plus'
 + git add Fichier1.txt
 + git commit -m 'Mon deuxième commit'
-[master aa5995e] Mon deuxième commit
+[master 7e8b6c2] Mon deuxième commit
  1 file changed, 1 insertion(+)
 + git status
 On branch master
@@ -37,7 +37,7 @@ index 00ffdf4..b85347c 100644
  Mon deuxième fichier
 +En plus
 + git commit -am 'Mon troisième commit'
-[master d21efe1] Mon troisième commit
+[master b405bc5] Mon troisième commit
  1 file changed, 1 insertion(+)
 + git diff HEAD~2 HEAD~
 diff --git a/Fichier1.txt b/Fichier1.txt
@@ -68,10 +68,10 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at 3a44ea7 Mon premier commit
+HEAD is now at f92fdac Mon premier commit
 + git tag papy
 + git checkout master
-Previous HEAD position was 3a44ea7 Mon premier commit
+Previous HEAD position was f92fdac Mon premier commit
 Switched to branch 'master'
 + cd /root
 + rm -rf /root/Desktop/Exercice2

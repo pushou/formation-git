@@ -6,8 +6,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
                        bash ca-certificates curl fonts-roboto git gzip \
-                       libreoffice-impress-nogui make tar \
+                       libreoffice-impress-nogui make man-db openssh-client \
+                       patch tar zip \
+    && yes | unminimize \
     && rm -rf /var/lib/apt/lists/*
 
 RUN curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
     | tar -xz --directory=/bin
+
+RUN mkdir -p ~/Desktop

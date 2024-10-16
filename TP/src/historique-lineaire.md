@@ -1,27 +1,31 @@
 # <a href="Pres2-Versions.pdf" target="blank">Un historique linéaire</a>
 
-## Un mot sur les « rattrapages »
+## Retour à l’état attendu
 
-Vous aurez peut-être remarqué, dans les supports de formation, un mystérieux
-dossier appelé `Rattrapages`.
-
-Ce dossier contient une copie de sauvegarde de l’état attendu du ou des dépôts
-git utilisés au début de chaque TP.
-
-Cela vous permettra de vous replacer dans l’état attendu au début d’un
-nouveau TP, si par exemple…
+Les TPs de cette formation sont conçus pour s’enchaîner, chaque TP réutilisant
+les dépôts git créés au cours du TP précédent. Mais l’expérience montre que cet
+enchaînement ne se produit pas toujours comme prévu, si par exemple…
 
 - Vous n’avez pas réussi à finir un TP à temps
-- Vous avez exécuté des commandes imprévues durant le TP
-- Vous avez manqué une partie de la formation
+- Vous avez exécuté des commandes git imprévues dans un dépôt utilisé par le TP
+- Vous avez raté une partie de la formation
 
-Ainsi, vous éviterez des comportements imprévus de git, liés au fait que l’effet
-d’une commande dépend fortement de l’état actuel du dépôt utilisé.
+Pour éviter que ces problèmes ne se propagent d’un TP au suivant, je vous
+propose de reprendre chaque nouveau TP sur une base connue, à savoir le résultat
+d’une exécution rigoureuse de l’ensemble des commandes des TPs précédents, et
+rien que ces commandes.
 
-Donc si par exemple quelque chose s’est mal passé durant le TP1, vous pouvez
-repartir d’un dépôt dans l’état attendu pour faire le TP2 en utilisant le
-rattrapage appelé `TP2.zip`. Pour ce faire, remplacez simplement les dépôts git
-sur votre bureau par le contenu de l’archive `TP2.zip`.
+Cela ne produira pas exactement le même résultat que si vous aviez fait le TP
+vous même (par exemple les messages de commits seront différents et l’auteur des
+commits sera la personne fictive « Francine Dupont »), mais au moins vous
+opérerez en terrain connu au début de chaque TP.
+
+Pour ce deuxième TP, le script bash à exécuter pour archiver votre travail sur le
+premier TP et repartir de l’[archive de référence](TP2.zip) est :
+
+```bash
+{{#include historique-lineaire.sh:restore-from-zip}}
+```
 
 
 ## Processus de création de version

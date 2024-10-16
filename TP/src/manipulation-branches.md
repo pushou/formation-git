@@ -1,5 +1,15 @@
 # <a href="Pres3-Branches.pdf" target="blank">Manipulation de branches</a>
 
+## Retour à l’état attendu
+
+Pour ce troisième TP, le script bash à exécuter pour archiver votre travail sur
+le deuxième TP et repartir de l’[archive de référence](TP3.zip) est :
+
+```bash
+{{#include manipulation-branches.sh:restore-from-zip}}
+```
+
+
 ## Des évolutions parallèles
 
 ### Changement de dépôt

@@ -35,6 +35,7 @@ Rendu supports:
   stage: render
   interruptible: true
   script:
+    - (cd TP/src && make)
     - make
     - mv TP/book public
   artifacts:

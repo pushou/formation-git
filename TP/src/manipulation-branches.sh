@@ -2,7 +2,7 @@
 #
 # Ce script contient l'ensemble des commandes exécutées par les utilisateurs
 # durant le TP3, ce qui permet de rejouer facilement ces commandes pour...
-# 
+#
 # - Vérifier l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en
 #   comparant la sortie au fichier de référence .ref.
 # - Régénérer facilement l'archive de rattrapage de fin de TP3 (et autres TPs)
@@ -12,6 +12,20 @@
 #
 set -euxo pipefail
 IFS=$'\n\t'
+
+
+function test_this_manually() {
+###### ANCHOR: restore-from-zip
+cd ~/Desktop \
+&& rm -rf TP3.zip ArchivesTPs/TP2 \
+&& mkdir -p ArchivesTPs/TP2 \
+&& if [[ -e MonDepot ]]; then mv MonDepot ArchivesTPs/TP2; fi \
+&& wget https://grasland.pages.in2p3.fr/formation-git/TP3.zip \
+&& unzip TP3.zip \
+&& rm TP3.zip
+###### ANCHOR_END: restore-from-zip
+}
+unset -f test_this_manually
 
 
 ###### ANCHOR: init

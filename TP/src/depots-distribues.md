@@ -1,5 +1,15 @@
 # <a href="Pres4-Distribution.pdf" target="blank">Dépôts distribués</a>
 
+## Retour à l’état attendu
+
+Pour ce quatrième TP, le script bash à exécuter pour archiver votre travail sur
+le troisième TP et repartir de l’[archive de référence](TP4.zip) est :
+
+```bash
+{{#include depots-distribues.sh:restore-from-zip}}
+```
+
+
 ## Premiers pas avec les dépôts distants
 
 ### Clonage de dépôt
