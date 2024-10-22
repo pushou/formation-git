@@ -24,6 +24,9 @@ clean:
 	@./$< 2>&1 | tee $@
 
 # Comparaison de la sortie à la référence
+%.out.norm: %.out
+	@normalize-git-output $< > $@
+#
 %.out.diff: %.out
 	@if [ -e $<.ref ]; then \
 		echo "=== Please inspect difference between $< and reference $<.ref:" && \

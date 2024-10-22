@@ -9,7 +9,7 @@ Initialized empty Git repository in /root/Desktop/MesBranches/.git/
 + printf 'Première partie\n\n\n\nDeuxième partie\n'
 + git add HelloWorld.txt Contenu.txt
 + git commit -m 'Commit initial'
-[master (root-commit) 0b429fd] Commit initial
+[master (root-commit) AAAAAAA] Commit initial
  2 files changed, 6 insertions(+)
  create mode 100644 Contenu.txt
  create mode 100644 HelloWorld.txt
@@ -27,7 +27,7 @@ nothing to commit, working tree clean
 + echo 'Troisième partie'
 + git add HelloWorld.txt Contenu.txt
 + git commit -m 'Premier jeu de modifications'
-[univers-parallele bd0b9b3] Premier jeu de modifications
+[univers-parallele BBBBBBB] Premier jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
 + git checkout master
 Switched to branch 'master'
@@ -39,19 +39,19 @@ Bonjour !
 + echo 'Nouveau fichier'
 + git add --all
 + git commit -m 'Deuxième jeu de modifications'
-[master 57488b1] Deuxième jeu de modifications
+[master CCCCCCC] Deuxième jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + git diff initial master
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 new file mode 100644
-index 0000000..45f4caf
+index 0000000..DDDDDDD
 --- /dev/null
 +++ b/AutreContenu.txt
 @@ -0,0 +1 @@
 +Nouveau fichier
 diff --git a/Contenu.txt b/Contenu.txt
-index 9aa694d..361d088 100644
+index EEEEEEE..FFFFFFF 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -1,4 +1,4 @@
@@ -62,7 +62,7 @@ index 9aa694d..361d088 100644
  
 + git diff initial univers-parallele
 diff --git a/Contenu.txt b/Contenu.txt
-index 9aa694d..2e19ca9 100644
+index EEEEEEE..GGGGGGG 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Première partie
@@ -71,7 +71,7 @@ index 9aa694d..2e19ca9 100644
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
-index 6625d5f..137d409 100644
+index HHHHHHH..IIIIIII 100644
 --- a/HelloWorld.txt
 +++ b/HelloWorld.txt
 @@ -1 +1 @@
@@ -80,13 +80,13 @@ index 6625d5f..137d409 100644
 + git diff master univers-parallele
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 deleted file mode 100644
-index 45f4caf..0000000
+index DDDDDDD..0000000
 --- a/AutreContenu.txt
 +++ /dev/null
 @@ -1 +0,0 @@
 -Nouveau fichier
 diff --git a/Contenu.txt b/Contenu.txt
-index 361d088..2e19ca9 100644
+index FFFFFFF..GGGGGGG 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -1,5 +1,6 @@
@@ -98,7 +98,7 @@ index 361d088..2e19ca9 100644
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
-index 6625d5f..137d409 100644
+index HHHHHHH..IIIIIII 100644
 --- a/HelloWorld.txt
 +++ b/HelloWorld.txt
 @@ -1 +1 @@
@@ -116,7 +116,7 @@ Merge made by the 'recursive' strategy.
  2 files changed, 2 insertions(+), 1 deletion(-)
 + git diff master~
 diff --git a/Contenu.txt b/Contenu.txt
-index 361d088..f9d5a9b 100644
+index FFFFFFF..JJJJJJJ 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Partie 1 : Le commencement
@@ -125,7 +125,7 @@ index 361d088..f9d5a9b 100644
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
-index 6625d5f..137d409 100644
+index HHHHHHH..IIIIIII 100644
 --- a/HelloWorld.txt
 +++ b/HelloWorld.txt
 @@ -1 +1 @@
@@ -134,13 +134,13 @@ index 6625d5f..137d409 100644
 + git diff initial
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 new file mode 100644
-index 0000000..45f4caf
+index 0000000..DDDDDDD
 --- /dev/null
 +++ b/AutreContenu.txt
 @@ -0,0 +1 @@
 +Nouveau fichier
 diff --git a/Contenu.txt b/Contenu.txt
-index 9aa694d..f9d5a9b 100644
+index EEEEEEE..JJJJJJJ 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -1,5 +1,6 @@
@@ -152,7 +152,7 @@ index 9aa694d..f9d5a9b 100644
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
-index 6625d5f..137d409 100644
+index HHHHHHH..IIIIIII 100644
 --- a/HelloWorld.txt
 +++ b/HelloWorld.txt
 @@ -1 +1 @@
@@ -161,13 +161,13 @@ index 6625d5f..137d409 100644
 + git diff univers-parallele
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 new file mode 100644
-index 0000000..45f4caf
+index 0000000..DDDDDDD
 --- /dev/null
 +++ b/AutreContenu.txt
 @@ -0,0 +1 @@
 +Nouveau fichier
 diff --git a/Contenu.txt b/Contenu.txt
-index 2e19ca9..f9d5a9b 100644
+index GGGGGGG..JJJJJJJ 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -1,4 +1,4 @@
@@ -179,14 +179,14 @@ index 2e19ca9..f9d5a9b 100644
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
 + git merge master
-Updating bd0b9b3..416e2a4
+Updating BBBBBBB..KKKKKKK
 Fast-forward
  AutreContenu.txt | 1 +
  Contenu.txt      | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + git reset --hard '@{1}'
-HEAD is now at bd0b9b3 Premier jeu de modifications
+HEAD is now at BBBBBBB Premier jeu de modifications
 + unset -f test_this_manually
 + git merge --no-ff -m 'Une autre fusion sans histoires' master
 Merge made by the 'recursive' strategy.
@@ -199,14 +199,14 @@ Switched to branch 'master'
 + echo Annexe
 + git add Contenu.txt
 + git commit -m 'Ajoutons une annexe'
-[master 9184f75] Ajoutons une annexe
+[master LLLLLLL] Ajoutons une annexe
  1 file changed, 1 insertion(+)
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
 + echo Bibliographie
 + git add Contenu.txt
 + git commit -m 'Ajoutons une bibliographie'
-[univers-parallele c0b76c6] Ajoutons une bibliographie
+[univers-parallele MMMMMMM] Ajoutons une bibliographie
  1 file changed, 1 insertion(+)
 + set +e
 + git merge master
@@ -239,7 +239,7 @@ Annexe
 >>>>>>> master
 + git diff
 diff --cc Contenu.txt
-index 225099e,c507d9d..0000000
+index NNNNNNN,OOOOOOO..0000000
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@@ -4,4 -4,4 +4,8 @@@ Partie 1 : Le commencemen
@@ -277,5 +277,6 @@ Changes to be committed:
 
 + unset -f test_this_manually
 + git commit -m 'Un merge qui se termine après quelques conflits'
-[univers-parallele 898dd02] Un merge qui se termine après quelques conflits
+[univers-parallele PPPPPPP] Un merge qui se termine après quelques conflits
 + unset -f test_this_manually
+

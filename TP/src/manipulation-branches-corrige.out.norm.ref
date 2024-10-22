@@ -20,14 +20,14 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at 3c15121 La version ultime
+HEAD is now at AAAAAAA La version ultime
 + git branch nouvelle-branche
 + git checkout nouvelle-branche
 Switched to branch 'nouvelle-branche'
 + echo 'Un fichier'
 + git add LeFichier.txt
 + git commit -m 'Ajout d'\''un fichier'
-[nouvelle-branche ab8c6e4] Ajout d'un fichier
+[nouvelle-branche BBBBBBB] Ajout d'un fichier
  1 file changed, 1 insertion(+)
  create mode 100644 LeFichier.txt
 + unset -f test_this_manually
@@ -38,14 +38,14 @@ Merge made by the 'recursive' strategy.
 + echo v1
 + git add LeFichier.txt
 + git commit -m 'Première version'
-[nouvelle-branche d5f3896] Première version
+[nouvelle-branche CCCCCCC] Première version
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git checkout master
 Switched to branch 'master'
 + echo v2
 + git add LeFichier.txt
 + git commit -m 'Deuxième version'
-[master 7c393cd] Deuxième version
+[master DDDDDDD] Deuxième version
  1 file changed, 1 insertion(+)
  create mode 100644 LeFichier.txt
 + set +e
@@ -59,6 +59,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 + git add LeFichier.txt
 + unset -f test_this_manually
 + git commit -m 'Coupage de poire en deux'
-[master 3d92e1c] Coupage de poire en deux
+[master EEEEEEE] Coupage de poire en deux
 + cd /root
 + rm -rf /root/Desktop/Exercice3
+

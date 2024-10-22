@@ -1,9 +1,9 @@
 + IFS='
 	'
 + unset -f test_this_manually
-+ ssh-keygen -q -t ed25519 -f /root/.ssh/id_ed25519 -N '' -C formation-git
-+ cat /root/.ssh/id_ed25519.pub
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPewXGCNySh+1hz7ILsgRe4pSxesGx+IkCqzefSr9GVy formation-git
++ ssh-keygen -q -t pubkey -f /root/.ssh/id_pubkey -N '' -C formation-git
++ cat /root/.ssh/id_pubkey.pub
+ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSS formation-git
 + unset -f test_this_manually
 + cd /root/Desktop
 + git clone https://github.com/francine-dupont/ddhc.git
@@ -26,7 +26,7 @@ Already on 'master'
 Your branch is behind 'upstream/master' by 150 commits, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 + git pull --ff-only
-Updating 2b30285..d9f23eb
+Updating AAAAAAA..BBBBBBB
 Fast-forward
  README.md | 22 +++++++++++++++-------
  1 file changed, 15 insertions(+), 7 deletions(-)
@@ -39,7 +39,7 @@ Switched to a new branch 'changements'
 + echo -e '\nCeci n'\''est pas un pied de page'
 + git add README.md
 + git commit -m 'Ajout d'\''un pied de page rebelle'
-[changements 05370e5] Ajout d'un pied de page rebelle
+[changements CCCCCCC] Ajout d'un pied de page rebelle
  1 file changed, 2 insertions(+)
 + git checkout master
 Switched to branch 'master'
@@ -51,3 +51,4 @@ Switched to branch 'changements'
 + git merge master
 Already up to date.
 + unset -f test_this_manually
+

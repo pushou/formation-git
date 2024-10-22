@@ -18,7 +18,7 @@ core.repositoryformatversion=0
 core.filemode=true
 core.bare=false
 core.logallrefupdates=true
-remote.origin.url=https://gitlab-ci-token:glcbt-64_xFNjZfkqEsnW22EMKtAg@gitlab.in2p3.fr/grasland/formation-git.git
+remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 lfs.repositoryformatversion=0
 + mkdir /root/Desktop/MonDepot
@@ -1008,4 +1008,5 @@ usage: git mv [<options>] <source>... <destination>
     -n, --dry-run         dry run
     -f, --force           force move/rename even if target exists
     -k                    skip move/rename errors
+
 

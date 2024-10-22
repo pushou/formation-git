@@ -35,7 +35,8 @@ Rendu supports:
   stage: render
   interruptible: true
   script:
-    - (cd TP/src && make && mkdir Outputs && mv *.out *.out.diff Outputs)
+    - (cd normalize-git-output && cargo install --path .)
+    - (cd TP/src && make && mkdir Outputs && mv *.out *.out.norm *.out.diff Outputs)
     - make
     - mv TP/book public
   artifacts:

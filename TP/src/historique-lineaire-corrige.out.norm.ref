@@ -9,7 +9,7 @@ Initialized empty Git repository in /root/Desktop/Exercice2/.git/
 + echo 'Mon troisième fichier'
 + git add --all
 + git commit -m 'Mon premier commit'
-[master (root-commit) 11895c2] Mon premier commit
+[master (root-commit) AAAAAAA] Mon premier commit
  3 files changed, 3 insertions(+)
  create mode 100644 Fichier1.txt
  create mode 100644 Fichier2.txt
@@ -18,7 +18,7 @@ Initialized empty Git repository in /root/Desktop/Exercice2/.git/
 + echo 'En plus'
 + git add Fichier1.txt
 + git commit -m 'Mon deuxième commit'
-[master 06715ae] Mon deuxième commit
+[master BBBBBBB] Mon deuxième commit
  1 file changed, 1 insertion(+)
 + git status
 On branch master
@@ -30,18 +30,18 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 + git diff
 diff --git a/Fichier2.txt b/Fichier2.txt
-index 00ffdf4..b85347c 100644
+index CCCCCCC..DDDDDDD 100644
 --- a/Fichier2.txt
 +++ b/Fichier2.txt
 @@ -1 +1,2 @@
  Mon deuxième fichier
 +En plus
 + git commit -am 'Mon troisième commit'
-[master 731dcc8] Mon troisième commit
+[master EEEEEEE] Mon troisième commit
  1 file changed, 1 insertion(+)
 + git diff HEAD~2 HEAD~
 diff --git a/Fichier1.txt b/Fichier1.txt
-index d383624..7f945c9 100644
+index FFFFFFF..GGGGGGG 100644
 --- a/Fichier1.txt
 +++ b/Fichier1.txt
 @@ -1 +1,2 @@
@@ -68,10 +68,11 @@ Or undo this operation with:
 
 Turn off this advice by setting config variable advice.detachedHead to false
 
-HEAD is now at 11895c2 Mon premier commit
+HEAD is now at AAAAAAA Mon premier commit
 + git tag papy
 + git checkout master
-Previous HEAD position was 11895c2 Mon premier commit
+Previous HEAD position was AAAAAAA Mon premier commit
 Switched to branch 'master'
 + cd /root
 + rm -rf /root/Desktop/Exercice2
+

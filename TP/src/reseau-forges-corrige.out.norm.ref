@@ -14,18 +14,18 @@ Switched to a new branch 'copyright'
 + echo -e '\n(C) 1789, Être Suprême Inc.'
 + git add README.md
 + git commit -m 'Ajout d'\''une notice de copyright'
-[copyright 4cb82c1] Ajout d'une notice de copyright
+[copyright AAAAAAA] Ajout d'une notice de copyright
  1 file changed, 2 insertions(+)
 + unset -f test_this_manually
 + echo AAAAAAH
 + git add README.md
 + git commit -m 'Panique à bord !'
-[copyright 2cf1531] Panique à bord !
+[copyright BBBBBBB] Panique à bord !
  1 file changed, 1 insertion(+)
 + echo QQQQQQH
 + git add README.md
 + git commit -m 'Panique à bord en QWERTY !'
-[copyright f0bcdcd] Panique à bord en QWERTY !
+[copyright CCCCCCC] Panique à bord en QWERTY !
  1 file changed, 1 insertion(+)
 + unset -f test_this_manually
 + git checkout master
@@ -34,5 +34,6 @@ Your branch is up to date with 'upstream/master'.
 + git pull --ff-only
 Already up to date.
 + git branch -D copyright
-Deleted branch copyright (was f0bcdcd).
+Deleted branch copyright (was CCCCCCC).
 + unset -f test_this_manually
+
