@@ -5,9 +5,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
-                       bash ca-certificates curl fonts-roboto git gzip \
-                       libreoffice-impress-nogui make man-db openssh-client \
-                       patch tar zip \
+                       bash binutils ca-certificates curl fonts-roboto git \
+                       gzip libreoffice-impress-nogui make man-db \
+                       openssh-client patch tar zip \
     && yes | unminimize \
     && rm -rf /var/lib/apt/lists/*
 
