@@ -226,18 +226,20 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
 
         // If this happened at least once, renumber the IDs sequentially
         if merged_ids {
-            let ids = hash_to_info
-                .iter()
-                .map(|(&hash, info)| (info.id, hash))
-                .collect::<BTreeMap<_, _>>();
-            for (new_id, hash) in ids.into_values().enumerate() {
-                let id = &mut hash_to_info.get_mut(hash).unwrap().id;
-                if *id != new_id {
-                    log::info!(
-                        "Renumbered hash {} to id {new_id}",
-                        std::str::from_utf8(hash).unwrap()
-                    );
-                    *id = new_id;
+            let mut id_to_hashes = BTreeMap::<_, Vec<_>>::new();
+            for (&hash, info) in hash_to_info.iter() {
+                id_to_hashes.entry(info.id).or_default().push(hash);
+            }
+            for (new_id, hashes) in id_to_hashes.into_values().enumerate() {
+                let old_id = hash_to_info[hashes[0]].id;
+                if old_id != new_id {
+                    for hash in hashes {
+                        log::info!(
+                            "Renumbered hash {} to id {new_id}",
+                            std::str::from_utf8(hash).unwrap()
+                        );
+                        hash_to_info.get_mut(hash).unwrap().id = new_id;
+                    }
                 }
             }
         }
