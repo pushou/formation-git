@@ -23,13 +23,13 @@ Your branch is up to date with 'origin/master'.
 Branch 'master' set up to track remote branch 'master' from 'upstream'.
 + git checkout master
 Already on 'master'
-Your branch is behind 'upstream/master' by 150 commits, and can be fast-forwarded.
+Your branch is behind 'upstream/master' by 151 commits, and can be fast-forwarded.
   (use "git pull" to update your local branch)
 + git pull --ff-only
 Updating AAAAAAA..BBBBBBB
 Fast-forward
- README.md | 22 +++++++++++++++-------
- 1 file changed, 15 insertions(+), 7 deletions(-)
+ README.md | 2 --
+ 1 file changed, 2 deletions(-)
 + git config pull.ff only
 + git checkout master
 Already on 'master'

@@ -118,13 +118,13 @@ Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
     Ajoutons une annexe
 
 commit GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG
-Merge: HHHHHHH KKKKKKK
+Merge: HHHHHHH IIIIIII
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
 Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
 
     Une fusion sans histoires
 
-commit JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ
+commit HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
 Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
 
