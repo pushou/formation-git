@@ -40,6 +40,13 @@ Rendu supports:
     - . "$HOME/.cargo/env"
     - (cd normalize-git-output && cargo install --path .)
     - (cd TP/src && make && mkdir Outputs && mv *.out *.out.norm *.out.diff Outputs)
+    - |
+      for f in $(ls TP/src/Outputs/*.diff); do
+        if [ -s $f ]; then
+          echo "Exiting due to unexpected output differences"
+          exit 1;
+        fi
+      done
     - make
     - mv TP/book public
   artifacts:
