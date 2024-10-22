@@ -26,6 +26,7 @@ clean:
 
 # Comparaison de la sortie à la référence
 %.out.norm: %.out
+	@echo "=== Will now normalize $< and save output to $@"
 	@normalize-git-output $< > $@
 #
 %.out.diff: %.out.norm
