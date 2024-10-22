@@ -35,6 +35,7 @@ Rendu supports:
   stage: render
   interruptible: true
   script:
+    - . "$HOME/.cargo/env"
     - (cd normalize-git-output && cargo install --path .)
     - (cd TP/src && make && mkdir Outputs && mv *.out *.out.norm *.out.diff Outputs)
     - make
