@@ -30,12 +30,12 @@ clean:
 #
 %.out.diff: %.out.norm
 	@if [ -e $<.ref ]; then \
-		echo "=== Please inspect difference between $< and reference $<.ref:" && \
-		diff -Nu --color $<.ref $<; \
 		diff -Nu $<.ref $< > $@; \
-		diff=$?; \
-		echo "=== Difference was saved to $@"; \
-		exit ${diff}; \
+		if [ -s $@ ]; then \
+			echo "=== Please inspect difference between $< and reference $<.ref:" && \
+			diff -Nu --color $<.ref $<; \
+			echo "=== Difference was saved to $@"; \
+		fi; \
 	else \
 		echo "=== No reference found for $<." && \
 		echo "=== Please review $< and run 'cp $< $<.ref' if it seems correct"; \
