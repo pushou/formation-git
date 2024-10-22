@@ -27,7 +27,7 @@ clean:
 %.out.norm: %.out
 	@normalize-git-output $< > $@
 #
-%.out.diff: %.out
+%.out.diff: %.out.norm
 	@if [ -e $<.ref ]; then \
 		echo "=== Please inspect difference between $< and reference $<.ref:" && \
 		diff -Nu --color $<.ref $<; \
