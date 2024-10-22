@@ -163,7 +163,8 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
     // hashes and shortened hashes, some of which can be absent.
     let mut len_to_hashes = BTreeMap::<_, HashSet<_>>::new();
     for hash in hash_to_info.keys() {
-        debug_assert!(len_to_hashes.entry(hash.len()).or_default().insert(*hash));
+        let inserted = len_to_hashes.entry(hash.len()).or_default().insert(*hash);
+        debug_assert!(inserted);
     }
     assert!(len_to_hashes.len() <= 2);
 
@@ -215,6 +216,11 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                     );
                     hash_to_info.get_mut(short).unwrap().id = long_id;
                 }
+            } else {
+                log::info!(
+                    "Cannot merge short hash {} as it matches multiple long hashes",
+                    std::str::from_utf8(short).unwrap()
+                );
             }
         }
 
