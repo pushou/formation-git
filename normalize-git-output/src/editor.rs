@@ -59,7 +59,7 @@ impl LogEditor {
 
     /// Replace every occurence of a regex with a fixed string
     pub fn replace_regex(&mut self, pattern: &Regex, replacement: &str) {
-        log::info!("Looking for occurences of regex {pattern:?}...");
+        log::info!("Looking for occurences of regex {:?}...", pattern.as_str());
         self.replace_impl(
             |log, matches| {
                 matches.extend(
