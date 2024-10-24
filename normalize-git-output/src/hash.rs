@@ -229,20 +229,20 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                 let short_id = hash_to_info[short].id;
                 let long_id = hash_to_info[long].id;
                 if short_id < long_id {
+                    hash_to_info.get_mut(long).unwrap().id = short_id;
                     log::debug!(
                         "Merged long hash {} with id {long_id} into short hash {} with id {short_id}",
                         std::str::from_utf8(long).unwrap(),
                         std::str::from_utf8(short).unwrap(),
                     );
-                    hash_to_info.get_mut(long).unwrap().id = short_id;
                 } else {
                     debug_assert!(long_id > short_id);
+                    hash_to_info.get_mut(short).unwrap().id = long_id;
                     log::debug!(
                         "Merged short hash {} with id {short_id} into long hash {} with id {long_id}",
                         std::str::from_utf8(short).unwrap(),
                         std::str::from_utf8(long).unwrap(),
                     );
-                    hash_to_info.get_mut(short).unwrap().id = long_id;
                 }
             } else {
                 log::debug!(
@@ -262,11 +262,11 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                 let old_id = hash_to_info[hashes[0]].id;
                 if old_id != new_id {
                     for hash in hashes {
+                        hash_to_info.get_mut(hash).unwrap().id = new_id;
                         log::debug!(
                             "Renumbered hash {} to id {new_id}",
                             std::str::from_utf8(hash).unwrap()
                         );
-                        hash_to_info.get_mut(hash).unwrap().id = new_id;
                     }
                 }
             }
