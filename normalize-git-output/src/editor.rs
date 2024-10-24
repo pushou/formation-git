@@ -1,6 +1,6 @@
 //! Mechanism to efficiently edit a git log
 
-use regex::Regex;
+use regex_lite::Regex;
 use std::{mem, ops::Range};
 
 /// Git log editor

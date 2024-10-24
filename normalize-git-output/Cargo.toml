@@ -7,5 +7,5 @@ edition = "2021"
 env_logger = { version = "0.11.5", default-features = false }
 home = "0.5.9"
 log = "0.4.22"
-regex = { version = "1.11.0", default-features = false, features = ["std"] }
+regex-lite = "0.1"
 whoami = { version = "1.5.2", default-features = false }
