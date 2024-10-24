@@ -1,11 +1,11 @@
 + IFS='
 	'
 + unset -f test_this_manually
-+ ssh-keygen -q -t pubkey -f /root/.ssh/id_pubkey -N '' -C formation-git
-+ cat /root/.ssh/id_pubkey.pub
-ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSS formation-git
++ ssh-keygen -q -t pubkey -f $HOME/.ssh/id_pubkey -N '' -C formation-git
++ cat $HOME/.ssh/id_pubkey.pub
+ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSH formation-git
 + unset -f test_this_manually
-+ cd /root/Desktop
++ cd $HOME/Desktop
 + git clone https://github.com/francine-dupont/ddhc.git
 Cloning into 'ddhc'...
 + cd ddhc/

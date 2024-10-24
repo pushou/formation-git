@@ -1,9 +1,9 @@
 + IFS='
 	'
-+ mkdir /root/Desktop/Exercice1
-+ cd /root/Desktop/Exercice1
++ mkdir $HOME/Desktop/Exercice1
++ cd $HOME/Desktop/Exercice1
 + git init
-Initialized empty Git repository in /root/Desktop/Exercice1/.git/
+Initialized empty Git repository in $HOME/Desktop/Exercice1/.git/
 + echo '*.o'
 + echo Blabla
 + git add Test.txt
@@ -21,6 +21,6 @@ Untracked files:
   (use "git add <file>..." to include in what will be committed)
 	.gitignore
 
-+ cd /root
-+ rm -rf /root/Desktop/Exercice1
++ cd $HOME
++ rm -rf $HOME/Desktop/Exercice1
 

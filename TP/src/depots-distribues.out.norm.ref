@@ -1,7 +1,7 @@
 + IFS='
 	'
 + unset -f test_this_manually
-+ cd /root/Desktop
++ cd $HOME/Desktop
 + git clone MesBranches MonClone
 Cloning into 'MonClone'...
 done.
@@ -14,12 +14,12 @@ nothing to commit, working tree clean
 + git remote
 origin
 + git remote -v
-origin	/root/Desktop/MesBranches (fetch)
-origin	/root/Desktop/MesBranches (push)
+origin	$HOME/Desktop/MesBranches (fetch)
+origin	$HOME/Desktop/MesBranches (push)
 + git remote show origin
 * remote origin
-  Fetch URL: /root/Desktop/MesBranches
-  Push  URL: /root/Desktop/MesBranches
+  Fetch URL: $HOME/Desktop/MesBranches
+  Push  URL: $HOME/Desktop/MesBranches
   HEAD branch: univers-parallele
   Remote branches:
     master            tracked
@@ -42,7 +42,7 @@ cat: ToutNouveau.txt: No such file or directory
 + set -e
 + git diff origin/univers-parallele
 + git fetch origin
-From /root/Desktop/MesBranches
+From $HOME/Desktop/MesBranches
    BBBBBBB..AAAAAAA  univers-parallele -> origin/univers-parallele
 + set +e
 + cat ToutNouveau.txt
@@ -72,7 +72,7 @@ Nouveau dans votre ville !
  1 file changed, 1 insertion(+)
 + cd ../MonClone
 + git pull origin univers-parallele
-From /root/Desktop/MesBranches
+From $HOME/Desktop/MesBranches
  * branch            univers-parallele -> FETCH_HEAD
    AAAAAAA..DDDDDDD  univers-parallele -> origin/univers-parallele
 Updating AAAAAAA..DDDDDDD
@@ -101,7 +101,7 @@ Everything up-to-date
 [master FFFFFFF] Traduction allemande
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push origin
-To /root/Desktop/MesBranches
+To $HOME/Desktop/MesBranches
    EEEEEEE..FFFFFFF  master -> master
 + cd ../MesBranches
 + git log master
@@ -148,7 +148,7 @@ Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
 [master KKKKKKK] Traduction japonaise
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push
-To /root/Desktop/MesBranches
+To $HOME/Desktop/MesBranches
    FFFFFFF..KKKKKKK  master -> master
 + git config --global push.autoSetupRemote true
 + git clone ../MesBranches ../MonAutreClone
@@ -158,8 +158,8 @@ done.
 + git remote -v
 autre	../MonAutreClone (fetch)
 autre	../MonAutreClone (push)
-origin	/root/Desktop/MesBranches (fetch)
-origin	/root/Desktop/MesBranches (push)
+origin	$HOME/Desktop/MesBranches (fetch)
+origin	$HOME/Desktop/MesBranches (push)
 + git fetch --all
 Fetching origin
 Fetching autre
@@ -176,7 +176,7 @@ Branch 'master' set up to track remote branch 'master' from 'origin'.
  1 file changed, 1 insertion(+)
  create mode 100644 Compteur.txt
 + git push
-To /root/Desktop/MonClone/../MesBranches
+To $HOME/Desktop/MonClone/../MesBranches
    KKKKKKK..LLLLLLL  master -> master
 + cd ../MonClone
 + echo 'Prost !'
@@ -187,7 +187,7 @@ To /root/Desktop/MonClone/../MesBranches
 + unset -f test_this_manually
 + git fetch --all
 Fetching origin
-From /root/Desktop/MesBranches
+From $HOME/Desktop/MesBranches
    KKKKKKK..LLLLLLL  master     -> origin/master
 Fetching autre
 From ../MonAutreClone

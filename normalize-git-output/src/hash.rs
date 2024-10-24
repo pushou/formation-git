@@ -1,11 +1,19 @@
 //! Handle non-reproducibility caused by (time-dependent) git commit hashes
 
-use crate::MIN_GIT_HASH_LEN;
+use crate::editor::LogEditor;
 use std::collections::{hash_map::Entry, BTreeMap, HashMap, HashSet};
 
+// Minimum sequence of hexadecimal digits treated as a git hash
+//
+// Must be >6 otherwise git file modes will be treated as git hashes.
+// Empirically, current versions of git emit 7 hex digits, for which we have
+// encountered only "ed25519" (SSH crypto type) as a false positive so far.
+const MIN_GIT_HASH_LEN: usize = 7;
+
 /// Replace non-reproducible git commit hashes a reproducible base62 identifier
-pub fn normalize_hashes(log: &mut str) {
+pub fn normalize_hashes(editor: &mut LogEditor) {
     // Detect git hashes and their positions of occurence
+    let log = editor.get_mut();
     let mut hash_to_info = find_hashes(log);
 
     // Merge long hashes with their shortened equivalent

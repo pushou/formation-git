@@ -1,8 +1,8 @@
 //! Handle non-reproducibility caused by timestamps
 
-use std::{mem, sync::LazyLock};
-
+use crate::editor::LogEditor;
 use regex::Regex;
+use std::sync::LazyLock;
 
 /// Regex to find dates in the format emitted by ls
 static LS_REGEX: LazyLock<Regex> = LazyLock::new(|| {
@@ -25,19 +25,18 @@ static GIT_REGEX: LazyLock<Regex> = LazyLock::new(|| {
 ///
 /// Should be done after normalize_hashes because it generates sequences that a
 /// future version of normalize_hashes might mistake for a hash.
-pub fn normalize_time(log: &mut String) {
-    let mut output = String::with_capacity(log.len());
+pub fn normalize_time(editor: &mut LogEditor) {
     let mut replace_with_placeholder = |regex: &Regex, name, placeholder| {
-        let mut next_start = 0;
-        for m in regex.find_iter(log) {
-            output.push_str(&log[next_start..m.start()]);
-            log::info!("Found {name}-style date {m:?}, replaced it with a placeholder");
-            output.push_str(placeholder);
-            next_start = m.end();
-        }
-        output.push_str(&log[next_start..]);
-        mem::swap(log, &mut output);
-        output.clear();
+        editor.rewrite(|log, output| {
+            let mut next_start = 0;
+            for m in regex.find_iter(log) {
+                output.push_str(&log[next_start..m.start()]);
+                log::info!("Found {name}-style date {m:?}, replaced it with a placeholder");
+                output.push_str(placeholder);
+                next_start = m.end();
+            }
+            output.push_str(&log[next_start..]);
+        });
     };
     replace_with_placeholder(&GIT_REGEX, "git", "Ddd Mmm DD HH:MM:SS YYYY +ZZZZ");
     replace_with_placeholder(&LS_REGEX, "ls", "Mmm DD HH:MM");

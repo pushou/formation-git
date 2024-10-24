@@ -1,9 +1,9 @@
 + IFS='
 	'
-+ mkdir /root/Desktop/Exercice2
-+ cd /root/Desktop/Exercice2
++ mkdir $HOME/Desktop/Exercice2
++ cd $HOME/Desktop/Exercice2
 + git init
-Initialized empty Git repository in /root/Desktop/Exercice2/.git/
+Initialized empty Git repository in $HOME/Desktop/Exercice2/.git/
 + echo 'Mon premier fichier'
 + echo 'Mon deuxième fichier'
 + echo 'Mon troisième fichier'
@@ -73,6 +73,6 @@ HEAD is now at AAAAAAA Mon premier commit
 + git checkout master
 Previous HEAD position was AAAAAAA Mon premier commit
 Switched to branch 'master'
-+ cd /root
-+ rm -rf /root/Desktop/Exercice2
++ cd $HOME
++ rm -rf $HOME/Desktop/Exercice2
 

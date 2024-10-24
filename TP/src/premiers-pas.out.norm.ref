@@ -1,7 +1,7 @@
 + IFS='
 	'
 + whoami
-root
+$USER
 + git config --global user.name 'Francine Dupont'
 + git config --global user.email fdupont@serveur-imaginaire.fr
 + git config --global core.editor nano
@@ -21,10 +21,10 @@ core.logallrefupdates=true
 remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 lfs.repositoryformatversion=0
-+ mkdir /root/Desktop/MonDepot
-+ cd /root/Desktop/MonDepot
++ mkdir $HOME/Desktop/MonDepot
++ cd $HOME/Desktop/MonDepot
 + git init
-Initialized empty Git repository in /root/Desktop/MonDepot/.git/
+Initialized empty Git repository in $HOME/Desktop/MonDepot/.git/
 + git status
 On branch master
 
