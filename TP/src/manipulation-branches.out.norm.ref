@@ -57,17 +57,17 @@ index EEEEEEE..FFFFFFF 100644
 @@ -1,4 +1,4 @@
 -Première partie
 +Partie 1 : Le commencement
-
-
-
+ 
+ 
+ 
 + git diff initial univers-parallele
 diff --git a/Contenu.txt b/Contenu.txt
 index EEEEEEE..GGGGGGG 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Première partie
-
-
+ 
+ 
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -92,9 +92,9 @@ index FFFFFFF..GGGGGGG 100644
 @@ -1,5 +1,6 @@
 -Partie 1 : Le commencement
 +Première partie
-
-
-
+ 
+ 
+ 
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -120,8 +120,8 @@ index FFFFFFF..JJJJJJJ 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Partie 1 : Le commencement
-
-
+ 
+ 
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -146,9 +146,9 @@ index EEEEEEE..JJJJJJJ 100644
 @@ -1,5 +1,6 @@
 -Première partie
 +Partie 1 : Le commencement
-
-
-
+ 
+ 
+ 
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -173,9 +173,9 @@ index GGGGGGG..JJJJJJJ 100644
 @@ -1,4 +1,4 @@
 -Première partie
 +Partie 1 : Le commencement
-
-
-
+ 
+ 
+ 
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
 + git merge master
@@ -243,7 +243,7 @@ index NNNNNNN,OOOOOOO..0000000
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@@ -4,4 -4,4 +4,8 @@@ Partie 1 : Le commencemen
-
+  
   Deuxième partie
   Troisième partie
 ++<<<<<<< HEAD
