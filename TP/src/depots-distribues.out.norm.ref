@@ -223,4 +223,3 @@ Automatic merge failed; fix conflicts and then commit the result.
 + set -e
 + git config --global pull.ff only
 + unset -f test_this_manually
-

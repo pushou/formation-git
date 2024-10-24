@@ -1,2 +1,1 @@
 Usage: ./generate_bisect_repo.sh <desired number of bisect steps between 2 to 15>
-

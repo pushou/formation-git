@@ -36,4 +36,3 @@ Already up to date.
 + git branch -D copyright
 Deleted branch copyright (was CCCCCCC).
 + unset -f test_this_manually
-

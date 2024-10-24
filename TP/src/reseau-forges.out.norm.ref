@@ -51,4 +51,3 @@ Switched to branch 'changements'
 + git merge master
 Already up to date.
 + unset -f test_this_manually
-
