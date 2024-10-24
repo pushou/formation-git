@@ -3,7 +3,7 @@ mod hash;
 mod time;
 
 use editor::LogEditor;
-use std::{env, fs};
+use std::{env, fs, process::Command};
 
 fn main() {
     // Set up logging and load user-specified log file
@@ -52,19 +52,16 @@ fn remove_token_and_pubkey(editor: &mut LogEditor) {
 /// Try to replace usernames, references to the user's main group (root if root,
 /// users otherwise) and home directory paths with a fixed pattern
 fn hide_user_group_homedir(editor: &mut LogEditor) {
-    if let Ok(homedir) = env::var("HOME") {
-        editor.replace_fixed(&homedir, "$HOME");
+    if let Some(homedir) = home::home_dir() {
+        editor.replace_fixed(&format!("{}", homedir.display()), "~");
     } else {
-        log::warn!("Could not normalize home directory because HOME is not set");
+        log::error!("Could not normalize home directory");
     }
-    if let Ok(username) = env::var("USER") {
-        if username == "root" {
-            editor.replace_fixed("root root", "$USER $GROUP");
-        } else {
-            editor.replace_fixed(&format!("{username} users"), "$USER $GROUP");
-        }
-        editor.replace_fixed(&format!("whoami\n{username}"), "whoami\n$USER");
+    let username = whoami::username();
+    if username == "root" {
+        editor.replace_fixed("root root", "$USER $GROUP");
     } else {
-        log::warn!("Could not normalize username because USER is not set");
+        editor.replace_fixed(&format!("{username} users"), "$USER $GROUP");
     }
+    editor.replace_fixed(&format!("whoami\n{username}"), "whoami\n$USER");
 }
