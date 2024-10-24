@@ -1,7 +1,9 @@
 //! Handle non-reproducibility caused by (time-dependent) git commit hashes
 
+use log::log_enabled;
+
 use crate::editor::LogEditor;
-use std::collections::{hash_map::Entry, BTreeMap, HashMap, HashSet};
+use std::collections::{hash_map::Entry, BTreeMap, BTreeSet, HashMap, HashSet};
 
 // Minimum sequence of hexadecimal digits treated as a git hash
 //
@@ -18,6 +20,22 @@ pub fn normalize_hashes(editor: &mut LogEditor) {
 
     // Merge long hashes with their shortened equivalent
     merge_short_hashes(&mut hash_to_info);
+
+    // Log the final hash numbers
+    if log::max_level() >= log::Level::Info {
+        let mut hashes_by_id = BTreeMap::<_, BTreeSet<_>>::new();
+        for (hash, info) in hash_to_info.iter() {
+            hashes_by_id.entry(info.id).or_default().insert(*hash);
+        }
+        log::info!("Overall, identified these distinct git hashes:");
+        for (id, hashes) in hashes_by_id {
+            let hashes = hashes
+                .into_iter()
+                .map(|hash| std::str::from_utf8(hash).unwrap())
+                .collect::<Vec<_>>();
+            log::info!("{id}. {hashes:?}");
+        }
+    }
 
     // List hash occurences, sorted by position
     #[derive(Clone, Copy)]
@@ -104,7 +122,7 @@ fn find_hashes(log: &str) -> HashMap<&[u8], HashInfo> {
                         o.get_mut().positions.push(start);
                     }
                     Entry::Vacant(v) => {
-                        log::info!(
+                        log::debug!(
                             "Found new hash {} at position {start}, allocated id {next_id}",
                             std::str::from_utf8(hash).unwrap(),
                         );
@@ -209,7 +227,7 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                 let short_id = hash_to_info[short].id;
                 let long_id = hash_to_info[long].id;
                 if short_id < long_id {
-                    log::info!(
+                    log::debug!(
                         "Merged long hash {} with id {long_id} into short hash {} with id {short_id}",
                         std::str::from_utf8(long).unwrap(),
                         std::str::from_utf8(short).unwrap(),
@@ -217,7 +235,7 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                     hash_to_info.get_mut(long).unwrap().id = short_id;
                 } else {
                     debug_assert!(long_id > short_id);
-                    log::info!(
+                    log::debug!(
                         "Merged short hash {} with id {short_id} into long hash {} with id {long_id}",
                         std::str::from_utf8(short).unwrap(),
                         std::str::from_utf8(long).unwrap(),
@@ -225,7 +243,7 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                     hash_to_info.get_mut(short).unwrap().id = long_id;
                 }
             } else {
-                log::info!(
+                log::debug!(
                     "Cannot merge short hash {} as it matches multiple long hashes",
                     std::str::from_utf8(short).unwrap()
                 );
@@ -242,7 +260,7 @@ fn merge_short_hashes(hash_to_info: &mut HashMap<&[u8], HashInfo>) {
                 let old_id = hash_to_info[hashes[0]].id;
                 if old_id != new_id {
                     for hash in hashes {
-                        log::info!(
+                        log::debug!(
                             "Renumbered hash {} to id {new_id}",
                             std::str::from_utf8(hash).unwrap()
                         );

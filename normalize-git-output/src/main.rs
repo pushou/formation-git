@@ -33,13 +33,13 @@ fn remove_token_and_pubkey(editor: &mut LogEditor) {
     editor.rewrite(|log, output| {
         for line in log.lines() {
             if line.starts_with("remote.origin.url=") {
-                log::info!("Removed a gitlab token");
                 output.push_str(
                     "remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git",
                 );
+                log::info!("Removed a gitlab token");
             } else if line.starts_with("ssh-ed25519 ") && line.ends_with(" formation-git") {
-                log::info!("Replaced an SSH public key with a placeholder");
                 output.push_str("ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSH formation-git");
+                log::info!("Replaced an SSH public key with a placeholder");
             } else {
                 output.push_str(line);
             }
@@ -52,11 +52,8 @@ fn remove_token_and_pubkey(editor: &mut LogEditor) {
 /// Try to replace usernames, references to the user's main group (root if root,
 /// users otherwise) and home directory paths with a fixed pattern
 fn hide_user_group_homedir(editor: &mut LogEditor) {
-    if let Some(homedir) = home::home_dir() {
-        editor.replace_fixed(&format!("{}", homedir.display()), "~");
-    } else {
-        log::error!("Could not normalize home directory");
-    }
+    let homedir = home::home_dir().expect("Failed to discover home directory");
+    editor.replace_fixed(&format!("{}", homedir.display()), "~");
     let username = whoami::username();
     if username == "root" {
         editor.replace_fixed("root root", "$USER $GROUP");

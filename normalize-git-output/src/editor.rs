@@ -49,7 +49,7 @@ impl LogEditor {
             |log, matches| {
                 matches.extend(
                     log.match_indices(pattern)
-                        .inspect(|(idx, _pat)| log::debug!("Found occurence at position {idx}"))
+                        .inspect(|(idx, _pat)| log::info!("- Found occurence at position {idx}"))
                         .map(|(idx, pattern)| idx..idx + pattern.len()),
                 )
             },
@@ -66,7 +66,11 @@ impl LogEditor {
                     pattern
                         .find_iter(log)
                         .inspect(|m| {
-                            log::info!("Found occurence {:?} at position {}", m.as_str(), m.start())
+                            log::info!(
+                                "- Found occurence {:?} at position {}",
+                                m.as_str(),
+                                m.start()
+                            )
                         })
                         .map(|m| m.range()),
                 )
@@ -93,7 +97,7 @@ impl LogEditor {
             output.push_str(&log[next_start..]);
         });
         self.matches = matches;
-        log::info!("Replaced every occurence with {replacement:?}");
+        log::info!("Replaced all occurences with {replacement:?}");
     }
 
     /// Emit the normalized string to stdout
