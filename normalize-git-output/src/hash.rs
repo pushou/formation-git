@@ -1,7 +1,5 @@
 //! Handle non-reproducibility caused by (time-dependent) git commit hashes
 
-use log::log_enabled;
-
 use crate::editor::LogEditor;
 use std::collections::{hash_map::Entry, BTreeMap, BTreeSet, HashMap, HashSet};
 
@@ -24,13 +22,13 @@ pub fn normalize_hashes(editor: &mut LogEditor) {
     // Log the final hash numbers
     if log::max_level() >= log::Level::Info {
         if hash_to_info.is_empty() {
-            log::info!("No git hashes found");
+            log::info!("Did not find any git hashes");
         } else {
             let mut hashes_by_id = BTreeMap::<_, BTreeSet<_>>::new();
             for (hash, info) in hash_to_info.iter() {
                 hashes_by_id.entry(info.id).or_default().insert(*hash);
             }
-            log::info!("Overall, identified these distinct git hashes:");
+            log::info!("Will normalize these git hashes:");
             for (id, hashes) in hashes_by_id {
                 let hashes = hashes
                     .into_iter()
