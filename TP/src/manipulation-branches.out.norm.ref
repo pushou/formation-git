@@ -1,10 +1,10 @@
 + IFS='
 	'
 + unset -f test_this_manually
-+ mkdir $HOME/Desktop/MesBranches
-+ cd $HOME/Desktop/MesBranches
++ mkdir ~/Desktop/MesBranches
++ cd ~/Desktop/MesBranches
 + git init
-Initialized empty Git repository in $HOME/Desktop/MesBranches/.git/
+Initialized empty Git repository in ~/Desktop/MesBranches/.git/
 + echo 'Bonjour !'
 + printf 'Première partie\n\n\n\nDeuxième partie\n'
 + git add HelloWorld.txt Contenu.txt

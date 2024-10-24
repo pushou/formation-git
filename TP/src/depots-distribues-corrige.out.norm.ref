@@ -1,9 +1,9 @@
 + IFS='
 	'
-+ git clone $HOME/Desktop/MonDepot $HOME/Desktop/Exercice4
-Cloning into '$HOME/Desktop/Exercice4'...
++ git clone ~/Desktop/MonDepot ~/Desktop/Exercice4
+Cloning into '~/Desktop/Exercice4'...
 done.
-+ cd $HOME/Desktop/MonDepot/
++ cd ~/Desktop/MonDepot/
 + ls -al
 total 12
 drwxr-xr-x 4 $USER $GROUP  98 Mmm DD HH:MM .
@@ -37,7 +37,7 @@ Switched to a new branch 'test'
  1 file changed, 1 insertion(+)
 + cd ../Exercice4
 + git fetch origin
-From $HOME/Desktop/MonDepot
+From ~/Desktop/MonDepot
  * [new branch]      test       -> origin/test
 + git checkout test
 Switched to a new branch 'test'
@@ -54,9 +54,9 @@ Branch 'test' set up to track remote branch 'test' from 'origin'.
 [test DDDDDDD] Complétion d'un fichier
  1 file changed, 1 insertion(+)
 + cd ../MonDepot
-+ git remote add copieur $HOME/Desktop/Exercice4
++ git remote add copieur ~/Desktop/Exercice4
 + git pull copieur test
-From $HOME/Desktop/Exercice4
+From ~/Desktop/Exercice4
  * branch            test       -> FETCH_HEAD
  * [new branch]      test       -> copieur/test
 Updating BBBBBBB..DDDDDDD
@@ -81,7 +81,7 @@ Switched to branch 'master'
 Everything up-to-date
 + cd ../Exercice4
 + git fetch origin
-From $HOME/Desktop/MonDepot
+From ~/Desktop/MonDepot
    BBBBBBB..DDDDDDD  test       -> origin/test
    GGGGGGG..FFFFFFF  master     -> origin/master
 + git merge origin/master
@@ -89,6 +89,6 @@ Merge made by the 'recursive' strategy.
  Incertitude.txt | 2 ++
  1 file changed, 2 insertions(+)
  create mode 100644 Incertitude.txt
-+ cd $HOME
-+ rm -rf $HOME/Desktop/Exercice4
++ cd ~
++ rm -rf ~/Desktop/Exercice4
 

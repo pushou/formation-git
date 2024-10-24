@@ -1,7 +1,7 @@
 + IFS='
 	'
-+ cp -r $HOME/Desktop/MonDepot $HOME/Desktop/Exercice3
-+ cd $HOME/Desktop/Exercice3
++ cp -r ~/Desktop/MonDepot ~/Desktop/Exercice3
++ cd ~/Desktop/Exercice3
 + git checkout HEAD~
 Note: switching to 'HEAD~'.
 
@@ -60,6 +60,6 @@ Automatic merge failed; fix conflicts and then commit the result.
 + unset -f test_this_manually
 + git commit -m 'Coupage de poire en deux'
 [master EEEEEEE] Coupage de poire en deux
-+ cd $HOME
-+ rm -rf $HOME/Desktop/Exercice3
++ cd ~
++ rm -rf ~/Desktop/Exercice3
 

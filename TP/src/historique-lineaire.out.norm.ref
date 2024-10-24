@@ -1,7 +1,7 @@
 + IFS='
 	'
 + unset -f test_this_manually
-+ cd $HOME/Desktop/MonDepot
++ cd ~/Desktop/MonDepot
 + git commit -m 'Mon premier commit'
 [master (root-commit) AAAAAAA] Mon premier commit
  2 files changed, 2 insertions(+)

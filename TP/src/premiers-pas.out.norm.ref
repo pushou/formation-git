@@ -21,10 +21,10 @@ core.logallrefupdates=true
 remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
 lfs.repositoryformatversion=0
-+ mkdir $HOME/Desktop/MonDepot
-+ cd $HOME/Desktop/MonDepot
++ mkdir ~/Desktop/MonDepot
++ cd ~/Desktop/MonDepot
 + git init
-Initialized empty Git repository in $HOME/Desktop/MonDepot/.git/
+Initialized empty Git repository in ~/Desktop/MonDepot/.git/
 + git status
 On branch master
 

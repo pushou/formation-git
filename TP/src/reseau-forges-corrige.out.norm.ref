@@ -1,6 +1,6 @@
 + IFS='
 	'
-+ cd $HOME/Desktop/ddhc
++ cd ~/Desktop/ddhc
 + git remote -v
 origin	https://github.com/francine-dupont/ddhc.git (fetch)
 origin	https://github.com/francine-dupont/ddhc.git (push)
