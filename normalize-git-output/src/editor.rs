@@ -99,6 +99,6 @@ impl LogEditor {
 
     /// Emit the normalized string to stdout
     pub fn print(self) {
-        println!("{}", self.log)
+        print!("{}", self.log)
     }
 }
