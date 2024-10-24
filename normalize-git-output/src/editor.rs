@@ -44,12 +44,12 @@ impl LogEditor {
 
     /// Replace every occurence of a string with another string
     pub fn replace_fixed(&mut self, pattern: &str, replacement: &str) {
-        log::info!("Looking for occurences of fixed string {pattern:?}...");
+        log::info!("Looking for fixed string {pattern:?}...");
         self.replace_impl(
             |log, matches| {
                 matches.extend(
                     log.match_indices(pattern)
-                        .inspect(|(idx, _pat)| log::info!("- Found occurence at position {idx}"))
+                        .inspect(|(idx, _pat)| log::info!("- Found at position {idx}"))
                         .map(|(idx, pattern)| idx..idx + pattern.len()),
                 )
             },
@@ -59,18 +59,14 @@ impl LogEditor {
 
     /// Replace every occurence of a regex with a fixed string
     pub fn replace_regex(&mut self, pattern: &Regex, replacement: &str) {
-        log::info!("Looking for occurences of regex {:?}...", pattern.as_str());
+        log::info!("Looking for regex {:?}...", pattern.as_str());
         self.replace_impl(
             |log, matches| {
                 matches.extend(
                     pattern
                         .find_iter(log)
                         .inspect(|m| {
-                            log::info!(
-                                "- Found occurence {:?} at position {}",
-                                m.as_str(),
-                                m.start()
-                            )
+                            log::info!("- Found match {:?} at position {}", m.as_str(), m.start())
                         })
                         .map(|m| m.range()),
                 )
@@ -86,18 +82,22 @@ impl LogEditor {
         replacement: &str,
     ) {
         collect_matches(&self.log, &mut self.matches);
-        let mut matches = mem::take(&mut self.matches);
-        self.rewrite(|log, output| {
-            let mut next_start = 0;
-            for o in matches.drain(..) {
-                output.push_str(&log[next_start..o.start]);
-                output.push_str(replacement);
-                next_start = o.end;
-            }
-            output.push_str(&log[next_start..]);
-        });
-        self.matches = matches;
-        log::info!("Replaced all occurences with {replacement:?}");
+        if self.matches.is_empty() {
+            log::info!("...but did not find any match");
+        } else {
+            let mut matches = mem::take(&mut self.matches);
+            self.rewrite(|log, output| {
+                let mut next_start = 0;
+                for m in matches.drain(..) {
+                    output.push_str(&log[next_start..m.start]);
+                    output.push_str(replacement);
+                    next_start = m.end;
+                }
+                output.push_str(&log[next_start..]);
+            });
+            self.matches = matches;
+            log::info!("Replaced all matches with {replacement:?}");
+        }
     }
 
     /// Emit the normalized string to stdout

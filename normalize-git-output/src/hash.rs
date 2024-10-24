@@ -23,17 +23,21 @@ pub fn normalize_hashes(editor: &mut LogEditor) {
 
     // Log the final hash numbers
     if log::max_level() >= log::Level::Info {
-        let mut hashes_by_id = BTreeMap::<_, BTreeSet<_>>::new();
-        for (hash, info) in hash_to_info.iter() {
-            hashes_by_id.entry(info.id).or_default().insert(*hash);
-        }
-        log::info!("Overall, identified these distinct git hashes:");
-        for (id, hashes) in hashes_by_id {
-            let hashes = hashes
-                .into_iter()
-                .map(|hash| std::str::from_utf8(hash).unwrap())
-                .collect::<Vec<_>>();
-            log::info!("{id}. {hashes:?}");
+        if hash_to_info.is_empty() {
+            log::info!("No git hashes found");
+        } else {
+            let mut hashes_by_id = BTreeMap::<_, BTreeSet<_>>::new();
+            for (hash, info) in hash_to_info.iter() {
+                hashes_by_id.entry(info.id).or_default().insert(*hash);
+            }
+            log::info!("Overall, identified these distinct git hashes:");
+            for (id, hashes) in hashes_by_id {
+                let hashes = hashes
+                    .into_iter()
+                    .map(|hash| std::str::from_utf8(hash).unwrap())
+                    .collect::<Vec<_>>();
+                log::info!("{id}. {hashes:?}");
+            }
         }
     }
 
