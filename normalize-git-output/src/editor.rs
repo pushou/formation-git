@@ -44,7 +44,7 @@ impl LogEditor {
 
     /// Replace every occurence of a string with another string
     pub fn replace_fixed(&mut self, pattern: &str, replacement: &str) {
-        log::debug!("Looking for occurences of fixed string {pattern:?}...");
+        log::info!("Looking for occurences of fixed string {pattern:?}...");
         self.replace_impl(
             |log, matches| {
                 matches.extend(
@@ -55,26 +55,24 @@ impl LogEditor {
             },
             replacement,
         );
-        log::info!("Replaced every occurence of fixed string {pattern:?} with {replacement:?}");
     }
 
     /// Replace every occurence of a regex with a fixed string
     pub fn replace_regex(&mut self, pattern: &Regex, replacement: &str) {
-        log::debug!("Looking for occurences of regex {pattern}...");
+        log::info!("Looking for occurences of regex {pattern}...");
         self.replace_impl(
             |log, matches| {
                 matches.extend(
                     pattern
                         .find_iter(log)
                         .inspect(|m| {
-                            log::debug!("Found occurence {} at position {}", m.as_str(), m.start())
+                            log::info!("Found occurence {} at position {}", m.as_str(), m.start())
                         })
                         .map(|m| m.range()),
                 )
             },
             replacement,
         );
-        log::info!("Replaced every occurence of regex {pattern} with {replacement:?}");
     }
 
     /// Implementation of the `replace_xyz` operations
@@ -95,6 +93,7 @@ impl LogEditor {
             output.push_str(&log[next_start..]);
         });
         self.matches = matches;
+        log::info!("Replaced every occurence with {replacement:?}");
     }
 
     /// Emit the normalized string to stdout
