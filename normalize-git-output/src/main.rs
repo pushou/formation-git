@@ -3,7 +3,7 @@ mod hash;
 mod time;
 
 use editor::LogEditor;
-use std::{env, fs, process::Command};
+use std::{env, fs};
 
 fn main() {
     // Set up logging and load user-specified log file
