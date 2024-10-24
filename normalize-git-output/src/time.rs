@@ -7,7 +7,7 @@ use std::sync::LazyLock;
 /// Regex to find dates in the format emitted by ls
 static LS_REGEX: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(
-        r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [0-9]?[1-9] [0-9]{1,2}:[0-9]{1,2}",
+        r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) [0-9]{1,2} [0-9]{1,2}:[0-9]{1,2}",
     )
     .unwrap()
 });
