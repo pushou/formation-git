@@ -6,14 +6,14 @@ use std::sync::LazyLock;
 
 /// Regex to find dates in the format emitted by ls
 static LS_REGEX: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{1,2} \d{1,2}:\d{1,2}")
+    Regex::new(r"(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)[ ]+\d{1,2}[ ]+\d{1,2}:\d{1,2}")
         .unwrap()
 });
 
 /// Regex to find dates in the format emitted by git
 static GIT_REGEX: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(&format!(
-        r"(Mon|Tue|Wed|Thu|Fri|Sat|Sun) {}:\d{{1,2}} \d{{4}} \+\d{{1,4}}",
+        r"(Mon|Tue|Wed|Thu|Fri|Sat|Sun)[ ]+{}:\d{{1,2}} \d{{4}} \+\d{{1,4}}",
         LS_REGEX.as_str()
     ))
     .unwrap()
