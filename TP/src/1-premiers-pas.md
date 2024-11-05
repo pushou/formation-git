@@ -112,7 +112,7 @@ malheureuses.
 À cause de ça, les versions récentes de git vous encouragent à utiliser un nom
 de branche par défaut différent. Mais pour compliquer les choses, les salles de
 TP où cette formation est jouée n’ont pas toutes basculé sur ces nouvelles
-versions de git, et les anciennes versions de git ignorent ce réglage…
+versions de git, et les anciennes versions ignorent ce réglage…
 
 Le plus simple, à ce stade, reste donc de rester sur la terminologie
 traditionnelle et appeler notre branche principale `master` :
