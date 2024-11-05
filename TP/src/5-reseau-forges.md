@@ -43,7 +43,7 @@ SSH, mais vous pouvez facilement générer une paire clé privée + clé publiqu
 avec la commande suivante :
 
 ```bash
-{{#include reseau-forges.sh:ssh-keygen}}
+{{#include 5-reseau-forges.sh:ssh-keygen}}
 ```
 
 `ssh-keygen` va vous poser une série de questions :
@@ -91,7 +91,7 @@ Une fois votre paire de clés SSH générée avec `ssh-keygen`, il ne vous reste
 plus qu’à afficher votre clé publique, par exemple avec `cat`…
 
 ```bash
-{{#include reseau-forges.sh:show-pubkey}}
+{{#include 5-reseau-forges.sh:show-pubkey}}
 ```
 
 …puis à la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
@@ -156,7 +156,7 @@ cloner le dépôt en ayant une authentification SSH pour vos opérations
 ultérieures :
 
 ```bash
-{{#include reseau-forges.sh:clone-from-github}}
+{{#include 5-reseau-forges.sh:clone-from-github}}
 ```
 
 Votre client git vous avertira alors qu’il ne connaît pas l’identité du serveur
@@ -171,7 +171,7 @@ _remote_ pointant vers le _fork_ qui permet d’échanger facilement des commits
 avec ce dernier :
 
 ```bash
-{{#include reseau-forges.sh:goto-repo-and-show-remote}}
+{{#include 5-reseau-forges.sh:goto-repo-and-show-remote}}
 ```
 
 Mais pour appliquer la méthode de travail basée sur les _forks_ et les _pull
@@ -184,7 +184,7 @@ Par convention, la _remote_ associée au dépôt officiel est souvent appelée
 _upstream_ :
 
 ```bash
-{{#include reseau-forges.sh:add-upstream-remote}}
+{{#include 5-reseau-forges.sh:add-upstream-remote}}
 ```
 
 Notez qu’on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
@@ -224,14 +224,14 @@ de tenir notre branche `master` à jour, ce que l’on peut faire facilement ave
 suit :
 
 ```bash
-{{#include reseau-forges.sh:set-upstream-master}}
+{{#include 5-reseau-forges.sh:set-upstream-master}}
 ```
 
 Une fois cette préparation effectuée, vous n’aurez pas besoin de la répéter et
 pourrez juste mettre à jour votre branche `master` locale via :
 
 ```bash
-{{#include reseau-forges.sh:pull-master}}
+{{#include 5-reseau-forges.sh:pull-master}}
 ```
 
 Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
@@ -259,7 +259,7 @@ Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
 `git pull` futurs au sein de ce dépôt avec la commande de configuration…
 
 ```bash
-{{#include reseau-forges.sh:config-pull-ff-only}}
+{{#include 5-reseau-forges.sh:config-pull-ff-only}}
 ```
 
 ### Construire des changements dans une branche dédiée
@@ -269,7 +269,7 @@ changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
 part de `master`…
 
 ```bash
-{{#include reseau-forges.sh:create-dev-branch}}
+{{#include 5-reseau-forges.sh:create-dev-branch}}
 ```
 
 …puis de créer des _commits_ dessus. En voici un exemple, à adapter selon votre
@@ -277,7 +277,7 @@ goût : si vous éditez tous la fin du fichier, il y aura des conflits entre
 toutes les contributions !
 
 ```bash
-{{#include reseau-forges.sh:commit-on-dev-branch}}
+{{#include 5-reseau-forges.sh:commit-on-dev-branch}}
 ```
 
 Pendant que vous effectuez vos modifications, le dépôt officiel continue
@@ -291,7 +291,7 @@ de mise à jour de `master` et d’intégrations de ses nouveautés à votre bra
 pourrait ainsi ressembler à ceci :
 
 ```bash
-{{#include reseau-forges.sh:update-master-and-merge}}
+{{#include 5-reseau-forges.sh:update-master-and-merge}}
 ```
 
 En cas de conflit de fusion, il vous appartiendra de vous adapter aux nouveautés
@@ -323,7 +323,7 @@ de mémoriser l’association entre votre branche locale et la branche distante 
 votre _fork_ lors de la mise en ligne.
 
 ```bash
-{{#include reseau-forges.sh:push-set-upstream}}
+{{#include 5-reseau-forges.sh:push-set-upstream}}
 ```
 
 Une fois cette association mémorisée, vous pourrez par la suite vous contenter
@@ -433,7 +433,7 @@ Une fois la _pull request_ fusionnée, vous pourrez supprimer la branche de
 développement associée de vos dépôts locaux et distants…
 
 ```bash
-{{#include reseau-forges.sh:delete-dev-branch}}
+{{#include 5-reseau-forges.sh:delete-dev-branch}}
 ```
 
 …puis recommencer un autre développement depuis la branche `master` quand vous

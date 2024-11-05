@@ -21,7 +21,7 @@ police à chasse fixe, avec un bouton pour copier le texte qui s’affiche au
 survol, comme ci-dessous :
 
 ```bash
-{{#include premiers-pas.sh:whoami}}
+{{#include 1-premiers-pas.sh:whoami}}
 ```
 
 La plupart des commandes git ont un effet contextuel dépendant des autres
@@ -80,7 +80,7 @@ vous laisser sauvegarder des versions. Voici un exemple d’utilisation des
 commandes associées :
 
 ```bash
-{{#include premiers-pas.sh:config-user}}
+{{#include 1-premiers-pas.sh:config-user}}
 ```
 
 ### Choisir un éditeur de texte
@@ -98,7 +98,7 @@ cette commande pour utiliser un des autres éditeurs de texte disponibles si vou
 le souhaitez :
 
 ```bash
-{{#include premiers-pas.sh:config-editor}}
+{{#include 1-premiers-pas.sh:config-editor}}
 ```
 
 ### Choisir un nom de branche par défaut
@@ -118,7 +118,7 @@ Le plus simple, à ce stade, reste donc de rester sur la terminologie
 traditionnelle et appeler notre branche principale `master` :
 
 ```bash
-{{#include premiers-pas.sh:config-default-branch}}
+{{#include 1-premiers-pas.sh:config-default-branch}}
 ```
 
 ### Afficher la configuration
@@ -128,7 +128,7 @@ entier), donc il est utile de pouvoir vérifier quelle est la configuration
 finale effective au sein d’un dépôt donné. On l’affiche comme ceci :
 
 ```bash
-{{#include premiers-pas.sh:config-list}}
+{{#include 1-premiers-pas.sh:config-list}}
 ```
 
 
@@ -140,7 +140,7 @@ N’importe quel dossier peut être mis sous gestion de version. Il devient alor
 ce que l’on appelle un dépôt git. On utilise pour cela la commande `git init` :
 
 ```bash
-{{#include premiers-pas.sh:init}}
+{{#include 1-premiers-pas.sh:init}}
 ```
 
 Comme le message de statut l’indique, cette opération crée un sous-dossier caché
@@ -153,13 +153,13 @@ On peut à tout moment demander quel est l’état actuel du dépôt avec
 `git status`. Pour l’instant, il ne s’y passe pas grand-chose :
 
 ```bash
-{{#include premiers-pas.sh:status}}
+{{#include 1-premiers-pas.sh:status}}
 ```
 
 Mais dès la création d’un fichier, le statut change :
 
 ```bash
-{{#include premiers-pas.sh:status-touch}}
+{{#include 1-premiers-pas.sh:status-touch}}
 ```
 
 Comme la plupart des gestionnaires de versions, git ne suit pas automatiquement
@@ -167,7 +167,7 @@ les modifications de tous les fichiers du dossier dans lequel il est actif. Il
 faut indiquer quels fichiers on souhaite versionner avec `git add` :
 
 ```bash
-{{#include premiers-pas.sh:status-add}}
+{{#include 1-premiers-pas.sh:status-add}}
 ```
 
 Après cette opération, `MonFichier.txt` est suivi par git : lorsqu’on
@@ -178,14 +178,14 @@ Supposons, par exemple, qu’on ait accidentellement ajouté un journal d’exé
 sans intérêt à la gestion de version :
 
 ```bash
-{{#include premiers-pas.sh:echo-poubelle-add}}
+{{#include 1-premiers-pas.sh:echo-poubelle-add}}
 ```
 
 Avec une version moderne de git, il suffit d’utiliser la variante de `git reset`
 qui prend un fichier en argument pour annuler cette opération :
 
 ```bash
-{{#include premiers-pas.sh:status-reset}}
+{{#include 1-premiers-pas.sh:status-reset}}
 ```
 
 Sur d’anciennes versions de git que vous pourriez rencontrer si vous êtes amené
@@ -211,14 +211,14 @@ nouveaux fichier et va nous inciter constamment à les versionner lors de chaque
 appel à `git status` :
 
 ```bash
-{{#include premiers-pas.sh:ignore-status}}
+{{#include 1-premiers-pas.sh:ignore-status}}
 ```
 
 Pour éviter ça, on peut créer un fichier `.gitignore` à la racine du dépôt, qui
 indique que certains fichiers doivent être ignorés par git :
 
 ```bash
-{{#include premiers-pas.sh:ignore-gitignore-status}}
+{{#include 1-premiers-pas.sh:ignore-gitignore-status}}
 ```
 
 Il est en général pertinent de mettre `.gitignore` sous gestion de version car
@@ -226,7 +226,7 @@ si un fichier vous gêne, il a de fortes chances de gêner vos collègues aussi.
 le fait avec `git add`, comme précédemment :
 
 ```bash
-{{#include premiers-pas.sh:ignore-add-gitignore}}
+{{#include 1-premiers-pas.sh:ignore-add-gitignore}}
 ```
 
 `.gitignore` supporte les motifs usuels du shell Unix, comme l’étoile
@@ -241,7 +241,7 @@ d’informer le gestionnaire de version quand on effectue un déplacement ou une
 suppression, en utilisant respectivement `git mv` et `git rm`.
 
 ```bash
-{{#include premiers-pas.sh:mv-with-git}}
+{{#include 1-premiers-pas.sh:mv-with-git}}
 ```
 
 En effet, un gestionnaire de versions n’est pas en position de détecter ces
@@ -250,7 +250,7 @@ interprétées par git d’une façon inattendue et indésirable. Prenons l’ex
 d’un mouvement de fichier dont git n’a pas été informé :
 
 ```bash
-{{#include premiers-pas.sh:mv-without-git}}
+{{#include 1-premiers-pas.sh:mv-without-git}}
 ```
 
 Ici, la commande `mv` standard a ainsi été interprétée comme la suppression d’un
@@ -265,7 +265,7 @@ tous les changements du dépôt).
 Nous pouvons l’utiliser de la façon suivante :
 
 ```bash
-{{#include premiers-pas.sh:mv-add-all}}
+{{#include 1-premiers-pas.sh:mv-add-all}}
 ```
 
 Pour ce qui concerne `git rm`, un point à connaître est que git refusera par
@@ -274,14 +274,14 @@ version, car ces données seraient alors perdues. Ainsi, la commande suivante
 échouera :
 
 ```bash
-{{#include premiers-pas.sh:rm-unversioned}}
+{{#include 1-premiers-pas.sh:rm-unversioned}}
 ```
 
 Après s’être assuré qu’on souhaite bien perdre ces changements, l’option
 `--force`, qui s’abrévie en `-f`, peut être utilisée pour confirmer l’opération.
 
 ```bash
-{{#include premiers-pas.sh:rm-unversioned-force}}
+{{#include 1-premiers-pas.sh:rm-unversioned-force}}
 ```
 
 ### Gestion des dossiers
@@ -291,14 +291,14 @@ _fichiers_. L’existence de dossiers n’est prise en compte que dans la mesure
 il y a des fichiers à l’intérieur :
 
 ```bash
-{{#include premiers-pas.sh:folder-empty}}
+{{#include 1-premiers-pas.sh:folder-empty}}
 ```
 
 Cela ne signifie pas pour autant que git ne supporte pas les dossiers, on peut
 très bien passer un dossier en paramètre de `git add` par exemple…
 
 ```bash
-{{#include premiers-pas.sh:folder-add}}
+{{#include 1-premiers-pas.sh:folder-add}}
 ```
 
 …mais certaines commandes n’accepteront un dossier en paramètre que si elles
@@ -308,7 +308,7 @@ dossier sans connaître son contenu. Par exemple, la commande de suppression
 suivante échouera.
 
 ```bash
-{{#include premiers-pas.sh:folder-rm}}
+{{#include 1-premiers-pas.sh:folder-rm}}
 ```
 
 Notez que puisque le contenu de ce dossier n’a pas encore été sauvegardé, vous
@@ -322,7 +322,7 @@ accessible depuis la ligne de commande, soit via la traditionnelle interface
 `man`, soit via la commande `git help`.
 
 ```bash
-{{#include premiers-pas.sh:help-long}}
+{{#include 1-premiers-pas.sh:help-long}}
 ```
 
 `git help` reproduit par défaut le comportement de la commande `man`, mais donne
@@ -340,7 +340,7 @@ commande, mais seulement un bref rappel de la syntaxe et des options, vous
 pouvez aussi utiliser l’option `-h` :
 
 ```bash
-{{#include premiers-pas.sh:help-short}}
+{{#include 1-premiers-pas.sh:help-short}}
 ```
 
 
@@ -377,92 +377,92 @@ répondrons à ces questions dans les prochaines séquences.
 Afficher la configuration actuelle de git :
 
 ```bash
-{{#include premiers-pas.sh:config-list}}
+{{#include 1-premiers-pas.sh:config-list}}
 ```
 
 Saisir les identifiants d’utilisateur qui seront insérés dans les commits :
 
 ```bash
-{{#include premiers-pas.sh:config-user}}
+{{#include 1-premiers-pas.sh:config-user}}
 ```
 
 Définir l’éditeur de texte utilisé par git :
 
 ```bash
-{{#include premiers-pas.sh:config-editor}}
+{{#include 1-premiers-pas.sh:config-editor}}
 ```
 
 Définir le nom de branche par défaut des dépôts nouvellement créés :
 
 ```bash
-{{#include premiers-pas.sh:config-default-branch}}
+{{#include 1-premiers-pas.sh:config-default-branch}}
 ```
 
 Transformer le répertoire courant en dépôt git :
 
 ```bash
-{{#include premiers-pas.sh:init-only}}
+{{#include 1-premiers-pas.sh:init-only}}
 ```
 
 Afficher l’état du dépôt git actif :
 
 ```bash
-{{#include premiers-pas.sh:status}}
+{{#include 1-premiers-pas.sh:status}}
 ```
 
 Mettre un fichier (ou un dossier) sous gestion de version :
 
 ```bash
-{{#include premiers-pas.sh:add-only}}
+{{#include 1-premiers-pas.sh:add-only}}
 ```
 
 Annuler un `git add` accidentel :
 
 ```bash
-{{#include premiers-pas.sh:reset-only}}
+{{#include 1-premiers-pas.sh:reset-only}}
 ```
 
 Mettre tous les fichiers du répertoire courant sous gestion de version :
 
 ```bash
-{{#include premiers-pas.sh:add-workdir}}
+{{#include 1-premiers-pas.sh:add-workdir}}
 ```
 
 Intégrer à la gestion de version tous les changements du répertoire courant,
 y compris les suppressions, les déplacements…
 
 ```bash
-{{#include premiers-pas.sh:mv-add-all-only}}
+{{#include 1-premiers-pas.sh:mv-add-all-only}}
 ```
 
 Supprimer un fichier sous gestion de version :
 
 ```bash
-{{#include premiers-pas.sh:cheatsheet-rm}}
+{{#include 1-premiers-pas.sh:cheatsheet-rm}}
 ```
 
 Déplacer un fichier sous gestion de version :
 
 ```bash
-{{#include premiers-pas.sh:cheatsheet-mv}}
+{{#include 1-premiers-pas.sh:cheatsheet-mv}}
 ```
 
 Ignorer les fichiers d’extension « .log » :
 
 ```bash
-{{#include premiers-pas.sh:ignore-gitignore-docs}}
+{{#include 1-premiers-pas.sh:ignore-gitignore-docs}}
 ```
 
 Afficher le manuel d’une commande git ou l’explication d’un concept git :
 
 ```bash
-{{#include premiers-pas.sh:cheatsheet-help}}
+{{#include 1-premiers-pas.sh:cheatsheet-help}}
 ```
 
 Afficher un bref rappel de la syntaxe d’une commande git :
 
 ```bash
-{{#include premiers-pas.sh:help-short-docs}}
+{{#include 1-premiers-pas.sh:help-short-docs}}
 ```
 
 
@@ -487,7 +487,7 @@ pouvez manipuler cette dernière avec l’utilitaire `git config`, dont voici
 quelques utilisations fictives :
 
 ```bash
-{{#include premiers-pas.sh:appendix-config}}
+{{#include 1-premiers-pas.sh:appendix-config}}
 ```
 
 Pour rappel, la configuration s’appliquant au dépôt actuel (qui est donc la

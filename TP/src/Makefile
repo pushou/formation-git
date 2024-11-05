@@ -48,19 +48,19 @@ clean:
 	@(cd ~/Desktop && zip -qr $@ *) && mv ~/Desktop/$@ .
 
 # Ordre d'exécution des TPs et leurs corrigés
-TP2.zip: premiers-pas.out
-premiers-pas-corrige.out: TP2.zip
+TP2.zip: 1-premiers-pas.out
+1-premiers-pas-corrige.out: TP2.zip
 #
-historique-lineaire.out: premiers-pas-corrige.out
-TP3.zip: historique-lineaire.out
-historique-lineaire-corrige.out: TP3.zip
+2-historique-lineaire.out: 1-premiers-pas-corrige.out
+TP3.zip: 2-historique-lineaire.out
+2-historique-lineaire-corrige.out: TP3.zip
 #
-manipulation-branches.out: historique-lineaire-corrige.out
-TP4.zip: manipulation-branches.out
-manipulation-branches-corrige.out: TP4.zip
+3-manipulation-branches.out: 2-historique-lineaire-corrige.out
+TP4.zip: 3-manipulation-branches.out
+3-manipulation-branches-corrige.out: TP4.zip
 #
-depots-distribues.out: manipulation-branches-corrige.out
-depots-distribues-corrige.out: depots-distribues.out
+4-depots-distribues.out: 3-manipulation-branches-corrige.out
+4-depots-distribues-corrige.out: 4-depots-distribues.out
 #
-reseau-forges.out: depots-distribues-corrige.out
-reseau-forges-corrige.out: reseau-forges.out
+5-reseau-forges.out: 4-depots-distribues-corrige.out
+5-reseau-forges-corrige.out: 5-reseau-forges.out

@@ -6,7 +6,7 @@ Pour ce quatrième TP, le script bash à exécuter pour archiver votre travail s
 le troisième TP et repartir de l’[archive de référence](TP4.zip) est :
 
 ```bash
-{{#include depots-distribues.sh:restore-from-zip}}
+{{#include 4-depots-distribues.sh:restore-from-zip}}
 ```
 
 
@@ -39,7 +39,7 @@ Pour mettre ces concepts en pratique, commençons par créer un clone du dépôt
 nous avons manipulé lors du TP précédent :
 
 ```bash
-{{#include depots-distribues.sh:clone}}
+{{#include 4-depots-distribues.sh:clone}}
 ```
 
 Si vous lancez `gitg` dans les deux dépôts, et basculez l’affichage en mode
@@ -58,7 +58,7 @@ locale dans le clone, et c’est cette branche-là qui est actuellement active e
 extraite dans le répertoire de travail :
 
 ```bash
-{{#include depots-distribues.sh:status-after-clone}}
+{{#include 4-depots-distribues.sh:status-after-clone}}
 ```
 
 Notez aussi dans la sortie de `git status` qu’un lien a été créé entre cette
@@ -70,21 +70,21 @@ Vous pouvez afficher la liste des dépôts distants associés au dépôt local a
 avec `git remote` sans arguments :
 
 ```bash
-{{#include depots-distribues.sh:remote}}
+{{#include 4-depots-distribues.sh:remote}}
 ```
 
 En mode verbeux, cette commande affiche aussi l’adresse du dépôt distant. Ici,
 cette adresse est un chemin d’accès sur le système de fichier local :
 
 ```bash
-{{#include depots-distribues.sh:remote-verbose}}
+{{#include 4-depots-distribues.sh:remote-verbose}}
 ```
 
 On peut aussi afficher des informations plus détaillées sur une _remote_ avec
 `git remote show` :
 
 ```bash
-{{#include depots-distribues.sh:remote-show}}
+{{#include 4-depots-distribues.sh:remote-show}}
 ```
 
 ### Récupération de changements depuis le parent
@@ -93,7 +93,7 @@ Maintenant que nous avons créé un clone, retournons donc un instant dans le
 dépôt parent pour créer un commit qui ajoute un nouveau fichier :
 
 ```bash
-{{#include depots-distribues.sh:first-remote-commit}}
+{{#include 4-depots-distribues.sh:first-remote-commit}}
 ```
 
 Si vous retournez dans le clone, vous constaterez que ce changement n’est pas
@@ -101,7 +101,7 @@ visible au niveau du clone : le fichier n’est pas visible dans le répertoire
 travail…
 
 ```bash
-{{#include depots-distribues.sh:no-file-change-in-clone}}
+{{#include 4-depots-distribues.sh:no-file-change-in-clone}}
 ```
 
 …et il n’y a pas de différence entre la branche locale du clone et la branche
@@ -109,7 +109,7 @@ distante associée (qui, pour rappel, n’est qu’une copie en lecture seule de
 branche du dépôt cloné) :
 
 ```bash
-{{#include depots-distribues.sh:no-branch-change-in-clone}}
+{{#include 4-depots-distribues.sh:no-branch-change-in-clone}}
 ```
 
 Comme nous en avons discuté, git n’échange avec les dépôts distants que
@@ -118,7 +118,7 @@ changements du dépôt parent, il faut en faire la demande explicitement, par
 exemple avec `git fetch` :
 
 ```bash
-{{#include depots-distribues.sh:first-fetch}}
+{{#include 4-depots-distribues.sh:first-fetch}}
 ```
 
 Notez que git mentionne une activité au niveau de la copie locale
@@ -126,13 +126,13 @@ Notez que git mentionne une activité au niveau de la copie locale
 dans le répertoire de travail et la branche locale…
 
 ```bash
-{{#include depots-distribues.sh:file-still-missing}}
+{{#include 4-depots-distribues.sh:file-still-missing}}
 ```
 
 …mais il est maintenant visible dans la branche distante :
 
 ```bash
-{{#include depots-distribues.sh:branch-changed-in-clone}}
+{{#include 4-depots-distribues.sh:branch-changed-in-clone}}
 ```
 
 Nous pouvons intégrer le changement à notre branche locale par une fusion. Elle
@@ -140,7 +140,7 @@ s’effectuera en avance rapide, car notre branche locale n’a pas divergé par
 rapport à la branche distante :
 
 ```bash
-{{#include depots-distribues.sh:fast-forward-parallel-merge}}
+{{#include 4-depots-distribues.sh:fast-forward-parallel-merge}}
 ```
 
 ### Le raccourci `git pull`
@@ -163,7 +163,7 @@ verrons dans un instant qu’il est possible de raccourcir encore…
 Mais d’abord, effectuons un commit dans le dépôt parent pour tester `git pull`.
 
 ```bash
-{{#include depots-distribues.sh:first-pull}}
+{{#include 4-depots-distribues.sh:first-pull}}
 ```
 
 `git pull` accepte en paramètre les mêmes options que `git merge`, il est donc
@@ -211,7 +211,7 @@ cloné et la branche locale associée dans le dépôt cloné. C’est indiqué d
 première ligne de `git status` :
 
 ```bash
-{{#include depots-distribues.sh:status-after-pull}}
+{{#include 4-depots-distribues.sh:status-after-pull}}
 ```
 
 Un autre raccourci bien pratique pour créer une branche locale connectée à une
@@ -219,7 +219,7 @@ branche distante est de demander un `checkout` d’une branche locale qui n’ex
 pas encore, mais dont un homologue distant existe :
 
 ```bash
-{{#include depots-distribues.sh:checkout-nonexistent-master}}
+{{#include 4-depots-distribues.sh:checkout-nonexistent-master}}
 ```
 
 Quand on exécute cette commande, git commence par chercher une branche locale
@@ -232,7 +232,7 @@ On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
 
 ```bash
-{{#include depots-distribues.sh:very-verbose-branch}}
+{{#include 4-depots-distribues.sh:very-verbose-branch}}
 ```
 
 Dans les rares cas où il est nécessaire de configurer manuellement l’amont d’une
@@ -261,7 +261,7 @@ référence (étiquette ou branche), puis essaie de créer une version distante 
 cette référence, ou de la mettre à jour si elle existe déjà :
 
 ```bash
-{{#include depots-distribues.sh:push-remote-branch}}
+{{#include 4-depots-distribues.sh:push-remote-branch}}
 ```
 
 En l’occurrence, il ne se passe rien, puisque nous n’avons pas modifié la branche
@@ -273,14 +273,14 @@ Il est courant de vouloir pousser la branche active. Un premier raccourci de
 branche active qui sera soumise à cette _remote_.
 
 ```bash
-{{#include depots-distribues.sh:push-remote}}
+{{#include 4-depots-distribues.sh:push-remote}}
 ```
 
 Dans le dépôt parent, on peut voir que les nouveaux commits ont été propagés par
 `git push` :
 
 ```bash
-{{#include depots-distribues.sh:log-after-first-pushes}}
+{{#include 4-depots-distribues.sh:log-after-first-pushes}}
 ```
 
 Enfin, la forme la plus concise de `git push` ne précise même pas la _remote_
@@ -288,7 +288,7 @@ cible. Celle-ci est alors déduite de la branche amont associée à la branche
 active.
 
 ```bash
-{{#include depots-distribues.sh:push-shorthand}}
+{{#include 4-depots-distribues.sh:push-shorthand}}
 ```
 
 Pour utiliser cette variante de `git push`, vous devez avoir défini une branche
@@ -302,7 +302,7 @@ configurer `git push` pour effectuer automatiquement cette configuration dans la
 majorité des cas (pas d’ambiguïté sur le dépôt cible) :
 
 ```bash
-{{#include depots-distribues.sh:push-auto-setup-remote}}
+{{#include 4-depots-distribues.sh:push-auto-setup-remote}}
 ```
 
 <div class="warning">
@@ -333,7 +333,7 @@ Créons donc un deuxième clone de notre dépôt parent, et ajoutons une _remote
 qui pointe vers celui-ci avec `git remote add` :
 
 ```bash
-{{#include depots-distribues.sh:new-clone-and-add-remote}}
+{{#include 4-depots-distribues.sh:new-clone-and-add-remote}}
 ```
 
 Notons qu’ajouter une _remote_ ne déclenche pas d’échanges immédiats. Il faut
@@ -343,7 +343,7 @@ travaille avec plusieurs dépôts distants qui permet de récupérer les nouveau
 de toutes les _remotes_ à la fois :
 
 ```bash
-{{#include depots-distribues.sh:fetch-all}}
+{{#include 4-depots-distribues.sh:fetch-all}}
 ```
 
 Vous noterez dans la sortie de `git fetch` qu’il n’y a qu’une branche distante
@@ -368,7 +368,7 @@ branche locale par rapport à la branche amont, alors que `git push` le rejette.
 Mettons-le en évidence en créant une petite divergence d’historique :
 
 ```bash
-{{#include depots-distribues.sh:divergence-before-pull}}
+{{#include 4-depots-distribues.sh:divergence-before-pull}}
 ```
 
 Après ces commandes, `MonAutreClone` et `MesBranches` contiennent un commit sur
@@ -382,7 +382,7 @@ formaliser de cet état de fait, et simplement fusionner les deux historiques en
 créant un commit de fusion :
 
 ```bash
-{{#include depots-distribues.sh:pull-merges-divergence}}
+{{#include 4-depots-distribues.sh:pull-merges-divergence}}
 ```
 
 On peut observer l’apparition du commit de fusion correspondant dans `gitg`.
@@ -391,7 +391,7 @@ En revanche, `git push` a un comportement différent. Dans la même situation de
 divergence, l’opération sera rejetée :
 
 ```bash
-{{#include depots-distribues.sh:push-rejects-divergence}}
+{{#include 4-depots-distribues.sh:push-rejects-divergence}}
 ```
 
 Pour qu’un `git push` soit accepté, il faut que le commit qui termine la branche
@@ -406,7 +406,7 @@ fusion implicite, nous pouvons avoir des soucis si la fusion se passe mal. Pour
 nous en convaincre, aggravons notre divergence par un conflit de fusion :
 
 ```bash
-{{#include depots-distribues.sh:pull-conflict}}
+{{#include 4-depots-distribues.sh:pull-conflict}}
 ```
 
 De tels conflits sont désagréables à gérer, puisque l’on doit arbitrer entre
@@ -441,7 +441,7 @@ d’obtenir ce comportement sans devoir spécifier l’option `--ff-only` à
 répétition en utilisant l’option `pull.ff`:
 
 ```bash
-{{#include depots-distribues.sh:config-pull-ff-only}}
+{{#include 4-depots-distribues.sh:config-pull-ff-only}}
 ```
 
 
@@ -484,91 +484,91 @@ mater cette complexité.
 Créer un clone d’un dépôt :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-clone}}
+{{#include 4-depots-distribues.sh:cheatsheet-clone}}
 ```
 
 Afficher les dépôts distants (_remotes_) et les chemins associés :
 
 ```bash
-{{#include depots-distribues.sh:remote-verbose}}
+{{#include 4-depots-distribues.sh:remote-verbose}}
 ```
 
 Afficher des informations détaillées sur une _remote_ :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-remote-show}}
+{{#include 4-depots-distribues.sh:cheatsheet-remote-show}}
 ```
 
 Ajouter une _remote_ au dépôt :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-remote-add}}
+{{#include 4-depots-distribues.sh:cheatsheet-remote-add}}
 ```
 
 Récupérer les changements d’une _remote_ :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-fetch-remote}}
+{{#include 4-depots-distribues.sh:cheatsheet-fetch-remote}}
 ```
 
 Récupérer les changements de toutes les _remotes_ :
 
 ```bash
-{{#include depots-distribues.sh:fetch-all}}
+{{#include 4-depots-distribues.sh:fetch-all}}
 ```
 
 Mettre à jour une branche distante puis la fusionner dans la branche active :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-explicit-pull}}
+{{#include 4-depots-distribues.sh:cheatsheet-explicit-pull}}
 ```
 
 Récupérer et fusionner les changements de l’amont de la branche active :
 
 ```bash
-{{#include depots-distribues.sh:implicit-pull}}
+{{#include 4-depots-distribues.sh:implicit-pull}}
 ```
 
 …sauf s’il y a eu divergence entre la branche locale et la branche distante :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-implicit-pull-ff-only}}
+{{#include 4-depots-distribues.sh:cheatsheet-implicit-pull-ff-only}}
 ```
 
 Configurer `git` pour appliquer le fonctionnement ci-dessus par défaut :
 
 ```bash
-{{#include depots-distribues.sh:config-pull-ff-only}}
+{{#include 4-depots-distribues.sh:config-pull-ff-only}}
 ```
 
 Créer ou mettre à jour des branches et/ou étiquettes sur une _remote_ :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-explicit-push}}
+{{#include 4-depots-distribues.sh:cheatsheet-explicit-push}}
 ```
 
 Pousser une branche en marquant la branche distante comme branche amont :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-push-set-upstream}}
+{{#include 4-depots-distribues.sh:cheatsheet-push-set-upstream}}
 ```
 
 Créer ou mettre à jour l’homologue distant de la branche active sur une _remote_ :
 
 ```bash
-{{#include depots-distribues.sh:cheatsheet-push-by-remote}}
+{{#include 4-depots-distribues.sh:cheatsheet-push-by-remote}}
 ```
 
 Mettre à jour la branche amont associée à la branche active :
 
 ```bash
-{{#include depots-distribues.sh:push-shorthand-only}}
+{{#include 4-depots-distribues.sh:push-shorthand-only}}
 ```
 
 Afficher les branches amont associées aux branches locales du dépôt :
 
 ```bash
-{{#include depots-distribues.sh:very-verbose-branch}}
+{{#include 4-depots-distribues.sh:very-verbose-branch}}
 ```
 
 
@@ -597,7 +597,7 @@ forcer `git push` à accepter la soumission, détruisant ce faisant la version
 distante précédente de la branche :
 
 ```bash
-{{#include depots-distribues.sh:force-push}}
+{{#include 4-depots-distribues.sh:force-push}}
 ```
 
 Notez que quand on utilise un dépôt distant sur une forge, l’administrateur de
@@ -615,14 +615,14 @@ Sur les versions modernes de git, on peut le faire en utilisant
 `git push --delete`…
 
 ```bash
-{{#include depots-distribues.sh:push-delete}}
+{{#include 4-depots-distribues.sh:push-delete}}
 ```
 
 …et sur les anciennes versions de git, il fallait utiliser son prédécesseur plus
 mystérieux (relevant d’une logique inutilement obscure), le signe « : ».
 
 ```bash
-{{#include depots-distribues.sh:push-delete-legacy}}
+{{#include 4-depots-distribues.sh:push-delete-legacy}}
 ```
 
 Bien entendu, comme avec `--force`, il est préférable de n’effectuer cette
@@ -637,7 +637,7 @@ train de travailler par-dessus la branche qui est sur le point d’être supprim
   résultat, il faut utiliser l’option `--prune` :
   
   ```bash
-  {{#include depots-distribues.sh:fetch-prune}}
+  {{#include 4-depots-distribues.sh:fetch-prune}}
   ```
   
   Cette logique vise à assurer que `git fetch` soit une commande 100 % sûre, qui
@@ -652,7 +652,7 @@ train de travailler par-dessus la branche qui est sur le point d’être supprim
   automatique avec le paramètre de configuration `fetch.prune` :
   
   ```bash
-  {{#include depots-distribues.sh:config-fetch-prune}}
+  {{#include 4-depots-distribues.sh:config-fetch-prune}}
   ```
 
 </div>
@@ -663,7 +663,7 @@ Dans ce TP, j’ai principalement parlé de branches. Cependant, il est possible
 pousser des étiquettes (_tags_) en utilisant exactement la même syntaxe.
 
 ```bash
-{{#include depots-distribues.sh:push-tag}}
+{{#include 4-depots-distribues.sh:push-tag}}
 ```
 
 Les étiquettes sont couramment utilisées pour représenter des versions

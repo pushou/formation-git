@@ -24,7 +24,7 @@ Pour ce deuxième TP, le script bash à exécuter pour archiver votre travail su
 premier TP et repartir de l’[archive de référence](TP2.zip) est :
 
 ```bash
-{{#include historique-lineaire.sh:restore-from-zip}}
+{{#include 2-historique-lineaire.sh:restore-from-zip}}
 ```
 
 
@@ -39,7 +39,7 @@ Pour cela, nous allons faire appel à la commande `git commit`, qui en retour va
 immédiatement nous plonger dans un éditeur de texte :
 
 ```bash
-{{#include historique-lineaire.sh:first-interactive-commit}}
+{{#include 2-historique-lineaire.sh:first-interactive-commit}}
 ```
 
 Le rôle de cet éditeur de texte est de saisir une description des changements
@@ -73,7 +73,7 @@ voulez enregistrer au même endroit en appuyant sur Entrée.
 Après avoir créé un commit, la sortie de `git status` change :
 
 ```bash
-{{#include historique-lineaire.sh:status-after-commit}}
+{{#include 2-historique-lineaire.sh:status-after-commit}}
 ```
 
 La commande status décrit en effet toujours l’état de l’index et du répertoire
@@ -86,7 +86,7 @@ premier commit. `git status` devrait donc indiquer qu’il n’y a rien de nouve
 Effectuons maintenant quelques changements :
 
 ```bash
-{{#include historique-lineaire.sh:change-then-status}}
+{{#include 2-historique-lineaire.sh:change-then-status}}
 ```
 
 Comme la plupart des gestionnaires de version, git distingue les changements
@@ -96,7 +96,7 @@ fichiers dans le répertoire de travail.
 Pour visualiser le premier type de changement, on peut utiliser `git diff` :
 
 ```bash
-{{#include historique-lineaire.sh:diff-after-change}}
+{{#include 2-historique-lineaire.sh:diff-after-change}}
 ```
 
 Cette commande décrit les différences entre le répertoire de travail et l’index,
@@ -142,7 +142,7 @@ seconde notion existe hélas toujours dans git, comme le piège ergonomique de
 à l’index, ils disparaissent de la sortie de `git diff` :
 
 ```bash
-{{#include historique-lineaire.sh:changes-and-diffs}}
+{{#include 2-historique-lineaire.sh:changes-and-diffs}}
 ```
 
 Ce mode de fonctionnement aide à créer une nouvelle version progressivement :
@@ -158,21 +158,21 @@ peut ainsi lui demander la liste des changements effectués au sein du répertoi
 de travail depuis la dernière version enregistrée :
 
 ```bash
-{{#include historique-lineaire.sh:workdir-vs-head}}
+{{#include 2-historique-lineaire.sh:workdir-vs-head}}
 ```
 
 Ou bien on peut lui demander les changements présents au sein de l’index, qui
 seront inclus dans la nouvelle version lorsqu’on appellera `git commit` :
 
 ```bash
-{{#include historique-lineaire.sh:index-vs-head}}
+{{#include 2-historique-lineaire.sh:index-vs-head}}
 ```
 
 Il est aussi possible, et souvent très utile, de n’afficher que les changements
 survenus au sein d’un certain fichier ou dossier avec `git diff <chemin>` :
 
 ```bash
-{{#include historique-lineaire.sh:diff-target-only}}
+{{#include 2-historique-lineaire.sh:diff-target-only}}
 ```
 
 Plusieurs autres choses sont à noter dans cet exemple :
@@ -198,7 +198,7 @@ est donc plus prudent de cibler cette commande sur un dossier comme dans
 l’exemple suivant :
 
 ```bash
-{{#include historique-lineaire.sh:add-all-directory}}
+{{#include 2-historique-lineaire.sh:add-all-directory}}
 ```
 
 `git commit -a` crée un commit comprenant tous les changements survenus dans les
@@ -234,7 +234,7 @@ Nous avons maintenant créé quelques commits, et il est possible d’afficher
 l’historique de ces derniers avec `git log` :
 
 ```bash
-{{#include historique-lineaire.sh:git-log}}
+{{#include 2-historique-lineaire.sh:git-log}}
 ```
 
 Si un commit précis de la liste nous interpelle, nous pouvons ensuite demander
@@ -253,7 +253,7 @@ graphique pour visualiser votre historique. Au cours de cette formation, nous
 utiliserons pour cela le logiciel `gitg` :
 
 ```bash
-{{#include historique-lineaire.sh:gitg-foreground}}
+{{#include 2-historique-lineaire.sh:gitg-foreground}}
 ```
 
 Vous pouvez constater que `gitg` vous permet d’observer d’un coup d’œil votre
@@ -270,7 +270,7 @@ La manière la plus simple de régler ce problème est de lancer l’application
 tâche de fond avec l’aide du signe `&` :
 
 ```bash
-{{#include historique-lineaire.sh:gitg-background}}
+{{#include 2-historique-lineaire.sh:gitg-background}}
 ```
 
 Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
@@ -309,13 +309,13 @@ Avec cette syntaxe, nous pouvons demander à git la différence entre le
 répertoire de travail et le parent du commit actif…
 
 ```bash
-{{#include historique-lineaire.sh:diff-workdir-vs-head-parent}}
+{{#include 2-historique-lineaire.sh:diff-workdir-vs-head-parent}}
 ```
 
 …ou bien les changements du commit actif par rapport à son parent :
 
 ```bash
-{{#include historique-lineaire.sh:diff-head-vs-head-parent}}
+{{#include 2-historique-lineaire.sh:diff-head-vs-head-parent}}
 ```
 
 ### Nommer un commit
@@ -329,7 +329,7 @@ En gestion de version, cela s’appelle une étiquette (_tag_), et on peut en cr
 une avec la commande `git tag <étiquette> [<commit>]` :
 
 ```bash
-{{#include historique-lineaire.sh:tag-basic}}
+{{#include 2-historique-lineaire.sh:tag-basic}}
 ```
 
 Après l’exécution de ces commandes…
@@ -357,27 +357,27 @@ Et comme avec `git commit`, on peut utiliser l’option `-m` pour saisir
 l’annotation dans la ligne de commande :
 
 ```bash
-{{#include historique-lineaire.sh:tag-annotate-interactive}}
+{{#include 2-historique-lineaire.sh:tag-annotate-interactive}}
 ```
 
 On peut afficher la description d’une étiquette annotée avec la commande `git
 show` :
 
 ```bash
-{{#include historique-lineaire.sh:show-annotated-tag}}
+{{#include 2-historique-lineaire.sh:show-annotated-tag}}
 ```
 
 La liste des étiquettes présentes dans le dépôt peut être affichée avec `git tag
 --list`, ou tout simplement `git tag` :
 
 ```bash
-{{#include historique-lineaire.sh:tag-list}}
+{{#include 2-historique-lineaire.sh:tag-list}}
 ```
 
 Et enfin, vous pouvez détruire des étiquettes avec `git tag --delete` :
 
 ```bash
-{{#include historique-lineaire.sh:tag-delete}}
+{{#include 2-historique-lineaire.sh:tag-delete}}
 ```
 
 ### Revenir dans le passé
@@ -391,7 +391,7 @@ changements non enregistrés dans celui-ci. Pour savoir si c’est le cas, on pe
 comme toujours utiliser `git status` :
 
 ```bash
-{{#include historique-lineaire.sh:status-before-checkout}}
+{{#include 2-historique-lineaire.sh:status-before-checkout}}
 ```
 
 Si vous avez suivi le déroulement prévu du TP, ce n’est pas le cas, il y a des
@@ -399,14 +399,14 @@ changements en attente. Il va falloir s’occuper de ces changements d’abord, 
 exemple en les sauvegardant sous forme d’un nouveau `commit`.
 
 ```bash
-{{#include historique-lineaire.sh:commit-before-checkout}}
+{{#include 2-historique-lineaire.sh:commit-before-checkout}}
 ```
 
 Maintenant, nous sommes prêts. Revenons donc à un ancien commit, par exemple le
 parent de celui que nous venons de créer, avec la commande `git checkout` :
 
 ```bash
-{{#include historique-lineaire.sh:checkout-head-parent}}
+{{#include 2-historique-lineaire.sh:checkout-head-parent}}
 ```
 
 <div class="warning">
@@ -437,7 +437,7 @@ Quand vous avez fini d’explorer, il est facile de revenir à la fin de
 l’historique principal en rebasculant sur la branche `master` :
 
 ```bash
-{{#include historique-lineaire.sh:checkout-back-master}}
+{{#include 2-historique-lineaire.sh:checkout-back-master}}
 ```
 
 ### Annuler un jeu de commits
@@ -450,7 +450,7 @@ Cette commande modifie l’effet du répertoire de travail, il faut donc s’ass
 d’abord que ledit répertoire de travail est propre :
 
 ```bash
-{{#include historique-lineaire.sh:status-before-revert}}
+{{#include 2-historique-lineaire.sh:status-before-revert}}
 ```
 
 Ensuite, pour annuler par exemple l’effet du dernier commit effectué, on utilise
@@ -463,7 +463,7 @@ utiliser `-m` ici** pour saisir cette description directement dans la ligne de
 commande.
 
 ```bash
-{{#include historique-lineaire.sh:revert-head}}
+{{#include 2-historique-lineaire.sh:revert-head}}
 ```
 
 À plus grande échelle, il est aussi possible d’annuler l’effet de plusieurs
@@ -544,37 +544,37 @@ parallèle : la branche. Ce sera le sujet de la prochaine séquence.
 Ajouter des changements à l’index pour les inclure dans le prochain commit :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-add}}
+{{#include 2-historique-lineaire.sh:cheatsheet-add}}
 ```
 
 …en prenant en compte les suppressions de fichier (rejetées par défaut) :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-add-all}}
+{{#include 2-historique-lineaire.sh:cheatsheet-add-all}}
 ```
 
 Créer un _commit_, une version sauvegardée du projet :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-commit}}
+{{#include 2-historique-lineaire.sh:cheatsheet-commit}}
 ```
 
 Saisir la description du commit directement dans la commande :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-commit-message}}
+{{#include 2-historique-lineaire.sh:cheatsheet-commit-message}}
 ```
 
 Afficher les changements des **fichiers versionnés** par rapport à l’index :
 
 ```bash
-{{#include historique-lineaire.sh:diff-after-change}}
+{{#include 2-historique-lineaire.sh:diff-after-change}}
 ```
 
 …par rapport au dernier commit enregistré (commit actif) :
 
 ```bash
-{{#include historique-lineaire.sh:workdir-vs-head}}
+{{#include 2-historique-lineaire.sh:workdir-vs-head}}
 ```
 
 `HEAD` désigne le dernier commit enregistré. Pour tout commit `com`, `com~`
@@ -584,67 +584,67 @@ commit grand-parent (le parent du parent), et ainsi de suite.
 Afficher les changements dans l’index par rapport au commit actif :
 
 ```bash
-{{#include historique-lineaire.sh:index-vs-head}}
+{{#include 2-historique-lineaire.sh:index-vs-head}}
 ```
 
 Afficher les différences quand on passe du commit A au commit B :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-diff-commits}}
+{{#include 2-historique-lineaire.sh:cheatsheet-diff-commits}}
 ```
 
 Restreindre l’affichage des changements à certain fichiers ou dossiers :
 
 ```bash
-{{#include historique-lineaire.sh:diff-folder}}
+{{#include 2-historique-lineaire.sh:diff-folder}}
 ```
 
 Afficher l’historique des commits en ligne de commande :
 
 ```bash
-{{#include historique-lineaire.sh:git-log}}
+{{#include 2-historique-lineaire.sh:git-log}}
 ```
 
 Lancer le visualiseur d’historique `gitg` sans bloquer le terminal :
 
 ```bash
-{{#include historique-lineaire.sh:gitg-background}}
+{{#include 2-historique-lineaire.sh:gitg-background}}
 ```
 
 Créer une étiquette pointant sur le commit actif :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-tag}}
+{{#include 2-historique-lineaire.sh:cheatsheet-tag}}
 ```
 
 Créer une étiquette pointant sur un commit autre que le commit actif :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-tag-with-commit}}
+{{#include 2-historique-lineaire.sh:cheatsheet-tag-with-commit}}
 ```
 
 Créer une étiquette annotée comprenant une description :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-tag-annotate}}
+{{#include 2-historique-lineaire.sh:cheatsheet-tag-annotate}}
 ```
 
 Afficher la liste des étiquettes présentes dans le dépôt :
 
 ```bash
-{{#include historique-lineaire.sh:tag-list}}
+{{#include 2-historique-lineaire.sh:tag-list}}
 ```
 
 Détruire une ou plusieurs étiquette·s :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-tag-delete}}
+{{#include 2-historique-lineaire.sh:cheatsheet-tag-delete}}
 ```
 
 Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
 
 ```bash
-{{#include historique-lineaire.sh:cheatsheet-show}}
+{{#include 2-historique-lineaire.sh:cheatsheet-show}}
 ```
 
 <div class="warning">
@@ -656,25 +656,25 @@ Afficher les propriétés d’un commit et de ses étiquettes éventuelles :
   Charger le contenu d’un commit historique dans le répertoire de travail :
   
   ```bash
-  {{#include historique-lineaire.sh:cheatsheet-checkout}}
+  {{#include 2-historique-lineaire.sh:cheatsheet-checkout}}
   ```
   
   Revenir sur la branche `master`, la fin de l’historique principal du dépôt :
   
   ```bash
-  {{#include historique-lineaire.sh:checkout-back-master}}
+  {{#include 2-historique-lineaire.sh:checkout-back-master}}
   ```
   
   Créer un commit qui annule l’effet d’un ou plusieurs commits précédents :
 
   ```bash
-  {{#include historique-lineaire.sh:cheatsheet-revert}}
+  {{#include 2-historique-lineaire.sh:cheatsheet-revert}}
   ```
   
   Créer un commit qui annule l’effet de tous les commits entre A et B :
   
   ```bash
-  {{#include historique-lineaire.sh:cheatsheet-revert-range}}
+  {{#include 2-historique-lineaire.sh:cheatsheet-revert-range}}
   ```
 
 </div>
@@ -710,7 +710,7 @@ précédent, par exemple pour ajouter des modifications oubliées ou pour change
 la description. Tout cela est possible avec l’option `--amend` :
 
 ```bash
-{{#include historique-lineaire.sh:commit-amend}}
+{{#include 2-historique-lineaire.sh:commit-amend}}
 ```
 
 Les plus attentifs remarqueront peut-être dans la sortie de `git commit --amend`
@@ -784,14 +784,14 @@ temporaire de l’historique).
 En voici une petite démonstration :
 
 ```bash
-{{#include historique-lineaire.sh:stash}}
+{{#include 2-historique-lineaire.sh:stash}}
 ```
 
 La liste des modifications sauvegardées prend la forme d’une pile, que l’on peut
 consulter avec la commande `git stash list` :
 
 ```bash
-{{#include historique-lineaire.sh:stash-list}}
+{{#include 2-historique-lineaire.sh:stash-list}}
 ```
 
 Lorsqu’on est prêt à reprendre le travail sur cette version du répertoire de
@@ -799,7 +799,7 @@ travail, il suffit d’utiliser la commande `git stash pop` pour restaurer la
 dernière version sauvegardée du répertoire de travail :
 
 ```bash
-{{#include historique-lineaire.sh:stash-pop}}
+{{#include 2-historique-lineaire.sh:stash-pop}}
 ```
 
 Cette opération modifie le répertoire de travail comme git checkout, et il est

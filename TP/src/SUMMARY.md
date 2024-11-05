@@ -4,11 +4,11 @@
 
 ---
 
-- [Premiers pas avec git](premiers-pas.md)
-- [Un historique linéaire](historique-lineaire.md)
-- [Manipulation de branches](manipulation-branches.md)
-- [Dépôts distribués](depots-distribues.md)
-- [Réseau et forges](reseau-forges.md)
+- [Premiers pas avec git](1-premiers-pas.md)
+- [Un historique linéaire](2-historique-lineaire.md)
+- [Manipulation de branches](3-manipulation-branches.md)
+- [Dépôts distribués](4-depots-distribues.md)
+- [Réseau et forges](5-reseau-forges.md)
 
 ---
 
