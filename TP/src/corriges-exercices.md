@@ -446,7 +446,7 @@ On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 {{#include 5-reseau-forges-corrige.sh:show-remote-details}}
 ```
 
-…d’où vous attendez une sortie de ce genre…
+Dans la variante « GitHub ouvert », on attend une sortie de ce genre…
 
 > ```text
 > origin  git@github.com:francine.dupont/ddhc.git (fetch)
@@ -455,8 +455,17 @@ On peut vérifier la configuration des _remotes_ avec `git remote -v` :
 > upstream        https://github.com/HadrienG2/ddhc.git (push)
 > ```
 
-…avec `origin` qui pointe sur votre fork en connexion SSH, et `upstream` qui
+…avec `origin` qui pointe sur votre _fork_ en connexion SSH, et `upstream` qui
 pointe sur le dépôt officiel en connexion HTTPS.
+
+Dans la variante « GitLab fermé », on attend plutôt cette sortie…
+
+> ```text
+> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (fetch)
+> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (push)
+> ```
+
+…avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
 
 Pour créer une nouvelle branche partant de la branche `master`, on commence par
 basculer sur la branche `master`…
@@ -471,22 +480,22 @@ basculer sur la branche `master`…
 {{#include 5-reseau-forges-corrige.sh:create-and-checkout-branch}}
 ```
 
-…et on peut y enregistrer des changements de la façon habituelle :
+…et on peut y enregistrer des changements avec les outils habituels :
 
 ```bash
 {{#include 5-reseau-forges-corrige.sh:commit-something}}
 ```
 
-On peut ensuite pousser la branche sur son _fork_ avec `git push`. La première
-fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut mémoriser
-cette association avec `--set-upstream` :
+On peut ensuite pousser la branche sur le dépôt `origin` avec `git push`. La
+première fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut
+le mémoriser avec `--set-upstream` :
 
 ```bash
 {{#include 5-reseau-forges-corrige.sh:push-and-set-upstream}}
 ```
 
 Cette configuration fait que par la suite, si on a d’autres changements à
-pousser sur notre _fork_…
+pousser sur `origin`…
 
 ```bash
 {{#include 5-reseau-forges-corrige.sh:commit-more-things}}
