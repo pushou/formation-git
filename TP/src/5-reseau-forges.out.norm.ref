@@ -19,6 +19,7 @@ From https://github.com/HadrienG2/ddhc
 + git checkout master
 Already on 'master'
 Your branch is up to date with 'origin/master'.
++ cd ~/Desktop/ddhc
 + git branch --set-upstream-to=upstream/master
 Branch 'master' set up to track remote branch 'master' from 'upstream'.
 + git checkout master
@@ -34,20 +35,20 @@ Fast-forward
 + git checkout master
 Already on 'master'
 Your branch is up to date with 'upstream/master'.
-+ git checkout -b changements
-Switched to a new branch 'changements'
++ git checkout -b NomDeBranche
+Switched to a new branch 'NomDeBranche'
 + echo -e '\nCeci n'\''est pas un pied de page'
 + git add README.md
 + git commit -m 'Ajout d'\''un pied de page rebelle'
-[changements CCCCCCC] Ajout d'un pied de page rebelle
+[NomDeBranche CCCCCCC] Ajout d'un pied de page rebelle
  1 file changed, 2 insertions(+)
 + git checkout master
 Switched to branch 'master'
 Your branch is up to date with 'upstream/master'.
 + git pull --ff-only
 Already up to date.
-+ git checkout changements
-Switched to branch 'changements'
++ git checkout NomDeBranche
+Switched to branch 'NomDeBranche'
 + git merge master
 Already up to date.
 + unset -f test_this_manually

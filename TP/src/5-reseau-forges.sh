@@ -31,6 +31,12 @@ cd ~/Desktop
 # Remplacez URLDuFork par l'URL de votre fork
 git clone URLDuFork
 ###### ANCHOR_END: clone-from-github
+
+###### ANCHOR: clone-from-gitlab
+cd ~/Desktop
+# Même URL que le "Clone with SSH" de GitLab
+git clone git@gitlab.in2p3.fr:grasland/ddhc.git
+###### ANCHOR_END: clone-from-gitlab
 }
 unset -f test_this_manually
 cd ~/Desktop
@@ -53,22 +59,36 @@ git checkout master
 git branch --set-upstream-to=upstream/master
 ###### ANCHOR_END: set-upstream-master
 
-###### ANCHOR: pull-master
+###### ANCHOR: pull-master-gitlab
+cd ~/Desktop/ddhc
+###### ANCHOR: pull-master-github
 git checkout master
 git pull --ff-only
-###### ANCHOR_END: pull-master
+###### ANCHOR_END: pull-master-github
+###### ANCHOR_END: pull-master-gitlab
 
 ###### ANCHOR: config-pull-ff-only
 git config pull.ff only
 ###### ANCHOR_END: config-pull-ff-only
 
 
-###### ANCHOR: create-dev-branch
+###### ANCHOR: create-dev-branch-github
 git checkout master
 # Vous pouvez appeler votre branche de développement comme vous voulez, mais il
 # faudra adapter les commandes suivantes du TP en fonction du nom choisi
-git checkout -b changements
-###### ANCHOR_END: create-dev-branch
+git checkout -b NomDeBranche
+###### ANCHOR_END: create-dev-branch-github
+
+function test_this_manually() {
+###### ANCHOR: create-dev-branch-gitlab
+git checkout master
+# Choisissez un nom de branche original pour éviter toute collision avec vos
+# collègues qui travaillent au sein du même dépôt. Attention, le nom devra être
+# modifié dans toutes les commandes suivantes du chapitre.
+git checkout -b NomDeBranche
+###### ANCHOR_END: create-dev-branch-gitlab
+}
+unset -f test_this_manually
 
 ###### ANCHOR: commit-on-dev-branch
 # Remplacez cette commande d'édition par une édition du fichier de votre choix.
@@ -83,20 +103,22 @@ git commit -m "Ajout d'un pied de page rebelle"
 ###### ANCHOR: update-master-and-merge
 git checkout master
 git pull --ff-only
-git checkout changements
+git checkout NomDeBranche
 git merge master
 ###### ANCHOR_END: update-master-and-merge
 
 # I'd love to test this too but credentials are hard
 function test_this_manually() {
 ###### ANCHOR: push-set-upstream
-git push --set-upstream origin changements
+git push --set-upstream origin NomDeBranche
 ###### ANCHOR_END: push-set-upstream
 
-###### ANCHOR: delete-dev-branch
+###### ANCHOR: delete-dev-branch-github
+git push --delete origin NomDeBranche
+###### ANCHOR: delete-dev-branch-gitlab
 git checkout master
-git push --delete origin changements
-git branch -D changements
-###### ANCHOR_END: delete-dev-branch
+git branch -D NomDeBranche
+###### ANCHOR_END: delete-dev-branch-gitlab
+###### ANCHOR_END: delete-dev-branch-github
 }
 unset -f test_this_manually
