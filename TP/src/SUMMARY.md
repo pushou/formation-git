@@ -9,6 +9,7 @@
 - [Manipulation de branches](3-manipulation-branches.md)
 - [Dépôts distribués](4-depots-distribues.md)
 - [Réseau et forges](5-reseau-forges.md)
+  * [Intro commune](5.0-intro.md)
   * [GitHub ouvert](5.1-github-ouvert.md)
   * [GitLab fermé](5.2-gitlab-ferme.md)
   * [Conclusion commune](5.3-conclusion.md)
