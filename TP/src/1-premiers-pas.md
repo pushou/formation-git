@@ -76,8 +76,13 @@ versions de fichiers entre eux. Il est alors utile de savoir qui a contribué
 quoi, et comment contacter cette personne.
 
 git vous demandera donc de lui donner votre nom et votre adresse e-mail avant de
-vous laisser sauvegarder des versions. Voici un exemple d’utilisation des
-commandes associées :
+vous laisser sauvegarder des versions.
+
+Si plus tard vous utilisez git avec une forge (GitHub, GitLab...), c'est cette 
+adresse mail qui sera utilisée par la forge pour relier les commits qui ont été
+mis en ligne à votre compte utilisateur.
+
+Voici un exemple d’utilisation des commandes associées :
 
 ```bash
 {{#include 1-premiers-pas.sh:config-user}}
@@ -85,8 +90,8 @@ commandes associées :
 
 ### Choisir un éditeur de texte
 
-git vous demandera parfois de saisir du texte avec un éditeur de texte. Cet
-éditeur est configurable, par défaut il s’agit de `vim`.
+git vous demandera parfois de saisir du texte avec un éditeur. Cet éditeur est
+configurable, par défaut il s’agit de `vim`.
 
 Le choix d’un éditeur de texte relevant de la guerre de religion, nous dirons
 juste qu’il est recommandé d’utiliser un éditeur en mode console pour cet usage,
@@ -100,6 +105,10 @@ le souhaitez :
 ```bash
 {{#include 1-premiers-pas.sh:config-editor}}
 ```
+
+Ce choix ne concerne que les situations où git ouvre automatiquement un éditeur
+pour vous faire saisir du texte. Vous restez libre d’utiliser l'éditeur que vous
+voulez pour modifier vos fichiers entre deux appels à des commandes git.
 
 ### Choisir un nom de branche par défaut
 

@@ -2,7 +2,7 @@
 #
 # Ce script contient l'ensemble des commandes exécutées par les utilisateurs
 # durant le TP1, ce qui permet de rejouer facilement ces commandes pour...
-# 
+#
 # - Vérifier l'absence de nouvelles erreurs, de nouveaux conseils git, etc. en
 #   comparant la sortie au fichier de référence .ref.
 # - Régénérer facilement l'archive de rattrapage de fin de TP1 (et autres TPs)
@@ -21,7 +21,7 @@ whoami
 
 ###### ANCHOR: config-user
 # Remplacez "Francine Dupont" et "fdupont@serveur-imaginaire.fr" par votre nom
-# et l'adresse e-mail utilisée pour créer votre compte GitHub dans ce qui suit
+# et l'adresse e-mail associée à votre compte GitHub/GitLab dans ce qui suit
 git config --global user.name 'Francine Dupont'
 git config --global user.email 'fdupont@serveur-imaginaire.fr'
 ###### ANCHOR_END: config-user
@@ -200,7 +200,7 @@ function test_this_manually() {
 # Dans les commandes suivantes, remplacez ReglageAChanger par le réglage git
 # dont vous voulez modifier la valeur, et la chaîne de caractère qui suit par la
 # valeur que vous voulez donner à ce réglage.
-# 
+#
 # Rappelez-vous également que l'utilisation de "git config --system" nécessite
 # des privilèges administrateur.
 git config --system ReglageAChanger 'Valeur pour tout le système'
