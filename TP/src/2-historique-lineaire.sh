@@ -100,6 +100,10 @@ gitg
 ###### ANCHOR: gitg-background
 gitg &
 ###### ANCHOR_END: gitg-background
+
+###### ANCHOR: gitg-noerror
+gitg 2>/dev/null &
+###### ANCHOR_END: gitg-noerror
 }
 unset -f test_this_manually
 

@@ -219,9 +219,7 @@ fichiers _sous gestion de version_ depuis le dernier commit.
   préexistants.
   
   Par conséquent, à moins d’être déjà habitué à un gestionnaire de version où ce
-  comportement est normal, je vous encourage fortement à considérer
-  l’utilisation de `git commit -a` comme une mauvaise habitude qu’il est
-  préférable d’éviter de prendre.
+  comportement est normal, je vous déconseille d’utiliser `git commit -a`.
 
 </div>
 
@@ -266,21 +264,23 @@ empêche la saisie de commandes supplémentaires tant qu’elle est en exécutio
 vous retournez dans votre terminal, vous pourrez constater qu’il n’acceptera
 plus de commandes tant que vous n’aurez pas fermé `gitg`.
 
-La manière la plus simple de régler ce problème est de lancer l’application en
-tâche de fond avec l’aide du signe `&` :
+Pour éviter ça, lancez l’application en tâche de fond avec l’aide du signe `&` :
 
 ```bash
 {{#include 2-historique-lineaire.sh:gitg-background}}
 ```
 
-Dans cette configuration, `gitg` ne bloque pas la console, et vous pouvez
-continuer de saisir des commandes.
+Dans cette configuration, vous garderez la possibilité de saisir des commandes.
 
-Votre terminal restera toutefois occasionnellement « pollué » par des messages de
-statut de `gitg`, logiciel dont la propreté de code ne semble pas idéale et qui
-est donc occasionnellement sujet à des erreurs non fatales… Si cela vous agace,
-vous pouvez aussi lancer `gitg` graphiquement et le pointer manuellement vers
-votre dépôt.
+Votre terminal restera toutefois occasionnellement « pollué » par des erreurs
+non fatales d’exécution de `gitg`… Si cela vous énerve, vous pouvez ajouter
+`2>/dev/null` à la fin de votre commande de lancement `gitg` pour supprimer ces
+messages :
+
+
+```bash
+{{#include 2-historique-lineaire.sh:gitg-noerror}}
+```
 
 ### Premières requêtes
 
