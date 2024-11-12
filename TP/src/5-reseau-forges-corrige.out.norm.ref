@@ -2,8 +2,8 @@
 	'
 + cd ~/Desktop/ddhc
 + git remote -v
-origin	https://github.com/francine-dupont/ddhc.git (fetch)
-origin	https://github.com/francine-dupont/ddhc.git (push)
+origin	https://github.com/HadrienG2/ddhc.git (fetch)
+origin	https://github.com/HadrienG2/ddhc.git (push)
 upstream	https://github.com/HadrienG2/ddhc.git (fetch)
 upstream	https://github.com/HadrienG2/ddhc.git (push)
 + git checkout master

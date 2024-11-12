@@ -6,12 +6,12 @@
 ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSH formation-git
 + unset -f test_this_manually
 + cd ~/Desktop
-+ git clone https://github.com/francine-dupont/ddhc.git
++ git clone https://github.com/HadrienG2/ddhc.git
 Cloning into 'ddhc'...
 + cd ddhc/
 + git remote -v
-origin	https://github.com/francine-dupont/ddhc.git (fetch)
-origin	https://github.com/francine-dupont/ddhc.git (push)
+origin	https://github.com/HadrienG2/ddhc.git (fetch)
+origin	https://github.com/HadrienG2/ddhc.git (push)
 + git remote add upstream https://github.com/HadrienG2/ddhc.git
 + git fetch upstream
 From https://github.com/HadrienG2/ddhc
@@ -24,13 +24,9 @@ Branch 'master' set up to track remote branch 'master' from 'upstream'.
 + cd ~/Desktop/ddhc
 + git checkout master
 Already on 'master'
-Your branch is behind 'upstream/master' by 151 commits, and can be fast-forwarded.
-  (use "git pull" to update your local branch)
+Your branch is up to date with 'upstream/master'.
 + git pull --ff-only
-Updating AAAAAAA..BBBBBBB
-Fast-forward
- README.md | 2 --
- 1 file changed, 2 deletions(-)
+Already up to date.
 + git config pull.ff only
 + git checkout master
 Already on 'master'
@@ -41,7 +37,7 @@ Switched to a new branch 'NomDeBranche'
 + echo -e '\nCeci n'\''est pas un pied de page'
 + git add README.md
 + git commit -m 'Ajout d'\''un pied de page rebelle'
-[NomDeBranche CCCCCCC] Ajout d'un pied de page rebelle
+[NomDeBranche AAAAAAA] Ajout d'un pied de page rebelle
  1 file changed, 2 insertions(+)
 + git checkout master
 Switched to branch 'master'
