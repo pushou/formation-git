@@ -40,7 +40,7 @@ git clone git@gitlab.in2p3.fr:grasland/ddhc.git
 }
 unset -f test_this_manually
 cd ~/Desktop
-git clone https://github.com/francine-dupont/ddhc.git
+git clone https://github.com/HadrienG2/ddhc.git
 
 
 ###### ANCHOR: goto-repo-and-show-remote
