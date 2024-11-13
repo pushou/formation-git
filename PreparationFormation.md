@@ -58,6 +58,7 @@
     * Remplissage savon, PQ, essuie-mains
 - Vérifier chauffages
     * Nombreuses DEL grillées, donc mettre en route tôt pour sentir le chaud
+    * Le thermomètre du capteur de CO2 peut aussi aider
 - Vérifier vidéoprojecteurs et pointeur PC prof
     * Projeter quelques slides pour vérifier rendu couleurs, vérifier réglages
       si c'est trop illisible (luminosité !)
@@ -81,6 +82,7 @@
 
 ## Quand supports finalisés
 
+- Faire une passe hunspell/grammalecte
 - Faire test automatique sur compte prof via SSH (cf CI)
 - Reconfigurer compte prof (mail, username, editor, default branch...)
 - Remise à zéro contenu et PR/MR dépôts DDHC GitHub et GitLab
