@@ -1,6 +1,6 @@
 SRCS_PRES:=$(wildcard *.odp)
 RENDUS_PRES:=$(SRCS_PRES:Pres%.odp=TP/src/Pres%.pdf)
-SRCS_TPS:=TP/book.toml $(wildcard TP/src/*) $(wildcard TP/src/images/*) ${RENDUS_PRES}
+SRCS_TPS:=TP/book.toml $(wildcard TP/src/*) $(wildcard TP/src/demos/*) $(wildcard TP/src/images/*) ${RENDUS_PRES}
 RENDUS_TPS:=TP/book
 
 .PHONY: all clean
