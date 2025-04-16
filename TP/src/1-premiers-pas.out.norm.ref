@@ -11,15 +11,17 @@ user.name=Francine Dupont
 user.email=fdupont@serveur-imaginaire.fr
 core.editor=nano
 init.defaultbranch=master
+init.defaultbranch=none
+fetch.recursesubmodules=false
+credential.interactive=never
+transfer.bundleuri=true
 core.repositoryformatversion=0
 core.filemode=true
 core.bare=false
 core.logallrefupdates=true
 remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-gitg.mainline=refs/heads/master
-branch.main.remote=origin
-branch.main.merge=refs/heads/main
+lfs.repositoryformatversion=0
 + mkdir ~/Desktop/MonDepot
 + cd ~/Desktop/MonDepot
 + git init
