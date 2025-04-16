@@ -88,7 +88,7 @@ git status
 ###### ANCHOR: ignore-gitignore-status
 ###### ANCHOR: ignore-gitignore-docs
 # Exécuter à la racine de dépôt, sinon l'effet est limité au sous-dossier actuel
-echo '*.log' > .gitignore
+echo '*.log' >> .gitignore
 ###### ANCHOR_END: ignore-gitignore-docs
 git status
 ###### ANCHOR_END: ignore-gitignore-status
