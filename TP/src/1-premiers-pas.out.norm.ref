@@ -11,16 +11,15 @@ user.name=Francine Dupont
 user.email=fdupont@serveur-imaginaire.fr
 core.editor=nano
 init.defaultbranch=master
-init.defaultbranch=none
-fetch.recursesubmodules=false
-transfer.bundleuri=true
 core.repositoryformatversion=0
 core.filemode=true
 core.bare=false
 core.logallrefupdates=true
 remote.origin.url=https://gitlab.in2p3.fr/grasland/formation-git.git
 remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
-lfs.repositoryformatversion=0
+gitg.mainline=refs/heads/master
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
 + mkdir ~/Desktop/MonDepot
 + cd ~/Desktop/MonDepot
 + git init
@@ -597,7 +596,7 @@ SEE ALSO
 GIT
        Part of the git(1) suite
 
-Git 2.25.1                        06/13/2024                     GIT-STATUS(1)
+Git 2.25.1                        02/26/2025                     GIT-STATUS(1)
 + git help status
 GIT-STATUS(1)                     Git Manual                     GIT-STATUS(1)
 
@@ -1000,7 +999,7 @@ SEE ALSO
 GIT
        Part of the git(1) suite
 
-Git 2.25.1                        06/13/2024                     GIT-STATUS(1)
+Git 2.25.1                        02/26/2025                     GIT-STATUS(1)
 + git mv -h
 usage: git mv [<options>] <source>... <destination>
 
