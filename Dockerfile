@@ -1,5 +1,8 @@
+# TODO: Keep Ubuntu version in sync with teaching room PCs.
 FROM docker.io/ubuntu:20.04
-ENV MDBOOK_VERSION="0.4.48"
+# TODO: Update mdbook once Ubuntu version above gets updated (0.4.43 is the last
+#       release with binary packages that support Ubuntu 20.04).
+ENV MDBOOK_VERSION="0.4.43"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
