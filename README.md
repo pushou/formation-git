@@ -5,7 +5,7 @@
 Ce dépôt git contient tous les supports d’une formation à l’outil de gestion de
 version git, soit les éléments suivants :
 
-- Des planches permettant d’introduire les sujets théoriques
+- Des _slides_ permettant d’introduire les sujets théoriques
 - Des TPs permettant de manipuler l’outil, de façon guidée puis autonome
 - Une check-list pour la présentation des outils interactifs utilisés en TP
 - Des « quiz » pour jauger le niveau de compréhension de la salle et réviser les
@@ -43,9 +43,7 @@ parallèle (option `-j`) pour le rendu des présentations.
 
 La salle de formation doit comporter un vidéoprojecteur, équipement désormais
 assez standard, mais il faut surtout procéder à l’avance l'installation d'un
-environnement de TP les postes stagiaires. Si vous utilisez la VM de l'édition
-2021, notez que VirtualBox n’offre que des garanties faibles de compatibilité
-entre versions, la VM de 2021 a été générée avec VirtualBox 6.1.
+environnement de TP les postes stagiaires.
 
 ## Impression des documents formateur
 
@@ -64,11 +62,10 @@ l’une des faces vous dit à quel TP chaque quiz fait référence, et l’autre
 vous donne les questions du quiz.
 
 Par ailleurs, le fichier `Planning.ods`, qui décrit une organisation temporelle
-possible (mise en place en 2020, la pratique dira si elle restera) utilise un
-format A4 tout à fait standard, mais je n’ai pas envie que son rendu PDF se
-retrouve avec les documents accessibles au stagiaire. Quand j’aurai réglé le
-problème ci-dessus, je pense que je centraliserai le rendu des documents
-formateur dans un dossier à part de celui des rendus « stagiaires ».
+possible. Il utilise un format A4 standard, mais je n’ai pas envie que son rendu
+PDF se retrouve avec les documents accessibles au stagiaire. Si je parviens à
+scripter le rendu des documents formateurs pense que je le centraliserai un jour
+dans un dossier à part de celui des rendus « stagiaires ».
 
 ## Licence
 
