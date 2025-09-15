@@ -1,0 +1,255 @@
+---
+// Astro recipe template (French)
+// Expected usage:
+// <Recipe entry={recipe} /> where recipe is a collection entry with frontmatter:
+// {
+//   titre, description, auteur, date, temps_preparation, temps_cuisson, temps_repos,
+//   difficulte, nombre_personnes, categorie, tags, image, cout (optional '€'|'€€'|'€€€'),
+//   ingredients?: string[], conseils?: string[]
+// }
+// and Markdown body used for the cooking steps (e.g., starts with "## Instructions").
+
+
+interface Frontmatter {
+  titre: string;
+  description?: string;
+  auteur?: string;
+  date?: string;
+  temps_preparation?: string;
+  temps_cuisson?: string;
+  temps_repos?: string;
+  difficulte?: string;
+  nombre_personnes?: number;
+  categorie?: string;
+  tags?: string[];
+  image?: string;
+  cout?: string; // €, €€, €€€
+  ingredients?: string[];
+  conseils?: string[];
+}
+
+interface EntryLike {
+  id?: string;
+  slug?: string;
+  body: string; // markdown source
+  data: Frontmatter; // for content collections this is entry.data
+}
+
+const { entry }: { entry: EntryLike } = Astro.props;
+const fm = (entry?.data || {}) as Frontmatter;
+
+// Prepare markdown body: split on horizontal rule for optional chef notes
+const markdownSource = entry?.body ?? '';
+const hrSplit = markdownSource.split(/^\s*---\s*$/m);
+let bodyForInstructions = hrSplit[0] ?? markdownSource;
+const chefNoteMarkdown = hrSplit.length > 1 ? hrSplit.slice(1).join('\n---\n') : '';
+
+// Strip a leading "## Instructions" heading to avoid duplicate titles in UI
+bodyForInstructions = bodyForInstructions.replace(/^\s*##\s+Instructions\s*\n+/i, '');
+
+const { code: instructionsHtml } = await Astro.renderMarkdown(bodyForInstructions);
+
+// Build Ingredients HTML from frontmatter array
+const ingredientsList = Array.isArray(fm.ingredients) ? fm.ingredients : [];
+const ingredientsHtml = ingredientsList.length
+  ? `<ul>${ingredientsList.map((i) => `<li>${i}</li>`).join('')}</ul>`
+  : '';
+
+// Build Chef note HTML from frontmatter conseils
+const conseilsList = Array.isArray(fm.conseils) ? fm.conseils : [];
+let chefNoteHtml = '';
+if (conseilsList.length) {
+  chefNoteHtml = `<ul>${conseilsList.map((c) => `<li>${c}</li>`).join('')}</ul>`;
+} else if (chefNoteMarkdown.trim().length) {
+  const { code } = await Astro.renderMarkdown(chefNoteMarkdown);
+  chefNoteHtml = code;
+}
+
+---
+
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fm.titre ? `${fm.titre} • Recette` : 'Recette'}</title>
+    {fm.description && <meta name="description" content={fm.description} />}
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerPolicy="no-referrer" />
+    <style>
+      .info-icon{width:1.25rem;height:1.25rem}
+      .hero-overlay-gradient{background:linear-gradient(180deg,rgba(0,0,0,.45) 0,rgba(0,0,0,.35) 60%,rgba(0,0,0,.15) 100%)}
+      /* context7: beige helper without Tailwind config */
+      .bg-beige-50{background-color:#f9f6ef}
+    </style>
+  </head>
+  <body class="bg-base-100 text-base-content">
+    <header class="sticky top-0 z-50 bg-base-100/90 backdrop-blur border-b border-base-200">
+      <div class="navbar container mx-auto px-4">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl gap-2" href="/">
+            <i class="fa-solid fa-utensils"></i>
+            <span>CookBook</span>
+          </a>
+        </div>
+        <div class="flex-none gap-2">
+          <div class="hidden md:flex items-center gap-1">
+            <a href="/recettes" class="btn btn-sm btn-outline">Toutes les recettes</a>
+            <div class="dropdown dropdown-end">
+              <label tabindex="0" class="btn btn-sm">Catégories</label>
+              <ul tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
+                <li><a href="/categorie/desserts">Desserts</a></li>
+                <li><a href="/categorie/plats">Plats</a></li>
+                <li><a href="/categorie/entrees">Entrées</a></li>
+                <li><a href="/categorie/vegan">Vegan</a></li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn btn-ghost btn-circle md:hidden" aria-label="Ouvrir le menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="relative">
+      <div class="hero min-h-[340px] md:min-h-[480px]" style={`background-image:url('${fm.image ?? ''}')`}>
+        <div class="hero-overlay hero-overlay-gradient"></div>
+        <div class="hero-content text-center text-neutral-content">
+          <div class="max-w-3xl">
+            <h1 class="text-3xl md:text-5xl font-bold">{fm.titre || 'Nom de la recette'}</h1>
+            {fm.description && <p class="mt-4 opacity-90">{fm.description}</p>}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="container mx-auto px-4">
+        <ul class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 divide-y sm:divide-y-0 sm:divide-x divide-base-200">
+          <li class="flex items-center gap-3 py-4">
+            <i class="fa-solid fa-user-group text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Personnes</div>
+              <div class="font-medium">{fm.nombre_personnes ?? 4}</div>
+            </div>
+          </li>
+          <li class="flex items-center gap-3 py-4 sm:pl-4">
+            <i class="fa-regular fa-clock text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Préparation</div>
+              <div class="font-medium">{fm.temps_preparation ?? '—'}</div>
+            </div>
+          </li>
+          <li class="flex items-center gap-3 py-4 sm:pl-4">
+            <i class="fa-solid fa-hourglass-half text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Repos</div>
+              <div class="font-medium">{fm.temps_repos ?? '—'}</div>
+            </div>
+          </li>
+          <li class="flex items-center gap-3 py-4 sm:pl-4">
+            <i class="fa-solid fa-fire-burner text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Cuisson</div>
+              <div class="font-medium">{fm.temps_cuisson ?? '—'}</div>
+            </div>
+          </li>
+          <li class="flex items-center gap-3 py-4 sm:pl-4">
+            <i class="fa-solid fa-signal text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Difficulté</div>
+              <div class="font-medium">{fm.difficulte ?? '—'}</div>
+            </div>
+          </li>
+          <li class="flex items-center gap-3 py-4 sm:pl-4">
+            <i class="fa-solid fa-euro-sign text-primary info-icon"></i>
+            <div>
+              <div class="text-xs uppercase opacity-60">Coût</div>
+              <div class="font-medium">{fm.cout}</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="container mx-auto px-4 py-8">
+        <div class="card bg-black text-white shadow-xl">
+          <div class="card-body">
+            <h2 class="card-title">Ingrédients</h2>
+            {ingredientsHtml ? (
+              <div class="prose prose-invert max-w-none" set:html={ingredientsHtml} />
+            ) : (
+              <p class="opacity-80">Les ingrédients seront bientôt disponibles.</p>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="bg-beige-50">
+      <div class="container mx-auto px-4 py-10">
+          <div>
+            <h3 class="text-2xl font-semibold">À propos</h3>
+            {fm.description ? (
+              <p class="mt-3 opacity-80">{fm.description}</p>
+            ) : (
+              <p class="mt-3 opacity-60">Aucune description fournie.</p>
+            )}
+            <div class="mt-4 text-sm opacity-70">
+              {fm.auteur && (<span>Auteur: {fm.auteur}</span>)}
+              {fm.date && (<span class="ml-3">• {fm.date}</span>)}
+              {fm.categorie && (<span class="ml-3">• {fm.categorie}</span>)}
+            </div>
+            {fm.tags && fm.tags.length > 0 && (
+              <div class="mt-4 flex flex-wrap gap-2">
+                {fm.tags.map((t) => (
+                  <span class="badge badge-outline" data-tag={t}>{t}</span>
+                ))}
+              </div>
+            )}
+          </div>
+          <div>
+            <h3 class="text-2xl font-semibold">Instructions</h3>
+            {instructionsHtml ? (
+              <div class="prose max-w-none" set:html={instructionsHtml} />
+            ) : (
+              <p class="mt-3 opacity-80">Les instructions seront bientôt disponibles.</p>
+            )}
+          </div>
+      </div>
+    </section>
+
+    <section class="bg-white">
+      <div class="container mx-auto px-4 py-10">
+        <div class="prose max-w-none">
+          <h3>Note du chef</h3>
+          <!-- Render any content after a horizontal rule as chef note if present -->
+          {chefNoteHtml ? (
+            <div class="prose max-w-none" set:html={chefNoteHtml} />
+          ) : (
+            <p>Ajoutez vos astuces et notes de chef ici.</p>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-black text-white">
+      <div class="container mx-auto px-4 py-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2 opacity-80">
+            <i class="fa-solid fa-utensils"></i>
+            <span>CookBook</span>
+          </div>
+          <nav class="flex items-center gap-6 opacity-80">
+            <a href="/mentions-legales" class="link link-hover">Mentions Légales</a>
+          </nav>
+        </div>
+        <div class="mt-6 text-sm opacity-60">© {new Date().getFullYear()} CookBook. Tous droits réservés.</div>
+      </div>
+    </footer>
+  </body>
+  </html>
