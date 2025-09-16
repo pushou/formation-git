@@ -22,7 +22,7 @@ origin	~/Desktop/MesBranches (push)
   Push  URL: ~/Desktop/MesBranches
   HEAD branch: univers-parallele
   Remote branches:
-    master            tracked
+    main            tracked
     univers-parallele tracked
   Local branch configured for 'git pull':
     univers-parallele merges with remote univers-parallele
@@ -87,24 +87,24 @@ On branch univers-parallele
 Your branch is up to date with 'origin/univers-parallele'.
 
 nothing to commit, working tree clean
-+ git checkout master
-Switched to a new branch 'master'
-Branch 'master' set up to track remote branch 'master' from 'origin'.
++ git checkout main
+Switched to a new branch 'main'
+Branch 'main' set up to track remote branch 'main' from 'origin'.
 + git branch --list -vv
-* master            EEEEEEE [origin/master] Ajoutons une annexe
+* main              EEEEEEE [origin/main] Ajoutons une annexe
   univers-parallele DDDDDDD [origin/univers-parallele] Du contenu supplémentaire
-+ git push origin master
++ git push origin main
 Everything up-to-date
 + echo 'Hallo !'
 + git add HelloWorld.txt
 + git commit -m 'Traduction allemande'
-[master FFFFFFF] Traduction allemande
+[main FFFFFFF] Traduction allemande
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push origin
 To ~/Desktop/MesBranches
-   EEEEEEE..FFFFFFF  master -> master
+   EEEEEEE..FFFFFFF  main -> main
 + cd ../MesBranches
-+ git log master
++ git log main
 commit FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 Author: Francine Dupont <fdupont@serveur-imaginaire.fr>
 Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
@@ -145,11 +145,11 @@ Date:   Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
 + echo 'Konnichi-wa !'
 + git add --all
 + git commit -m 'Traduction japonaise'
-[master KKKKKKK] Traduction japonaise
+[main KKKKKKK] Traduction japonaise
  1 file changed, 1 insertion(+), 1 deletion(-)
 + git push
 To ~/Desktop/MesBranches
-   FFFFFFF..KKKKKKK  master -> master
+   FFFFFFF..KKKKKKK  main -> main
 + git config --global push.autoSetupRemote true
 + git clone ../MesBranches ../MonAutreClone
 Cloning into '../MonAutreClone'...
@@ -166,33 +166,33 @@ Fetching autre
 From ../MonAutreClone
  * [new branch]      univers-parallele -> autre/univers-parallele
 + cd ../MonAutreClone
-+ git checkout master
-Switched to a new branch 'master'
-Branch 'master' set up to track remote branch 'master' from 'origin'.
++ git checkout main
+Switched to a new branch 'main'
+Branch 'main' set up to track remote branch 'main' from 'origin'.
 + echo 1
 + git add Compteur.txt
 + git commit -m 'Ajout d'\''un compteur'
-[master LLLLLLL] Ajout d'un compteur
+[main LLLLLLL] Ajout d'un compteur
  1 file changed, 1 insertion(+)
  create mode 100644 Compteur.txt
 + git push
 To ~/Desktop/MonClone/../MesBranches
-   KKKKKKK..LLLLLLL  master -> master
+   KKKKKKK..LLLLLLL  main -> main
 + cd ../MonClone
 + echo 'Prost !'
 + git add HelloWorld.txt
 + git commit -m 'Disons bonjour plus joyeusement'
-[master MMMMMMM] Disons bonjour plus joyeusement
+[main MMMMMMM] Disons bonjour plus joyeusement
  1 file changed, 1 insertion(+), 1 deletion(-)
 + unset -f test_this_manually
 + git fetch --all
 Fetching origin
 From ~/Desktop/MesBranches
-   KKKKKKK..LLLLLLL  master     -> origin/master
+   KKKKKKK..LLLLLLL  main     -> origin/main
 Fetching autre
 From ../MonAutreClone
- * [new branch]      master     -> autre/master
-+ git merge -m 'Une fusion inattendue' origin/master
+ * [new branch]      main     -> autre/main
++ git merge -m 'Une fusion inattendue' origin/main
 Merge made by the 'recursive' strategy.
  Compteur.txt | 1 +
  1 file changed, 1 insertion(+)
@@ -202,7 +202,7 @@ Merge made by the 'recursive' strategy.
 HEAD is now at MMMMMMM Disons bonjour plus joyeusement
 + git push autre
 To ../MonAutreClone
- ! [rejected]        master -> master (non-fast-forward)
+ ! [rejected]        main -> main (non-fast-forward)
 error: failed to push some refs to '../MonAutreClone'
 hint: Updates were rejected because the tip of your current branch is behind
 hint: its remote counterpart. Integrate the remote changes (e.g.
@@ -213,7 +213,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 + echo 2
 + git add Compteur.txt
 + git commit -m 'Un autre commit qui modifie Compteur.txt'
-[master NNNNNNN] Un autre commit qui modifie Compteur.txt
+[main NNNNNNN] Un autre commit qui modifie Compteur.txt
  1 file changed, 1 insertion(+)
  create mode 100644 Compteur.txt
 + git pull

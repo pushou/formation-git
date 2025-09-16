@@ -9,14 +9,14 @@ Initialized empty Git repository in ~/Desktop/MesBranches/.git/
 + printf 'Première partie\n\n\n\nDeuxième partie\n'
 + git add HelloWorld.txt Contenu.txt
 + git commit -m 'Commit initial'
-[master (root-commit) AAAAAAA] Commit initial
+[main (root-commit) AAAAAAA] Commit initial
  2 files changed, 6 insertions(+)
  create mode 100644 Contenu.txt
  create mode 100644 HelloWorld.txt
 + git tag initial
 + git branch univers-parallele
 + git branch --list
-* master
+* main
   univers-parallele
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
@@ -29,8 +29,8 @@ nothing to commit, working tree clean
 + git commit -m 'Premier jeu de modifications'
 [univers-parallele BBBBBBB] Premier jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
-+ git checkout master
-Switched to branch 'master'
++ git checkout main
+Switched to branch 'main'
 + cat HelloWorld.txt
 Bonjour !
 + echo 'Partie 1 : Le commencement'
@@ -39,10 +39,10 @@ Bonjour !
 + echo 'Nouveau fichier'
 + git add --all
 + git commit -m 'Deuxième jeu de modifications'
-[master CCCCCCC] Deuxième jeu de modifications
+[main CCCCCCC] Deuxième jeu de modifications
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
-+ git diff initial master
++ git diff initial main
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 new file mode 100644
 index 0000000..DDDDDDD
@@ -57,17 +57,17 @@ index EEEEEEE..FFFFFFF 100644
 @@ -1,4 +1,4 @@
 -Première partie
 +Partie 1 : Le commencement
- 
- 
- 
+
+
+
 + git diff initial univers-parallele
 diff --git a/Contenu.txt b/Contenu.txt
 index EEEEEEE..GGGGGGG 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Première partie
- 
- 
+
+
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -77,7 +77,7 @@ index HHHHHHH..IIIIIII 100644
 @@ -1 +1 @@
 -Bonjour !
 +Hi there!
-+ git diff master univers-parallele
++ git diff main univers-parallele
 diff --git a/AutreContenu.txt b/AutreContenu.txt
 deleted file mode 100644
 index DDDDDDD..0000000
@@ -92,9 +92,9 @@ index FFFFFFF..GGGGGGG 100644
 @@ -1,5 +1,6 @@
 -Partie 1 : Le commencement
 +Première partie
- 
- 
- 
+
+
+
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -105,7 +105,7 @@ index HHHHHHH..IIIIIII 100644
 -Bonjour !
 +Hi there!
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + unset -f test_this_manually
 + git merge -m 'Une fusion sans histoires' univers-parallele
@@ -114,14 +114,14 @@ Merge made by the 'recursive' strategy.
  Contenu.txt    | 1 +
  HelloWorld.txt | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
-+ git diff master~
++ git diff main~
 diff --git a/Contenu.txt b/Contenu.txt
 index FFFFFFF..JJJJJJJ 100644
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@ -3,3 +3,4 @@ Partie 1 : Le commencement
- 
- 
+
+
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -146,9 +146,9 @@ index EEEEEEE..JJJJJJJ 100644
 @@ -1,5 +1,6 @@
 -Première partie
 +Partie 1 : Le commencement
- 
- 
- 
+
+
+
  Deuxième partie
 +Troisième partie
 diff --git a/HelloWorld.txt b/HelloWorld.txt
@@ -173,12 +173,12 @@ index GGGGGGG..JJJJJJJ 100644
 @@ -1,4 +1,4 @@
 -Première partie
 +Partie 1 : Le commencement
- 
- 
- 
+
+
+
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
-+ git merge master
++ git merge main
 Updating BBBBBBB..KKKKKKK
 Fast-forward
  AutreContenu.txt | 1 +
@@ -188,18 +188,18 @@ Fast-forward
 + git reset --hard '@{1}'
 HEAD is now at BBBBBBB Premier jeu de modifications
 + unset -f test_this_manually
-+ git merge --no-ff -m 'Une autre fusion sans histoires' master
++ git merge --no-ff -m 'Une autre fusion sans histoires' main
 Merge made by the 'recursive' strategy.
  AutreContenu.txt | 1 +
  Contenu.txt      | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
-+ git checkout master
-Switched to branch 'master'
++ git checkout main
+Switched to branch 'main'
 + echo Annexe
 + git add Contenu.txt
 + git commit -m 'Ajoutons une annexe'
-[master LLLLLLL] Ajoutons une annexe
+[main LLLLLLL] Ajoutons une annexe
  1 file changed, 1 insertion(+)
 + git checkout univers-parallele
 Switched to branch 'univers-parallele'
@@ -209,7 +209,7 @@ Switched to branch 'univers-parallele'
 [univers-parallele MMMMMMM] Ajoutons une bibliographie
  1 file changed, 1 insertion(+)
 + set +e
-+ git merge master
++ git merge main
 Auto-merging Contenu.txt
 CONFLICT (content): Merge conflict in Contenu.txt
 Automatic merge failed; fix conflicts and then commit the result.
@@ -236,28 +236,28 @@ Troisième partie
 Bibliographie
 =======
 Annexe
->>>>>>> master
+>>>>>>> main
 + git diff
 diff --cc Contenu.txt
 index NNNNNNN,OOOOOOO..0000000
 --- a/Contenu.txt
 +++ b/Contenu.txt
 @@@ -4,4 -4,4 +4,8 @@@ Partie 1 : Le commencemen
-  
+
   Deuxième partie
   Troisième partie
 ++<<<<<<< HEAD
  +Bibliographie
 ++=======
 + Annexe
-++>>>>>>> master
+++>>>>>>> main
 + git merge --abort
 + git status
 On branch univers-parallele
 nothing to commit, working tree clean
 + unset -f test_this_manually
 + set +e
-+ git merge master
++ git merge main
 Auto-merging Contenu.txt
 CONFLICT (content): Merge conflict in Contenu.txt
 Automatic merge failed; fix conflicts and then commit the result.

@@ -5,12 +5,12 @@ $USER
 + git config --global user.name 'Francine Dupont'
 + git config --global user.email fdupont@serveur-imaginaire.fr
 + git config --global core.editor nano
-+ git config --global init.defaultBranch master
++ git config --global init.defaultBranch main
 + git config --list
 user.name=Francine Dupont
 user.email=fdupont@serveur-imaginaire.fr
 core.editor=nano
-init.defaultbranch=master
+init.defaultbranch=main
 init.defaultbranch=none
 fetch.recursesubmodules=false
 credential.interactive=never
@@ -27,14 +27,14 @@ lfs.repositoryformatversion=0
 + git init
 Initialized empty Git repository in ~/Desktop/MonDepot/.git/
 + git status
-On branch master
+On branch main
 
 No commits yet
 
 nothing to commit (create/copy files and use "git add" to track)
 + touch MonFichier.txt
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -45,7 +45,7 @@ Untracked files:
 nothing added to commit but untracked files present (use "git add" to track)
 + git add MonFichier.txt
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -56,7 +56,7 @@ Changes to be committed:
 + echo '[DEBUG] Ce matin, Gregor Samsa s'\''est réveillé'
 + git add Poubelle.log
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -67,7 +67,7 @@ Changes to be committed:
 
 + git reset Poubelle.log
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -80,7 +80,7 @@ Untracked files:
 	Poubelle.log
 
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -94,7 +94,7 @@ Untracked files:
 
 + echo '*.log'
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -109,7 +109,7 @@ Untracked files:
 + git add .gitignore
 + git mv MonFichier.txt MonSuperFichier.txt
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -120,7 +120,7 @@ Changes to be committed:
 
 + mv MonSuperFichier.txt MonIncroyableFichier.txt
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -140,7 +140,7 @@ Untracked files:
 
 + git add --all .
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -159,7 +159,7 @@ error: the following file has changes staged in the index:
 rm 'MonIncroyableFichier.txt'
 + mkdir MonDossier
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -169,7 +169,7 @@ Changes to be committed:
 
 + echo 'Un semblant de contenu'
 + git status
-On branch master
+On branch main
 
 No commits yet
 
@@ -183,7 +183,7 @@ Untracked files:
 
 + git add MonDossier/
 + git status
-On branch master
+On branch main
 
 No commits yet
 

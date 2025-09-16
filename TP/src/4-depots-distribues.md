@@ -190,8 +190,8 @@ Il est courant d’avoir dans son dépôt `git` local une branche qui a un
   plus en détail au TP 5.
 - À l’inverse, il peut être intéressant d’effectuer un suivi local d’une branche
   existant sur un serveur distant, par exemple la branche qui représente la
-  version de développement officielle du projet (généralement appelée `master`,
-  `main` ou `develop`).
+  version de développement officielle du projet (généralement appelée `main`,
+  `master` ou `develop`).
 
 Pour nous aider à maintenir ces versions locales et distantes d’une branche
 synchrones, git fournit la notion de branche amont (_upstream branch_). Ce
@@ -219,14 +219,14 @@ branche distante est de demander un `checkout` d’une branche locale qui n’ex
 pas encore, mais dont un homologue distant existe :
 
 ```bash
-{{#include 4-depots-distribues.sh:checkout-nonexistent-master}}
+{{#include 4-depots-distribues.sh:checkout-nonexistent-main}}
 ```
 
 Quand on exécute cette commande, git commence par chercher une branche locale
-`master`, et constate qu’il n’en existe pas, mais qu’il existe une branche
-distante du même nom, `origin/master`. Il crée alors une branche locale `master`
+`main`, et constate qu’il n’en existe pas, mais qu’il existe une branche
+distante du même nom, `origin/main`. Il crée alors une branche locale `main`
 à l’emplacement actuel de cette branche distante, et configure la branche
-distante `origin/master` comme amont de la branche locale `master`.
+distante `origin/main` comme amont de la branche locale `main`.
 
 On peut visualiser les branches distantes paramétrées comme branches amont des
 branches locales avec le mode très verbeux de `git branch --list` :
@@ -265,7 +265,7 @@ cette référence, ou de la mettre à jour si elle existe déjà :
 ```
 
 En l’occurrence, il ne se passe rien, puisque nous n’avons pas modifié la branche
-`master` depuis la dernière fois que nous nous sommes synchronisés avec le
+`main` depuis la dernière fois que nous nous sommes synchronisés avec le
 dépôt `origin`.
 
 Il est courant de vouloir pousser la branche active. Un premier raccourci de
@@ -347,7 +347,7 @@ de toutes les _remotes_ à la fois :
 ```
 
 Vous noterez dans la sortie de `git fetch` qu’il n’y a qu’une branche distante
-`autre/univers-parallele`, et pas de branche `autre/master`. Cela s’explique de
+`autre/univers-parallele`, et pas de branche `autre/main`. Cela s’explique de
 la façon suivante :
 
 - `git clone` ne crée qu’une seule branche locale, correspondant à la branche
@@ -372,9 +372,9 @@ Mettons-le en évidence en créant une petite divergence d’historique :
 ```
 
 Après ces commandes, `MonAutreClone` et `MesBranches` contiennent un commit sur
-leur branche `master` qui n’est pas présent au sein de la branche `master` de
-`MonClone`, et `MonClone` contient un commit sur sa branche `master` qui n’est
-pas présent au sein de la branche `master` des deux autres dépôts. On est donc
+leur branche `main` qui n’est pas présent au sein de la branche `main` de
+`MonClone`, et `MonClone` contient un commit sur sa branche `main` qui n’est
+pas présent au sein de la branche `main` des deux autres dépôts. On est donc
 bien dans un scénario classique de divergence d’historique.
 
 Puisque la commande `git pull` est basée sur `git merge`, elle ne va pas se
@@ -473,11 +473,11 @@ mater cette complexité.
 5. Ajoutez quelques commits sur `test` au sein du clone.
 6. Ajoutez le clone comme _remote_ de `MonDepot`, puis mettez à jour la branche
    `test` de `MonDepot` par rapport aux nouveaux commits du clone.
-7. Basculez sur la branche `master` de `MonDepot` et créez-y quelques commits.
-8. Propagez ces changements sur la branche `master` du clone, sans quitter le
+7. Basculez sur la branche `main` de `MonDepot` et créez-y quelques commits.
+8. Propagez ces changements sur la branche `main` du clone, sans quitter le
    dépôt `MonDepot`.
 9. Rendez-vous maintenant dans le clone, et fusionnez les nouveautés de la
-   branche `master` de `MonDepot` au sein de la branche `test` du clone.
+   branche `main` de `MonDepot` au sein de la branche `test` du clone.
 
 ## Antisèche
 

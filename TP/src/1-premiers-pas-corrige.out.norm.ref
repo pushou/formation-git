@@ -9,7 +9,7 @@ Initialized empty Git repository in ~/Desktop/Exercice1/.git/
 + git add Test.txt
 + git mv Test.txt AutreTest.txt
 + git status
-On branch master
+On branch main
 
 No commits yet
 

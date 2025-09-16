@@ -69,9 +69,9 @@ git checkout HEAD~2
 git tag papy
 ###### ANCHOR_END: tag-grandparent
 
-###### ANCHOR: back-to-master
-git checkout master
-###### ANCHOR_END: back-to-master
+###### ANCHOR: back-to-main
+git checkout main
+###### ANCHOR_END: back-to-main
 
 cd ~
 rm -rf ~/Desktop/Exercice2

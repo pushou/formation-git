@@ -58,7 +58,7 @@ Si l’on regarde la sortie de `git status`…
 …on obtient la sortie suivante dans le terminal :
 
 > ```text
-> Sur la branche master
+> Sur la branche main
 > 
 > Aucun commit
 > 
@@ -163,7 +163,7 @@ Le répertoire de travail est-il bien propre ? Demandons à `git status` :
 On obtient en réponse la sortie suivante :
 
 > ```text
-> Sur la branche master
+> Sur la branche main
 > rien à valider, la copie de travail est propre
 > ```
 
@@ -184,10 +184,10 @@ revenir sur ce commit ultérieurement, il peut être judicieux d’y attacher un
 {{#include 2-historique-lineaire-corrige.sh:tag-grandparent}}
 ```
 
-On peut revenir sur la branche `master` avec la commande `git checkout` :
+On peut revenir sur la branche `main` avec la commande `git checkout` :
 
 ```bash
-{{#include 2-historique-lineaire-corrige.sh:back-to-master}}
+{{#include 2-historique-lineaire-corrige.sh:back-to-main}}
 ```
 
 
@@ -226,7 +226,7 @@ l’ajoute à l’index avec `git add`, et on crée le commit avec `git commit`�
 {{#include 3-manipulation-branches-corrige.sh:first-commit}}
 ```
 
-On peut ensuite visualiser la branche `master` et la branche que l’on vient de
+On peut ensuite visualiser la branche `main` et la branche que l’on vient de
 créer en lançant `gitg` dans le dépôt…
 
 ```bash
@@ -237,11 +237,11 @@ créer en lançant `gitg` dans le dépôt…
 pas de sélectionner l’option « Branches » ou l’option « All commits » dans le
 menu de droite pour pouvoir visualiser les deux branches simultanément.
 
-Notre branche a un peu de retard avec la branche `master`, nous pouvons rattraper
-ce retard en y fusionnant les nouveautés de la branche `master` avec `git merge` :
+Notre branche a un peu de retard avec la branche `main`, nous pouvons rattraper
+ce retard en y fusionnant les nouveautés de la branche `main` avec `git merge` :
 
 ```bash
-{{#include 3-manipulation-branches-corrige.sh:auto-merge-master}}
+{{#include 3-manipulation-branches-corrige.sh:auto-merge-main}}
 ```
 
 Maintenant, remplaçons le contenu d’un fichier au sein de la branche active…
@@ -250,13 +250,13 @@ Maintenant, remplaçons le contenu d’un fichier au sein de la branche active�
 {{#include 3-manipulation-branches-corrige.sh:edit-on-secondary-branch}}
 ```
 
-…et au sein de la branche `master`, en basculant sur celle-ci :
+…et au sein de la branche `main`, en basculant sur celle-ci :
 
 ```bash
-{{#include 3-manipulation-branches-corrige.sh:conflicting-edit-on-master-branch}}
+{{#include 3-manipulation-branches-corrige.sh:conflicting-edit-on-main-branch}}
 ```
 
-Si l’on essaye de fusionner nouvelle-branche au sein de `master` avec `git merge`,
+Si l’on essaye de fusionner nouvelle-branche au sein de `main` avec `git merge`,
 il y aura conflit au niveau de ce fichier :
 
 ```bash
@@ -358,11 +358,11 @@ avec `gitg`…
 
 On constate que leur structure générale est similaire mais que le clone possède
 le dépôt original comme _remote_ (sous le nom par défaut `origin`), et visualise
-simultanément sa version locale de la branche `master` et une copie locale de
-celle du dépôt original, `origin/master`.
+simultanément sa version locale de la branche `main` et une copie locale de
+celle du dépôt original, `origin/main`.
 
 C’est le fait de pouvoir différentier les versions locales et distantes de
-branches, comme ici `master`, qui permet d’utiliser git de façon distribuée sans
+branches, comme ici `main`, qui permet d’utiliser git de façon distribuée sans
 connexion permanente à internet.
 
 Pour créer une branche en vue d’y ajouter quelques commits, on peut par exemple
@@ -410,13 +410,13 @@ de notre branche test locale avec, par exemple, le raccourci `git pull` :
 {{#include 4-depots-distribues-corrige.sh:pull-branch-from-clone}}
 ```
 
-Pour terminer, ajoutons quelques commits sur la branche `master` de `MonDepot` :
+Pour terminer, ajoutons quelques commits sur la branche `main` de `MonDepot` :
 
 ```bash
-{{#include 4-depots-distribues-corrige.sh:checkout-master-and-add-commits}}
+{{#include 4-depots-distribues-corrige.sh:checkout-main-and-add-commits}}
 ```
 
-On peut propager ces changements sur le `master` de `Exercice4` avec un
+On peut propager ces changements sur le `main` de `Exercice4` avec un
 simple `git push` :
 
 ```bash
@@ -428,7 +428,7 @@ clone, il faudra comme précédemment s’y rendre, récupérer les changements,
 les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 ```bash
-{{#include 4-depots-distribues-corrige.sh:merge-origin-master-to-clone-test}}
+{{#include 4-depots-distribues-corrige.sh:merge-origin-main-to-clone-test}}
 ```
 
 
@@ -467,11 +467,11 @@ Dans la variante « GitLab fermé », on attend plutôt cette sortie…
 
 …avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
 
-Pour créer une nouvelle branche partant de la branche `master`, on commence par
-basculer sur la branche `master`…
+Pour créer une nouvelle branche partant de la branche `main`, on commence par
+basculer sur la branche `main`…
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:checkout-master}}
+{{#include 5-reseau-forges-corrige.sh:checkout-main}}
 ```
 
 …puis on crée la nouvelle branche et bascule dessus…
@@ -507,12 +507,12 @@ pousser sur `origin`…
 {{#include 5-reseau-forges-corrige.sh:push-shortcut}}
 ```
 
-Il est possible que la branche `master` du dépôt officiel évolue en parallèle de
+Il est possible que la branche `main` du dépôt officiel évolue en parallèle de
 notre travail. On peut vérifier ce point en mettant à jour notre branche
-`master` locale :
+`main` locale :
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:update-master}}
+{{#include 5-reseau-forges-corrige.sh:update-main}}
 ```
 
 Si la sortie de `git pull` signale des changements, alors il faudra mettre à

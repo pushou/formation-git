@@ -31,7 +31,7 @@ git config --global core.editor nano
 ###### ANCHOR_END: config-editor
 
 ###### ANCHOR: config-default-branch
-git config --global init.defaultBranch master
+git config --global init.defaultBranch main
 ###### ANCHOR_END: config-default-branch
 
 ###### ANCHOR: config-list

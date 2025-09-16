@@ -64,18 +64,18 @@ Fast-forward
  NouveauFichier.txt | 2 ++
  1 file changed, 2 insertions(+)
  create mode 100644 NouveauFichier.txt
-+ git checkout master
-Switched to branch 'master'
++ git checkout main
+Switched to branch 'main'
 + echo 'Je ne sais quoi inventer'
 + git add Incertitude.txt
 + git commit -m $'M\303\251ditation'
-[master EEEEEEE] Méditation
+[main EEEEEEE] Méditation
  1 file changed, 1 insertion(+)
  create mode 100644 Incertitude.txt
 + echo 'Je ne sais quoi penser'
 + git add Incertitude.txt
 + git commit -m 'Moment philosophique'
-[master FFFFFFF] Moment philosophique
+[main FFFFFFF] Moment philosophique
  1 file changed, 1 insertion(+)
 + git push copieur test
 Everything up-to-date
@@ -83,8 +83,8 @@ Everything up-to-date
 + git fetch origin
 From ~/Desktop/MonDepot
    BBBBBBB..DDDDDDD  test       -> origin/test
-   GGGGGGG..FFFFFFF  master     -> origin/master
-+ git merge origin/master
+   GGGGGGG..FFFFFFF  main     -> origin/main
++ git merge origin/main
 Merge made by the 'recursive' strategy.
  Incertitude.txt | 2 ++
  1 file changed, 2 insertions(+)

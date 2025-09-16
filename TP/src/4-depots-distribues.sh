@@ -107,9 +107,9 @@ cat ToutNouveau.txt
 git status
 ###### ANCHOR_END: status-after-pull
 
-###### ANCHOR: checkout-nonexistent-master
-git checkout master
-###### ANCHOR_END: checkout-nonexistent-master
+###### ANCHOR: checkout-nonexistent-main
+git checkout main
+###### ANCHOR_END: checkout-nonexistent-main
 
 ###### ANCHOR: very-verbose-branch
 git branch --list -vv
@@ -117,7 +117,7 @@ git branch --list -vv
 
 
 ###### ANCHOR: push-remote-branch
-git push origin master
+git push origin main
 ###### ANCHOR_END: push-remote-branch
 
 ###### ANCHOR: push-remote
@@ -129,7 +129,7 @@ git push origin
 
 ###### ANCHOR: log-after-first-pushes
 cd ../MesBranches
-git log master
+git log main
 ###### ANCHOR_END: log-after-first-pushes
 
 ###### ANCHOR: push-shorthand
@@ -159,17 +159,17 @@ git fetch --all
 
 
 ###### ANCHOR: divergence-before-pull
-# Création d'un commit sur la branche master de MonAutreClone...
+# Création d'un commit sur la branche main de MonAutreClone...
 cd ../MonAutreClone
-git checkout master
+git checkout main
 echo '1' > Compteur.txt
 git add Compteur.txt
 git commit -m "Ajout d'un compteur"
 
-# ...que l'on pousse sur la branche master de MesBranches
+# ...que l'on pousse sur la branche main de MesBranches
 git push
 
-# Création d'un autre commit sur la branche master de MonClone
+# Création d'un autre commit sur la branche main de MonClone
 cd ../MonClone
 echo 'Prost !' > HelloWorld.txt
 git add HelloWorld.txt
@@ -186,7 +186,7 @@ git pull
 }
 unset -f test_this_manually
 git fetch --all
-git merge -m "Une fusion inattendue" origin/master
+git merge -m "Une fusion inattendue" origin/main
 
 set +e
 ###### ANCHOR: push-rejects-divergence
@@ -241,7 +241,7 @@ git fetch NomRemote
 
 ###### ANCHOR: cheatsheet-explicit-pull
 # Remplacez NomRemote par le nom d'une remote et NomBranche par le nom local
-# d'une branche sur cette remote (ex: master, pas NomRemote/master).
+# d'une branche sur cette remote (ex: main, pas NomRemote/main).
 git pull NomRemote NomBranche
 ###### ANCHOR_END: cheatsheet-explicit-pull
 
