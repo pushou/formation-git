@@ -19,9 +19,9 @@ cd ~/Desktop/ddhc
 git remote -v
 ###### ANCHOR_END: show-remote-details
 
-###### ANCHOR: checkout-main
-git checkout main
-###### ANCHOR_END: checkout-main
+###### ANCHOR: checkout-master
+git checkout master
+###### ANCHOR_END: checkout-master
 
 ###### ANCHOR: create-and-checkout-branch
 git checkout -b copyright
@@ -56,10 +56,10 @@ git push
 }
 unset -f test_this_manually
 
-###### ANCHOR: update-main
-git checkout main
+###### ANCHOR: update-master
+git checkout master
 git pull --ff-only
-###### ANCHOR_END: update-main
+###### ANCHOR_END: update-master
 
 ###### ANCHOR: delete-local-branch
 git branch -D copyright
