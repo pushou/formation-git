@@ -410,8 +410,8 @@ nous en convaincre, aggravons notre divergence par un conflit de fusion :
 ```
 
 La sortie de cette série de commandes a un peu évolué au fil des versions de
-git. Sur les anciennes versions de git, vous auriez eu un simple message de
-conflit au niveau de l'étape de fusion, analogue à celui de `git merge`...
+git. Les anciennes versions de git émettaient un simple message d’erreur
+signalant un conflit de fusion, analogue à celui de `git merge`…
 
 ```text
 CONFLICT (add/add): Merge conflict in Compteur.txt
@@ -419,8 +419,8 @@ Auto-merging Compteur.txt
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-...mais sur les versions récentes de git, on vous incite à la place à effectuer
-un changement de configuration sur lequel nous allons revenir dans un instant:
+…alors que sur les versions récentes vous incitent à la place à effectuer un
+changement de configuration sur lequel nous allons revenir dans un instant :
 
 ```text
 hint: You have divergent branches and need to specify how to reconcile them.
@@ -438,13 +438,13 @@ hint: invocation.
 fatal: Need to specify how to reconcile divergent branches.
 ```
 
-Mais dans tous les cas, le résultat est le même: la commande `git pull`
-échoue à cause du conflit, et vous ne pouvez donc plus l'utiliser jusqu'à ce que
-le conflit soit résolu.
+Dans tous les cas, le résultat est le même : la commande `git pull` échoue à
+cause du conflit, et vous ne pouvez donc plus l’utiliser jusqu’à ce que le
+conflit soit résolu.
 
 De tels conflits sont désagréables à gérer, puisque l’on doit alors arbitrer
 entre différentes versions d’une même branche, qu’on ne peut plus synchroniser
-tant que le conflit n’est pas résolu. Ce n'est pas un exercice que vous êtes
+tant que le conflit n’est pas résolu. Ce n’est pas un exercice que vous êtes
 habitué à faire, donc le risque de confusion est grand.
 
 Et malheureusement, sur un projet distribué suffisamment gros, on ne peut pas
