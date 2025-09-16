@@ -32,7 +32,7 @@ Switched to branch 'nouvelle-branche'
  create mode 100644 LeFichier.txt
 + unset -f test_this_manually
 + git merge -m 'Fusion du main dans le dev' main
-Merge made by the 'recursive' strategy.
+Merge made by the 'ort' strategy.
  AutreContenu.txt | 1 -
  1 file changed, 1 deletion(-)
 + echo v1
@@ -50,8 +50,8 @@ Switched to branch 'main'
  create mode 100644 LeFichier.txt
 + set +e
 + git merge nouvelle-branche
-CONFLICT (add/add): Merge conflict in LeFichier.txt
 Auto-merging LeFichier.txt
+CONFLICT (add/add): Merge conflict in LeFichier.txt
 Automatic merge failed; fix conflicts and then commit the result.
 + set -e
 + unset -f test_this_manually

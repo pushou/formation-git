@@ -110,7 +110,7 @@ nothing to commit, working tree clean
 + unset -f test_this_manually
 + git merge -m 'Une fusion sans histoires' univers-parallele
 Auto-merging Contenu.txt
-Merge made by the 'recursive' strategy.
+Merge made by the 'ort' strategy.
  Contenu.txt    | 1 +
  HelloWorld.txt | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)
@@ -189,7 +189,7 @@ Fast-forward
 HEAD is now at BBBBBBB Premier jeu de modifications
 + unset -f test_this_manually
 + git merge --no-ff -m 'Une autre fusion sans histoires' main
-Merge made by the 'recursive' strategy.
+Merge made by the 'ort' strategy.
  AutreContenu.txt | 1 +
  Contenu.txt      | 2 +-
  2 files changed, 2 insertions(+), 1 deletion(-)

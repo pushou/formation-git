@@ -20,7 +20,7 @@ From https://github.com/HadrienG2/ddhc
 Already on 'master'
 Your branch is up to date with 'origin/master'.
 + git branch --set-upstream-to=upstream/master
-Branch 'master' set up to track remote branch 'master' from 'upstream'.
+branch 'master' set up to track 'upstream/master'.
 + cd ~/Desktop/ddhc
 + git checkout master
 Already on 'master'

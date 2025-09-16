@@ -41,7 +41,7 @@ From ~/Desktop/MonDepot
  * [new branch]      test       -> origin/test
 + git checkout test
 Switched to a new branch 'test'
-Branch 'test' set up to track remote branch 'test' from 'origin'.
+branch 'test' set up to track 'origin/test'.
 + echo 'Renouvelons l'\''offre'
 + git add NouveauFichier.txt
 + git commit -m 'Ajout d'\''un fichier'
@@ -83,9 +83,9 @@ Everything up-to-date
 + git fetch origin
 From ~/Desktop/MonDepot
    BBBBBBB..DDDDDDD  test       -> origin/test
-   GGGGGGG..FFFFFFF  main     -> origin/main
+   GGGGGGG..FFFFFFF  main       -> origin/main
 + git merge origin/main
-Merge made by the 'recursive' strategy.
+Merge made by the 'ort' strategy.
  Incertitude.txt | 2 ++
  1 file changed, 2 insertions(+)
  create mode 100644 Incertitude.txt
