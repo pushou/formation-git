@@ -2,6 +2,7 @@
 	'
 + whoami
 $USER
++ cd ~
 + git config --global user.name 'Francine Dupont'
 + git config --global user.email fdupont@serveur-imaginaire.fr
 + git config --global core.editor nano

@@ -19,6 +19,11 @@ whoami
 ###### ANCHOR_END: whoami
 
 
+# Move to safe directory so that CI output is not influenced by the
+# configuration of the formation-git repository
+cd ~
+
+
 ###### ANCHOR: config-user
 # Remplacez "Francine Dupont" et "fdupont@serveur-imaginaire.fr" par votre nom
 # et l'adresse e-mail associée à votre compte GitHub/GitLab dans ce qui suit
