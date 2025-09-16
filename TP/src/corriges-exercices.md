@@ -467,11 +467,11 @@ Dans la variante « GitLab fermé », on attend plutôt cette sortie…
 
 …avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
 
-Pour créer une nouvelle branche partant de la branche `main`, on commence par
-basculer sur la branche `main`…
+Pour créer une nouvelle branche partant de la branche `master`, on commence par
+basculer sur la branche `master`…
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:checkout-main}}
+{{#include 5-reseau-forges-corrige.sh:checkout-master}}
 ```
 
 …puis on crée la nouvelle branche et bascule dessus…
@@ -507,12 +507,12 @@ pousser sur `origin`…
 {{#include 5-reseau-forges-corrige.sh:push-shortcut}}
 ```
 
-Il est possible que la branche `main` du dépôt officiel évolue en parallèle de
+Il est possible que la branche `master` du dépôt officiel évolue en parallèle de
 notre travail. On peut vérifier ce point en mettant à jour notre branche
-`main` locale :
+`master` locale :
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:update-main}}
+{{#include 5-reseau-forges-corrige.sh:update-master}}
 ```
 
 Si la sortie de `git pull` signale des changements, alors il faudra mettre à
