@@ -1,4 +1,4 @@
-# Programme formation git
+# Descriptif de la formation git
 
 ## Objectifs
 
@@ -55,18 +55,21 @@ Comprendre les manipulations de fichier de base du _shell_ Unix (cd/mkdir/ls/cat
 ### Partie 2 : De Git à la forge logicielle
 
 1. **Introduction aux forges logicielles et prise en main de GitLab/GitHub**
+
    - Qu’est-ce qu’une forge logicielle ?
    - Différences entre GitHub et GitLab
    - Modèles de collaboration : collaboration ouverte (*forks*) vs collaboration fermée (projet commun)
    - Préparation aux communications sécurisées (clé SSH)
 
 2. **Gérer un projet collaboratif sur une forge**
+
    - Créer un nouveau projet ou contribuer à un projet existant
    - Gérer la visibilité, les membres, les rôles et les permissions
    - Organiser les tâches via le système de tickets
    - Réviser, commenter et valider des contributions à l’aide de *merge requests*
 
 3. **Intégration et déploiement continus (CI/CD)**
+
    - Concepts de CI/CD et mise en œuvre sur GitLab/GitHub
    - Créer, exécuter et inspecter un pipeline
    - Gérer la persistance des données (artefacts)
@@ -99,4 +102,4 @@ Des sujets plus avancés pourront être abordés à la carte selon la demande et
 
 ## Méthodes pédagogiques
 
-Alternance d’apports théoriques et d’exercices pratiques
+Alternance d’apports théoriques et d’exercices pratiques.
