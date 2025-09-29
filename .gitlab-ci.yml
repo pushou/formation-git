@@ -101,13 +101,6 @@ pages:
     - job: render-and-check
       artifacts: true
 
-publish-latest-docker:
-  extends:
-    - .crane
-    - .deploy
-  script:
-    - crane tag "${CI_REGISTRY_IMAGE}:${TAG_PIPELINE_SELF}" "latest"
-
 
 # === Suppression de l'image docker temporaire ===
 
