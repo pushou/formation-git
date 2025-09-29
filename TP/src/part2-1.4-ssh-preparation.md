@@ -1,15 +1,3 @@
-# <a href="Pres5-Reseau.pdf" target="blank">Introduction</a>
-
-
-<div class="warning">
-
-  Cette section est en cours de rénovation dans le cadre de la préparation de
-  l'édition 2025. Pour l'instant, elle n'est pas tout à fait cohérente avec les
-  autres et utilise notamment le nom de branche principale `main` au lieu de
-  `master`. Cette incohérence sera corrigée d'ici l'édition 2025.
-
-</div>
-
 
 ## Génération d'une clé SSH
 
