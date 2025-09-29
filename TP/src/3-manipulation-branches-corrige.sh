@@ -39,12 +39,12 @@ function test_this_manually() {
 gitg &
 ###### ANCHOR_END: visualize-with-gitg
 
-###### ANCHOR: auto-merge-master
-git merge master
-###### ANCHOR_END: auto-merge-master
+###### ANCHOR: auto-merge-main
+git merge main
+###### ANCHOR_END: auto-merge-main
 }
 unset -f test_this_manually
-git merge -m 'Fusion du master dans le dev' master
+git merge -m 'Fusion du main dans le dev' main
 
 ###### ANCHOR: edit-on-secondary-branch
 echo 'v1' > LeFichier.txt
@@ -52,12 +52,12 @@ git add LeFichier.txt
 git commit -m 'Première version'
 ###### ANCHOR_END: edit-on-secondary-branch
 
-###### ANCHOR: conflicting-edit-on-master-branch
-git checkout master
+###### ANCHOR: conflicting-edit-on-main-branch
+git checkout main
 echo 'v2' > LeFichier.txt
 git add LeFichier.txt
 git commit -m 'Deuxième version'
-###### ANCHOR_END: conflicting-edit-on-master-branch
+###### ANCHOR_END: conflicting-edit-on-main-branch
 
 set +e
 ###### ANCHOR: conflicting-secondary-merge

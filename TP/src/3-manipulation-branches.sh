@@ -71,7 +71,7 @@ git commit -m 'Premier jeu de modifications'
 ###### ANCHOR_END: first-parallel-commit
 
 ###### ANCHOR: checkout-after-parallel-commit
-git checkout master
+git checkout main
 ###### ANCHOR_END: checkout-after-parallel-commit
 
 ###### ANCHOR: cat-after-checkout
@@ -88,17 +88,17 @@ mv Contenu.txt.new Contenu.txt
 echo 'Nouveau fichier' > AutreContenu.txt
 ###### ANCHOR_END: add-new-file
 
-###### ANCHOR: first-master-commit
+###### ANCHOR: first-main-commit
 git add --all
 git commit -m 'Deuxième jeu de modifications'
-###### ANCHOR_END: first-master-commit
+###### ANCHOR_END: first-main-commit
 
 
-###### ANCHOR: diff-initial-master-parallel
-git diff initial master
+###### ANCHOR: diff-initial-main-parallel
+git diff initial main
 git diff initial univers-parallele
-git diff master univers-parallele
-###### ANCHOR_END: diff-initial-master-parallel
+git diff main univers-parallele
+###### ANCHOR_END: diff-initial-main-parallel
 
 
 ###### ANCHOR: status-before-merge
@@ -115,7 +115,7 @@ unset -f test_this_manually
 git merge -m "Une fusion sans histoires" univers-parallele
 
 ###### ANCHOR: diff-after-merge
-git diff master~
+git diff main~
 git diff initial
 git diff univers-parallele
 ###### ANCHOR_END: diff-after-merge
@@ -123,7 +123,7 @@ git diff univers-parallele
 
 ###### ANCHOR: fast-forward-merge
 git checkout univers-parallele
-git merge master
+git merge main
 ###### ANCHOR_END: fast-forward-merge
 
 # shellcheck disable=SC1083
@@ -132,17 +132,17 @@ git reset --hard @{1}
 ###### ANCHOR_END: cancel-merge-using-reflog
 
 function test_this_manually() {
-###### ANCHOR: merge-master-wo-ff
+###### ANCHOR: merge-main-wo-ff
 # Cette commande ouvrira un éditeur de message de commit
-git merge --no-ff master
-###### ANCHOR_END: merge-master-wo-ff
+git merge --no-ff main
+###### ANCHOR_END: merge-main-wo-ff
 }
 unset -f test_this_manually
-git merge --no-ff -m "Une autre fusion sans histoires" master
+git merge --no-ff -m "Une autre fusion sans histoires" main
 
 
 ###### ANCHOR: conflicting-commits
-git checkout master
+git checkout main
 echo 'Annexe' >> Contenu.txt
 git add Contenu.txt
 git commit -m 'Ajoutons une annexe'
@@ -155,7 +155,7 @@ git commit -m 'Ajoutons une bibliographie'
 set +e
 ###### ANCHOR: conflicting-merge
 # Cette fusion ne peut être complètement automatisée en raison d'un conflit
-git merge master
+git merge main
 ###### ANCHOR_END: conflicting-merge
 set -e
 
@@ -181,7 +181,7 @@ git status
 
 function test_this_manually() {
 ###### ANCHOR: conflict-vs-meld
-git merge master
+git merge main
 ###### ANCHOR: use-meld
 meld .
 ###### ANCHOR_END: use-meld
@@ -190,7 +190,7 @@ meld .
 unset -f test_this_manually
 #
 # In scripted mode, we do what one would do using meld, but automatically ;)
-set +e; git merge master; set -e
+set +e; git merge main; set -e
 head --lines=-5 Contenu.txt > Contenu.txt.new
 echo 'Annexe' >> Contenu.txt.new
 echo 'Bibliographie' >> Contenu.txt.new
@@ -267,8 +267,8 @@ git cherry-pick Commit1..CommitN
 ###### ANCHOR: show-reflog
 # Afficher l'historique des positions de HEAD
 git reflog
-# Afficher l'historique des positions de la branche master
-git reflog master
+# Afficher l'historique des positions de la branche main
+git reflog main
 # Afficher l'historique des positions de toutes les branches, étiquettes...
 git reflog --all
 ###### ANCHOR_END: show-reflog

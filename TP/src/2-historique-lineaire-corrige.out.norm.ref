@@ -9,7 +9,7 @@ Initialized empty Git repository in ~/Desktop/Exercice2/.git/
 + echo 'Mon troisième fichier'
 + git add --all
 + git commit -m 'Mon premier commit'
-[master (root-commit) AAAAAAA] Mon premier commit
+[main (root-commit) AAAAAAA] Mon premier commit
  3 files changed, 3 insertions(+)
  create mode 100644 Fichier1.txt
  create mode 100644 Fichier2.txt
@@ -18,10 +18,10 @@ Initialized empty Git repository in ~/Desktop/Exercice2/.git/
 + echo 'En plus'
 + git add Fichier1.txt
 + git commit -m 'Mon deuxième commit'
-[master BBBBBBB] Mon deuxième commit
+[main BBBBBBB] Mon deuxième commit
  1 file changed, 1 insertion(+)
 + git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -37,7 +37,7 @@ index CCCCCCC..DDDDDDD 100644
  Mon deuxième fichier
 +En plus
 + git commit -am 'Mon troisième commit'
-[master EEEEEEE] Mon troisième commit
+[main EEEEEEE] Mon troisième commit
  1 file changed, 1 insertion(+)
 + git diff HEAD~2 HEAD~
 diff --git a/Fichier1.txt b/Fichier1.txt
@@ -48,7 +48,7 @@ index FFFFFFF..GGGGGGG 100644
  Mon premier fichier
 +De plus
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + git checkout HEAD~2
 Note: switching to 'HEAD~2'.
@@ -70,8 +70,8 @@ Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at AAAAAAA Mon premier commit
 + git tag papy
-+ git checkout master
++ git checkout main
 Previous HEAD position was AAAAAAA Mon premier commit
-Switched to branch 'master'
+Switched to branch 'main'
 + cd ~
 + rm -rf ~/Desktop/Exercice2

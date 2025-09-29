@@ -3,17 +3,17 @@
 + unset -f test_this_manually
 + cd ~/Desktop/MonDepot
 + git commit -m 'Mon premier commit'
-[master (root-commit) AAAAAAA] Mon premier commit
+[main (root-commit) AAAAAAA] Mon premier commit
  2 files changed, 2 insertions(+)
  create mode 100644 .gitignore
  create mode 100644 MonDossier/Contenu.txt
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + echo 'Un premier changement'
 + echo 'Un nouveau fichier'
 + git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -62,7 +62,7 @@ index BBBBBBB..CCCCCCC 100644
 +Un premier changement
 + git add AutreContenu.txt
 + git commit -m 'Une deuxième version'
-[master EEEEEEE] Une deuxième version
+[main EEEEEEE] Une deuxième version
  2 files changed, 2 insertions(+), 1 deletion(-)
  create mode 100644 AutreContenu.txt
 + echo 'Un ajout de contenu'
@@ -92,7 +92,7 @@ index CCCCCCC..DDDDDDD 100644
 + rm MonDossier/Contenu.txt
 + git add --all MonDossier/
 + git status
-On branch master
+On branch main
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
 	deleted:    MonDossier/Contenu.txt
@@ -103,7 +103,7 @@ Changes not staged for commit:
 	modified:   AutreContenu.txt
 
 + git commit -m 'Nous sommes sur une bonne lancée !'
-[master HHHHHHH] Nous sommes sur une bonne lancée !
+[main HHHHHHH] Nous sommes sur une bonne lancée !
  1 file changed, 1 deletion(-)
  delete mode 100644 MonDossier/Contenu.txt
 + git log
@@ -193,7 +193,7 @@ Deleted tag 'maman' (was EEEEEEE)
 Deleted tag 'papa' (was EEEEEEE)
 Deleted tag 'ancetre' (was AAAAAAA)
 + git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -202,10 +202,10 @@ Changes not staged for commit:
 no changes added to commit (use "git add" and/or "git commit -a")
 + git add --all
 + git commit -m 'La version ultime'
-[master JJJJJJJ] La version ultime
+[main JJJJJJJ] La version ultime
  1 file changed, 1 insertion(+)
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + git checkout HEAD~
 Note: switching to 'HEAD~'.
@@ -226,11 +226,11 @@ Or undo this operation with:
 Turn off this advice by setting config variable advice.detachedHead to false
 
 HEAD is now at HHHHHHH Nous sommes sur une bonne lancée !
-+ git checkout master
++ git checkout main
 Previous HEAD position was HHHHHHH Nous sommes sur une bonne lancée !
-Switched to branch 'master'
+Switched to branch 'main'
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + unset -f test_this_manually
 + git diff HEAD HEAD~
@@ -238,14 +238,14 @@ nothing to commit, working tree clean
 patching file AutreContenu.txt
 + git add --all
 + git commit -m 'Revert latest commit'
-[master KKKKKKK] Revert latest commit
+[main KKKKKKK] Revert latest commit
  1 file changed, 1 deletion(-)
 + unset -f test_this_manually
 + git tag before-commit-amend
 + echo 'Du nouveau !'
 + git add NouveauContenu.txt
 + git commit --amend -m 'Une version avec plus de contenu'
-[master LLLLLLL] Une version avec plus de contenu
+[main LLLLLLL] Une version avec plus de contenu
  Date: Ddd Mmm DD HH:MM:SS YYYY +ZZZZ
  2 files changed, 1 insertion(+), 1 deletion(-)
  create mode 100644 NouveauContenu.txt
@@ -255,7 +255,7 @@ HEAD is now at KKKKKKK Revert latest commit
 Deleted tag 'before-commit-amend' (was KKKKKKK)
 + echo 'Demandez le programme !'
 + git status
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)
@@ -263,14 +263,14 @@ Changes not staged for commit:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 + git stash
-Saved working directory and index state WIP on master: KKKKKKK Revert latest commit
+Saved working directory and index state WIP on main: KKKKKKK Revert latest commit
 + git status
-On branch master
+On branch main
 nothing to commit, working tree clean
 + git stash list
-stash@{0}: WIP on master: KKKKKKK Revert latest commit
+stash@{0}: WIP on main: KKKKKKK Revert latest commit
 + git stash pop
-On branch master
+On branch main
 Changes not staged for commit:
   (use "git add <file>..." to update what will be committed)
   (use "git restore <file>..." to discard changes in working directory)

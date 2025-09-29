@@ -31,8 +31,8 @@ Switched to branch 'nouvelle-branche'
  1 file changed, 1 insertion(+)
  create mode 100644 LeFichier.txt
 + unset -f test_this_manually
-+ git merge -m 'Fusion du master dans le dev' master
-Merge made by the 'recursive' strategy.
++ git merge -m 'Fusion du main dans le dev' main
+Merge made by the 'ort' strategy.
  AutreContenu.txt | 1 -
  1 file changed, 1 deletion(-)
 + echo v1
@@ -40,18 +40,18 @@ Merge made by the 'recursive' strategy.
 + git commit -m 'Première version'
 [nouvelle-branche CCCCCCC] Première version
  1 file changed, 1 insertion(+), 1 deletion(-)
-+ git checkout master
-Switched to branch 'master'
++ git checkout main
+Switched to branch 'main'
 + echo v2
 + git add LeFichier.txt
 + git commit -m 'Deuxième version'
-[master DDDDDDD] Deuxième version
+[main DDDDDDD] Deuxième version
  1 file changed, 1 insertion(+)
  create mode 100644 LeFichier.txt
 + set +e
 + git merge nouvelle-branche
-CONFLICT (add/add): Merge conflict in LeFichier.txt
 Auto-merging LeFichier.txt
+CONFLICT (add/add): Merge conflict in LeFichier.txt
 Automatic merge failed; fix conflicts and then commit the result.
 + set -e
 + unset -f test_this_manually
@@ -59,6 +59,6 @@ Automatic merge failed; fix conflicts and then commit the result.
 + git add LeFichier.txt
 + unset -f test_this_manually
 + git commit -m 'Coupage de poire en deux'
-[master EEEEEEE] Coupage de poire en deux
+[main EEEEEEE] Coupage de poire en deux
 + cd ~
 + rm -rf ~/Desktop/Exercice3

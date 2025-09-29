@@ -72,25 +72,25 @@ git remote add copieur ~/Desktop/Exercice4
 git pull copieur test
 ###### ANCHOR_END: pull-branch-from-clone
 
-###### ANCHOR: checkout-master-and-add-commits
-git checkout master
+###### ANCHOR: checkout-main-and-add-commits
+git checkout main
 echo 'Je ne sais quoi inventer' > Incertitude.txt
 git add Incertitude.txt
 git commit -m 'Méditation'
 echo 'Je ne sais quoi penser' >> Incertitude.txt
 git add Incertitude.txt
 git commit -m 'Moment philosophique'
-###### ANCHOR_END: checkout-master-and-add-commits
+###### ANCHOR_END: checkout-main-and-add-commits
 
 ###### ANCHOR: push-branch-to-clone
 git push copieur test
 ###### ANCHOR_END: push-branch-to-clone
 
-###### ANCHOR: merge-origin-master-to-clone-test
+###### ANCHOR: merge-origin-main-to-clone-test
 cd ../Exercice4
 git fetch origin
-git merge origin/master
-###### ANCHOR_END: merge-origin-master-to-clone-test
+git merge origin/main
+###### ANCHOR_END: merge-origin-main-to-clone-test
 
 cd ~
 rm -rf ~/Desktop/Exercice4

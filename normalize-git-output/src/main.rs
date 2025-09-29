@@ -18,18 +18,18 @@ fn main() {
 
     // Normalize log file and print out the result
     let mut editor = LogEditor::new(input);
-    remove_token_and_pubkey(&mut editor);
+    remove_token_pubkey_trailspace(&mut editor);
     hash::normalize_hashes(&mut editor);
     time::normalize_time(&mut editor);
     hide_user_group_homedir(&mut editor);
     editor.print();
 }
 
-/// Remove gitlab token and public keys
+/// Remove gitlab token, public keys and trailing whitespace at end of lines
 ///
 /// Must be done before `normalize_hashes` because the latter would mistake
 /// "ed25519" for a git hash and mangle it.
-fn remove_token_and_pubkey(editor: &mut LogEditor) {
+fn remove_token_pubkey_trailspace(editor: &mut LogEditor) {
     editor.rewrite(|log, output| {
         for line in log.lines() {
             if line.starts_with("remote.origin.url=") {
@@ -41,7 +41,7 @@ fn remove_token_and_pubkey(editor: &mut LogEditor) {
                 output.push_str("ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSH formation-git");
                 log::info!("Replaced an SSH public key with a placeholder");
             } else {
-                output.push_str(line);
+                output.push_str(line.trim_end());
             }
             output.push('\n');
         }

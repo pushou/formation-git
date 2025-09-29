@@ -1,56 +1,104 @@
-# Gestion de version distribuée avec git
+# Descriptif de la formation git
 
 ## Objectifs
 
 - Comprendre les principes de la gestion de version distribuée
-- Pouvoir gérer des versions de documents textuels avec l’outil Git
+- Pouvoir gérer des versions de documents textuels avec l’outil git
+- Collaborer efficacement à l’aide des forges logicielles (GitHub, GitLab)
+
 
 
 ## Public
 
-Développeurs de logiciels, et toute autre profession pratiquant l’édition
-collaborative de documents texte brut
+Toute profession pratiquant l’édition collaborative de documents texte brut (code source de programmes, fichiers de configurations, documents LaTeX...).
 
 
 ## Pré-requis
 
-Connaître les commandes de manipulation de fichier de base du Shell Unix
-(cd/mkdir/ls/cat/diff/…) Test de pré requis à la clôture des inscriptions
+Comprendre les manipulations de fichier de base du _shell_ Unix (cd/mkdir/ls/cat/diff/…) ainsi que les redirections des sorties > et >>.
 
 
 ## Programme
 
-1. Introduction et préparatifs
-   - De la gestion de version à Git en particulier
-   - Configuration de Git et du système hôte
-   - Documentation de référence de Git
-2. Gestion de version, répertoire de travail et index
-   - Mise en service d’une gestion de version Git
-   - État de Git et modifications du répertoire de travail
-   - Définir le périmètre d’action de Git avec .gitignore
-   - Préparer une nouvelle version avec l’index
-3. Gérer un historique linéaire
-   - Enregistrer de nouvelles versions (les « commits »)
-   - Visualiser l’historique des versions créées
-   - Nommer les versions d’un dépôt Git
-   - Visualiser, analyser et explorer l’historique
-4. Branches, fusions et conflits
-   - Que sont réellement master et HEAD ?
-   - Créer des branches et basculer entre elles
-   - Fusionner les changements de deux branches
-   - Gérer les conflits de fusion quand ils surviennent
-   - Introduction à la commande « rebase »
-5. Collaborer avec l’extérieur
-   - Récupérer une copie d’un dépôt Git distant
-   - Echanger des changements avec des dépôts
-   - Précautions à prendre en environnement distribué
-   - Méthodes de travail collaboratives avec Git
-6. Pour aller plus loin
-   - Requêtes plus complexes sur l’historique
-   - Manipulations avancées de l’index et de l’historique
-   - Compléments sur certaines commandes
-   - Autres sources d’information sur Git
+### Partie 1 : Gestion de version avec git
 
+1. **Introduction, répertoire de travail et index**
+
+   - De la gestion de version à git en particulier
+   - Configurer git et créer un dépôt
+   - Répertoire de travail et état de git
+   - Définir le périmètre de la gestion de version
+
+2. **Gérer un historique**
+
+   - De l'index au _commit_
+   - Créer et explorer un historique
+   - Donner un nom à une version
+   - Premières commandes d'annulation
+
+3. **Manipulation de branches**
+
+   - Utilité d'un historique divergent
+   - Créer des branches
+   - Fusionner des changements
+   - Résoudre des conflits de fusion
+
+4. **Dépôts distribués**
+
+   - Notion de _remote_
+   - Gestion des collisions d'identifiants
+   - Du clonage aux outils de synchronisation
+   - Précautions à prendre en environnement distribué
+
+
+
+### Partie 2 : De Git à la forge logicielle
+
+1. **Introduction aux forges logicielles et prise en main de GitLab/GitHub**
+
+   - Qu’est-ce qu’une forge logicielle ?
+   - Différences entre GitHub et GitLab
+   - Modèles de collaboration : collaboration ouverte (*forks*) vs collaboration fermée (projet commun)
+   - Préparation aux communications sécurisées (clé SSH)
+
+2. **Gérer un projet collaboratif sur une forge**
+
+   - Créer un nouveau projet ou contribuer à un projet existant
+   - Gérer la visibilité, les membres, les rôles et les permissions
+   - Organiser les tâches via le système de tickets
+   - Réviser, commenter et valider des contributions à l’aide de *merge requests*
+
+3. **Intégration et déploiement continus (CI/CD)**
+
+   - Concepts de CI/CD et mise en œuvre sur GitLab/GitHub
+   - Créer, exécuter et inspecter un pipeline
+   - Gérer la persistance des données (artefacts)
+   - Déployer automatiquement un site statique avec GitLab/GitHub Pages
+
+
+### Bonus
+
+Des sujets plus avancés pourront être abordés à la carte selon la demande et le temps disponible. Par exemple :
+
+1. **Fonctionnalités avancées de git :**
+
+- La recherche de l'origine d'un problème avec `bisect`
+- Les alternatives à la fusion `rebase` et `cherry-pick`
+- Les nombreux modes de fonctionnement de `checkout` et `reset`
+- Les outils d'annulation plus avancées comme les _reflogs_
+- Les sous-modules et l'extension git LFS
+
+2. **Fonctionnalités avancées de CI/CD :**
+
+- Jobs conditionnels et règles (rules)
+- Gestion du cache et couverture de tests
+- Passage d’artefacts entre jobs
+- Publication de packages via GitLab Package Registry
+- Création automatisée de releases
+- Utilisation de variables et secrets
+- Utilisation de services dans les jobs (Gitlab)
+- Gestion des runners personnalisés GitLab
+- Planification des exécutions (schedules)
 
 ## Méthodes pédagogiques
 
