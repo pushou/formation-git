@@ -1,0 +1,188 @@
+<meta charset="utf-8" lang="en">
+
+# 5 - Réseau et forges
+
+Hadrien Grasland — IJCLab, Orsay — 16/09/2025
+
+![](media/bucket.png) ![](media/cnrs.png) ![](media/github.png) ![](media/gitlab.png) ![](media/ijclab.png) ![](media/network.png) ![](media/paris-cite.png) ![](media/paris-saclay.png)
+
+---
+
+## Du clone local au réseau
+
+- **Jusqu'ici, nous avons travaillé localement.**
+  - Point fort du distribué : l'outil *fonctionne hors-ligne*.
+- **Comment partager notre travail ?**
+  - Plusieurs solutions (y compris pair-à-pair).
+  - La plus courante : introduire un *serveur officiel*.
+  - On s'y connecte de temps en temps pour échanger.
+
+---
+
+## Accès aux serveurs distants
+
+- **Le serveur est une remote comme les autres.**
+  - Exemple : « git clone https://github.com/HadrienG2/ddhc.git ».
+  - L'adresse indique le protocole à utiliser (ici HTTPS).
+- **Deux protocoles en usage courant :**
+  - *HTTPS* : universel mais authentification moins pratique.
+  - *SSH* : plus confortable, mais nécessite des ports/pare-feu permissifs.
+  - HTTPS en lecture seule, SSH si écriture.
+
+---
+
+## Quelle politique d'accès ?
+
+- **Attention aux *droits d'écriture* du dépôt officiel !**
+  - Risques : dégâts accidentels, compte piraté…
+  - Protection : *principe du moindre privilège*.
+  - Droits de lecture : selon le projet (privé vs public).
+- **Scénarios classiques :**
+  - Dépôt privé : accès restreint à l'équipe projet.
+  - Dépôt public : contributions extérieures via forks.
+
+---
+
+## Dépôt privé
+
+- **Adapté aux *informations confidentielles*. **
+  - Ex : comptes-rendus internes, science non publiée.
+  - Attention à l'historique si publication ultérieure.
+- **Pour qualité et sécurité, séparer les *rôles* :**
+  - Peu de mainteneurs peuvent modifier main/master.
+  - Contributions via d'autres branches (PR/MR).
+  - Rôles moins privilégiés si besoin (ex : guest, reporter).
+- **Important:** prévoir ≥ 2 mainteneurs (congés, indisponibilités…).
+
+---
+
+## Soumission par pull/merge request (PR/MR)
+
+Étapes typiques :
+1. Mettre à jour main depuis « origin » (fetch + rebase/merge).
+2. Créer une branche locale « feature » à partir de main.
+3. Pousser « feature » sur « origin » (push -u).
+4. Ouvrir une Pull/Merge Request depuis « feature » vers « main ».
+5. Après merge, supprimer la branche « feature » (origin puis local).
+
+---
+
+Diagramme :
+
+*******************************************************************************
+*                  Internet                                                   *
+*   +-----------------------------+          +-----------------------------+  *
+*   |         Dépôt local         |          |     Dépôt officiel (origin) |  *
+*   |  branches: main, feature    |          |         branche: main       |  *
+*   +---------------+-------------+          +---------------+-------------+  *
+*                   | 1. fetch/rebase main                  ^                 *
+*                   |---------------------------------------|                 *
+*                   |                                       |                 *
+*                   | 2. git checkout -b feature            |                 *
+*                   |                                       |                 *
+*                   | 3. git push -u origin feature --------> push            *
+*                   |                                       |                 *
+*                   '---- 4. ouvrir PR vers main -----------> PR              *
+*                                                           [review/merge]    *
+*                   <----------- 5. sync local main --------- merge           *
+*******************************************************************************
+
+---
+
+## Dépôt public
+
+- **Contributions extérieures via des forks.**
+  - Le dépôt officiel est *lisible* par tous.
+  - Chacun peut créer une *copie privée* (fork).
+  - Ensuite, *on soumet* des changements depuis son fork (PR/MR).
+- **Contributions internes : deux options**
+  - Via forks : procédures homogènes, moindre privilège.
+  - Via accès direct en écriture : un peu plus ergonomique.
+
+---
+
+## Utilisation d'un fork (upstream/origin)
+
+Étapes :
+1. Configurer « upstream » (officiel) et « origin » (fork personnel).
+2. Récupérer les mises à jour d'upstream (fetch + rebase/merge).
+3. Travailler en branche locale, puis push vers « origin ».
+4. Ouvrir une PR/MR de « origin:feature » vers « upstream:main ».
+
+---
+
+Diagramme :
+
+********************************************************************************                                                                              
+*                                                                              *
+*       +--------------------+        Internet        +--------------------+   *                                                                           
+*       | Dépôt officiel     |  <------------------>  | Fork personnel     |   *                                                                           
+*       | "upstream"         |                        | "origin"           |   *                                                                           
+*       +----------+---------+                        +----------+---------+   *                                                                           
+*                  ^                                            ^              *                                                                
+*                  | 1. add remote upstream                     |              *                                                                
+*                  | 2. fetch upstream                          | 3. push      *                                                                        
+*                  |                                            |              *                                                                
+*  +---------------+------------+                               |              *                                                                
+*  |     Dépôt local            |------------------------------+'              *                                                                
+*  |  branches: main, feature   |                                              *                                
+*  +----------------------------+                                              *                                
+*                  |                                                           *                   
+*                  '---- 4. PR: origin/feature -> upstream/main                *                                                              
+*                                                                              *
+********************************************************************************                                                                              
+
+---
+
+## Forge sociale
+
+- **Application web qui facilite :**
+  - *Visualisation* du dépôt (fichiers, versions, branches…)
+  - Création et mise à jour de *forks*
+  - *Soumission* de changements (pull/merge requests)
+  - *Discussion/revue* des changements avant acceptation
+  - Et plus encore…
+- **Pour ce TP : GitHub ou GitLab IN2P3**
+
+---
+
+## Démo : Forges sociales
+
+---
+
+## TP : Réseau et forges
+
+
+
+
+<!-- Markdeep slides stuff -->
+<script>
+    markdeepSlidesOptions = {
+        aspectRatio: 16 / 9,
+        theme: 'simple',
+        fontSize: 28,
+        diagramZoom: 1.0,
+        totalSlideNumber: false,
+        progressBar: true,
+        breakOnHeadings: false,
+        slideChangeHook: (oldSlide, newSlide) => {},
+        modeChangeHook: (newMode) => {}
+    };
+</script>
+<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep-relative-sizes/1.11/relativize.css">
+<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.css">
+<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.js"></script>
+
+<!-- Markdeep stuff -->
+<script>
+    markdeepOptions = {
+        tocStyle: 'none',
+        detectMath: false,
+        onLoad: function() {
+            initSlides();
+        }
+    };
+</script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep/1.11/markdeep.min.js" charset="utf-8"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
