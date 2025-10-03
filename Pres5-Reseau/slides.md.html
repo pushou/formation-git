@@ -4,6 +4,7 @@
 
 Hadrien Grasland — IJCLab, Orsay — 16/09/2025
 
+
 ![](media/bucket.png) ![](media/cnrs.png) ![](media/github.png) ![](media/gitlab.png) ![](media/ijclab.png) ![](media/network.png) ![](media/paris-cite.png) ![](media/paris-saclay.png)
 
 ---
@@ -66,26 +67,12 @@ Hadrien Grasland — IJCLab, Orsay — 16/09/2025
 5. Après merge, supprimer la branche « feature » (origin puis local).
 
 ---
+<div data-src="media/diagrams/pull-merge-workflow.drawio.svg" class="pull-merge-step0"/>
+  <style>
+    .pull-merge-step0 #cell-g-feature-branch { display: none; }
+  </style>
+</div>
 
-Diagramme :
-
-*******************************************************************************
-*                  Internet                                                   *
-*   +-----------------------------+          +-----------------------------+  *
-*   |         Dépôt local         |          |     Dépôt officiel (origin) |  *
-*   |  branches: main, feature    |          |         branche: main       |  *
-*   +---------------+-------------+          +---------------+-------------+  *
-*                   | 1. fetch/rebase main                  ^                 *
-*                   |---------------------------------------|                 *
-*                   |                                       |                 *
-*                   | 2. git checkout -b feature            |                 *
-*                   |                                       |                 *
-*                   | 3. git push -u origin feature --------> push            *
-*                   |                                       |                 *
-*                   '---- 4. ouvrir PR vers main -----------> PR              *
-*                                                           [review/merge]    *
-*                   <----------- 5. sync local main --------- merge           *
-*******************************************************************************
 
 ---
 
@@ -103,34 +90,94 @@ Diagramme :
 
 ## Utilisation d'un fork (upstream/origin)
 
-Étapes :
 1. Configurer « upstream » (officiel) et « origin » (fork personnel).
-2. Récupérer les mises à jour d'upstream (fetch + rebase/merge).
-3. Travailler en branche locale, puis push vers « origin ».
-4. Ouvrir une PR/MR de « origin:feature » vers « upstream:main ».
+
+<div data-src="media/diagrams/fork-workflow.drawio.svg" class="diagram-step1"/>
+ <style>
+    .diagram-step1 #cell-fetch-arrow { display: none; }
+    .diagram-step1 #cell-branch-arrow { display: none; }
+    .diagram-step1 #cell-push-arrow { display: none; }
+    .diagram-step1 #cell-pull-arrow { display: none; }
+  </style>
+</div>
+
+
+
 
 ---
 
-Diagramme :
+## Utilisation d'un fork (upstream/origin)
 
-********************************************************************************                                                                              
-*                                                                              *
-*       +--------------------+        Internet        +--------------------+   *                                                                           
-*       | Dépôt officiel     |  <------------------>  | Fork personnel     |   *                                                                           
-*       | "upstream"         |                        | "origin"           |   *                                                                           
-*       +----------+---------+                        +----------+---------+   *                                                                           
-*                  ^                                            ^              *                                                                
-*                  | 1. add remote upstream                     |              *                                                                
-*                  | 2. fetch upstream                          | 3. push      *                                                                        
-*                  |                                            |              *                                                                
-*  +---------------+------------+                               |              *                                                                
-*  |     Dépôt local            |------------------------------+'              *                                                                
-*  |  branches: main, feature   |                                              *                                
-*  +----------------------------+                                              *                                
-*                  |                                                           *                   
-*                  '---- 4. PR: origin/feature -> upstream/main                *                                                              
-*                                                                              *
-********************************************************************************                                                                              
+2. Récupérer les mises à jour d'upstream (fetch + rebase/merge).
+
+<div data-src="media/diagrams/fork-workflow.drawio.svg" class="diagram-step2"/>
+ <style>
+    .diagram-step2 #cell-fetch-arrow path { stroke: #82b366 !important;}
+    /* ensure filled path is also colored */
+    .diagram-step2 #cell-fetch-arrow path[fill]:not([fill="none"]) { fill: #82b366 !important; }
+    .diagram-step2 #cell-branch-arrow { display: none; }
+    .diagram-step2 #cell-push-arrow { display: none; }
+    .diagram-step2 #cell-pull-arrow { display: none; }
+  </style>
+</div>
+
+
+---
+
+## Utilisation d'un fork (upstream/origin)
+
+3. Travailler sur une branche locale.
+
+
+<div data-src="media/diagrams/fork-workflow.drawio.svg" class="diagram-step3"/>
+ <style>
+    .diagram-step3 #cell-branch-arrow path { stroke: #82b366 !important;}
+    /* ensure filled path is also colored */
+    .diagram-step3 #cell-branch-arrow path[fill]:not([fill="none"]) { fill: #82b366 !important; }
+    .diagram-step3 #cell-push-arrow { display: none; }
+    .diagram-step3 #cell-pull-arrow { display: none; }
+  </style>
+</div>
+
+
+                                                                          
+
+---
+
+## Utilisation d'un fork (upstream/origin)
+
+
+
+
+4. Push vers « origin ».
+
+<div data-src="media/diagrams/fork-workflow.drawio.svg" class="diagram-step4"/>
+ <style>
+    .diagram-step4 #cell-push-arrow path { stroke: #82b366 !important;}
+    /* ensure filled path is also colored (fill set and not "none") */
+    .diagram-step4 #cell-push-arrow path[fill]:not([fill="none"]) { fill: #82b366 !important; }
+    .diagram-step4 #cell-pull-arrow { display: none; }
+  </style>
+</div>
+
+
+                                                                          
+
+---
+
+## Utilisation d'un fork (upstream/origin)
+
+5. Pull request depuis « origin » vers « upstream ».
+
+
+<div data-src="media/diagrams/fork-workflow.drawio.svg" class="diagram-step5"/>
+ <style>
+    .diagram-step5 #cell-pull-arrow path { stroke: #82b366 !important;}
+    /* ensure filled path is also colored */
+    .diagram-step5 #cell-pull-arrow arrow path[fill]:not([fill="none"]) { fill: #82b366 !important; }
+  </style>
+</div>
+                                                           
 
 ---
 
@@ -153,13 +200,11 @@ Diagramme :
 ## TP : Réseau et forges
 
 
-
-
 <!-- Markdeep slides stuff -->
 <script>
     markdeepSlidesOptions = {
         aspectRatio: 16 / 9,
-        theme: 'simple',
+        theme: 'deepsea',
         fontSize: 28,
         diagramZoom: 1.0,
         totalSlideNumber: false,
@@ -186,3 +231,34 @@ Diagramme :
 <style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
 <script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep/1.11/markdeep.min.js" charset="utf-8"></script>
 <script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // find all <div> tags pointing to .svg (via data-src attribute)
+  document.querySelectorAll("div[data-src$='.svg']").forEach(div => {
+    const url = div.getAttribute("data-src");
+    const cssClass = div.getAttribute("class") || "";
+    const style = div.getAttribute("style") || "";
+
+    fetch(url)
+      .then(resp => resp.text())
+      .then(svgText => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(svgText, "image/svg+xml");
+        const svgEl = doc.documentElement;
+
+        // transfer class/style from <img> to <svg>
+        if (cssClass) svgEl.setAttribute("class", cssClass);
+        if (style) svgEl.setAttribute("style", style);
+
+        // transfer children (like <title> and <style>) from <img> to <svg>
+        Array.from(div.children).forEach(child => {
+          svgEl.appendChild(child.cloneNode(true));
+        });
+
+        // replace <div> with <svg>
+        div.replaceWith(svgEl);
+      })
+      .catch(err => console.error("Failed to inline SVG:", err));
+  });
+});
+</script>
