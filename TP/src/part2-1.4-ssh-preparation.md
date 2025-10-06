@@ -1,4 +1,3 @@
-
 ## Génération d'une clé SSH
 
 Il ne suffit pas de pouvoir vous connecter à l’interface web d’une forge pour
@@ -83,16 +82,15 @@ plus qu’à afficher votre clé publique, par exemple avec `cat`…
 l’interface web de gestion de clé SSH de la forge que vous allez utiliser. Qu'il
 est donc temps de choisir.
 
-
 ## Choix de la variante du TP
 
 Ce TP existe en deux variantes :
 
-- Dans la variante [« GitHub ouvert »](5.1-github-ouvert.md), nous présentons
+- Dans la variante [« GitHub ouvert »](part2-2.0-github-preparation.md), nous présentons
   sur la forge GitHub un mode de collaboration ouvert, où le monde entier peut
   lire le contenu du dépôt git et y proposer des changements via des _forks_.
   C'est une approche adaptée pour des projets _open source_.
-- Dans la variante [« GitLab fermé »](5.2-gitlab-ferme.md), nous présentons sur
+- Dans la variante [« GitLab fermé »](part2-2.0-gitlab-preparation.md), nous présentons sur
   l'instance IN2P3 de la forge GitLab un mode de collaboration fermé, où le
   contenu du dépôt git ne peut être lu et modifié que par l'équipe projet. C'est
   une approche adaptée pour des données confidentielles, comme des
