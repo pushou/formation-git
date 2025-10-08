@@ -8,9 +8,11 @@ Dans cette partie, vous allez former des **groupes de 2 à 4 personnes** pour cr
 ## 1. Création du dépôt du livre de recettes
 
 Dans chaque groupe, désignez un **chef de projet** — le _chef cuisinier principal_, si vous préférez.
-C’est cette personne qui aura la responsabilité de créer le dépôt commun au sein du groupe privé **Recette de Cuisine** sur GitLab.
+C’est cette personne qui aura la responsabilité de créer le dépôt commun au sein d’un groupe privé du groupe public **Recette de cuisine** sur GitLab.
 
-Le chef de projet suit **exactement les mêmes étapes** que dans le TP précédent :
+Le chef de projet doit d’abord se signaler pour obtenir les droits nécessaires à la création du projet. Une fois ajouté dans le groupe « Recette de cuisine/Groupe <N> », il pourra créer le dépôt du livre de recettes.
+
+Pour ce faire, le chef de projet suit **exactement les mêmes étapes** que dans le TP précédent :
 
 1. Aller sur le groupe GitLab [Recette de Cuisine](https://gitlab.in2p3.fr/recette-de-cuisine)
 
@@ -57,7 +59,7 @@ Depuis la page du projet :
 
    | Rôle GitLab          | Permissions principales                                                 | À utiliser pour…                 |
    | -------------------- | ----------------------------------------------------------------------- | -------------------------------- |
-   | **Developer**        | Peut créer des branches, des commits, et des _merge requests_           | Vos rédacteurs de recettes       |
+   | **Developer**        | Peut créer des branches, des commits et des _merge requests_            | Vos rédacteurs de recettes       |
    | **Maintainer**       | Peut fusionner les _merge requests_ et gérer la configuration du projet | Le chef de projet                |
    | **Reporter / Guest** | Lecture seule, utile pour tester ou relire                              | Invités ou correcteurs éventuels |
 
@@ -65,13 +67,13 @@ Depuis la page du projet :
 
 Vos camarades recevront une notification GitLab et auront désormais accès au dépôt.
 
-> 🍲 _Petit conseil_ : chaque membre doit vérifier qu’il a bien accès au projet avant d'essayer de le cloner
+> 🍲 _Petit conseil_ : chaque membre doit vérifier qu’il a bien accès au projet avant d’essayer de le cloner.
 
 ---
 
 ## 3. Organiser le travail avec les tickets (issues)
 
-Avant de commencer à ajouter et modifier vos recettes, nous allonsapprendre à **organiser le travail avec des tickets**.
+Avant de commencer à ajouter et modifier vos recettes, nous allons apprendre à **organiser le travail avec des tickets**.
 
 Les _issues_ (ou **tickets**) servent à répertorier :
 
@@ -85,11 +87,11 @@ Chaque membre peut créer un ticket pour :
 - **documenter un problème (bug)**
 - ou **suivre une tâche** précise jusqu’à sa finalisation.
 
-Chaque ticket peut inclure plusieurs sous ticket pour aisin mieux découper les tâches à accomplir et potentielement répartir la charge de travail.
+Chaque ticket peut inclure plusieurs sous-tickets pour mieux découper les tâches à accomplir et potentiellement répartir la charge de travail.
 
 ### Création d’un ticket
 
-Chaque membre du projet doit maintenant créer au moins un ticket, à noter qu'il est important de discuter entre vous en amont des tâches à accomplir et de comment vous souhaiter les répartir.
+Chaque membre du projet doit maintenant créer au moins un ticket. Il est important de discuter en amont des tâches à accomplir et de la façon dont vous souhaitez les répartir.
 
 1. Rendez-vous dans l’onglet **Issues → New issue**.
 2. Remplissez le titre, par exemple :
@@ -106,12 +108,12 @@ Chaque membre du projet doit maintenant créer au moins un ticket, à noter qu'i
 
 Le ticket s’affiche maintenant dans la liste des _issues_ du projet, visible par tout le groupe.
 
-> 🧠 _Astuce :_ vous pouvez aussi utiliser les _labels_ GitLab pour catégoriser vos tickets, par exemple :
+> 🧠 Astuce : vous pouvez aussi utiliser les _labels_ GitLab pour catégoriser vos tickets, par exemple :
 >
 > - `nouvelle-recette`
 > - `correction`
 > - `a-revoir`
-> - `idee`
+> - `idée`
 
 ## 4. Cloner le dépôt du livre en local
 
@@ -134,10 +136,10 @@ mkdir -p recettes
 
 ---
 
-## 5. Du ticket à la Merge Request : le flux de travail collaboratif
+## 5. Du ticket à la merge request : le flux de travail collaboratif
 
 Nous allons maintenant relier **tickets** et **branches Git** dans une méthode de travail claire et efficace.
-Chaque nouvelle recette ou correction issue d’un ticket correspondra à une **branche de travail**, suivie d’une **Merge Request**.
+Chaque nouvelle recette ou correction issue d’un ticket correspondra à une **branche de travail**, suivie d’une **merge request**.
 
 ### Étape 1 — Se synchroniser avec `main`
 
@@ -157,7 +159,7 @@ Choisissez un ticket (par exemple _Issue #3 : Ajouter la recette du tiramisu_), 
 git checkout -b issue-3-recette-tiramisu
 ```
 
-> 💡 Vous pouvez même relier automatiquement le ticket à la future _merge request_ en mentionnant son numéro dans le nom de branche ou dans votre message de commit.
+> 💡 Vous pouvez relier automatiquement le ticket à la future merge request en mentionnant son numéro dans le nom de branche ou dans votre message de commit.
 
 ---
 
@@ -171,13 +173,13 @@ git commit -m "Ajout de la recette du tiramisu (fixes #3)"
 git push --set-upstream origin issue-3-recette-tiramisu
 ```
 
-> 🔗 En ajoutant `fixes #3` dans le message du commit ou de la MR, GitLab fermera automatiquement le ticket une fois la _merge request_ fusionnée.
+> 🔗 En ajoutant `fixes #3` dans le message du commit ou de la MR, GitLab fermera automatiquement le ticket une fois la merge request fusionnée.
 
 ---
 
-### Étape 4 — Créer une _Merge Request_
+### Étape 4 — Créer une merge request
 
-Une fois votre branche publiée, GitLab vous proposera automatiquement de créer une **Merge Request** (MR).
+Une fois votre branche publiée, GitLab vous proposera automatiquement de créer une **merge request** (MR).
 C’est une demande d’intégration de votre recette dans le livre principal (`main`).
 
 1. Cliquez sur le lien suggéré dans le terminal ou allez dans
@@ -191,18 +193,18 @@ C’est une demande d’intégration de votre recette dans le livre principal (`
 4. **Labels** : `nouvelle-recette`
 5. Cliquez sur **Create merge request**.
 
-Le chef de projet ou un autre membre du groupe pourra alors relire, commenter, ou fusionner votre contribution dans le livre principal.
+Le chef de projet ou un autre membre du groupe pourra alors relire, commenter ou fusionner votre contribution dans le livre principal.
 
 ---
 
-## 5. Fusion, mise à jour et suppression de branche
+## 6. Fusion, mise à jour et suppression de branche
 
 Une fois la MR acceptée et fusionnée, il est temps de nettoyer votre espace de travail :
 
 ```bash
 git checkout main
 git pull --ff-only origin main
-git branch -d recette-tiramisu
+git branch -d issue-3-recette-tiramisu
 ```
 
 Vous pouvez ensuite recommencer pour une nouvelle recette, une correction, ou une mise à jour d’image.
@@ -214,7 +216,7 @@ Vous pouvez ensuite recommencer pour une nouvelle recette, une correction, ou un
 1. Le **chef** crée le dépôt du livre et invite les rédacteurs.
 2. Chaque **rédacteur** clone le projet, crée une branche pour sa recette, et pousse ses modifications.
 3. Une **Merge Request** permet d’intégrer les contributions après relecture.
-4. Le tout se retourve finalement dans la branche principale **`main`**, gérée collectivement.
+4. Le tout se retrouve finalement dans la branche principale **`main`**, gérée collectivement.
 
 ---
 
@@ -225,5 +227,5 @@ Créez vos branches, rédigez vos _merge requests_, et voyez votre livre de cuis
 
 > Et souvenez-vous :
 >
-> - une bonne branche est courte et claire,
-> - un bon commit a un message explicite,
+> - une bonne branche est courte et claire ;
+> - un bon commit a un message explicite.

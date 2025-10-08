@@ -3,38 +3,38 @@
 ## Objectif
 
 Dans ce TP, nous allons découvrir la création et la gestion d’un projet sur **GitLab**, en suivant notre fil rouge : les **recettes de cuisine**.
-Dans un premier temps chaque participant disposera de son propre espace de travail sur la forge **GitLab In2P3**, au sein d'un groupe commun _Recette de Cuisine_ <lien à venir>
+Dans un premier temps, chaque participant disposera de son propre espace de travail sur la forge **GitLab IN2P3**, au sein d’un groupe public « Recette de cuisine » et du sous-groupe privé « Carnets de recettes personnel ».
 
 L’objectif est de :
 
-- Créer un dépôt GitLab personnel.
-- Organiser les fichiers d’un projet.
-- Ajouter une première recette au dépot local puis de l'envoyer sur la forge.
+- Créer un dépôt GitLab personnel
+- Organiser les fichiers d’un projet
+- Ajouter une première recette au dépôt local puis l’envoyer sur la forge
 
 ---
 
 ## Étape 0 - Rejoindre le groupe de travail
 
-À ce stade, vous devriez maintenant avoir accès au groupe privé
-[https://gitlab.in2p3.fr/recette-de-cuisine](https://gitlab.in2p3.fr/recette-de-cuisine)
-sur l’instance GitLab de l’IN2P3. Si ce n'est pas le cas, il faut nous le signaler dès maintenant.
+À ce stade, vous devriez maintenant avoir accès au sous-groupe privé « Carnets de recettes personnel ».
+[https://gitlab.in2p3.fr/recette-de-cuisine/carnets-de-recettes-personnel](https://gitlab.in2p3.fr/recette-de-cuisine/carnets-de-recettes-personnel)
+sur l’instance GitLab de l’IN2P3. Si ce n’est pas le cas, signalez-le dès maintenant.
 
 ---
 
 ## Étape 1 - Créer un projet
 
-Depuis la page du groupe **Recette de Cuisine**, cliquez sur le bouton **New project → Create blank project**.
+Depuis la page du groupe « Recette de cuisine », cliquez sur le bouton **New project → Create blank project**.
 
 Remplissez les champs comme suit :
 
 | Champ                     | Contenu suggéré                                          |
 | ------------------------- | -------------------------------------------------------- |
-| **Project name**          | `Recettes De <votre-identifiant>`                        |
-| **Project namespace**     | Recette de Cuisine (rempli automatiquement)              |
+| **Project name**          | `Recettes de <votre-identifiant>`                        |
+| **Project namespace**     | Recette de cuisine (rempli automatiquement)              |
 | **Project slug**          | (sera automatiquement généré à partir du nom du projet)  |
 | **Project description**   | "Mon carnet de recettes personnelles pour le TP GitLab." |
 | **Visibility level**      | `Private` (par défaut)                                   |
-| **Project Configuration** | Décocher "Initialize repository with a README"           |
+| **Project Configuration** | Décocher « Initialize repository with a README »         |
 
 Cliquez sur **Create project** pour valider.
 
@@ -49,7 +49,7 @@ Nous allons donc travailler **sur un clone local** du dépôt Git.
 
 Depuis la page d’accueil de votre projet GitLab, cliquez sur le bouton bleu **« Code »** en haut à droite :
 
-![Accès aux URLs de clonage dans GitLab](images/gitlab-repo-urls.png)
+![Accès aux URL de clonage dans GitLab](images/gitlab-repo-urls.png)
 
 Dans la fenêtre qui s’ouvre, copiez l’URL indiquée dans la zone **« Clone with SSH »**.
 Un bouton de copie rapide sur la droite vous permettra de la mettre dans votre presse-papier.
@@ -62,7 +62,7 @@ Un bouton de copie rapide sur la droite vous permettra de la mettre dans votre p
 #### 2. Créer le clone local
 
 Ouvrez un terminal sur votre machine, puis placez-vous dans le dossier où vous souhaitez stocker vos projets de cuisine.
-Créez ensuite un clone du dépôt à l’aide de la commande suivante (en adaptant l’URL à votre projet) :
+Créez ensuite un clone du dépôt à l’aide de la commande suivante (en adaptant l’URL à votre projet) :
 
 ```bash
 git clone git@gitlab.in2p3.fr:recette-de-cuisine/recettes-de-<votre-identifiant>.git
@@ -78,19 +78,20 @@ C’est parfaitement normal — il suffit d’accepter la connexion lorsqu’il 
 
 Votre dépôt est pour l’instant vide. Nous allons lui donner une structure simple pour accueillir vos futures créations culinaires.
 
-Créez un dossier `recettes` et un fichier de description pour votre première recette :
+Créez un dossier `recettes` et un fichier de description pour votre première recette :
 
 ```bash
 mkdir recettes
 nano recettes/crepes-classiques.md
 ```
 
-Copiez-collez ensuite le gabarit ci-dessous dans le fichier (vous pouvez adapter les valeurs selon votre humeur du jour) :
+Copiez-collez ensuite le gabarit ci-dessous dans le fichier (vous pouvez adapter les valeurs selon votre humeur du jour). Le format suit une en-tête de métadonnées simple en YAML suivie du contenu de la recette.
 
 ```markdown
+---
 titre: "Crêpes classiques"
 description: "Une recette simple et rapide pour des crêpes moelleuses."
-auteur: "Votre identifiant"
+auteur: "<votre-identifiant>"
 date: 2025-10-06
 temps_preparation: "10 min"
 temps_cuisson: "15 min"
@@ -100,22 +101,27 @@ nombre_personnes: 4
 categorie: "Dessert"
 cout: "€"
 tags:
-
-- rapide
-- vegetarien
-  image: "/images/crepes-classiques.jpg"
-  ingredients:
-- "250 g de farine"
-- "3 œufs"
-- "50 g de sucre"
-- "1 pincée de sel"
-- "50 cl de lait"
-  conseils:
-- "Laissez reposer la pâte 30 min pour plus de goût!"
-
+  - rapide
+  - végétarien
+image: "/images/crepes-classiques.jpg"
+ingredients:
+  - "250 g de farine"
+  - "3 œufs"
+  - "50 g de sucre"
+  - "1 pincée de sel"
+  - "50 cl de lait"
+conseils:
+  - "Laissez reposer la pâte 30 min pour plus de goût !"
 ---
 
-1.
+# Crêpes classiques
+
+## Préparation
+
+1. Mélangez la farine, le sucre et le sel.
+2. Ajoutez les œufs puis le lait progressivement en fouettant.
+3. Laissez reposer 30 min.
+4. Faites cuire les crêpes dans une poêle chaude légèrement huilée.
 ```
 
 Enregistrez et fermez le fichier.
@@ -124,19 +130,19 @@ Enregistrez et fermez le fichier.
 
 #### 4. Versionner et publier la recette
 
-Ajoutez les fichiers nouvellement créés à votre dépôt local :
+Ajoutez les fichiers nouvellement créés à votre dépôt local :
 
 ```bash
 git add recettes/crepes-classiques.md
 ```
 
-Créez un premier _commit_ pour enregistrer votre travail :
+Créez un premier _commit_ pour enregistrer votre travail :
 
 ```bash
 git commit -m "Ajout de la recette de crêpes classiques"
 ```
 
-Puis poussez-le vers la forge GitLab :
+Puis poussez-le vers la forge GitLab :
 
 ```bash
 git push origin main
@@ -160,4 +166,4 @@ Si vous ouvrez ce fichier, GitLab affichera directement le contenu en Markdown �
 
 ---
 
-Travailler sur son dépot s'est bien, mais maintenant nous allons mettre notre savoir faire en commun pour réaliser un véritable livre de cuisine numérique. La suite c'est par [ici]()
+Travailler sur son dépôt, c’est bien. Mais maintenant, nous allons mettre notre savoir-faire en commun pour réaliser un véritable livre de cuisine numérique. La suite, c’est par [ici](part2-2.2-gitlab-collaborer.md).
