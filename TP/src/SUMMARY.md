@@ -20,11 +20,6 @@
 
 # Parcours GitHub (ouvert)
 
-- Gérer un projet sur GitHub
-
-
-- CI/CD sur GitHub
-
 
 # Parcours GitLab (fermé)
 
@@ -37,8 +32,7 @@
 - [CI/CD sur GitLab](part2/gitlab/3-intro.md)
 
   * [Créer et inspecter un pipeline (GitLab CI)](part2/gitlab/3.1-pipeline-ci.md)
-  * [Artefacts : stockage et partage (GitLab)](part2/gitlab/3.2-artifacts.md)
-  * [Déployer un site statique avec Pages (GitLab)](part2/gitlab/3.3-deploiement-pages.md)
+  * [Déployer un site statique avec Pages (GitLab)](part2/gitlab/3.2-deploiement-pages.md)
 
 ---
 
