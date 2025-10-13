@@ -200,39 +200,8 @@ Hadrien Grasland — IJCLab, Orsay — 16/09/2025
 ## TP : Réseau et forges
 
 
-<!-- Markdeep slides stuff -->
 <script>
-    markdeepSlidesOptions = {
-        aspectRatio: 16 / 9,
-        theme: 'deepsea',
-        fontSize: 28,
-        diagramZoom: 1.0,
-        totalSlideNumber: false,
-        progressBar: true,
-        breakOnHeadings: false,
-        slideChangeHook: (oldSlide, newSlide) => {},
-        modeChangeHook: (newMode) => {}
-    };
-</script>
-<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep-relative-sizes/1.11/relativize.css">
-<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.css">
-<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.js"></script>
-
-<!-- Markdeep stuff -->
-<script>
-    markdeepOptions = {
-        tocStyle: 'none',
-        detectMath: false,
-        onLoad: function() {
-            initSlides();
-        }
-    };
-</script>
-<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
-<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep/1.11/markdeep.min.js" charset="utf-8"></script>
-<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
-<script>
-document.addEventListener("DOMContentLoaded", () => {
+function initInlineSvg() {
   // find all <div> tags pointing to .svg (via data-src attribute)
   document.querySelectorAll("div[data-src$='.svg']").forEach(div => {
     const url = div.getAttribute("data-src");
@@ -260,5 +229,38 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .catch(err => console.error("Failed to inline SVG:", err));
   });
-});
+}
 </script>
+<!-- Markdeep slides stuff -->
+<script>
+    markdeepSlidesOptions = {
+        aspectRatio: 16 / 9,
+        // theme: 'deepsea',
+        fontSize: 28,
+        diagramZoom: 1.0,
+        totalSlideNumber: false,
+        progressBar: true,
+        breakOnHeadings: false,
+        slideChangeHook: (oldSlide, newSlide) => {},
+        modeChangeHook: (newMode) => {}
+    };
+</script>
+<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep-relative-sizes/1.11/relativize.css">
+<link rel="stylesheet" href="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.css">
+<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/markdeep-slides.js"></script>
+
+<!-- Markdeep stuff -->
+<script>
+    markdeepOptions = {
+        tocStyle: 'none',
+        detectMath: false,
+        onLoad: function() {
+            initInlineSvg();
+            initSlides();
+        }
+    };
+</script>
+<style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
+<script src="https://ghpages.noahdoersing.com/markdeep-slides/markdeep-slides/lib/markdeep/1.11/markdeep.min.js" charset="utf-8"></script>
+<script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
+
