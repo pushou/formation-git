@@ -6,4 +6,4 @@ Pourquoi la cuisine, me direz-vous ? Parce que les recettes constituent un terra
 
 Bref, les recettes réunissent tous les ingrédients d'un bon support pédagogique : elles sont simples à manipuler, riches en discussions possibles, et rappellent avec humour que si la France aime débattre de tout, elle prend sa table très au sérieux.
 
-Reste à voir comment tout cela va s'organiser… et [c'est par ici que ça commence](part2/1.4-ssh-preparation.md) !
+Reste à voir comment tout cela va s'organiser… et [c'est par ici que ça commence](1.4-ssh-preparation.md) !

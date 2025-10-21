@@ -20,6 +20,7 @@
 
 # Parcours GitHub (ouvert)
 
+  * [Créer un nouveau projet ou contribuer (GitHub)](part2/github/2.1-preparation.md)
 
 # Parcours GitLab (fermé)
 
