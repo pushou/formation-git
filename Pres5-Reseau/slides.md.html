@@ -11,9 +11,12 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Du clone local au réseau
 
-- **Jusqu'ici, nous avons travaillé localement.**
+### Jusqu'ici, nous avons travaillé localement.
+
   - Point fort du distribué : l'outil *fonctionne hors-ligne*.
-- **Comment partager notre travail ?**
+
+### Comment partager notre travail ?
+
   - Plusieurs solutions (y compris pair-à-pair).
   - La plus courante : introduire un *serveur officiel*.
   - On s'y connecte de temps en temps pour échanger.
@@ -22,10 +25,13 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Accès aux serveurs distants
 
-- **Le serveur est une remote comme les autres.**
+### Le serveur est une remote comme les autres.
+
   - Exemple : `git clone https://github.com/HadrienG2/ddhc.git`.
   - L'adresse indique le protocole à utiliser (ici HTTPS).
-- **Deux protocoles en usage courant :**
+
+### Deux protocoles en usage courant :
+
   - *HTTPS* : universel mais authentification moins pratique.
   - *SSH* : plus confortable, mais nécessite des ports/pare-feu permissifs.
   - HTTPS en lecture seule, SSH si écriture.
@@ -34,11 +40,14 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Quelle politique d'accès ?
 
-- **Attention aux *droits d'écriture* du dépôt officiel !**
+### Attention aux *droits d'écriture* du dépôt officiel !
+
   - Risques : dégâts accidentels, compte piraté…
   - Protection : [principe du moindre privilège](https://fr.wikipedia.org/wiki/Principe_de_moindre_privilège).
   - Droits de lecture : selon le projet (privé vs public).
-- **Scénarios classiques :**
+
+### Scénarios classiques :
+
   - Dépôt privé : accès restreint à l'équipe projet.
   - Dépôt public : contributions extérieures via forks.
 
@@ -46,14 +55,18 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Dépôt privé
 
-- **Adapté aux *informations confidentielles*. **
+### Adapté aux *informations confidentielles*.
+
   - Ex : comptes-rendus internes, science non publiée.
   - Attention à l'historique si publication ultérieure.
-- **Pour qualité et sécurité, séparer les *rôles* :**
+
+### Pour qualité et sécurité, séparer les *rôles* :
+
   - Peu de mainteneurs peuvent modifier main/master.
   - Contributions via d'autres branches (PR/MR).
   - Rôles moins privilégiés si besoin (ex : _guest_, _reporter_).
-- **Important:** prévoir ≥ 2 mainteneurs (congés, indisponibilités…).
+
+### Important : prévoir ≥ 2 mainteneurs (congés, indisponibilités…).
 
 ---
 
@@ -78,11 +91,14 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Dépôt public
 
-- **Contributions extérieures via des forks.**
+### Contributions extérieures via des forks.
+
   - Le dépôt officiel est *lisible* par tous.
   - Chacun peut créer une *copie privée* (fork).
   - Ensuite, *on soumet* des changements depuis son fork (PR/MR).
-- **Contributions internes : deux options**
+
+### Contributions internes : deux options
+
   - Via forks : procédures homogènes, moindre privilège.
   - Via accès direct en écriture : un peu plus ergonomique.
 
@@ -183,13 +199,15 @@ H. Grasland & S. Lion — IJCLab, Orsay
 
 ## Forge sociale
 
-- **Application web qui facilite :**
+### Application web qui facilite :
+
   - *Visualisation* du dépôt (fichiers, versions, branches…)
   - Création et mise à jour de *forks*
   - *Soumission* de changements (pull/merge requests)
   - *Discussion/revue* des changements avant acceptation
   - Et plus encore…
-- **Pour ce TP : GitHub ou GitLab IN2P3**
+
+### Pour ce TP : GitHub ou GitLab IN2P3
 
 ---
 
