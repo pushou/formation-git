@@ -1,0 +1,39 @@
+# Standard pre-commit configuration file
+# Run `pre-commit install` after creating this file
+# Then run `pre-commit run --all-files` to test it manually
+
+repos:
+  # --- Generic file hygiene hooks ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        # Ignore Markdown, to avoid issues with tables
+        exclude: '\.md$'
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-symlinks
+      - id: fix-byte-order-marker
+      - id: check-yaml
+      - id: check-json
+      - id: detect-private-key
+
+  # --- Markdown linting ---
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.45.0
+    hooks:
+      - id: markdownlint
+        name: Markdown lint
+        files: \.(md|markdown)$
+        args:
+          # Disable "noisy" rules
+          - --disable=MD013  # Line length
+          - --disable=MD033  # Inline HTML
+          - --disable=MD041  # First line heading
+          - --disable=MD004  # Unordered list style
+
