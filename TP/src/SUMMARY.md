@@ -24,16 +24,22 @@
 
 # Parcours GitLab (fermé)
 
-- [Gérer un projet sur GitLab](part2/gitlab/2-intro.md)
+- [Contribuer à un dépôt existant](part2/gitlab/2-contribuer-a-un-depot-existant/2.0-intro.md)
 
-  * [Créer un nouveau projet ou contribuer (GitLab)](part2/gitlab/2.1-preparation.md)
-  * [Visibilité, membres, rôles et permissions (GitLab)](part2/gitlab/2.2-creation-projet.md)
-  * [Organiser les tâches via les tickets (GitLab)](part2/gitlab/2.3-collaborer.md)
+  * [Préparation au travail en réseau](part2/gitlab/2-contribuer-a-un-depot-existant/2.1-preparation.md)
+  * [Cloner le dépôt et proposer des changements](part2/gitlab/2-contribuer-a-un-depot-existant/2.2-clone-et-merge-request.md)
 
-- [CI/CD sur GitLab](part2/gitlab/3-intro.md)
+- [Créer et administrer son propre dépôt](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.0-intro.md)
 
-  * [Créer et inspecter un pipeline (GitLab CI)](part2/gitlab/3.1-pipeline-ci.md)
-  * [Déployer un site statique avec Pages (GitLab)](part2/gitlab/3.2-deploiement-pages.md)
+  * [Création d’un dépôt personnel](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.1-creation-depot-personnel.md)
+  * [Mise en place d’une intégration continue basique](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.2-integration-continue-basique.md)
+
+- [Travailler en équipe sur un dépôt commun](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.0-intro.md)
+
+  * [Création et gestion de projets au sein d’un groupe GitLab](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.1-gestion-de-projets-de-groupe.md)
+  * [Intégration continue avancée (déploiement)](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.2-integration-continue-avancee.md)
+
+
 
 ---
 
