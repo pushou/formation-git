@@ -461,8 +461,8 @@ pointe sur le dépôt officiel en connexion HTTPS.
 Dans la variante « GitLab fermé », on attend plutôt cette sortie…
 
 > ```text
-> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (fetch)
-> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (push)
+> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (fetch)
+> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (push)
 > ```
 
 …avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
