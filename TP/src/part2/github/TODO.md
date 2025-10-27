@@ -384,8 +384,8 @@ quand vous aurez fini, poussez votre branche finale sur votre _fork_, et
 soumettez une _pull request_ au dépôt officiel pour terminer ce TP.
 
 Ensuite, vous pourrez aller lire la [conclusion
-commune](../../5.3-conclusion.md). Si vous êtes en avance, n'hésitez pas à aller
-voir aussi la variante [« GitLab fermé »](../gitlab/1-intro.md) du TP, qui vous
-permettra de pratiquer sur une autre forge couramment utilisée (GitLab), avec
-une méthode de travail plus adaptée pour des projets impliquant des informations
-confidentielles.
+commune](../conclusion-commune.md). Si vous êtes en avance, n'hésitez pas à
+aller voir aussi la variante [« GitLab fermé »](../gitlab/1-intro.md) du TP, qui
+vous permettra de pratiquer sur une autre forge couramment utilisée (GitLab),
+avec une méthode de travail plus adaptée pour des projets impliquant des
+informations confidentielles.

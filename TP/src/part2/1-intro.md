@@ -114,15 +114,14 @@ est donc temps de choisir.
 
 Pour ce TP, vous devez choisir entre deux parcours :
 
-- Dans le parcours [« GitHub ouvert »](part2/github/2.1-preparation.md), nous
-  présentons sur la forge GitHub un mode de collaboration ouvert, où le monde
-  entier peut lire le contenu du dépôt git et y proposer des changements via des
-  _forks_. C'est une approche adaptée pour des projets _open source_.
-- Dans le parcours [« GitLab
-  fermé »](part2/gitlab/2-contribuer-a-un-depot-existant/2.0-intro.md), nous
-  présentons sur l'instance IN2P3 de la forge GitLab un mode de collaboration
-  fermé, où le contenu du dépôt git ne peut être lu et modifié que par l'équipe
-  projet. C'est une approche adaptée pour des données confidentielles, comme des
+- Dans le parcours [« GitHub ouvert »](github/TODO.md), nous présentons sur la
+  forge GitHub un mode de collaboration ouvert, où le monde entier peut lire le
+  contenu du dépôt git et y proposer des changements via des _forks_. C'est une
+  approche adaptée pour des projets _open source_.
+- Dans le parcours [« GitLab fermé »](gitlab/1-intro.md), nous présentons sur
+  l'instance IN2P3 de la forge GitLab un mode de collaboration fermé, où le
+  contenu du dépôt git ne peut être lu et modifié que par l'équipe projet. C'est
+  une approche adaptée pour des données confidentielles, comme des
   comptes-rendus de réunion ou des recherches non publiées.
 
 De l'expérience des années précédentes, vous n'aurez sans doute pas le temps de

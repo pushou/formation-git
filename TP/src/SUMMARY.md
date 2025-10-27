@@ -16,7 +16,7 @@
 # Partie 2 — De Git à la forge logicielle
 
 - [Introduction et clés SSH](part2/1-intro.md)
-- [Parcours « GitHub ouvert »](part2/github/2.1-preparation.md)
+- [Parcours « GitHub ouvert »](part2/github/TODO.md)
   - [TODO: Sous-parties]()
 - [Parcours « GitLab fermé »](part2/gitlab/1-intro.md)
   - [Accès web et SSH](part2/gitlab/2-acces.md)
