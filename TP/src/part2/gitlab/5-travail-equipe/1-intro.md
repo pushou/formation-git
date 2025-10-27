@@ -4,7 +4,7 @@ La dernière étape du parcours consiste à travailler en brigade ! Dans ce
 chapitre, vous apprendrez à collaborer efficacement sur un dépôt partagé au sein
 d’un groupe GitLab, géré par l'un d'entre vous.
 
-[Dans un premier temps](2-gestion-projet.md), nous aborderons la création et la
+[Dans un premier temps](2-projet-commun.md), nous aborderons la création et la
 gestion d’un espace d’équipe, la répartition des rôles et l’organisation du
 travail via les projets du groupe.
 
