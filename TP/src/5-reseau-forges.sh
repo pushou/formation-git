@@ -35,7 +35,7 @@ git clone URLDuFork
 ###### ANCHOR: clone-from-gitlab
 cd ~/Desktop
 # Même URL que le "Clone with SSH" de GitLab
-git clone git@gitlab.in2p3.fr:grasland/ddhc.git
+git clone git@gitlab.in2p3.fr:git-kitchen/recettes.git
 ###### ANCHOR_END: clone-from-gitlab
 }
 unset -f test_this_manually
@@ -60,7 +60,7 @@ git branch --set-upstream-to=upstream/main
 ###### ANCHOR_END: set-upstream-main
 
 ###### ANCHOR: pull-main-gitlab
-cd ~/Desktop/ddhc
+cd ~/Desktop/recettes
 ###### ANCHOR: pull-main-github
 git checkout main
 git pull --ff-only

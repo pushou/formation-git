@@ -12,7 +12,7 @@ set -euxo pipefail
 IFS=$'\n\t'
 
 ###### ANCHOR: goto-repo
-cd ~/Desktop/ddhc
+cd ~/Desktop/recettes
 ###### ANCHOR_END: goto-repo
 
 ###### ANCHOR: show-remote-details
