@@ -30,7 +30,7 @@ Pour introduire les concepts en douceur, nous allons procéder en plusieurs temp
   automatiquement certains aspects de son contenu.
 - Il ne restera alors plus qu'à boucler la boucle en travaillant à nouveau en
   équipe, cette fois au sein de [dépôts sous votre
-  contrôle](5-travail-equipe/2-gestion-projet.md). En plus de vous donner une
+  contrôle](5-travail-equipe/2-projet-commun.md). En plus de vous donner une
   expérience plus directe du rôle de mainteneur, ce sera aussi l'occasion pour
   vous d'aller plus loin avec l'intégration continue en découvrant le
   [déploiement continu](5-travail-equipe/3-deploiement-continu.md).
