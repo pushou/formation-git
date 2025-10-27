@@ -59,6 +59,8 @@ git checkout main
 git branch --set-upstream-to=upstream/main
 ###### ANCHOR_END: set-upstream-main
 
+# TODO: Bring back once github and gitlab are back in sync
+function test_this_manually() {
 ###### ANCHOR: pull-main-gitlab
 cd ~/Desktop/recettes
 ###### ANCHOR: pull-main-github
@@ -66,6 +68,8 @@ git checkout main
 git pull --ff-only
 ###### ANCHOR_END: pull-main-github
 ###### ANCHOR_END: pull-main-gitlab
+}
+unset -f test_this_manually
 
 ###### ANCHOR: config-pull-ff-only
 git config pull.ff only
