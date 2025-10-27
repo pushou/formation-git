@@ -11,6 +11,8 @@ repos:
         # Ignore Markdown, to avoid issues with tables
         exclude: '\.md$'
       - id: end-of-file-fixer
+        # Ignore reference files, whose formatting matters
+        exclude: '\.ref$'
       - id: mixed-line-ending
         args: [--fix=lf]
       - id: check-case-conflict
