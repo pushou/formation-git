@@ -11,9 +11,14 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
+# TODO: Fix this once github and gitlab are in sync again
+function test_this_manually() {
 ###### ANCHOR: goto-repo
 cd ~/Desktop/recettes
 ###### ANCHOR_END: goto-repo
+}
+unset -f test_this_manually
+cd ~/Desktop/ddhc
 
 ###### ANCHOR: show-remote-details
 git remote -v
