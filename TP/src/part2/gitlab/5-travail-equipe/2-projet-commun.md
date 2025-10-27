@@ -132,7 +132,7 @@ Prenez un moment pour définir les tâches et les répartir clairement.
 Votre ticket s’affiche maintenant dans la liste des _issues_, visible par toute
 la brigade.
 
-[^labels] : Utilisez les labels GitLab pour organiser vos _issues_ par type,
+[^labels]: Utilisez les labels GitLab pour organiser vos _issues_ par type,
 priorité ou encore statut (ex. `à faire`, `urgent`, `en cours`, `terminé`,
 `CI/CD`, `recette`).
 
