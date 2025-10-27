@@ -29,8 +29,8 @@ Un mouvement de fichier est donc traité exactement comme une suppression suivie
 d’une re-création, et c’est ensuite une optimisation de performance interne à
 git qui s’assure que cette opération soit implémentée de façon efficace.
 
-C’est équivalent, me direz-vous. En fait, c’est même mieux, parce que cela
-permet à git de traiter plus efficacement des opérations qui sont _presque_ des
+Est-ce vraiment équivalent ? En fait, c’est même mieux, parce que cela permet à
+git de traiter plus efficacement des opérations qui sont _presque_ des
 déplacements (ex : déplacement avec ajout mineur de contenu). Cependant, cela
 conduira aussi parfois les outils construits autour de git à échouer à
 identifier un déplacement de fichier lorsque cela leur serait utile.

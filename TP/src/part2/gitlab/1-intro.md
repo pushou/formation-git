@@ -15,9 +15,9 @@ Pour introduire les concepts en douceur, nous allons procéder en plusieurs temp
 :
 
 - Dans un premier temps, nous allons [effectuer la configuration
-  requise](2-acces.md) pour que vous ayez accès au groupe GitLab privé des
-  cuisiniers qui suivent ce parcours, et puissiez pousser des commits depuis
-  votre machine locale vers des dépôts git hébergés au sein de ce groupe.
+  requise](2-acces.md) pour que vous puissiez accéder au groupe GitLab privé des
+  cuisiniers, et pour que vous puissiez pousser des commits depuis votre machine
+  locale vers les dépôts git hébergés au sein de ce groupe.
 - Ces accès vous permettront de [contribuer à un dépôt déjà
   existant](3-contribution.md) géré par un des formateurs, et ainsi d'acquérir
   une première expérience des mécanismes de collaboration fournis par GitLab
