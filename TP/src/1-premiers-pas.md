@@ -1,4 +1,8 @@
-# <a href="Pres1-Introduction.pdf" target="blank">Premiers pas avec git</a>
+# Premiers pas avec git
+
+<a href="Pres1-Introduction.pdf" target="blank">Retrouvez ici les supports de la
+présentation.</a>
+
 
 ## Mode d’emploi des TPs
 

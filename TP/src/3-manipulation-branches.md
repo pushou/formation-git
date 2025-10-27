@@ -1,4 +1,8 @@
-# <a href="Pres3-Branches.pdf" target="blank">Manipulation de branches</a>
+# Manipulation de branches
+
+<a href="Pres3-Branches.pdf" target="blank">Retrouvez ici les supports de la
+présentation.</a>
+
 
 ## Retour à l’état attendu
 

@@ -1,4 +1,8 @@
-# <a href="Pres4-Distribution.pdf" target="blank">Dépôts distribués</a>
+# Dépôts distribués
+
+<a href="Pres4-Distribution.pdf" target="blank">Retrouvez ici les supports de la
+présentation.</a>
+
 
 ## Retour à l’état attendu
 

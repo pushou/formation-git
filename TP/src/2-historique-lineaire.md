@@ -1,4 +1,8 @@
-# <a href="Pres2-Versions.pdf" target="blank">Un historique linéaire</a>
+# Un historique linéaire
+
+<a href="Pres2-Versions.pdf" target="blank">Retrouvez ici les supports de la
+présentation.</a>
+
 
 ## Retour à l’état attendu
 
