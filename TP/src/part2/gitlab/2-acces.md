@@ -23,14 +23,18 @@ entier grâce à la fédération eduGAIN.
 
 Pour y accéder, cliquez sur le bouton « EDUGAIN » à droite de l’invite. Cela
 vous conduira à une nouvelle page où vous pouvez choisir une institution
-académique auprès de laquelle vous possédez un compte informatique, par exemple
-« CNRS » ou « Université Paris-Saclay » dans mon cas :
+académique auprès de laquelle vous possédez un compte informatique.
 
 <center>
 
 ![Choix d'identité eduGAIN](../../../images/gitlab-login-edugain.png)
 
 </center>
+
+Par exemple, l'auteur de cet énoncé de TP possède un compte informatique au CNRS
+(JANUS) et à l'Université Paris-Saclay, il peut donc sélectionner l'une de ces
+deux options.
+
 À cette étape, il faut faire attention à deux choses :
 
 - Il est possible de chercher le nom de votre institution en tapant une partie
@@ -151,6 +155,6 @@ du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser
 des branches de développement, mais pas de modifier directement le contenu de la
 branche `main`.
 
-Pour cela, vous devrez passer par une procédure de validation de ma part, la
+Pour cela, vous devrez passer par une procédure de validation de notre part, la
 _merge request_, que nous allons explorer dans [l'étape suivante de ce
 TP](3-contribution.md).

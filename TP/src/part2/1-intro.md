@@ -10,10 +10,10 @@ Dans cette seconde partie consacrée aux forges et au travail collaboratif avec
 Git, nous vous proposons un exercice d'édition collective autour d'un de nos
 trésors nationaux : le patrimoine gastronomique français.
 
-Pourquoi la cuisine, me direz-vous ? Parce que les recettes constituent un
-terrain de jeu parfait pour s'initier à la gestion de version en équipe. Elles
-sont universelles, évolutives, et soulèvent inévitablement des débats passionnés
-: faut-il vraiment mettre de la crème dans la carbonara ? La quiche lorraine
+Pourquoi la cuisine ? Parce que les recettes constituent un terrain de jeu
+parfait pour s'initier à la gestion de version en équipe. Elles sont
+universelles, évolutives, et soulèvent inévitablement des débats passionnés :
+faut-il vraiment mettre de la crème dans la carbonara ? La quiche lorraine
 supporte-t-elle une touche de fromage ? Et l'éternel duel pain au chocolat
 contre chocolatine ne mériterait-il pas d'être enfin tranché par un commit ?
 
@@ -93,7 +93,7 @@ complexes et dépendent du système d’exploitation utilisé.
 
 Dans le cadre cette formation, qui est effectuée dans un cadre contraint et pour
 une durée limitée, à l’issue de laquelle votre compte utilisateur et sa clé SSH
-seront détruits, il me semble donc raisonnable d’accepter le risque de
+seront détruits, il nous semble donc raisonnable d’accepter le risque de
 travailler sans phrase de passe.
 
 </div></details>
@@ -106,11 +106,11 @@ plus qu’à afficher votre clé publique, par exemple avec `cat`…
 ```
 
 …puis à la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
-l’interface web de gestion de clé SSH de la forge que vous allez utiliser. Qu'il
-est donc temps de choisir.
+l’interface web de gestion de clé SSH de la forge que vous allez utiliser. Ce
+qui veut dire qu'il est temps de choisir cette dernière.
 
 
-## Choix de la variante du TP
+## Choix du parcours
 
 Pour ce TP, vous devez choisir entre deux parcours :
 
