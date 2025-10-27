@@ -534,7 +534,6 @@ _submodule_ associés, avec la possibilité de mettre par la suite ces commits �
 jour avec des fusions et des _rebases_ des nouveautés du dépôt parent.
 
 Cette fonctionnalité étant encore plus obscure que les _submodules_ eux-mêmes et
-un peu longue à expliquer ici, je vous invite pour plus d’informations à
-consulter le chapitre « Submodules » du livre Pro Git, sur lequel
-cette introduction est basée :
-<https://git-scm.com/book/en/v2/Git-Tools-Submodules>.
+un peu longue à expliquer ici, nous vous invitons pour plus d’informations à
+consulter le chapitre « Submodules » du livre Pro Git, sur lequel cette
+introduction est basée : <https://git-scm.com/book/en/v2/Git-Tools-Submodules>.

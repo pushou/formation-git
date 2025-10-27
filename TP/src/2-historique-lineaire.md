@@ -14,10 +14,10 @@ enchaînement ne se produit pas toujours comme prévu, si par exemple…
 - Vous avez exécuté des commandes git imprévues dans un dépôt utilisé par le TP
 - Vous avez raté une partie de la formation
 
-Pour éviter que ces problèmes ne se propagent d’un TP au suivant, je vous
-propose de reprendre chaque nouveau TP sur une base connue, à savoir le résultat
-d’une exécution rigoureuse de l’ensemble des commandes des TPs précédents, et
-rien que ces commandes.
+Pour éviter que ces problèmes ne se propagent d’un TP au suivant, nous vous
+proposons de reprendre chaque nouveau TP sur une base connue, à savoir le
+résultat d’une exécution rigoureuse de l’ensemble des commandes des TPs
+précédents, et rien que ces commandes.
 
 Cela ne produira pas exactement le même résultat que si vous aviez fait le TP
 vous même (par exemple les messages de commits seront différents et l’auteur des
@@ -53,7 +53,7 @@ Le format est libre, mais une convention très répandue dans le monde git est d
 commencer par un résumé court (une ligne de moins de 80 caractères),
 éventuellement suivi d’une paire de sauts de lignes et une description plus
 précise. Cette convention est exploitée par de nombreux outils de visualisation,
-je vous conseille donc de la suivre.
+nous vous conseillons donc de la suivre.
 
 Notez que le fichier texte ouvert par `git commit` contient déjà un
 récapitulatif de l’état actuel du dépôt, similaire à celui qui est affiché
@@ -211,19 +211,19 @@ fichiers _sous gestion de version_ depuis le dernier commit.
 
 <div class="warning">
 
-  Comme `git diff`, `git commit -a` ignore complètement les fichiers qui n’ont
-  pas été mis préalablement sous gestion de version avec `git add`, imitant
-  ainsi la logique d’autres gestionnaires de version comme SVN ou Mercurial.
+Comme `git diff`, `git commit -a` ignore complètement les fichiers qui n’ont
+pas été mis préalablement sous gestion de version avec `git add`, imitant
+ainsi la logique d’autres gestionnaires de version comme SVN ou Mercurial.
 
-  Cette logique déjà douteuse dans le cadre de `git diff` est encore plus
-  piégeuse dans le cadre de `git commit -a`, et il est courant quand on utilise
-  cette commande de créer des commits qui n’ont aucun sens, par exemple du code
-  qui ne compile pas parce qu’il manque des nouveaux fichiers sources mentionnés
-  par les modifications qui ont été commitées dans d’autres fichiers
-  préexistants.
-  
-  Par conséquent, à moins d’être déjà habitué à un gestionnaire de version où ce
-  comportement est normal, je vous déconseille d’utiliser `git commit -a`.
+Cette logique déjà douteuse dans le cadre de `git diff` est encore plus
+piégeuse dans le cadre de `git commit -a`, et il est courant quand on utilise
+cette commande de créer des commits qui n’ont aucun sens, par exemple du code
+qui ne compile pas parce qu’il manque des nouveaux fichiers sources mentionnés
+par les modifications qui ont été commitées dans d’autres fichiers
+préexistants.
+
+Par conséquent, à moins d’être déjà habitué à un gestionnaire de version où ce
+comportement est normal, nous vous déconseillons d’utiliser `git commit -a`.
 
 </div>
 
@@ -250,7 +250,7 @@ affichage en ligne de commande devient rapidement difficile à lire dès lors qu
 l’information affichée est un tant soit peu complexe. Un terminal textuel n’est
 pas vraiment fait pour ça !
 
-Pour cette raison, je vous recommande fortement d’utiliser une interface
+Pour cette raison, nous vous recommandons fortement d’utiliser une interface
 graphique pour visualiser votre historique. Au cours de cette formation, nous
 utiliserons pour cela le logiciel `gitg` :
 
@@ -487,21 +487,21 @@ utilisant `revert`.
 
 <div class="warning">
 
-  Le prix à payer pour cette sécurité est que `git revert` n’est pas l’outil
-  approprié pour éliminer du dépôt un fichier qui n’aurait jamais dû s’y
-  trouver, comme un secret cryptographique ou un profil de performances
-  d’exécution de plusieurs gigaoctets. Avec `git revert`, ces fichiers
-  resteraient dans l’historique, ce qui n’est pas désirable. Pour les éliminer
-  vraiment du dépôt, il faudra faire appel à des outils beaucoup plus
-  destructeurs tels que `git filter-branch`, ou le logiciel tiers `filter-repo`.
+Le prix à payer pour cette sécurité est que `git revert` n’est pas l’outil
+approprié pour éliminer du dépôt un fichier qui n’aurait jamais dû s’y
+trouver, comme un secret cryptographique ou un profil de performances
+d’exécution de plusieurs gigaoctets. Avec `git revert`, ces fichiers
+resteraient dans l’historique, ce qui n’est pas désirable. Pour les éliminer
+vraiment du dépôt, il faudra faire appel à des outils beaucoup plus
+destructeurs tels que `git filter-branch`, ou le logiciel tiers `filter-repo`.
 
-  Ces outils pouvant causer beaucoup de dommages s’ils sont mal maniés, je vous
-  recommande donc de ne pas y avoir recours quand vous débutez avec git, et de
-  privilégier chaque fois que c’est possible des méthodes d’édition d’historique
-  moins dangereuses car plus compréhensibles et d’impact plus localisé, telles
-  que `git reset --hard HEAD~N` qui enlève « juste » les N derniers commits de
-  l’historique de la branche active. Nous reviendrons sur ces possibilités après
-  avoir abordé la question des branches.
+Ces outils pouvant causer beaucoup de dommages s’ils sont mal maniés, nous
+vous recommandons donc de ne pas y avoir recours quand vous débutez avec git,
+et de privilégier chaque fois que c’est possible des méthodes d’édition
+d’historique moins dangereuses car plus compréhensibles et d’impact plus
+localisé, telles que `git reset --hard HEAD~N` qui enlève « juste » les N
+derniers commits de l’historique de la branche active. Nous reviendrons sur
+ces possibilités après avoir abordé la question des branches.
 
 </div>
 
@@ -736,10 +736,10 @@ nous aurons l’occasion d’explorer davantage au cours de la formation.
 
 <div class="warning">
 
-  Un point de vigilance que je dois évoquer dès maintenant, mais ne pourrai
-  détailler que plus tard dans la formation, est qu’il vaut mieux éviter
-  d’utiliser ces commandes d’édition d’historique sur des commits ou branches
-  qui ont été publiés sur un serveur partagé.
+Un point de vigilance que nous devons évoquer dès maintenant, mais ne pourrons
+détailler que plus tard dans la formation, est qu’il vaut mieux éviter
+d’utiliser ces commandes d’édition d’historique sur des commits ou branches
+qui ont été publiés sur un serveur partagé.
 
 </div>
 

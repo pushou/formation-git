@@ -8,8 +8,8 @@ l’instance GitLab de l'IN2P3.
 
 Il est possible de travailler directement à partir de l’interface web de la
 forge, mais c’est limitant dès que le projet grossit un peu, car vous n'avez pas
-accès à tous les outils installés en local sur votre machine. Je vous recommande
-donc de plutôt travailler sur un clone local du dépôt git.
+accès à tous les outils installés en local sur votre machine. Nous vous
+recommandons donc de plutôt travailler sur un clone local du dépôt git.
 
 Pour créer ce clone, nous allons avoir besoin de l’URL SSH du dépôt. Pour
 l’obtenir, rendez-vous d’abord sur [l’interface web du
@@ -67,11 +67,11 @@ car `git clone` a configuré ce qu'il faut pour nous :
 {{#include ../../5-reseau-forges.sh:pull-main-gitlab}}
 ```
 
-Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
+Nous conseillons ici l’utilisation de `--ff-only` pour vous aider à repérer une
 erreur classique. Si l’on applique correctement le _GitHub flow_, la branche
 `main` du dépôt officiel devrait avancer de façon monotone, et votre branche
-`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
-pas mettre en avance rapide, cela relève d’une situation pathologique :
+`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez pas
+mettre en avance rapide, cela relève d’une situation pathologique :
 
 - Soit les mainteneurs du dépôt officiel ont fait diverger `main` en éditant
   son historique. Il n’est que très rarement nécessaire d’en arriver là, et un
