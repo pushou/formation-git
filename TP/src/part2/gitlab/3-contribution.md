@@ -6,6 +6,32 @@ Vous devriez maintenant avoir accès au dépôt [« Git Kitchen / Recettes
 »](https://gitlab.in2p3.fr/git-kitchen/recettes) lorsque vous êtes connecté à
 l’instance GitLab de l'IN2P3.
 
+<div class="warning">
+
+Vous remarquerez que là où nous parlons de « dépôt », l'interface web de GitLab
+privilégie la terminologie de « projet » .
+
+Ce que la forge GitLab appelle un projet, c'est en fait la combinaison d'un
+dépôt git hébergé sur le serveur de la forge avec un ensemble d'autres outils
+construits autour de ce dépôt : gestion de tickets (_issues_), hébergement de
+binaires et de pages web, wiki, etc.
+
+Mais dans cette formation, nous allons surtout nous concentrer sur le dépôt git
+au coeur du projet GitLab, et ils serait perturbant que nous changions
+soudainement de terminologie pour nous référer à ce dernier alors que nous
+parlons de dépôt depuis le début de la formation. Et pour ne rien arranger, nous
+utilisons aussi beaucoup le mot « projet » pour faire référence à la structure
+humaine qui utilise un certain dépôt git pour collaborer, ce qui risque
+d'ajouter à la confusion.
+
+Pour éviter ces problèmes de terminologie, nous pratiquerons l'abus de langage,
+courant dans la communauté des utilisateurs de GitLab, d'utiliser le mot
+« dépôt » pour faire référence au projet GitLab qui héberge un certain dépôt
+git. Et si à un moment nous avons besoin de faire référence spécifiquement à ce
+que GitLab appelle un projet, nous privilégierons l'expresion « projet GitLab ».
+
+</div>
+
 Il est possible de travailler directement à partir de l’interface web de la
 forge, mais c’est limitant dès que le projet grossit un peu, car vous n'avez pas
 accès à tous les outils installés en local sur votre machine. Nous vous
@@ -132,17 +158,17 @@ de la branche `main` officielle qui sont incompatibles avec vos changements.
 
 <div class="warning">
 
-  Plus une de vos branches a une durée de vie longue, plus il y a de chances que
-  des conflits se produisent avec le `main` qui évolue en parallèle. De plus, si
-  vous utilisez `git rebase` plutôt que `git merge`, comme la politique de
-  certains projets l’exige, il peut aussi arriver que vous rencontriez de
-  conflits de fusion en cascade, où vous devrez faire face à des conflits non
-  pas une seule fois, mais une fois par commit de votre branche !
+Plus une de vos branches a une durée de vie longue, plus il y a de chances que
+des conflits se produisent avec le `main` qui évolue en parallèle. De plus, si
+vous utilisez `git rebase` plutôt que `git merge`, comme la politique de
+certains projets l’exige, il peut aussi arriver que vous rencontriez de conflits
+de fusion en cascade, où vous devrez faire face à des conflits non pas une seule
+fois, mais une fois par commit de votre branche !
 
-  Pour éviter cela et simplifier le passage en revue de vos changements par les
-  mainteneurs, il est recommandé de privilégier des branches de durée de vie
-  courte, aux objectifs précis et modestes, que l’on soumettra au dépôt officiel
-  dès que possible. Nous allons maintenant étudier ce processus de soumission.
+Pour éviter cela et simplifier le passage en revue de vos changements par les
+mainteneurs, il est recommandé de privilégier des branches de durée de vie
+courte, aux objectifs précis et modestes, que l’on soumettra au dépôt officiel
+dès que possible. Nous allons maintenant étudier ce processus de soumission.
 
 </div>
 
