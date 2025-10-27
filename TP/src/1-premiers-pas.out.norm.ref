@@ -1178,4 +1178,3 @@ usage: git mv [<options>] <source>... <destination>
     -f, --[no-]force      force move/rename even if target exists
     -k                    skip move/rename errors
     --[no-]sparse         allow updating entries outside of the sparse-checkout cone
-

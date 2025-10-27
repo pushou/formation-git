@@ -62,10 +62,10 @@ enseignant, vous trouverez un raccourci vers ceux-ci sur votre bureau.
 
 <div class="warning">
 
-  Vous l’avez vu, les mots de passe sont dérivés en suivant une logique
-  simple, donc tout le reste de la salle peut deviner votre mot de passe. Pour
-  plus de confidentialité, n’hésitez pas à configurer un mot de passe plus
-  secret avec la commande `passwd`.
+Vous l’avez vu, les mots de passe sont dérivés en suivant une logique
+simple, donc tout le reste de la salle peut deviner votre mot de passe. Pour
+plus de confidentialité, n’hésitez pas à configurer un mot de passe plus
+secret avec la commande `passwd`.
 
 </div>
 
@@ -78,7 +78,7 @@ quoi, et comment contacter cette personne.
 git vous demandera donc de lui donner votre nom et votre adresse e-mail avant de
 vous laisser sauvegarder des versions.
 
-Si plus tard vous utilisez git avec une forge (GitHub, GitLab...), c'est cette 
+Si plus tard vous utilisez git avec une forge (GitHub, GitLab...), c'est cette
 adresse mail qui sera utilisée par la forge pour relier les commits qui ont été
 mis en ligne à votre compte utilisateur.
 

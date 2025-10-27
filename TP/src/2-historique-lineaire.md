@@ -746,15 +746,15 @@ revenir en arrière en cas de problème, la plupart des opérations git peuvent
 être annulées. Voici une première série de commandes pour annuler…
 
 - L’ajout de modifications à l’index → `git reset [<fichiers>]`
-    * D’anciennes versions de git distinguaient l’ajout de modifications à
-      l’index de l’ajout de fichiers à la gestion de version. Avec elles, il faut
-      utiliser `git rm --cached <fichiers>` dans le second cas.
+  * D’anciennes versions de git distinguaient l’ajout de modifications à
+    l’index de l’ajout de fichiers à la gestion de version. Avec elles, il faut
+    utiliser `git rm --cached <fichiers>` dans le second cas.
 - La création d’un commit → `git reset --soft HEAD~`
 - La création d’un commit + les ajouts préalables à l’index → `git reset HEAD~`
 - La création d’un commit + les ajouts préalables à l’index + les modifications
   préalables du répertoire de travail → `git reset --hard HEAD~`
-    * Soyez prudents avec cette commande : si votre répertoire de travail n’est
-      pas propre, ses changements seront perdus de façon irréversible.
+  * Soyez prudents avec cette commande : si votre répertoire de travail n’est
+    pas propre, ses changements seront perdus de façon irréversible.
 
 Les pouvoirs d’annulation de git se limitent malheureusement aux données qui ont
 été versionnées. Les opérations sur le répertoire de travail sont en général

@@ -32,8 +32,10 @@ repos:
         files: \.(md|markdown)$
         args:
           # Disable "noisy" rules
+          - --disable=MD012  # Multiple line breaks (actually improves readability)
           - --disable=MD013  # Line length
+          - --disable=MD026  # Punctuation at end of headings (why?)
           - --disable=MD033  # Inline HTML
+          - --disable=MD035  # hr style (why use 4 dashes when 3 will do?)
           - --disable=MD041  # First line heading
           - --disable=MD004  # Unordered list style
-

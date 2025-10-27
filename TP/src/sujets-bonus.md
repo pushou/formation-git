@@ -192,10 +192,10 @@ d’agressivité vis-à-vis de l’index et du répertoire de travail :
   des données présentes au sein de ce dernier de façon irréversible**, et il
   faut l’utiliser avec précaution._ Mais c’est aussi l’un des moyens les plus
   simples de « ramener une branche en arrière » après des commits incorrects.
-    * On peut mentionner les variantes un peu plus sûres `--merge` et `--keep`
-      qui refusent d’écraser des changements non versionnés du répertoire de
-      travail, et diffèrent dans leur façon de traiter l’index. `--keep`
-      préserve les changements indexés, là où `--merge` les efface.
+  * On peut mentionner les variantes un peu plus sûres `--merge` et `--keep`
+    qui refusent d’écraser des changements non versionnés du répertoire de
+    travail, et diffèrent dans leur façon de traiter l’index. `--keep`
+    préserve les changements indexés, là où `--merge` les efface.
 
 `git reset [<commit>] -- <fichiers>` récupère la version des fichiers choisis du
 commit choisi (`HEAD` par défaut) et l’extrait dans l’index. L’utilisation la
@@ -225,21 +225,21 @@ jour, mais en voici les grandes lignes :
   qu’on veut avec l’option `--detach` qui s’abbrévie en `-d`.
 - `git restore` combine les fonctions des variantes de `git checkout` et
   `git reset` qui prennent des fichiers en paramètre. Cette commande permet…
-    * Dans son mode par défaut, de remplacer des fichiers du répertoire de
-      travail par la version qui existe au sein de l’index. Si vous avez
-      effectué des changements incorrects au sein de votre répertoire de travail
-      depuis votre dernier `git add`, cela vous permet de revenir au point où
-      vous en étiez lors de votre `git add`.
-    * Avec l’option `--staged`, de récupérer au sein de l’index des versions de
-      fichiers issues de `HEAD`. C’est par exemple comme ça qu’on annulerait
-      l’effet de `git add` ou `git rm`.
-        - Si l’on souhaite aussi récupérer les versions de fichiers au sein du
-          répertoire de travail, donc annuler toutes les modifications d’un
-          fichier effectuées au sein du répertoire de travail depuis `HEAD`, on
-          peut utiliser `--staged --worktree`.
-    * En ajoutant l’option `--source <commit>`, on récupère plutôt au sein du
-      répertoire de travail (ou de l’index si `--staged` est spécifié) des
-      fichiers issus d’anciens commits.
+  * Dans son mode par défaut, de remplacer des fichiers du répertoire de
+    travail par la version qui existe au sein de l’index. Si vous avez
+    effectué des changements incorrects au sein de votre répertoire de travail
+    depuis votre dernier `git add`, cela vous permet de revenir au point où
+    vous en étiez lors de votre `git add`.
+  * Avec l’option `--staged`, de récupérer au sein de l’index des versions de
+    fichiers issues de `HEAD`. C’est par exemple comme ça qu’on annulerait
+    l’effet de `git add` ou `git rm`.
+    - Si l’on souhaite aussi récupérer les versions de fichiers au sein du
+      répertoire de travail, donc annuler toutes les modifications d’un
+      fichier effectuées au sein du répertoire de travail depuis `HEAD`, on
+      peut utiliser `--staged --worktree`.
+  * En ajoutant l’option `--source <commit>`, on récupère plutôt au sein du
+    répertoire de travail (ou de l’index si `--staged` est spécifié) des
+    fichiers issus d’anciens commits.
 
 
 ## Savoir d’où vient une ligne d’un fichier avec `git blame`
@@ -538,4 +538,3 @@ un peu longue à expliquer ici, je vous invite pour plus d’informations à
 consulter le chapitre « Submodules » du livre Pro Git, sur lequel
 cette introduction est basée :
 <https://git-scm.com/book/en/v2/Git-Tools-Submodules>.
-

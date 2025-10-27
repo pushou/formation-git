@@ -439,7 +439,7 @@ et une synchronisation régulière avec un serveur maître.
 C’est ce que nous allons mettre en pratique dans la séquence suivante.
 
 
-----
+---
 
 ## Exercices
 
@@ -660,9 +660,9 @@ de l’index et du répertoire de travail, selon la logique suivante :
 
 - `git reset --soft <commit>` modifie uniquement le commit sur lequel pointe la
   branche active, l’index et le répertoire de travail restant inchangés.
-    * Appliquée à `HEAD~`, c’est donc, comme on l’a vu dans le TP2, l’inverse de
-      `git commit` : on fait revenir la branche active d’un commit en arrière,
-      mais l’index reste rempli de changements prêts à être commités.
+  * Appliquée à `HEAD~`, c’est donc, comme on l’a vu dans le TP2, l’inverse de
+    `git commit` : on fait revenir la branche active d’un commit en arrière,
+    mais l’index reste rempli de changements prêts à être commités.
 - `git reset <commit>` déplace la branche active et synchronise l’index avec
   le nouveau commit actif, mais ne modifie pas le répertoire de travail.
 - `git reset --hard <commit>` déplace la branche active et synchronise le
