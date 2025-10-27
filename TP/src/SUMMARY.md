@@ -15,31 +15,24 @@
 
 # Partie 2 — De Git à la forge logicielle
 
-- [Introduction (commun)](part2/1-intro.md)
-  * [Préparation aux communications sécurisées (clé SSH)](part2/1.4-ssh-preparation.md)
-
-# Parcours GitHub (ouvert)
-
-  * [Créer un nouveau projet ou contribuer (GitHub)](part2/github/2.1-preparation.md)
-
-# Parcours GitLab (fermé)
-
-- [Contribuer à un dépôt existant](part2/gitlab/2-contribuer-a-un-depot-existant/2.0-intro.md)
-
-  * [Préparation au travail en réseau](part2/gitlab/2-contribuer-a-un-depot-existant/2.1-preparation.md)
-  * [Cloner le dépôt et proposer des changements](part2/gitlab/2-contribuer-a-un-depot-existant/2.2-clone-et-merge-request.md)
-
-- [Créer et administrer son propre dépôt](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.0-intro.md)
-
-  * [Création d’un dépôt personnel](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.1-creation-depot-personnel.md)
-  * [Mise en place d’une intégration continue basique](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.2-integration-continue-basique.md)
-
-- [Travailler en équipe sur un dépôt commun](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.0-intro.md)
-
-  * [Création et gestion de projets au sein d’un groupe GitLab](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.1-gestion-de-projets-de-groupe.md)
-  * [Intégration continue avancée (déploiement)](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.2-integration-continue-avancee.md)
-
-
+- [Introduction, clés SSH](part2/1-intro.md)
+- [Parcours « GitHub ouvert »](part2/github/2.1-preparation.md)
+  - [TODO: Sous-parties]()
+- [Parcours « GitLab fermé »]()
+  - [Contribuer à un dépôt
+    existant](part2/gitlab/2-contribuer-a-un-depot-existant/2.0-intro.md)
+    * [Préparation au travail en réseau](part2/gitlab/2-contribuer-a-un-depot-existant/2.1-preparation.md)
+    * [Cloner le dépôt et proposer des
+      changements](part2/gitlab/2-contribuer-a-un-depot-existant/2.2-clone-et-merge-request.md)
+  - [Créer et administrer son propre dépôt](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.0-intro.md)
+    * [Création d’un dépôt personnel](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.1-creation-depot-personnel.md)
+    * [Mise en place d’une intégration continue
+      basique](part2/gitlab/3-creer-et-administrer-son-propre-depot/3.2-integration-continue-basique.md)
+  - [Travailler en équipe sur un dépôt
+    commun](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.0-intro.md)
+    * [Création et gestion de projets au sein d’un groupe GitLab](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.1-gestion-de-projets-de-groupe.md)
+    * [Intégration continue avancée
+      (déploiement)](part2/gitlab/4-gerer-en-equipe-un-depot-commun/4.2-integration-continue-avancee.md)
 
 ---
 
