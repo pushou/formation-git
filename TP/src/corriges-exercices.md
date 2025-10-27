@@ -434,6 +434,14 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 ## Exercices TP5
 
+<div class="warning">
+
+A l'occasion de la session 2025, le TP5 est en train d'être intégralement
+réécrit en une partie 2 plus complète. Ce corrigé est donc obsolète et devrait
+être mis à jour prochainement.
+
+</div>
+
 Tout d’abord, rendons-nous dans notre clone du dépôt `ddhc` :
 
 ```bash
