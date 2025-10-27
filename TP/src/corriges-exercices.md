@@ -436,9 +436,9 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 <div class="warning">
 
-A l'occasion de la session 2025, le TP5 est en train d'être intégralement
-réécrit en une partie 2 plus complète. Ce corrigé est donc obsolète et devrait
-être mis à jour prochainement.
+A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
+réécrit. Cette correction est donc en partie obsolète et devrait être mise à
+jour prochainement.
 
 </div>
 

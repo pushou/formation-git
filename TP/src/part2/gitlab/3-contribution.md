@@ -2,7 +2,9 @@
 
 ## Créer un clone local du dépôt
 
-A ce stade, vous devriez maintenant avoir accès au dépôt [« Git Kitchen / Recettes »](https://gitlab.in2p3.fr/git-kitchen/recettes) quand vous êtes connecté à l’instance GitLab de l'IN2P3.
+Vous devriez maintenant avoir accès au dépôt [« Git Kitchen / Recettes
+»](https://gitlab.in2p3.fr/git-kitchen/recettes) lorsque vous êtes connecté à
+l’instance GitLab de l'IN2P3.
 
 Il est possible de travailler directement à partir de l’interface web de la
 forge, mais c’est limitant dès que le projet grossit un peu, car vous n'avez pas
@@ -23,7 +25,7 @@ presse-papier.
 Vous pourrez ensuite créer un clone local sur votre machine comme ceci :
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:clone-from-gitlab}}
+{{#include ../../5-reseau-forges.sh:clone-from-gitlab}}
 ```
 
 Votre client git vous avertira alors qu’il ne connaît pas le serveur auquel vous
@@ -62,7 +64,7 @@ tenir notre branche `main` à jour. On peut le faire avec le raccourci `git pull
 car `git clone` a configuré ce qu'il faut pour nous :
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:pull-main-gitlab}}
+{{#include ../../5-reseau-forges.sh:pull-main-gitlab}}
 ```
 
 Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
@@ -90,7 +92,7 @@ Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
 `git pull` futurs au sein de ce dépôt avec la commande de configuration…
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:config-pull-ff-only}}
+{{#include ../../5-reseau-forges.sh:config-pull-ff-only}}
 ```
 
 ### Préparer des changements dans une branche dédiée
@@ -100,7 +102,7 @@ changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
 part de `main`…
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:create-dev-branch-gitlab}}
+{{#include ../../5-reseau-forges.sh:create-dev-branch-gitlab}}
 ```
 
 …puis de créer des commits dessus. En voici un exemple, à adapter selon votre
@@ -108,7 +110,7 @@ goût : si vous éditez tous la fin du fichier, il y aura des conflits entre
 toutes les contributions !
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:commit-on-dev-branch}}
+{{#include ../../5-reseau-forges.sh:commit-on-dev-branch}}
 ```
 
 Pendant que vous effectuez vos modifications, le dépôt officiel continue
@@ -122,7 +124,7 @@ de mise à jour de `main` et d’intégrations de ses nouveautés à votre branc
 pourrait ainsi ressembler à ceci :
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:update-main-and-merge}}
+{{#include ../../5-reseau-forges.sh:update-main-and-merge}}
 ```
 
 En cas de conflit de fusion, il vous appartiendra de vous adapter aux nouveautés
@@ -154,7 +156,7 @@ de mémoriser l’association entre votre branche locale et la branche distante 
 votre _fork_ lors de la mise en ligne.
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:push-set-upstream}}
+{{#include ../../5-reseau-forges.sh:push-set-upstream}}
 ```
 
 Une fois cette association mémorisée, vous pourrez par la suite vous contenter
@@ -271,7 +273,7 @@ Une fois la _merge request_ fusionnée, vous pourrez supprimer la branche de
 développement associée au sein de votre dépôt local…
 
 ```bash
-{{#include ../../../5-reseau-forges.sh:delete-dev-branch-gitlab}}
+{{#include ../../5-reseau-forges.sh:delete-dev-branch-gitlab}}
 ```
 
 …puis recommencer un autre développement depuis la branche `main` quand vous
@@ -280,10 +282,13 @@ voudrez en reprenant le cheminement indiqué ci-dessus à partir du début.
 
 ## À vous de jouer !
 
-À ce stade, vous en savez assez pour commencer à vous amuser avec notre livre de recettes. Vous pouvez par exemple :
+À ce stade, vous en savez assez pour commencer à vous amuser avec notre livre de
+recettes. Vous pouvez par exemple :
 
-- ajouter une nouvelle recette de votre choix (titre, ingrédients, étapes, temps de préparation/cuisson, etc.) ;
-- améliorer une recette existante en corrigeant l’orthographe, en précisant les quantités ou en clarifiant une étape ;
+- ajouter une nouvelle recette de votre choix (titre, ingrédients, étapes, temps
+  de préparation/cuisson, etc.) ;
+- améliorer une recette existante en corrigeant l’orthographe, en précisant les
+  quantités ou en clarifiant une étape ;
 - proposer des variantes d'une recette ;
 
 Modifiez le texte comme vous le souhaitez, en n’hésitant pas à créer des commits
@@ -292,6 +297,5 @@ votre branche finalisée sur le dépôt et soumettez une _merge request_ vers la
 branche `main` pour terminer ce TP.
 
 Une fois que vous serez à l'aise avec cette méthode de travail, vous pourrez
-vous lancer dans la création de votre  dépôt de recettes personnelles, comme
-expliqué dans la section suivante : [Créer et administrer un dépôt
-personnel](../3-creer-et-administrer-son-propre-depot/3.0-intro.md).
+vous lancer dans la [création de votre dépôt de recettes
+personnelles](4-depot-personnel/1-intro.md).

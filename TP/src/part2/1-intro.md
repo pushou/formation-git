@@ -26,7 +26,7 @@ Reste à voir comment tout cela va s'organiser… mais d'abord, un petit point
 technique.
 
 
-## Génération d'une clé SSH
+## Génération de clés SSH
 
 Il ne suffit pas de pouvoir vous connecter à l’interface web d’une forge pour
 pouvoir échanger librement des _commits_ avec. Vous devez également fournir à

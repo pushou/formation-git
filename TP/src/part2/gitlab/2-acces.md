@@ -1,4 +1,4 @@
-# Préparation au travail en réseau
+# Accès web et SSH
 
 ## Se connecter à l'instance GitLab de l'IN2P3
 
@@ -46,7 +46,12 @@ académique auprès de laquelle vous possédez un compte informatique, par exemp
   donc connecté à un compte GitLab différent, où vos dépôts ne sont pas
   disponibles…[^multi-email]
 
-[^multi-email]: Pour éviter ce problème, ajoutez toutes vos adresses e‑mail institutionnelles à un seul et même profil GitLab : [User Settings > Emails](https://gitlab.in2p3.fr/-/profile/emails), puis « Add new email » pour chaque adresse et validez leur vérification. GitLab associera alors ces adresses au même compte.
+[^multi-email]: Il est possible d'éviter ce problème, pour cela ajoutez toutes
+                vos adresses e‑mail institutionnelles à un seul et même profil
+                GitLab : [User Settings >
+                Emails](https://gitlab.in2p3.fr/-/profile/emails), puis « Add
+                new email » pour chaque adresse et validez leur vérification.
+                GitLab associera alors ces adresses au même compte.
 
 Quoi qu'il en soit, une fois que vous aurez choisi votre institution, vous vous
 retrouverez sur l’invite de connexion de cette dernière. Ici, je ne peux pas
@@ -103,7 +108,7 @@ Voici les informations dont vous aurez besoin pour le remplir :
   Pour cela, vous pouvez l’afficher avec `cat` dans votre terminal…
 
   ```bash
-  {{#include ../../../5-reseau-forges.sh:show-pubkey}}
+  {{#include ../../5-reseau-forges.sh:show-pubkey}}
   ```
 
   …puis la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
@@ -140,10 +145,12 @@ du menu qui s'affiche, précédé d'un arobase `@` :
 </center>
 
 Dès que vous nous l'aurez transmis, nous pourrons vous donner un accès de niveau
-« Developer » au groupe. Ce niveau d’accès vous permettra entre autres de voir le groupe et ce qu'il contient.
-En particulier, vous pourrez accéder au contenu du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser des branches de développement,
-mais pas de modifier directement le contenu de la branche `main`. Pour cela, vous devrez
-passer par une procédure de validation de ma part, la _merge request_. Ce
-concept sera présenté un peu plus loin dans cet énoncé de TP.
+« Developer » au groupe. Ce niveau d’accès vous permettra entre autres de voir
+le groupe et ce qu'il contient. En particulier, vous pourrez accéder au contenu
+du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser
+des branches de développement, mais pas de modifier directement le contenu de la
+branche `main`.
 
-Lorsque vous êtes prêt, passez à l'étape suivante : [Contribuer à un projet existant](2.2-clone-et-merge-request.md).
+Pour cela, vous devrez passer par une procédure de validation de ma part, la
+_merge request_, que nous allons explorer dans [l'étape suivante de ce
+TP](3-contribution.md).

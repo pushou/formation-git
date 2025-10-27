@@ -1,4 +1,4 @@
-# Publier un livre de recettes en ligne avec _GitLab Pages_
+# Déploiement continu du livre de recettes
 
 Avoir un livre de cuisine numérique, c’est bien. Le rendre agréable à consulter
 et accessible en ligne, c’est encore mieux.
@@ -28,9 +28,8 @@ projet. N’oubliez pas de toujours travailler sur une branche dédiée.
 ## Définir le _pipeline_ de vérification
 
 Comme dans le [chapitre
-précédent](../3-creer-et-administrer-son-propre-depot/3.2-integration-continue-basique.md),
-commencez par créer un fichier nommé `.gitlab-ci.yml` à la racine de votre
-dépôt.
+précédent](../4-depot-personnel/3-integration-continue.md), commencez par créer
+un fichier nommé `.gitlab-ci.yml` à la racine de votre dépôt.
 
 Pour rappel, ce fichier décrit les **étapes du _pipeline_** qui seront exécutées
 automatiquement à chaque _push_ (ou selon les règles que vous aurez définies).

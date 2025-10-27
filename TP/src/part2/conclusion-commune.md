@@ -1,4 +1,12 @@
-# Conclusion
+# Conclusion commune
+
+<div class="warning">
+
+A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
+réécrit. Cette conclusion est donc en partie obsolète et devrait être mise à
+jour prochainement.
+
+</div>
 
 Dans ce dernier TP, nous avons vu comment on peut utiliser git en réseau. Selon
 la variante du TP que vous avez choisie, vous avez abordé soit une méthode de

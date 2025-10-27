@@ -1,4 +1,4 @@
-# Collaborer à plusieurs sur un même projet GitLab
+# Collaborer sur un même projet GitLab
 
 Après avoir préparé votre propre carnet de recettes, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
@@ -60,8 +60,7 @@ adapté :
 Une fois le sous-groupe créé, il faut maintenant créer le dépôt GitLab qui
 contiendra le **livre de recettes collaboratif**. Le _chef cuisinier_ suit pour
 cela les mêmes étapes que dans le [TP
-précédent](../3-creer-et-administrer-son-propre-depot/3.1-creation-depot-personnel.md)
-:
+précédent](../4-depot-personnel/2-creation-depot.md) :
 
 1. Accédez au [groupe GitLab de votre brigade](https://gitlab.in2p3.fr/git-kitchen/brigades).
 2. Cliquez sur **New project → Create blank project**.
@@ -92,7 +91,8 @@ contribuer au projet.
 
 N'oubliez pas que vous pouvez également protéger la branche `main` (via
 **Settings > Repository > Protected branches**) pour que toute modification
-passe par une _merge request_ et limiter ainsi les catastrophes.
+passe par une _merge request_ et limiter ainsi le risque d'accident sur la
+branche `main`.
 
 
 ## Organiser le travail avec les tickets (_issues_)
@@ -105,7 +105,8 @@ Gitlab propose pour cela un outil simple et efficace : les **tickets**
 
 * proposer une **nouvelle recette** (« Créer la recette du fondant au chocolat »),
 * proposer une **correction** (« Erreur sur les proportions du gâteau au yaourt »),
-* ou encore suggérer une **amélioration** (« Ajouter une photo à la recette des crêpes »).
+* ou encore suggérer une **amélioration** (« Ajouter une photo à la recette des
+  crêpes »).
 
 Un **ticket** peut aussi être découpé en plusieurs sous-tâches pour mieux
 répartir le travail.
@@ -223,9 +224,10 @@ Grâce à ces notions, votre brigade dispose désormais de bases solides pour
 collaborer efficacement sur tout type de projet GitLab, qu’il s’agisse d’un
 simple livre de recettes ou d’un véritable projet de développement logiciel.
 
-Dans la prochaine section, nous reprendrons les notions d’intégration continue
-abordées précédemment et les transposerons à ce nouveau contexte collaboratif.
-Nous verrons comment utiliser cet outil pour vous accompagner dans vos demandes
-de fusion et automatiser certaines vérifications. Et enfin nous aborderons la
-mise en ligne de votre livre de recettes sous la forme d’un site web statique
-généré automatiquement à chaque mise à jour du projet.
+Dans la [prochaine section](3-deploiement-continu.md), nous reprendrons les
+notions d’intégration continue abordées précédemment et les transposerons à ce
+nouveau contexte collaboratif. Nous verrons comment utiliser cet outil pour vous
+accompagner dans vos demandes de fusion et automatiser certaines vérifications.
+Et enfin nous aborderons la mise en ligne de votre livre de recettes sous la
+forme d’un site web statique généré automatiquement à chaque mise à jour du
+projet.
