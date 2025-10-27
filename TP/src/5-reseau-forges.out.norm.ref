@@ -15,22 +15,22 @@ origin	https://github.com/HadrienG2/ddhc.git (push)
 + git remote add upstream https://github.com/HadrienG2/ddhc.git
 + git fetch upstream
 From https://github.com/HadrienG2/ddhc
- * [new branch]      master     -> upstream/master
-+ git checkout master
-Already on 'master'
-Your branch is up to date with 'origin/master'.
-+ git branch --set-upstream-to=upstream/master
-branch 'master' set up to track 'upstream/master'.
+ * [new branch]      main     -> upstream/main
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
++ git branch --set-upstream-to=upstream/main
+branch 'main' set up to track 'upstream/main'.
 + cd ~/Desktop/recettes
-+ git checkout master
-Already on 'master'
-Your branch is up to date with 'upstream/master'.
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'upstream/main'.
 + git pull --ff-only
 Already up to date.
 + git config pull.ff only
-+ git checkout master
-Already on 'master'
-Your branch is up to date with 'upstream/master'.
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'upstream/main'.
 + git checkout -b NomDeBranche
 Switched to a new branch 'NomDeBranche'
 + unset -f test_this_manually
@@ -39,13 +39,13 @@ Switched to a new branch 'NomDeBranche'
 + git commit -m 'Ajout d'\''un pied de page rebelle'
 [NomDeBranche AAAAAAA] Ajout d'un pied de page rebelle
  1 file changed, 2 insertions(+)
-+ git checkout master
-Switched to branch 'master'
-Your branch is up to date with 'upstream/master'.
++ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'upstream/main'.
 + git pull --ff-only
 Already up to date.
 + git checkout NomDeBranche
 Switched to branch 'NomDeBranche'
-+ git merge master
++ git merge main
 Already up to date.
 + unset -f test_this_manually
