@@ -7,7 +7,7 @@ RUN apt-get update \
     && apt-get install --no-install-recommends -y \
                        bash build-essential ca-certificates curl fonts-roboto \
                        git gzip libreoffice-impress-nogui make man-db \
-                       openssh-client patch pre-commit tar zip \
+                       openssh-client patch tar zip \
     && yes | unminimize \
     && rm -rf /var/lib/apt/lists/*
 

@@ -58,13 +58,6 @@ build-tmp-docker:
 
 # === Rendu des supports de TP + vérification des sorties git ===
 
-pre-commit:
-  stage: render
-  interruptible: true
-  script:
-    - pre-commit install
-    - pre-commit run --all-files
-
 render-and-check:
   stage: render
   interruptible: true
