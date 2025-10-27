@@ -11,17 +11,22 @@
 set -euxo pipefail
 IFS=$'\n\t'
 
+# TODO: Fix this once github and gitlab are in sync again
+function test_this_manually() {
 ###### ANCHOR: goto-repo
-cd ~/Desktop/ddhc
+cd ~/Desktop/recettes
 ###### ANCHOR_END: goto-repo
+}
+unset -f test_this_manually
+cd ~/Desktop/ddhc
 
 ###### ANCHOR: show-remote-details
 git remote -v
 ###### ANCHOR_END: show-remote-details
 
-###### ANCHOR: checkout-master
-git checkout master
-###### ANCHOR_END: checkout-master
+###### ANCHOR: checkout-main
+git checkout main
+###### ANCHOR_END: checkout-main
 
 ###### ANCHOR: create-and-checkout-branch
 git checkout -b copyright
@@ -56,10 +61,10 @@ git push
 }
 unset -f test_this_manually
 
-###### ANCHOR: update-master
-git checkout master
+###### ANCHOR: update-main
+git checkout main
 git pull --ff-only
-###### ANCHOR_END: update-master
+###### ANCHOR_END: update-main
 
 ###### ANCHOR: delete-local-branch
 git branch -D copyright

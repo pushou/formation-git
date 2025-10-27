@@ -24,7 +24,8 @@ droite.
 
 Dans tous les cas, vous vous retrouverez face au formulaire « Add new SSH Key » :
 
-![Formulaire « Add new SSH Key » de GitHub](images/github-add-new-ssh-key.png)
+![Formulaire « Add new SSH Key » de
+GitHub](../../images/github-add-new-ssh-key.png)
 
 Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
 
@@ -38,7 +39,7 @@ Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
   cela, vous pouvez l’afficher avec `cat` dans votre terminal…
 
   ```bash
-  {{#include 5-reseau-forges.sh:show-pubkey}}
+  {{#include ../../5-reseau-forges.sh:show-pubkey}}
   ```
   
   …puis la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
@@ -69,18 +70,19 @@ D’abord, cliquez sur le bouton vert « Code », en haut à droite de la page
 d’accueil du dépôt, en dessous des boutons « Watch », « Fork »
 et « Star » :
 
-![Bouton « Code » donnant accès aux URLs de clonage](images/github-code-button.png)
+![Bouton « Code » donnant accès aux URLs de
+clonage](../../images/github-code-button.png)
 
 Ensuite, allez sur l’onglet « Local » puis sur le sous-onglet « SSH » :
 
-![Onglet local et bouton « SSH »](images/github-code-to-ssh.png)
+![Onglet local et bouton « SSH »](../../images/github-code-to-ssh.png)
 
 L’URL qui s’affiche alors est celle que vous devrez transmettre à git pour
 cloner le dépôt en ayant une authentification SSH pour vos opérations
 ultérieures :
 
 ```bash
-{{#include 5-reseau-forges.sh:clone-from-github}}
+{{#include ../../5-reseau-forges.sh:clone-from-github}}
 ```
 
 Votre client git vous avertira alors qu’il ne connaît pas l’identité du serveur
@@ -95,7 +97,7 @@ _remote_ pointant vers le _fork_ qui permet d’échanger facilement des commits
 avec ce dernier :
 
 ```bash
-{{#include 5-reseau-forges.sh:goto-repo-and-show-remote}}
+{{#include ../../5-reseau-forges.sh:goto-repo-and-show-remote}}
 ```
 
 Mais pour appliquer la méthode de travail basée sur les _forks_ et les _pull
@@ -108,7 +110,7 @@ Par convention, la _remote_ associée au dépôt officiel est souvent appelée
 _upstream_ :
 
 ```bash
-{{#include 5-reseau-forges.sh:add-upstream-remote}}
+{{#include ../../5-reseau-forges.sh:add-upstream-remote}}
 ```
 
 Notez qu’on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mot
@@ -132,7 +134,7 @@ grandes étapes :
 1. Rester à jour par rapport au dépôt officiel
 2. Préparer des changements dans une branche dédiée de son dépôt local
 3. Publier la branche associée sur son _fork_
-4. Proposer l'intégration de ces changements à la branche `master` du dépôt
+4. Proposer l'intégration de ces changements à la branche `main` du dépôt
    officiel
 
 La suite de ce TP vous expliquera le fonctionnement de ces quatre étapes.
@@ -144,57 +146,57 @@ changements du dépôt officiel avec `git fetch upstream`.
 
 Cependant, dans le cadre de cette méthode de travail, nous n’avons généralement
 pas besoin de nous intéresser à l’ensemble des branches de ce dépôt. Il suffit
-de tenir notre branche `master` à jour, ce que l’on peut faire facilement avec
-`git pull` après avoir configuré `upstream/master` comme branche amont comme
+de tenir notre branche `main` à jour, ce que l’on peut faire facilement avec
+`git pull` après avoir configuré `upstream/main` comme branche amont comme
 suit :
 
 ```bash
-{{#include 5-reseau-forges.sh:set-upstream-master}}
+{{#include ../../5-reseau-forges.sh:set-upstream-main}}
 ```
 
 Une fois cette préparation effectuée, vous n’aurez pas besoin de la répéter et
-pourrez juste mettre à jour votre branche `master` locale via :
+pourrez juste mettre à jour votre branche `main` locale via :
 
 ```bash
-{{#include 5-reseau-forges.sh:pull-master-github}}
+{{#include ../../5-reseau-forges.sh:pull-main-github}}
 ```
 
 Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
 erreur classique. Si l’on applique correctement le _GitHub flow_, la branche
-`master` du dépôt officiel devrait avancer de façon monotone, et votre branche
-`master` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
+`main` du dépôt officiel devrait avancer de façon monotone, et votre branche
+`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
 pas mettre en avance rapide, cela relève d’une situation pathologique :
 
-- Soit les mainteneurs du dépôt officiel ont fait diverger `master` en éditant
+- Soit les mainteneurs du dépôt officiel ont fait diverger `main` en éditant
   son historique. Il n’est que très rarement nécessaire d’en arriver là, et un
   mainteneur responsable devrait informer les autres membres du projet chaque
   fois qu’il doit en venir à de tels extrêmes.
 - Soit, et c’est de loin le cas le plus courant, vous avez vous-même créé une
-  divergence, typiquement en ajoutant des commits sur votre branche `master`
+  divergence, typiquement en ajoutant des commits sur votre branche `main`
   locale plutôt que sur une branche de développement dédiée.
 
 Dans ce dernier cas, pour vous tirer d’affaire, vous pouvez…
 
 - D’abord sauvegarder vos changements dans une nouvelle branche, si vous le
   souhaitez, avec `git branch <nom>`.
-- Ensuite forcer votre branche `master` à en revenir au même point que le
-  `master` officiel avec la commande `git reset --hard upstream/master`.
+- Ensuite forcer votre branche `main` à en revenir au même point que le
+  `main` officiel avec la commande `git reset --hard upstream/main`.
 
 Vous pouvez configurer l’utilisation implicite de `--ff-only` pour tous les
 `git pull` futurs au sein de ce dépôt avec la commande de configuration…
 
 ```bash
-{{#include 5-reseau-forges.sh:config-pull-ff-only}}
+{{#include ../../5-reseau-forges.sh:config-pull-ff-only}}
 ```
 
 ### Préparer des changements dans une branche dédiée
 
-Une fois que l’on a un `master` à jour, il est possible de construire des
+Une fois que l’on a un `main` à jour, il est possible de construire des
 changements par-dessus ce dernier. Il suffit pour cela de créer une branche qui
-part de `master`…
+part de `main`…
 
 ```bash
-{{#include 5-reseau-forges.sh:create-dev-branch-github}}
+{{#include ../../5-reseau-forges.sh:create-dev-branch-github}}
 ```
 
 …puis de créer des commits dessus. En voici un exemple, à adapter selon votre
@@ -202,39 +204,39 @@ goût : si vous éditez tous la fin du fichier, il y aura des conflits entre
 toutes les contributions !
 
 ```bash
-{{#include 5-reseau-forges.sh:commit-on-dev-branch}}
+{{#include ../../5-reseau-forges.sh:commit-on-dev-branch}}
 ```
 
 Pendant que vous effectuez vos modifications, le dépôt officiel continue
 d’évoluer, et il est possible que des nouveautés arrivent sur la branche
-`master`. Les sorties des commandes `git fetch` et `git pull` vous en
+`main`. Les sorties des commandes `git fetch` et `git pull` vous en
 informeront.
 
 Si c’est le cas, vous pourrez intégrer ces nouveautés à votre branche de
 développement avec les outils que nous avons vus précédemment. Un cycle complet
-de mise à jour de `master` et d’intégrations de ses nouveautés à votre branche
+de mise à jour de `main` et d’intégrations de ses nouveautés à votre branche
 pourrait ainsi ressembler à ceci :
 
 ```bash
-{{#include 5-reseau-forges.sh:update-master-and-merge}}
+{{#include ../../5-reseau-forges.sh:update-main-and-merge}}
 ```
 
 En cas de conflit de fusion, il vous appartiendra de vous adapter aux nouveautés
-de la branche `master` officielle qui sont incompatibles avec vos changements.
+de la branche `main` officielle qui sont incompatibles avec vos changements.
 
 <div class="warning">
 
-  Plus une de vos branches a une durée de vie longue, plus il y a de chances que
-  des conflits se produisent avec le `master` qui évolue en parallèle. De plus, si
-  vous utilisez `git rebase` plutôt que `git merge`, comme la politique de
-  certains projets l’exige, il peut aussi arriver que vous rencontriez de
-  conflits de fusion en cascade, où vous devrez faire face à des conflits non
-  pas une seule fois, mais une fois par commit de votre branche !
+Plus une de vos branches a une durée de vie longue, plus il y a de chances que
+des conflits se produisent avec le `main` qui évolue en parallèle. De plus, si
+vous utilisez `git rebase` plutôt que `git merge`, comme la politique de
+certains projets l’exige, il peut aussi arriver que vous rencontriez de
+conflits de fusion en cascade, où vous devrez faire face à des conflits non
+pas une seule fois, mais une fois par commit de votre branche !
 
-  Pour éviter cela et simplifier le passage en revue de vos changements par les
-  mainteneurs, il est recommandé de privilégier des branches de durée de vie
-  courte, aux objectifs précis et modestes, que l’on soumettra au dépôt officiel
-  dès que possible. Nous allons maintenant étudier ce processus de soumission.
+Pour éviter cela et simplifier le passage en revue de vos changements par les
+mainteneurs, il est recommandé de privilégier des branches de durée de vie
+courte, aux objectifs précis et modestes, que l’on soumettra au dépôt officiel
+dès que possible. Nous allons maintenant étudier ce processus de soumission.
 
 </div>
 
@@ -248,7 +250,7 @@ de mémoriser l’association entre votre branche locale et la branche distante 
 votre _fork_ lors de la mise en ligne.
 
 ```bash
-{{#include 5-reseau-forges.sh:push-set-upstream}}
+{{#include ../../5-reseau-forges.sh:push-set-upstream}}
 ```
 
 Une fois cette association mémorisée, vous pourrez par la suite vous contenter
@@ -267,12 +269,12 @@ d’édition d’historique.
 
 <div class="warning">
 
-  Cette politique est à double tranchant. Si vous devez un jour baser votre
-  travail sur le _fork_ de quelqu’un d’autre, il vous appartiendra de vivre avec
-  les suppressions de branches et autres modifications d’historique effectuées
-  par cette personne sur son _fork_. Évitez donc si possible de baser du travail
-  sur le _fork_ d’autrui, en privilégiant toujours le travail à partir du dépôt
-  officiel du projet.
+Cette politique est à double tranchant. Si vous devez un jour baser votre
+travail sur le _fork_ de quelqu’un d’autre, il vous appartiendra de vivre avec
+les suppressions de branches et autres modifications d’historique effectuées
+par cette personne sur son _fork_. Évitez donc si possible de baser du travail
+sur le _fork_ d’autrui, en privilégiant toujours le travail à partir du dépôt
+officiel du projet.
 
 </div>
 
@@ -287,7 +289,7 @@ afin d’éviter toute confusion.
 
 Comme son nom l’indique, une _pull request_ invite les mainteneurs du dépôt
 officiel à intégrer vos changements au projet en fusionnant les nouveautés de
-votre branche dans un historique officiel (généralement la branche `master`).
+votre branche dans un historique officiel (généralement la branche `main`).
 
 Cette possibilité vous sera généralement directement offerte par l’affichage
 d’une URL dans la console lorsque vous poussez la branche sur votre _fork_,
@@ -299,21 +301,21 @@ Allez sur l’interface web de votre _fork_ et affichez la liste des branches av
 le lien « N branches » en haut à gauche, un peu en dessous du nom du dépôt :
 
 ![Lien donnant accès à la liste des
-branches](images/github-branch-list-button.png)
+branches](../../images/github-branch-list-button.png)
 
 Ensuite, cliquez sur le bouton « New Pull Request » associé à la branche que
 vous voulez soumettre au dépôt officiel pour initier le processus de soumission
 :
 
 ![Bouton « New pull request » dans la liste des
-branches](images/github-new-pull-request-button.png)
+branches](../../images/github-new-pull-request-button.png)
 
 Après avoir fait tout ça, vous vous retrouverez sur la même interface de
 création de _pull request_ que vous auriez eu si vous aviez utilisé un des
 raccourcis initialement :
 
 ![Interface de création d’une pull
-request](images/github-create-pull-request.png)
+request](../../images/github-create-pull-request.png)
 
 De haut en bas, cette interface contient…
 
@@ -357,10 +359,10 @@ Une fois la _pull request_ fusionnée, vous pourrez supprimer la branche de
 développement associée de vos dépôts locaux et distants…
 
 ```bash
-{{#include 5-reseau-forges.sh:delete-dev-branch-github}}
+{{#include ../../5-reseau-forges.sh:delete-dev-branch-github}}
 ```
 
-…puis recommencer un autre développement depuis la branche `master` quand vous
+…puis recommencer un autre développement depuis la branche `main` quand vous
 voudrez en reprenant le cheminement indiqué ci-dessus à partir du début.
 
 
@@ -381,8 +383,9 @@ en cours de route pour vous permettre de revenir facilement en arrière. Puis,
 quand vous aurez fini, poussez votre branche finale sur votre _fork_, et
 soumettez une _pull request_ au dépôt officiel pour terminer ce TP.
 
-Ensuite, vous pourrez aller lire la [conclusion commune](5.3-conclusion.md). Si
-vous êtes en avance, n'hésitez pas à aller voir aussi la variante [« GitLab
-fermé »](5.2-gitlab-ferme.md) du TP, qui vous permettra de pratiquer sur une
-autre forge couramment utilisée (GitLab), avec une méthode de travail plus
-adaptée pour des projets impliquant des informations confidentielles.
+Ensuite, vous pourrez aller lire la [conclusion
+commune](../conclusion-commune.md). Si vous êtes en avance, n'hésitez pas à
+aller voir aussi la variante [« GitLab fermé »](../gitlab/1-intro.md) du TP, qui
+vous permettra de pratiquer sur une autre forge couramment utilisée (GitLab),
+avec une méthode de travail plus adaptée pour des projets impliquant des
+informations confidentielles.

@@ -4,15 +4,30 @@
 
 ---
 
+# Partie 1 — Gestion de version avec git
+
 - [Premiers pas avec git](1-premiers-pas.md)
 - [Un historique linéaire](2-historique-lineaire.md)
 - [Manipulation de branches](3-manipulation-branches.md)
 - [Dépôts distribués](4-depots-distribues.md)
-- [Réseau et forges](5-reseau-forges.md)
-  * [Intro commune](5.0-intro.md)
-  * [GitHub ouvert](5.1-github-ouvert.md)
-  * [GitLab fermé](5.2-gitlab-ferme.md)
-  * [Conclusion commune](5.3-conclusion.md)
+
+---
+
+# Partie 2 — De Git à la forge logicielle
+
+- [Introduction et clés SSH](part2/1-intro.md)
+- [Parcours « GitHub ouvert »](part2/github/TODO.md)
+  - [TODO: Sous-parties]()
+- [Parcours « GitLab fermé »](part2/gitlab/1-intro.md)
+  - [Accès web et SSH](part2/gitlab/2-acces.md)
+  - [Contribuer à un dépôt](part2/gitlab/3-contribution.md)
+  - [Dépôt personnel](part2/gitlab/4-depot-personnel/1-intro.md)
+    * [Création d’un dépôt](part2/gitlab/4-depot-personnel/2-creation-depot.md)
+    * [Intégration continue](part2/gitlab/4-depot-personnel/3-integration-continue.md)
+  - [Travail en équipe](part2/gitlab/5-travail-equipe/1-intro.md)
+    * [Vers un projet commun](part2/gitlab/5-travail-equipe/2-projet-commun.md)
+    * [Déploiement continu](part2/gitlab/5-travail-equipe/3-deploiement-continu.md)
+- [Conclusion commune](part2/conclusion-commune.md)
 
 ---
 

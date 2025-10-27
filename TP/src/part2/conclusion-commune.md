@@ -1,11 +1,19 @@
-# Conclusion
+# Conclusion commune
+
+<div class="warning">
+
+A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
+réécrit. Cette conclusion est donc en partie obsolète et devrait être mise à
+jour prochainement.
+
+</div>
 
 Dans ce dernier TP, nous avons vu comment on peut utiliser git en réseau. Selon
 la variante du TP que vous avez choisie, vous avez abordé soit une méthode de
 travail en dépôt ouvert sur GitHub basée sur des _forks_, soit une méthode de
 travail en dépôt privé sur GitLab. Dans les deux cas, les changements passaient
 par un processus de validation par _pull_/_merge request_ avant d’intégrer la
-branche `master` constituant l’historique officiel du projet.
+branche `main` constituant l’historique officiel du projet.
 
 Ce ne sont pas les seules manières d'utiliser git en réseau, mais elles sont
 parmi les plus populaires car elles sont conceptuellement assez simples,
@@ -30,18 +38,18 @@ approfondir.
 
 1. Partez de votre clone du dépôt `ddhc`.
 2. Vérifiez que la configuration de vos _remotes_ :
-    * Dans la variante « GitHub ouvert » du TP, vous devriez avoir deux
-      _remotes_ : `origin` qui pointe sur votre _fork_ et utilise une connexion
-      SSH, et `upstream` qui pointe sur le dépôt officiel et utilise une
-      connexion HTTPS.
-    * Dans la variante « GitLab fermé » du TP, vous devriez avoir une seule
-      _remote_ `origin` qui pointe sur le dépôt officiel et utilise une
-      connexion SSH.
-3. Créez une nouvelle branche partant du `master`, et ajoutez-y un commit.
+   * Dans la variante « GitHub ouvert » du TP, vous devriez avoir deux
+     _remotes_ : `origin` qui pointe sur votre _fork_ et utilise une connexion
+     SSH, et `upstream` qui pointe sur le dépôt officiel et utilise une
+     connexion HTTPS.
+   * Dans la variante « GitLab fermé » du TP, vous devriez avoir une seule
+     _remote_ `origin` qui pointe sur le dépôt officiel et utilise une
+     connexion SSH.
+3. Créez une nouvelle branche partant du `main`, et ajoutez-y un commit.
 4. Poussez cette branche sur le dépôt approprié pour la méthode de travail
    utilisée :
-    * Votre _fork_ dans la variante « GitHub ouvert ».
-    * Le dépôt officiel dans la variante « GitLab fermé ».
+   * Votre _fork_ dans la variante « GitHub ouvert ».
+   * Le dépôt officiel dans la variante « GitLab fermé ».
 5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur le bon
    dépôt.
 6. Mettez à jour votre dépôt vis-à-vis des éventuelles nouveautés du dépôt
@@ -158,31 +166,31 @@ la seule. On peut mentionner comme autres méthodes classiques…
 
 - Le _Git flow_, une variante plus complexe où l’on maintient plusieurs branches
   spéciales au sein du dépôt commun :
-    * On distingue `master`, qui représente les développements publiés, de
-      `develop`, qui contient des développements expérimentaux. Les nouveaux
-      développements sont fusionnés dans `develop`.
-    * Avant de sortir une nouvelle version, on crée une branche dédiée (_release
-      branch_) partant de `develop`, qui ne reçoit plus de nouvelles
-      fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est
-      satisfait de l’état de cette branche, on la fusionne dans `master` et crée
-      une étiquette pour la nouvelle version officielle.
-    * En cas de problème urgent dans `master`, on peut créer une branche
-      `hotfix` issue de `master`, dédiée à la résolution de ce problème et vouée
-      à être immédiatement fusionnée dans `master` à la fin.
+  * On distingue `main`, qui représente les développements publiés, de
+    `develop`, qui contient des développements expérimentaux. Les nouveaux
+    développements sont fusionnés dans `develop`.
+  * Avant de sortir une nouvelle version, on crée une branche dédiée (_release
+    branch_) partant de `develop`, qui ne reçoit plus de nouvelles
+    fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est
+    satisfait de l’état de cette branche, on la fusionne dans `main` et crée une
+    étiquette pour la nouvelle version officielle.
+  * En cas de problème urgent dans `main`, on peut créer une branche `hotfix`
+    issue de `main`, dédiée à la résolution de ce problème et vouée à être
+    immédiatement fusionnée dans `main` à la fin.
 - Le _GitLab flow_ est basé sur le _GitHub flow_, mais il y ajoute des branches
   supplémentaires de longue durée de vie pour gérer le déploiement de services
   web en production.
-    * Une branche `production` qui reflète le code qui est effectivement déployé
-      en production, ce qui permet de suivre d'éventuelles contraintes de
-      déploiement imposées par le projet (ex : seulement à certaines heures,
-      certains jours) sans freiner le développement.
-    * Eventuellement, d'autres branches représentant des environnements de test
-      intermédiaires avec différent niveaux de stabilité (ex : `staging`,
-      `pre-prod`...)
-    * Pour les projets qui publient des versions stables dont plusieurs sont
-      sujettes à correctifs à un instant T, des _release branches_ de longue
-      durée de vie vont servir à accumuler l'ensemble des correctifs appliqués à
-      une certaine version.
+  * Une branche `production` qui reflète le code qui est effectivement déployé
+    en production, ce qui permet de suivre d'éventuelles contraintes de
+    déploiement imposées par le projet (ex : seulement à certaines heures,
+    certains jours) sans freiner le développement.
+  * Eventuellement, d'autres branches représentant des environnements de test
+    intermédiaires avec différent niveaux de stabilité (ex : `staging`,
+    `pre-prod`...)
+  * Pour les projets qui publient des versions stables dont plusieurs sont
+    sujettes à correctifs à un instant T, des _release branches_ de longue
+    durée de vie vont servir à accumuler l'ensemble des correctifs appliqués à
+    une certaine version.
 
 Voici un article très complet sur ce sujet qui part des principes fondamentaux
 pour expliquer comment différentes méthodes de travail en découlent :
@@ -209,16 +217,16 @@ d'utilisation:
   universités ont une politique peu adaptée aux projets souhaitant une ouverture
   totale aux contributions extérieures. Si l'on prend l'exemple de l'instance
   GitLab de l'IN2P3....
-    * Seuls les personnels de l'enseignement supérieur et de la recherche
-      (fédération eduGAIN) peuvent utiliser la forge sans passer par une
-      procédure administrative manuelle, qui a vocation à rester exceptionnelle.
-      Et c'est inhabituellement généreux : la plupart des forges académiques
-      restreignent cette possibilité à un seul pays/employeur/laboratoire.
-    * L'utilisation de _forks_ est interdite pour tous les comptes utilisateur
-      nouvellement créés depuis quelques années, donc les nouveaux contributeurs
-      doivent maintenant entrer en contact avec le propriétaire d'un dépôt pour
-      quémander le droit de soumettre des contributions... qui est couplé à bien
-      d'autres accès dont ils n'ont pas besoin.
+  * Seuls les personnels de l'enseignement supérieur et de la recherche
+    (fédération eduGAIN) peuvent utiliser la forge sans passer par une
+    procédure administrative manuelle, qui a vocation à rester exceptionnelle.
+    Et c'est inhabituellement généreux : la plupart des forges académiques
+    restreignent cette possibilité à un seul pays/employeur/laboratoire.
+  * L'utilisation de _forks_ est interdite pour tous les comptes utilisateur
+    nouvellement créés depuis quelques années, donc les nouveaux contributeurs
+    doivent maintenant entrer en contact avec le propriétaire d'un dépôt pour
+    quémander le droit de soumettre des contributions... qui est couplé à bien
+    d'autres accès dont ils n'ont pas besoin.
 
 Le choix d'une (instance de) forge n'est donc pas anodin, et il vaut mieux
 réfléchir en amont au périmètre souhaité pour les accès en lecture, en écriture
@@ -231,4 +239,3 @@ les besoins. Heureusement, même si les interfaces web et les fichiers de
 configuration peuvent être très différents, les principes sous-jacents sont
 similaires, donc une fois qu'on a appris à utiliser une forge, c'est beaucoup
 plus facile d'apprendre à en utiliser une autre.
-

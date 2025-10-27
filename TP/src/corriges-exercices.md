@@ -434,6 +434,14 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 
 ## Exercices TP5
 
+<div class="warning">
+
+A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
+réécrit. Cette correction est donc en partie obsolète et devrait être mise à
+jour prochainement.
+
+</div>
+
 Tout d’abord, rendons-nous dans notre clone du dépôt `ddhc` :
 
 ```bash
@@ -461,17 +469,17 @@ pointe sur le dépôt officiel en connexion HTTPS.
 Dans la variante « GitLab fermé », on attend plutôt cette sortie…
 
 > ```text
-> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (fetch)
-> origin  git@gitlab.in2p3.fr:grasland/ddhc.git (push)
+> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (fetch)
+> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (push)
 > ```
 
 …avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
 
-Pour créer une nouvelle branche partant de la branche `master`, on commence par
-basculer sur la branche `master`…
+Pour créer une nouvelle branche partant de la branche `main`, on commence par
+basculer sur la branche `main`…
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:checkout-master}}
+{{#include 5-reseau-forges-corrige.sh:checkout-main}}
 ```
 
 …puis on crée la nouvelle branche et bascule dessus…
@@ -507,12 +515,12 @@ pousser sur `origin`…
 {{#include 5-reseau-forges-corrige.sh:push-shortcut}}
 ```
 
-Il est possible que la branche `master` du dépôt officiel évolue en parallèle de
+Il est possible que la branche `main` du dépôt officiel évolue en parallèle de
 notre travail. On peut vérifier ce point en mettant à jour notre branche
-`master` locale :
+`main` locale :
 
 ```bash
-{{#include 5-reseau-forges-corrige.sh:update-master}}
+{{#include 5-reseau-forges-corrige.sh:update-main}}
 ```
 
 Si la sortie de `git pull` signale des changements, alors il faudra mettre à

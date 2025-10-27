@@ -11,3 +11,6 @@ smart-punctuation = true
 git-repository-url = "https://gitlab.in2p3.fr/grasland/formation-git"
 git-repository-icon = "fa-gitlab"
 edit-url-template = "https://gitlab.in2p3.fr/grasland/formation-git/-/edit/main/TP/{path}"
+
+[output.html.fold]
+enable = true

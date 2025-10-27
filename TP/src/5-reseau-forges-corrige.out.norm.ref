@@ -1,14 +1,15 @@
 + IFS='
 	'
++ unset -f test_this_manually
 + cd ~/Desktop/ddhc
 + git remote -v
 origin	https://github.com/HadrienG2/ddhc.git (fetch)
 origin	https://github.com/HadrienG2/ddhc.git (push)
 upstream	https://github.com/HadrienG2/ddhc.git (fetch)
 upstream	https://github.com/HadrienG2/ddhc.git (push)
-+ git checkout master
-Switched to branch 'master'
-Your branch is up to date with 'upstream/master'.
++ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'upstream/main'.
 + git checkout -b copyright
 Switched to a new branch 'copyright'
 + echo -e '\n(C) 1789, Être Suprême Inc.'
@@ -28,9 +29,9 @@ Switched to a new branch 'copyright'
 [copyright CCCCCCC] Panique à bord en QWERTY !
  1 file changed, 1 insertion(+)
 + unset -f test_this_manually
-+ git checkout master
-Switched to branch 'master'
-Your branch is up to date with 'upstream/master'.
++ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'upstream/main'.
 + git pull --ff-only
 Already up to date.
 + git branch -D copyright

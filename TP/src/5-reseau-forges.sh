@@ -35,7 +35,7 @@ git clone URLDuFork
 ###### ANCHOR: clone-from-gitlab
 cd ~/Desktop
 # Même URL que le "Clone with SSH" de GitLab
-git clone git@gitlab.in2p3.fr:grasland/ddhc.git
+git clone git@gitlab.in2p3.fr:git-kitchen/recettes.git
 ###### ANCHOR_END: clone-from-gitlab
 }
 unset -f test_this_manually
@@ -54,18 +54,22 @@ git fetch upstream
 ###### ANCHOR_END: add-upstream-remote
 
 
-###### ANCHOR: set-upstream-master
-git checkout master
-git branch --set-upstream-to=upstream/master
-###### ANCHOR_END: set-upstream-master
+###### ANCHOR: set-upstream-main
+git checkout main
+git branch --set-upstream-to=upstream/main
+###### ANCHOR_END: set-upstream-main
 
-###### ANCHOR: pull-master-gitlab
-cd ~/Desktop/ddhc
-###### ANCHOR: pull-master-github
-git checkout master
+# TODO: Bring back once github and gitlab are back in sync
+function test_this_manually() {
+###### ANCHOR: pull-main-gitlab
+cd ~/Desktop/recettes
+###### ANCHOR: pull-main-github
+git checkout main
 git pull --ff-only
-###### ANCHOR_END: pull-master-github
-###### ANCHOR_END: pull-master-gitlab
+###### ANCHOR_END: pull-main-github
+###### ANCHOR_END: pull-main-gitlab
+}
+unset -f test_this_manually
 
 ###### ANCHOR: config-pull-ff-only
 git config pull.ff only
@@ -73,7 +77,7 @@ git config pull.ff only
 
 
 ###### ANCHOR: create-dev-branch-github
-git checkout master
+git checkout main
 # Vous pouvez appeler votre branche de développement comme vous voulez, mais il
 # faudra adapter les commandes suivantes du TP en fonction du nom choisi
 git checkout -b NomDeBranche
@@ -81,7 +85,7 @@ git checkout -b NomDeBranche
 
 function test_this_manually() {
 ###### ANCHOR: create-dev-branch-gitlab
-git checkout master
+git checkout main
 # Choisissez un nom de branche original pour éviter toute collision avec vos
 # collègues qui travaillent au sein du même dépôt. Attention, le nom devra être
 # modifié dans toutes les commandes suivantes du chapitre.
@@ -100,12 +104,12 @@ git add README.md
 git commit -m "Ajout d'un pied de page rebelle"
 ###### ANCHOR_END: commit-on-dev-branch
 
-###### ANCHOR: update-master-and-merge
-git checkout master
+###### ANCHOR: update-main-and-merge
+git checkout main
 git pull --ff-only
 git checkout NomDeBranche
-git merge master
-###### ANCHOR_END: update-master-and-merge
+git merge main
+###### ANCHOR_END: update-main-and-merge
 
 # I'd love to test this too but credentials are hard
 function test_this_manually() {
@@ -116,7 +120,7 @@ git push --set-upstream origin NomDeBranche
 ###### ANCHOR: delete-dev-branch-github
 git push --delete origin NomDeBranche
 ###### ANCHOR: delete-dev-branch-gitlab
-git checkout master
+git checkout main
 git branch -D NomDeBranche
 ###### ANCHOR_END: delete-dev-branch-gitlab
 ###### ANCHOR_END: delete-dev-branch-github
