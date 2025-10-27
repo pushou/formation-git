@@ -1,6 +1,7 @@
 + IFS='
 	'
-+ cd ~/Desktop/recettes
++ unset -f test_this_manually
++ cd ~/Desktop/ddhc
 + git remote -v
 origin	https://github.com/HadrienG2/ddhc.git (fetch)
 origin	https://github.com/HadrienG2/ddhc.git (push)
