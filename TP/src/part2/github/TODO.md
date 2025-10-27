@@ -30,8 +30,9 @@ GitHub](../../images/github-add-new-ssh-key.png)
 Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
 
 - **Title :** Un nom de votre choix qui vous permettra de distinguer cette clé
-  SSH de vos autres clés SSH. Je vous conseille d’utiliser un nom qui clarifie
-  qu’elle est temporaire et liée à cette formation, par exemple « Formation Git ».
+  SSH de vos autres clés SSH. Nous vous conseillons d’utiliser un nom qui
+  clarifie qu’elle est temporaire et liée à cette formation, par exemple
+  « Formation Git ».
 - **Key type :** La façon dont vous souhaitez utiliser la clé SSH que vous êtes
   en train d’ajouter à votre compte GitHub. Pour vous connecter à GitHub en SSH
   avec git, prenez le choix par défaut « Authentication Key ».
@@ -161,11 +162,11 @@ pourrez juste mettre à jour votre branche `main` locale via :
 {{#include ../../5-reseau-forges.sh:pull-main-github}}
 ```
 
-Je conseille ici l’utilisation de `--ff-only` pour vous aider à repérer une
+Nous conseillons ici l’utilisation de `--ff-only` pour vous aider à repérer une
 erreur classique. Si l’on applique correctement le _GitHub flow_, la branche
 `main` du dépôt officiel devrait avancer de façon monotone, et votre branche
-`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez
-pas mettre en avance rapide, cela relève d’une situation pathologique :
+`main` locale devrait suivre son avancée. Par conséquent, si vous ne pouvez pas
+mettre en avance rapide, cela relève d’une situation pathologique :
 
 - Soit les mainteneurs du dépôt officiel ont fait diverger `main` en éditant
   son historique. Il n’est que très rarement nécessaire d’en arriver là, et un

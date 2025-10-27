@@ -54,8 +54,8 @@ académique auprès de laquelle vous possédez un compte informatique, par exemp
                 GitLab associera alors ces adresses au même compte.
 
 Quoi qu'il en soit, une fois que vous aurez choisi votre institution, vous vous
-retrouverez sur l’invite de connexion de cette dernière. Ici, je ne peux pas
-vous donner des instructions précises car ça dépend de votre employeur, mais
+retrouverez sur l’invite de connexion de cette dernière. Ici, nous ne pouvons
+pas vous donner des instructions précises car ça dépend de votre employeur, mais
 voici par exemple la page de connexion Janus du CNRS :
 
 <center>
@@ -115,9 +115,9 @@ Voici les informations dont vous aurez besoin pour le remplir :
   l’interface de GitLab.
 
 - **Title :** Un nom de votre choix qui vous permettra de distinguer cette clé
-  SSH de vos autres clés SSH. Je vous conseille d’utiliser un nom qui clarifie
-  qu’elle est temporaire et liée à cette formation, par exemple « Formation
-  Git ».
+  SSH de vos autres clés SSH. Nous vous conseillons d’utiliser un nom qui
+  clarifie qu’elle est temporaire et liée à cette formation, par exemple
+  « Formation Git ».
 - **Usage type :** La façon dont vous souhaitez utiliser la clé SSH que vous
   êtes en train d’ajouter à votre compte GitLab. Pour vous connecter à GitLab en
   SSH avec git, le choix « Authentication » est suffisant.
