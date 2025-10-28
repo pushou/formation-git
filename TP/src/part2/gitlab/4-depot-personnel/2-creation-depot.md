@@ -164,9 +164,10 @@ vous faut donc :
 2. créer un commit local ;
 3. pousser ce commit sur le dépôt distant.
 
-Nous vous conseillons dans un premier temps de rester sur la branche `main`. Si
-besoin, relisez [le chapitre précédent](../3-contribution.md) pour vous
-remémorer la procédure.
+Nous vous conseillons dans un premier temps de rester sur la branche `main`, ce
+qui n'est pas un gros problème tant que vous travaillez tout seul. Si besoin,
+relisez [le chapitre précédent](../3-contribution.md) pour vous remémorer la
+procédure.
 
 Une fois ces étapes réalisées, vous pouvez vérifier l’état du dépôt local et
 distant avec :
@@ -178,7 +179,7 @@ git status
 
 L'historique devrait montrer votre commit (à la fois sur la version locale et
 distante de `main`), et le statut indiquer que la branche `main` suit bien
-`origin/main` et que le répertoire de travail est propre (clean).
+`origin/main` et que le répertoire de travail est propre (_clean_).
 
 
 ## Vérifier le contenu du dépôt sur GitLab
@@ -218,8 +219,8 @@ passer par des _merge requests_ pour intégrer des modifications.
 Essayer maintenant de modifier le fichier de recette
 `recettes/crepes-classiques.md` en local, de faire un commit, puis de pousser
 directement sur `main`. Si la protection est bien en place, GitLab devrait
-refuser le push avec un message d'erreur indiquant que la branche est protégée
-similaire à ceci :
+refuser le _push_ avec un message d'erreur indiquant que la branche est protégée
+:
 
 ```text
 ...
@@ -262,7 +263,7 @@ chaque modification.
 1. Ajoutez une image de présentation dans un dossier `images/` et référencez-la
    dans votre recette (champ `image:`).
 2. Poussez les changements et visualisez l'image dans l'interface web de GitLab.
-3. fusionnez vos modifications dans `main` via une _merge request_.
+3. Fusionnez vos modifications dans `main` via une _merge request_.
 
 ## Antisèche
 

@@ -120,10 +120,14 @@ pages:
 Ce _job_ est très proche de celui utilisé pour la vérification grammaticale. On
 y retrouve notamment :
 
-* l’étape à laquelle il appartient (`build`) ;
-* l’utilisation d’une image Docker spécifique (celle contenant _Astro_) ;
-* une étape `before_script` pour installer les dépendances ;
-* une étape `script` pour exécuter la commande de génération du site.
+* l’[étape](https://docs.gitlab.com/ci/yaml/#stage) à laquelle il appartient
+  (ici `build`) ;
+* l’utilisation d’une [image](https://docs.gitlab.com/ci/yaml/#image) Docker
+  spécifique (celle contenant _Astro_) ;
+* une étape [`before_script`](https://docs.gitlab.com/ci/yaml/#before_script)
+  pour installer les dépendances ;
+* une étape [`script`](https://docs.gitlab.com/ci/yaml/#script) pour exécuter la
+  commande de génération du site.
 
 ### Définir les _artefacts_ à publier
 
@@ -133,7 +137,7 @@ publiés une fois le site généré. La commande `npx astro build` crée un doss
 JavaScript et médias nécessaires au site web.
 
 Pour que GitLab conserve ce dossier après l’exécution du _job_, ajoutez la
-directive `artifacts` comme suit :
+directive [`artifacts`](https://docs.gitlab.com/ci/yaml/#artifacts) comme suit :
 
 ```yml
   # ... job pages ...
@@ -144,7 +148,8 @@ directive `artifacts` comme suit :
 
 Problème : par défaut, _GitLab Pages_ s’attend à publier le contenu d’un dossier
 nommé `public/`. Pour utiliser un autre répertoire, vous devez le préciser
-explicitement dans la configuration à l’aide de la directive `pages` :
+explicitement dans la configuration à l’aide de la directive
+[`pages`](https://docs.gitlab.com/ci/yaml/#pages) :
 
 ```yml
 pages:
@@ -253,9 +258,10 @@ quelle que soit la branche. Cela peut conduire à la publication de versions en
 cours de développement.
 
 Pour éviter cela, vous pouvez limiter le déploiement à la branche principale
-`main` en ajoutant une règle :
+`main` en ajoutant une [règle](https://docs.gitlab.com/ci/yaml/#rules) à un ou plusieurs _jobs_ :
 
 ```yml
+mon_job_de_deploiement:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 ```
@@ -263,5 +269,5 @@ Pour éviter cela, vous pouvez limiter le déploiement à la branche principale
 Ainsi :
 
 - seules les modifications fusionnées dans `main` seront déployées ;
-- les _builds_ issus de branches secondaires seront simplement validés, sans
+- les _builds_ issus de branches secondaires seront simplement validées, sans
   publication.
