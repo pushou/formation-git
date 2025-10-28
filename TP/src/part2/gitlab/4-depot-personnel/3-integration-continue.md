@@ -41,12 +41,25 @@ Ce fichier décrit les différentes étapes (ou
 [_stages_](https://docs.gitlab.com/ci/yaml/#stages)) que GitLab exécutera
 automatiquement sur ses
 [_runners_](https://docs.gitlab.com/runner/)[^custom-runners] — des machines
-virtuelles qui lancent vos _jobs_ CI/CD. Ces étapes forment ce qu’on appelle un
+virtuelles qui lancent vos _jobs_ CI/CD. Par défaut[^fancier-scheduling], ces
+étapes s'exécutent les unes les un après les autres, en attendant que chacune se
+termine avant de lancer la suivante, et l'ensemble forme ce qu’on appelle un
 [_pipeline_](https://docs.gitlab.com/ci/pipelines/).
 
 [^custom-runners]: Il est possible de configurer ses propres _runners_, mais
                    pour ce TP nous utiliserons les _runners_ partagés mis à
                    disposition par le CC-IN2P3.
+
+[^fancier-scheduling]: On peut aussi configurer des _jobs_ pour qu'ils se
+                       déclenchent dès que certains autres _jobs_ ont terminé en
+                       utilisant la propriété
+                       [`needs`](https://docs.gitlab.com/ci/yaml/#needs). Cela
+                       permet d'améliorer les performances de certains
+                       _pipelines_ où il n'y a pas assez de _jobs_ pour bien
+                       utiliser tous les _runners_ disponibles au sein d'un
+                       _stage_ unique, mais le prix à payer est une écriture et
+                       d'une maintenance plus difficile du fichier
+                       `.gitlab-ci.yml`.
 
 Une fois le fichier `.gitlab-ci.yml` poussé (_push_) sur le dépôt distant,
 GitLab le détecte automatiquement et exécute les étapes qu’il contient. Par
