@@ -1,4 +1,4 @@
-# Collaborer sur un même projet GitLab
+# Un projet GitLab commun
 
 Après avoir préparé votre propre carnet de recettes, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
@@ -47,12 +47,12 @@ adapté :
 
 | **Rôle GitLab**      | **Permissions principales**                                                                 | **Utilisation recommandée**                |
 | -------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès au dépôt privé ni push                  | Invités, relecteurs ponctuels, testeurs     |
-| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de push                   | Relecteurs techniques (QA, PO)               |
-| **Planner**          | Peut planifier: créer/gérer _issues_, _milestones_. Pas d’accès au code      | Coordinateurs       |
-| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_  | Développeurs                    |
-| **Maintainer**       | Peut fusionner les _merge requests_, gérer branches protégées, CI/CD et membres              | Chefs de projet         |
-| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression)                         | Propriétaire du groupe (rarement à déléguer) |
+| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès au dépôt privé ni de _push_.               | Invités, relecteurs ponctuels, testeurs    |
+| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de _push_.           | Relecteurs techniques (QA, PO)             |
+| **Planner**          | Peut planifier: créer/gérer _issues_, _milestones_. Pas d’accès au code.                    | Coordinateurs, chefs de projets            |
+| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_. | Développeurs                               |
+| **Maintainer**       | Peut fusionner les _merge requests_, gérer branches protégées, la CI/CD et les membres.     | Chefs de projet ou DevOps dédiés           |
+| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression).                       | Propriétaire du groupe (rarement délégué)  |
 
 
 ## Créer le livre de recettes collaboratif
@@ -84,7 +84,7 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
    avertis, héritée du sous-groupe).
 6. Cliquez sur **Create project**.
 
-Le _chef cuisinier_ accède alors à une page de projet vide, prête à accueillir
+Le _chef cuisinier_ accède alors à une page de projet GitLab vide, prête à accueillir
 vos créations. Les membres de la brigade héritent automatiquement des
 permissions définies au niveau du sous-groupe et peuvent dès à présent
 contribuer au projet.
@@ -125,16 +125,19 @@ Prenez un moment pour définir les tâches et les répartir clairement.
    * le type de recette ou de correction ;
    * les contraintes éventuelles (ex. « prévoir une version sans gluten ») ;
 5. Assignez le ticket à un membre de la brigade.
-6. Ajoutez des labels pour faciliter le tri des tickets (ex. `nouvelle-recette`,
-   `correction`)[^labels].
+6. Ajoutez des _labels_ pour faciliter le tri des tickets (ex.
+   `nouvelle-recette`, `correction`)[^labels].
 7. Cliquez sur **Create issue**.
 
 Votre ticket s’affiche maintenant dans la liste des _issues_, visible par toute
 la brigade.
 
-[^labels]: Utilisez les labels GitLab pour organiser vos _issues_ par type,
-priorité ou encore statut (ex. `à faire`, `urgent`, `en cours`, `terminé`,
-`CI/CD`, `recette`).
+[^labels]: Vous pouvez utiliser les _labels_ GitLab pour organiser vos _issues_
+           par type, priorité ou encore statut (ex. `à faire`, `urgent`, `en
+           cours`, `terminé`, `CI/CD`, `recette`). Vous retrouverez quelques
+           exemples d'utilisation des _labels_ sur [le projet GitLab associé à
+           cette
+           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/issues).
 
 
 ## Cloner le dépôt du livre en local
