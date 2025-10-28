@@ -84,7 +84,7 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
    avertis, héritée du sous-groupe).
 6. Cliquez sur **Create project**.
 
-Le _chef cuisinier_ accède alors à une page de projet vide, prête à accueillir
+Le _chef cuisinier_ accède alors à une page de projet GitLab vide, prête à accueillir
 vos créations. Les membres de la brigade héritent automatiquement des
 permissions définies au niveau du sous-groupe et peuvent dès à présent
 contribuer au projet.

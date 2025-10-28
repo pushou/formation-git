@@ -1,4 +1,4 @@
-# Créer un nouveau projet
+# Création d'un dépôt
 
 Pour regrouper l'ensemble des carnets de recettes personnels des cuisiniers,
 nous avons avons créé en amont un sous-groupe privé intitulé [« Carnets de
@@ -49,28 +49,27 @@ machine. Nous allons suivre la même procédure que dans le [chapitre
 précédent](../3-contribution.md) à la différence qu'il s'agit de votre propre
 dépôt. Pour rappel, il faut :
 
-1. Récupérer l’URL SSH du projet : cliquez sur le bouton bleu « Code » en haut à
+1. Récupérer l’URL SSH du dépôt : cliquez sur le bouton bleu « Code » en haut à
    droite, puis copiez l’URL « Clone with SSH ».
-2. Créer le clone local (adapter l’URL à votre projet)
+2. Créer le clone local
+
+Voud devriez utiliser dans votre terminal des commandes qui ressemblent à ceci
+(en adaptant l'URL et le nom de dossier à votre projet GitLab)...
 
 ```bash
 git clone git@gitlab.in2p3.fr:git-kitchen/carnets-de-recettes-personnels/recettes-de-<votre-identifiant>.git
 cd recettes-de-<votre-identifiant>
 ```
 
-Vous devriez obtenir un résultat similaire à celui-ci :
+...et elles devraient produire une sortie qui ressemble à ceci :
 
 ```text
 Cloning into 'recettes-de-<votre-identifiant>'...
 Warning: You appear to have cloned an empty repository.
 ```
 
-<div class="warning">
-
-Vous partez d’un dépôt vide. Au moment de cloner le dépôt, Git vous signale
-qu’aucun fichier ni commit n’existent encore et c’est normal à ce stade.
-
-</div>
+Notez l'avertissement. Au moment de cloner le dépôt, git vous signale qu’aucun
+fichier ni commit n’existent encore dans votre dépôt. C’est normal à ce stade.
 
 Et en effet, si vous listez le contenu du répertoire :
 
@@ -82,7 +81,7 @@ Vous ne verrez que le répertoire caché `.git/`, qui contient les données du
 dépôt Git.
 
 Vous pouvez dès lors vérifier que vous êtes bien sur la branche `main` et que la
-remote `origin` est bien configurée :
+_remote_ `origin` est bien configurée :
 
 ```bash
 git status
@@ -90,10 +89,10 @@ git remote -v
 ```
 
 
-## Structurer le projet et ajouter une première recette
+## Structurer le dépôt et ajouter une première recette
 
-L'idée maintenant est de structurer le projet en créant un répertoire
-`recettes/` qui contiendra vos recettes au format Markdown.
+L'idée maintenant est de structurer le dépôt en créant un répertoire `recettes/`
+qui contiendra vos recettes au format Markdown.
 
 Dans le terminal, on commence par créer le répertoire `recettes/` :
 
@@ -293,5 +292,6 @@ git push --set-upstream origin <branche>
 ### Nettoyage des branches distantes
 
 Pensez à supprimer les branches devenues inutiles après fusion (option GitLab
-lors du merge, ou `git push origin --delete <branche>`), sinon celles ci
-risquent de s'accumuler très vite au sein de votre projet...
+lors du merge, ou `git push origin --delete <branche>`), ainsi que leurs
+homologues dans votre dépôt local (`git branch -d <branche>`) sinon celles ci
+risquent de s'accumuler très vite au sein de vos dépôts...

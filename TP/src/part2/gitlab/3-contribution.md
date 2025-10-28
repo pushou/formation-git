@@ -8,27 +8,27 @@ l’instance GitLab de l'IN2P3.
 
 <div class="warning">
 
-Vous remarquerez que là où nous parlons de « dépôt », l'interface web de GitLab
-privilégie la terminologie de « projet » .
+Vous remarquerez que là où nous parlons de « dépôt », l'interface web de la
+forge GitLab utilise plutôt la terminologie de « projet » .
 
 Ce que la forge GitLab appelle un projet, c'est en fait la combinaison d'un
-dépôt git hébergé sur le serveur de la forge avec un ensemble d'autres outils
+dépôt git hébergé sur l'instrastructure GitLab avec un ensemble d'autres outils
 construits autour de ce dépôt : gestion de tickets (_issues_), hébergement de
 binaires et de pages web, wiki, etc.
 
 Mais dans cette formation, nous allons surtout nous concentrer sur le dépôt git
 au coeur du projet GitLab, et ils serait perturbant que nous changions
 soudainement de terminologie pour nous référer à ce dernier alors que nous
-parlons de dépôt depuis le début de la formation. Et pour ne rien arranger, nous
-utilisons aussi beaucoup le mot « projet » pour faire référence à la structure
-humaine qui utilise un certain dépôt git pour collaborer, ce qui risque
-d'ajouter à la confusion.
+parlons de « dépôt » depuis le début de la formation. En plus, pour ne rien
+arranger, nous utilisons aussi beaucoup le mot « projet » pour faire référence à
+la structure humaine qui utilise un certain dépôt git pour collaborer, ce qui
+risque d'ajouter à la confusion.
 
 Pour éviter ces problèmes de terminologie, nous pratiquerons l'abus de langage,
 courant dans la communauté des utilisateurs de GitLab, d'utiliser le mot
 « dépôt » pour faire référence au projet GitLab qui héberge un certain dépôt
 git. Et si à un moment nous avons besoin de faire référence spécifiquement à ce
-que GitLab appelle un projet, nous privilégierons l'expresion « projet GitLab ».
+que GitLab appelle un projet, nous ajouterons la précision « projet GitLab ».
 
 </div>
 
