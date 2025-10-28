@@ -152,8 +152,8 @@ Dès que vous nous l'aurez transmis, nous pourrons vous donner un accès de nive
 « Developer » au groupe. Ce niveau d’accès vous permettra entre autres de voir
 le groupe et ce qu'il contient. En particulier, vous pourrez accéder au contenu
 du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser
-des branches de développement, mais pas de modifier directement le contenu de la
-branche `main`.
+des branches de développement. Mais vous ne pourrez pas modifier directement le
+contenu de la branche `main`.
 
 Pour cela, vous devrez passer par une procédure de validation de notre part, la
 _merge request_, que nous allons explorer dans [l'étape suivante de ce

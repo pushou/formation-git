@@ -47,12 +47,12 @@ adapté :
 
 | **Rôle GitLab**      | **Permissions principales**                                                                 | **Utilisation recommandée**                |
 | -------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès au dépôt privé ni push                  | Invités, relecteurs ponctuels, testeurs     |
-| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de push                   | Relecteurs techniques (QA, PO)               |
-| **Planner**          | Peut planifier: créer/gérer _issues_, _milestones_. Pas d’accès au code      | Coordinateurs       |
-| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_  | Développeurs                    |
-| **Maintainer**       | Peut fusionner les _merge requests_, gérer branches protégées, CI/CD et membres              | Chefs de projet         |
-| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression)                         | Propriétaire du groupe (rarement à déléguer) |
+| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès au dépôt privé ni de _push_.               | Invités, relecteurs ponctuels, testeurs    |
+| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de _push_.           | Relecteurs techniques (QA, PO)             |
+| **Planner**          | Peut planifier: créer/gérer _issues_, _milestones_. Pas d’accès au code.                    | Coordinateurs, chefs de projets            |
+| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_. | Développeurs                               |
+| **Maintainer**       | Peut fusionner les _merge requests_, gérer branches protégées, la CI/CD et les membres.     | Chefs de projet ou DevOps dédiés           |
+| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression).                       | Propriétaire du groupe (rarement délégué)  |
 
 
 ## Créer le livre de recettes collaboratif

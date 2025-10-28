@@ -3,8 +3,9 @@
 Écrire des recettes, c’est bien. Bien les écrire, c’est encore mieux ! Le
 concept d’intégration continue (_Continuous Integration_, ou en abrégé CI)
 désigne l’automatisation de tâches de validation et de vérification. Cela
-permet, par exemple, de s’assurer que le contenu respecte certaines normes de
-qualité avant d’être fusionné dans la branche principale.
+permet, par exemple, de s’assurer que le contenu d'une branche respecte
+certaines normes de qualité avant qu'il ne soit fusionné dans la branche
+principale.
 
 Dans notre cas, nous allons mettre en place une intégration continue qui
 vérifiera automatiquement l’orthographe, la grammaire et certaines règles

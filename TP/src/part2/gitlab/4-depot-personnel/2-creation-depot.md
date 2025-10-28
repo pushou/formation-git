@@ -100,8 +100,8 @@ Dans le terminal, on commence par créer le répertoire `recettes/` :
 mkdir -p recettes
 ```
 
-Puis on ajoute une première recette (des crêpes ou autre chose selon vos
-goûts) :
+Puis on ajoute une première recette. Nous vous donnons un exemple avec des
+crêpes, n'hésitez pas à utiliser une autre recette selon vos goûts :
 
 ```bash
 touch recettes/crepes-classiques.md
@@ -160,11 +160,11 @@ git status
 Vous devriez voir que le répertoire `recettes/` est non suivi (untracked). Il
 vous faut donc :
 
-1. ajouter le fichier de recette au suivi de Git
-2. créer un commit local
-3. puis le pousser sur le dépôt distant
+1. ajouter le fichier de recette au suivi de Git ;
+2. créer un commit local ;
+3. pousser ce commit sur le dépôt distant.
 
-Nous vous conseillons dans un premier temps de rester sur la branche `main`. Au
+Nous vous conseillons dans un premier temps de rester sur la branche `main`. Si
 besoin, relisez [le chapitre précédent](../3-contribution.md) pour vous
 remémorer la procédure.
 

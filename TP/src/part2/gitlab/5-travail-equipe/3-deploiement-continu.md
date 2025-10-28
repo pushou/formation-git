@@ -17,10 +17,10 @@ Avant de commencer à modifier le dépôt collaboratif, prenez un moment pour li
 le TP et discuter de ce qu'il faut faire avec votre brigade. En particulier,
 posez-vous la question de :
 
-- qui prépare les tickets ?
-- qui gère ou modifie le _pipeline_ ?
-- qui modifie ou corrige les recettes ?
-- qui valide les _merge requests_ avant leur intégration dans `main` ?
+- Qui prépare les tickets ?
+- Qui gère ou modifie le _pipeline_ ?
+- Qui modifie ou corrige les recettes ?
+- Qui valide les _merge requests_ avant leur intégration dans `main` ?
 
 Utilisez les tickets pour suivre les tâches à réaliser et l’avancement du
 projet. N’oubliez pas de toujours travailler sur une branche dédiée.
@@ -107,7 +107,7 @@ Ajoutez donc le _job_ `pages` dans votre fichier `.gitlab-ci.yml` :
 ```yml
 pages:
   stage: build
-  image: à définir quand le dépôt sera créé
+  image: # à définir quand le dépôt sera créé
   before_script:
     # Installer les dépendances
     - npm install
