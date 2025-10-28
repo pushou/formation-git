@@ -1,4 +1,4 @@
-# Collaborer sur un même projet GitLab
+# Un projet GitLab commun
 
 Après avoir préparé votre propre carnet de recettes, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
