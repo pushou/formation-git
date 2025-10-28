@@ -125,16 +125,19 @@ Prenez un moment pour définir les tâches et les répartir clairement.
    * le type de recette ou de correction ;
    * les contraintes éventuelles (ex. « prévoir une version sans gluten ») ;
 5. Assignez le ticket à un membre de la brigade.
-6. Ajoutez des labels pour faciliter le tri des tickets (ex. `nouvelle-recette`,
-   `correction`)[^labels].
+6. Ajoutez des _labels_ pour faciliter le tri des tickets (ex.
+   `nouvelle-recette`, `correction`)[^labels].
 7. Cliquez sur **Create issue**.
 
 Votre ticket s’affiche maintenant dans la liste des _issues_, visible par toute
 la brigade.
 
-[^labels]: Utilisez les labels GitLab pour organiser vos _issues_ par type,
-priorité ou encore statut (ex. `à faire`, `urgent`, `en cours`, `terminé`,
-`CI/CD`, `recette`).
+[^labels]: Vous pouvez utiliser les _labels_ GitLab pour organiser vos _issues_
+           par type, priorité ou encore statut (ex. `à faire`, `urgent`, `en
+           cours`, `terminé`, `CI/CD`, `recette`). Vous retrouverez quelques
+           exemples d'utilisation des _labels_ sur [le projet GitLab associé à
+           cette
+           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/issues).
 
 
 ## Cloner le dépôt du livre en local

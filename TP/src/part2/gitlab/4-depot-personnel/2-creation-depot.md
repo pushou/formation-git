@@ -292,6 +292,6 @@ git push --set-upstream origin <branche>
 ### Nettoyage des branches distantes
 
 Pensez à supprimer les branches devenues inutiles après fusion (option GitLab
-lors du merge, ou `git push origin --delete <branche>`), ainsi que leurs
+lors du _merge_, ou `git push origin --delete <branche>`), ainsi que leurs
 homologues dans votre dépôt local (`git branch -d <branche>`) sinon celles ci
 risquent de s'accumuler très vite au sein de vos dépôts...
