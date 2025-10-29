@@ -37,23 +37,39 @@ nommé `.gitlab-ci.yml`.
 touch .gitlab-ci.yml
 ```
 
-Ce fichier décrit les différentes étapes (ou _stages_) que GitLab exécutera
+Ce fichier décrit les différentes étapes (ou
+[_stages_](https://docs.gitlab.com/ci/yaml/#stages)) que GitLab exécutera
 automatiquement sur ses
 [_runners_](https://docs.gitlab.com/runner/)[^custom-runners] — des machines
-virtuelles qui lancent vos _jobs_ CI/CD. Ces étapes forment ce qu’on appelle un
+virtuelles qui lancent vos _jobs_ CI/CD. Par défaut[^dag-scheduling], ces
+étapes s'exécutent les unes les un après les autres, en attendant que chacune se
+termine avant de lancer la suivante, et l'ensemble forme ce qu’on appelle un
 [_pipeline_](https://docs.gitlab.com/ci/pipelines/).
 
 [^custom-runners]: Il est possible de configurer ses propres _runners_, mais
                    pour ce TP nous utiliserons les _runners_ partagés mis à
                    disposition par le CC-IN2P3.
 
+[^dag-scheduling]: On peut aussi configurer des _jobs_ pour qu'ils se
+                   déclenchent dès que certains autres _jobs_ ont terminé en
+                   utilisant le mot-clé
+                   [`needs`](https://docs.gitlab.com/ci/yaml/#needs). Cela
+                   permet d'améliorer les performances de certains _pipelines_
+                   où il n'y a pas assez de _jobs_ pour bien utiliser tous les
+                   _runners_ disponibles au sein d'un _stage_ unique, mais le
+                   prix à payer est une écriture et d'une maintenance plus
+                   difficile du fichier `.gitlab-ci.yml`.
+
 Une fois le fichier `.gitlab-ci.yml` poussé (_push_) sur le dépôt distant,
 GitLab le détecte automatiquement et exécute les étapes qu’il contient. Par
 défaut, GitLab lance le _pipeline_ à chaque _push_ sur n’importe quelle branche.
 
 Dans un premier temps, nous allons définir une seule étape, appelée
-`lint`[^lint], chargée de vérifier la qualité du texte. Ouvrez le fichier
-`.gitlab-ci.yml` avec votre éditeur préféré et ajoutez-y le contenu suivant :
+`lint`[^lint], chargée de vérifier la qualité du texte.
+
+Pour cela, ouvrez le fichier `.gitlab-ci.yml` avec votre éditeur préféré et
+collez-y le texte suivant pour définir l'étape unique `lint` avec le mot-clé
+[`stages`](https://docs.gitlab.com/ci/yaml/#stages) :
 
 [^lint]: C’est le nom généralement utilisé pour ce type d’étape dédiée à la
          vérification du code, mais rien ne vous empêche d’en choisir un autre.
@@ -75,22 +91,32 @@ ses propres dépendances), GitLab CI/CD permet d’utiliser des [images
 Docker](https://hub.docker.com/). Celles-ci offrent des environnements
 préconfigurés couvrant un large éventail de besoins.
 
-Ici, nous utiliserons l’image officielle `python:3.12`, qui contient la dernière version de Python 3.12 :
+Ici, nous utiliserons l’image officielle `python:3.12`, qui contient la dernière
+version de Python 3.12 :
 
 ```yml
+# ...après la définition des étapes...
+
 grammaire_et_orthographe:
   stage: lint
   image: python:3.12
   # ... d'autres instructions viendront ici plus tard ...
 ```
 
-La propriété `image:` indique à GitLab d’utiliser cette image Docker pour exécuter le _job_, tandis que `stage:` précise l’étape à laquelle il appartient.
+Nous commençons par donner un nom au _job_, ici  `grammaire_et_orthographe`.
+Puis avec le mot-clé [`image`](https://docs.gitlab.com/ci/yaml/#image), nous
+indiquons à GitLab d’utiliser cette image Docker pour exécuter le _job_. Et avec
+le mot-clé [`stage`](https://docs.gitlab.com/ci/yaml/#stage), nous précisons au
+sein de quelle étape du _pipeline_ ce _job_ va s'exécuter.
 
 
 ### Installer Grammalecte
 
-Nous devons maintenant expliquer à GitLab comment installer Grammalecte dans l’environnement Python fourni par l’image Docker.
-Nous utiliserons `pip`, le gestionnaire de paquets Python, pour installer une surcouche de Grammalecte nommée `grammalint`, disponible [ici](https://gitlab.in2p3.fr/sonny.lion/grammalint).
+Nous devons maintenant expliquer à GitLab comment installer Grammalecte dans
+l’environnement Python fourni par l’image Docker. Nous utiliserons `pip`, le
+gestionnaire de paquets Python, pour installer une surcouche de Grammalecte
+nommée `grammalint`, disponible
+[ici](https://gitlab.in2p3.fr/sonny.lion/grammalint).
 
 La commande d’installation est la suivante :
 
@@ -98,9 +124,12 @@ La commande d’installation est la suivante :
 python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
 ```
 
-Nous plaçons cette commande dans un bloc `before_script`, afin de séparer
-clairement la phase d’installation de celle d’exécution (question de lisibilité)
-:
+Nous allons indiquer à gitlab d'exécuter cette commande au sein du _job_
+`grammaire_et_orthographe` avec le mot-clé
+[`before_script`](https://docs.gitlab.com/ci/yaml/#before_script). Celui-ci est
+distinct du mot-clé `script` que nous allons utiliser par la suite pour la
+vérification orthographique, afin de séparer clairement la phase d’installation
+de celle d’exécution et ainsi d'améliorer la lisibilité[^before-script] :
 
 ```yml
 grammaire_et_orthographe:
@@ -110,13 +139,19 @@ grammaire_et_orthographe:
   # ... d'autres instructions viendront ici plus tard ...
 ```
 
+[^before-script]: Ici nous utilisons uniquement `before_script` pour améliorer
+                  la lisibilité du fichier de configuration GitLab CI. Mais dans
+                  des projets plus gros, `before_script` est aussi utile pour
+                  définir des étapes de préparation communes à plusieurs _jobs_,
+                  lorsqu'on on l'utilise en combinaison avec
+                  [`extends`](https://docs.gitlab.com/ci/yaml/#extends).
+
 
 ### Configurer l’analyse des fichiers
 
 Une fois `grammalint` installé, il faut indiquer à GitLab comment lancer
-l’analyse des fichiers Markdown.
-
-Pour vérifier un fichier spécifique, on utilise la commande suivante :
+l’analyse des fichiers Markdown. Pour vérifier un fichier spécifique, on utilise
+la commande suivante :
 
 ```bash
 python -m grammalint -i recettes/crepes-classiques.md
@@ -129,7 +164,9 @@ des sous-dossiers), on utilise la commande suivante :
 python -m grammalint -i recettes/**/*.md
 ```
 
-En intégrant cette seconde version à notre _pipeline_, le fichier complet devient :
+En intégrant cette seconde commande à notre _job_ avec le mot-clé
+[`script`](https://docs.gitlab.com/ci/yaml/#script), le fichier de configuration
+GitLab CI complet devient :
 
 ```yml
 stages:
@@ -161,7 +198,7 @@ Chaque ligne correspond à un _pipeline_ exécuté sur votre dépôt. La colonne
 **Status** indique son état (en cours, réussi, échoué, etc.), tandis que
 **Stages** affiche les différentes étapes et leur statut.
 
-Si le _pipeline_ ne s’exécute pas, vérifiez que :
+Si le _pipeline_ ne s’exécute pas, vérifiez que...
 
 - le fichier s’appelle bien `.gitlab-ci.yml` (avec le point au début) ;
 - il est placé à la racine du dépôt ;
@@ -237,22 +274,27 @@ Les **artefacts** sont des fichiers produits par un _job_ (rapports, journaux,
 fichiers d’analyse, etc.) et conservés par GitLab. Ils peuvent être téléchargés
 directement depuis l’interface web.
 
-Pour générer un rapport JSON avec Grammalecte, modifiez le bloc `script:` ainsi :
+Pour générer un rapport JSON avec `grammalint`, modifiez la commande `script` du
+_job_ `grammaire_et_orthographe` pour ajouter l'option `-o report.json`:
 
 ```yml
-# ... instructions précédentes ...
-script:
-  - python -m grammalint -i recettes/**/*.md -o report.json
+grammaire_et_orthographe:
+  # ... instructions précédentes ...
+  script:
+    - python -m grammalint -i recettes/**/*.md -o report.json
 ```
 
-Puis ajoutez une section `artifacts:` pour conserver le fichier :
+Puis ajoutez une section
+[`artifacts`](https://docs.gitlab.com/ci/yaml/#artifacts) pour indiquer à GitLab
+que le fichier doit être conservé en fin de _job_ :
 
 ```yml
-# ... instructions précédentes ...
-artifacts:
-  paths:
-    - report.json
-  expire_in: 1 week # Durée de conservation (optionnelle, mais recommandée pour éviter l’encombrement du stockage)
+grammaire_et_orthographe:
+  # ... instructions précédentes ...
+  artifacts:
+    paths:
+      - report.json
+    expire_in: 1 week # Durée de conservation (optionnelle, mais recommandée pour éviter l’encombrement du stockage)
 ```
 
 Le fichier `report.json` apparaîtra alors dans la page du _job_, sous l’onglet
@@ -314,11 +356,14 @@ que...
 - sur la branche `main` ;
 - ou lors d’une _Merge Request_ visant `main` ;
 
-...ajoutez simplement ce bloc :
+...vous pouvez fixer ces conditions d'exécution avec une section
+[`rules`](https://docs.gitlab.com/ci/yaml/#rules) au sein de la définition du
+_job_ :
 
 ```yml
-# ... instructions précédentes ...
-rules:
-  - if: $CI_COMMIT_BRANCH == "main" # Exécution sur la branche principale
-  - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" # Exécution sur les MR vers main
+mon_job_trop_long:
+  # ... instructions précédentes ...
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" # Exécution sur la branche principale
+    - if: $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main" # Exécution sur les MR vers main
 ```

@@ -11,6 +11,7 @@ statique](https://fr.wikipedia.org/wiki/Page_web_statique) directement depuis
 votre dépôt GitLab et ainsi transformer vos fichiers Markdown en un véritable
 livre de recettes en ligne.
 
+
 ## Coordination d’équipe
 
 Avant de commencer à modifier le dépôt collaboratif, prenez un moment pour lire
@@ -24,6 +25,7 @@ posez-vous la question de :
 
 Utilisez les tickets pour suivre les tâches à réaliser et l’avancement du
 projet. N’oubliez pas de toujours travailler sur une branche dédiée.
+
 
 ## Définir le _pipeline_ de vérification
 
@@ -56,7 +58,9 @@ Maintenant que le contenu de votre livre est automatiquement vérifié, il est
 temps de le rendre accessible en ligne. Pour cela, vous allez configurer deux
 nouvelles étapes dans le _pipeline_ : `build` et `deploy`.
 
-Le _pipeline_ final comprendra donc trois étapes :
+Le _pipeline_ final comprendra donc au total trois étapes, que nous définissons
+comme avant avec le mot-clé [`stages`](https://docs.gitlab.com/ci/yaml/#stages)
+suivi d'une liste à puces :
 
 ```yml
 stages:
@@ -100,7 +104,7 @@ _job_ chargé de publier un site via _GitLab Pages_.[^pages]
 [^pages]: Il est désormais possible d’utiliser un autre nom de _job_ pour le
 déploiement des pages, mais cela nécessite une configuration supplémentaire.
 Pour plus de détails, consultez la documentation officielle :
-[https://docs.gitlab.com/user/project/pages/#user-defined-job-names](https://docs.gitlab.com/user/project/pages/#user-defined-job-names)
+<https://docs.gitlab.com/user/project/pages/#user-defined-job-names>.
 
 Ajoutez donc le _job_ `pages` dans votre fichier `.gitlab-ci.yml` :
 
@@ -120,10 +124,14 @@ pages:
 Ce _job_ est très proche de celui utilisé pour la vérification grammaticale. On
 y retrouve notamment :
 
-* l’étape à laquelle il appartient (`build`) ;
-* l’utilisation d’une image Docker spécifique (celle contenant _Astro_) ;
-* une étape `before_script` pour installer les dépendances ;
-* une étape `script` pour exécuter la commande de génération du site.
+* l’[étape](https://docs.gitlab.com/ci/yaml/#stage) à laquelle il appartient
+  (ici `build`) ;
+* l’utilisation d’une [image](https://docs.gitlab.com/ci/yaml/#image) Docker
+  spécifique (celle contenant _Astro_) ;
+* un mot-clé [`before_script`](https://docs.gitlab.com/ci/yaml/#before_script)
+  suivi d'une commande pour installer les dépendances ;
+* un mot-clé [`script`](https://docs.gitlab.com/ci/yaml/#script) suivi d'une
+  commande pour générer le site web.
 
 ### Définir les _artefacts_ à publier
 
@@ -132,8 +140,9 @@ publiés une fois le site généré. La commande `npx astro build` crée un doss
 `dist/` à la racine du dépôt, qui contient tous les fichiers HTML, CSS,
 JavaScript et médias nécessaires au site web.
 
-Pour que GitLab conserve ce dossier après l’exécution du _job_, ajoutez la
-directive `artifacts` comme suit :
+Pour que GitLab conserve ce dossier après l’exécution du _job_, nous allons
+utiliser une section [`artifacts`](https://docs.gitlab.com/ci/yaml/#artifacts)
+comme précédemment :
 
 ```yml
   # ... job pages ...
@@ -144,7 +153,8 @@ directive `artifacts` comme suit :
 
 Problème : par défaut, _GitLab Pages_ s’attend à publier le contenu d’un dossier
 nommé `public/`. Pour utiliser un autre répertoire, vous devez le préciser
-explicitement dans la configuration à l’aide de la directive `pages` :
+explicitement dans la configuration à l’aide d'une section
+[`pages`](https://docs.gitlab.com/ci/yaml/#pages) :
 
 ```yml
 pages:
@@ -253,9 +263,11 @@ quelle que soit la branche. Cela peut conduire à la publication de versions en
 cours de développement.
 
 Pour éviter cela, vous pouvez limiter le déploiement à la branche principale
-`main` en ajoutant une règle :
+`main` en ajoutant une [règle](https://docs.gitlab.com/ci/yaml/#rules) à un ou
+plusieurs _jobs_ :
 
 ```yml
+mon_job_de_deploiement:
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
 ```
@@ -263,5 +275,5 @@ Pour éviter cela, vous pouvez limiter le déploiement à la branche principale
 Ainsi :
 
 - seules les modifications fusionnées dans `main` seront déployées ;
-- les _builds_ issus de branches secondaires seront simplement validés, sans
+- les _builds_ issus de branches secondaires seront simplement validées, sans
   publication.

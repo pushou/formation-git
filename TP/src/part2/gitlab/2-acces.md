@@ -13,17 +13,21 @@ Pour y accéder, cliquez sur le bouton correspondant en-dessous du bouton bleu
 « Sign in ». Vous vous retrouverez alors face à l’invite de connexion du centre
 de calcul de l’IN2P3 (CC-IN2P3) :
 
+<center>
+
 ![Invite de connexion CC-IN2P3](../../../images/gitlab-login-ccin2p3.png)
 
-La méthode proposée à gauche ne convient que pour les personnes qui ont un
-compte local au centre de calcul, ce qui ne sera pas le cas de beaucoup d’entre
-vous. Heureusement, l'instance GitLab du CC-IN2P3 accepte aussi la
-connexion via des comptes informatiques des laboratoires de recherche du monde
-entier grâce à la fédération eduGAIN.
+</center>
 
-Pour y accéder, cliquez sur le bouton « EDUGAIN » à droite de l’invite. Cela
-vous conduira à une nouvelle page où vous pouvez choisir une institution
-académique auprès de laquelle vous possédez un compte informatique.
+La méthode proposée en haut ne convient que pour les personnes qui ont un compte
+local au centre de calcul, ce qui ne sera pas le cas de beaucoup d’entre vous.
+Heureusement, l'instance GitLab du CC-IN2P3 accepte aussi la connexion via des
+comptes informatiques des laboratoires de recherche du monde entier grâce à la
+fédération eduGAIN.
+
+Pour y accéder, cliquez sur le bouton « eduGAIN » en bas de l’invite. Cela vous
+conduira à une nouvelle page où vous pouvez choisir une institution académique
+auprès de laquelle vous possédez un compte informatique.
 
 <center>
 
@@ -153,7 +157,7 @@ Dès que vous nous l'aurez transmis, nous pourrons vous donner un accès de nive
 le groupe et ce qu'il contient. En particulier, vous pourrez accéder au contenu
 du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser
 des branches de développement. Mais vous ne pourrez pas modifier directement le
-contenu de la branche `main`.
+contenu de sa branche `main`.
 
 Pour cela, vous devrez passer par une procédure de validation de notre part, la
 _merge request_, que nous allons explorer dans [l'étape suivante de ce

@@ -7,16 +7,16 @@ cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 
 
 ## Création de la brigade
 
-Dans chaque groupe, désignez un **chef de projet** — le _chef cuisinier_, si
-vous préférez. C’est cette personne qui sera responsable de créer le dépôt
-commun au sein d’un groupe privé dans le sous-groupe
+Dans chaque groupe, désignez un chef de projet, que nous appellerons dans la
+suite le **chef cuisinier**. C’est cette personne qui sera responsable de créer
+le dépôt commun au sein d’un groupe privé dans le sous-groupe
 [Brigades](https://gitlab.in2p3.fr/git-kitchen/brigades) sur GitLab. Prenez
 ensuite un moment pour choisir ensemble un nom de brigade original et
 représentatif.
 
-Le _chef cuisinier_ devra ensuite se signaler (pour nous permettre de vérifier
-l’équilibre des groupes), puis créer le sous-groupe de sa brigade dans le
-sous-groupe [Brigades](https://gitlab.in2p3.fr/git-kitchen/brigades). Nous
+Le chef cuisinier devra ensuite se signaler (pour permettre aux formateurs de
+vérifier l’équilibre des groupes), puis créer le sous-groupe de sa brigade dans
+le sous-groupe [Brigades](https://gitlab.in2p3.fr/git-kitchen/brigades). Nous
 conseillons à tous les membres de l'équipe de suivre ce que fait le chef
 cuisinier sur son poste afin que chacun se familiarise avec la création de
 groupe sur GitLab.
@@ -35,30 +35,31 @@ Pour créer le sous-groupe :
 
 ## Inviter les rédacteurs et gérer les permissions
 
-Le _chef cuisinier_ peut désormais inviter ses camarades à rejoindre sa brigade.
+Le chef cuisinier peut désormais inviter ses camarades à rejoindre sa brigade.
 Depuis la page du sous-groupe nouvellement créé, sélectionnez dans la barre
 latérale **Manage > Members**, puis cliquez sur le bouton bleu **Invite
 members** :
 
 ![Invite members](../../../images/invite-members-gitlab.png)
 
-Ajoutez les identifiants GitLab de vos coéquipiers et attribuez-leur un rôle
-adapté :
+Ajoutez les identifiants GitLab de vos coéquipiers et attribuez-leurs un
+[rôle](https://docs.gitlab.com/user/permissions/) adapté, qui définit ce qu'ils
+ont la permission de faire au sein de la brigade :
 
-| **Rôle GitLab**      | **Permissions principales**                                                                 | **Utilisation recommandée**                |
-| -------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès au dépôt privé ni de _push_.               | Invités, relecteurs ponctuels, testeurs    |
-| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de _push_.           | Relecteurs techniques (QA, PO)             |
-| **Planner**          | Peut planifier: créer/gérer _issues_, _milestones_. Pas d’accès au code.                    | Coordinateurs, chefs de projets            |
-| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_. | Développeurs                               |
-| **Maintainer**       | Peut fusionner les _merge requests_, gérer branches protégées, la CI/CD et les membres.     | Chefs de projet ou DevOps dédiés           |
-| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression).                       | Propriétaire du groupe (rarement délégué)  |
+| **Rôle GitLab**      | **Permissions principales**                                                                         | **Utilisation recommandée**                      |
+| -------------------- | --------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+| **Guest**            | Peut voir et commenter des _issues_. Pas d’accès aux dépôts privés.                                 | Invités, relecteurs ponctuels, testeurs          |
+| **Planner**          | Peut planifier, c'est à dire créer et gérer des _issues_, _milestones_ etc. Pas d’accès aux dépôts. | Coordinateurs, chefs de projets si DevOps dédiés |
+| **Reporter**         | Peut lire le code, les _pipelines_/rapports et créer des _issues_. Pas de _push_.                   | Relecteurs techniques (QA, PO)                   |
+| **Developer**        | Peut créer des branches, pousser sur branches non protégées et ouvrir des _merge requests_.         | Développeurs                                     |
+| **Maintainer**       | Peut fusionner les _merge requests_, gérer les branches protégées, la CI/CD et les membres.         | Chefs de projet ou DevOps dédiés                 |
+| **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression).                               | Propriétaire du groupe (rarement délégué)        |
 
 
 ## Créer le livre de recettes collaboratif
 
 Une fois le sous-groupe créé, il faut maintenant créer le dépôt GitLab qui
-contiendra le **livre de recettes collaboratif**. Le _chef cuisinier_ suit pour
+contiendra le **livre de recettes collaboratif**. Le chef cuisinier suit pour
 cela les mêmes étapes que dans le [TP
 précédent](../4-depot-personnel/2-creation-depot.md) :
 
@@ -84,7 +85,7 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
    avertis, héritée du sous-groupe).
 6. Cliquez sur **Create project**.
 
-Le _chef cuisinier_ accède alors à une page de projet GitLab vide, prête à accueillir
+Le chef cuisinier accède alors à une page de projet GitLab vide, prête à accueillir
 vos créations. Les membres de la brigade héritent automatiquement des
 permissions définies au niveau du sous-groupe et peuvent dès à présent
 contribuer au projet.
