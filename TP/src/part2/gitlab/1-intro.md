@@ -1,15 +1,28 @@
 # Parcours « GitLab fermé »
 
-Dans ce parcours, nous allons nous intéresser à la forge GitLab, et plus
-précisément à [l'instance de celle-ci](https://gitlab.in2p3.fr/) qui est
+Dans ce parcours, nous vous proposons d'utiliser la forge GitLab, et plus
+précisément [une instance de celle-ci](https://gitlab.in2p3.fr/) qui est
 hébergée par le centre de calcul de l'IN2P3.
 
-Nous allons utiliser cette forge sur un mode de collaboration fermé où seule
-l'équipe projet a accès au dépôt git. Ce mode de travail est adapté pour des
-projets manipulant des données confidentielles tels que des comptes-rendus de
-réunions ou des résultats de recherches non publiés. Ici, nous l'utiliserons
-pour gérer des livres de recettes de cuisine, dont on sait à quel point ils
-peuvent être un secret professionnel jalousement gardé !
+Parmi les nombreuses instances de GitLab hébergées au sein de la communauté
+académique[^gitlab], nous avons choisi celle de l'IN2P3 en raison de sa
+politique d'accès inhabituellement généreuse. Contrairement à la plupart des
+autres instances de GitLab qui ont un périmètre d'accès très restreint (une
+université, un institut, un laboratoire...), elle est en effet facilement
+accessible à la plupart des personnels académiques du monde via la [fédération
+d'identité eduGAIN](https://technical.edugain.org/status), ce qui en fait un
+outil précieux pour les collaborations interdisciplinaires et internationales.
+De plus, son hébergement sur sol français la rend pleinement compatible avec les
+politiques de gestion de données institutionnelles, y compris lorsqu'on manipule
+des données confidentielles.
+
+Dans cet esprit, nous allons utiliser pour cette forge sur un mode de
+collaboration fermé où seule l'équipe projet a accès au dépôt git commun. Ce
+mode de travail est adapté pour des projets manipulant des données
+confidentielles tels que des comptes-rendus de réunions ou des résultats de
+recherches non publiés. Et notre projet d'exemple pour illustrer ce type de
+collaboration sera l'édition de livres de recettes de cuisine, dont on sait à
+quel point ils peuvent être un secret professionnel jalousement gardé !
 
 Pour introduire les concepts en douceur, nous allons procéder en plusieurs temps
 :
@@ -34,3 +47,14 @@ Pour introduire les concepts en douceur, nous allons procéder en plusieurs temp
   expérience plus directe du rôle de mainteneur, ce sera aussi l'occasion pour
   vous d'aller plus loin avec l'intégration continue en découvrant le
   [déploiement continu](5-travail-equipe/3-deploiement-continu.md).
+
+[^gitlab]: Rien qu'au sein de la communauté académique française on recense
+           aujourd'hui [81 forges
+           auto-hébergées](https://hal-lara.archives-ouvertes.fr/hal-04098702/document)
+           dont la plupart sont des instances de GitLab, à quoi s'ajoutent
+           d'autres instances hébergées par nos partenaires de recherches
+           internationaux comme le [CERN](https://gitlab.cern.ch/),
+           [DESY](https://gitlab.desy.de)... La difficile interopérabilité entre
+           ces nombreuses instances de GitLab et la pertinence de dupliquer à ce
+           point nos efforts d'administration système restent à ce jour un
+           problème pour les générations futures.
