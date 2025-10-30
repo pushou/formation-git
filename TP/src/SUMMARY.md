@@ -17,7 +17,7 @@
 
 - [Introduction et clés SSH](part2/1-intro.md)
 - [Parcours « GitHub ouvert »](part2/github/1-intro.md)
-  - [Accès web et SSH](part2/github/2-acces.md)
+  - [Accès SSH](part2/github/2-acces.md)
   - [Contribuer à un dépôt](part2/github/3-contribution.md)
   - [Dépôt personnel](part2/github/4-depot-personnel/1-intro.md)
     * [Création d’un dépôt](part2/github/4-depot-personnel/2-creation-depot.md)

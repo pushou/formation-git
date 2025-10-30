@@ -7,48 +7,6 @@ _forks_ et des _pull requests_.
 
 ## Préparations au travail en réseau
 
-### Enregistrement de la clé publique SSH
-
-Nous allons maintenant transmettre la clé SSH publique que nous avons générée à
-GitHub, afin que le système nous reconnaisse lorsqu'on se connecte en SSH depuis
-git.
-
-Vous pouvez accéder à l’interface pour ajouter une clé SSH en vous rendant sur
-l’URL <https://github.com/settings/ssh/new>, après vous être connecté à votre
-compte GitHub avec le bouton « Sign In » en haut à droite. Ou si vous souhaitez
-le faire sans lien direct, vous pouvez vous y rendre en cliquant sur votre
-avatar en haut à droite de l’interface de GitHub, puis sur « Settings » dans le
-menu qui s’affiche, « SSH and GPG keys » dans la barre latérale à gauche de la
-nouvelle page qui s’ouvre, et enfin le bouton « New SSH key » vert en haut à
-droite.
-
-Dans tous les cas, vous vous retrouverez face au formulaire « Add new SSH Key » :
-
-![Formulaire « Add new SSH Key » de
-GitHub](../../images/github-add-new-ssh-key.png)
-
-Dans ce formulaire, vous êtes invité à saisir les informations suivantes :
-
-- **Title :** Un nom de votre choix qui vous permettra de distinguer cette clé
-  SSH de vos autres clés SSH. Nous vous conseillons d’utiliser un nom qui
-  clarifie qu’elle est temporaire et liée à cette formation, par exemple
-  « Formation Git ».
-- **Key type :** La façon dont vous souhaitez utiliser la clé SSH que vous êtes
-  en train d’ajouter à votre compte GitHub. Pour vous connecter à GitHub en SSH
-  avec git, prenez le choix par défaut « Authentication Key ».
-- **Key :** Collez ici la clé publique que vous avez générée précédemment. Pour
-  cela, vous pouvez l’afficher avec `cat` dans votre terminal…
-
-  ```bash
-  {{#include ../../5-reseau-forges.sh:show-pubkey}}
-  ```
-  
-  …puis la copier (avec un clic droit ou Ctrl+Maj+C) et la coller dans
-  l'interface de GitHub.
-
-Ensuite, plus qu’à valider, et vous êtes prêt à échanger des commits avec la
-forge GitHub !
-
 ### _Fork_ et clonage
 
 Une copie de la Déclaration des Droits de l’Homme et du Citoyen est disponible
