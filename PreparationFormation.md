@@ -41,6 +41,7 @@
 - Leur envoyer un mail de bienvenue
   * Instructions bâtiment 203 : coordonnées GPS, chemin depuis accueil 200,
     balisage papier si la météo le permet, rappeler qu'on fournit les PCs
+  * Mentionner que l'IFSeM ne paie plus le café => Machine à CB au B200
   * CESFO : si pas badge...
     - Attestation employeur via RH (attention bulletin de salaire pas OK)
     - Prévoir argent liquide ou chéquier
