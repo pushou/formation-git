@@ -6,7 +6,7 @@ Lorsque vous vous rendez à l'URL <https://gitlab.in2p3.fr> pour la première fo
 sur une machine[^private-browsing], vous allez vous retrouver face à l’invite de connexion de
 GitLab :
 
-![Invite de connexion GitLab](../../../images/gitlab-login.png)
+![Invite de connexion GitLab](../../images/gitlab-login.png)
 
 Nous allons utiliser ici la méthode de connexion « CC-IN2P3 Single Sign-On ».
 Pour y accéder, cliquez sur le bouton correspondant en-dessous du bouton bleu
@@ -15,7 +15,7 @@ de calcul de l’IN2P3 (CC-IN2P3) :
 
 <center>
 
-![Invite de connexion CC-IN2P3](../../../images/gitlab-login-ccin2p3.png)
+![Invite de connexion CC-IN2P3](../../images/gitlab-login-ccin2p3.png)
 
 </center>
 
@@ -31,7 +31,7 @@ auprès de laquelle vous possédez un compte informatique.
 
 <center>
 
-![Choix d'identité eduGAIN](../../../images/gitlab-login-edugain.png)
+![Choix d'identité eduGAIN](../../images/gitlab-login-edugain.png)
 
 </center>
 
@@ -68,7 +68,7 @@ voici par exemple la page de connexion Janus du CNRS :
 
 <center>
 
-![Choix d'identité eduGAIN](../../../images/gitlab-login-janus.png)
+![Choix d'identité eduGAIN](../../images/gitlab-login-janus.png)
 
 </center>
 
@@ -77,7 +77,7 @@ pour vous si vous ne vous êtes jamais connecté à l’instance GitLab de
 l’IN2P3 avec cette institution, puis vous vous retrouverez face à la page
 d'accueil de GitLab, qui ressemble à ceci :
 
-![Page d'accueil de GitLab](../../../images/gitlab-home.png)
+![Page d'accueil de GitLab](../../images/gitlab-home.png)
 
 [^private-browsing]: Pour plus de sécurité, vos comptes utilisateur sur les machines de TP
   partagées sont configurés pour oublier les connexions actives à chaque
@@ -104,11 +104,11 @@ D'une façon où d’une autre, vous vous retrouverez face à la page suivante, 
 vous pouvez cliquer sur le bouton « Add new key » en haut à droite pour ajouter
 une nouvelle clé SSH :
 
-![Interface de gestion des clés SSH de GitLab](../../../images/gitlab-ssh-keys.png)
+![Interface de gestion des clés SSH de GitLab](../../images/gitlab-ssh-keys.png)
 
 Ceci fait, vous vous retrouverez face au formulaire d'ajout de clé SSH :
 
-![Invite d'ajout de clé SSH de GitLab](../../../images/gitlab-ssh-add-key.png)
+![Invite d'ajout de clé SSH de GitLab](../../images/gitlab-ssh-add-key.png)
 
 Voici les informations dont vous aurez besoin pour le remplir :
 
@@ -148,7 +148,7 @@ du menu qui s'affiche, précédé d'un arobase `@` :
 
 <center>
 
-![Affichage du nom d'utilisateur dans GitLab](../../../images/gitlab-username.png)
+![Affichage du nom d'utilisateur dans GitLab](../../images/gitlab-username.png)
 
 </center>
 
