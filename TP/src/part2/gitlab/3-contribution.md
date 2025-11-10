@@ -2,9 +2,9 @@
 
 ## Créer un clone local du dépôt
 
-Vous devriez maintenant avoir accès au dépôt [« Git Kitchen / Recettes
-»](https://gitlab.in2p3.fr/git-kitchen/recettes) lorsque vous êtes connecté à
-l’instance GitLab de l'IN2P3.
+Vous devriez maintenant avoir accès au dépôt [« Git Kitchen /
+Recettes »](https://gitlab.in2p3.fr/git-kitchen/recettes) lorsque vous êtes
+connecté à l’instance GitLab de l'IN2P3.
 
 <div class="warning">
 
