@@ -20,10 +20,9 @@
     - Installations : `bash-completion git gitg meld nano vim emacs gedit
       wget unzip`
     - Partition /scratch sur disque local pour démo IO-intensive
-  * 20 comptes utilisateurs pour les stagiaires et un pour moi-même
-    - Nommage : formation-git-N avec N de 1 à 21
+  * 20 comptes utilisateurs pour les stagiaires et deux pour Sonny et moi
+    - Nommage : formation-git-N avec N de 1 à 22
     - Peuvent être supprimés dès le lendemain de la formation
-  * Utiliser routine CI pour test
 
 
 ## 1 mois avant fermeture des inscriptions
@@ -41,7 +40,8 @@
 - Préparer un groupe de contacts global dans Thunderbird
 - Leur envoyer un mail de bienvenue
   * Instructions bâtiment 203 : coordonnées GPS, chemin depuis accueil 200,
-    balisage papier si la météo le permet
+    balisage papier si la météo le permet, rappeler qu'on fournit les PCs
+  * Mentionner que l'IFSeM ne paie plus le café => Machine à CB au B200
   * CESFO : si pas badge...
     - Attestation employeur via RH (attention bulletin de salaire pas OK)
     - Prévoir argent liquide ou chéquier
