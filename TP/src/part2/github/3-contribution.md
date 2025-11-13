@@ -11,7 +11,7 @@ seule et ne vous permet pas de modifier directement les fichiers du dépôt.
 Maintenant que vous avez un compte GitHub, le mainteneur du dépôt pourrait vous
 donner un accès en écriture comme dans le parcours [« Gitlab
 fermé »](../gitlab/1-intro.md). Mais il faut comprendre que cela reflète une
-grande confiance:
+grande confiance de leur part:
 
 - Dans les configurations de sécurité standard [de
   GitHub](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)
@@ -23,19 +23,17 @@ grande confiance:
   [celle récemment survenue contre le projet
   `xz`](https://en.wikipedia.org/wiki/XZ_Utils_backdoor).
 - Même quand les mainteneurs du dépôt sont prêts à explorer des configurations
-  de sécurité non standard, complexes à configurer et moins faciles à comprendre
-  pour les autres contributeurs, la permission de pousser des branches au dépôt
-  reste irrémédiablement couplée à celle de modifier ou supprimer les branches
-  des autres développeurs (à l'exception typiquement de la branche
+  non standard, difficiles à configurer et inhabituelles pour les autres
+  contributeurs, la permission de pousser des branches au dépôt reste
+  irrémédiablement couplée à celle de modifier ou supprimer les branches des
+  autres développeurs (à l'exception typiquement de la branche
   principale[^protected-branches]), ce qui permet déjà de causer pas mal de
-  chaos en interne.
+  dégâts en interne.
 
-Ce mode d'accès au dépôt n'est donc pas très adapté quand on souhaite recevoir
-des contributions de parfaits inconnus comme c'est l'usage dans la communauté
-_open-source_.
-
-On préfère dans ce cas un autre mode de fonctionnement, basé sur des copies
-privées des dépôts git appelées _forks_. L'idée est la suivante :
+Ce mode d'accès au dépôt n'est donc pas adapté quand on souhaite recevoir des
+contributions de parfaits inconnus comme c'est l'usage dans la communauté
+_open-source_. On préfère alors une autre approche basée sur des copies privées
+des dépôts git appelées _forks_. L'idée est la suivante :
 
 - Vous créez une copie du dépôt git auquel vous voulez contribuer qui est
   associée à votre compte utilisateur et sous votre contrôle. Cette copie
