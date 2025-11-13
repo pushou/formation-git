@@ -16,7 +16,7 @@ De plus, son hébergement sur sol français la rend pleinement compatible avec l
 politiques de gestion de données institutionnelles, y compris lorsqu'on manipule
 des données confidentielles.
 
-Dans cet esprit, nous allons utiliser pour cette forge sur un mode de
+Dans cet esprit, nous allons utiliser cette forge sur un mode de
 collaboration fermé où seule l'équipe projet a accès au dépôt git commun. Ce
 mode de travail est adapté pour des projets manipulant des données
 confidentielles tels que des comptes-rendus de réunions ou des résultats de
