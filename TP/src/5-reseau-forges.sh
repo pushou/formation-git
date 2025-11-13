@@ -40,16 +40,16 @@ git clone git@gitlab.in2p3.fr:git-kitchen/recettes.git
 }
 unset -f test_this_manually
 cd ~/Desktop
-git clone https://github.com/HadrienG2/Recettes.git
+git clone https://github.com/HadrienG2/recettes.git
 
 
 ###### ANCHOR: goto-repo-and-show-remote
-cd Recettes/
+cd recettes/
 git remote -v
 ###### ANCHOR_END: goto-repo-and-show-remote
 
 ###### ANCHOR: add-upstream-remote
-git remote add upstream https://github.com/HadrienG2/Recettes.git
+git remote add upstream https://github.com/HadrienG2/recettes.git
 git fetch upstream
 ###### ANCHOR_END: add-upstream-remote
 
