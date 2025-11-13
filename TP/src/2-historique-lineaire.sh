@@ -171,7 +171,9 @@ git revert HEAD
 ###### ANCHOR_END: revert-head
 }
 unset -f test_this_manually
-git diff HEAD HEAD~ | patch -p1
+git diff HEAD HEAD~ >revert.diff
+patch -p1 <revert.diff
+rm revert.diff
 git add --all
 git commit -m "Revert latest commit"
 

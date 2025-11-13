@@ -233,9 +233,10 @@ Switched to branch 'main'
 On branch main
 nothing to commit, working tree clean
 + unset -f test_this_manually
-+ git diff HEAD HEAD~
-+ patch -p1
++ git diff HEAD HEAD~ >revert.diff
++ patch -p1 <revert.diff
 patching file AutreContenu.txt
++ rm revert.diff
 + git add --all
 + git commit -m 'Revert latest commit'
 [main KKKKKKK] Revert latest commit
