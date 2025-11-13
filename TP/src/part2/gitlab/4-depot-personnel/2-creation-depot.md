@@ -160,7 +160,7 @@ git status
 Vous devriez voir que le répertoire `recettes/` est non suivi (untracked). Il
 vous faut donc :
 
-1. ajouter le fichier de recette au suivi de Git ;
+1. ajouter le fichier de recette au suivi de git ;
 2. créer un commit local ;
 3. pousser ce commit sur le dépôt distant.
 
