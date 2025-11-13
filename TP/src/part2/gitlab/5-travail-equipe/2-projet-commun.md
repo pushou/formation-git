@@ -55,6 +55,49 @@ ont la permission de faire au sein de la brigade :
 | **Maintainer**       | Peut fusionner les _merge requests_, gérer les branches protégées, la CI/CD et les membres.         | Chefs de projet ou DevOps dédiés                 |
 | **Owner**            | Contrôle total du groupe/projet (visibilité, transfert, suppression).                               | Propriétaire du groupe (rarement délégué)        |
 
+Pour des raisons de sécurité, il est préférable de donner aux utilisateurs les
+permissions les plus limitées qui conviennent pour leur tâche. Ici, vous devriez
+tous pouvoir interagir avec le dépôt pour pratiquer git, donc ce serait des
+permissions de type **Developer**.
+
+<div class="warning">
+
+Au-delà de la formation, vous ne devriez donner ces permissions qu'à des
+personnes de confiance, car elles offrent déjà la possibilité de faire pas de
+dégats. Par exemple, une personne avec des permissions d'accès Developer à un
+dépôt peut déjà [publier des versions malveillantes d'un
+logiciel](https://en.wikipedia.org/wiki/XZ_Utils_backdoor) ou modifier/supprimer
+les branches de développement de tout le monde.
+
+Pour accepter des contributions d'inconnus, comme c'est l'usage en _open
+source_, le mode de fonctionnement basé sur les _forks_ et les _pull requests_
+qui est décrit dans le parcours [« GitHub
+ouvert »](../../github/3-contribution.md) est donc plus adapté. Il est hélas
+difficile de l'utiliser sur l'instance GitLab de l'IN2P3 en raison de sa
+politique administrative,[^gitlab-in2p3-forks] mais on peut l'utiliser sur
+d'autres instances GitLab comme [celle du CERN](https://gitlab.cern.ch) et
+l'instance commerciale [GitLab.com](https://about.gitlab.com/pricing/).
+
+Sur ces instances, la _merge request_ de GitLab fonctionne quasi-exactement
+comme la _pull request_ de GitHub, et peut donc être utilisée de la même façon.
+
+</div>
+
+[^gitlab-in2p3-forks]: Le centre de calcul de l'IN2P3, qui gère l'instance
+                       GitLab que nous utilisons ici, a fait le choix
+                       d'interdire à tous les utilisateurs créés depuis quelques
+                       années de créer des dépôts en leur nom propre. En effet,
+                       ceux-ci créent une charge de travail importante pour les
+                       administrateurs de l'instance GitLab au moment du départ
+                       des personnels non permanents, où il faut retrouver et
+                       contacter leurs collègues pour décider du devenir de
+                       leurs projets GitLab. Transfert à un autre membre de
+                       l'équipe ? Suppression ? Depuis cette époque, les
+                       utilisateurs ne peuvent créer des projets GitLab qu'au
+                       sein de groupes dont ils sont membres, ce qui empêche 
+                       l'utilisation habituelle des _forks_ pour l'accueil des
+                       contributions extérieures.
+
 
 ## Créer le livre de recettes collaboratif
 

@@ -236,6 +236,7 @@ nothing to commit, working tree clean
 + git diff HEAD HEAD~
 + patch -p1
 patching file AutreContenu.txt
++ rm revert.diff
 + git add --all
 + git commit -m 'Revert latest commit'
 [main KKKKKKK] Revert latest commit
