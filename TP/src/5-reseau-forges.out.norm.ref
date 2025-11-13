@@ -6,15 +6,15 @@
 ssh-pubkey SSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSHSSH formation-git
 + unset -f test_this_manually
 + cd ~/Desktop
-+ git clone https://github.com/HadrienG2/ddhc.git
-Cloning into 'ddhc'...
-+ cd ddhc/
++ git clone https://github.com/HadrienG2/recettes.git
+Cloning into 'recettes'...
++ cd recettes/
 + git remote -v
-origin	https://github.com/HadrienG2/ddhc.git (fetch)
-origin	https://github.com/HadrienG2/ddhc.git (push)
-+ git remote add upstream https://github.com/HadrienG2/ddhc.git
+origin	https://github.com/HadrienG2/recettes.git (fetch)
+origin	https://github.com/HadrienG2/recettes.git (push)
++ git remote add upstream https://github.com/HadrienG2/recettes.git
 + git fetch upstream
-From https://github.com/HadrienG2/ddhc
+From https://github.com/HadrienG2/recettes
  * [new branch]      main       -> upstream/main
 + git checkout main
 Already on 'main'
@@ -29,11 +29,11 @@ Your branch is up to date with 'upstream/main'.
 + git checkout -b NomDeBranche
 Switched to a new branch 'NomDeBranche'
 + unset -f test_this_manually
-+ echo -e '\nCeci n'\''est pas un pied de page'
-+ git add README.md
-+ git commit -m 'Ajout d'\''un pied de page rebelle'
-[NomDeBranche AAAAAAA] Ajout d'un pied de page rebelle
- 1 file changed, 2 insertions(+)
++ sed -Ei 's/(temps_de_repos: )""/\1"2 h"/' recettes/crepes.md
++ git add recettes/crepes.md
++ git commit -m 'Ajout du temps de repos recommandé'
+[NomDeBranche AAAAAAA] Ajout du temps de repos recommandé
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 + git checkout main
 Switched to branch 'main'
 Your branch is up to date with 'upstream/main'.
