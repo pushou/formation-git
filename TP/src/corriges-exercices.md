@@ -432,117 +432,16 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 ```
 
 
-## Exercices TP5
+## Exercices partie 2
 
-<div class="warning">
+En raison de la nature interactive et ouverte de la partie 2 sur les forges,
+nous ne fournissons pas de correction pour les exercices de cette partie.
 
-A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
-réécrit. Cette correction est donc en partie obsolète et devrait être mise à
-jour prochainement.
+En revanche les dépôts de recettes de cuisine auxquels vous contribuez
+initialement ([version GitHub](https://github.com/hadrienG2/recettes) et
+[version GitLab](https://gitlab.in2p3.fr/git-kitchen/recettes)) visent à vous
+fournir un exemple des différentes techniques enseignées durant cette formation,
+notamment pour l'intégration continue et la gestion des permissions utilisateur.
 
-</div>
-
-Tout d’abord, rendons-nous dans notre clone du dépôt `ddhc` :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:goto-repo}}
-```
-
-On peut vérifier la configuration des _remotes_ avec `git remote -v` :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:show-remote-details}}
-```
-
-Dans la variante « GitHub ouvert », on attend une sortie de ce genre…
-
-> ```text
-> origin  git@github.com:francine.dupont/ddhc.git (fetch)
-> origin  git@github.com:francine.dupont/ddhc.git (push)
-> upstream        https://github.com/HadrienG2/ddhc.git (fetch)
-> upstream        https://github.com/HadrienG2/ddhc.git (push)
-> ```
-
-…avec `origin` qui pointe sur votre _fork_ en connexion SSH, et `upstream` qui
-pointe sur le dépôt officiel en connexion HTTPS.
-
-Dans la variante « GitLab fermé », on attend plutôt cette sortie…
-
-> ```text
-> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (fetch)
-> origin  git@gitlab.in2p3.fr:git-kitchen/recettes.git (push)
-> ```
-
-…avec `origin` qui pointe sur le dépôt officiel en connexion SSH.
-
-Pour créer une nouvelle branche partant de la branche `main`, on commence par
-basculer sur la branche `main`…
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:checkout-main}}
-```
-
-…puis on crée la nouvelle branche et bascule dessus…
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:create-and-checkout-branch}}
-```
-
-…et on peut y enregistrer des changements avec les outils habituels :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:commit-something}}
-```
-
-On peut ensuite pousser la branche sur le dépôt `origin` avec `git push`. La
-première fois, on doit spécifier vers quelle _remote_ on pousse, mais on peut
-le mémoriser avec `--set-upstream` :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:push-and-set-upstream}}
-```
-
-Cette configuration fait que par la suite, si on a d’autres changements à
-pousser sur `origin`…
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:commit-more-things}}
-```
-
-…on pourra utiliser la forme raccourcie de `git push` pour les mettre en ligne :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:push-shortcut}}
-```
-
-Il est possible que la branche `main` du dépôt officiel évolue en parallèle de
-notre travail. On peut vérifier ce point en mettant à jour notre branche
-`main` locale :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:update-main}}
-```
-
-Si la sortie de `git pull` signale des changements, alors il faudra mettre à
-jour nos branches de développement avec des outils comme `git merge` ou `git
-rebase`.
-
-Pour conclure, mentionnons qu’un dépôt git distant sur lequel on pousse
-régulièrement nos commits est une copie de sauvegarde minimale de notre travail.
-Même si on supprimait malencontreusement une branche locale…
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:delete-local-branch}}
-```
-
-…on pourrait toujours la récupérer à partir de la version sauvegardée sur le
-dépôt distant, via le raccourci désormais habituel :
-
-```bash
-{{#include 5-reseau-forges-corrige.sh:recover-from-remote}}
-```
-
-De même, on pourrait remédier à une suppression accidentelle de branche distante
-en repoussant simplement la version locale de la branche. C’est le bon côté de
-la gestion de version distribuée : on a toujours au moins deux copies (plus ou
-moins à jour certes) de notre travail.
+N'hésitez pas à demander aux formateurs une explication de leur fonctionnement
+sous le capot !

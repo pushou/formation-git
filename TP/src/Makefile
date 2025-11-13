@@ -63,4 +63,3 @@ TP4.zip: 3-manipulation-branches.out
 4-depots-distribues-corrige.out: 4-depots-distribues.out
 #
 5-reseau-forges.out: 4-depots-distribues-corrige.out
-5-reseau-forges-corrige.out: 5-reseau-forges.out
