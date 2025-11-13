@@ -233,8 +233,8 @@ Switched to branch 'main'
 On branch main
 nothing to commit, working tree clean
 + unset -f test_this_manually
-+ git diff HEAD HEAD~ >revert.diff
-+ patch -p1 <revert.diff
++ git diff HEAD HEAD~
++ patch -p1
 patching file AutreContenu.txt
 + rm revert.diff
 + git add --all
