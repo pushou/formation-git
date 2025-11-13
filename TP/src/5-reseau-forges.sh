@@ -28,8 +28,8 @@ cat ~/.ssh/id_ed25519.pub
 function test_this_manually() {
 ###### ANCHOR: clone-from-github
 cd ~/Desktop
-# Remplacez URLDuFork par l'URL de votre fork
-git clone URLDuFork
+# Remplacez AdresseDuFork par l'adresse SSH de votre fork
+git clone AdresseDuFork
 ###### ANCHOR_END: clone-from-github
 
 ###### ANCHOR: clone-from-gitlab
@@ -40,16 +40,16 @@ git clone git@gitlab.in2p3.fr:git-kitchen/recettes.git
 }
 unset -f test_this_manually
 cd ~/Desktop
-git clone https://github.com/HadrienG2/ddhc.git
+git clone https://github.com/HadrienG2/Recettes.git
 
 
 ###### ANCHOR: goto-repo-and-show-remote
-cd ddhc/
+cd Recettes/
 git remote -v
 ###### ANCHOR_END: goto-repo-and-show-remote
 
 ###### ANCHOR: add-upstream-remote
-git remote add upstream https://github.com/HadrienG2/ddhc.git
+git remote add upstream https://github.com/HadrienG2/Recettes.git
 git fetch upstream
 ###### ANCHOR_END: add-upstream-remote
 
@@ -78,8 +78,8 @@ git config pull.ff only
 
 ###### ANCHOR: create-dev-branch-github
 git checkout main
-# Vous pouvez appeler votre branche de développement comme vous voulez, mais il
-# faudra adapter les commandes suivantes du TP en fonction du nom choisi
+# Remplacez "NomDeBranche" par un nom de branche git de votre choix dans cette
+# commande et toutes les commandes suivantes du chapitre.
 git checkout -b NomDeBranche
 ###### ANCHOR_END: create-dev-branch-github
 
@@ -95,13 +95,10 @@ git checkout -b NomDeBranche
 unset -f test_this_manually
 
 ###### ANCHOR: commit-on-dev-branch
-# Remplacez cette commande d'édition par une édition du fichier de votre choix.
-# N'hésitez pas à éditer le fichier avec votre éditeur de texte favori.
-echo -e "\nCeci n'est pas un pied de page" >> README.md
-git add README.md
-
-# Vous pouvez bien sûr adapter le message de commit aussi
-git commit -m "Ajout d'un pied de page rebelle"
+# Commandes à remplacer par une édition de votre choix, cf ci-dessus
+sed -Ei 's/(temps_de_repos: )""/\1"2 h"/' recettes/crepes.md
+git add recettes/crepes.md
+git commit -m "Ajout du temps de repos recommandé"
 ###### ANCHOR_END: commit-on-dev-branch
 
 ###### ANCHOR: update-main-and-merge
