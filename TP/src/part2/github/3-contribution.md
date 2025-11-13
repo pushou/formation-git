@@ -483,9 +483,23 @@ branche sur votre _fork_ :
   que vous pouvez suivre avec votre navigateur web lancer la création de la
   _pull request_.
 
-  ![Lien pour créer une pull request dans la sortie de git
-  push](../../images/github-push-pr-link.png)
-
+  ```text
+  > git push -u manu ajout-macarons
+  Énumération des objets: 6, fait.
+  Décompte des objets: 100% (6/6), fait.
+  Compression par delta en utilisant jusqu'à 20 fils d'exécution
+  Compression des objets: 100% (4/4), fait.
+  Écriture des objets: 100% (4/4), 2.42 Kio | 2.42 Mio/s, fait.
+  Total 4 (delta 1), réutilisés 0 (delta 0), réutilisés du paquet 0 (depuis 0)
+  remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+  remote:
+  remote: Create a pull request for 'ajout-macarons' on GitHub by visiting:
+  remote:      https://github.com/ManuMacaron/Recettes/pull/new/ajout-macarons
+  remote:
+  To github-manu-macaron:ManuMacaron/Recettes.git
+   * [new branch]      ajout-macarons -> ajout-macarons
+  la branche 'ajout-macarons' est paramétrée pour suivre 'manu/ajout-macarons'.
+  ```
 - Dans l'interface web de votre _fork_ sur GitHub, quand vous êtes connecté à
   votre compte, un bouton s'affiche temporairement quelques temps après avoir
   poussé des commits sur une branche. Ce bouton vous permet aussi de créer une
