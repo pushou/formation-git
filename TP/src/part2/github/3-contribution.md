@@ -9,26 +9,24 @@ libre. Mais pour des raisons évidentes de sécurité, cet accès est en lecture
 seule et ne vous permet pas de modifier directement les fichiers du dépôt.
 
 Maintenant que vous avez un compte GitHub, le mainteneur du dépôt pourrait vous
-donner un accès en écriture comme dans le parcours [« Gitlab
-fermé »](../gitlab/1-intro.md). Mais il faut comprendre que cela reflète une
-grande confiance de leur part:
+accorder un accès en écriture, comme dans le parcours [«Gitlab
+fermé»](../gitlab/1-intro.md). Mais il faut comprendre que cela reflète une
+grande confiance de sa part :
 
 - Dans les configurations de sécurité standard [de
   GitHub](https://docs.github.com/en/organizations/managing-user-access-to-your-organizations-repositories/managing-repository-roles/repository-roles-for-an-organization#permissions-for-each-role)
   comme [de
-  GitLab](https://docs.gitlab.com/user/permissions/#packages-and-registries-group-permissions)
+  GitLab](https://docs.gitlab.com/user/permissions/#packages-and-registries-group-permissions),
   une personne qui peut pousser des branches peut aussi pousser des _tags_ et
-  créer des _releases_. Ce qui, pour un projet logiciel, permet de mener des
-  attaques de type _supply chain_ contre les utilisateurs du logiciel comme
-  [celle récemment survenue contre le projet
-  `xz`](https://en.wikipedia.org/wiki/XZ_Utils_backdoor).
-- Même quand les mainteneurs du dépôt sont prêts à explorer des configurations
-  non standard, difficiles à configurer et inhabituelles pour les autres
-  contributeurs, la permission de pousser des branches au dépôt reste
-  irrémédiablement couplée à celle de modifier ou supprimer les branches des
-  autres développeurs (à l'exception typiquement de la branche
-  principale[^protected-branches]), ce qui permet déjà de causer pas mal de
-  dégâts en interne.
+  créer des _releases_. Pour un projet logiciel, cela ouvre la porte aux
+  attaques de type _supply chain_, comme [celle récemment survenue contre le
+  projet `xz`](https://en.wikipedia.org/wiki/XZ_Utils_backdoor).
+- Et même quand les mainteneurs acceptent d'explorer des configurations non
+  standard, difficiles à mettre en place et inhabituelles pour les autres
+  contributeurs, la permission de pousser des branches reste irrémédiablement
+  couplée à celle de modifier ou supprimer les branches d'autres développeurs (à
+  l'exception typiquement de la branche principale[^protected-branches]). Ce
+  couplage suffit déjà à causer pas mal de dégâts en interne.
 
 Ce mode d'accès au dépôt n'est donc pas adapté quand on souhaite recevoir des
 contributions de parfaits inconnus comme c'est l'usage dans la communauté
