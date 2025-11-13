@@ -1,8 +1,6 @@
 # Contribuer à un dépôt existant
 
-## Préparation
-
-### Rappel : _Forks_ et _pull requests_
+## Introduction
 
 Dans ce parcours, vous aviez en réalité accès au dépôt GitHub
 [« HadrienG2/Recettes »](https://github.com/HadrienG2/Recettes) depuis le début,
@@ -11,7 +9,7 @@ libre. Mais pour des raisons évidentes de sécurité, cet accès est en lecture
 seule et ne vous permet pas de modifier directement les fichiers du dépôt.
 
 Maintenant vous avez un compte GitHub, le mainteneur du dépôt pourrait vous
-accoder un accès en écriture, comme dans le parcours [« Gitlab
+accorder un accès en écriture, comme dans le parcours [« Gitlab
 fermé »](../gitlab/1-intro.md). Mais il faut comprendre que cela reflète une
 grande confiance de sa part:
 
@@ -23,12 +21,13 @@ grande confiance de sa part:
   créer des _releases_. Pour un projet logiciel, cela ouvre la porte aux
   attaques de type _supply chain_, comme [celle récemment survenue contre le
   projet `xz`](https://en.wikipedia.org/wiki/XZ_Utils_backdoor).
-- Et même quand les mainteneurs acceptent d'explorer des configurations non
-  standard, difficiles à mettre en place et inhabituelles pour les autres
-  contributeurs, la permission de pousser des branches reste irrémédiablement
-  couplée à celle de modifier ou supprimer les branches d'autres développeurs (à
-  l'exception typiquement de la branche principale[^protected-branches]). Ce
-  couplage suffit déjà à causer pas mal de dégâts en interne.
+- Pour contourner ce problème, les mainteneurs peuvent se tourner vers des
+  configurations non standard. Mais elles sont difficiles à mettre en place et
+  inhabituelles pour les autres contributeurs. Et la permission de pousser des
+  branches reste irrémédiablement couplée à celle de modifier ou supprimer les
+  branches d'autres développeurs (à l'exception typiquement de la branche
+  principale[^protected-branches]), ce qui suffit déjà à causer pas mal de
+  dégâts en interne.
 
 Ce mode d'accès au dépôt n'est donc pas adapté quand on souhaite recevoir des
 contributions de parfaits inconnus comme c'est l'usage dans la communauté
@@ -98,6 +97,9 @@ avant de passer à la suite.
                 intéressant que pour des modifications très simples comme
                 corriger une faute d'orthographe dans un fichier README par
                 exemple.
+
+
+## Préparation
 
 ### Création du _fork_
 
@@ -458,4 +460,138 @@ officiel du projet.
 
 </div>
 
-TODO
+### Soumission au dépôt officiel
+
+Une fois que vous avez mis des changements en ligne sous la forme d’une branche
+sur votre _fork_, vous pouvez demander l’intégration de ces changements au dépôt
+officiel avec une fonctionnalité des forges git modernes, la _pull request_.
+Cette fonctionnalité est également appelée _merge request_ par GitLab, mais
+comme nous utilisons GitHub dans ce TP, nous nous en tiendrons à sa terminologie
+afin d’éviter toute confusion.
+
+Comme son nom l’indique, une _pull request_ invite les mainteneurs du dépôt
+officiel à intégrer vos changements au projet en fusionnant les nouveautés de
+votre branche dans un historique officiel (généralement la branche `main`). Ce
+nom rend hommage à la commande `git pull`, dont nous avons vu qu'elle sert à
+obtenir et fusionner des changements distants.
+
+Vous avez peut-être remarqué durant l'étape précédente que GitHub vous fournit
+plusieurs raccourcis pour créer une _pull request_ lorsque vous poussez une
+branche sur votre _fork_ :
+
+- Dans la console, après avoir exécuté la commande `git push`, une URL s'affiche
+  que vous pouvez suivre avec votre navigateur web lancer la création de la
+  _pull request_.
+
+  ![Lien pour créer une pull request dans la sortie de git
+  push](../../images/github-push-pr-link.png)
+
+- Dans l'interface web de votre _fork_ sur GitHub, quand vous êtes connecté à
+  votre compte, un bouton s'affiche temporairement quelques temps après avoir
+  poussé des commits sur une branche. Ce bouton vous permet aussi de créer une
+  _pull request_ à partir de cette branche.
+
+  ![Lien pour créer une pull request dans l'interface web du
+  fork](../../images/github-new-pull-request-shortcut.png)
+
+Mais même si vous avez ignoré tous ces raccourcis, vous pouvez toujours créer
+« manuellement » une _pull request_ de la façon que nous allons décrire
+maintenant.
+
+D'abord, allez sur l’interface web de votre _fork_ et affichez la liste des
+branches avec le lien « N branches » en haut à gauche, un peu en dessous du nom
+du dépôt :
+
+![Lien donnant accès à la liste des
+branches](../../images/github-branch-list-button.png)
+
+Ensuite, trouvez la branche dont vous voulez soumettre les changements dans la
+liste et ouvrez le menu associé avec l'icône « points de suspension » sur la
+droite :
+
+![Accès au menu associé à une branche](../../images/github-branch-menu.png)
+
+Vous y trouverez l'option « New Pull Request » qui vous permet d'initier le
+processus de soumission de changements :
+
+<center>
+
+![Bouton « New pull request » dans le menu de
+branche](../../images/github-new-pull-request-button.png)
+
+</center>
+
+Après avoir fait tout ça, vous vous retrouverez face l'interface de création de
+_pull request_ que vous auriez vue directement si vous aviez utilisé un des
+raccourcis évoqués précédemment :
+
+![Interface de création d’une pull
+request](../../images/github-create-pull-request.png)
+
+De haut en bas, cette interface contient…
+
+- En haut, une section à laquelle vous n’aurez presque jamais besoin de toucher
+  qui vous permet de spécifier quelle branche de votre _fork_ (ou d’un autre
+  dépôt) vous voulez fusionner dans quelle branche du dépôt officiel.
+- Ensuite, un formulaire pour donner un nom à votre _pull request_ ainsi qu’une
+  description plus détaillée si besoin. Cette description peut être formatée
+  avec [le dialecte local de
+  Markdown](https://docs.github.com/fr/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+- En bas de ce formulaire, une case à cocher « Allow edits by maintainers » qui
+  permet aux mainteneurs du dépôt d’ajouter des changements à votre branche (ça
+  permet de fluidifier un peu le processus de passage en revue d’une
+  contribution en faisant directement les modifications mineures plutôt que de
+  vous demander de les faire vous-même).
+- Près de cette case à cocher, un bouton « Create pull request » qui termine la
+  saisie et crée la _pull request_, avec sur le côté droit une option un peu
+  trop bien cachée (flèche descendante) pour créer la _pull request_ en mode
+  brouillon. Cela signifie que vous informez les mainteneurs que vous aurez
+  bientôt des changements à intégrer et leur permettez d’y jeter un œil, mais
+  ne souhaitez pas qu’ils soient intégrés tout de suite, car vous n’avez pas fini
+  le travail.
+- En dessous de tout ça, pour information, une visualisation des changements
+  apportés par votre branche : liste des commits et différences par rapport à la
+  branche de destination.
+
+Pour les mainteneurs, une _pull request_ se présentera ensuite sous la forme du
+titre et de la description que vous avez choisi, d’une visualisation des
+changements proposés, et d’une interface permettant d’en discuter (pour proposer
+des modifications avant intégration par exemple). Nous allons voir cette
+interface ensemble lorsque l'un d'entre vous sera arrivé à ce point du TP.
+
+Si des changements sont demandés par un mainteneur, vous pouvez ajouter ceux-ci
+à votre branche locale via de nouveaux commits et de les pousser sur votre
+_fork_ avec un simple `git push`. La _pull request_ associée sera alors mise à
+jour automatiquement.
+
+Une fois la _pull request_ fusionnée, vous pourrez supprimer la branche de
+développement associée de vos dépôts locaux et distants…
+
+```bash
+{{#include ../../5-reseau-forges.sh:delete-dev-branch-github}}
+```
+
+…puis recommencer un autre développement depuis la branche `main` du dépôt
+officiel quand vous voudrez en reprenant le cheminement indiqué ci-dessus à
+partir du début.
+
+
+## À vous de jouer !
+
+À ce stade, vous en savez assez pour commencer à vous amuser avec notre livre de
+recettes. Vous pouvez par exemple :
+
+- ajouter une nouvelle recette de votre choix (titre, ingrédients, étapes, temps
+  de préparation/cuisson, etc.) ;
+- améliorer une recette existante en corrigeant l’orthographe, en précisant les
+  quantités ou en clarifiant une étape ;
+- proposer des variantes d'une recette ;
+
+Modifiez le texte comme vous le souhaitez, en n’hésitant pas à créer des commits
+en cours de route pour vous pouvoir revenir facilement en arrière. Puis, poussez
+votre branche finalisée sur le dépôt et soumettez une _merge request_ vers la
+branche `main` pour terminer ce TP.
+
+Une fois que vous serez à l'aise avec cette méthode de travail, vous pourrez
+vous lancer dans la [création de votre dépôt de recettes
+personnelles](4-depot-personnel/1-intro.md).

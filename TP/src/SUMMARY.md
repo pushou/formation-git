@@ -26,7 +26,6 @@
     * [Projet commun](part2/github/5-travail-equipe/2-projet-commun.md)
     * [Déploiement
       continu](part2/github/5-travail-equipe/3-deploiement-continu.md)
-  - [TODO: A migrer](part2/github/TODO.md)
 - [Parcours « GitLab fermé »](part2/gitlab/1-intro.md)
   - [Accès web et SSH](part2/gitlab/2-acces.md)
   - [Contribuer à un dépôt](part2/gitlab/3-contribution.md)
