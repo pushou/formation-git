@@ -244,7 +244,8 @@ du fichier. La troisième option « Blame » permet quand à elle de savoir 
 contribué à quelle section d'un fichier via quel commit, à la manière de
 l'utilitaire en ligne de commande `git blame`, mais sa sortie n'est pas très
 intéressante à ce stade puisque le fichier n'a qu'un seul auteur et n'a été
-édité que via un seul commit.
+édité que via un seul commit. Essayez-la plutôt sur un autre dépôt GitHub avec
+davantage d'historique pour comprendre son intérêt...
 
 Vous remarquerez également que la première ligne du message de votre nouveau
 commit est visible en haut de la page d'accueil du dépôt et de la visualisation
