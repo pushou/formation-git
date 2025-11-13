@@ -28,13 +28,13 @@ privées des dépôts git appelées _forks_. L'idée est la suivante :
   votre _fork_ jusqu'à obtenir une contribution qui vous semble digne d'être
   intégrée au dépôt original.
 - Vous soumettez alors aux mainteneurs du dépôt original cette contribution sous
-  la forme d'une _pull request_. C'est un mécanisme interne à la forge qui
-  notifie les mainteneurs que vous souhaitez qu'ils intègrent vos changements de
-  votre _fork_ au sein du dépôt officiel, vous permet de motiver ces
-  changements, et leur permet de les passer en revue et d'en discuter avec vous.
-  Ce processus de passage en revue manuel des contributions est souvent complété
-  par un jeu de tests automatisés (intégration continue), qui ne sauraient bien
-  sûr pas le remplacer.[^ci-isnt-enough]
+  la forme d'une _pull request_. Il s'agit d'un mécanisme propre à la forge qui
+  notifie les mainteneurs de votre souhait d'intégrer les changements de votre
+  fork au dépôt officiel, vous permet de justifier ces changements, et leur
+  offre la possibilité de les examiner et d'en discuter avec vous. Ce processus
+  de révision manuelle des contributions est généralement complété par un jeu de
+  tests automatisés (intégration continue), qui ne saurait bien sûr le
+  remplacer.[^ci-isnt-enough]
 - Une fois un accord trouvé entre les mainteneurs et vous, et les changements
   éventuellement demandés apportés à votre branche, les mainteneurs n'ont
   ensuite plus qu'à cliquer sur un bouton dans l'interface de GitHub. Vos
