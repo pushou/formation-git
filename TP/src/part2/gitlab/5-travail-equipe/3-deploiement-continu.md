@@ -236,6 +236,12 @@ déploiement continu** pour notre livre de recettes collaboratif. Il ne vous
 reste plus qu’à enrichir le contenu et à faire évoluer le site au fil des
 contributions de votre brigade.
 
+N'hésitez pas à aller lire la [conclusion commune](../conclusion-commune.md).
+Puis, si vous êtes en avance, commencez à jeter un oeil au parcours alternatif
+[« GitHub ouvert »](../github/1-intro.md) du TP. Celui-ci vous présentera, sur
+une autre forge couramment utilisée (GitHub), une méthode de travail plus
+adaptée pour des projets _open-source_ ouverts aux contributions extérieures.
+
 
 ---
 
