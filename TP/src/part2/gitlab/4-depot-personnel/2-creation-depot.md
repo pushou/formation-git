@@ -256,6 +256,13 @@ git push --set-upstream origin <branche>
 
 ---
 
+Fusionner une Merge Requests :
+
+Une fois la branche et la _merge request_ créées, vous pourrez fusionner vos
+modifications dans `main` via l'interface web de GitLab. Pour cela rendez-vous
+dans l'onglet « Code > Merge Requests », sélectionnez votre _merge request_,
+puis cliquez sur le bouton bleu « Merge » pour finaliser l'intégration.
+
 ## Informations complémentaires
 
 ### Nettoyage des branches distantes
