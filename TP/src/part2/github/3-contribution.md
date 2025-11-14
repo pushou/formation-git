@@ -59,7 +59,7 @@ des dépôts git appelées _forks_. L'idée est la suivante :
 On le voit, le mécanisme des _forks_ offre un canal sécurisé par lequel un
 projet peut accepter des contributions de parfaits inconnus, moyennant un
 processus de passage en revue des contributions suffisamment rigoureux. Nul
-besoin pour ça distribuer à tout va de dangereux accès en écriture. C'est donc
+besoin pour ça de distribuer à tout va de dangereux accès en écriture. C'est donc
 un mécanisme très adapté aux projets _open-source_.
 
 Mais il y a un prix à payer pour cette sécurité et cette ouverture, qui est une
