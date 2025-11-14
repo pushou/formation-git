@@ -131,8 +131,8 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
 Le chef cuisinier accède alors à une page de projet GitLab vide, prête à
 accueillir vos créations. Les membres de la brigade héritent automatiquement des
 permissions définies au niveau du sous-groupe et peuvent dès à présent
-contribuer au projet. Mais pour plus de sécurité, il est préférable de passer
-par une autre étape de configuration qui sécurise un peu plus ces contributions.
+contribuer au projet. Mais pour plus de sécurité, il est préférable de mettre
+aussi en place une protection de la branche `main` avant de continuer.
 
 
 ## Protéger la branche principale
