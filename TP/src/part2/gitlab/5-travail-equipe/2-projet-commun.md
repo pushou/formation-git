@@ -128,15 +128,69 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
    avertis, héritée du sous-groupe).
 6. Cliquez sur **Create project**.
 
-Le chef cuisinier accède alors à une page de projet GitLab vide, prête à accueillir
-vos créations. Les membres de la brigade héritent automatiquement des
+Le chef cuisinier accède alors à une page de projet GitLab vide, prête à
+accueillir vos créations. Les membres de la brigade héritent automatiquement des
 permissions définies au niveau du sous-groupe et peuvent dès à présent
-contribuer au projet.
+contribuer au projet. Mais pour plus de sécurité, il est préférable de passer
+par une autre étape de configuration qui sécurise un peu plus ces contributions.
 
-N'oubliez pas que vous pouvez également protéger la branche `main` (via
-**Settings > Repository > Protected branches**) pour que toute modification
-passe par une _merge request_ et limiter ainsi le risque d'accident sur la
-branche `main`.
+
+## Protéger la branche principale
+
+Dans la méthode de travail classique utilisée par cette formation, la branche
+`main` du dépôt a un statut spécial d'historique officiel du projet. Par
+exemple...
+
+- Quand on visualise le dếpôt dans l'interface web, on voit d'abord cette
+  branche.
+- Le site web officiel du projet est typiquement généré à partir de cette
+  branche.
+- Pour les projets logiciels, les versions que l'on publie sous forme de paquets
+  (ex: v2.0.0) dérivent souvent de commits _taggés_ sur cette branche.
+- Les contributions extérieures dérivent de cette branche et sont fusionnées en
+  son sein.
+
+Tout ceci fait qu'on souhaite souvent s'imposer et imposer aux autres une
+certaine prudence dans la manipulation de cette branche. Et la façon la plus
+simple de le faire est d'interdire l'ajout direct de commits à cette branche par
+_push_ direct. A la place, on impose l'utilisation de _merge requests_ qui
+permettent de s'assurer que les nouvelles contributions ont été revues par
+quelqu'un d'autre, passent les tests techniques, et plus généralement respectent
+la politique qualité du projet.
+
+On peut interdire le _push_ direct sur `main` en configurant le mécanisme des
+branches protégées de GitLab de la façon suivante :
+
+1. Dans l’interface web de GitLab, allez dans « Settings → Repository ».
+2. Dans la section « Protected branches », la branche `main` devrait déjà
+   apparaître dans la liste des branches protégées.
+3. Editez la valeur « Allowed to push and merge » pour restreindre les droits
+   d'accès et empêcher quiconque de pousser directement sur `main`.
+
+Essayez maintenant de modifier le fichier de recette
+`recettes/crepes-classiques.md` en local, de faire un commit, puis de pousser
+directement sur `main`. Si la protection est bien en place, GitLab devrait
+refuser le _push_ avec un message d'erreur indiquant que la branche est protégée
+:
+
+```text
+...
+remote: GitLab: You are not allowed to push code to protected branches on this project.
+...
+```
+
+Il ne vous reste alors qu'à créer une branche pour pouvoir intégrer vos
+modifications via une _merge request_. N'hésitez pas à relire la [section
+précédente](../3-contribution.md) si besoin.
+
+Une fois la branche et la _merge request_ créées, vous pourrez fusionner vos
+modifications dans `main` via l'interface web de GitLab. Pour cela rendez-vous
+dans l'onglet « Code > Merge Requests », sélectionnez votre _merge request_,
+puis cliquez sur le bouton bleu « Merge » pour finaliser l'intégration.
+
+Vous pourrez alors retourner voir le contenu et le graphique des commits de
+votre dépôt pour vérifier que vos modifications ont bien été intégrées dans
+`main`.
 
 
 ## Organiser le travail avec les tickets (_issues_)
@@ -260,6 +314,7 @@ un dépôt commun. En particulier, vous avez appris à :
 - Créer un groupe GitLab commun pour héberger un projet collectif ;
 - Inviter et gérer les membres avec des rôles et des permissions adaptés à leur
   fonction ;
+- Protéger la branche `main` pour imposer l'utilisation de _merge requests_.
 - Organiser le travail grâce aux tickets (_issues_) pour répartir clairement les
   tâches ;
 - Créer des branches pour chaque contribution et assurer un flux de travail
