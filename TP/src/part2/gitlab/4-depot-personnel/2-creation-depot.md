@@ -201,45 +201,7 @@ l'historique des commits :
 
 ![Graphique des commits dans GitLab](../../../images/gitlab-repo-graph.png)
 
-Vous devriez voir votre commit apparaître dans le graphique
-
-
-## Protéger la branche principale
-
-Pour éviter toute modification accidentelle de la branche principale `main`, il
-est recommandé de la protéger. Cela empêche les pushes directs et oblige à
-passer par des _merge requests_ pour intégrer des modifications.
-
-1. Dans l’interface web de GitLab, allez dans « Settings → Repository ».
-2. Dans la section « Protected branches », la branche `main` devrait déjà
-   apparaître dans la liste des branches protégées.
-3. Editez la valeur « Allowed to push and merge » pour restreindre les droits
-   d'accès et empêcher quiconque de pousser directement sur `main`.
-
-Essayer maintenant de modifier le fichier de recette
-`recettes/crepes-classiques.md` en local, de faire un commit, puis de pousser
-directement sur `main`. Si la protection est bien en place, GitLab devrait
-refuser le _push_ avec un message d'erreur indiquant que la branche est protégée
-:
-
-```text
-...
-remote: GitLab: You are not allowed to push code to protected branches on this project.
-...
-```
-
-Il ne vous reste alors qu'à créer une branche pour pouvoir intégrer vos
-modifications via une _merge request_. N'hésitez pas à relire la [section
-précédente](../3-contribution.md) si besoin.
-
-Une fois la branche et la _merge request_ créées, vous pourrez fusionner vos
-modifications dans `main` via l'interface web de GitLab. Pour cela rendez-vous
-dans l'onglet « Code > Merge Requests », sélectionnez votre _merge request_,
-puis cliquez sur le bouton bleu « Merge » pour finaliser l'intégration.
-
-Vous pourrez alors retourner voir le contenu et le graphique des commits de
-votre dépôt pour vérifier que vos modifications ont bien été intégrées dans
-`main`.
+Vous devriez voir votre commit apparaître dans le graphique.
 
 
 ## Conclusion
@@ -247,9 +209,7 @@ votre dépôt pour vérifier que vos modifications ont bien été intégrées da
 Dans ce chapitre, vous avez appris à créer votre propre dépot au sein du
 sous-groupe privé et à y versionner vos fichiers. Vous avez pu mettre en
 pratique les notions vu lors des chapitres précédents pour versionner puis
-publier une première recette de cuisine sur GitLab. Vous avez aussi appris à
-protéger la branche principale `main` pour éviter les modifications
-accidentelles, et à valider une _merge request_ via l'interface web de GitLab.
+publier une première recette de cuisine sur GitLab.
 
 Vous avez maintenant les bases pour gérer votre propre dépôt GitLab. Dans la
 suite, nous allons voir comment mettre en place quelques automatisations pour
@@ -260,10 +220,18 @@ chaque modification.
 
 ## Exercices
 
-1. Ajoutez une image de présentation dans un dossier `images/` et référencez-la
-   dans votre recette (champ `image:`).
-2. Poussez les changements et visualisez l'image dans l'interface web de GitLab.
-3. Fusionnez vos modifications dans `main` via une _merge request_.
+Jusqu'ici nous avons travaillé sur `main`, mais nous allons bientôt voir que
+cela a des inconvénients. Il est donc préférable de prendre tôt l'habitude de
+faire ses tests sur des branches dédiées. Voici un exercice pour vous y
+entraîner tout en révisant le mécanisme des _Merge Requests_ :
+
+1. Dans une nouvelle branche, ajoutez une image de présentation dans un dossier
+   `images/` et référencez-la dans votre recette (champ `image:`).
+2. Poussez les changements et visualisez l'image dans l'interface web de GitLab
+   (vous aurez besoin pour ça de basculer la visualisation, qui est par défaut
+   sur la branche `main`, sur votre branche de travail).
+3. Créez une _Merge Request_ depuis votre branche de travail vers votre branche
+   `main`, visualisez celle-ci dans l'interface de GitLab, puis fusionnez-la.
 
 ## Antisèche
 
@@ -287,6 +255,13 @@ git push --set-upstream origin <branche>
 ```
 
 ---
+
+Fusionner une Merge Requests :
+
+Une fois la branche et la _merge request_ créées, vous pourrez fusionner vos
+modifications dans `main` via l'interface web de GitLab. Pour cela rendez-vous
+dans l'onglet « Code > Merge Requests », sélectionnez votre _merge request_,
+puis cliquez sur le bouton bleu « Merge » pour finaliser l'intégration.
 
 ## Informations complémentaires
 
