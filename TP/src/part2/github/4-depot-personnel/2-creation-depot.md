@@ -256,6 +256,4 @@ est bien sûr possible de survoler les différentes informations avec la souris 
 cliquer dessus pour accéder à plus d'informations sur le commit en question.
 
 
-## Protéger la branche principale
-
-TODO
+## TODO

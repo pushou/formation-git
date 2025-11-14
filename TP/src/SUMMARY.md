@@ -31,7 +31,8 @@
   - [Contribuer à un dépôt](part2/gitlab/3-contribution.md)
   - [Dépôt personnel](part2/gitlab/4-depot-personnel/1-intro.md)
     * [Création d’un dépôt](part2/gitlab/4-depot-personnel/2-creation-depot.md)
-    * [Intégration continue](part2/gitlab/4-depot-personnel/3-integration-continue.md)
+    * [Intégration
+      continue](part2/gitlab/4-depot-personnel/3-integration-continue.md)
   - [Travail en équipe](part2/gitlab/5-travail-equipe/1-intro.md)
     * [Projet commun](part2/gitlab/5-travail-equipe/2-projet-commun.md)
     * [Déploiement continu](part2/gitlab/5-travail-equipe/3-deploiement-continu.md)
