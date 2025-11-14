@@ -157,7 +157,7 @@ haut en bas :
   sélectionner la branche dont les fichiers sont visualisés au sein de
   l'interface de GitHub, vous remarquerez qu'une nouvelle interface est apparue.
   Celle-ci vous permet de gérer la branche `main` de votre _fork_. Nous
-  n'encourageons pas le `main` du _fork_, qui est une source de confusion
+  n'encourageons pas son utilisation car elle est souvent source de confusion
   fréquente pour les débutants, donc nous ne détaillerons pas ces
   fonctionnalités.
 
