@@ -122,7 +122,7 @@ n'avez besoin que de la branche `main` pour travailler.[^main-branch]
 
 Après avoir cliqué sur le bouton « Create fork », vous allez potentiellement
 devoir attendre quelques secondes/minutes que les serveurs de GitHub créent le
-_fork_, cela dépend de leur niveau de charge à l'heure au moment de la
+_fork_, cela dépend de leur niveau de charge au moment de la
 formation. Puis quand l'opération sera terminée vous serez automatiquement
 redirigés vers la page d'accueil de votre _fork_ :
 
