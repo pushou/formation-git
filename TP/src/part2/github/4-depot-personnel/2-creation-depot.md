@@ -256,4 +256,72 @@ est bien sûr possible de survoler les différentes informations avec la souris 
 cliquer dessus pour accéder à plus d'informations sur le commit en question.
 
 
-## TODO
+## Conclusion
+
+Dans ce chapitre, vous avez appris à créer votre propre dépot public et à y
+versionner vos fichiers. Vous avez pu mettre en pratique les notions vu lors des
+chapitres précédents pour versionner puis publier une première recette de
+cuisine sur GitHub.
+
+Vous avez maintenant les bases pour gérer votre propre dépôt GitHub. Dans la
+suite, nous allons voir comment mettre en place quelques automatisations pour
+[valider automatiquement le contenu de votre dépôt](3-integration-continue.md) à
+chaque modification.
+
+---
+
+## Exercices
+
+Jusqu'ici nous avons travaillé sur `main`, mais nous allons bientôt voir que
+cela a des inconvénients. Il est donc préférable de prendre tôt l'habitude de
+faire ses tests sur des branches dédiées. Voici un exercice pour vous y
+entraîner tout en révisant le mécanisme des _pull requests_ :
+
+1. Dans une nouvelle branche, ajoutez une image de présentation dans un dossier
+   `images/` et référencez-la dans votre recette (champ `image:`).
+2. Poussez les changements et visualisez l'image dans l'interface web de GitHub
+   (vous aurez besoin pour ça de basculer la visualisation, qui est par défaut
+   sur la branche `main`, sur votre branche de travail).
+3. Créez une _pull request_ depuis votre branche de travail vers votre branche
+   `main`, visualisez celle-ci dans l'interface de GitHub, puis fusionnez-la.
+
+## Antisèche
+
+Cloner un dépôt (SSH) :
+
+```bash
+git clone git@github.com:<utilisateur>/<projet>.git
+```
+
+Vérifier l’état et la remote :
+
+```bash
+git status
+git remote -v
+```
+
+Publier une branche et définir le suivi :
+
+```bash
+git push --set-upstream origin <branche>
+```
+
+Fusionner une _pull request_ :
+
+Une fois la branche et la _pull request_ créées, vous pourrez fusionner vos
+modifications dans `main` via l'interface web de GitHub. Pour cela rendez-vous
+dans l'onglet « Pull requests », sélectionnez votre _pull request_, puis cliquez
+sur le bouton « Merge pull request » pour finaliser l'intégration.
+
+---
+
+
+## Informations complémentaires
+
+### Nettoyage des branches distantes
+
+Pensez à supprimer les branches devenues inutiles après fusion (commande `git
+push origin --delete <branche>` qui peut être automatisée via l'option de dépôt
+« Automatically delete head branches »), ainsi que leurs homologues dans votre
+dépôt local (`git branch -d <branche>`) sinon celles-ci risquent de s'accumuler
+très vite au sein de vos dépôts...
