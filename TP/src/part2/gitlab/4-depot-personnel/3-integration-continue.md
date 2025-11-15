@@ -13,11 +13,91 @@ typographiques de vos recettes rédigées en Markdown, à l’aide de
 [Grammalecte](https://grammalecte.net/).
 
 
+## Tour d'horizon de GitLab CI
+
+L'intégration continue est un sujet complexe, riche en concepts et en jargon
+spécifique à chaque forge. Nous vous proposons donc avant de commencer la
+pratique un petit survol des concepts et du jargon de GitLab, dont nous allons
+approfondir plusieurs points par la suite.
+
+Le système d'intégration continue de GitLab s'appelle [GitLab
+CI/CD](https://docs.gitlab.com/ci/) et il se configure avec un fichier YAML
+appelé `.gitlab-ci.yml` que vous devez créer à la racine de votre dépôt.
+
+Ce fichier YAML contient la description d'un _pipeline_, c'est à dire un
+ensemble de tâches (_jobs_) où chaque tâche est une [séquence de commandes
+_shell_](https://docs.gitlab.com/ci/yaml/#script) vouée à s'exécuter à chaque
+fois que de nouveaux commits sont poussés au sein du dépôt.[^triggers] On
+définit aussi généralement une [séquence d'étapes
+(_stages_)](https://docs.gitlab.com/ci/yaml/#stages) en s'assurant que [chaque
+_job_ est affecté à une étape](https://docs.gitlab.com/ci/yaml/#stage), ce qui
+permet de structurer l'exécution des _jobs_ de la façon suivante :
+
+- Les étapes d'un _pipeline_ s'exécutent dans l'ordre de la séquence, en
+  attendant que les _jobs_ associés à chaque étape soit terminés avant de
+  traiter l'étape suivante.
+- Les _jobs_ associés à une même étape sont par défaut[^needs] considérés comme
+  indépendants et peuvent s'exécuter en parallèle dans la limité des ressources
+  disponibles.
+
+A partir du moment où un fichier `.gitlab-ci.yml` est présent au sein d'une
+branche, chaque _push_ qui introduit de nouveaux commits au sein de cette
+branche déclenche l'exécution du _pipeline_ selon la logique décrite ci-dessus.
+Etape par étape, les _jobs_ sont soumis à un ensemble de serveurs chargés de les
+exécuter, appelés exécuteurs (_runners_), en visant idéalement à exécuter tous
+les _jobs_ d'une même étape en parallèle dans la limite des ressources
+disponibles.
+
+Mais vous pouvez facilement imaginer que si l'on multiplie ensemble un grand
+nombre de _jobs_ par étapes, de _pipelines_ qui s'exécutent simultanément et de
+projets GitLab, exécuter tous les _jobs_ simultanément nécessite beaucoup
+d'exécuteurs, donc [beaucoup de ressources
+informatiques](https://arxiv.org/abs/2510.26413). Le CC-IN2P3 n'a pas la
+possibilité d'offrir bénévolement autant de ressources à la très large
+communauté d'utilisateurs de son instance GitLab, il a donc choisi la politique
+suivantes :
+
+- Chaque _job_ doit travailler sous des limites de ressources drastiques, pas
+  toujours clarifiées. Tout ce qui est [documenté clairement
+  ](https://doc.cc.in2p3.fr/fr/Collaborative-tools/gitlab/gitlab-cicd.html),
+  c'est qu'un _job_ dispose de 4 VCPUs et 2 Go de RAM, soit 512 Mo de RAM par
+  VCPU. Il est facile d'atteindre cette limite, notamment avec des tâches de
+  compilation C++, et difficile de décoder les messages d'erreur qui en
+  découlent.
+- Toute personne qui a besoin de davantage de ressources ou de faire des tests
+  sur un OS autre que Linux est [cordialement 
+  invitée](https://doc.cc.in2p3.fr/fr/Collaborative-tools/gitlab/gitlab-cicd.html#construire-une-infrastructure-ci-cd)
+  à mettre en place et maintenir [ses propres
+  exécuteurs](https://docs.gitlab.com/runner/).
+
+Dans la suite de cette formation, nous ne détaillerons pas davantage cette
+notion d'exécuteur, et prendrons pour acquis que ceux qui sont fournis par le
+CC-IN2P3 sont suffisants, afin de pouvoir nous concentrer davantage sur la
+définition des _pipelines_.
+
+[^needs]: Il est possible de définir des dépendances directes entre _jobs_ via
+          le mot-clé [`needs`](https://docs.gitlab.com/ci/yaml/#needs). Ce mode
+          d'ordonnancement des _jobs_ est plus flexible et permet souvent de
+          mieux utiliser les ressources disponibles, mais il est aussi plus
+          difficile à maîtriser car il est facile d'oublier une dépendance et on
+          ne le repérera pas forcément tout de suite si les ressources
+          disponibles au moment du test sont insuffisantes pour exposer des
+          possibilités de parallélisme qui n'ont pas lieu d'être.
+
+[^triggers]: Il est possible de déclencher un _pipeline_ en réponse à d'autres
+             événements, par exemple à intervalles de temps régulier ou
+             récursivement depuis le _pipeline_ d'un autre dépôt sur la même
+             forge, mais ces techniques avancées dépassent largement le cadre de
+             cette formation. Nous verrons en revanche en annexe comment
+             restreindre l'exécution du _pipeline_ à certains commits en
+             particulier.
+
+
 ## Préparation
 
-Avant de commencer, assurez-vous que votre espace de travail local est propre
-(aucune modification en cours) et à jour (synchronisé avec le dépôt distant sur
-GitLab).
+Avant de commencer, assurez-vous que votre répertoire de travail est propre
+(aucune modification en cours), que votre dépôt est à jour (synchronisé avec le
+dépôt distant sur GitHub) et que vous êtes sur la branche `main`.
 
 Créez ensuite une branche dédiée à la mise en place de l’intégration continue :
 
@@ -28,8 +108,8 @@ git checkout -b ci-grammalecte
 
 ## Créer le fichier `.gitlab-ci.yml`
 
-L’intégration continue sur GitLab est configurée à l’aide d’un fichier YAML
-nommé `.gitlab-ci.yml`.
+On l'a vu, sur GitLab, l'intégration continue est configurée à l’aide d’un
+fichier YAML nommé `.gitlab-ci.yml`.
 
 À la racine de votre dépôt, créez ce fichier :
 
@@ -37,34 +117,7 @@ nommé `.gitlab-ci.yml`.
 touch .gitlab-ci.yml
 ```
 
-Ce fichier décrit les différentes étapes (ou
-[_stages_](https://docs.gitlab.com/ci/yaml/#stages)) que GitLab exécutera
-automatiquement sur ses
-[_runners_](https://docs.gitlab.com/runner/)[^custom-runners] — des machines
-virtuelles qui lancent vos _jobs_ CI/CD. Par défaut[^dag-scheduling], ces
-étapes s'exécutent les unes les un après les autres, en attendant que chacune se
-termine avant de lancer la suivante, et l'ensemble forme ce qu’on appelle un
-[_pipeline_](https://docs.gitlab.com/ci/pipelines/).
-
-[^custom-runners]: Il est possible de configurer ses propres _runners_, mais
-                   pour ce TP nous utiliserons les _runners_ partagés mis à
-                   disposition par le CC-IN2P3.
-
-[^dag-scheduling]: On peut aussi configurer des _jobs_ pour qu'ils se
-                   déclenchent dès que certains autres _jobs_ ont terminé en
-                   utilisant le mot-clé
-                   [`needs`](https://docs.gitlab.com/ci/yaml/#needs). Cela
-                   permet d'améliorer les performances de certains _pipelines_
-                   où il n'y a pas assez de _jobs_ pour bien utiliser tous les
-                   _runners_ disponibles au sein d'un _stage_ unique, mais le
-                   prix à payer est une écriture et d'une maintenance plus
-                   difficile du fichier `.gitlab-ci.yml`.
-
-Une fois le fichier `.gitlab-ci.yml` poussé (_push_) sur le dépôt distant,
-GitLab le détecte automatiquement et exécute les étapes qu’il contient. Par
-défaut, GitLab lance le _pipeline_ à chaque _push_ sur n’importe quelle branche.
-
-Dans un premier temps, nous allons définir une seule étape, appelée
+Dans un premier temps, nous allons y définir une seule étape, appelée
 `lint`[^lint], chargée de vérifier la qualité du texte.
 
 Pour cela, ouvrez le fichier `.gitlab-ci.yml` avec votre éditeur préféré et
