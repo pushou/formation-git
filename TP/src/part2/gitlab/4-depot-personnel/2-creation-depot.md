@@ -127,7 +127,7 @@ cout: "€"
 tags:
   - rapide
   - végétarien
-image: "/images/crepes-classiques.jpg"
+image: "/recettes/crepes.jpg"
 ingredients:
   - "250 g de farine"
   - "3 œufs"
@@ -225,8 +225,10 @@ cela a des inconvénients. Il est donc préférable de prendre tôt l'habitude d
 faire ses tests sur des branches dédiées. Voici un exercice pour vous y
 entraîner tout en révisant le mécanisme des _merge requests_ :
 
-1. Dans une nouvelle branche, ajoutez une image de présentation dans un dossier
-   `images/` et référencez-la dans votre recette (champ `image:`).
+1. Dans une nouvelle branche, ajoutez une image de présentation dans le dossier
+   `recettes` et référencez-la dans votre recette (champ `image:`). Pour
+   faciliter le repérage dans les fichiers plus tard, c'est une bonne idée de
+   donner à l'image le même nom que la recette correspondante.
 2. Poussez les changements et visualisez l'image dans l'interface web de GitLab
    (vous aurez besoin pour ça de basculer la visualisation, qui est par défaut
    sur la branche `main`, sur votre branche de travail).
