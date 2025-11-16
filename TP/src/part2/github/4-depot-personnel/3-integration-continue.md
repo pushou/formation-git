@@ -139,6 +139,250 @@ afin de mieux expliquer sa structure :
 touch .github/workflows/grammalecte.yml
 ```
 
-### TODO: Nom de pipeline etc
+### Nom du _workflow_
+
+Par défaut, l'interface web de GitHub désigne les _workflows_ par le chemin vers
+le fichier dans lequel ils sont définis. Ce n'est pas toujours très clair, et on
+n'a pas forcément envie d'utiliser un nom de fichier très long pour clarifier,
+donc la coutume est plutôt d'utiliser l'option [`name`] pour donner au
+_workflow_ un nom plus explicite.
+
+Pour cela, ouvrez le fichier `.github/workflows/grammalecte.yml` avec votre
+éditeur de texte préféré et ajoutez-y le texte suivant :
+
+```yaml
+name: "Vérification grammaire/orthographe"
+```
+
+### Événement déclencheur (_trigger_)
+
+Après avoir donné un nom à notre _workflow_, nous allons ensuite vouloir définir
+dans quel cas il va s'exécuter. On utilise pour cela l'option
+[`on`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#on).
+
+Il est possible de programmer l'exécution d'un _workflow_ en réponse à [de
+nombreux événements
+déclencheurs](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows).
+Nous allons pour commencer déclencher le _workflow_ quand de nouveaux commits
+sont ajoutés au dépôt, ce qui correspond à l'événement
+[`push`](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#push) :
+
+```yaml
+# ... après le nom de workflow ...
+
+on: push
+```
+
+### Définir le _job_ d'analyse
+
+Notre premier _workflow_ ne contiendra qu'un seul _job_
+`grammaire_et_orthographe` chargé d'analyser le contenu des recettes.
+
+Ce _job_ nécessite un environnement Python afin d’exécuter Grammalecte. Pour
+simplifier la gestion d’environnements parfois hétérogènes (chaque _job_ ayant
+ses propres dépendances), GitHub Actions permet d’utiliser des [images
+Docker](https://hub.docker.com/). Celles-ci offrent des environnements
+préconfigurés couvrant un large éventail de besoins.
+
+Ici, nous utiliserons l’image officielle `python:3.12`, qui contient la dernière
+version de Python 3.12 :
+
+```yaml
+# ... après l'événement déclencheur ...
+
+jobs:
+  grammaire_et_orthographe:
+    runs-on: ubuntu-latest
+    container: python:3.12
+    # ... d'autres instructions viendront ici plus tard ...
+```
+
+Après avoir utilisé le mot-clé
+[jobs](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobs)
+pour indiquer que nous allons définir les travaux exécutés par ce _workflow_,
+nous déclarons notre premier _job_ en lui donnant le nom
+`grammaire_et_orthographe`. Puis nous demandons qu'il soit exécuté par un
+_runner_ sous Linux[^linux-runner], car c'est le seul système d'exploitation qui
+supporte nativement[^native-docker] l'utilisation de conteneurs Docker. Et enfin
+nous demandons que ce _runner_ travaille avec l'image Docker `python:3.12`.
+
+Notez qu'en YAML comme en Python, l'indentation est significative: elle sert à
+indiquer que `grammaire_et_orthographe` est un _job_ (car il est plus indenté
+que `jobs:`), puis à indiquer que `runs_on` et `container` sont des propriétés
+de ce _job_ précis.
+
+[^linux-runner]: ...plus précisément sous la dernière version
+                 d'[Ubuntu](https://ubuntu.com/), car 1/Ubuntu est la seule
+                 distribution Linux disponible sur les _runners_ par défaut de
+                 GitHub et 2/la version d'Ubuntu utilisée importe peu quand on
+                 travaille avec des images Docker, donc autant utiliser une
+                 version `latest` qui va évoluer automatiquement au fil du
+                 temps, ce qui nous fera un numéro de version de moins à
+                 maintenir à jour manuellement à l'avenir.
+
+[^native-docker]: Les versions de Docker pour Windows et macOS utilisent une
+                  machine virtuelle Linux sous le capot.
+
+### Installer Grammalecte
+
+Nous devons ensuite expliquer à GitHub comment installer Grammalecte dans
+l’environnement Python fourni par l’image Docker. Nous utiliserons `pip`, le
+gestionnaire de paquets Python, pour installer une surcouche de Grammalecte
+nommée  [`grammalint`](https://gitlab.in2p3.fr/sonny.lion/grammalint).
+
+La commande d’installation est la suivante :
+
+```bash
+python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
+```
+
+Pour l'exécuter, il suffit d'ajouter une étape à notre _job_ :
+
+```yaml
+jobs:
+  grammaire_et_orthographe:
+    # ... options globales du job ...
+    steps:
+      - name: Installation de grammalint
+        run: python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
+      # ... d'autres instructions viendront ici plus tard ...
+```
+
+Avec le mot-clé
+[`steps`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idsteps),
+nous indiquons que nous commençons la liste des étapes du _job_. Puis nous
+créons une première étape (notez le tiret), nous donnons un nom à cet étape
+(optionnel mais recommandé) avec l'option
+[`name`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsname),[^name-aliasing]
+et enfin nous indiquons que cette étape du _job_ consiste à exécuter une
+commande _shell_ avec l'option
+[`run`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsrun).
+
+[^name-aliasing]: Notez qu'une même option peut avoir un effet différent selon
+                  sa profondeur d'indentation, encore une fois l'indentation est
+                  très importante en YAML.
+
+### Extraire les fichiers du dépôt
+
+Dans GitHub Actions, l'extraction des fichiers du dépôt est une étape dédiée au
+sein d'un _job_, ce qui représente un léger gain en termes de flexibilité par
+rapport à la plupart des autres systèmes d'intégration continue où cette
+opération est implicite :
+
+- Le travail associé à l'extraction des fichiers n'est pas effectué quand il
+  n'est pas utile, par exemple si le _job_ échoue dès les étapes préparatoires
+  (comme l'installation de `grammalint` ici). Ou, sur des _workflows_ plus
+  complexes, si un _job_ ne dépend que des sorties des _jobs_ précédents (ex :
+  binaires précompilés) et pas des fichiers source contenus dans le dépôt.
+- Puisque l'opération d'extraction est explicite, il est possible de la
+  configurer pour lui demander d'extraire un commit de son choix. C'est
+  intéressant quand on utilise des déclencheurs autres que `push` où la notion
+  de dernier commit n'a pas forcément de sens.
+
+Ici, nous voulons travailler avec les derniers commits qui ont été poussés, donc
+il nous suffit d'exécuter l'action `checkout` avec ses paramètres par défaut :
+
+```yaml
+jobs:
+  grammaire_et_orthographe:
+    # ... options globales du job ...
+    steps:
+      # ... installation de grammalint ...
+      - name: Extraction des fichiers
+        uses: actions/checkout@v5
+      # ... d'autres instructions viendront ici plus tard ...
+```
+
+Notez l'utilisation du mot-clé
+[`uses`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsuses).
+Celui-ci nous indique que `checkout` n'est pas une commande _shell_ normale,
+mais une action, c'est à dire un programme réutilisable de complexité
+arbitraire. Ce programme est distribué par GitHub, et vous trouverez sa
+documentation (par exemple les options qu'il accepte en paramètre) dans [le
+dépôt de code source associé](https://github.com/actions/checkout/).
+
+GitHub n'ont pas le monopole de la création d'actions, et vous pouvez aussi
+[utiliser des actions créées par d'autres
+personnes](https://github.com/marketplace?type=actions) ou [créer vos propres
+actions](https://docs.github.com/en/actions/how-tos/create-and-publish-actions),
+ce qui est utile quand vos fichiers de _workflows_ commencent à devenir
+répétitifs. Mais cela dépasse le cadre de cette formation.
+
+### Effectuer l’analyse des fichiers
+
+Une fois `grammalint` installé et le commit actif extrait, il faut indiquer à
+GitHub comment lancer l’analyse des fichiers Markdown. Pour vérifier un fichier
+spécifique, on utilise la commande suivante :
+
+```bash
+python -m grammalint -i recettes/crepes-classiques.md
+```
+
+Pour analyser tous les fichiers Markdown du dossier `recettes/` (y compris ceux
+des sous-dossiers), on utilise la commande suivante :
+
+```bash
+python -m grammalint -i recettes/**/*.md
+```
+
+En intégrant cette seconde commande à notre _job_ sous forme d'étape
+supplémentaire, le fichier de _workflow_ complet devient :
+
+```yml
+name: "Vérification grammaire/orthographe"
+
+on: push
+
+jobs:
+  grammaire_et_orthographe:
+    runs-on: ubuntu-latest
+    container: python:3.12
+    steps:
+      - name: Installation de grammalint
+        run: python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
+      - name: Extraction des fichiers
+        uses: actions/checkout@v5
+      - name: Vérification de la grammaire/orthographe
+        run: python -m grammalint -i recettes/**/*.md
+```
+
+
+## Mettre à l’épreuve le _workflow_
+
+Une fois votre _workflow_ prêt, il est temps de vérifier que tout fonctionne.
+
+Pour cela, versionnez le fichier et poussez-le (_push_) sur le dépôt distant.
+Rendez-vous ensuite dans l’interface web de GitHub, onglet **Actions**, pour
+observer le _workflow_ en action. Vous devriez voir une page similaire à
+celle-ci :
+
+![Interface GitHub - Actions](../../../images/github-actions-tab.png)
+
+Dans la table de droite, chaque ligne correspond à l'exécution d'un _workflow_
+et se structure de la façon suivante :
+
+- D'abord un petit pictogramme qui indique si l'exécution a réussi ou échoué.
+  Ici, nous avons une croix rouge qui signale un échec. En cas de réussite ce
+  serait une coche verte.
+- Ensuite un titre qui est par défaut tiré du message de commit. Vous pouvez
+  le personnaliser avec l'option de _workflow_
+  [`run-name`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#run-name).
+- Sous le titre, des infos plus détaillées concernant le _workflow_ qui s'est
+  exécuté, le nombre de fois que ce _workflow_ s'est exécuté précédemment,
+  l'identifiant du commit qui a déclenché le _workflow_, et le nom d'utilisateur
+  de la personne qui a poussé ce commit.
+- A droite, en bleu, le nom de la branche au sein duquel le commit a été poussé.
+- Et enfin, des statistiques concernant le moment auquel le _workflow_ s'est
+  exécuté et la durée pendant laquelle il s'est exécuté.
+
+Si le _workflow_ ne s’exécute pas, vérifiez que...
+
+- le fichier de _workflow_ possède bien l'extension `.yml` ou `.yaml` ;
+- il est placé à la position `.github/workflows/xyz.yml` par rapport à la racine
+  du dépôt ;
+- il a bien été inclus dans un commit qui a ensuite été poussé sur GitHub.
+
+
+## TODO: Consulter les journaux du _workflow_
 
 TODO

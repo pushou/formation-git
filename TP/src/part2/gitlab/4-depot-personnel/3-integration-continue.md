@@ -117,6 +117,8 @@ fichier YAML nommé `.gitlab-ci.yml`.
 touch .gitlab-ci.yml
 ```
 
+### Liste des étapes (_stages_)
+
 Dans un premier temps, nous allons y définir une seule étape, appelée
 `lint`[^lint], chargée de vérifier la qualité du texte.
 
@@ -132,11 +134,10 @@ stages:
   - lint
 ```
 
+### Définir le _job_ d’analyse
 
-## Définir le _job_ d’analyse
-
-L’étape `lint` comprendra un seul _job_, intitulé `grammaire_et_orthographe`,
-chargé d’analyser le contenu des recettes.
+L’étape `lint` ne comprendra qu'un seul _job_ `grammaire_et_orthographe` chargé
+d'analyser le contenu des recettes.
 
 Ce _job_ nécessite un environnement Python afin d’exécuter Grammalecte. Pour
 simplifier la gestion d’environnements parfois hétérogènes (chaque _job_ ayant
@@ -162,14 +163,12 @@ indiquons à GitLab d’utiliser cette image Docker pour exécuter le _job_. Et 
 le mot-clé [`stage`](https://docs.gitlab.com/ci/yaml/#stage), nous précisons au
 sein de quelle étape du _pipeline_ ce _job_ va s'exécuter.
 
-
 ### Installer Grammalecte
 
 Nous devons maintenant expliquer à GitLab comment installer Grammalecte dans
 l’environnement Python fourni par l’image Docker. Nous utiliserons `pip`, le
 gestionnaire de paquets Python, pour installer une surcouche de Grammalecte
-nommée `grammalint`, disponible
-[ici](https://gitlab.in2p3.fr/sonny.lion/grammalint).
+nommée [`grammalint`](https://gitlab.in2p3.fr/sonny.lion/grammalint).
 
 La commande d’installation est la suivante :
 
@@ -199,8 +198,7 @@ grammaire_et_orthographe:
                   lorsqu'on on l'utilise en combinaison avec
                   [`extends`](https://docs.gitlab.com/ci/yaml/#extends).
 
-
-### Configurer l’analyse des fichiers
+### Effectuer l’analyse des fichiers
 
 Une fois `grammalint` installé, il faut indiquer à GitLab comment lancer
 l’analyse des fichiers Markdown. Pour vérifier un fichier spécifique, on utilise
