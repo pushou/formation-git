@@ -441,16 +441,15 @@ fautes d'orthographe et de typographie par Grammalecte :
   nous n'avons pas respecté cette règle de typographie au niveau de nos temps de
   préparation, repos et cuisson.
 
-La première est erreur est un faux positif que l'on corrigerait normalement en
+La première erreur est un faux positif que l'on corrigerait normalement en
 ajoutant le nom au dictionnaire utilisé pour la vérification orthographique.
-Mais Grammalecte ne simplifie hélas pas du tout cette opération, les ajouts au
-dictionnaire devant être effectués via un fichier JSON utilisant un format
-complexe.
+Hélas Grammalecte ne facilite pas cette opération, les ajouts au dictionnaire
+devant être effectués via un fichier JSON de format complexe.
 
-Nous vous proposons à la place de désactiver la vérification orthographique et
-grammaticale pour le champ `auteur:` des en-tête de recettes, car ce champ est
-très sujet aux faux positifs de correcteur orthographique. Cela peut être fait
-en passant l'option `--skip-frontmatter-keys auteur` à grammalint.
+Nous vous proposons donc à la place de désactiver la vérification orthographique
+et grammaticale pour le champ `auteur:` des en-tête de recettes, car ce champ
+est très sujet aux faux positifs de correcteur orthographique. Cela peut être
+fait en passant l'option `--skip-frontmatter-keys auteur` à grammalint.
 
 Pour ce qui concerne les espaces insécables, ils ne sont malheureusement pas
 nativement disponibles sur le clavier français, donc on est forcé de les saisir
