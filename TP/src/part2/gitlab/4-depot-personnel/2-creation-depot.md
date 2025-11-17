@@ -127,7 +127,7 @@ cout: "€"
 tags:
   - rapide
   - végétarien
-image: "/images/crepes-classiques.jpg"
+image: "crepes.jpg"
 ingredients:
   - "250 g de farine"
   - "3 œufs"
@@ -160,7 +160,7 @@ git status
 Vous devriez voir que le répertoire `recettes/` est non suivi (untracked). Il
 vous faut donc :
 
-1. ajouter le fichier de recette au suivi de Git ;
+1. ajouter le fichier de recette au suivi de git ;
 2. créer un commit local ;
 3. pousser ce commit sur le dépôt distant.
 
@@ -223,14 +223,16 @@ chaque modification.
 Jusqu'ici nous avons travaillé sur `main`, mais nous allons bientôt voir que
 cela a des inconvénients. Il est donc préférable de prendre tôt l'habitude de
 faire ses tests sur des branches dédiées. Voici un exercice pour vous y
-entraîner tout en révisant le mécanisme des _Merge Requests_ :
+entraîner tout en révisant le mécanisme des _merge requests_ :
 
-1. Dans une nouvelle branche, ajoutez une image de présentation dans un dossier
-   `images/` et référencez-la dans votre recette (champ `image:`).
+1. Dans une nouvelle branche, ajoutez une image de présentation dans le dossier
+   `recettes` et référencez-la dans votre recette (champ `image:`). Pour
+   faciliter le repérage dans les fichiers plus tard, c'est une bonne idée de
+   donner à l'image le même nom que la recette correspondante.
 2. Poussez les changements et visualisez l'image dans l'interface web de GitLab
    (vous aurez besoin pour ça de basculer la visualisation, qui est par défaut
    sur la branche `main`, sur votre branche de travail).
-3. Créez une _Merge Request_ depuis votre branche de travail vers votre branche
+3. Créez une _merge request_ depuis votre branche de travail vers votre branche
    `main`, visualisez celle-ci dans l'interface de GitLab, puis fusionnez-la.
 
 ## Antisèche
@@ -254,14 +256,15 @@ Publier une branche et définir le suivi :
 git push --set-upstream origin <branche>
 ```
 
----
-
-Fusionner une Merge Requests :
+Fusionner une _merge request_ :
 
 Une fois la branche et la _merge request_ créées, vous pourrez fusionner vos
 modifications dans `main` via l'interface web de GitLab. Pour cela rendez-vous
 dans l'onglet « Code > Merge Requests », sélectionnez votre _merge request_,
 puis cliquez sur le bouton bleu « Merge » pour finaliser l'intégration.
+
+---
+
 
 ## Informations complémentaires
 
