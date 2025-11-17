@@ -114,10 +114,10 @@ qui veut dire qu'il est temps de choisir cette dernière.
 
 Pour ce TP, vous devez choisir entre deux parcours :
 
-- Dans le parcours [« GitHub ouvert »](github/TODO.md), nous présentons sur la
-  forge GitHub un mode de collaboration ouvert, où le monde entier peut lire le
-  contenu du dépôt git et y proposer des changements via des _forks_. C'est une
-  approche adaptée pour des projets _open source_.
+- Dans le parcours [« GitHub ouvert »](github/1-intro.md), nous présentons sur
+  la forge GitHub un mode de collaboration ouvert, où le monde entier peut lire
+  le contenu du dépôt git et y proposer des changements via des _forks_. C'est
+  une approche adaptée pour des projets _open source_.
 - Dans le parcours [« GitLab fermé »](gitlab/1-intro.md), nous présentons sur
   l'instance IN2P3 de la forge GitLab un mode de collaboration fermé, où le
   contenu du dépôt git ne peut être lu et modifié que par l'équipe projet. C'est

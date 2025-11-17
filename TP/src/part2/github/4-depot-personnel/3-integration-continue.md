@@ -450,10 +450,7 @@ complexe.
 Nous vous proposons à la place de désactiver la vérification orthographique et
 grammaticale pour le champ `auteur:` des en-tête de recettes, car ce champ est
 très sujet aux faux positifs de correcteur orthographique. Cela peut être fait
-de la façon suivante :
-
-**FIXME: Au niveau de grammalint, ajouter le support pour ignorer des champs
-dans le frontmatter, puis ajouter instructions ici.**
+en passant l'option `--skip-frontmatter-keys auteur` à grammalint.
 
 Pour ce qui concerne les espaces insécables, ils ne sont malheureusement pas
 nativement disponibles sur le clavier français, donc on est forcé de les saisir
@@ -467,12 +464,13 @@ universelle[^input-sequences] est de…
 
 [^input-sequences]: Il existe [beaucoup d'autres méthodes pour saisir des
                     espaces insécables sous
-                    Linux](https://ladedu.com/how-to-insert-a-non-breaking-space-on-linux/).
-                    Mais beaucoup sont spécifiques à une application donnée, un
-                    environnement de bureau donné, nécessitent une configuration
-                    préalable, etc. Le raccourci Ctrl+Shift+U a l'avantage
-                    d'être activé par défaut dans tous les environnements
-                    graphiques Linux que l'auteur utilise couramment.
+                    Linux](https://ladedu.com/how-to-insert-a-non-breaking-space-on-linux/),
+                    dont plusieurs sont plus pratiques. Mais beaucoup sont
+                    spécifiques à une application donnée, un environnement de
+                    bureau donné, nécessitent une configuration préalable, etc.
+                    Le raccourci Ctrl+Shift+U a l'avantage d'être activé par
+                    défaut dans tous les environnements graphiques Linux que
+                    l'auteur utilise couramment.
 
 
 ## Corriger et relancer le _workflow_
