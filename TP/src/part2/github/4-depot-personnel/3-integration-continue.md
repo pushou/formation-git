@@ -342,7 +342,7 @@ jobs:
         run: python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
       - name: Extraction des fichiers
         uses: actions/checkout@v5
-      - name: Vérification de la grammaire/orthographe
+      - name: Exécution de grammalint
         run: python -m grammalint -i recettes/**/*.md
 ```
 
@@ -356,14 +356,14 @@ Rendez-vous ensuite dans l’interface web de GitHub, onglet **Actions**, pour
 observer le _workflow_ en action. Vous devriez voir une page similaire à
 celle-ci :
 
-![Interface GitHub - Actions](../../../images/github-actions-tab.png)
+![Onglet Actions de l'interface GitHub](../../../images/github-actions-tab.png)
 
 Dans la table de droite, chaque ligne correspond à l'exécution d'un _workflow_
 et se structure de la façon suivante :
 
-- D'abord un petit pictogramme qui indique si l'exécution a réussi ou échoué.
-  Ici, nous avons une croix rouge qui signale un échec. En cas de réussite ce
-  serait une coche verte.
+- D'abord un petit pictogramme qui indique si l'exécution est en cours (point
+  jaune), a réussi (coche verte) ou échoué (croix rouge). Ici, hélas, toutes les
+  exécutions ont échoué.
 - Ensuite un titre qui est par défaut tiré du message de commit. Vous pouvez
   le personnaliser avec l'option de _workflow_
   [`run-name`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#run-name).
@@ -383,6 +383,273 @@ Si le _workflow_ ne s’exécute pas, vérifiez que...
 - il a bien été inclus dans un commit qui a ensuite été poussé sur GitHub.
 
 
-## TODO: Consulter les journaux du _workflow_
+## Consulter les journaux du _workflow_
 
-TODO
+En cliquant sur le titre d'une exécution d'un _workflow_ dans la liste
+précédente, on accède à une interface qui permet d'en savoir plus sur cette
+exécution :
+
+![Détail d'une exécution de
+workflow](../../../images/github-actions-workflow.png)
+
+A gauche, on trouve une liste des différents _jobs_ qui composent le _workflow_,
+où on peut cliquer sur chaque _job_ pour avoir des informations détaillées sur
+son exécution. A droite on trouve...
+
+- En haut, un rappel des propriétés de cette exécution : auteur du commit
+  déclencheur, heure à laquelle il a été poussé, etc.
+- Ensuite une visualisation des différents _jobs_ qui composent le _workflow_,
+  et de leurs relations entre elles. Ici, nous n'avons qu'un seul _job_, donc ce
+  n'est pas différent de la liste à gauche, mais si vous allez sur [un dépôt
+  avec un _workflow_ GitHub Actions plus
+  complexe](https://github.com/acts-project/acts/actions/workflows/builds.yml)
+  vous comprendrez mieux l'intérêt de cette visualisation.
+- Et en bas une liste des erreurs et avertissements éventuels issus des _jobs_.
+  Ici on y apprend que le _job_ a échoué parce qu'un processus a retourné le
+  code de retour, ce qui signale qu'une erreur est survenue dans les conventions
+  des programmes Unix.
+
+En cliquant sur le nom du _job_ à un des trois endroits où il apparaît, nous
+avons accès au détail de l'exécution du _job_ :
+
+![Détail d'une exécution de job](../../../images/github-actions-job.png)
+
+La section de gauche n'a pas changé par rapport à la visualisation du
+_workflow_, mais à gauche on observe maintenant une liste des différentes étapes
+d'exécution du _job_ avec la possibilité de visualiser les sorties consoles
+émises par chaque étape. Vous constaterez que...
+
+- En plus des 3 étapes que nous avons saisi nous-même dans le fichier de 
+  _workflow_, GitHub en ajoute implicitement quelques autres au début et à la
+  fin pour mettre en place la machine virtuelle, démarrer le conteneur Docker,
+  faire le ménage à la fin...
+- Initialement, la visualisation des étapes du _job_ va droit à l'essentiel :
+  les sorties consoles des étapes qui ont réussi sont masquées, et la vue est
+  automatiquement centrée sur la première étape qui a échoué. Il est bien sûr
+  possible d'aller examiner les autres étapes du _job_ si besoin en cliquant
+  simplement sur leur nom.
+
+Nous voyons ici que la cause du signalement d'erreur est le signalement de
+fautes d'orthographe et de typographie par Grammalecte :
+
+- Le nom d'utilisateur « ManuMacaron » ne faisant pas partie du dictionnaire, il
+  est traité comme une faute d’orthographe.
+- En typographie française, les quantités et leurs unités doivent être séparées
+  par un espace insécable. Celui-ci est visuellement identique à l'espace
+  normal, mais il se comporte différemment au niveau de l'affichage du texte car
+  il est interdit de remplacer un espace insécable par un saut de ligne. Ici,
+  nous n'avons pas respecté cette règle de typographie au niveau de nos temps de
+  préparation, repos et cuisson.
+
+La première est erreur est un faux positif que l'on corrigerait normalement en
+ajoutant le nom au dictionnaire utilisé pour la vérification orthographique.
+Mais Grammalecte ne simplifie hélas pas du tout cette opération, les ajouts au
+dictionnaire devant être effectués via un fichier JSON utilisant un format
+complexe.
+
+Nous vous proposons à la place de désactiver la vérification orthographique et
+grammaticale pour le champ `auteur:` des en-tête de recettes, car ce champ est
+très sujet aux faux positifs de correcteur orthographique. Cela peut être fait
+de la façon suivante :
+
+**FIXME: Au niveau de grammalint, ajouter le support pour ignorer des champs
+dans le frontmatter, puis ajouter instructions ici.**
+
+Pour ce qui concerne les espaces insécables, ils ne sont malheureusement pas
+nativement disponibles sur le clavier français, donc on est forcé de les saisir
+avec une procédure un peu alambiquée et spécifique au système d'exploitation
+utilisé. Dans cette formation, nous utilisons Linux, où la procédure la plus
+universelle[^input-sequences] est de…
+
+- Presser le raccourci clavier Ctrl+Shift+U.
+- Taper le texte « A0 », qui est le code hexadécimal de l’espace insécable.
+- Appuyer sur la barre d'espace pour valider la saisie.
+
+[^input-sequences]: Il existe [beaucoup d'autres méthodes pour saisir des
+                    espaces insécables sous
+                    Linux](https://ladedu.com/how-to-insert-a-non-breaking-space-on-linux/).
+                    Mais beaucoup sont spécifiques à une application donnée, un
+                    environnement de bureau donné, nécessitent une configuration
+                    préalable, etc. Le raccourci Ctrl+Shift+U a l'avantage
+                    d'être activé par défaut dans tous les environnements
+                    graphiques Linux que l'auteur utilise couramment.
+
+
+## Corriger et relancer le _workflow_
+
+Décidez d'abord si les erreurs signalées par Grammalecte proviennent de réelles
+fautes de votre part ou de faux positifs de l'analyse du correcteur. Cette
+réflexion est essentielle : en intégration continue, il ne faut pas corriger
+mécaniquement, mais comprendre la cause et la pertinence de chaque alerte.
+
+Puis, selon les erreurs détectées…
+
+1. Corrigez vos fichiers Markdown localement ou ajustez la configuration de
+   Grammalecte au niveau de la définition du _workflow_.
+2. Versionnez les modifications, puis effectuez un nouveau _push_.
+3. GitHub exécutera automatiquement le _workflow_ à nouveau.
+
+
+## Artefacts et rapports d’analyse
+
+Les **artefacts** sont des fichiers produits par un _job_ (rapports, journaux,
+fichiers d’analyse, etc.) et conservés par GitHub. Ils peuvent être téléchargés
+directement depuis l’interface web pendant une certaine durée après l'exécution
+du _workflow_, 90 jours par défaut.
+
+Pour générer un rapport JSON avec `grammalint`, modifiez l'étape « Exécution de grammalint » du _job_
+`grammaire_et_orthographe` pour ajouter l'option `-o report.json`:
+
+```yml
+jobs:
+  grammaire_et_orthographe:
+    # ... options globales du job ...
+    steps:
+      # ... étapes précédentes ...
+      - name: Exécution de grammalint
+        run: python -m grammalint -i recettes/**/*.md -o report.json
+```
+
+Puis ajoutez une étape de mise en ligne d'artefact en utilisant l’action
+[`upload-artifact`](https://github.com/actions/upload-artifact) :
+
+```yml jobs:
+  grammaire_et_orthographe:
+    # ... options globales du job ...
+    steps:
+      # ... étapes précédentes ...
+      - name: Mise en ligne du rapport JSON
+        uses: actions/upload-artifact@v5
+        with:
+          name: grammalint-report
+          path: recettes/report.json
+          retention-days: 7
+        if: failure()
+```
+
+C'est l'occasion d'introdure une paire de nouveaux éléments du côté de la
+syntaxe de déclaration d'une étape de _job_ :
+
+- Avec
+  [`id`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsid),
+  on peut donner un identifiant technique à une étape d'un _job_, ce qui permet
+  derrière d'y référence au sein d'autres étapes.
+- Avec
+  [`with`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepswith)
+  on peut configurer les paramètres d'entrée d'une action. Ici nous voulons…
+  * Donner un nom plus clair à l'artefact (c’est `artifact` par défaut).
+  * Indiquer quels fichiers doivent être sauvegardés.
+  * Réduire la durée de rétention de l'artefact à une semaine afin d'économiser
+    le stockage.
+- Avec
+  [`if`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsif)
+  on peut configurer dans quels cas une étape s'exécute.
+  - Par défaut, cette option a la valeur
+    [`success()`](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#success),
+    ce qui signifie qu'on n'exécute l'étape que si les étapes précédentes ont
+    réussi. Ce n'est pas pertinent ici puisque Grammalecte n'émet des
+    informations intéressantes en sortie que quand l'analyse a échoué.
+  - Avec la condition
+    [`failure()`](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#failure),
+    on précise qu'on veut au contraire mettre en ligne un artefact seulement 
+    quand le _workflow_ échoue.[^missing-file]
+
+L'artefact `grammalint-report` apparaîtra alors en bas de la page du _workflow_,
+où il sera possible de le télécharger pour examen plus approfondi.
+
+Nous le verrons plus en détail dans une prochaine séquence, mais notez que les
+artefacts peuvent aussi être utilisés pour transférer des fichiers entre
+différents _jobs_ d’un même _workflow_.
+
+[^missing-file]: Les plus aguerris d'entre vous auront remarqué que le
+                 _workflow_ peut échouer pour d'autres raisons qu'une erreur
+                 Grammalecte, par exemple si l'installation de grammalint
+                 échoue. Ce n'est pas un gros problème ici puisque l'action
+                 `upload-artifact` gère correctement l'absence de fichier en
+                 émettant un _warning_ et le _job_ est condamné à échouer de
+                 toutes façons. Mais on peut si besoin demander que l'action
+                 `upload-artifact` ne s'exécute que si l'étape d'exécution de
+                 grammalint a échoué en utilisant [une condition `if` plus
+                 complexe](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#failure-with-conditions).
+
+
+## Conclusion
+
+Dans ce TP, nous avons découvert comment GitHub permet de mettre en place une
+**intégration continue** simple mais efficace pour nos projets. Nous avons
+appris à :
+
+- Définir un _workflow_ d’intégration continue
+- Créer et configurer un _job_ d’analyse automatique avec Grammalecte
+- Surveiller l’exécution du _workflow_ et interpréter les résultats dans
+  l’interface GitHub
+- Générer et consulter des rapports d’analyse sous forme d’artefacts
+
+Avec ces notions, nous disposons désormais d’un outil capable de vérifier
+automatiquement la qualité de nos fichiers Markdown à chaque modification.
+
+Dans la prochaine séquence, nous irons plus loin en découvrant comment enchaîner
+plusieurs _jobs_, gérer des dépendances entre eux et construire des _workflows_
+plus complets adaptés à des projets collaboratifs.
+
+
+---
+
+## Exercices
+
+1. Ajoutez un second fichier de recette (avec des fautes), vérifiez que
+   l’analyse le prend bien en compte et que le _workflow_ échoue.
+2. Téléchargez le rapport JSON depuis la page du _workflow_ et consultez son
+   contenu.
+3. Corrigez les fautes, effectuez un _push_ et vérifiez que le _workflow_
+   réussit.
+4. Fusionnez les changements de `ci-grammalecte` dans `main` en utilisant une
+   _pull request_.
+
+Notez que l'interface de passage en revue des _pull requests_ vous permet de
+savoir si un _workflow_ d'intégration continue a réussi ou échoué avant
+d'effectuer la fusion dans `main`. En passant systématiquement par une branche
+dédiée et une _pull request_, vous pouvez donc facilement éviter d'intégrer à
+`main` des changements qui ne respectent pas votre politique qualité.
+
+Dans cette optique, nous verrons bientôt comment garantir que toutes les
+modifications à un projet passent par une _pull request_ en interdisant le
+_push_ direct de changements dans `main`.
+
+
+---
+
+## Informations complémentaires
+
+### Conditionner l’exécution d’un _workflow_
+
+Pour l'instant, notre _workflow_ est configuré pour s'exécuter à chaque _push_
+sur n'importe quelle branche. Mais il arrive parfois qu'on aie envie d'effectuer
+des analyses trop coûteuses pour que ce soit acceptable, par exemple une
+recompilation de pile logicielle complète qui dure des heures.
+
+Dans ce cas, nous vous enjoignons à explorer de plus près la documentation des
+[événements
+déclencheurs](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows),
+et en particulier à considérer les configurations suivantes:
+
+- Seulement lorsque des _commits_ sont intégrés à `main`.
+  - Avantage : Pas d'utilisation des ressources CI pendant la phase de
+    développement.
+  - Inconvénient : Les problèmes ne sont trouvés qu'après intégration dans
+    `main` et doivent être résolus après coup avec des outils comme `git
+    revert`.
+- Lorsqu'une _pull request_ est ouverte ou mise à jour.
+  - Avantage : Permet de trouver les problèmes avant intégration.
+  - Inconvénient : Plus coûteux que l'option précédente, surtout sur des projets
+    très actifs avec beaucoup de _pull requests_.
+- A intervalle régulier (ex : chaque nuit, chaque week-end…)
+  - Avantage : Le coût n’augmente pas quand l’activité au sein du dépôt
+    augmente.
+  - Inconvénient : Même quand les ressources ne sont pas utilisées, celui qui
+    soumet des changements doit attendre longtemps pour avoir un retour de la
+    CI.
+
+Il s'agit d'un des nombreux leviers dont on dispose pour garder sous contrôle la
+consommation de ressources associée à l'intégration continue. Plus tard dans ce
+cours, vous verrez un exemple de la deuxième politique à l'oeuvre.
