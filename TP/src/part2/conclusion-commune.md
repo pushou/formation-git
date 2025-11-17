@@ -1,241 +1,49 @@
 # Conclusion commune
 
-<div class="warning">
+Dans cette seconde partie, nous avons passé en revue et pratiqué les éléments essentiels du travail avec une forge logicielle, aussi bien pour ceux d'entre vous qui ont choisi le parcours GitHub que ceux qui ont choisi le parcours GitLab. Dans les deux cas, vous avez essentiellement exploré les mêmes concepts. En effet, vous avez configuré l’authentification via SSH et mis en place les _remotes_ nécessaires pour travailler avec votre dépôt local et le/les dépôts distants. Vous avez appliqué le _GitHub flow_ pour contribuer à vos différents livres de cuisine et collaborer avec vos collègues cuisiniers. Pour ça vous avez respecté ces quatre grands principes qui sont : se maintenir à jour, développer dans une branche dédiée, publier cette branche, puis proposer son intégration dans `main` via une _Pull Request_ ou une _Merge Request_.
 
-A l'occasion de la session 2025, l'ancien TP5 est en train d'être intégralement
-réécrit. Cette conclusion est donc en partie obsolète et devrait être mise à
-jour prochainement.
+Durant ce processus, vous avez pu vous familiariser avec le concept des revues de code, tant en tant qu’auteur qu’en tant que relecteur, et vous avez peut-être même rencontré des situations de conflits lors des fusions. Nous en profitons pour rappeler que ces conflits sont normaux et font partie intégrante du travail collaboratif avec Git. Cependant, pour éviter que ces conflits ne surviennent trop régulièrement, il est recommandé de bien segmenter son travail en petites unités sur un sujet ciblé et une période de temps restreinte.
 
-</div>
+Enfin, vous avez mis en pratique les mécanismes d’intégration et de déploiement continu _CI/CD_, tantôt avec les _GitHub Actions_, tantôt avec _GitLab CI/CD_. Cela vous a permis d’automatiser des tâches répétitives, comme la vérification du contenu de vos recettes (_linting_) ainsi que la génération et la publication de celles-ci sous forme de pages web.
 
-Dans ce dernier TP, nous avons vu comment on peut utiliser git en réseau. Selon
-la variante du TP que vous avez choisie, vous avez abordé soit une méthode de
-travail en dépôt ouvert sur GitHub basée sur des _forks_, soit une méthode de
-travail en dépôt privé sur GitLab. Dans les deux cas, les changements passaient
-par un processus de validation par _pull_/_merge request_ avant d’intégrer la
-branche `main` constituant l’historique officiel du projet.
+## Spécificité du parcours GitHub ouvert
 
-Ce ne sont pas les seules manières d'utiliser git en réseau, mais elles sont
-parmi les plus populaires car elles sont conceptuellement assez simples,
-sécurisent la branche principale du dépôt officiel en réduisant le nombre de
-personnes qui peuvent la modifier, et encouragent des bonnes pratiques de
-qualité comme le passage en revue des contributions.
+Dans le parcours GitHub, vous avez travaillé en suivant le modèle le plus répandu pour les projets _open source_, à savoir le système de _fork_. Avec ce modèle, vous n’aviez pas moins de trois dépôts Git avec lesquels interagir : le dépôt officiel (_upstream_), votre _fork_ personnel (_origin_) et votre dépôt local sur votre machine. Cette méthode est assez lourde, mais elle est très efficace pour gérer les contributions externes et permet de limiter les risques de contribution malveillante sur le dépôt principal.
 
-En plus de tous ces bénéfices communs, la méthode basée sur les _forks_
-simplifie aussi grandement les contributions extérieures et réduit presque à
-néant le risque de fausses manips où un membre du projet nuit accidentellement à
-un autre par un _force-push_ malencontreux. Il ne serait pas exagéré de dire que
-la combinaison de ces bonnes propriétés avec une interface web relativement bien
-pensée a grandement contribué à populariser git auprès des projets
-_open-source_.
+## Spécificité du parcours GitLab fermé
 
-Nous terminerons cette formation par une exploration à la carte de sujets plus
-avancés, ou un retour sur tout point déjà abordé que vous souhaiteriez
-approfondir.
+Dans le parcours GitLab, vous avez utilisé l'instance IN2P3 qui nécessite un compte académique pour l'authentification via _eduGAIN_. La politique du Centre de Calcul de l'IN2P3 limitant les _forks_, chacun travaille directement sur le dépôt officiel, en créant des branches dédiées pour chaque nouvelle fonctionnalité ou correction. Le processus est plus simple que dans le modèle de _fork_, mais il repose sur la confiance entre les contributeurs et nécessite une gestion rigoureuse des droits d'accès pour limiter les modifications indésirables. Il est cependant impossible d'empêcher totalement les contributions malveillantes dès lors que les contributeurs ont un accès suffisant en écriture au dépôt, prenez donc garde à qui vous accordez ces droits !
 
+## Ouverture : autres forges
 
-## Exercices
+Au-delà de GitHub et du GitLab de l'IN2P3, il existe une myriade d'instances GitLab académiques ainsi que _gitlab.com_. De plus, il existe d'autres solutions basées sur Git, comme Forgejo ou Gitea.
 
-1. Partez de votre clone du dépôt `ddhc`.
-2. Vérifiez que la configuration de vos _remotes_ :
-   * Dans la variante « GitHub ouvert » du TP, vous devriez avoir deux
-     _remotes_ : `origin` qui pointe sur votre _fork_ et utilise une connexion
-     SSH, et `upstream` qui pointe sur le dépôt officiel et utilise une
-     connexion HTTPS.
-   * Dans la variante « GitLab fermé » du TP, vous devriez avoir une seule
-     _remote_ `origin` qui pointe sur le dépôt officiel et utilise une
-     connexion SSH.
-3. Créez une nouvelle branche partant du `main`, et ajoutez-y un commit.
-4. Poussez cette branche sur le dépôt approprié pour la méthode de travail
-   utilisée :
-   * Votre _fork_ dans la variante « GitHub ouvert ».
-   * Le dépôt officiel dans la variante « GitLab fermé ».
-5. Ajoutez deux nouveaux commits à la branche, puis poussez-les sur le bon
-   dépôt.
-6. Mettez à jour votre dépôt vis-à-vis des éventuelles nouveautés du dépôt
-   officiel du projet.
-7. Détruisez la version locale de votre nouvelle branche avec `git branch -D`,
-   puis régénérez-la à partir de la version sauvegardée sur votre dépôt.
+Le choix d’une forge dépend souvent de considérations d’hébergement, de souveraineté des données et de politiques d’accès, qui peuvent faciliter ou au contraire compliquer les contributions extérieures. Attention au choix que vous ferez, car si la migration d’un dépôt Git reste simple, le transfert des tickets, des demandes de fusion ou des pipelines de _CI/CD_ d'un système à l'autre est bien plus délicat, d'autant que les fonctionnalités ne sont pas toujours équivalentes entre les différentes plateformes. Ne négligez pas non plus l'accès à des ressources pour la _CI/CD_, qui peut s'avérer plus ou moins généreuse selon les plateformes.
 
-
-## Antisèche
-
-Ce TP n’est qu’une mise en pratique des enseignements du TP4, et n’introduit
-aucune nouvelle commande git. Par conséquent, nous vous invitons à vous référer
-aux TPs précédents pour retrouver les commandes utilisées.
-
-
----
-
-
-## Informations complémentaires
-
-### Authentification HTTPS
-
-Vous pourriez être amené au cours de votre carrière à travailler dans un réseau
-informatique bloquant le trafic SSH sortant. Si cette politique réseau n’est pas
-négociable, cela empêche l’utilisation du protocole SSH auquel nous avons fait
-appel pendant ce TP.
-
-À la place, vous devrez utiliser le protocole HTTPS, basé sur un couple nom
-d’utilisateur + mot de passe. Ceci nécessite quelques étapes préparatoires :
-
-- Cloner votre dépôt git depuis l’URL HTTPS fournie par la forge, ou dans le cas
-  d’un dépôt déjà cloné changer l’URL des _remotes_ associées à la forge avec
-  la commande `git remote set-url <remote> <URL>`.
-- Pour les forges utilisant un mécanisme d’authentification « SSO » comme
-  gitlab.in2p3.fr…
-  * D’abord, trouvez votre nom d’utilisateur sur la forge. Dans le cas de
-    GitLab, il apparaît comme `@<nom>` quand on clique sur le menu en haut à
-    droite.
-  * Ensuite, configurez un mot de passe dédié aux échanges git HTTPS. Sur
-    l’instance GitLab de l’IN2P3, cela se passe à l’adresse suivante :
-    <https://gitlab.in2p3.fr/-/profile/password/edit>. Essayez de laisser le
-    champ « Current password » vide, et si ça ne fonctionne pas utilisez le lien
-    « I forgot my password » pour obtenir par mail un mot de passe utilisable.
-
-Une fois ceci fait, vous devrez saisir votre nom d’utilisateur et votre mot de
-passe à chaque fois que vous écrivez des données sur la forge (via `git push`),
-et également à chaque fois que vous lisez des données (via `git clone`,
-`git fetch` ou `git pull`) dans le cas d’un dépôt privé. Ce qui devient
-rapidement rébarbatif.
-
-Pour une meilleure ergonomie, il est possible de conserver une copie du mot de
-passe en RAM pour la durée de votre session (sûr) ou de stocker votre mot de
-passe sur le disque dur (dangereux). Pour savoir comment, référez-vous à la page
-« gitcredentials » de l’aide de git via `git help gitcredentials`
-ou <https://git-scm.com/docs/gitcredentials>.
-
-### Petit tour d’horizon des forges logicielles
-
-Dans ce TP, nous avons présenté GitHub et l'instance GitLab de l'IN2P3, mais il
-existe beaucoup d’autres instances de forges basées sur git.
-
-Les deux moteurs de forge les plus utilisés à l’heure actuelle sont GitHub et
-GitLab. Les développeurs de ces applications web proposent des instances
-hébergées sur leurs propres serveurs, selon un modèle commercial _freemium_
-(niveau de service gratuit limité, pour avoir plus il faut souscrire à un
-abonnement). Il est également possible d’en héberger une instance sur un serveur
-que l’on contrôle, par exemple lorsque le secret professionnel l’exige.
-
-Dans ce cadre d’auto-hébergement, GitLab est le moteur le plus populaire dans le
-secteur académique. On trouve par exemple des instances ayant des milliers
-d’utilisateurs au CERN, au centre de calcul de l’IN2P3 (CCIN2P3), ou au sein du
-réseau Mathrice (plate-forme PLM), ainsi que des déploiements plus modestes au
-sein de laboratoires individuels. La popularité de GitLab tient sans doute au
-fait que c’est l’éditeur de forge le plus ouvert à l’auto-hébergement.
-
-Parmi les hébergeurs publics, GitHub domine. C’est donc souvent la meilleure
-solution lorsque l’on souhaite collaborer avec des développeurs hors de son
-cercle de sociabilité académique, ou lorsque l’on n’a pas accès à un hébergeur
-« en propre ». Notez toutefois que la légalité de l’utilisation de GitHub,
-hébergeur américain, pour stocker des données de recherche européennes, est un
-sujet de polémique récurrent vis-à-vis duquel un consensus clair se fait
-toujours attendre.
-
-Les moteurs de forge ci-dessus ont de nombreuses fonctionnalités en commun :
-
-- Visualisation de l’historique et des différentes branches
-- Parcours de l’arborescence des fichiers à la tête d’une branche donnée
-- Visualisation de certains formats de fichier (ex : Markdown, code source)
-- Possibilités limitées d’édition de fichiers en ligne
-- Gestion de tickets (pour signaler des problèmes, recevoir des demandes…)
-- Soumission et revue de changements (_pull requests_/_merge requests_)
-- Documentation collaborative au format wiki
-- Statistiques diverses et variées sur les contributions
-- Outils de gestion de projet agile
-- Systèmes de notification élaborées pour « suivre » l’évolution d’un projet
-
-Cependant, chaque moteur a aussi ses spécificités :
-
-- GitLab a toujours fourni en standard des fonctionnalités comme l’intégration
-  continue ou l’hébergement d’images Docker, là où chez GitHub ce type de
-  service a longtemps été délégué à des tierces parties comme Travis CI. Depuis
-  fin 2019, il existe une solution GitHub « en propre », mais comme on
-  pourrait s’y attendre elle est un peu moins mature que la concurrence au
-  moment où sont écrites ces lignes (mi-2020).
-- Le vocabulaire utilisé et le détail des statistiques proposées varie d’une
-  forge à l’autre, et il n’est pas toujours facile de migrer l’ensemble d’un
-  projet (y compris les tickets, _merge requests_…) d’une forge à une autre.
+Enfin, si vous avez dans l'idée d'héberger votre propre forge,
+prenez garde à bien évaluer les besoins en maintenance et en sécurité que cela implique. En effet, une forge mal maintenue peut rapidement devenir un point d'entrée pour un attaquant malveillant et nécessite donc des moyens humains importants, sans même parler des ressources matérielles pour stocker les dépôts et les besoins considérables d'un service de _CI/CD_.
 
 ### Autres méthodes de travail
 
-Dans ce TP, nous nous sommes intéressés au _GitHub flow_, une des méthodes de
-travail les plus simples et les plus utilisées avec git. Mais c’est loin d’être
-la seule. On peut mentionner comme autres méthodes classiques…
+Dans ce TP, nous nous sommes intéressés au _GitHub flow_, une des méthodes de travail les plus simples et les plus utilisées avec Git. Mais c’est loin d’être la seule. On peut mentionner comme autres méthodes classiques…
 
-- Le _Git flow_, une variante plus complexe où l’on maintient plusieurs branches
-  spéciales au sein du dépôt commun :
-  * On distingue `main`, qui représente les développements publiés, de
-    `develop`, qui contient des développements expérimentaux. Les nouveaux
-    développements sont fusionnés dans `develop`.
-  * Avant de sortir une nouvelle version, on crée une branche dédiée (_release
-    branch_) partant de `develop`, qui ne reçoit plus de nouvelles
-    fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est
-    satisfait de l’état de cette branche, on la fusionne dans `main` et crée une
-    étiquette pour la nouvelle version officielle.
-  * En cas de problème urgent dans `main`, on peut créer une branche `hotfix`
-    issue de `main`, dédiée à la résolution de ce problème et vouée à être
-    immédiatement fusionnée dans `main` à la fin.
-- Le _GitLab flow_ est basé sur le _GitHub flow_, mais il y ajoute des branches
-  supplémentaires de longue durée de vie pour gérer le déploiement de services
-  web en production.
-  * Une branche `production` qui reflète le code qui est effectivement déployé
-    en production, ce qui permet de suivre d'éventuelles contraintes de
-    déploiement imposées par le projet (ex : seulement à certaines heures,
-    certains jours) sans freiner le développement.
-  * Eventuellement, d'autres branches représentant des environnements de test
-    intermédiaires avec différent niveaux de stabilité (ex : `staging`,
-    `pre-prod`...)
-  * Pour les projets qui publient des versions stables dont plusieurs sont
-    sujettes à correctifs à un instant T, des _release branches_ de longue
-    durée de vie vont servir à accumuler l'ensemble des correctifs appliqués à
-    une certaine version.
+- Le _Git flow_, une variante plus complexe où l’on maintient plusieurs branches spéciales au sein du dépôt commun :
 
-Voici un article très complet sur ce sujet qui part des principes fondamentaux
-pour expliquer comment différentes méthodes de travail en découlent :
-<https://martinfowler.com/articles/branching-patterns.html>.
+  - On distingue `main`, qui représente les développements publiés, de `develop`, qui contient des développements expérimentaux. Les nouveaux développements sont fusionnés dans `develop`.
+  - Avant de sortir une nouvelle version, on crée une branche dédiée (_release branch_) partant de `develop`, qui ne reçoit plus de nouvelles fonctionnalités mais peut encore recevoir des correctifs. Lorsqu’on est satisfait de l’état de cette branche, on la fusionne dans `main` et crée une étiquette pour la nouvelle version officielle.
+  - En cas de problème urgent dans `main`, on peut créer une branche `hotfix` issue de `main`, dédiée à la résolution de ce problème et vouée à être immédiatement fusionnée dans `main` à la fin.
 
-### Lien entre forge et méthode de travail
+- Le _GitLab flow_ est basé sur le _GitHub flow_, mais il y ajoute des branches supplémentaires de longue durée de vie pour gérer le déploiement de services web en production.
 
-Au niveau technique, les logiciels de forges GitHub, GitLab, et leurs cousins
-moins connus comme Forgejo, sont très flexibles et s'adaptent à un grand nombre
-de méthodes de travail. Sur le papier, rien n'interdit par exemple d'utiliser
-GitHub pour un développement fermé et GitLab pour un développement ouvert.
+  - Une branche `production` qui reflète le code qui est effectivement déployé en production, ce qui permet de suivre d'éventuelles contraintes de déploiement imposées par le projet (ex : seulement à certaines heures, certains jours) sans freiner le développement.
+  - Éventuellement, d'autres branches représentant des environnements de test intermédiaires avec différents niveaux de stabilité (ex : `staging`, `pre-prod`…)
+  - Pour les projets qui publient des versions stables dont plusieurs sont sujettes à correctifs à un instant T, des _release branches_ de longue durée de vie vont servir à accumuler l'ensemble des correctifs appliqués à une certaine version.
 
-Mais en pratique, les conditions d'utilisation des différentes instances de
-forges auxquelles vous avez accès vont vous orienter vers un certain type
-d'utilisation:
+Voici un article très complet sur ce sujet qui part des principes fondamentaux pour expliquer comment différentes méthodes de travail en découlent :
+[https://martinfowler.com/articles/branching-patterns.html](https://martinfowler.com/articles/branching-patterns.html).
 
-- Si la forge GitHub est connue pour offrir gratuitement une palette de services
-  très généreuse aux projets _open-source_, cette générosité ne s'étend pas aux
-  dépôts privés, qui sont les véritables clients de l'entreprise. A partir du
-  moment où l'on met un dépôt GitHub en accès privé, beaucoup de services
-  importants deviennent payants, donc il faut souvent prévoir un budget mensuel
-  conséquent pour utiliser cette forge de cette façon.
-- A l'inverse, la plupart des instances GitLab gérées par des laboratoires et
-  universités ont une politique peu adaptée aux projets souhaitant une ouverture
-  totale aux contributions extérieures. Si l'on prend l'exemple de l'instance
-  GitLab de l'IN2P3....
-  * Seuls les personnels de l'enseignement supérieur et de la recherche
-    (fédération eduGAIN) peuvent utiliser la forge sans passer par une
-    procédure administrative manuelle, qui a vocation à rester exceptionnelle.
-    Et c'est inhabituellement généreux : la plupart des forges académiques
-    restreignent cette possibilité à un seul pays/employeur/laboratoire.
-  * L'utilisation de _forks_ est interdite pour tous les comptes utilisateur
-    nouvellement créés depuis quelques années, donc les nouveaux contributeurs
-    doivent maintenant entrer en contact avec le propriétaire d'un dépôt pour
-    quémander le droit de soumettre des contributions... qui est couplé à bien
-    d'autres accès dont ils n'ont pas besoin.
+## Exercices avancés
 
-Le choix d'une (instance de) forge n'est donc pas anodin, et il vaut mieux
-réfléchir en amont au périmètre souhaité pour les accès en lecture, en écriture
-et les contributions extérieures au dépôt, afin d'adapter le choix de la forge
-en fonction. Sinon, on risque de se retrouver à devoir migrer le projet vers une
-autre forge plus tard, ce qui peut être un processus très laborieux.
+Pour aller plus loin, nous avons plusieurs sujets à la carte. Nous vous proposons de commencer par expérimenter les _hooks_ Git à l'aide de l'outil _pre-commit_.
 
-Cela signifie aussi que vous allez devoir jongler avec plusieurs forges selon
-les besoins. Heureusement, même si les interfaces web et les fichiers de
-configuration peuvent être très différents, les principes sous-jacents sont
-similaires, donc une fois qu'on a appris à utiliser une forge, c'est beaucoup
-plus facile d'apprendre à en utiliser une autre.
+TODO : écrire l'annexe sur les _hooks_ Git (et y inclure _pre-commit_)
