@@ -390,14 +390,14 @@ _pipelines_ plus complets et adaptés à des projets collaboratifs.
 4. Fusionnez les changements de `ci-grammalecte` dans `main` avec une _Merge
    Request_.
 
-Notez que l'interface de passage en revue des _Merge Requests_ vous permet de
+Notez que l'interface de passage en revue des _merge requests_ vous permet de
 savoir si un _pipeline_ d'intégration continue a réussi ou échoué avant
 d'effectuer la fusion dans `main`. En passant systématiquement par une branche
-dédiée et une _Merge Request_, vous pouvez donc facilement éviter d'intégrer à
+dédiée et une _merge request_, vous pouvez donc facilement éviter d'intégrer à
 `main` des changements qui ne respectent pas votre politique qualité.
 
 Dans cette optique, nous verrons bientôt comment garantir que toutes les
-modifications à un projet passent par une _Merge Request_ en interdisant le
+modifications à un projet passent par une _merge request_ en interdisant le
 _push_ direct de changements dans `main`.
 
 
@@ -417,7 +417,7 @@ Par exemple, si vous avez un _job_ de test long que vous ne souhaitez exécuter
 que...
 
 - sur la branche `main` ;
-- ou lors d’une _Merge Request_ visant `main` ;
+- ou lors d’une _merge request_ visant `main` ;
 
 ...vous pouvez fixer ces conditions d'exécution avec une section
 [`rules`](https://docs.gitlab.com/ci/yaml/#rules) au sein de la définition du
