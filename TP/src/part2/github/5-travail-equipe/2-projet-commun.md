@@ -25,10 +25,10 @@ d'éventuels contributeurs extérieurs.
 
 ## Du dépôt personnel au dépôt collectif
 
-Sur le plan technique, tous les membres de l’équipe peuvent déjà en réalité
-d'ors et déjà créer des _forks_ du dépôt du chef cuisinier et y soumettre des
-_pull requests_, car GitHub l'autorise par défaut sur tous les dépôts
-nouvellement créés et nous n'avons rien fait pour le désactiver.
+Sur le plan technique, tous les membres de l’équipe peuvent d'ors et déjà créer
+des _forks_ du dépôt du chef cuisinier et y soumettre des _pull requests_, car
+GitHub l'autorise par défaut sur tous les dépôts nouvellement créés et nous
+n'avons rien fait pour le désactiver.
 
 Mais sur le plan humain, et un peu technique aussi, il y a quelques petits
 obstacles aux contributions qui mériteraient d’être levés pour encourager ces
