@@ -10,7 +10,7 @@ Enfin, vous avez mis en pratique les mécanismes d’intégration et de déploie
 
 ## Spécificité du parcours GitHub ouvert
 
-Dans le parcours GitHub, vous avez travaillé en suivant le modèle le plus répandu pour les projets _open source_, à savoir le système de _fork_. Avec ce modèle, vous n’aviez pas moins de trois dépôts Git avec lesquels interagir : le dépôt officiel (_upstream_), votre _fork_ personnel (_origin_) et votre dépôt local sur votre machine. Cette méthode est assez lourde, mais elle est très efficace pour gérer les contributions externes et permet de limiter les risques de contribution malveillante sur le dépôt principal.
+Dans le parcours GitHub, vous avez travaillé en suivant le modèle le plus répandu pour les projets _open source_, à savoir le système de _fork_. Avec ce modèle, vous deviez interagir avec trois dépôts Git différents : le dépôt officiel (_upstream_), votre _fork_ personnel (_origin_) et votre dépôt local sur votre machine. Cette méthode est donc assez lourde, mais elle est très efficace pour gérer les contributions externes et permet de limiter les risques de contribution malveillante au dépôt principal.
 
 ## Spécificité du parcours GitLab fermé
 
