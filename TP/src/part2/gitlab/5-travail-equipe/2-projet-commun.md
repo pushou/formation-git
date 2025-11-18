@@ -2,7 +2,7 @@
 
 Après avoir préparé votre propre carnet de recettes, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
-4 personnes** pour créer **un livre de recettes collaboratif**.
+4 personnes** pour créer un **livre de recettes collaboratif**.
 
 
 ## Création de la brigade
