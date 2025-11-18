@@ -27,9 +27,9 @@ ls -al
 
 function test_this_manually() {
 ###### ANCHOR: visualize-and-switch-to-origin
-gitg &
+sourcegit . &
 cd ../MonDepot
-gitg &
+sourcegit . &
 ###### ANCHOR_END: visualize-and-switch-to-origin
 }
 unset -f test_this_manually

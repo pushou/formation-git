@@ -252,39 +252,29 @@ pas vraiment fait pour ça !
 
 Pour cette raison, nous vous recommandons fortement d’utiliser une interface
 graphique pour visualiser votre historique. Au cours de cette formation, nous
-utiliserons pour cela le logiciel `gitg` :
+utiliserons pour cela le logiciel SourceGit :
 
 ```bash
-{{#include 2-historique-lineaire.sh:gitg-foreground}}
+{{#include 2-historique-lineaire.sh:sourcegit-foreground}}
 ```
 
-Vous pouvez constater que `gitg` vous permet d’observer d’un coup d’œil votre
+Vous pouvez constater que SourceGit vous permet d’observer d’un coup d’œil votre
 historique. En cliquant sur chaque commit, vous avez aussi accès à des
 informations plus détaillées : description détaillée, _hash_, détail des
 modifications effectuées…
 
-Mais malheureusement, comme la plupart des applications graphiques, `gitg`
-empêche la saisie de commandes supplémentaires tant qu’elle est en exécution. Si
+Mais malheureusement, comme la plupart des applications graphiques, SourceGit
+empêche la saisie de commandes supplémentaires tant qu’il est en exécution. Si
 vous retournez dans votre terminal, vous pourrez constater qu’il n’acceptera
-plus de commandes tant que vous n’aurez pas fermé `gitg`.
+plus de commandes tant que vous n’aurez pas fermé SourceGit.
 
 Pour éviter ça, lancez l’application en tâche de fond avec l’aide du signe `&` :
 
 ```bash
-{{#include 2-historique-lineaire.sh:gitg-background}}
+{{#include 2-historique-lineaire.sh:sourcegit-background}}
 ```
 
 Dans cette configuration, vous garderez la possibilité de saisir des commandes.
-
-Votre terminal restera toutefois occasionnellement « pollué » par des erreurs
-non fatales d’exécution de `gitg`… Si cela vous énerve, vous pouvez ajouter
-`2>/dev/null` à la fin de votre commande de lancement `gitg` pour supprimer ces
-messages :
-
-
-```bash
-{{#include 2-historique-lineaire.sh:gitg-noerror}}
-```
 
 ### Premières requêtes
 
@@ -344,8 +334,7 @@ Après l’exécution de ces commandes…
 - `ancetre` pointe deux commits avant le commit actif (donc sur le commit
   `HEAD~2`, qui précède le commit doublement étiqueté `papa`/`maman`).
 
-Vous pouvez visualiser ces étiquettes dans `gitg` en redémarrant ce dernier ou
-en rafraîchissant son affichage avec le raccourci clavier `Ctrl+R`.
+Vous pouvez visualiser ces étiquettes dans SourceGit.
 
 Contrairement à `HEAD` et à la branche active, les étiquettes ne bougent pas.
 Si vous créez de nouveaux commits par la suite, `important` pointera
@@ -432,10 +421,8 @@ constater que leur contenu a changé pour reprendre la valeur qu’ils avaient d
 la version précédente. Une vraie machine à voyager dans le temps !
 
 N’hésitez pas à revenir en différents points de votre historique avec
-`git checkout`, en utilisant `gitg` pour retrouver les identifiants de vos
-commits. Par défaut, `gitg` affiche l’historique relativement au commit actif,
-mais vous pouvez lui faire afficher l’ensemble des commits du dépôt en
-sélectionnant l’option « Tous les commits » dans le menu de gauche.
+`git checkout`, en utilisant SourceGit pour retrouver les identifiants de vos
+commits.
 
 Quand vous avez fini d’explorer, il est facile de revenir à la fin de
 l’historique principal en rebasculant sur la branche `main` :
@@ -609,10 +596,10 @@ Afficher l’historique des commits en ligne de commande :
 {{#include 2-historique-lineaire.sh:git-log}}
 ```
 
-Lancer le visualiseur d’historique `gitg` sans bloquer le terminal :
+Lancer le visualiseur d’historique SourceGit sans bloquer le terminal :
 
 ```bash
-{{#include 2-historique-lineaire.sh:gitg-background}}
+{{#include 2-historique-lineaire.sh:sourcegit-background}}
 ```
 
 Créer une étiquette pointant sur le commit actif :

@@ -227,15 +227,11 @@ l’ajoute à l’index avec `git add`, et on crée le commit avec `git commit`�
 ```
 
 On peut ensuite visualiser la branche `main` et la branche que l’on vient de
-créer en lançant `gitg` dans le dépôt…
+créer en lançant SourceGit dans le dépôt :
 
 ```bash
-{{#include 3-manipulation-branches-corrige.sh:visualize-with-gitg}}
+{{#include 3-manipulation-branches-corrige.sh:visualize-with-sourcegit}}
 ```
-
-…ou en rafraîchissant son affichage avec Ctrl+R s’il est déjà ouvert. N’oubliez
-pas de sélectionner l’option « Branches » ou l’option « All commits » dans le
-menu de droite pour pouvoir visualiser les deux branches simultanément.
 
 Notre branche a un peu de retard avec la branche `main`, nous pouvons rattraper
 ce retard en y fusionnant les nouveautés de la branche `main` avec `git merge` :
@@ -350,13 +346,13 @@ dossier vide, non géré par git, ni le fichier `Poubelle.log` puisqu’il est
 ignoré par git.
 
 Si maintenant l’on compare les dépôts du point de vue de l’arbre de _commits_
-avec `gitg`…
+avec SourceGit…
 
 ```bash
 {{#include 4-depots-distribues-corrige.sh:visualize-and-switch-to-origin}}
 ```
 
-On constate que leur structure générale est similaire mais que le clone possède
+…on constate que leur structure générale est similaire mais que le clone possède
 le dépôt original comme _remote_ (sous le nom par défaut `origin`), et visualise
 simultanément sa version locale de la branche `main` et une copie locale de
 celle du dépôt original, `origin/main`.

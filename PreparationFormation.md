@@ -17,8 +17,8 @@
 - Corriger un max d'issues gitlab des années précédentes
 - Faire un ticket exploitation IJCLab pour config OS et comptes
   * Configuration OS (si machines réinstallées depuis l'an dernier)
-    - Installations : `bash-completion git gitg meld nano vim emacs gedit
-      wget unzip`
+    - Installations : `bash-completion git meld nano vim emacs gedit wget unzip`
+      + SourceGit via AppImage ou dépôt debian
     - Partition /scratch sur disque local pour démo IO-intensive
   * 20 comptes utilisateurs pour les stagiaires et deux pour Sonny et moi
     - Nommage : formation-git-N avec N de 1 à 22

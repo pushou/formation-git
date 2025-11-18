@@ -47,7 +47,7 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 ### Point de départ
 
 Durant cette formation, vous allez travailler sur des postes de travail Linux
-équipés des logiciels git, `gitg`, Meld, de quelques éditeurs de texte pour
+équipés des logiciels git, SourceGit, Meld, de quelques éditeurs de texte pour
 s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`), et
 d'utilitaires systèmes de base (`wget`, `unzip`).
 

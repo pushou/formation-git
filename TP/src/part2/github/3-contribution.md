@@ -285,9 +285,9 @@ Notez qu’on peut ici utiliser une URL HTTPS, sans avoir besoin de saisir un mo
 de passe, puisqu’on ne fait que lire des commits depuis un dépôt public, ce
 qui ne nécessite pas de s’identifier.
 
-Si vous ouvrez maintenant `sourcegit`, vous constaterez que vous pouvez
-maintenant visualiser vos commits et branches locales, celles de votre _fork_,
-et celles du dépôt officiel. Tout est prêt !
+Si vous ouvrez maintenant SourceGit, vous constaterez que vous pouvez maintenant
+visualiser vos commits et branches locales, celles de votre _fork_, et celles du
+dépôt officiel. Tout est prêt !
 
 
 ## Contribution par _GitHub flow_
