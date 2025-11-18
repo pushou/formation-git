@@ -405,9 +405,9 @@ son exécution. A droite on trouve...
   complexe](https://github.com/acts-project/acts/actions/workflows/builds.yml)
   vous comprendrez mieux l'intérêt de cette visualisation.
 - Et en bas une liste des erreurs et avertissements éventuels issus des _jobs_.
-  Ici on y apprend que le _job_ a échoué parce qu'un processus a retourné le
-  code de retour, ce qui signale qu'une erreur est survenue dans les conventions
-  des programmes Unix.
+  Ici on y apprend que le _job_ a échoué parce que le processus a retourné un 
+  code de retour non nul, ce qui signale qu'une erreur est survenue dans les
+  conventions des programmes Unix.
 
 En cliquant sur le nom du _job_ à un des trois endroits où il apparaît, nous
 avons accès au détail de l'exécution du _job_ :
