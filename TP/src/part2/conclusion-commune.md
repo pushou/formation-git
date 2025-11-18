@@ -14,7 +14,9 @@ Dans le parcours GitHub, vous avez travaillé en suivant le modèle le plus rép
 
 ## Spécificité du parcours GitLab fermé
 
-Dans le parcours GitLab, vous avez utilisé l'instance IN2P3 qui nécessite un compte académique pour l'authentification via _eduGAIN_. La politique du Centre de Calcul de l'IN2P3 limitant les _forks_, chacun travaille directement sur le dépôt officiel, en créant des branches dédiées pour chaque nouvelle fonctionnalité ou correction. Le processus est plus simple que dans le modèle de _fork_, mais il repose sur la confiance entre les contributeurs et nécessite une gestion rigoureuse des droits d'accès pour limiter les modifications indésirables. Il est cependant impossible d'empêcher totalement les contributions malveillantes dès lors que les contributeurs ont un accès suffisant en écriture au dépôt, prenez donc garde à qui vous accordez ces droits !
+Dans le parcours GitLab, vous avez utilisé l'instance IN2P3 qui nécessite un compte académique pour l'authentification via _eduGAIN_. La politique du Centre de Calcul de l'IN2P3 limitant les _forks_, cette forge encourage plutôt une méthode de travail chacun travaille directement sur le dépôt officiel, en créant des branches dédiées pour chaque nouvelle fonctionnalité ou correction.
+
+Le processus de contribution est alors plus simple que dans le modèle de _fork_, puisqu'on n'interagit qu'avec un seul dépôt distant. Mais il repose sur la confiance entre les contributeurs et nécessite une gestion rigoureuse des droits d'accès pour limiter les modifications indésirables. Il est cependant impossible d'empêcher totalement les contributions malveillantes dès lors que les contributeurs ont un accès suffisant en écriture au dépôt, prenez donc garde à qui vous accordez ces droits !
 
 ## Ouverture : autres forges
 
