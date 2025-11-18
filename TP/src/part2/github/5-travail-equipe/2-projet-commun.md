@@ -209,7 +209,7 @@ Mais on peut poser les bases suivantes :
     Commons](https://creativecommons.org/) sont adaptées à des travaux de nature
     moins informatique comme des oeuvres d’art.
   - La volonté ou non d’assurer que le travail qui a été partagé gratuitement ne
-    soit pas derrière exploité par des entités commerciales peu scrupuleuses qui
+    soit pas exploité derrière par des entités commerciales peu scrupuleuses qui
     veulent profiter au maximum du travail de la communauté en lui rendant le
     minimum en retour. On lutte contre ce parasitisme en utilisant des licences
     dites « _copyleft_ » qui imposent que les oeuvres dérivées soient
