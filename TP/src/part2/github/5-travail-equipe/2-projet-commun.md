@@ -195,12 +195,13 @@ Mais on peut poser les bases suivantes :
     gestionnaire de version comme git sans avoir préalablement mis le projet
     commun sous une licence adéquate sur laquelle l’ensemble des co-auteurs
     s’accordent.
-- Traditionnellement, les licences de droits ont pour objectif d’autoriser la
-  copie de façon restreinte et moyennant finance afin de monétiser l’accès à une
-  oeuvre. Les licences _open source_ détournent cette logique en utilisant le
-  droit d’auteur pour encourager au contraire l’accès gratuit à l’oeuvre par le
-  plus grand nombre. Il existe de [très nombreuses licences _open
-  source_](https://choosealicense.com/appendix/) qu'on distingue les une des
+- Traditionnellement, les licences ont pour objectif d’autoriser la copie de
+  façon restreinte et moyennant finance afin de monétiser l’accès à une oeuvre.
+  Les licences _open source_ détournent cette logique en utilisant le droit
+  d’auteur pour encourager au contraire l’accès libre à l’oeuvre (sous sa forme
+  originale, donc le code source pour un logiciel) par le plus grand nombre. Il
+  existe de [très nombreuses licences _open
+  source_](https://choosealicense.com/appendix/) que l'on distingue les une des
   autres par…
   - Le type d’œuvre auxquelles la license est destinée à s'appliquer. La plupart
     des licences _open source_ ont été conçues pour s’appliquer à des logiciels,
