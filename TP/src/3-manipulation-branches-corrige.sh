@@ -35,9 +35,9 @@ git commit -m "Ajout d'un fichier"
 ###### ANCHOR_END: first-commit
 
 function test_this_manually() {
-###### ANCHOR: visualize-with-gitg
-gitg &
-###### ANCHOR_END: visualize-with-gitg
+###### ANCHOR: visualize-with-sourcegit
+sourcegit . &
+###### ANCHOR_END: visualize-with-sourcegit
 
 ###### ANCHOR: auto-merge-main
 git merge main

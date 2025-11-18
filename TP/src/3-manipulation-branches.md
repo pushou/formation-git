@@ -132,8 +132,7 @@ Il est possible d’afficher ces différents changements avec `git diff` :
 {{#include 3-manipulation-branches.sh:diff-initial-main-parallel}}
 ```
 
-Un autre moyen de visualiser la situation est d’utiliser `gitg` en sélectionnant
-le mode « Tous les commits » dans le menu sur la gauche.
+Et on peut aussi visualiser la situation avec SourceGit comme vu précédemment.
 
 
 ## Fusion de branches
@@ -175,7 +174,7 @@ de `main`, le commit initial, et `univers-parallele` :
 {{#include 3-manipulation-branches.sh:diff-after-merge}}
 ```
 
-Au sein de `gitg`, vous constaterez également qu’un nouveau commit est apparu
+Au sein de SourceGit, vous constaterez également qu’un nouveau commit est apparu
 sur la branche `main`, et que ce commit possède deux commit parents : l’ancienne
 « tête » de la branche `main`, et la branche `univers-parallele`. On parle de
 commit de fusion (_merge commit_).
@@ -190,7 +189,7 @@ Maintenant, que se passe-t-il si nous essayons d’intégrer les changements
 survenus au sein de la branche `main` à `univers-parallele` ?
 
 Pour le savoir, exécutez cette fusion en surveillant les changements dans la
-fenêtre de `gitg` (n’oubliez pas de rafraîchir la vue avec `Ctrl + R`) :
+fenêtre de SourceGit :
 
 ```bash
 {{#include 3-manipulation-branches.sh:fast-forward-merge}}
@@ -450,7 +449,7 @@ C’est ce que nous allons mettre en pratique dans la séquence suivante.
 1. Créez une copie du dépôt `MonDepot` utilisé au cours du TP2.
 2. Visitez le parent de son commit actif, et créez une branche qui en part.
 3. Basculez sur cette branche, et créez un commit ajoutant un nouveau fichier.
-4. Visualisez la branche `main` et celle que vous venez de créer avec `gitg`.
+4. Visualisez la branche `main` et celle que vous venez de créer avec SourceGit.
 5. Fusionnez les changements de `main` au sein de la branche actuelle.
 6. Remplacez le contenu d’un fichier par deux textes différents au sein de
    `main` et de la nouvelle branche, en commitant ces changements.
@@ -577,8 +576,8 @@ conséquences importantes :
 
 En résumé, si `git rebase` a ses amateurs, cette commande reste relativement
 complexe et ne devrait être employée que lorsque vous êtes sûr de ce que vous
-faites. Vous devriez aussi garder un œil sur `gitg` au cours de son utilisation
-pour vérifier que vous n’avez pas commis d’impair.
+faites. Vous devriez aussi garder un œil sur SourceGit au cours de son
+utilisation pour vérifier que vous n’avez pas commis d’impair.
 
 <div class="warning">
 

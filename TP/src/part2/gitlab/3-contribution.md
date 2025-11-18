@@ -190,8 +190,9 @@ d’une simple commande `git push` sans arguments supplémentaires.
 
 Si votre première commande `git push` échoue, la cause la plus probable est que
 quelqu’un d'autre a déjà créé une branche portant ce nom au sein du dépôt. Vous
-pouvez vérifier si c'est le cas dans `gitg` ou dans [la section Code → Branches
-de l’interface web du dépôt](https://gitlab.in2p3.fr/git-kitchen/recettes/-/branches).
+pouvez vérifier si c'est le cas dans SourceGit ou dans [la section Code →
+Branches de l’interface web du
+dépôt](https://gitlab.in2p3.fr/git-kitchen/recettes/-/branches).
 
 Dans ce cas, pas de chance, il va falloir renommer votre branche avec `git
 branch -m AncienNom NouveauNom` puis réessayer en adaptant les commandes.

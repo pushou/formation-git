@@ -46,16 +46,15 @@ nous avons manipulé lors du TP précédent :
 {{#include 4-depots-distribues.sh:clone}}
 ```
 
-Si vous lancez `gitg` dans les deux dépôts, et basculez l’affichage en mode
-« Tous les commits », vous constaterez que l’historique du clone est identique à
-celui de son parent en termes de commits (y compris au niveau des _hashes_),
-mais que la structure des branches est un peu différente.
+Si vous lancez SourceGit dans les deux dépôts, vous constaterez que l’historique
+du clone est identique à celui de son parent en termes de commits (y compris au
+niveau des _hashes_), mais que la structure des branches est un peu différente.
 
 Les branches du parent sont reflétées dans le clone sous forme de « branches
 distantes ». Ce sont des copies locales en lecture seule (un peu comme des
 _tags_, vous pouvez faire un `checkout` dessus mais pas y ajouter des commits).
-Leur nom est en `origin/<branche>`, et elles sont affichées avec une couleur
-verte dans l’interface de `gitg`.
+Leur nom est en `origin/<branche>`, et elles sont affichées avec une icône de
+nuage dans l’interface de SourceGit.
 
 De plus, la branche active du parent a aussi été recréée sous forme de branche
 locale dans le clone, et c’est cette branche-là qui est actuellement active et
@@ -389,7 +388,7 @@ créant un commit de fusion :
 {{#include 4-depots-distribues.sh:pull-merges-divergence}}
 ```
 
-On peut observer l’apparition du commit de fusion correspondant dans `gitg`.
+On peut observer l’apparition du commit de fusion correspondant dans SourceGit.
 
 En revanche, `git push` a un comportement différent. Dans la même situation de
 divergence, l’opération sera rejetée :
@@ -504,7 +503,7 @@ mater cette complexité.
 
 1. Créez un clone du dépôt `MonDepot` que vous avez utilisé au TP1 et au TP2
 2. Comparez le contenu du clone à celui de dépôt original avec `ls -al` et
-   `gitg`. Comprenez-vous toutes les différences observées ?
+   SourceGit. Comprenez-vous toutes les différences observées ?
 3. Créez une branche `test` au sein de `MonDepot` et ajoutez-y quelques commits.
 4. Récupérez la branche `test` dans le clone, créez-en une version locale et
    basculez dessus.

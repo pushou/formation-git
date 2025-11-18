@@ -4,8 +4,8 @@ Cette page recense les supports présentés en cours qui n’avaient pas leur pl
 ailleurs :
 
 - Supports des démonstrations
-  * <a href="demos/depots.zip" target="blank">Dépôts gits tout faits pour les
-    démos gitg/Meld</a>
+  * <a href="demos/depots.zip" target="blank">Dépôts git tout faits pour les
+    démos SourceGit/Meld</a>
   * <a href="demos/generate_bisect_repo.sh" target="blank">Générateur de dépôt
     d’exemple pour `git bisect`</a>
   * <a href="demos/bisect_runner.sh" target="blank">Exemple d’automatisation

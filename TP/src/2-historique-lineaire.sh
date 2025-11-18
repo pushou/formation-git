@@ -93,17 +93,13 @@ git log
 ###### ANCHOR_END: git-log
 
 function test_this_manually() {
-###### ANCHOR: gitg-foreground
-gitg
-###### ANCHOR_END: gitg-foreground
+###### ANCHOR: sourcegit-foreground
+sourcegit .
+###### ANCHOR_END: sourcegit-foreground
 
-###### ANCHOR: gitg-background
-gitg &
-###### ANCHOR_END: gitg-background
-
-###### ANCHOR: gitg-noerror
-gitg 2>/dev/null &
-###### ANCHOR_END: gitg-noerror
+###### ANCHOR: sourcegit-background
+sourcegit . &
+###### ANCHOR_END: sourcegit-background
 }
 unset -f test_this_manually
 
