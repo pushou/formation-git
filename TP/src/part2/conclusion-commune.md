@@ -20,7 +20,9 @@ Dans le parcours GitLab, vous avez utilisé l'instance IN2P3 qui nécessite un c
 
 Au-delà de GitHub et du GitLab de l'IN2P3, il existe une myriade d'instances GitLab académiques ainsi que _gitlab.com_. De plus, il existe d'autres solutions basées sur Git, comme Forgejo ou Gitea.
 
-Le choix d’une forge dépend souvent de considérations d’hébergement, de souveraineté des données et de politiques d’accès, qui peuvent faciliter ou au contraire compliquer les contributions extérieures. Attention au choix que vous ferez, car si la migration d’un dépôt Git reste simple, le transfert des tickets, des demandes de fusion ou des pipelines de _CI/CD_ d'un système à l'autre est bien plus délicat, d'autant que les fonctionnalités ne sont pas toujours équivalentes entre les différentes plateformes. Ne négligez pas non plus l'accès à des ressources pour la _CI/CD_, qui peut s'avérer plus ou moins généreuse selon les plateformes.
+Le choix d’une forge dépend souvent de considérations d’hébergement, de souveraineté des données et de politiques d’accès, qui peuvent faciliter ou au contraire compliquer les contributions extérieures. Attention au choix que vous ferez, car si la migration d’un dépôt Git reste simple, le transfert des tickets, des demandes de fusion ou des pipelines de _CI/CD_ d'un système à l'autre est bien plus délicat, d'autant que les fonctionnalités ne sont pas toujours équivalentes entre les différentes plateformes.
+
+Ne négligez pas non plus l'accès à des ressources pour la _CI/CD_: si vous n'avez pas les moyens de maintenir vos propres _runners_, les plateformes "clés en main" diffèrent beaucoup les unes des autres au niveau de la quantité et du type de ressources qui sont disponibles gratuitement.
 
 Enfin, si vous avez dans l'idée d'héberger votre propre forge,
 prenez garde à bien évaluer les besoins en maintenance et en sécurité que cela implique. En effet, une forge mal maintenue peut rapidement devenir un point d'entrée pour un attaquant malveillant et nécessite donc des moyens humains importants, sans même parler des ressources matérielles pour stocker les dépôts et les besoins considérables d'un service de _CI/CD_.
