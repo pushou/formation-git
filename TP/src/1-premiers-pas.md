@@ -58,18 +58,20 @@ utiliser les étiquettes des postes voisins pour déduire leur numéro, la
 numérotation suivant une logique très simple.
 
 Du numéro de poste, vous pouvez déduire le nom du compte utilisateur que vous
-allez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
+devez utiliser, dans l’exemple ci-dessus ce serait « formation-git-17 ». Le mot
 de passe sera communiqué oralement.
 
-Ces postes sont aussi configurés pour partager les supports de TP avec le poste
-enseignant, vous trouverez un raccourci vers ceux-ci sur votre bureau.
+Notez votre numéro de poste/compte utilisateur afin de pouvoir facilement 
+retrouver votre travail après manger et les jours suivants.
 
 <div class="warning">
 
-Vous l’avez vu, les mots de passe sont dérivés en suivant une logique
-simple, donc tout le reste de la salle peut deviner votre mot de passe. Pour
-plus de confidentialité, n’hésitez pas à configurer un mot de passe plus
-secret avec la commande `passwd`.
+Vous l’avez vu, les mots de passe sont dérivés en suivant une logique simple,
+donc tout le reste de la salle peut deviner votre mot de passe. Hélas, il
+semblerait que l'équipe qui gère les machines aie cassé la commande `passwd`
+lors de la dernière mise à jour système, donc il n'est pas facile de changer
+votre mot de passe pour l'instant… Soyez donc prudent avec les sessions que vous
+laissez ouvertes dans votre navigateur web !
 
 </div>
 
