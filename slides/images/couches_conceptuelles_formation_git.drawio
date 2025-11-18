@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0" version="28.2.7">
+  <diagram name="Page-1" id="o7sTDmRB4ZGtciNBEN3S">
+    <mxGraphModel dx="935" dy="552" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="oJOv-38WkNY378FlaGkL-2" value="&lt;b&gt;Configuration&lt;/b&gt; de git, fichiers du &lt;b&gt;répertoire de travail&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="180" y="520" width="440" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-3" value="&lt;b&gt;Versions&lt;/b&gt; (commits) organisées en &lt;b&gt;historique&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="200" y="480" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-4" value="&lt;b&gt;Embranchements&lt;/b&gt; d’historique" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="220" y="440" width="360" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-5" value="&lt;b&gt;Échanges&lt;/b&gt; entre dépôts" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="240" y="380" width="320" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-6" value="&lt;b&gt;Contibuer&lt;/b&gt; à un depôt hébergé sur une &lt;b&gt;forge&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="260" y="340" width="280" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-7" value="&lt;b&gt;Intégration continue&lt;/b&gt; et&amp;nbsp;&lt;b&gt;déploiement&amp;nbsp;continu&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="300" y="240" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-8" value="&lt;b&gt;Créer&lt;/b&gt; et &lt;b&gt;gérer&lt;/b&gt; un dépôt sur une &lt;b&gt;forge&lt;/b&gt;" style="rounded=0;whiteSpace=wrap;html=1;fontFamily=Roboto;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="280" y="280" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-9" value="Exploration par « couches » conceptuelles" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Roboto;fontSize=18;fontColor=default;fontStyle=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;" vertex="1" parent="1">
+          <mxGeometry x="210" y="180" width="400" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-10" value="" style="endArrow=block;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;endFill=1;strokeWidth=2;fillColor=#d5e8d4;strokeColor=#82b366;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="560" as="sourcePoint" />
+            <mxPoint x="650" y="440" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-11" value="" style="endArrow=block;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;endFill=1;strokeWidth=2;fillColor=#dae8fc;strokeColor=#6c8ebf;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="420" as="sourcePoint" />
+            <mxPoint x="650" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-12" value="" style="endArrow=block;html=1;rounded=0;fontFamily=Helvetica;fontSize=12;fontColor=default;endFill=1;strokeWidth=2;fillColor=#e1d5e7;strokeColor=#9673a6;align=center;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="650" y="320" as="sourcePoint" />
+            <mxPoint x="650" y="240" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-13" value="Jour 1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Roboto;fontSize=14;fontColor=light-dark(#82B366,#82B366);fontStyle=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;" vertex="1" parent="1">
+          <mxGeometry x="660" y="490" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-15" value="Jour 2" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Roboto;fontSize=14;fontColor=#6C8EBF;fontStyle=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;" vertex="1" parent="1">
+          <mxGeometry x="660" y="370" width="50" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="oJOv-38WkNY378FlaGkL-16" value="Jour 3" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontFamily=Roboto;fontSize=14;fontColor=#9673A6;fontStyle=1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DRoboto;" vertex="1" parent="1">
+          <mxGeometry x="660" y="270" width="50" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
