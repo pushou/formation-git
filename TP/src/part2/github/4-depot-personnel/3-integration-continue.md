@@ -28,42 +28,45 @@ dépôt.
 
 Chacun de ces fichiers YAML définit un
 [_workflow_](https://docs.github.com/fr/actions/concepts/workflows-and-actions/workflows),
-c'est à dire un ensemble de [travaux
+c'est à dire un ensemble de [tâches
 (_jobs_)](https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax#jobs)
 qui s'exécutent automatiquement en réponse à un [événement déclencheur
 (_trigger_)
 ](https://docs.github.com/fr/actions/using-workflows/triggering-a-workflow). Les
-différents _jobs_ d'un _workflow_ sont par défaut autorisés à s'exécuter en
-parallèle, mais on peut introduire des dépendances entre eux si besoin. Ils se
-décomposent chacun en un certain nombre d'étapes (_steps_) qui s'exécutent quand
-à elles de façon séquentielles. Ces étapes peuvent être de simples [commandes
+différentes tâches d'un _workflow_ sont par défaut considérées comme
+indépendantes et autorisées à s'exécuter en parallèle, mais on peut introduire
+des dépendances entre elles si besoin. Chaque tâche se décomposent ensuite en un
+certain nombre d'étapes (_steps_) qui s'exécutent quand à elles de façon
+séquentielle. Ces étapes peuvent être de simples [commandes
 _shell_](https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsrun)
 ou utiliser des [briques logicielles plus
 complexes](https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsuses)
 appelées « actions ».[^custom-actions]
 
-Lorsque l'événement déclencheur se produit, l'ensemble des travaux associés au
-_workflow_ est exécuté (on parle de _run_). Chaque _job_ est alors traité par un
-serveur[^runner-server] appelé exécuteur (_runner_), idéalement en parallèle
-dans la limite des exécuteurs et des _jobs_ disponibles. Si l'on multiplie cette
-charge de travail par un grand nombre de _jobs_, de _workflows_ et de projets,
-vous devinez qu'une infrastructure d'intégration continue peut vite consommer
-[beaucoup de ressources informatiques](https://arxiv.org/abs/2510.26413). Pour
-cette raison, les forges diffèrent beaucoup les unes des autres au niveau de la
-quantité et du type de ressources qu'elles choisissent de mettre gratuitement à
-la disposition des projets _open source_, et c'est donc un critère à vérifier
-quand vous choisissez l'hébergement d'un projet.
+Lorsque l'événement déclencheur se produit, l'exécution de l'ensemble des tâches
+associés au _workflow_ est programmée, on parle alors de _run_. Chaque tâche est
+traitée par un serveur[^runner-server] appelé exécuteur (_runner_), idéalement
+en parallèle dans la limite des exécuteurs disponibles et des contraintes
+induites par les dépendances entre tâches. Si l'on multiplie cette charge de
+travail par un grand nombre de tâches, de _workflows_, de _runs_ parallèles et
+de projets, vous devinez qu'une infrastructure d'intégration continue peut vite
+consommer [beaucoup de ressources
+informatiques](https://arxiv.org/abs/2510.26413). Pour cette raison, les forges
+diffèrent beaucoup les unes des autres au niveau de la quantité et du type de
+ressources qu'elles choisissent de mettre gratuitement à la disposition des
+projets _open source_, et c'est donc un critère à vérifier quand vous choisissez
+l'hébergement d'un projet.
 
 Dans le cas de GitHub, les projets _open source_ ont accès gratuitement à
 [différents types d'exécuteurs prêts à
 l'emploi](https://docs.github.com/fr/actions/reference/runners/github-hosted-runners#standard-github-hosted-runners-for-public-repositories)
-permettant d'effectuer des travaux sous Windows, macOS et Linux avec des
+permettant d’exécuter des tâches sous Windows, macOS et Linux avec des
 processeurs x86 et Arm. Leur configuration matérielle est, prise
 individuellement, plutôt modeste, mais chaque utilisateur GitHub a la
 possibilité d'en utiliser [jusqu'à 20
 simultanément](https://docs.github.com/en/actions/reference/limits#job-concurrency-limits-for-github-hosted-runners),
 y compris au sein d'un seul de ses dépôts. En découpant bien ses _workflows_ en
-_jobs_ parallèles, il est donc possible d'avoir accès à des ressources
+tâches parallèles, il est donc possible d'avoir accès à des ressources
 informatiques déjà très importantes.
 
 Toutefois, si ces ressources ne suffisent pas[^resource-hog] ou si on a des
@@ -91,13 +94,12 @@ davantage sur la définition des _workflows_.
 
 [^resource-hog]: ...auquel cas il est toujours bon de prendre le temps de
                  vérifier que l'on utilise vraiment les ressources disponibles
-                 efficacement, avec ce qu'il faut de [mise en
+                 efficacement. A-t'on configuré une [mise en
                  cache](https://github.com/actions/cache) des résultats
-                 intermédiaires réutilisables entre différentes exécutions d'un
-                 même _job_, une combinatoire qui reste sous contrôle au sein
-                 des
+                 réutilisables entre différentes exécutions d'une même tâche ?
+                 La combinatoire des
                  [matrices](https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstrategymatrix)
-                 éventuellement utilisées, etc.
+                 éventuellement utilisées est-elle sous contrôle ?
 
 [^runner-server]: Suivant la logique moderne du _cloud_, les exécuteurs sont
                   typiquement des machines virtuelles, ce qui permet d'héberger
@@ -144,8 +146,9 @@ touch .github/workflows/grammalecte.yml
 Par défaut, l'interface web de GitHub désigne les _workflows_ par le chemin vers
 le fichier dans lequel ils sont définis. Ce n'est pas toujours très clair, et on
 n'a pas forcément envie d'utiliser un nom de fichier très long pour clarifier,
-donc la coutume est plutôt d'utiliser l'option [`name`] pour donner au
-_workflow_ un nom plus explicite.
+donc la coutume est plutôt d'utiliser l'option
+[`name`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#name)
+pour donner au _workflow_ un nom plus explicite.
 
 Pour cela, ouvrez le fichier `.github/workflows/grammalecte.yml` avec votre
 éditeur de texte préféré et ajoutez-y le texte suivant :
@@ -173,13 +176,13 @@ sont ajoutés au dépôt, ce qui correspond à l'événement
 on: push
 ```
 
-### Définir le _job_ d'analyse
+### Définir la tâche d'analyse
 
-Notre premier _workflow_ ne contiendra qu'un seul _job_
-`grammaire_et_orthographe` chargé d'analyser le contenu des recettes.
+Notre premier _workflow_ ne contiendra qu'une seule tâche
+`grammaire_et_orthographe` chargée d'analyser le contenu des recettes.
 
-Ce _job_ nécessite un environnement Python afin d’exécuter Grammalecte. Pour
-simplifier la gestion d’environnements parfois hétérogènes (chaque _job_ ayant
+Cette tâche nécessite un environnement Python afin d’exécuter Grammalecte. Pour
+simplifier la gestion d’environnements parfois hétérogènes (chaque tâche ayant
 ses propres dépendances), GitHub Actions permet d’utiliser des [images
 Docker](https://hub.docker.com/). Celles-ci offrent des environnements
 préconfigurés couvrant un large éventail de besoins.
@@ -198,18 +201,18 @@ jobs:
 ```
 
 Après avoir utilisé le mot-clé
-[jobs](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobs)
-pour indiquer que nous allons définir les travaux exécutés par ce _workflow_,
-nous déclarons notre premier _job_ en lui donnant le nom
-`grammaire_et_orthographe`. Puis nous demandons qu'il soit exécuté par un
+[`jobs`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobs)
+pour indiquer que nous allons définir les tâches exécutées par ce _workflow_,
+nous déclarons notre première tâche en lui donnant le nom
+`grammaire_et_orthographe`. Puis nous demandons qu'elle soit exécutée par un
 _runner_ sous Linux[^linux-runner], car c'est le seul système d'exploitation qui
-supporte nativement[^native-docker] l'utilisation de conteneurs Docker. Et enfin
+supporte nativement l'utilisation de conteneurs Docker[^native-docker]. Enfin
 nous demandons que ce _runner_ travaille avec l'image Docker `python:3.12`.
 
 Notez qu'en YAML comme en Python, l'indentation est significative: elle sert à
-indiquer que `grammaire_et_orthographe` est un _job_ (car il est plus indenté
-que `jobs:`), puis à indiquer que `runs_on` et `container` sont des propriétés
-de ce _job_ précis.
+indiquer que `grammaire_et_orthographe` est une tâche (car ce texte est plus
+indenté que l'en-tête `jobs:`), puis ensuite à indiquer que `runs_on` et
+`container` sont des propriétés de la tâche `grammaire_et_orthographe`.
 
 [^linux-runner]: ...plus précisément sous la dernière version
                  d'[Ubuntu](https://ubuntu.com/), car 1/Ubuntu est la seule
@@ -236,12 +239,13 @@ La commande d’installation est la suivante :
 python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
 ```
 
-Pour l'exécuter, il suffit d'ajouter une étape à notre _job_ :
+Pour l'exécuter, il suffit d'ajouter une étape à notre tâche
+`grammaire_et_orthographe` :
 
 ```yaml
 jobs:
   grammaire_et_orthographe:
-    # ... options globales du job ...
+    # ... options globales de la tâche ...
     steps:
       - name: Installation de grammalint
         run: python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
@@ -250,42 +254,47 @@ jobs:
 
 Avec le mot-clé
 [`steps`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idsteps),
-nous indiquons que nous commençons la liste des étapes du _job_. Puis nous
-créons une première étape (notez le tiret), nous donnons un nom à cet étape
+nous indiquons que nous commençons la liste des étapes de la tâche. Puis nous
+créons une première étape (notez le tiret), nous donnons un nom à cette étape
 (optionnel mais recommandé) avec l'option
 [`name`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsname),[^name-aliasing]
-et enfin nous indiquons que cette étape du _job_ consiste à exécuter une
+et enfin nous indiquons que cette étape consiste à exécuter une
 commande _shell_ avec l'option
-[`run`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsrun).
+[`run`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsrun)
+suivie de la commande en question.
 
 [^name-aliasing]: Notez qu'une même option peut avoir un effet différent selon
-                  sa profondeur d'indentation, encore une fois l'indentation est
-                  très importante en YAML.
+                  sa profondeur d'indentation : à la racine du fichier YAML,
+                  `name` donne un nom au _workflow_, mais ici elle donne un nom
+                  à une étape de la tâche `grammaire_et_orthographe`. Encore une
+                  fois, l'indentation est très importante en YAML.
 
 ### Extraire les fichiers du dépôt
 
 Dans GitHub Actions, l'extraction des fichiers du dépôt est une étape dédiée au
-sein d'un _job_, ce qui représente un léger gain en termes de flexibilité par
+sein d'une tâche, ce qui représente un léger gain en termes de flexibilité par
 rapport à la plupart des autres systèmes d'intégration continue où cette
 opération est implicite :
 
 - Le travail associé à l'extraction des fichiers n'est pas effectué quand il
-  n'est pas utile, par exemple si le _job_ échoue dès les étapes préparatoires
-  (comme l'installation de `grammalint` ici). Ou, sur des _workflows_ plus
-  complexes, si un _job_ ne dépend que des sorties des _jobs_ précédents (ex :
-  binaires précompilés) et pas des fichiers source contenus dans le dépôt.
+  n'est pas utile, par exemple si la tâche échoue dès les étapes préparatoires
+  (comme l'installation de `grammalint` ici). Un autre cas se présente sur les 
+  _workflows_ plus complexes, ou souvent certaines tâches ne dépendent que des
+  sorties de tâches précédents (ex : binaires précompilés) et pas des fichiers
+  source contenus dans le dépôt.
 - Puisque l'opération d'extraction est explicite, il est possible de la
   configurer pour lui demander d'extraire un commit de son choix. C'est
-  intéressant quand on utilise des déclencheurs autres que `push` où la notion
-  de dernier commit n'a pas forcément de sens.
+  intéressant quand on utilise des déclencheurs autres que `push`, où il n'y a
+  pas de notion naturelle de « dernier commit poussé ».
 
-Ici, nous voulons travailler avec les derniers commits qui ont été poussés, donc
-il nous suffit d'exécuter l'action `checkout` avec ses paramètres par défaut :
+Ici, nous voulons travailler avec les derniers commits qui ont été poussés, ce
+qui est le cas le plus courant, donc il nous suffit d'exécuter l'action
+`checkout` avec ses paramètres par défaut :
 
 ```yaml
 jobs:
   grammaire_et_orthographe:
-    # ... options globales du job ...
+    # ... options globales de la tâche ...
     steps:
       # ... installation de grammalint ...
       - name: Extraction des fichiers
@@ -297,16 +306,17 @@ Notez l'utilisation du mot-clé
 [`uses`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsuses).
 Celui-ci nous indique que `checkout` n'est pas une commande _shell_ normale,
 mais une action, c'est à dire un programme réutilisable de complexité
-arbitraire. Ce programme est distribué par GitHub, et vous trouverez sa
-documentation (par exemple les options qu'il accepte en paramètre) dans [le
-dépôt de code source associé](https://github.com/actions/checkout/).
+arbitraire.
 
-GitHub n'ont pas le monopole de la création d'actions, et vous pouvez aussi
-[utiliser des actions créées par d'autres
-personnes](https://github.com/marketplace?type=actions) ou [créer vos propres
+Cette action est distribuée par GitHub, et vous trouverez sa documentation (par
+exemple les options qu'il accepte en paramètre) dans [le dépôt de code source
+associé](https://github.com/actions/checkout/). Mais GitHub n'ont pas le
+monopole de la création d'actions, et vous pouvez aussi [utiliser des actions
+créées par d'autres personnes](https://github.com/marketplace?type=actions) ou
+[créer vos propres
 actions](https://docs.github.com/en/actions/how-tos/create-and-publish-actions),
 ce qui est utile quand vos fichiers de _workflows_ commencent à devenir
-répétitifs. Mais cela dépasse le cadre de cette formation.
+répétitifs.
 
 ### Effectuer l’analyse des fichiers
 
@@ -325,8 +335,8 @@ des sous-dossiers), on utilise la commande suivante :
 python -m grammalint -i recettes/**/*.md
 ```
 
-En intégrant cette seconde commande à notre _job_ sous forme d'étape
-supplémentaire, le fichier de _workflow_ complet devient :
+En intégrant cette seconde commande à notre tâche `grammaire_et_orthographe`
+sous forme d’étape supplémentaire, le fichier de _workflow_ complet devient :
 
 ```yml
 name: "Vérification grammaire/orthographe"
@@ -392,53 +402,54 @@ exécution :
 ![Détail d'une exécution de
 workflow](../../../images/github-actions-workflow.png)
 
-A gauche, on trouve une liste des différents _jobs_ qui composent le _workflow_,
-où on peut cliquer sur chaque _job_ pour avoir des informations détaillées sur
-son exécution. A droite on trouve...
+A gauche, on trouve une liste des différentes tâches qui composent le
+_workflow_, où on peut cliquer sur chaque tâche pour avoir des informations
+détaillées sur son exécution. A droite on trouve...
 
 - En haut, un rappel des propriétés de cette exécution : auteur du commit
   déclencheur, heure à laquelle il a été poussé, etc.
-- Ensuite une visualisation des différents _jobs_ qui composent le _workflow_,
-  et de leurs relations entre elles. Ici, nous n'avons qu'un seul _job_, donc ce
-  n'est pas différent de la liste à gauche, mais si vous allez sur [un dépôt
-  avec un _workflow_ GitHub Actions plus
-  complexe](https://github.com/acts-project/acts/actions/workflows/builds.yml)
-  vous comprendrez mieux l'intérêt de cette visualisation.
-- Et en bas une liste des erreurs et avertissements éventuels issus des _jobs_.
-  Ici on y apprend que le _job_ a échoué parce que le processus a retourné un 
+- Ensuite une visualisation plus précise des différentes tâches qui composent le
+  _workflow_ et de leurs dépendances entre elles. Ici, nous n'avons qu'une seule
+  tâche, donc ce n'est pas différent de la liste à gauche, mais si vous allez
+  sur [un dépôt avec un _workflow_ GitHub Actions plus
+  complexe](https://github.com/HadrienG2/hwlocality/actions/workflows/ci.yml)
+  vous comprendrez vite l'intérêt de cette visualisation.
+- Et en bas une résumé des erreurs et avertissements éventuels issus des tâches.
+  Ici on y apprend que notre tâche a échoué parce que le processus a retourné un 
   code de retour non nul, ce qui signale qu'une erreur est survenue dans les
   conventions des programmes Unix.
 
-En cliquant sur le nom du _job_ à un des trois endroits où il apparaît, nous
-avons accès au détail de l'exécution du _job_ :
+En cliquant sur le nom d'une tâche à un des trois endroits où il apparaît, nous
+avons accès au détail de l'exécution de la tâche :
 
-![Détail d'une exécution de job](../../../images/github-actions-job.png)
+![Détail d'une exécution d'une tâche](../../../images/github-actions-job.png)
 
-La section de gauche n'a pas changé par rapport à la visualisation du
-_workflow_, mais à gauche on observe maintenant une liste des différentes étapes
-d'exécution du _job_ avec la possibilité de visualiser les sorties consoles
-émises par chaque étape. Vous constaterez que...
+La section de gauche de l'interface n'a pas changé, ce qui vous permet de
+basculer rapidement entre la visualisation des différentes tâches du _workflow_.
+Mais à droite on observe maintenant une liste des différentes étapes d'exécution
+de la tâche avec la possibilité de visualiser les sorties consoles émises par
+chaque étape. Vous constaterez que...
 
 - En plus des 3 étapes que nous avons saisi nous-même dans le fichier de 
   _workflow_, GitHub en ajoute implicitement quelques autres au début et à la
   fin pour mettre en place la machine virtuelle, démarrer le conteneur Docker,
   faire le ménage à la fin...
-- Initialement, la visualisation des étapes du _job_ va droit à l'essentiel :
+- Initialement, la visualisation des étapes de la tâche va droit à l'essentiel :
   les sorties consoles des étapes qui ont réussi sont masquées, et la vue est
   automatiquement centrée sur la première étape qui a échoué. Il est bien sûr
-  possible d'aller examiner les autres étapes du _job_ si besoin en cliquant
-  simplement sur leur nom.
+  possible d'aller examiner les autres étapes de la tâche si besoin en cliquant
+  sur leur nom.
 
-Nous voyons ici que la cause du signalement d'erreur est le signalement de
-fautes d'orthographe et de typographie par Grammalecte :
+Nous voyons que dans ce cas précis, la tâche échoue parce que Grammalecte a
+signalé des fautes d’orthographe et de typographie :
 
 - Le nom d'utilisateur « ManuMacaron » ne faisant pas partie du dictionnaire, il
   est traité comme une faute d’orthographe.
 - En typographie française, les quantités et leurs unités doivent être séparées
   par un espace insécable. Celui-ci est visuellement identique à l'espace
   normal, mais il se comporte différemment au niveau de l'affichage du texte car
-  il est interdit de remplacer un espace insécable par un saut de ligne. Ici,
-  nous n'avons pas respecté cette règle de typographie au niveau de nos temps de
+  il est interdit de remplacer un espace insécable par un saut de ligne. Ici
+  nous n’avons pas respecté cette règle de typographie au niveau de nos temps de
   préparation, repos et cuisson.
 
 La première erreur est un faux positif que l'on corrigerait normalement en
@@ -449,7 +460,7 @@ devant être effectués via un fichier JSON de format complexe.
 Nous vous proposons donc à la place de désactiver la vérification orthographique
 et grammaticale pour le champ `auteur:` des en-tête de recettes, car ce champ
 est très sujet aux faux positifs de correcteur orthographique. Cela peut être
-fait en passant l'option `--skip-frontmatter-keys auteur` à grammalint.
+fait en passant à grammalint l'option `--skip-frontmatter-keys auteur`.
 
 Pour ce qui concerne les espaces insécables, ils ne sont malheureusement pas
 nativement disponibles sur le clavier français, donc on est forcé de les saisir
@@ -457,7 +468,8 @@ avec une procédure un peu alambiquée et spécifique au système d'exploitation
 utilisé. Dans cette formation, nous utilisons Linux, où la procédure la plus
 universelle[^input-sequences] est de…
 
-- Presser le raccourci clavier Ctrl+Shift+U.
+- Presser le raccourci clavier Ctrl+Shift+U pour basculer en mode de saisie
+  Unicode.
 - Taper le texte « A0 », qui est le code hexadécimal de l’espace insécable.
 - Appuyer sur la barre d'espace pour valider la saisie.
 
@@ -489,18 +501,19 @@ Puis, selon les erreurs détectées…
 
 ## Artefacts et rapports d’analyse
 
-Les **artefacts** sont des fichiers produits par un _job_ (rapports, journaux,
+Les **artefacts** sont des fichiers produits par une tâche (rapports, journaux,
 fichiers d’analyse, etc.) et conservés par GitHub. Ils peuvent être téléchargés
 directement depuis l’interface web pendant une certaine durée après l'exécution
 du _workflow_, 90 jours par défaut.
 
-Pour générer un rapport JSON avec `grammalint`, modifiez l'étape « Exécution de grammalint » du _job_
-`grammaire_et_orthographe` pour ajouter l'option `-o report.json`:
+Pour générer un rapport JSON avec `grammalint`, modifiez l'étape « Exécution de
+grammalint » de la tâche `grammaire_et_orthographe` pour ajouter l'option `-o
+report.json` :
 
 ```yml
 jobs:
   grammaire_et_orthographe:
-    # ... options globales du job ...
+    # ... options globales de la tâche ...
     steps:
       # ... étapes précédentes ...
       - name: Exécution de grammalint
@@ -510,9 +523,10 @@ jobs:
 Puis ajoutez une étape de mise en ligne d'artefact en utilisant l’action
 [`upload-artifact`](https://github.com/actions/upload-artifact) :
 
-```yml jobs:
+```yml
+jobs:
   grammaire_et_orthographe:
-    # ... options globales du job ...
+    # ... options globales de la tâche ...
     steps:
       # ... étapes précédentes ...
       - name: Mise en ligne du rapport JSON
@@ -524,13 +538,9 @@ Puis ajoutez une étape de mise en ligne d'artefact en utilisant l’action
         if: failure()
 ```
 
-C'est l'occasion d'introdure une paire de nouveaux éléments du côté de la
-syntaxe de déclaration d'une étape de _job_ :
+C'est l'occasion d'introdure quelques nouvelles options qu'on peut utiliser
+quand on déclare une étape de la tâche :
 
-- Avec
-  [`id`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepsid),
-  on peut donner un identifiant technique à une étape d'un _job_, ce qui permet
-  derrière d'y référence au sein d'autres étapes.
 - Avec
   [`with`](https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idstepswith)
   on peut configurer les paramètres d'entrée d'une action. Ici nous voulons…
@@ -546,24 +556,24 @@ syntaxe de déclaration d'une étape de _job_ :
     ce qui signifie qu'on n'exécute l'étape que si les étapes précédentes ont
     réussi. Ce n'est pas pertinent ici puisque Grammalecte n'émet des
     informations intéressantes en sortie que quand l'analyse a échoué.
-  - Avec la condition
+  - En fixant la condition d'exécution
     [`failure()`](https://docs.github.com/en/actions/reference/workflows-and-actions/expressions#failure),
-    on précise qu'on veut au contraire mettre en ligne un artefact seulement 
-    quand le _workflow_ échoue.[^missing-file]
+    on précise donc qu'on veut au contraire mettre en ligne un artefact
+    seulement quand le _workflow_ échoue.[^missing-file]
 
 L'artefact `grammalint-report` apparaîtra alors en bas de la page du _workflow_,
 où il sera possible de le télécharger pour examen plus approfondi.
 
 Nous le verrons plus en détail dans une prochaine séquence, mais notez que les
 artefacts peuvent aussi être utilisés pour transférer des fichiers entre
-différents _jobs_ d’un même _workflow_.
+différentes tâches d’un même _workflow_.
 
 [^missing-file]: Les plus aguerris d'entre vous auront remarqué que le
                  _workflow_ peut échouer pour d'autres raisons qu'une erreur
                  Grammalecte, par exemple si l'installation de grammalint
                  échoue. Ce n'est pas un gros problème ici puisque l'action
                  `upload-artifact` gère correctement l'absence de fichier en
-                 émettant un _warning_ et le _job_ est condamné à échouer de
+                 émettant un _warning_ et la tâche est condamnée à échouer de
                  toutes façons. Mais on peut si besoin demander que l'action
                  `upload-artifact` ne s'exécute que si l'étape d'exécution de
                  grammalint a échoué en utilisant [une condition `if` plus
@@ -577,7 +587,7 @@ Dans ce TP, nous avons découvert comment GitHub permet de mettre en place une
 appris à :
 
 - Définir un _workflow_ d’intégration continue
-- Créer et configurer un _job_ d’analyse automatique avec Grammalecte
+- Créer et configurer une tâche d’analyse automatique avec Grammalecte
 - Surveiller l’exécution du _workflow_ et interpréter les résultats dans
   l’interface GitHub
 - Générer et consulter des rapports d’analyse sous forme d’artefacts
@@ -586,8 +596,8 @@ Avec ces notions, nous disposons désormais d’un outil capable de vérifier
 automatiquement la qualité de nos fichiers Markdown à chaque modification.
 
 Dans la prochaine séquence, nous irons plus loin en découvrant comment enchaîner
-plusieurs _jobs_, gérer des dépendances entre eux et construire des _workflows_
-plus complets adaptés à des projets collaboratifs.
+plusieurs tâches, gérer des dépendances entre elles et construire des
+_workflows_ plus complets adaptés à des projets collaboratifs.
 
 
 ---
