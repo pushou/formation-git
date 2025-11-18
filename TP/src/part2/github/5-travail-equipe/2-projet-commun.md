@@ -70,8 +70,9 @@ problématiques en collaboration plus tard car ils sont...
 
 - Trop possessifs (ex : `mondepot`,
   [`godbolt`](https://www.youtube.com/watch?v=kvMqdLf4URI))
-- Impossibles à chercher (ex : [`R`](https://www.r-project.org/),
-  [`n`](https://www.npmjs.com/package/n))
+- Hostiles aux moteurs de recherche (ex :
+  [`C#`](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), 
+  [`R`](https://www.r-project.org/), [`n`](https://www.npmjs.com/package/n))
 - Trop génériques et/ou déjà pris (ex :
   [`code`](https://code.visualstudio.com/),
   [`opensycl`](https://github.com/AdaptiveCpp/AdaptiveCpp/tree/9f842c701a599107cc6d117d3539f971036363a1?tab=readme-ov-file#adaptivecpp-formerly-known-as-hipsycl--open-sycl))
