@@ -6,7 +6,7 @@ D'abord, vous avez configuré l’authentification via SSH et mis en place les _
 
 Durant ce processus, vous avez pu vous familiariser avec le concept des revues de code, tant en tant qu’auteur qu’en tant que relecteur, et vous avez peut-être même rencontré des situations de conflits lors des fusions. Nous en profitons pour rappeler que ces conflits sont normaux et font partie intégrante du travail collaboratif avec Git. Cependant, pour éviter que ces conflits ne surviennent trop régulièrement, il est recommandé de bien segmenter son travail en petites unités sur un sujet ciblé et une période de temps restreinte.
 
-Enfin, vous avez mis en pratique les mécanismes d’intégration et de déploiement continu _CI/CD_, tantôt avec les _GitHub Actions_, tantôt avec _GitLab CI/CD_. Cela vous a permis d’automatiser des tâches répétitives, comme la vérification du contenu de vos recettes (_linting_) ainsi que la génération et la publication de celles-ci sous forme de pages web.
+Enfin, vous avez mis en pratique les mécanismes d’intégration et de déploiement continu _CI/CD_, tantôt avec les _GitHub Actions_, tantôt avec _GitLab CI/CD_. Cela vous a permis d’automatiser des tâches répétitives, comme la vérification du contenu de vos recettes (_linting_) et la génération et la publication de celles-ci sous forme de pages web.
 
 ## Spécificité du parcours GitHub ouvert
 
