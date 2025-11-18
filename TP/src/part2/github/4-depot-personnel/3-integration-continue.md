@@ -102,7 +102,7 @@ davantage sur la définition des _workflows_.
 [^runner-server]: Suivant la logique moderne du _cloud_, les exécuteurs sont
                   typiquement des machines virtuelles, ce qui permet d'héberger
                   un grand nombre d'exécuteurs dont la consommation de ressource
-                  individuelle est fable sur une grosse machine hyperviseur
+                  individuelle est faible sur une grosse machine hyperviseur
                   unique et d'adapter facilement l'infrastructure aux demandes
                   utilisateur variées en termes de versions de systèmes
                   d'exploitation.
