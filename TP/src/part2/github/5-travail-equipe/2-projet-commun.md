@@ -154,8 +154,115 @@ deux choses:
 
 ### Droit d'auteur et licences
 
-TODO: ...on le tourne en discussion collective de l'équipe, et après on met le
-      README.md et le CONTRIBUTING.md en exo collectif. Enfin on racroche les
-      wagons avec la version gitlab en basculant sur la protection de branche
-      principale, à faire après quelques PRs histoire que la liste des jobs soit
-      initialisée pour la fonctionnalité mandatory check.
+Légalement parlant, la plupart des documents écrits sont sous le même régime de
+droit d’auteur. Du point de vue de la loi, il n’y a pas une grande différence
+entre un roman, une page web, un fichier de configuration et le code source d'un
+logiciel : tout texte suffisamment original est légalement considéré comme la
+propriété intellectuelle de son auteur.
+
+Le cadre légal de la propriété intellectuelle est un sujet très complexe, et
+même en se focalisant sur le cas des logiciels en droit français, il y a de quoi
+remplir [un beau pavé de >600
+pages](https://www.lgdj.fr/droit-des-logiciels-9782130626152.html). On ne va
+donc certainement pas fournir une explication exhaustive du sujet dans ce cours.
+Mais on peut poser les bases suivantes :
+
+- Le droit d’auteur protège les oeuvres sur un temps très long par rapport aux
+  échelles de temps de l’informatique, puisqu’il dure [70 ans après la mort de
+  l’auteur en Union
+  Européenne](https://en.wikipedia.org/wiki/Copyright_Duration_Directive).
+- En France, on divise traditionnellement le droit d’auteur en deux parties :
+  - Les droits « moraux » sont des droits dont l’auteur dispose pour toute la
+    durée de protection et auquel il ne peut pas renoncer. Il s'agit par exemple
+    du droit de citation.
+  - Les droit « patrimoniaux » peuvent être cédés à autrui via un contrat de
+    licence, traditionnellement rédigé contre rémunération. Il s'agit par
+    exemple du droit de distribuer des copies d'une œuvre.
+- En l’absence de licence explicite de la part du détenteur des droits, il est
+  illégal pour quelqu’un qui a accès à une oeuvre d’en redistribuer des copies
+  ou des oeuvres dérivées. Cette notion d’œuvre dérivée est large et couvre par
+  exemple les versions modifiées d’un texte où des passages de l’original sont
+  encore reconnaissables (ce qui inclut les commits dans un dépôt git) et les
+  traductions dans une autre langue (ce qui inclut les binaires issus de la
+  compilation d’un logiciel). Même les programmes qui se lient dynamiquement à
+  une bibliothèque sont concernés par les droits patrimoniaux de cette dernière
+  car ils contiennent des petits fragments de son code (noms de fonctions,
+  définitions de types, code _inline_…).
+  - On le voit, la création d’un _forks_ et la publication de commits basés sur
+    le dépôt d’autrui est illégale en l’absence de licence explicite permettant
+    l'utilisation du texte du dépôt original ! Il est donc impossible de
+    collaborer légalement sur un projet _open source_ en utilisant un
+    gestionnaire de version comme git sans avoir préalablement mis le projet
+    commun sous une licence adéquate sur laquelle l’ensemble des co-auteurs
+    s’accordent.
+- Traditionnellement, les licences de droits ont pour objectif d’autoriser la
+  copie de façon restreinte et moyennant finance afin de monétiser l’accès à une
+  oeuvre. Les licences _open source_ détournent cette logique en utilisant le
+  droit d’auteur pour encourager au contraire l’accès gratuit à l’oeuvre par le
+  plus grand nombre. Il existe de [très nombreuses licences _open
+  source_](https://choosealicense.com/appendix/) qu'on distingue les une des
+  autres par…
+  - Le type d’œuvre auxquelles la license est destinée à s'appliquer. La plupart
+    des licences _open source_ ont été conçues pour s’appliquer à des logiciels,
+    mais certaines comme la famille [Creative
+    Commons](https://creativecommons.org/) sont adaptées à des travaux de nature
+    moins informatique comme des oeuvres d’art.
+  - La volonté ou non d’assurer que le travail qui a été partagé gratuitement ne
+    soit pas derrière exploité par des entités commerciales peu scrupuleuses qui
+    veulent profiter au maximum du travail de la communauté en lui rendant le
+    minimum en retour. On lutte contre ce parasitisme en utilisant des licences
+    dites « _copyleft_ » qui imposent que les oeuvres dérivées soient
+    redistribuées sous une licence similaire à celle de l’oeuvre originale, la
+    plus connue étant sans doute la [license 
+    GPL](https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU).
+  - Plus généralement, la volonté de prévenir différents types d’abus qui
+    respectent à la lettre le texte de licences plus simples mais n’en
+    respectent aucunement l’esprit. Mentionnons comme exemples d’abus que
+    certaines licences tentent d’éviter...
+    - L’utilisation des brevets logiciels (dans les pays où ils sont facilement
+      accordés) pour tenter d’empêcher la réimplémentation _open source_ de
+      logiciels propriétaires.
+    - La mise à disposition de logiciels uniquement via une API réseau pour
+      contourner l'obligation de redistribution des sources des licences
+      _copyleft_.
+    - La mise à disposition d’un code source dont les versions modifiées ne sont
+      pas utilisables car l’appareil sur lequel le logiciel est destiné à être
+      installé rejette l’installation de versions modifiées du logiciel
+      (_tivoization_).
+  - De leur côté, on le devine, les parasites de l’_open source_ usent de toute
+    leur influence médiatique pour encourager au contraire l’utilisation de
+    licences les moins protectrices possibles pour les œuvres et logiciels, afin
+    de préserver au maximum leur liberté de piller le travail bénévole sans rien
+    avoir à contribuer en retour. On trouve à cet autre extrême du spectre des
+    licences comme [BSD](https://fr.wikipedia.org/wiki/Licence_BSD),
+    [MIT](https://fr.wikipedia.org/wiki/Licence_MIT) et
+    [Apache](https://fr.wikipedia.org/wiki/Licence_Apache).
+
+Pour conclure ce petit point de droit, il faut aussi mentionner que globalement
+parlant, les salariés ne sont pas titulaires des droits patrimoniaux des œuvres
+qu’ils produisent sur leur temps de travail, qui appartiennent à leur employeur.
+Choisir soi-même une licence pour un texte qu’on a écrit sur son temps de
+travail puis le publier soi-même est donc illégal, et on devrait à la place
+toujours passer pour ça par une discussion avec le service valorisation de son
+employeur. Mais hélas, l'incompétence généralisée desdits services concernant
+l’_open source_ nous conduit trop souvent à devoir « oublier » cet aspect légal
+important du droit d’auteur…
+
+C’est donc ce que nous allons faire ici pour le carnet de recettes commun, en
+vous encourageant à choisir vous-même une des licences [Creative
+Commons](https://creativecommons.org/share-your-work/cclicenses/) pour celui ci,
+qui sont les mieux adaptées pour un document textuel comme ce carnet de
+recettes. Comprenez-vous les différentes variantes proposées et leurs
+implication ? Laquelle vous semble la plus pertinente ? A votre brigade de
+cuisiniers de prendre le temps d’en débattre puis d’en décider collectivement !
+
+Quand vous aurez choisi, prenez le texte de la licence et sauvegardez-le dans un
+fichier `LICENSE` qui sera, suivant une tradition bien établie, mis à la racine
+du dépôt et intégré à la branche `main`.
+
+### Aides à la contribution
+
+TODO: Après on met le README.md et le CONTRIBUTING.md en exo collectif. Enfin on
+      racroche les wagons avec la version gitlab en basculant sur la protection
+      de branche principale, à faire après quelques PRs histoire que la liste
+      des jobs soit initialisée pour la fonctionnalité mandatory check.
