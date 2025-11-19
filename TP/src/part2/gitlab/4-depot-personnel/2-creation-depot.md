@@ -117,17 +117,17 @@ titre: "Crêpes classiques"
 description: "Une recette simple et rapide pour des crêpes moelleuses."
 auteur: "<votre-identifiant>"
 date: 2025-10-06
-temps_preparation: "10 min"
-temps_cuisson: "15 min"
-temps_repos: "—"
-difficulte: "Facile"
-nombre_personnes: 4
-categorie: "Dessert"
-cout: "€"
+temps_de_préparation: "10 min"
+temps_de_cuisson: "15 min"
+temps_de_repos: ""
+difficulté: "Facile"
+portions: 4 personnes
+catégorie: "Dessert"
+coût: "€"
 tags:
   - rapide
   - végétarien
-image: "crepes.jpg"
+image: crepes.jpg
 ingredients:
   - "250 g de farine"
   - "3 œufs"
