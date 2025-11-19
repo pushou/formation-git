@@ -84,7 +84,7 @@ Changer de nom n'est pas simple, car un nom est un identifiant à la fois social
 noms de paquets logiciels…). Mais quand on s’y prend suffisamment tôt, c’est une
 migration qui reste faisable. Il est donc conseillé de prendre le temps de
 passer en revue ses choix de noms avant de commencer à faire de la publicité
-pour ses projets et de les ouvrir aux contributions du plus grand nombre.
+pour ses projets et de les ouvrir au plus grand nombre.
 
 A ce stade, pour passer du nom possessif `mes-recettes` au nom plus inclusif
 `nos-recettes`, il vous suffit de faire 3 choses :
