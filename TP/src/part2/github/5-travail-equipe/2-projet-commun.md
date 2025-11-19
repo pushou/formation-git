@@ -36,7 +36,7 @@ dernières. Quelques exemples :
 
 - Le nom de dépôt initialement suggéré « mes-recettes » était tout à fait
   approprié pour un dépôt de recettes de cuisines personnel. Mais en tant que
-  contributeurs extérieurs il est un perturbant de soumettre des contributions à
+  contributeurs extérieurs il est un peu perturbant de soumettre des contributions à
   un dépôt dont le nom est aussi possessif. Il serait donc préférable de
   basculer vers un **nom plus inclusif** comme « nos-recettes ».
 - Lorsqu’un contributeur extérieur soumet une nouvelle recette de cuisine depuis
