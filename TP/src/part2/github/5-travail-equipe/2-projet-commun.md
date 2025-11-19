@@ -54,7 +54,7 @@ dernières. Quelques exemples :
   contribuer.
 
 Il est préférable de gérer les trois premiers points avant de commencer à
-accepter à accepter de nouvelles contributions. Le quatrième peut être résolu
+accepter de nouvelles contributions. Le quatrième peut être résolu
 collectivement ultérieurement.
 
 ### Nom du dépôt
