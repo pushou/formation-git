@@ -71,7 +71,7 @@ problématiques en collaboration plus tard car ils sont...
 - Trop possessifs (ex : `mondepot`,
   [`godbolt`](https://www.youtube.com/watch?v=kvMqdLf4URI))
 - Hostiles aux moteurs de recherche (ex :
-  [`C#`](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)), 
+  [`C#`](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)),
   [`R`](https://www.r-project.org/), [`n`](https://www.npmjs.com/package/n))
 - Trop génériques et/ou déjà pris (ex :
   [`code`](https://code.visualstudio.com/),
@@ -214,7 +214,7 @@ Mais on peut poser les bases suivantes :
     minimum en retour. On lutte contre ce parasitisme en utilisant des licences
     dites « _copyleft_ » qui imposent que les oeuvres dérivées soient
     redistribuées sous une licence similaire à celle de l’oeuvre originale, la
-    plus connue étant sans doute la [license 
+    plus connue étant sans doute la [license
     GPL](https://fr.wikipedia.org/wiki/Licence_publique_g%C3%A9n%C3%A9rale_GNU).
   - Plus généralement, la volonté de prévenir différents types d’abus qui
     respectent à la lettre le texte de licences plus simples mais n’en
@@ -258,12 +258,76 @@ implication ? Laquelle vous semble la plus pertinente ? A votre brigade de
 cuisiniers de prendre le temps d’en débattre puis d’en décider collectivement !
 
 Quand vous aurez choisi, prenez le texte de la licence et sauvegardez-le dans un
-fichier `LICENSE` qui sera, suivant une tradition bien établie, mis à la racine
-du dépôt et intégré à la branche `main`.
+fichier `LICENSE` (ou `LICENSE.md` si le texte de la license est disponible avec
+formatage Markdown). Ce fichier sera, suivant une convention bien établie, placé
+à la racine du dépôt et intégré à `main`.
 
-### Aides à la contribution
+### Documentation pour contributeurs
 
-TODO: Après on met le README.md et le CONTRIBUTING.md en exo collectif. Enfin on
-      racroche les wagons avec la version gitlab en basculant sur la protection
-      de branche principale, à faire après quelques PRs histoire que la liste
-      des jobs soit initialisée pour la fonctionnalité mandatory check.
+A ce stade, votre dépôt est prêt pour des contributions internes, et vous pouvez
+d’ors et déjà recommencer à pratiquer les exercices de la section [« Contribuer
+à un dépôt »](../3-contribution.md) pour vous remettre en tête le processus de
+base de soumission d'une _pull request_ et pratiquer un peu le côté mainteneur /
+chef cuisinier du processus.
+
+Nous verrons plus loin dans ce chapitre comment fluidifier ce processus pour
+éviter, par exemple, que plusieurs personnes ne perdent du temps à travailler
+sur la même recette sans le savoir. Mais en attendant, je vous propose comme
+exercice collectif d’améliorer l’accessibilité du dépôt pour les contributeurs
+extérieurs afin d’augmenter vos chances d’attirer ce type de contribution.
+
+Comme vu précédemment, la convention pour indiquer la licence sous laquelle le
+contenu d’un dépôt git est diffusé est de placer un fichier `LICENSE` ou
+`LICENSE.md` à la racine du dépôt. Il existe d’autres conventions de ce type que
+l'on retrouve dans de nombreux projets _open source_, et que vous gagneriez à
+respecter dans vos dépôts :
+
+- Il est très courant de placer un fichier `README` ou `README.md` à la racine
+  du dépôt pour faire une présentation basique du projet orientée vers les
+  contributeurs potentiels : comment il s’appelle, son objectif, des
+  instructions d’installation et un mini tutoriel d'utilisation si c’est un
+  logiciel, des instructions pour le rendu HTML si c’est un site web, une
+  référence pour les citations si il existe des publications sur le projet… Cela
+  ne remplace pas une documentation plus complète pour les gros projets, mais
+  rend déjà le projet plus accueillant en aidant beaucoup les nouveaux venus à
+  mettre le pied à l'étrier.
+- On utilise souvent un autre fichier `CONTRIBUTING.md` pour fixer la politique
+  de contribution du projet : quel type de contributions sont recherchées
+  activement par le projet, le processus de contribution recommandé (ex :
+  prévenir avant un gros développement via une _issue_ pour pouvoir raffiner la
+  conception avec les mainteneurs et autres contributeurs, découper les gros
+  développements en petites _pull requests_ pour faciliter la revue). Un autre
+  élément classique de ce fichier est de rappeler les règles de vie de la
+  communauté autour du projet que tout contributeur devrait respecter sous peine
+  de banissement (_code of conduct_). En France il s’agit souvent avant tout
+  d’un rappel à la loi, mais l’expérience montre que ce type de rappel est
+  malheureusement souvent nécessaire sur Internet…
+- Une autre convention un peu moins répandue mais partagée par plusieurs projets
+  académiques est d’ajouter un fichier `AUTHORS.md` qui donne des informations
+  complémentaires sur les auteurs par rapport à ce qui est présent dans les
+  métadonnées de commits git : affiliation académique, ORCID… Attention
+  toutefois avec les informations de contact comme les adresses mail, car les
+  _spammeurs_ adorent fouiller le contenu des dépôts git public de façon
+  automatisée pour y trouver de nouvelles personnes à harceler.[^commit-mail]
+
+Prenez le temps d'aller collectivement visiter le dépôt de code source de
+quelques gros projets _open source_ que vous appréciez, et examinez les fichiers
+texte à la racine du dépôt dont le nom est en majuscule : il s’agit généralement
+d’une documentation pour contributeur de ce style. Notez les ressemblances et
+les différences entre les fichiers fournis par ces projets et leur contenu, puis
+décidez quels fichiers vous souhaitez ajouter à votre dépôt de recette et quels
+contenus vous souhaitez mettre dedans. Enfin, répartissez-vous les tâches de
+rédaction associées.
+
+[^commit-mail]: Ce problème de spam explique aussi pourquoi de plus en plus de
+                forges anonymisent les adresses mail des commits git que l’on y
+                pousse par défaut, ou proposent de le faire en option. La
+                conception de git a hélas mal vieilli sur ce point.
+
+
+## Protéger la branche principale
+
+TODO: On racroche les wagons avec la version gitlab en basculant sur la
+      protection de branche principale, à raffiner plus tard après quelques PRs
+      en ajoutant les mandatory checks quand la liste des jobs sera initialisée
+      par les premiers runs de CI.
