@@ -6,9 +6,8 @@ présentation.</a>
 
 ## Mode d’emploi des TPs
 
-Tout d'abord, notez que le titre de chaque TP est un lien vers les supports
-de la présentation correspondante, ce qui vous permet de la réviser à tête
-reposée...
+Tout d'abord, notez qu'au début de chaque TP il y a un lien vers les supports
+de la présentation associée, ce qui vous permet de la réviser à tête reposée.
 
 Afin de s’adapter au rythme de progression de chacun, les TPs sont pensés pour
 être suivis de façon autonome. Ils sont construits de la façon suivante :
