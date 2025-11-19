@@ -327,7 +327,263 @@ rédaction associées.
 
 ## Protéger la branche principale
 
-TODO: On racroche les wagons avec la version gitlab en basculant sur la
-      protection de branche principale, à raffiner plus tard après quelques PRs
-      en ajoutant les mandatory checks quand la liste des jobs sera initialisée
-      par les premiers runs de CI.
+<div class="warning">
+
+Les actions qui suivent ne peuvent être effectuée que par le chef cuisinier. Les
+autres membres de la brigade peuvent les observer aussi, ou bien commencer à
+creuser les instructions suivantes pour être parés pour les contributions
+futures.
+
+</div>
+
+Dans la méthode de travail classique utilisée par cette formation, la branche
+`main` du dépôt a un statut spécial d'historique officiel du projet. Par
+exemple...
+
+- Quand on visualise le dếpôt dans l'interface web, on voit d'abord cette
+  branche.
+- Le site web officiel du projet est typiquement généré à partir de cette
+  branche.
+- Pour les projets logiciels, les versions que l'on publie sous forme de paquets
+  (ex: v2.0.0) dérivent souvent de commits _taggés_ sur cette branche.
+- Les contributions extérieures dérivent de cette branche et sont fusionnées en
+  son sein.
+
+Tout ceci fait qu'on souhaite souvent s'imposer et imposer aux autres une
+certaine prudence dans la manipulation de cette branche. Par exemple…
+
+- On peut souhaiter qu’aucun changement ne soit mis en ligne sur `main` par
+  _push_ direct, et que tout changement passe par une _pull request_. Cela
+  assure que les changements des contributeurs internes et externes sont traités
+  de façon uniforme (ce qui facilite par exemple la création d'un _change log_),
+  et ouvre ainsi la porte au point suivant.
+- On peut souhaiter qu’aucun changement ne soit fusionné au sein de `main` avant
+  que l’intégration continue n’aie réussi sur une version de la branche qui est
+  à jour par rapport à `main`. Cela assure que l’on ne fusionnera pas au sein de
+  `main` des changements qui risquent de casser l’intégration continue.
+
+Dans le vocabulaire de GitHub, les _rulesets_ sont la façon moderne d’obtenir ce
+genre de garantie. Pour en configurer un pour la branche `main`, procédez de la
+façon suivante :
+
+- Rendez-vous dans les réglages du dépôt (onglet _Settings_), puis dans la
+  section « Rules → Rulesets » du panneau latéral, puis cliquez sur le bouton
+  « New ruleset » et sélectionnez l’option « New branch ruleset » dans le menu
+  qui s'ouvre.
+- Dans le champ « Ruleset Name » du formulaire qui s’ouvre, donnez au _ruleset_
+  le nom que vous voulez.
+- En-dessous, assurez-vous que le **Enforcement status** soit réglé sur
+  **Active** pour que les règles suivantes soient bien mises en application.
+- Dans la section « Target branches », cliques sur le bouton « Add target » et
+  choisissez l’option « Include default branch » dans le menu qui s'ouvre.
+- Dans la section « Branch rules », activez les options suivantes :
+  - **Restrict deletions** permet de garantir que la branche principale ne sera
+    pas supprimée par accident (plus précisément qu’un _push_ qui tente de la
+    supprimer sera rejeté).
+  - **Require a pull request before merging** permet d'interdire le _push_
+    direct sur `main`. N’hésitez pas à faire un tour de la section cachée « Show
+    additional settings » pour voir comment il est possible au-delà d’exiger un
+    certain type de traitement des _pull requests_.
+  - **Require status checks to pass** permet d’exiger que certaines tâches
+    d’intégration continue réussissent avant qu’une _pull request_ ne puisse
+    être fusionnée. Pour bien fonctionner, cette option doit être configurée
+    davantage en effectuant les réglages suivantes dans la section cachée « Show
+    additional settings » :
+    - Cochez la case **Require branches to be up to date before merging** pour
+      assurer que les tests aient vraiment été lancés sur la fusion de `main` et
+      de la branche proposée, et pas sur une ancienne version de la branche
+      proposée qui n'est pas forcément à jour par rapport à `main`.
+    - Cliquez sur le bouton « Add checks » et trouvez la tâche
+      `grammaire_et_orthographe` avec la barre de recherche afin d’ajouter la
+      vérification de grammaire/orthographe à la liste des tâches d’intégration
+      continue qui doivent réussir avant qu'une _pull request_ ne soit
+      fusionnée.
+  - **Block force pushes** permet d'assurer qu’aucun _force push_ ne sera
+    effectué sur la branche concernée. Il est fortement recommandé de le faire
+    au moins pour la branche `main`, car c’est une branche sur laquel tous les
+    contributeurs basent leur travail et un _force push_ dessus peut donc avoir
+    des conséquences très graves.
+
+Enfin, cliquez sur **Create** et effectuez les formalités de vérification
+d’identité éventuellement demandées par GitHub pour confirmer l'opération.
+N’hésitez pas à faire en passant un tour rapide des autres options pour voir ce
+que les _rulesets_ offrent comme autres possibilités, et à solliciter les
+formateurs si il y a des options que vous ne comprenez pas.
+
+Pendant que vous êtes dans les réglages du dépôt, faites aussi un tour dans la
+partie « General » en haut du menu à gauche, défilez jusqu'à la section « Pull
+Requests », et prenez connaissance des options disponibles à cet endroit.
+Plusieurs vous intéresseront potentiellement. Ici aussi, n'hésitez pas à
+solliciter les formateurs si il y a des choses que vous ne comprenez pas dans
+les options proposées.
+
+Après avoir activé ces règles, essayez maintenant de modifier le fichier de
+recette `recettes/crepes-classiques.md` en local, de faire un commit, puis de
+pousser directement sur `main`. Si la protection est bien en place, GitHub
+devrait refuser le _push_ avec un message d'erreur de ce style :
+
+```text
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: Review all repository rules at https://github.com/ManuMacaron/mes-recettes/rules?ref=refs%2Fheads%2Fmain
+remote: 
+remote: - Changes must be made through a pull request.
+remote: 
+remote: - Required status check "grammaire_et_orthographe" is expected.
+remote: 
+To github-manu-macaron:ManuMacaron/mes-recettes.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+erreur : impossible de pousser des références vers 'github-manu-macaron:ManuMacaron/mes-recettes.git'
+```
+
+Il ne vous reste alors qu'à créer une branche pour pouvoir intégrer vos
+modifications via une _pull request_. N'hésitez pas à relire la [section
+précédente](../3-contribution.md) si besoin.
+
+Une fois la branche et la _pull request_ créées, vous pourrez fusionner vos
+modifications dans `main` via l'interface web de GitHub. Pour cela rendez-vous
+dans l'onglet « Pull requests », sélectionnez votre _pull request_, puis cliquez
+sur le bouton « Merge pull request » et confirmez la fusion après édition
+éventuelle du message de commit associé au commit de fusion.
+
+Vous pourrez alors retourner voir le contenu et le graphique des commits de
+votre dépôt pour vérifier que vos modifications ont bien été intégrées dans
+`main`.
+
+
+## Organiser le travail avec les tickets (_issues_)
+
+Avant de plonger vous plonger dans la rédaction des recettes, il est utile de
+planifier et organiser les tâches à accomplir, sinon on se retrouve vite avec
+trois recettes de gâteau au chocolat et zéro recettes de risotto.
+
+GitHub propose pour cela un outil simple et efficace : les **tickets**
+(_issues_). Les **tickets** vous permetteront par exemple de…
+
+* proposer une **nouvelle recette** (« Créer la recette du fondant au
+  chocolat »),
+* proposer une **correction** (« Erreur sur les proportions du gâteau au
+  yaourt »),
+* ou encore suggérer une **amélioration** (« Ajouter une photo à la recette des
+  crêpes »).
+
+Un **ticket** peut aussi être découpé en plusieurs sous-tâches pour mieux
+répartir le travail.
+
+### Créer un ticket
+
+Chaque membre du groupe doit créer au moins un ticket.
+Prenez un moment pour définir les tâches et les répartir clairement.
+
+1. Ouvrez l’onglet **Issues** et cliquez sur le bouton vert **New issue**.
+2. Saisissez un titre, par exemple : « Ajouter la recette de la tarte aux pommes
+   classique ».
+3. Dans la description, vous pouvez préciser par exemple :
+   * le type de recette ou de correction ;
+   * les contraintes éventuelles (ex. « prévoir une version sans gluten ») ;
+4. Cliquez sur **Create issue**.
+
+Votre ticket s’affiche maintenant dans la liste des _issues_, visible par toute
+la brigade, et le chef cuisinier peut affecter le ticket à un membre de la
+brigage (_assignee_) ou ajouter des _labels_[^labels] pour faciliter le tri.
+
+[^labels]: Vous pouvez utiliser les _labels_ GitHub ou GitLab pour organiser vos
+           _issues_ par type, priorité ou encore statut (ex. `à faire`,
+           `urgent`, `en cours`, `terminé`, `CI/CD`, `recette`). Vous
+           retrouverez quelques exemples d'utilisation des _labels_ sur [le
+           projet GitLab associé à cette
+           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/issues).
+
+
+## Créer un _fork_ et cloner le dépôt en local
+
+Chaque membre de la brigade autre le chef doit maintenant créer un _fork_ du
+dépôt, le cloner en local, et configurer les _remotes_ afin de pouvoir
+facilement ajouter des recettes. Si vous avez un trou de mémoire, retrouvez le
+détail de la procédure dans la section [contribution](../3-contribution.md).
+
+De son côté, le chef peut continuer à travailler comme quand il était tout seul,
+à pousser des branches directement dans le dépôt, à ceci près qu'il ne peut plus
+pousser directement sur la branche `main` puisque nous avons choisi de faire
+passer toutes les contributions y compris celles du chef par une _pull request_
+(et donc par une vérification de la CI) afin d'homogénéiser les procédures
+qualité.
+
+
+## Du ticket à la _pull request_ : un flux de travail collaboratif
+
+Vous allez travailler à plusieurs sur le même dépôt git. Pour limiter les
+conflits, il est impératif de toujours créer une nouvelle branche pour chaque
+recette ou correction. Essayez aussi tant que possible de limiter la durée de
+vie de vos branches pour faciliter les fusions.
+
+Pour simplifier la collaboration et fluidifier le processus de contribution,
+nous vous proposons de suivre la démarche suivante :
+
+1. Choisir un ticket à traiter
+2. Créer une branche dédiée avec un nom explicite et le numéro du ticket (ex.
+   `123-recette-tiramisu` pour le ticket #123)
+3. Modifier ou ajouter la recette/correction [^close-with-commit]
+4. Pousser la branche sur GitHub
+5. Créer une _pull request_ pour intégrer les modifications dans la branche
+   principale `main`
+6. Assigner un relecteur (un autre membre de la brigade)[^reviewer] pour valider
+   les modifications avant fusion
+7. Corriger en fonction des retours éventuels
+8. Fusionner la _pull request_ une fois validée[^cleanup-branch]
+
+[^close-with-commit]: Pour fermer automatiquement le ticket une fois la _pull
+request_ fusionnée, ajoutez `fixes #<numéro-du-ticket>` dans le message du
+commit ou de la _pull request_ (ex. `fixes #123` pour le ticket #123).
+
+[^reviewer]: Pour garantir la qualité des contributions, il est recommandé de
+confier la relecture à une personne autre que l’auteur. En effet, il est souvent
+plus facile de repérer les erreurs dans le travail des autres que dans le sien.
+
+[^cleanup-branch]: Après la fusion de la _pull request_, pensez à supprimer la
+branche de travail locale et distante pour garder un dépôt propre. Le chef
+cuisinier peut automatiser la suppression des branches de développement des
+_forks_ en cochant l’option « Automatically delete head branches » dans les
+paramètres du dépôt, mais la suppression des branches locales doit être
+effectuée manuellement avec la commande `git branch -d <nom-de-la-branche>`.
+
+<div class="warning">
+
+Pour éviter les conflits, n’oubliez pas de toujours synchroniser votre branche
+locale avec la branche `main` avant de créer une nouvelle branche de
+travail. Pensez aussi à régulièrement mettre à jour votre branche de travail
+avec les dernières modifications de `main` en utilisant `git merge` ou `git
+rebase`.
+
+</div>
+
+À vous de jouer ! Créez vos tickets, ajoutez vos meilleures recettes, rédigez
+vos _pull requests_ et regardez votre livre de cuisine collaboratif prendre
+forme, page après page.
+
+
+## Conclusion
+
+Dans ce TP, vous avez découvert comment travailler en équipe sur GitHub et gérer
+un dépôt commun. En particulier, vous avez appris à :
+
+- Modifier les paramètres d’un dépôt initialement pensé comme projet personnel
+  afin de l’ouvrir aux contributions extérieures ;
+- Protéger la branche `main` pour imposer l'utilisation de _pull requests_.
+- Organiser le travail grâce aux tickets (_issues_) pour répartir clairement les
+  tâches ;
+- Créer des branches pour chaque contribution et assurer un flux de travail
+  propre et sans (trop de) conflit ;
+- Soumettre et relire les modifications via les _pull requests_, afin de
+  garantir la qualité et la cohérence du projet.
+
+Grâce à ces notions, votre brigade dispose désormais de bases solides pour
+collaborer efficacement sur tout type de projet GitHub, qu’il s’agisse d’un
+simple livre de recettes ou d’un véritable projet de développement logiciel.
+
+Dans la [prochaine section](3-deploiement-continu.md), nous reprendrons les
+notions d’intégration continue abordées précédemment et les transposerons à ce
+nouveau contexte collaboratif. Nous verrons comment utiliser cet outil pour vous
+accompagner dans vos demandes de fusion et automatiser certaines vérifications.
+Et enfin nous aborderons la mise en ligne de votre livre de recettes sous la
+forme d’un site web statique généré automatiquement à chaque mise à jour du
+projet.
