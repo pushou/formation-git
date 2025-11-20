@@ -20,9 +20,9 @@ le TP et discuter de ce qu'il faut faire avec votre brigade. En particulier,
 posez-vous la question de :
 
 - Qui prépare les tickets ?
-- Qui gère ou modifie le _pipeline_ ?
+- Qui gère ou modifie les _workflows_ ?
 - Qui modifie ou corrige les recettes ?
-- Qui valide les _merge requests_ avant leur intégration dans `main` ?
+- Qui valide les _pull requests_ avant leur intégration dans `main` ?
 
 Utilisez les tickets pour suivre les tâches à réaliser et l’avancement du
 projet. N’oubliez pas de toujours travailler sur une branche dédiée.
@@ -59,9 +59,9 @@ que vous préférez, ouvrez-le avec votre éditeur de texte favori, puis nous
 allons comme précédemment le décortiquer point par point pour expliquer sa
 logique.
 
-Comme précédemment, nous allons commencer par donner un nom à notre nouveau
-_workflow_, par décrire quels événements déclenchent son exécution, et par
-préparer une liste de tâches initialement vide :
+D'abord, on va donner un nom à notre nouveau _workflow_, décrire quels
+événements déclenchent son exécution, et préparer une liste de tâches
+initialement vide :
 
 ```yaml
 name: "Déploiement continu"
@@ -73,11 +73,11 @@ jobs:
 ```
 
 Si vous avez bien compris les chapitres précédents, cette partie de la
-configuration ne devrait pas avoir de secret pour vous. N’hésitez pas à relire
-le chapitre [« Intégration
+configuration ne devrait pas avoir de secret pour vous. Sinon hésitez pas à
+relire le chapitre [« Intégration
 continue »](../4-depot-personnel/3-integration-continue.md) et la section sur
 les _pull requests_ du chapitre [« Projet commun »](2-projet-commun.md) et/ou à
-poser vos questions aux formateurs si d’aventure ce n’était pas le cas.
+poser vos questions aux formateurs.
 
 Contrairement à notre _workflow_ précédent, qui ne comportait qu’une seule
 tâche, ce _workflow_ va être composé de deux tâches, une tâche `build_pages` qui
@@ -122,12 +122,12 @@ jobs:
 
 En revanche, il y a un petit ajustement de configuration à faire. Le générateur
 de site statique a été conçu pour GitLab Pages, où le site statique est hébergé
-à une URL de la forme `https://PROJET-xyz.gitlab.in2p3.fr/`. Mais ici nous
-utilisons GitHub Pages où le site statique est hébergé à une URL de la forme
-`https://UTILISATEUR.github.io/PROJET`. Et la présence de ce dossier `PROJET`
-supplémentaire casse tous les chemins de fichier absolus au sein des pages web
-générées si elle n'est pas signalée au générateur de site statique avec la
-variable d'environnement `BASE_URL`.
+par défaut à une URL de la forme `https://PROJET-xyz.gitlab.in2p3.fr/`. Mais ici
+nous utilisons GitHub Pages où le site statique est hébergé à une URL de la
+forme `https://UTILISATEUR.github.io/PROJET`. Et la présence de ce dossier
+`PROJET` supplémentaire casse tous les chemins de fichier absolus au sein des
+pages web générées si elle n'est pas signalée au générateur de site statique
+avec la variable d'environnement `BASE_URL`.
 
 Nous configurons donc cette variable d’environnement à la bonne valeur avec
 l'option
@@ -283,7 +283,7 @@ jobs:
 Nous complétons enfin les options de la tâche `deploy_pages` en indiquant à
 GitHub Actions qu’elle a vocation à déployer un site statique dans
 l'environnement GitHub Pages à une certaine URL. Contrairement au nom de dépôt
-ci-dessus, il ne sera pas nécessaire de spécifier ladite URL en dur dans le
+de `BASE_URL`, il ne sera pas nécessaire de spécifier ladite URL en dur dans le
 fichier de configuration de _workflow_, car nous pouvons l’obtenir de l'action
 qui effectue la mise en ligne du site via une technique que nous allons
 expliquer plus loin.
@@ -380,8 +380,8 @@ vous pouvez cliquer pour avoir accès à l’URL à laquelle le site a été mis
 ligne. N’hésitez pas à visiter cette URL pour contrôler que tout va bien. Mais
 clairement, elle est un peu trop bien cachée dans les profondeurs de l’interface
 de GitHub pour que vos visiteurs la trouvent facilement. Il est donc tentant de
-terminer par une autre _pull request_ qui cette information plus en valeur dans
-le `README` du projet !
+terminer par une autre _pull request_ qui met cette information plus en valeur
+dans le `README` du dépôt officiel !
 
 
 ## Conclusion
