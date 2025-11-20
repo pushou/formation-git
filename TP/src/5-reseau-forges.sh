@@ -59,8 +59,6 @@ git checkout main
 git branch --set-upstream-to=upstream/main
 ###### ANCHOR_END: set-upstream-main
 
-# TODO: Bring back once github and gitlab are back in sync
-function test_this_manually() {
 ###### ANCHOR: pull-main-gitlab
 cd ~/Desktop/recettes
 ###### ANCHOR: pull-main-github
@@ -68,8 +66,6 @@ git checkout main
 git pull --ff-only
 ###### ANCHOR_END: pull-main-github
 ###### ANCHOR_END: pull-main-gitlab
-}
-unset -f test_this_manually
 
 ###### ANCHOR: config-pull-ff-only
 git config pull.ff only
@@ -94,12 +90,16 @@ git checkout -b NomDeBranche
 }
 unset -f test_this_manually
 
+# Ne marche plus si quelqu'un commit ce changement dans recettes
+function test_this_manually() {
 ###### ANCHOR: commit-on-dev-branch
 # Commandes à remplacer par une édition de votre choix, cf ci-dessus
 sed -Ei 's/(temps_de_repos: )""/\1"2 h"/' recettes/crepes.md
 git add recettes/crepes.md
 git commit -m "Ajout du temps de repos recommandé"
 ###### ANCHOR_END: commit-on-dev-branch
+}
+unset -f test_this_manually
 
 ###### ANCHOR: update-main-and-merge
 git checkout main
