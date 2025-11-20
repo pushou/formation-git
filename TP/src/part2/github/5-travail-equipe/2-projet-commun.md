@@ -265,7 +265,7 @@ formatage Markdown). Ce fichier sera, suivant une convention bien établie, plac
 ### Documentation pour contributeurs
 
 A ce stade, votre dépôt est prêt pour des contributions internes, et vous pouvez
-d’ors et déjà recommencer à pratiquer les exercices de la section [« Contribuer
+d’ores et déjà recommencer à pratiquer les exercices de la section [« Contribuer
 à un dépôt »](../3-contribution.md) pour vous remettre en tête le processus de
 base de soumission d'une _pull request_ et pratiquer un peu le côté mainteneur /
 chef cuisinier du processus.
