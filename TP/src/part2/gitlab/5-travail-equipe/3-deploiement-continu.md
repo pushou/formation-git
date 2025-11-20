@@ -248,7 +248,7 @@ adaptée pour des projets _open-source_ ouverts aux contributions extérieures.
 ## Exercices
 
 Nous vous invitons à réfléchir aux questions suivantes pour approfondir votre
-compréhension de l’intégration et du déploiement continus avec _GitLab_ :
+compréhension de l’intégration et du déploiement continus avec GitLab :
 
 1. Que se passe-t-il si la vérification grammaticale échoue ? Le site est-il
    tout de même publié ?
