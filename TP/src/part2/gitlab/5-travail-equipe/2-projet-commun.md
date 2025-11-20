@@ -2,7 +2,7 @@
 
 Après avoir préparé votre propre carnet de recettes, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
-4 personnes** pour créer **un livre de recettes collaboratif**.
+4 personnes** pour créer un **livre de recettes collaboratif**.
 
 
 ## Création de la brigade
@@ -196,10 +196,11 @@ votre dépôt pour vérifier que vos modifications ont bien été intégrées da
 ## Organiser le travail avec les tickets (_issues_)
 
 Avant de plonger vous plonger dans la rédaction des recettes, il faut planifier
-et organiser les tâches à accomplir.
+et organiser les tâches à accomplir, sinon on se retrouve vite avec trois
+recettes de gâteau au chocolat et zéro recettes de risotto.
 
-Gitlab propose pour cela un outil simple et efficace : les **tickets**
-(_issues_). Les **tickets** vous permetteront par exemple de proposer de :
+Gitlab propose pour cela un outil simple et efficace : les **tickets**
+(_issues_). Les **tickets** vous permetteront par exemple de…
 
 * proposer une **nouvelle recette** (« Créer la recette du fondant au chocolat »),
 * proposer une **correction** (« Erreur sur les proportions du gâteau au yaourt »),
@@ -208,7 +209,6 @@ Gitlab propose pour cela un outil simple et efficace : les **tickets**
 
 Un **ticket** peut aussi être découpé en plusieurs sous-tâches pour mieux
 répartir le travail.
-
 
 ### Créer un ticket
 
@@ -254,7 +254,7 @@ Vous commencez à connaître la procédure :
 
 ## Du ticket à la _merge request_ : un flux de travail collaboratif
 
-Vous allez travailler à plusieurs sur le même dépôt Git. Pour limiter les
+Vous allez travailler à plusieurs sur le même dépôt git. Pour limiter les
 conflits, il est impératif de toujours créer une nouvelle branche pour chaque
 recette ou correction. Essayez aussi tant que possible de limiter la durée de
 vie de vos branches pour faciliter les fusions.
@@ -295,10 +295,10 @@ branch -d <nom-de-la-branche>`.
 <div class="warning">
 
 Pour éviter les conflits, n’oubliez pas de toujours synchroniser votre branche
-locale avec la branche <code>main</code> avant de créer une nouvelle branche de
+locale avec la branche `main` avant de créer une nouvelle branche de
 travail. Pensez aussi à régulièrement mettre à jour votre branche de travail
-avec les dernières modifications de <code>main</code> via la commande
-<code>rebase</code> pour garder un historique propre.
+avec les dernières modifications de `main` en utilisant `git merge` ou `git
+rebase`.
 
 </div>
 
@@ -319,8 +319,8 @@ un dépôt commun. En particulier, vous avez appris à :
   tâches ;
 - Créer des branches pour chaque contribution et assurer un flux de travail
   propre et sans (trop de) conflit ;
-- Soumettre et relire les modifications via les merge requests, afin de garantir
-  la qualité et la cohérence du projet.
+- Soumettre et relire les modifications via les _merge requests_, afin de
+  garantir la qualité et la cohérence du projet.
 
 Grâce à ces notions, votre brigade dispose désormais de bases solides pour
 collaborer efficacement sur tout type de projet GitLab, qu’il s’agisse d’un

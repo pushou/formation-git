@@ -21,7 +21,12 @@ Already on 'main'
 Your branch is up to date with 'origin/main'.
 + git branch --set-upstream-to=upstream/main
 branch 'main' set up to track 'upstream/main'.
-+ unset -f test_this_manually
++ cd ~/Desktop/recettes
++ git checkout main
+Already on 'main'
+Your branch is up to date with 'upstream/main'.
++ git pull --ff-only
+Already up to date.
 + git config pull.ff only
 + git checkout main
 Already on 'main'
@@ -29,11 +34,7 @@ Your branch is up to date with 'upstream/main'.
 + git checkout -b NomDeBranche
 Switched to a new branch 'NomDeBranche'
 + unset -f test_this_manually
-+ sed -Ei 's/(temps_de_repos: )""/\1"2 h"/' recettes/crepes.md
-+ git add recettes/crepes.md
-+ git commit -m 'Ajout du temps de repos recommandé'
-[NomDeBranche AAAAAAA] Ajout du temps de repos recommandé
- 1 file changed, 1 insertion(+), 1 deletion(-)
++ unset -f test_this_manually
 + git checkout main
 Switched to branch 'main'
 Your branch is up to date with 'upstream/main'.
