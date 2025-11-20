@@ -1,9 +1,16 @@
-# Formation Git - Récapitulatif Jour 3 et Conclusion
-## Forges GitLab et GitHub : Du dépôt personnel au projet collaboratif
+# Récapitulatif Jour 3 
+# et Conclusion 
+## Formation Git
 
+Hadrien GRASLAND & Sonny LION
+
+---
+layout: two-cols-header
 ---
 
 ## GitLab vs GitHub : quelles différences ?
+
+::left::
 
 ### Parcours GitLab (IN2P3) - fermé
 
@@ -11,6 +18,9 @@
 - Travail direct sur le dépôt avec branches dédiées
 - Requiert la confiance entre contributeurs
 - Plus simple mais moins adapté aux contributions externes
+
+
+::right::
 
 ### Parcours GitHub - ouvert
 
@@ -23,23 +33,38 @@ CI/CD : syntaxes différentes mais fonctionnalités similaires (stages/jobs, aut
 
 ---
 
+<style>
+  h3 {
+    margin-top: 20px;
+  }
+</style>
+
 ## Création et gestion d'un dépôt sur une forge
 
-Attention :
+
+### Attention
 
 - Au nom du dépôt
 - À sa visibilité (public/privé)
 - À la licence choisie
 - À qui vous accordez des droits d'accès
 
-Bonnes pratiques :
+### Bonnes pratiques
 
 - Organisation via tickets (_issues_)
 - _Merge/pull requests_ et revues
 - Protection de `main` (pas de push direct)
 
 
-## Intégration et Déploiement Continus (CI/CD) avec GitLab ou GitHub
+<style>
+  h3 {
+    margin-top: 20px;
+  }
+</style>
+
+---
+
+## CI/CD avec GitLab ou GitHub
 
 Des syntaxes différentes mais des concepts similaires :
 
@@ -67,8 +92,12 @@ Méthode de travail collaboratif maîtrisée :
 Workflow complet : Ticket → Branche → Édition → Push → MR/PR → Revue → Fusion → Nettoyage
 
 ---
+layout: two-cols-header
+---
 
 ## Après trois jours de formation...
+
+::left::
 
 Vous savez maintenant :
 
@@ -79,6 +108,8 @@ Vous savez maintenant :
 - Gérer les conflits
 - Gérer les permissions et protéger les branches critiques
 - Mettre en place une CI/CD basique pour automatiser des tâches
+
+::right::
 
 Quelques bonnes pratiques pour limiter les conflits et fluidifier vos collaborations :
 
