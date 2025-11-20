@@ -1,6 +1,6 @@
 # Réseau et forges
 
-<a href="Pres5-Reseau.pdf" target="blank">Retrouvez ici les supports de la
+<a href="../Pres5-Reseau.pdf" target="blank">Retrouvez ici les supports de la
 présentation.</a>
 
 
