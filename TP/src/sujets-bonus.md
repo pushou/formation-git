@@ -537,3 +537,122 @@ Cette fonctionnalité étant encore plus obscure que les _submodules_ eux-mêmes
 un peu longue à expliquer ici, nous vous invitons pour plus d’informations à
 consulter le chapitre « Submodules » du livre Pro Git, sur lequel cette
 introduction est basée : <https://git-scm.com/book/en/v2/Git-Tools-Submodules>.
+
+
+## Hooks Git 
+
+Les *hooks* Git sont des exécutables arbitraires que Git lance automatiquement à certains moments clés du cycle de vie d’un dépôt (création d’un commit, réception d’un *push*, changement de branche, etc.). Ils permettent par exemple d'appliquer automatiquement des conventions d'equipe, s'assurer du contenu ou de la taille des fichier ou encore éviter que des erreurs triviales n’entrent dans l’historique (merge request incomplete, secrets, etc.). Ils s’installent localement dans le répertoire `.git/hooks/` du dépôt.
+
+
+### Principaux hooks
+
+Vous n'utiliserez probablement qu'une partie de ces hooks dans un projet, mais voici un aperçu de ce qu'il est possible de faire :
+
+- `pre-commit` : s’exécute juste avant la création du commit. Idéal pour lancer du *lint*, vérifier formatage, taille de fichiers, présence de secrets, normalisation d’espaces, etc. Peut bloquer le commit en renvoyant un code de sortie ≠ 0.
+- `prepare-commit-msg` : permet de pré‑remplir ou modifier le message avant édition (ajout d’un préfixe, référence à un ticket…).
+- `commit-msg` : valide le message final (conventions de type *Conventional Commits*). Bloque si non conforme.
+- `post-commit` : notification locale (ex : afficher un résumé, déclencher une synchronisation). Ne bloque rien.
+- `pre-push` : juste avant l’envoi vers un *remote*. Utile pour tests rapides, vérification de versions générées, conformité licences.
+- `post-checkout`, `post-merge` : actions de maintenance après changement de branche ou fusion (ex : régénérer fichiers dérivés, relancer dépendances locales, rappeler de re‑lire le *CHANGELOG*).
+- `pre-rebase` : empêcher un *rebase* sur des branches protégées ou appliquer des stratégies spécifiques.
+
+### Limites et bonnes pratiques
+
+- Les hooks ne voyagent pas avec le dépôt : le contenu de `.git/hooks/` n’est pas versionné. Il faut un mécanisme pour les partager (documentation, script d’installation, outil dédié, voir le package python [pre-commit](https://pre-commit.com/) ci-dessous).
+- Évitez de rendre les hooks trop lents : >2–3 secondes ressenties à chaque commit fatiguent les contributeurs et les incitent à les désactiver.
+- Faites échouer explicitement (code de sortie ≠ 0) uniquement les vérifications essentielles à la santé du dépôt; mettez les autres en mode avertissement.
+- Ne mettez pas de logique métier complexe : les hooks ne doivent pas devenir une alternative aux tests unitaires ou d’intégration.
+- Les hooks compléte la CI mais ne la remplace pas: la CI reste indispensable pour garantir que vos contributeurs on suivi les bonnes pratiques car les hooks sont locaux et peuvent être contournés.
+
+
+### Gérer les hooks avec l’outil Python `pre-commit`
+
+Manuellement, on créerait un fichier exécutable `pre-commit` dans `.git/hooks/`. Mais l’outil *[`pre-commit`](https://pre-commit.com/)* (écrit en Python) fournit un cadre plus agréable et reproductible pour gérer les hooks Git. Il permet de définir dans un fichier de configuration versionné (`.pre-commit-config.yaml`) une liste de hooks à appliquer, qui seront installés automatiquement dans le dépôt local.
+
+#### Installation
+
+1. Installer l’outil, par exemple via `pip`: `python -m pip install pre-commit` dans un environnement virtuel (possiblement en global mais déconseillé).
+
+2. Ajouter le fichier de configuration `.pre-commit-config.yaml` à la racine du dépôt.
+3. Activer les hooks : `pre-commit install` (qui crée le script dans `.git/hooks/pre-commit`).
+
+#### Exemple de configuration
+
+```yaml
+repos:
+  # --- Generic file hygiene hooks ---
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        # Ignore Markdown, to avoid issues with tables
+        exclude: '\.md$'
+      - id: end-of-file-fixer
+        # Ignore reference files, whose formatting matters
+        exclude: '\.ref$'
+      - id: mixed-line-ending
+        args: [--fix=lf]
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=500']
+      - id: check-symlinks
+      - id: fix-byte-order-marker
+      - id: check-yaml
+      - id: check-json
+      - id: detect-private-key
+```
+
+Ce jeu de hooks vérifie et corrige automatiquement les espaces en fin de ligne, la présence de conflits de fusion non résolus, les fins de fichiers manquantes, les gros fichiers ajoutés par erreur, la syntaxe YAML/JSON, et la présence accidentelle de clés privées.
+
+#### Lancer les hooks sur tout le dépôt
+
+Pour vérifier tous les fichiers suivis par git manuellement, utilisez la commande :
+
+```
+pre-commit run --all-files
+```
+
+#### Validation d'un fichier markdown
+
+Pour contrôler la qualité des fichiers Markdown, on peut utiliser le hook `markdownlint` du dépôt [igorshubovych/markdownlint-cli](https://github.com/igorshubovych/markdownlint-cli).
+
+```yaml
+repos:
+  # ... autres hooks ...
+
+  # --- Markdown linting ---
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.45.0
+    hooks:
+      - id: markdownlint
+        name: Markdown lint
+        files: \.(md|markdown)$
+        args:
+          # Disable "noisy" rules
+          - --disable=MD012  # Multiple line breaks (actually improves readability)
+          - --disable=MD013  # Line length
+          - --disable=MD024  # Duplicate heading (can be useful at different depths)
+          - --disable=MD026  # Punctuation at end of headings (why?)
+          - --disable=MD033  # Inline HTML
+          - --disable=MD035  # hr style (why use 4 dashes when 3 will do?)
+          - --disable=MD041  # First line heading
+          - --disable=MD004  # Unordered list style
+
+```
+
+#### Quand un hook échoue
+
+Que se passe-t-il si un hook échoue (code de sortie ≠ 0) lors d’un commit ? Dans ce cas, le commit est interrompu.
+Il faut alors corriger les problèmes signalés puis refaire le commit. Si le hook a modifié des fichiers (ex : formatage automatique), ceux-ci seront visibles dans `git status` et devront être ajoutés au commit avant de le refaire.
+
+Vous pouvez contourner ponctuellement un hook (à éviter) avec `git commit --no-verify`.
+
+
+### Sécurité et responsabilité
+
+Un hook est un exécutable arbitraire. Avant d’accepter un ajout dans `.pre-commit-config.yaml`, vérifiez la source et la version. Évitez d’exécuter des scripts téléchargés dynamiquement sans épingler la révision (*rev*) et privilégiez des versions taguées. 
+
+### Conclusion
+
+Les hooks permettent d’appliquer automatiquement des standards de qualité avant qu’une erreur ne se fige dans l’historique; l’outil `pre-commit` rend leur usage portable, reproductible et agréable.
