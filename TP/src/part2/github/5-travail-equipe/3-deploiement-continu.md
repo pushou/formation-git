@@ -73,7 +73,7 @@ jobs:
 ```
 
 Si vous avez bien compris les chapitres précédents, cette partie de la
-configuration ne devrait pas avoir de secret pour vous. Sinon hésitez pas à
+configuration ne devrait pas avoir de secret pour vous. Sinon n'hésitez pas à
 relire le chapitre [« Intégration
 continue »](../4-depot-personnel/3-integration-continue.md) et la section sur
 les _pull requests_ du chapitre [« Projet commun »](2-projet-commun.md) et/ou à
