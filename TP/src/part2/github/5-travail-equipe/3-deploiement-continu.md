@@ -267,7 +267,7 @@ jobs:
 
 Ensuite, il faut ajuster les permissions de sécurité car GitHub considère la
 modification du site officiel du projet comme une opération sensible que les
-tâches n’ont pas pas le droit de faire par défaut. Nous demandons donc les
+tâches n’ont pas le droit de faire par défaut. Nous demandons donc les
 permissions requises avec l’option [`permissions`](https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax#jobsjob_idpermissions) :
 
 ```yaml
