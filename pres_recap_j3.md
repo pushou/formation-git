@@ -126,5 +126,5 @@ Cette formation est « open-source » !
 
 - Source sur https://gitlab.in2p3.fr/grasland/formation-git
 - Licence CC-BY-SA = Copiez à votre guise tant que…
-  * Vous me citez (obligation légale en France…)
+  * Vous nous citez (obligation légale en France…)
   * Vous redistribuez vos versions modifiées en CC-BY-SA
