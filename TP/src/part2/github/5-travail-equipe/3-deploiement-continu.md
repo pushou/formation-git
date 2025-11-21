@@ -395,7 +395,7 @@ _Markdown_. Vous avez appris à :
 - Générer un site web statique grâce au générateur _Astro_ ;
 - Déployer automatiquement ce site via _GitHub Pages_ et le consulter en ligne.
 
-En ajoutant à cela les vérifications de fautes français déjà mises en place
+En ajoutant à cela les vérifications de fautes de français déjà mises en place
 précédemment, vous disposez désormais d’un processus complet de **vérification,
 génération et déploiement continu** pour votre livre de recettes collaboratif.
 Il ne vous reste plus qu’à enrichir le contenu et à faire évoluer le site au fil
