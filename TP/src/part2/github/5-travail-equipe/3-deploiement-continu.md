@@ -299,7 +299,7 @@ jobs:
 ```
 
 Pour compléter la définition de la tâche `deploy_pages`, il ne nous reste plus
-qu’à spécifier son unique étape qui met le site en lige en utilisant l'action
+qu’à spécifier son unique étape qui met le site en ligne en utilisant l'action
 [`deploy-pages`](https://github.com/actions/deploy-pages).
 
 ```yaml
