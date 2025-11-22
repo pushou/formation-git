@@ -470,7 +470,7 @@ universelle[^input-sequences] est de…
 
 - Presser le raccourci clavier Ctrl+Shift+U pour basculer en mode de saisie
   Unicode.
-- Taper le texte « A0 », qui est le code hexadécimal de l’espace insécable.
+- Taper le texte « a0 », qui est le code hexadécimal de l’espace insécable.
 - Appuyer sur la barre d'espace pour valider la saisie.
 
 [^input-sequences]: Il existe [beaucoup d'autres méthodes pour saisir des
