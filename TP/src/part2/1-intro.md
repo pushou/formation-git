@@ -35,9 +35,9 @@ serveur, lors de certaines opérations sensibles comme écrire des _commits_ dan
 un dépôt ou lire les _commits_ d’un dépôt privé. On parle d’authentification.
 
 Il existe plusieurs moyens de faire cela. Dans ce TP nous utiliserons
-l’authentification SSH, qui est la plus utilisée. Mais vous pouvez consulter la
-section « Informations complémentaires » pour plus d’informations sur
-l’authentification HTTPS, qui est parfois utilisée comme alternative.
+l’authentification SSH car elle est davantage utilisée, plus sécurisée, plus
+ergonomique après la phase de mise en place initiale, et depuis quelles années
+GitHub ne supporte plus que celle-là.
 
 SSH est basé sur le chiffrement à clé publique, qui utilise deux clés de
 chiffrement :
