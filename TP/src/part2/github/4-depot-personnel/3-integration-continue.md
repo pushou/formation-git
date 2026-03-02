@@ -530,7 +530,7 @@ jobs:
     steps:
       # ... étapes précédentes ...
       - name: Mise en ligne du rapport JSON
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: grammalint-report
           path: recettes/report.json
