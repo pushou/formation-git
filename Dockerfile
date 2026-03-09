@@ -1,5 +1,6 @@
 FROM docker.io/ubuntu:24.04
-ENV MDBOOK_VERSION="0.5.3"
+ENV MDBOOK_VERSION=0.5.3
+ARG LYCHEE_VERSION=0.23.0
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -14,6 +15,9 @@ RUN apt-get update \
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --profile minimal
 
 RUN curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_VERSION}/mdbook-v${MDBOOK_VERSION}-x86_64-unknown-linux-gnu.tar.gz" \
+    | tar -xz --directory=/bin
+
+RUN curl -L https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz  \
     | tar -xz --directory=/bin
 
 RUN mkdir ~/Desktop

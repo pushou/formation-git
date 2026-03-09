@@ -56,9 +56,9 @@ build-tmp-docker:
   after_script: sleep 30
 
 
-# === Rendu des supports de TP + vérification des sorties git ===
+# === Rendu des supports de TP + vérification des sorties git et des liens ===
 
-render-and-check:
+render-and-check-git-output:
   stage: render
   interruptible: true
   variables:
@@ -82,6 +82,19 @@ render-and-check:
       - public
       - TP/src/Outputs
 
+check-html-links:
+  stage: render
+  interruptible: true
+  needs:
+    - job: render-and-check-git-output
+      artifacts: true
+  script:
+    - lychee --config=lychee.toml --no-progress --root-dir=public public
+  cache:
+    key: lychee-cache
+    paths:
+      - .lycheecache
+
 
 # === Publication des énoncés de TP et des images docker (master-only) ===
 
@@ -99,7 +112,7 @@ pages:
     paths:
       - public
   needs:
-    - job: render-and-check
+    - job: render-and-check-git-output
       artifacts: true
 
 

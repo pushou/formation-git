@@ -196,8 +196,8 @@ vous faut donc :
 
 Nous vous conseillons dans un premier temps de rester sur la branche `main`, ce
 qui n'est pas un gros problème tant que vous travaillez tout seul. Si besoin,
-relisez [le chapitre sur les dépôts distribués](../../4-depots-distribues.md) pour vous remémorer la
-procédure.
+relisez [le chapitre sur les dépôts distribués](../../../4-depots-distribues.md)
+pour vous remémorer la procédure.
 
 Une fois ces étapes réalisées, vous pouvez vérifier l’état du dépôt local et
 distant avec :
