@@ -212,7 +212,7 @@ différences entre ces protocoles ?
   cette troisième option.
 - Le protocole HTTPS est pratique pour les accès en lecture seule à des dépôts
   publics car il est utilisable sans aucune configuration préalable. Mais GitHub
-  ne permet pas de l'utiliser pour des opérations qui nécessitent une
+  ne permet plus de l'utiliser pour des opérations qui nécessitent une
   authentification, comme par exemple mettre en ligne des commits et des
   branches sur votre _fork_.[^why-not-https]
 - Le protocole SSH nécessite de configurer [votre machine
