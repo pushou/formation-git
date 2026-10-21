@@ -19,6 +19,7 @@ RUN curl -sSL "https://github.com/rust-lang/mdBook/releases/download/v${MDBOOK_V
 
 RUN curl -L https://github.com/lycheeverse/lychee/releases/download/lychee-v${LYCHEE_VERSION}/lychee-x86_64-unknown-linux-gnu.tar.gz  \
     | tar -xz  \
-    && mv lychee-x86_64-unknown-linux-gnu/lychee /bin
+    && mv lychee-x86_64-unknown-linux-gnu/lychee /bin  \
+    && rm -rf lychee-x86_64-unknown-linux-gnu
 
 RUN mkdir ~/Desktop
