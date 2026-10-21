@@ -538,6 +538,7 @@ un peu longue à expliquer ici, nous vous invitons pour plus d’informations à
 consulter le chapitre « Submodules » du livre Pro Git, sur lequel cette
 introduction est basée : <https://git-scm.com/book/en/v2/Git-Tools-Submodules>.
 
+
 ## Hooks Git
 
 Les _hooks_ Git sont des exécutables arbitraires que Git lance automatiquement à certains moments clés du cycle de vie d’un dépôt (création d’un commit, réception d’un _push_, changement de branche, etc.). Ils permettent par exemple d'appliquer automatiquement des conventions d’équipe, de s'assurer du contenu ou de la taille des fichiers ou encore d’éviter que des erreurs triviales n’entrent dans l’historique (_merge request_ incomplète, _secrets_, etc.). Ils s’installent localement dans le répertoire `.git/hooks/` du dépôt.
