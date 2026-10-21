@@ -5,6 +5,8 @@ max_cache_age = "7d"
 exclude = [
     # Apparently npmjs.com doesn't support automatic link checking
     "www.npmjs.com/package/",
+    # FIXME 2026: Site currently offline due to a PHP vuln
+    "technical.edugain.org/",
 ]
 exclude_path = [
     # Flaky links in fonts license READMEs are not considered harmful
