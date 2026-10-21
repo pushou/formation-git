@@ -491,7 +491,7 @@ brigage (_assignee_) ou ajouter des _labels_[^labels] pour faciliter le tri.
            `urgent`, `en cours`, `terminé`, `CI/CD`, `recette`). Vous
            retrouverez quelques exemples d'utilisation des _labels_ sur [le
            projet GitLab associé à cette
-           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/issues).
+           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/work_items).
 
 
 ## Créer un _fork_ et cloner le dépôt en local

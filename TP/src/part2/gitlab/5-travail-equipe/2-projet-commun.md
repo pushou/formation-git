@@ -235,7 +235,7 @@ la brigade.
            cours`, `terminé`, `CI/CD`, `recette`). Vous retrouverez quelques
            exemples d'utilisation des _labels_ sur [le projet GitLab associé à
            cette
-           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/issues).
+           formation](https://gitlab.in2p3.fr/grasland/formation-git/-/work_items).
 
 
 ## Cloner le dépôt du livre en local
