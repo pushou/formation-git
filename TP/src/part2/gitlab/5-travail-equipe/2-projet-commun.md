@@ -215,7 +215,7 @@ répartir le travail.
 Chaque membre du groupe doit créer au moins un ticket.
 Prenez un moment pour définir les tâches et les répartir clairement.
 
-1. Ouvrez l’onglet **Plan > Issues** et cliquez sur le bouton bleu **New item**.
+1. Ouvrez l’onglet **Plan > Work items** et cliquez sur le bouton bleu **New item**.
 2. Saisissez le type de ticket
 3. Saisissez un titre, par exemple : « Ajouter la recette de la tarte aux pommes
    classique ».
@@ -227,8 +227,8 @@ Prenez un moment pour définir les tâches et les répartir clairement.
    `nouvelle-recette`, `correction`)[^labels].
 7. Cliquez sur **Create issue**.
 
-Votre ticket s’affiche maintenant dans la liste des _issues_, visible par toute
-la brigade.
+Votre ticket s’affiche maintenant dans la liste des tickets dans l’onglet **Plan > Work Items**, visible par toute
+la brigade. Il est aussi visible dans l’onglet **Plan > Issue boards** qui permet de visualiser les tickets sous forme de tableau Kanban.
 
 [^labels]: Vous pouvez utiliser les _labels_ GitLab pour organiser vos _issues_
            par type, priorité ou encore statut (ex. `à faire`, `urgent`, `en
