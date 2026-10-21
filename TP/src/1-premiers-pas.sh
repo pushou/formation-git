@@ -157,6 +157,7 @@ git rm MonDossier/
 set -e
 
 
+function test_this_manually() {
 ###### ANCHOR: help-long
 # Les deux commandes suivantes font exactement la même chose
 man git status
@@ -170,8 +171,6 @@ git mv -h
 ###### ANCHOR_END: help-short-docs
 ###### ANCHOR_END: help-short
 
-
-function test_this_manually() {
 ###### ANCHOR: add-workdir
 git add .
 ###### ANCHOR_END: add-workdir
@@ -190,17 +189,12 @@ git rm MonFichier.txt
 # nom final désiré, respectivement.
 git mv Source.txt Destination.txt
 ###### ANCHOR_END: cheatsheet-mv
-}
-unset -f test_this_manually
-
 
 ###### ANCHOR: cheatsheet-help
 # Remplacez "status" par la commande git qui vous intéresse
 git help status
 ###### ANCHOR_END: cheatsheet-help
 
-
-function test_this_manually() {
 ###### ANCHOR: appendix-config
 # Dans les commandes suivantes, remplacez ReglageAChanger par le réglage git
 # dont vous voulez modifier la valeur, et la chaîne de caractère qui suit par la
