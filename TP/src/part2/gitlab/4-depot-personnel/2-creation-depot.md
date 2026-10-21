@@ -97,7 +97,7 @@ qui contiendra vos recettes au format Markdown.
 Dans le terminal, on commence par créer le répertoire `recettes/` :
 
 ```bash
-mkdir -p recettes
+mkdir recettes
 ```
 
 Puis on ajoute une première recette. Nous vous donnons un exemple avec des
