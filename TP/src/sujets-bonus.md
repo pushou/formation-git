@@ -645,7 +645,7 @@ Vous pouvez contourner ponctuellement un _hook_ (à éviter) avec `git commit --
 
 ### Sécurité et responsabilité
 
-Un _hook_ est un exécutable arbitraire. Avant d’accepter un ajout dans `.pre-commit-config.yaml`, vérifiez la source et la version. Évitez d’exécuter des scripts téléchargés dynamiquement sans épingler la révision (_rev_) et privilégiez des versions taguées.
+Un _hook_ est un exécutable arbitraire. Avant d’accepter un ajout dans `.pre-commit-config.yaml`, vérifiez la source et la version. Évitez d’exécuter des scripts téléchargés dynamiquement sans épingler la révision (_rev_) et privilégiez des versions _taggées_.
 
 ### Conclusion
 
