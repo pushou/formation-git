@@ -649,4 +649,4 @@ Un _hook_ est un exécutable arbitraire. Avant d’accepter un ajout dans `.pre-
 
 ### Conclusion
 
-Les _hooks_ permettent d’appliquer automatiquement des standards de qualité avant qu’une erreur ne se fige dans l’historique ; l’outil `pre-commit` rend leur usage portable, reproductible et agréable.
+Les _hooks_ permettent d’appliquer automatiquement des normes de qualité avant qu’une erreur ne se fige dans l’historique ; l’outil `pre-commit` rend leur usage portable, reproductible et agréable.
