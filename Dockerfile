@@ -1,5 +1,5 @@
 FROM docker.io/ubuntu:24.04
-ENV MDBOOK_VERSION="0.5.1"
+ENV MDBOOK_VERSION="0.5.3"
 
 ENV DEBIAN_FRONTEND=noninteractive
 
