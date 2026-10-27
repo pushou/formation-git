@@ -178,7 +178,8 @@ git commit -m 'Disons bonjour plus joyeusement'
 
 function test_this_manually() {
 ###### ANCHOR: pull-merges-divergence
-# Cette commande vous invitera à saisir une description pour le commit de fusion
+# Cette commande peut vous inviter à saisir une description de commit de fusion.
+# Ou vous envoyer un message d'erreur. Voir le texte pour plus d'explications.
 ###### ANCHOR: implicit-pull
 git pull
 ###### ANCHOR_END: implicit-pull
@@ -186,12 +187,18 @@ git pull
 }
 unset -f test_this_manually
 git fetch --all
-git merge -m "Une fusion inattendue" origin/main
 
 set +e
 ###### ANCHOR: push-rejects-divergence
-git reset --hard @{1}
-# Cette commande échouera, on ne peut pas pousser une branche divergente
+# ATTENTION: Nous supposons ici que vous avez utilisé une version récente de git
+#            dans sa configuration par défaut, où le git pull ci-dessus échoue.
+#            Si vous êtes dans la configuration historique où git pull crée un
+#            commit de fusion, il faut annuler d'abord la création de ce commit
+#            avec git reset --hard @{1} pour revenir dans une configuration
+#            de divergence entre branche locale et distante.
+#
+# Dans cette configuration, git push échouera, car on ne peut pas pousser une
+# branche locale en présence de divergence avec la branche distante associée.
 git push autre
 ###### ANCHOR_END: push-rejects-divergence
 set -e
