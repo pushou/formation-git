@@ -45,9 +45,10 @@
 
 - Sélectionner les candidats si besoin
   * Bien préciser à l'IFSeM qu'on fournit 20 postes informatiques
-- Prévenir le CESFO en leur envoyant la liste des inscrits + Hadrien pour 2026
-  (n'a plus de carte de cantine), leur demander qui n'est pas éligible au
-  remboursement employeur + tarif extérieur
+- Demander à l'IFSeM de prévenir la cantine en leur indiquant...
+  * Qu'ils sont le service de formation du CNRS
+  * La liste des inscrits
+  * Les dates, le lieu et le nom de la formation
 - Préparer une mailing list avec les stagiaires (peut être un simple groupe de
   contacts dans le client mail des profs, vu le faible nombre de profs)
 - Leur envoyer un mail de bienvenue
@@ -55,10 +56,7 @@
     qu'on fera un balisage papier si la météo le permet
   * Rappeler qu'on fournit les PCs
   * Mentionner que l'IFSeM ne paie plus le café => Machine à CB au B200
-  * CESFO : si pas badge...
-    - Attestation employeur via RH (attention bulletin de salaire pas OK)
-    - Prévoir argent liquide ou chéquier
-    - Prévenir ceux qui ne seront pas au tarif employeur séparément
+  * CESFO : si pas de badge, prévoir argent liquide ou chéquier
   * Créer compte GitHub + prévoir identifiants
   * Test eduGAIN (cf début partie 2, les pointer dessus ?) + prévoir
     identifiants
