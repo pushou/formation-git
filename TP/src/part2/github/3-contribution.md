@@ -158,8 +158,7 @@ haut en bas :
   l'interface de GitHub, vous remarquerez qu'une nouvelle interface est apparue.
   Celle-ci vous permet de gérer la branche `main` de votre _fork_. Nous
   n'encourageons pas son utilisation car elle est souvent source de confusion
-  fréquente pour les débutants, donc nous ne détaillerons pas ces
-  fonctionnalités.
+  pour les débutants, donc nous ne détaillerons pas ces fonctionnalités.
 
 [^main-branch]: A dire vrai, vous n'allez même pas utiliser la branche `main` de
                 votre _fork_ car c'est la branche `main` du dépôt original qui

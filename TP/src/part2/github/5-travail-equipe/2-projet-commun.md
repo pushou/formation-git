@@ -68,7 +68,7 @@ dont des noms qu’on choisit pour soi-même seront perçus par d’éventuels f
 collaborateurs. Il est donc facile de se retrouver avec des noms qui seront
 problématiques en collaboration plus tard car ils sont...
 
-- Trop possessifs (ex : `mondepot`,
+- Trop possessifs (ex : `mon-depot`,
   [`godbolt`](https://www.youtube.com/watch?v=kvMqdLf4URI))
 - Hostiles aux moteurs de recherche (ex :
   [`C#`](https://en.wikipedia.org/wiki/C_Sharp_(programming_language)),

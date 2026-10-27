@@ -24,7 +24,10 @@ Au-delà de GitHub et du GitLab de l'IN2P3, il existe une myriade d'instances Gi
 
 Le choix d’une forge dépend souvent de considérations d’hébergement, de souveraineté des données et de politiques d’accès, qui peuvent faciliter ou au contraire compliquer les contributions extérieures. Attention au choix que vous ferez, car si la migration d’un dépôt Git reste simple, le transfert des tickets, des demandes de fusion ou des pipelines de _CI/CD_ d'un système à l'autre est bien plus délicat, d'autant que les fonctionnalités ne sont pas toujours équivalentes entre les différentes plateformes.
 
-Ne négligez pas non plus l'accès à des ressources pour la _CI/CD_: si vous n'avez pas les moyens de maintenir vos propres _runners_, les plateformes "clés en main" diffèrent beaucoup les unes des autres au niveau de la quantité et du type de ressources qui sont disponibles gratuitement.
+Ne négligez pas non plus l'accès à des ressources pour la _CI/CD_ : si vous
+n'avez pas les moyens de maintenir vos propres _runners_, les plateformes "clés
+en main" diffèrent beaucoup les unes des autres au niveau de la quantité et du
+type de ressources qui sont disponibles gratuitement.
 
 Enfin, si vous avez dans l'idée d'héberger votre propre forge,
 prenez garde à bien évaluer les besoins en maintenance et en sécurité que cela implique. En effet, une forge mal maintenue peut rapidement devenir un point d'entrée pour un attaquant malveillant et nécessite donc des moyens humains importants, sans même parler des ressources matérielles pour stocker les dépôts et les besoins considérables d'un service de _CI/CD_.
@@ -50,6 +53,17 @@ Voici un article très complet sur ce sujet qui part des principes fondamentaux 
 
 ## Exercices avancés
 
-Pour aller plus loin, nous avons plusieurs sujets à la carte. Nous vous proposons de commencer par expérimenter les _hooks_ Git à l'aide de l'outil _pre-commit_.
+Si vous lisez ces lignes, vous êtes arrivé au bout du tronc commun de la
+formation. Félicitations ! Pour aller plus loin, vous pouvez par exemple…
 
-TODO : écrire l'annexe sur les _hooks_ Git (et y inclure _pre-commit_)
+- Consulter les sections « Informations complémentaires » à la fin des parties
+  précédentes de ce cours, si vous ne l'avez pas déjà fait. Pour rappel, elles
+  ci permettent d'approfondir les sujets que nous avons couverts précédemment,
+  avec des aspects plus avancés qui ne sont pas les plus importants quand on
+  démarre mais qui permettent de gagner en efficacité par la suite.
+- Lire la section [sujets bonus](./sujets-bonus.md), qui aborde des thématiques
+  qui ne rentrent bien dans aucune des parties précédentes mais sont néanmoins
+  intéressantes dans l'absolu.
+- Feuilleter l'excellent livre [Pro Git](https://git-scm.com/book/en/v2) de
+  Scott Chacon et Ben Straub, un trésor d'informations sur git auquel ce cours
+  doit énormément.
