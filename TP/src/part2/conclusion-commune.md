@@ -61,7 +61,7 @@ formation. Félicitations ! Pour aller plus loin, vous pouvez par exemple…
   ci permettent d'approfondir les sujets que nous avons couverts précédemment,
   avec des aspects plus avancés qui ne sont pas les plus importants quand on
   démarre mais qui permettent de gagner en efficacité par la suite.
-- Lire la section [sujets bonus](./sujets-bonus.md), qui aborde des thématiques
+- Lire la section [sujets bonus](../sujets-bonus.md), qui aborde des thématiques
   qui ne rentrent bien dans aucune des parties précédentes mais sont néanmoins
   intéressantes dans l'absolu.
 - Feuilleter l'excellent livre [Pro Git](https://git-scm.com/book/en/v2) de
