@@ -156,8 +156,13 @@ commandes :
 
 - `git fetch <remote> <branche>`, une variante de `git fetch` qui ne met à jour
   qu’une seule branche distante, et peut donc être plus rapide à s’exécuter.
-- `git merge <remote>/<branche>`, vue au TP 3, qui intègre les changements de la
-  branche distante que l’on vient de récupérer à la branche active.
+- Une commande qui intègre les changements de la branche distante à la branche
+  active, pouvant être selon la configuration `git merge <remote>/<branche>`,
+  `git merge --ff-only <remote>/<branche>` ou `git rebase <remote>/<branche>`.
+    * Pour simplifier cette introduction, nous supposerons que `git pull` est
+      configurée pour appeler `git merge` comme dans les anciennes versions de
+      git. Mais nous verrons plus tard que dans les versions actuelles, la
+      situation est un peu plus complexe.
 
 Cela divise par deux la quantité de texte que l’on doit saisir pour effectuer
 cette opération courante efficacement, ce qui est déjà appréciable. Et nous
@@ -173,12 +178,14 @@ Mais d’abord, effectuons un commit dans le dépôt parent pour tester `git pul
 notamment possible de lui indiquer qu’on ne souhaite fusionner que s’il n’y a
 pas eu de divergence (`git pull --ff-only`), ou au contraire qu’on souhaite
 créer un commit de fusion même si git pourrait s’en passer (`git pull --no-ff`).
+On peut aussi demander un rebasage plutôt qu'une fusion avec `git pull
+--rebase`.
 
 <div class="warning">
 
-  Comme `git pull` fait (notamment) appel à `git merge`, cette commande modifie
-  le répertoire de travail. Il est donc recommandé de vérifier que le répertoire
-  de travail est propre avec `git status` avant de l’utiliser.
+  Comme `git pull` fait (notamment) appel à `git merge` ou `git rebase`, cette
+  commande modifie le répertoire de travail. Il est donc recommandé de vérifier
+  que le répertoire de travail est propre avec `git status` avant de l’utiliser.
 
 </div>
 
@@ -365,8 +372,9 @@ la façon suivante :
 Même si `git push` et `git pull` sans arguments procèdent d’une logique très
 similaire (mettre à jour la branche amont par rapport à la branche locale, ou la
 branche locale par rapport à la branche amont), il y a une grande différence
-conceptuelle entre ces deux commandes : `git pull` tolère une divergence de la
-branche locale par rapport à la branche amont, alors que `git push` le rejette.
+conceptuelle entre ces deux commandes : `git pull` peut tolérer une divergence
+de la branche locale par rapport à la branche amont, alors que `git push`
+rejette systématiquement les divergences.
 
 Mettons-le en évidence en créant une petite divergence d’historique :
 
@@ -380,18 +388,29 @@ leur branche `main` qui n’est pas présent au sein de la branche `main` de
 pas présent au sein de la branche `main` des deux autres dépôts. On est donc
 bien dans un scénario classique de divergence d’historique.
 
-Puisque la commande `git pull` est basée sur `git merge`, elle ne va pas se
-formaliser de cet état de fait, et simplement fusionner les deux historiques en
-créant un commit de fusion :
+Si on appelle `git pull` dans cette situation…
 
 ```bash
 {{#include 4-depots-distribues.sh:pull-merges-divergence}}
 ```
 
-On peut observer l’apparition du commit de fusion correspondant dans SourceGit.
+…le comportement obtenu dépend de votre version de git et sa configuration :
 
-En revanche, `git push` a un comportement différent. Dans la même situation de
-divergence, l’opération sera rejetée :
+- Avec d'anciennes versions de git, le comportement par défaut était de faire un
+  `git merge`, qui dans cette configuration aurait créé un commit de fusion.
+  Vous auriez donc fait face à un éditeur de texte vous invitant à nommer ce
+  commit.
+- Avec les versions actuelles de git, le comportement par défaut a changé. Il 
+  est maintenant de refuser la création d'un commit de fusion, et à la place
+  afficher un long message d'erreur qui vous indique comment configurer `git
+  pull` pour choisir votre stratégie de gestion de la divergence. Nous
+  reviendrons sur ce message d'erreur et la configuration associée plus loin.
+
+On voit donc que dans certains cas, `git pull` peut gérer la présence de
+branches divergences en créant implicitement un commit de fusion.
+
+En comparaison, `git push` a un comportement différent. Dans la même situation
+de divergence, l’opération sera toujours rejetée :
 
 ```bash
 {{#include 4-depots-distribues.sh:push-rejects-divergence}}

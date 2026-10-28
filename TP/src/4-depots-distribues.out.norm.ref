@@ -192,14 +192,7 @@ From ~/Desktop/MesBranches
 Fetching autre
 From ../MonAutreClone
  * [new branch]      main       -> autre/main
-+ git merge -m 'Une fusion inattendue' origin/main
-Merge made by the 'ort' strategy.
- Compteur.txt | 1 +
- 1 file changed, 1 insertion(+)
- create mode 100644 Compteur.txt
 + set +e
-+ git reset --hard '@{1}'
-HEAD is now at MMMMMMM Disons bonjour plus joyeusement
 + git push autre
 To ../MonAutreClone
  ! [rejected]        main -> main (non-fast-forward)
