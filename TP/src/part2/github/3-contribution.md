@@ -213,7 +213,7 @@ différences entre ces protocoles ?
   publics car il est utilisable sans aucune configuration préalable. Mais GitHub
   ne permet plus de l'utiliser pour des opérations qui nécessitent une
   authentification, comme par exemple mettre en ligne des commits et des
-  branches sur votre _fork_.[^why-not-https]
+  branches sur votre _fork_, hors cas particulier des _tokens_.[^why-not-https]
 - Le protocole SSH nécessite de configurer [votre machine
   locale](../1-intro.md#génération-de-clés-ssh) et [la forge GitHub](2-acces.md)
   comme nous l'avons expliqué précédemment. Mais une fois ces formalités
@@ -239,23 +239,28 @@ auquel vous vous connectez, ce qui est normal ici puisque c’est la première f
 que votre compte utilisateur sur les machines d’enseignement se connecte à
 GitHub via SSH. Vous pouvez donc autoriser l’opération.
 
-[^why-not-https]: L'utilisation de HTTPS pour des opérations authentifiées a
-                  deux défauts majeurs qui ont conduit à cette interdiction.
-                  D'abord, au niveau ergonomique il n'y a pas de moyen
-                  standardisé pour permettre à git de mémoriser votre mot de
-                  passe HTTPS, ce qui vous conduit généralement à le saisir à
-                  répétition pour chaque échange avec GitHub qui nécessite de
-                  prouver votre identité (écriture typiquement). Ensuite, au
-                  niveau sécurité c'est une authentification par mot de passe,
-                  ce qui signifie que vous transmettez l'information secrètre
-                  qui prouve votre identité à votre interlocuteur. Donc si vous
-                  vous retrouvez à confier par accident votre mot de passe à une
-                  personne malveillante qui se fait passer pour GitHub, cette
-                  personne obtient les mêmes droits que vous pour une durée
-                  indéterminée. Ces deux défauts, on le devine, s'amplifient
-                  mutuellement : si vous devez taper votre mot de passe tout le
-                  temps, vous ne faites plus trop attention aux circonstances
-                  dans lesquelles vous devez le saisir...
+[^why-not-https]: L'utilisation classique de HTTPS en mode login/mot de passe
+                  pour des opérations authentifiées a deux défauts majeurs qui
+                  ont conduit à cette interdiction. D'abord, au niveau
+                  ergonomique il n'y a pas de moyen standardisé pour permettre à
+                  git de mémoriser votre mot de passe HTTPS, ce qui vous conduit
+                  généralement à le saisir à répétition pour chaque échange avec
+                  GitHub qui nécessite de prouver votre identité (écriture
+                  typiquement). Ensuite, au niveau sécurité c'est une
+                  authentification par mot de passe, ce qui signifie que vous
+                  transmettez l'information secrètre qui prouve votre identité à
+                  votre interlocuteur. Donc si vous vous retrouvez à confier par
+                  accident votre mot de passe à une personne malveillante qui se
+                  fait passer pour GitHub, cette personne obtient les mêmes
+                  droits que vous pour une durée indéterminée. Ces deux défauts,
+                  on le devine, s'amplifient mutuellement : si vous devez taper
+                  votre mot de passe tout le temps, vous ne faites plus trop
+                  attention aux circonstances dans lesquelles vous devez le
+                  saisir... On peut cependant noter que GitHub autorise toujours
+                  l'authentification HTTPS pour des [jetons de connexions
+                  d'accès
+                  restreint](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens)
+                  (_personal access tokens_).
 
 ### Connexion au dépôt officiel
 
