@@ -33,7 +33,8 @@ court (les branches + les _remotes_ / forges le même jour, c’est trop).
 
 Le makefile inclus permet d’automatiser le rendu PDF des présentations et le
 rendu HTML des TPs. Pour l’utiliser, vous devez avoir installé la suite
-bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0) et le
+bureautique LibreOffice (l’écriture a été effectuée avec la version 7.0), la
+famille de polices de caractères Roboto (paquet `fonts-roboto` sur Ubuntu) et le
 générateur de sites statiques [mdBook](https://rust-lang.github.io/mdBook/).
 
 Notez que LibreOffice n’accepte pas de s’exécuter en deux exemplaires
