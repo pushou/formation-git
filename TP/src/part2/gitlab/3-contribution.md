@@ -40,7 +40,7 @@ recommandons donc de plutôt travailler sur un clone local du dépôt git.
 Pour créer ce clone, nous allons avoir besoin de l’URL SSH du dépôt. Pour
 l’obtenir, rendez-vous d’abord sur [l’interface web du
 dépôt](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine), puis cliquez sur le
-bouton bleu « Code » en haut à droite :
+bouton « Code » en haut à droite :
 
 ![Accès aux URLs de clonage dans GitLab](../../images/gitlab-repo-urls.png)
 
