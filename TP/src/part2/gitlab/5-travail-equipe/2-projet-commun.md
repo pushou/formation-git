@@ -1,8 +1,8 @@
 # Un projet GitLab commun
 
-Après avoir préparé votre propre carnet de recettes, il est temps de passer en
+Après avoir préparé votre propre livre de cuisine, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
-4 personnes** pour créer un **livre de recettes collaboratif**.
+4 personnes** pour créer un **livre de cuisine collaboratif**.
 
 
 ## Création de la brigade
@@ -99,10 +99,10 @@ comme la _pull request_ de GitHub, et peut donc être utilisée de la même faç
                        contributions extérieures.
 
 
-## Créer le livre de recettes collaboratif
+## Créer le livre de cuisine collaboratif
 
 Une fois le sous-groupe créé, il faut maintenant créer le dépôt GitLab qui
-contiendra le **livre de recettes collaboratif**. Le chef cuisinier suit pour
+contiendra le **livre de cuisine collaboratif**. Le chef cuisinier suit pour
 cela les mêmes étapes que dans le [TP
 précédent](../4-depot-personnel/2-creation-depot.md) :
 
@@ -121,9 +121,8 @@ précédent](../4-depot-personnel/2-creation-depot.md) :
    ```
 
    (Faites preuve d’imagination et mettez-vous d’accord entre vous !)
-4. Ajoutez une description, par exemple :
-   « Un livre collaboratif regroupant nos meilleures recettes maison. »
-
+4. Ajoutez une description, par exemple : « Un livre de cuisine collaboratif
+   regroupant nos meilleures recettes maison. »
 5. Choisissez la visibilité **Private** (afin de rester entre cuisiniers
    avertis, héritée du sous-groupe).
 6. Cliquez sur **Create project**.
@@ -324,12 +323,12 @@ un dépôt commun. En particulier, vous avez appris à :
 
 Grâce à ces notions, votre brigade dispose désormais de bases solides pour
 collaborer efficacement sur tout type de projet GitLab, qu’il s’agisse d’un
-simple livre de recettes ou d’un véritable projet de développement logiciel.
+simple livre de cuisine ou d’un véritable projet de développement logiciel.
 
 Dans la [prochaine section](3-deploiement-continu.md), nous reprendrons les
 notions d’intégration continue abordées précédemment et les transposerons à ce
 nouveau contexte collaboratif. Nous verrons comment utiliser cet outil pour vous
 accompagner dans vos demandes de fusion et automatiser certaines vérifications.
-Et enfin nous aborderons la mise en ligne de votre livre de recettes sous la
+Et enfin nous aborderons la mise en ligne de votre livre de cuisine sous la
 forme d’un site web statique généré automatiquement à chaque mise à jour du
 projet.

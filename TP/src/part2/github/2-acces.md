@@ -1,9 +1,8 @@
 # Accès SSH
 
 Dans ce parcours, il n'y a pas besoin de formalité particulière pour lire le
-contenu des dépôts de recettes de cuisine comme c'est le cas dans le parcours
-« GitLab fermé », c'est un des avantages de travailler sur un dépôt en accès
-libre.
+contenu des livres de cuisine comme c'est le cas dans le parcours « GitLab
+fermé ». C'est un des avantages de travailler sur un dépôt en accès libre.
 
 En revanche, dès que vous allez vouloir soumettre des contributions aux dépôts,
 un accès en écriture devient nécessaire, et cela implique deux prérequis :

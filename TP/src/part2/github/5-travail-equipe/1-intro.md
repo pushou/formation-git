@@ -13,7 +13,7 @@ dynamique de groupe.
 
 Vous irez ensuite plus loin dans l’automatisation grâce à une intégration
 continue plus avancée, capable de déployer automatiquement votre livre de
-recettes sous forme de site web statique. Cette pratique s'appelle le
+cuisine sous forme de site web statique. Cette pratique s'appelle le
 [déploiement continu](3-deploiement-continu.md).
 
 L’objectif est de passer d’un travail individuel à une dynamique de production

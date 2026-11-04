@@ -2,8 +2,8 @@
 
 ## Créer un clone local du dépôt
 
-Vous devriez maintenant avoir accès au dépôt [« Git Kitchen /
-Recettes »](https://gitlab.in2p3.fr/git-kitchen/recettes) lorsque vous êtes
+Vous devriez maintenant avoir accès au dépôt [« Git Kitchen / Livre de
+cuisine »](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine) lorsque vous êtes
 connecté à l’instance GitLab de l'IN2P3.
 
 <div class="warning">
@@ -39,8 +39,8 @@ recommandons donc de plutôt travailler sur un clone local du dépôt git.
 
 Pour créer ce clone, nous allons avoir besoin de l’URL SSH du dépôt. Pour
 l’obtenir, rendez-vous d’abord sur [l’interface web du
-dépôt](https://gitlab.in2p3.fr/git-kitchen/recettes), puis cliquez sur le bouton bleu
-« Code » en haut à droite :
+dépôt](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine), puis cliquez sur le
+bouton « Code » en haut à droite :
 
 ![Accès aux URLs de clonage dans GitLab](../../images/gitlab-repo-urls.png)
 
@@ -192,7 +192,7 @@ Si votre première commande `git push` échoue, la cause la plus probable est qu
 quelqu’un d'autre a déjà créé une branche portant ce nom au sein du dépôt. Vous
 pouvez vérifier si c'est le cas dans SourceGit ou dans [la section Code →
 Branches de l’interface web du
-dépôt](https://gitlab.in2p3.fr/git-kitchen/recettes/-/branches).
+dépôt](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine/-/branches).
 
 Dans ce cas, pas de chance, il va falloir renommer votre branche avec `git
 branch -m AncienNom NouveauNom` puis réessayer en adaptant les commandes.
@@ -224,10 +224,10 @@ Mais si vous avez ignoré tous ces raccourcis, vous pouvez toujours créer
 « manuellement » une _merge request_ de la façon suivante.
 
 Allez dans [la section Code → Branches de l’interface web du
-dépôt](https://gitlab.in2p3.fr/git-kitchen/recettes/-/branches). La liste des branches
-actuellement présentes au sein du dépôt s’affiche alors. Si vous avez poussé
-récemment sur votre branche, elle devrait se situer vers le haut de la liste des
-branches actives :
+dépôt](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine/-/branches). La liste
+des branches actuellement présentes au sein du dépôt s’affiche alors. Si vous
+avez poussé récemment sur votre branche, elle devrait se situer vers le haut de
+la liste des branches actives :
 
 ![Liste des branches dans un dépôt GitLab](../../images/gitlab-branches.png)
 
@@ -269,6 +269,9 @@ De haut en bas, ce formulaire contient…
   pour indiquer ce qui relève du correctif, de l’ajout de nouvelles
   fonctionnalités, ce qui brise une interface publique potentiellement utilisée
   par des personnes extérieures au projet…
+- Une section « Merge can start » qui permet d’indiquer qu’on ne souhaite pas
+  que la _merge request_ soit fusionnée immédiatement, et qu'elle doit être
+  fusionnée plus tard, après une certaine date.
 - Enfin, une paire de cases à cocher permet de définir ce qui se passera le jour
   où votre _merge request_ sera intégrée à la branche cible. Est-ce que la
   branche source est désormais inutile et peut être supprimée ? Est-ce que votre
@@ -310,7 +313,7 @@ voudrez en reprenant le cheminement indiqué ci-dessus à partir du début.
 ## À vous de jouer !
 
 À ce stade, vous en savez assez pour commencer à vous amuser avec notre livre de
-recettes. Vous pouvez par exemple :
+cuisine. Vous pouvez par exemple :
 
 - ajouter une nouvelle recette de votre choix (titre, ingrédients, étapes, temps
   de préparation/cuisson, etc.) ;
@@ -324,5 +327,5 @@ votre branche finalisée sur le dépôt et soumettez une _merge request_ vers la
 branche `main` pour terminer ce TP.
 
 Une fois que vous serez à l'aise avec cette méthode de travail, vous pourrez
-vous lancer dans la [création de votre dépôt de recettes
-personnelles](4-depot-personnel/1-intro.md).
+vous lancer dans la [création de votre livre de cuisine
+personnel](4-depot-personnel/1-intro.md).

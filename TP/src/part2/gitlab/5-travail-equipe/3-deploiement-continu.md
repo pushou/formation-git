@@ -1,4 +1,4 @@
-# Déploiement continu du livre de recettes
+# Déploiement continu du livre de cuisine
 
 Avoir un livre de cuisine numérique, c’est bien. Le rendre agréable à consulter
 et accessible en ligne, c’est encore mieux.
@@ -9,7 +9,7 @@ ensuite la notion de déploiement continu (_Continuous Deployment_ ou CD). Grâc
 à _GitLab Pages_, vous pourrez héberger un [site web
 statique](https://fr.wikipedia.org/wiki/Page_web_statique) directement depuis
 votre dépôt GitLab et ainsi transformer vos fichiers Markdown en un véritable
-livre de recettes en ligne.
+livre de cuisine en ligne.
 
 
 ## Coordination d’équipe
@@ -18,10 +18,10 @@ Avant de commencer à modifier le dépôt collaboratif, prenez un moment pour li
 le TP et discuter de ce qu'il faut faire avec votre brigade. En particulier,
 posez-vous la question de :
 
-- Qui prépare les tickets ?
-- Qui gère ou modifie le _pipeline_ ?
-- Qui modifie ou corrige les recettes ?
-- Qui valide les _merge requests_ avant leur intégration dans `main` ?
+- Qui prépare les tickets ?
+- Qui gère ou modifie le _pipeline_ ?
+- Qui modifie ou corrige les recettes ?
+- Qui valide les _merge requests_ avant leur intégration dans `main` ?
 
 Utilisez les tickets pour suivre les tâches à réaliser et l’avancement du
 projet. N’oubliez pas de toujours travailler sur une branche dédiée.
@@ -217,7 +217,7 @@ généralement de la forme :
 https://<votre-projet>-<votre-groupe>-<hash>.pages.in2p3.fr/
 ```
 
-Cliquez sur ce lien pour visualiser votre livre de recettes en ligne.
+Cliquez sur ce lien pour visualiser votre livre de cuisine en ligne.
 
 
 ## Conclusion
@@ -232,8 +232,8 @@ _Markdown_. Vous avez appris à :
 - Déployer automatiquement ce site via _GitLab Pages_ et le consulter en ligne.
 
 Vous disposez désormais d’un processus complet de **vérification, génération et
-déploiement continu** pour votre livre de recettes collaboratif. Il ne vous
-reste plus qu’à enrichir le contenu et à faire évoluer le site au fil des
+déploiement continu** pour votre livre de cuisine collaboratif. Il ne vous reste
+plus qu’à enrichir le contenu et à faire évoluer le site au fil des
 contributions de votre brigade.
 
 N'hésitez pas à aller lire la [conclusion commune](../../conclusion-commune.md).

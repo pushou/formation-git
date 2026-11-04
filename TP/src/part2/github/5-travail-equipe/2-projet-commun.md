@@ -1,8 +1,8 @@
 # Un projet GitHub commun
 
-Après avoir préparé votre propre carnet de recettes, il est temps de passer en
+Après avoir préparé votre propre livre de cuisine, il est temps de passer en
 cuisine à plusieurs ! Dans cette partie, vous allez former des **équipes de 2 à
-4 personnes** et travailler ensemble sur un **livre de recettes collaboratif**.
+4 personnes** et travailler ensemble sur un **livre de cuisine collaboratif**.
 
 
 ## Création de la brigade
@@ -249,13 +249,13 @@ employeur. Mais hélas, l'incompétence généralisée desdits services concerna
 l’_open source_ nous conduit trop souvent à devoir « oublier » cet aspect légal
 important du droit d’auteur…
 
-C’est donc ce que nous allons faire ici pour le carnet de recettes commun, en
-vous encourageant à choisir vous-même une des licences [Creative
+C’est donc ce que nous allons faire ici pour le livre de cuisine commun, en vous
+encourageant à choisir vous-même une des licences [Creative
 Commons](https://creativecommons.org/share-your-work/cclicenses/) pour celui ci,
-qui sont les mieux adaptées pour un document textuel comme ce carnet de
-recettes. Comprenez-vous les différentes variantes proposées et leurs
-implication ? Laquelle vous semble la plus pertinente ? A votre brigade de
-cuisiniers de prendre le temps d’en débattre puis d’en décider collectivement !
+qui sont les mieux adaptées pour un document textuel comme ce livre de cuisine.
+Comprenez-vous les différentes variantes proposées et leurs implication ?
+Laquelle vous semble la plus pertinente ? A votre brigade de cuisiniers de
+prendre le temps d’en débattre puis d’en décider collectivement !
 
 Quand vous aurez choisi, prenez le texte de la licence et sauvegardez-le dans un
 fichier `LICENSE` (ou `LICENSE.md` si le texte de la license est disponible avec
@@ -424,15 +424,15 @@ devrait refuser le _push_ avec un message d'erreur de ce style :
 
 ```text
 remote: error: GH013: Repository rule violations found for refs/heads/main.
-remote: Review all repository rules at https://github.com/ManuMacaron/mes-recettes/rules?ref=refs%2Fheads%2Fmain
+remote: Review all repository rules at https://github.com/ManuMacaron/livre-cuisine/rules?ref=refs%2Fheads%2Fmain
 remote: 
 remote: - Changes must be made through a pull request.
 remote: 
 remote: - Required status check "grammaire_et_orthographe" is expected.
 remote: 
-To github-manu-macaron:ManuMacaron/mes-recettes.git
+To github-manu-macaron:ManuMacaron/livre-cuisine.git
  ! [remote rejected] main -> main (push declined due to repository rule violations)
-erreur : impossible de pousser des références vers 'github-manu-macaron:ManuMacaron/mes-recettes.git'
+erreur : impossible de pousser des références vers 'github-manu-macaron:ManuMacaron/livre-cuisine.git'
 ```
 
 Il ne vous reste alors qu'à créer une branche pour pouvoir intégrer vos
@@ -578,12 +578,12 @@ un dépôt commun. En particulier, vous avez appris à :
 
 Grâce à ces notions, votre brigade dispose désormais de bases solides pour
 collaborer efficacement sur tout type de projet GitHub, qu’il s’agisse d’un
-simple livre de recettes ou d’un véritable projet de développement logiciel.
+simple livre de cuisine ou d’un véritable projet de développement logiciel.
 
 Dans la [prochaine section](3-deploiement-continu.md), nous reprendrons les
 notions d’intégration continue abordées précédemment et les transposerons à ce
 nouveau contexte collaboratif. Nous verrons comment utiliser cet outil pour vous
 accompagner dans vos demandes de fusion et automatiser certaines vérifications.
-Et enfin nous aborderons la mise en ligne de votre livre de recettes sous la
+Et enfin nous aborderons la mise en ligne de votre livre de cuisine sous la
 forme d’un site web statique généré automatiquement à chaque mise à jour du
 projet.

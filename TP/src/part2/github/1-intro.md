@@ -27,10 +27,9 @@ Dans cet esprit, nous allons utiliser cette forge sur un mode de collaboration
 ouvert, où le contenu du dépôt est accessible en lecture seule au monde entier
 et chacun peut librement y proposer des changements. Ce mode de collaboration
 est adapté pour la diffusion et le développement des projets _open source_. Ici,
-notre objectif sera de diffuser au plus grand nombre des livres de recettes de
-cuisine collaboratifs où chacun peut ajouter une recette, suggérer un ajustement
-des proportions, une substitution lorsqu'un ingrédient n'est pas disponible,
-etc.
+notre objectif sera de diffuser au plus grand nombre des livres de cuisine
+collaboratifs où chacun peut ajouter une recette, suggérer un ajustement des
+proportions, une substitution lorsqu'un ingrédient n'est pas disponible, etc.
 
 Pour introduire les concepts en douceur, nous allons procéder en plusieurs temps
 :
@@ -42,8 +41,8 @@ Pour introduire les concepts en douceur, nous allons procéder en plusieurs temp
   existant](3-contribution.md) géré par un des formateurs, et ainsi d'acquérir
   une première expérience du mode de collaboration par _fork_ et _pull request_.
 - Il sera ensuite temps pour vous de prendre les commandes et devenir chef
-  cuisinier en [créant votre propre dépôt de
-  recettes](4-depot-personnel/2-creation-depot.md), ce qui vous permettra de
+  cuisinier en [créant votre propre livre de
+  cuisine](4-depot-personnel/2-creation-depot.md), ce qui vous permettra de
   [mettre en place une intégration
   continue](4-depot-personnel/3-integration-continue.md) pour vérifier
   automatiquement certains aspects de son contenu.

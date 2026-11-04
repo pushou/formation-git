@@ -1,4 +1,4 @@
-# Déploiement continu du livre de recettes
+# Déploiement continu du livre de cuisine
 
 Avoir un livre de cuisine numérique, c’est bien. Le rendre agréable à consulter
 et accessible en ligne, c’est encore mieux.
@@ -10,7 +10,7 @@ un deuxième _workflow_ de déploiement continu (_Continuous Deployment_ ou CD).
 Grâce à _GitHub Pages_, vous pourrez héberger un [site web
 statique](https://fr.wikipedia.org/wiki/Page_web_statique) directement depuis
 votre dépôt GitHub et ainsi transformer vos fichiers Markdown en un véritable
-livre de recettes en ligne.
+livre de cuisine en ligne.
 
 
 ## Coordination d’équipe
@@ -397,8 +397,8 @@ _Markdown_. Vous avez appris à :
 
 En ajoutant à cela les vérifications de fautes de français déjà mises en place
 précédemment, vous disposez désormais d’un processus complet de **vérification,
-génération et déploiement continu** pour votre livre de recettes collaboratif.
-Il ne vous reste plus qu’à enrichir le contenu et à faire évoluer le site au fil
+génération et déploiement continu** pour votre livre de cuisine collaboratif. Il
+ne vous reste plus qu’à enrichir le contenu et à faire évoluer le site au fil
 des contributions de votre brigade.
 
 N'hésitez pas à aller lire la [conclusion commune](../../conclusion-commune.md).

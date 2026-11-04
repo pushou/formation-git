@@ -433,9 +433,9 @@ les fusionner. Faisons cela avec `git fetch` et `git merge` :
 En raison de la nature interactive et ouverte de la partie 2 sur les forges,
 nous ne fournissons pas de correction pour les exercices de cette partie.
 
-En revanche les dépôts de recettes de cuisine auxquels vous contribuez
-initialement ([version GitHub](https://github.com/hadrienG2/recettes) et
-[version GitLab](https://gitlab.in2p3.fr/git-kitchen/recettes)) visent à vous
+En revanche les livres de cuisine auxquels vous contribuez initialement
+([version GitHub](https://github.com/hadrienG2/livre-cuisine) et [version
+GitLab](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine)) visent à vous
 fournir un exemple des différentes techniques enseignées durant cette formation,
 notamment pour l'intégration continue et la gestion des permissions utilisateur.
 
