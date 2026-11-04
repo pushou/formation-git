@@ -2,11 +2,12 @@
 
 ## Introduction
 
-Dans ce parcours, vous aviez en réalité accès au dépôt GitHub
-[« HadrienG2/Recettes »](https://github.com/HadrienG2/Recettes) depuis le début,
-avant même de vous connecter à votre compte GitHub, car ce dépôt est en accès
-libre. Mais pour des raisons évidentes de sécurité, cet accès est en lecture
-seule et ne vous permet pas de modifier directement les fichiers du dépôt.
+Vous aviez en réalité accès au dépôt GitHub
+[« HadrienG2/livre-cuisine »](https://github.com/HadrienG2/livre-cuisine) depuis
+le début, avant même de vous connecter à votre compte GitHub, car ce dépôt est
+en accès libre. Mais pour des raisons évidentes de sécurité, cet accès est en
+lecture seule et ne vous permet pas de modifier directement les fichiers du
+dépôt.
 
 Maintenant vous avez un compte GitHub, le mainteneur du dépôt pourrait vous
 accorder un accès en écriture, comme dans le parcours [« Gitlab
@@ -83,13 +84,11 @@ avant de passer à la suite.
                    qu'il est possible de soumettre une _pull request_ qui
                    supprime ou désactive la totalité des tests automatisés
                    effectués par l'intégration continue.
-
 [^protected-branches]: Beaucoup de projets appliquent des règles de protection
                        aux branches « officielles » comme `main` afin de
                        restreindre le nombre de personnes qui y ont accès. Cela
                        réduit le risque associé à une fausse manip, à un
                        utilisateur malveillant, ou à un compte compromis.
-
 [^web-edition]: On peut aussi éditer des fichiers via l'interface web de GitHub,
                 mais cette approche rencontre vite ses limites dès qu'on
                 souhaite par exemple vérifier rapidement que le code que l'on
@@ -104,8 +103,8 @@ avant de passer à la suite.
 ### Création du _fork_
 
 La première étape est de vous rendre sur le dépôt GitHub
-[« HadrienG2/Recettes »](https://github.com/HadrienG2/Recettes) et de créer
-votre _fork_ de celui-ci. On utilisera pour cela le bouton « Fork » de
+[« HadrienG2/livre-cuisine »](https://github.com/HadrienG2/livre-cuisine) et de
+créer votre _fork_ de celui-ci. On utilisera pour cela le bouton « Fork » de
 l'interface de GitHub. Il est situé dans la troisième barre d'outils horizontale
 en partant du haut, dans une rangée de trois boutons sur la droite où c'est le
 bouton du milieu:
@@ -146,8 +145,8 @@ haut en bas :
 - Si l'on continue vers le bas, on arrive à la région sur fond blanc, à
   l'endroit où le nom du dépôt est répété. On remarque que le nom du _fork_ est
   ici précédé horizontalement par votre avatar (pas celui du créateur du dépôt
-  original) et suivi en-dessous de la mention « forked from HadrienG2/Recettes »
-  avec un lien vers le dépôt original.
+  original) et suivi en-dessous de la mention « forked from
+  HadrienG2/livre-cuisine » avec un lien vers le dépôt original.
 - Au niveau des boutons à droite du nom du dépôt, vous remarquerez que vous ne
   pouvez pas _forker_ vos propres dépôts, donc le bouton « Fork » est grisé. En
   revanche vous pouvez mettre tous les dépôts dont vous êtes propriétaire en
@@ -379,9 +378,9 @@ part de `main`…
 ```
 
 …puis de créer des commits dessus. Par exemple, vous pourriez vouloir soumettre
-une nouvelle recettes en vous inspirant du format de la recette
-`recettes/crepes.md` fournie, ou bien soumettre une correction à une des
-recettes pré-existantes.
+une nouvelle recette en vous inspirant du format de la recette
+`recettes/crepes.md` fournie. Ou bien vous pourriez soumettre une correction à
+une des recettes pré-existantes.
 
 Par exemple les commandes suivantes utilisent l'outil Unix `sed` pour remplir la
 métadonnée "temps_de_repos" de la recette de crêpes fournie avec le temps de
@@ -498,9 +497,9 @@ branche sur votre _fork_ :
   remote: Resolving deltas: 100% (1/1), completed with 1 local object.
   remote:
   remote: Create a pull request for 'ajout-macarons' on GitHub by visiting:
-  remote:      https://github.com/ManuMacaron/Recettes/pull/new/ajout-macarons
+  remote:      https://github.com/ManuMacaron/livre-cuisine/pull/new/ajout-macarons
   remote:
-  To github-manu-macaron:ManuMacaron/Recettes.git
+  To github-manu-macaron:ManuMacaron/livre-cuisine.git
    * [new branch]      ajout-macarons -> ajout-macarons
   la branche 'ajout-macarons' est paramétrée pour suivre 'manu/ajout-macarons'.
   ```
@@ -597,7 +596,7 @@ partir du début.
 ## À vous de jouer !
 
 À ce stade, vous en savez assez pour commencer à vous amuser avec notre livre de
-recettes. Vous pouvez par exemple :
+cuisine. Vous pouvez par exemple :
 
 - ajouter une nouvelle recette de votre choix (titre, ingrédients, étapes, temps
   de préparation/cuisson, etc.) ;
@@ -611,5 +610,5 @@ votre branche finalisée sur le dépôt et soumettez une _merge request_ vers la
 branche `main` pour terminer ce TP.
 
 Une fois que vous serez à l'aise avec cette méthode de travail, vous pourrez
-vous lancer dans la [création de votre dépôt de recettes
+vous lancer dans la [création de votre livre de cuisine
 personnelles](4-depot-personnel/1-intro.md).

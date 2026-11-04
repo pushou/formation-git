@@ -155,8 +155,9 @@ du menu qui s'affiche, précédé d'un arobase `@` :
 Dès que vous nous l'aurez transmis, nous pourrons vous donner un accès de niveau
 « Developer » au groupe. Ce niveau d’accès vous permettra entre autres de voir
 le groupe et ce qu'il contient. En particulier, vous pourrez accéder au contenu
-du dépôt [Recettes](https://gitlab.in2p3.fr/git-kitchen/recettes) et y pousser
-des branches de développement. Mais vous ne pourrez pas modifier directement le
+du dépôt [« Livre de
+cuisine »](https://gitlab.in2p3.fr/git-kitchen/livre-cuisine) et y pousser des
+branches de développement. Mais vous ne pourrez pas modifier directement le
 contenu de sa branche `main`.
 
 Pour cela, vous devrez passer par une procédure de validation de notre part, la

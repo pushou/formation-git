@@ -35,21 +35,21 @@ git clone AdresseDuFork
 ###### ANCHOR: clone-from-gitlab
 cd ~/Desktop
 # Même URL que le "Clone with SSH" de GitLab
-git clone git@gitlab.in2p3.fr:git-kitchen/recettes.git
+git clone git@gitlab.in2p3.fr:git-kitchen/livre-cuisine.git
 ###### ANCHOR_END: clone-from-gitlab
 }
 unset -f test_this_manually
 cd ~/Desktop
-git clone https://github.com/HadrienG2/recettes.git
+git clone https://github.com/HadrienG2/livre-cuisine.git
 
 
 ###### ANCHOR: goto-repo-and-show-remote
-cd recettes/
+cd livre-cuisine/
 git remote -v
 ###### ANCHOR_END: goto-repo-and-show-remote
 
 ###### ANCHOR: add-upstream-remote
-git remote add upstream https://github.com/HadrienG2/recettes.git
+git remote add upstream https://github.com/HadrienG2/livre-cuisine.git
 git fetch upstream
 ###### ANCHOR_END: add-upstream-remote
 
@@ -60,7 +60,7 @@ git branch --set-upstream-to=upstream/main
 ###### ANCHOR_END: set-upstream-main
 
 ###### ANCHOR: pull-main-gitlab
-cd ~/Desktop/recettes
+cd ~/Desktop/livre-cuisine
 ###### ANCHOR: pull-main-github
 git checkout main
 git pull --ff-only
@@ -90,7 +90,7 @@ git checkout -b NomDeBranche
 }
 unset -f test_this_manually
 
-# Ne marche plus si quelqu'un commit ce changement dans recettes
+# Ne marche plus si quelqu'un commit ce changement dans le livre de cuisine
 function test_this_manually() {
 ###### ANCHOR: commit-on-dev-branch
 # Commandes à remplacer par une édition de votre choix, cf ci-dessus

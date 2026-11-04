@@ -1,15 +1,14 @@
 # Création d'un dépôt
 
-Pour regrouper l'ensemble des carnets de recettes personnels des cuisiniers,
-nous avons avons créé en amont un sous-groupe privé intitulé [« Carnets de
-recettes
-personnels »](https://gitlab.in2p3.fr/git-kitchen/carnets-de-recettes-personnels)
+Pour regrouper l'ensemble des livres de cuisine personnels des cuisiniers, nous
+avons avons créé en amont un sous-groupe privé intitulé [« Livres de cuisine
+personnels »](https://gitlab.in2p3.fr/git-kitchen/livres-cuisine-personnels)
 dans le groupe GitLab « Git Kitchen ». C'est dans ce sous-groupe que vous allez
 créer votre propre projet GitLab.
 
 Dans un premier temps, vérifiez que vous avez bien accès au sous-groupe privé
-[« Carnets de recettes
-personnels »](https://gitlab.in2p3.fr/git-kitchen/carnets-de-recettes-personnels).
+[« Livres de cuisine
+personnels »](https://gitlab.in2p3.fr/git-kitchen/livres-cuisine-personnels).
 Si ce n’est pas le cas, signalez-le nous au plus vite pour que nous puissions
 régler le problème.
 
@@ -17,20 +16,20 @@ régler le problème.
 ## Créer un projet GitLab personnel
 
 Dans cette section, tout se passe dans l’interface web de GitLab. Pour créer
-votre dépôt personnel de recettes, procédez comme suit :
+votre livre de cuisine personnel, procédez comme suit :
 
-1. Depuis la page du groupe [« Carnets de recettes
-   personnels »](https://gitlab.in2p3.fr/git-kitchen/carnets-de-recettes-personnels),
+1. Depuis la page du groupe [« Livres de cuisine
+   personnels »](https://gitlab.in2p3.fr/git-kitchen/livres-cuisine-personnels),
    cliquez sur « New project → Create blank project ».
 2. Renseignez les champs (adaptez à votre identifiant) :
    - Project name : `Recettes de <votre-identifiant>`
    - Project URL, composé de :
-      * Project namespace : `git-kitchen/carnets-de-recettes-personnels`
+      * Project namespace : `git-kitchen/livres-de-cuisine-personnels`
         (proposé automatiquement)
       * Project slug : `recettes-de-<votre-identifiant>` (proposé
         automatiquement)
-   - Project description : Par exemple « Mon carnet de recettes personnelles
-     pour le TP GitLab. »
+   - Project description : Par exemple « Mon livre de cuisine personnel pour le
+     TP GitLab. »
    - Visibility level : `Private` (par défaut, hérité du groupe parent)
    - Project configuration : décocher « Initialize repository with a README »
      (nous partons d’un dépôt entierement vide)
@@ -57,7 +56,7 @@ Voud devriez utiliser dans votre terminal des commandes qui ressemblent à ceci
 (en adaptant l'URL et le nom de dossier à votre projet GitLab)...
 
 ```bash
-git clone git@gitlab.in2p3.fr:git-kitchen/carnets-de-recettes-personnels/recettes-de-<votre-identifiant>.git
+git clone git@gitlab.in2p3.fr:git-kitchen/livres-cuisine-personnels/recettes-de-<votre-identifiant>.git
 cd recettes-de-<votre-identifiant>
 ```
 

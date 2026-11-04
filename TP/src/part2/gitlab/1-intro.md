@@ -21,8 +21,8 @@ collaboration fermé où seule l'équipe projet a accès au dépôt git commun. 
 mode de travail est adapté pour des projets manipulant des données
 confidentielles tels que des comptes-rendus de réunions ou des résultats de
 recherches non publiés. Et notre projet d'exemple pour illustrer ce type de
-collaboration sera l'édition de livres de recettes de cuisine, dont on sait à
-quel point ils peuvent être un secret professionnel jalousement gardé !
+collaboration sera l'édition de livre de cuisine, dont on sait à quel point ils
+peuvent être un secret professionnel jalousement gardé !
 
 Pour introduire les concepts en douceur, nous allons procéder en plusieurs temps
 :
@@ -36,8 +36,8 @@ Pour introduire les concepts en douceur, nous allons procéder en plusieurs temp
   une première expérience des mécanismes de collaboration fournis par GitLab
   dont la fameuse _Merge Request_.
 - Il sera ensuite temps pour vous de prendre les commandes et devenir chef
-  cuisinier en [créant votre propre dépôt de
-  recettes](4-depot-personnel/2-creation-depot.md), ce qui vous permettra de
+  cuisinier en [créant votre propre livre de
+  cuisine](4-depot-personnel/2-creation-depot.md), ce qui vous permettra de
   [mettre en place une intégration
   continue](4-depot-personnel/3-integration-continue.md) pour vérifier
   automatiquement certains aspects de son contenu.
