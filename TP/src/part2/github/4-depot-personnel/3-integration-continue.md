@@ -298,7 +298,7 @@ jobs:
     steps:
       # ... installation de grammalint ...
       - name: Extraction des fichiers
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       # ... d'autres instructions viendront ici plus tard ...
 ```
 
@@ -351,7 +351,7 @@ jobs:
       - name: Installation de grammalint
         run: python -m pip install git+https://gitlab.in2p3.fr/sonny.lion/grammalint.git
       - name: Extraction des fichiers
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Exécution de grammalint
         run: python -m grammalint -i recettes/**/*.md
 ```
