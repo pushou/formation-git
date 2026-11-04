@@ -47,7 +47,7 @@ pour répondre à toutes vos questions. N’hésitez surtout pas à le sollicite
 
 Durant cette formation, vous allez travailler sur des postes de travail Linux
 équipés des logiciels git, SourceGit, Meld, de quelques éditeurs de texte pour
-s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs` et `gedit`), et
+s’adapter aux habitudes de chacun (`nano`, `vim`, `emacs`, `gedit`, ...), et
 d'utilitaires systèmes de base (`wget`, `unzip`).
 
 La plupart des postes ont une étiquette collée dessus avec un nom de machine

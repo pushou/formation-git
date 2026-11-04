@@ -20,7 +20,7 @@
     d'un changement de LTS Ubuntu) il faut...
       1. Demander à l'exploit de refaire la configuration
         - Installations : `bash-completion git meld nano vim emacs gedit wget unzip`
-          + SourceGit via dépôt debian ou AppImage
+          + SourceGit via dépôt debian ou AppImage + idéalement VSCode/VSCodium.
         - Partition /scratch sur disque local pour démo IO-intensive
       2. S'il y a lieu, changer la [version d'Ubuntu utilisée en CI](Dockerfile)
          et passer en revue les changements de sortie git qui se traduiront par
