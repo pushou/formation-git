@@ -153,7 +153,7 @@ jobs:
     # … options de la tâche …
     steps:
       - name: Check out git repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       # … d'autres étapes vont suivre …
 ```
 
@@ -189,7 +189,7 @@ jobs:
     steps:
       # … étapes précédentes …
       - name: Generate and upload the artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
 ```
@@ -208,7 +208,7 @@ jobs:
       BASE_URL: "/nos-recettes"
     steps:
       - name: Check out git repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Build the static website
         run: |
           # On déplace les recettes à l'endroit attendu par astro-chef
@@ -218,7 +218,7 @@ jobs:
           # On ramène ces pages à un endroit où le runner GitHub peut les voir
           mv $APP_DIR/dist .
       - name: Generate and upload the artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist/
 ```
@@ -309,7 +309,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
 Nous utilisons l’option
@@ -352,7 +352,7 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: pages
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
 ```
 
 ### A vous de jouer
