@@ -95,7 +95,7 @@ La sortie textuelle devrait ressembler à ceci :
 
 ```text
 Clonage dans 'mes-recettes'...
-avertissement : Vous semblez avoir cloné un dépôt vide.
+warning : Vous semblez avoir cloné un dépôt vide.
 ```
 
 Notez l'avertissement. Au moment de cloner le dépôt, git vous signale qu’aucun
@@ -233,8 +233,7 @@ faisons référence ici.
 
 Quoiqu'il en soit, vous pouvez vérifier que le dossier `recettes` est bien
 visible ainsi que la recette de cuisine à l'intérieur. Par défaut, GitHub
-effectue automatiquement une visualisation du contenu du fichier Markdown, qui
-ne facilite pas forcément la lecture des en-têtes...
+effectue automatiquement une visualisation du contenu du fichier Markdown...
 
 ![Visualisation d'une recette](../../../images/github-recipe-view.png)
 
