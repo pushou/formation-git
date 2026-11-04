@@ -269,6 +269,9 @@ De haut en bas, ce formulaire contient…
   pour indiquer ce qui relève du correctif, de l’ajout de nouvelles
   fonctionnalités, ce qui brise une interface publique potentiellement utilisée
   par des personnes extérieures au projet…
+- Une section « Merge can start » qui permet d’indiquer qu’on ne souhaite pas
+  que la _merge request_ soit fusionnée immédiatement, et qu'elle doit être
+  fusionnée plus tard, après une certaine date.
 - Enfin, une paire de cases à cocher permet de définir ce qui se passera le jour
   où votre _merge request_ sera intégrée à la branche cible. Est-ce que la
   branche source est désormais inutile et peut être supprimée ? Est-ce que votre
